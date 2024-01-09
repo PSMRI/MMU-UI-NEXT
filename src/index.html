@@ -1,13 +1,29 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>MMUUINEXT</title>
-  <base href="/">
+  <title>Mobile Medical Unit</title>
+  <script>
+    var baseTag = document.createElement('base');
+    baseTag.href = document.location.href;
+    document.head.appendChild(baseTag);
+    
+    window.console.log = function() {}
+    window.console.warn = function() {}
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href=".\assets\images\MMULOGO.png">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <app-root></app-root>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <app-root>We are loading your data....... Kindly wait .........</app-root>
 </body>
+
 </html>
