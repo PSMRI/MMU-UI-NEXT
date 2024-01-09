@@ -30,7 +30,7 @@ This microservice is developed using Java and the Spring Boot framework, with My
 
 Ensure that the following prerequisites are met before building the MMU service:
 
-* JDK 1.8
+* JDK 17
 * Maven
 * NPM/YARN
 * Spring Boot v2
