@@ -34,8 +34,6 @@ export class SpinnerService {
   spinnerState = this.spinnerSubject.asObservable();
   temp: any = [];
 
-  constructor() { }
-
   show() {
     this.temp.push(true);
     if (this.temp.length == 1)

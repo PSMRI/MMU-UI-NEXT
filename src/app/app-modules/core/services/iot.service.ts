@@ -37,7 +37,7 @@ export class IotService {
   constructor(private http: HttpClient) {
     
   }
-  disconnect: Boolean=false;
+  disconnect=false;
 
   disconnectValue = new BehaviorSubject(this.disconnect);
   disconnectValue$ = this.disconnectValue.asObservable();
@@ -63,7 +63,7 @@ export class IotService {
       .put(this.baseurl + input, null);
   }
   endCalibrationAPI(input: any) {
-    let content=["application/json"];
+    const content=["application/json"];
     const headerDict = {
       'Content-Type': content
     }

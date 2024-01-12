@@ -44,13 +44,13 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
   dynamictype = "password";
   dialogRef: any;
   data: any;
-  showProgressBar: Boolean = false;
+  showProgressBar = false;
   current_language_set: any;
   encryptedVar: any;
   key: any;
   iv: any;
-  SALT: string = "RandomInitVector";
-  Key_IV: string = "Piramal12Piramal";
+  SALT = "RandomInitVector";
+  Key_IV = "Piramal12Piramal";
   encPassword: any;
   _keySize: any;
   _ivSize: any;
@@ -130,17 +130,17 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
   
   
   encryptWithIvSalt(salt: any, iv: any, passPhrase: any, plainText: any) {
-    let key = this.generateKey(salt, passPhrase);
-    let encrypted = CryptoJS.AES.encrypt(plainText, key, {
+    const key = this.generateKey(salt, passPhrase);
+    const encrypted = CryptoJS.AES.encrypt(plainText, key, {
       iv: CryptoJS.enc.Hex.parse(iv)
     });
     return encrypted.ciphertext.toString(CryptoJS.enc.Base64);
   }
   
   encrypt(passPhrase: any, plainText: any) {
-    let iv = CryptoJS.lib.WordArray.random(this._ivSize / 8).toString(CryptoJS.enc.Hex);
-    let salt = CryptoJS.lib.WordArray.random(this.keySize / 8).toString(CryptoJS.enc.Hex);
-    let ciphertext = this.encryptWithIvSalt(salt, iv, passPhrase, plainText);
+    const iv = CryptoJS.lib.WordArray.random(this._ivSize / 8).toString(CryptoJS.enc.Hex);
+    const salt = CryptoJS.lib.WordArray.random(this.keySize / 8).toString(CryptoJS.enc.Hex);
+    const ciphertext = this.encryptWithIvSalt(salt, iv, passPhrase, plainText);
     return salt + iv + ciphertext;
   }
   
@@ -159,7 +159,7 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
   */
   dataSyncLogin() {
     this.showProgressBar = true;
-    let encriptPassword = this.encrypt(this.Key_IV, this.password)
+    const encriptPassword = this.encrypt(this.Key_IV, this.password)
 
     if (this.userName && this.password) {
       // this.dataSyncService
@@ -316,7 +316,7 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
       (this.data && this.data.masterDowloadFirstTime) ||
       (this.data && this.data.provideAuthorizationToViewTmCS)
     ) {
-      let mmuService = res.data.previlegeObj.filter((item: any) => {
+      const mmuService = res.data.previlegeObj.filter((item: any) => {
         return item.serviceName == "MMU";
       });
       // sessionStorage.setItem("key", res.data.key);

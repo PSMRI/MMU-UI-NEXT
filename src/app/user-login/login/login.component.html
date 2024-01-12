@@ -10,7 +10,7 @@
             <mat-form-field class="full-width">
               <mat-icon matPrefix>account_box</mat-icon>
               <mat-label>Enter User Name</mat-label>
-              <input matInput allowText="usernameValidator" autofocus="autofocus" type="text" id="userID" formControlName="userName" name="userName" #focus/>
+              <input matInput allowText="usernameValidator" type="text" id="userID" formControlName="userName" name="userName" #focus/>
             </mat-form-field>
           </div>
           <div class="col-xs-12 col-md-11 col-sm-11">
@@ -34,7 +34,8 @@
             <a class="cursorPointer f-c-54 font-regular" routerLink="/reset-password">Forgot Password?</a>
           </div>
           <div class="col-xs-6 col-sm-6" style="text-align: right;">
-            <a class="cursorPointer f-c-54 font-regular" (click)="openDialog()">Download Masters</a>
+          <!-- eslint-disable-next-line  @angular-eslint/template/click-events-have-key-events -->
+          <a class="cursorPointer f-c-54 font-regular" tabindex={0} (click)="openDialog()">Download Masters</a>
           </div>
         </div>
       </form>

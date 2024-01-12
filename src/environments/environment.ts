@@ -284,7 +284,6 @@ export const environment = {
    * Covid API Urls
    */
   saveNurseCovidCareDetails: `${MMU_API}pandemic/covid/save/nurseData`,
-  // updateNCDScreeningIDRSDetailsUrl :`${​​​​​​​​MMU_API}/​​​​​​​​NCD/update/idrsScreen`,
   updateNCDScreeningIDRSDetailsUrl :`${MMU_API}NCD/update/idrsScreen`,
   
   
