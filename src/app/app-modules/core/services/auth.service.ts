@@ -48,17 +48,17 @@ export class AuthService {
   getUserSecurityQuestionsAnswer(uname: any): Observable<any> {
     return this.http.post(environment.getUserSecurityQuestionsAnswerUrl, { 'userName': uname.toLowerCase() })
       // .map(res => res.json())
-  };
+  }
 
   validateSecurityQuestionAndAnswer(ans: any, uname: any): Observable<any> {
     return this.http.post(environment.validateSecurityQuestionAndAnswerUrl, { 'SecurityQuesAns':ans, 'userName': uname.toLowerCase() })
       // .map(res => res.json())
-  };
+  }
 
   getTransactionIdForChangePassword(uname: any): Observable<any> {
     return this.http.post(environment.getTransactionIdForChangePasswordUrl, { 'userName': uname.toLowerCase() })
       // .map(res => res.json())
-  };
+  }
 
   getSecurityQuestions() {
     return this.http.get(environment.getSecurityQuestionUrl)
@@ -73,7 +73,7 @@ export class AuthService {
   setNewPassword(userName: string, password: string, transactionId: string) {
     return this.http.post(environment.setNewPasswordUrl, { 'userName': userName, 'password': password, 'transactionId': this.transactionId })
       // .map(res => res.json())
-  };
+  }
 
   validateSessionKey() {
     return this.http.post(environment.getSessionExistsURL, {})

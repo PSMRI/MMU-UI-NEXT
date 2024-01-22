@@ -11,7 +11,6 @@ import {
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 import { throwError } from 'rxjs/internal/observable/throwError';
 import { SpinnerService } from './spinner.service';
 import { ConfirmationService } from './confirmation.service';
@@ -34,7 +33,7 @@ export class HttpInterceptorService implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    let key: any = sessionStorage.getItem('key');
+    const key: any = sessionStorage.getItem('key');
     let modifiedReq = null;
     if (key !== undefined && key !== null) {
       modifiedReq = req.clone({

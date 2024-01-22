@@ -1,21 +1,21 @@
 <div *ngIf="confirmAlert">
-  <h3 [ngClass]="['title', title]">{{ (title == 'warn'? 'warning': title) | titlecase }}</h3>
+  <h3 [ngClass]="['title', title]">{{ (title === 'warn'? 'warning': title) | titlecase }}</h3>
   <div class="message">{{ message }}</div>
   <div class="action">
     <button class="full-width-login button-reset" (click)="dialogRef.close(false)">{{btnCancelText}}</button>
-    <button class="full-width-login button-ok" (click)="dialogRef.close(true)" [ngClass]="{'background-primary': title != 'warn'}" cdkFocusInitial>{{btnOkText}}</button>
+    <button class="full-width-login button-ok" (click)="dialogRef.close(true)" [ngClass]="{'background-primary': title !== 'warn'}" cdkFocusInitial>{{btnOkText}}</button>
   </div>
 </div>
 <div *ngIf="confirmcalibration">
-  <h3 [ngClass]="['title', title]">{{ (title == 'warn'? 'warning': title) | titlecase }}</h3>
+  <h3 [ngClass]="['title', title]">{{ (title === 'warn'? 'warning': title) | titlecase }}</h3>
   <div class="message">{{ message }}</div>
   <div class="action">
     <button class="full-width-login button-reset" (click)="dialogRef.close(false)">{{btnCancelText}}</button>
-    <button class="full-width-login button-ok" (click)="dialogRef.close(true)" [ngClass]="{'background-primary': title != 'warn'}" cdkFocusInitial>{{btnOkText}}</button>
+    <button class="full-width-login button-ok" (click)="dialogRef.close(true)" [ngClass]="{'background-primary': title !== 'warn'}" cdkFocusInitial>{{btnOkText}}</button>
   </div>
 </div>
 <div *ngIf="alert">
-  <h3 [ngClass]="['title', status]">{{ (status == 'warn'? 'warning': status) | titlecase }}</h3>
+  <h3 [ngClass]="['title', status]">{{ (status === 'warn'? 'warning': status) | titlecase }}</h3>
   <div class="message">{{ message }}</div>
   <div class="action">
     <button class="full-width-login button-ok" mat-dialog-close cdkFocusInitial>{{btnOkText}}</button>
@@ -71,7 +71,7 @@
 
 
 <div *ngIf="alertError">
-  <h3 [ngClass]="['title', status]">{{ (status == 'warn'? 'warning': status) | titlecase }}</h3>
+  <h3 [ngClass]="['title', status]">{{ (status === 'warn'? 'warning': status) | titlecase }}</h3>
   <div class="message">{{ message }}</div>
   <div class="action">
     <button (click)="dialogRef.close(true)" mat-raised-button mat-dialog-close cdkFocusInitial>{{btnOkText}}</button>

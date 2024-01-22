@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
   encryptedVar: any;
   key: any;
   iv: any;
-  SALT: string = "RandomInitVector";
-  Key_IV: string = "Piramal12Piramal";
+  SALT = "RandomInitVector";
+  Key_IV = "Piramal12Piramal";
   encPassword: any;
   _keySize: any;
   _ivSize: any;
@@ -79,12 +79,12 @@ export class LoginComponent implements OnInit {
       sessionStorage.clear();
     }
   }
-  public ngAfterViewInit(): void {
+  public AfterViewInit(): void {
     this.elementRef.nativeElement.focus();
   } 
 
   login() {
-   let encryptPassword = this.encrypt(this.Key_IV, this.password)
+   const encryptPassword = this.encrypt(this.Key_IV, this.password)
 
     if(this.userName !=undefined && this.userName !=null && this.password !=undefined && this.password !=null)
     {
@@ -167,17 +167,17 @@ generateKey(salt: any, passPhrase: any) {
 }
 
 encryptWithIvSalt(salt: any, iv: any, passPhrase: any, plainText: any) {
-  let key = this.generateKey(salt, passPhrase);
-  let encrypted = CryptoJS.AES.encrypt(plainText, key, {
+  const key = this.generateKey(salt, passPhrase);
+  const encrypted = CryptoJS.AES.encrypt(plainText, key, {
     iv: CryptoJS.enc.Hex.parse(iv)
   });
   return encrypted.ciphertext.toString(CryptoJS.enc.Base64);
 }
 
 encrypt(passPhrase: any, plainText: any) {
-  let iv = CryptoJS.lib.WordArray.random(this._ivSize / 8).toString(CryptoJS.enc.Hex);
-  let salt = CryptoJS.lib.WordArray.random(this.keySize / 8).toString(CryptoJS.enc.Hex);
-  let ciphertext = this.encryptWithIvSalt(salt, iv, passPhrase, plainText);
+  const iv = CryptoJS.lib.WordArray.random(this._ivSize / 8).toString(CryptoJS.enc.Hex);
+  const salt = CryptoJS.lib.WordArray.random(this.keySize / 8).toString(CryptoJS.enc.Hex);
+  const ciphertext = this.encryptWithIvSalt(salt, iv, passPhrase, plainText);
   return salt + iv + ciphertext;
 }
 
@@ -193,7 +193,7 @@ encrypt(passPhrase: any, plainText: any) {
     const services: any = [];
     loginDataResponse.previlegeObj.map((item: any) => {
       if (item.roles[0].serviceRoleScreenMappings[0].providerServiceMapping.serviceID == '2') {
-        let service = {
+        const service = {
           'providerServiceID': item.serviceID,
           'serviceName': item.serviceName,
           'apimanClientKey': item.apimanClientKey,

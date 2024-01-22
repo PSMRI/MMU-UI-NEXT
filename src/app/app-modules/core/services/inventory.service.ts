@@ -42,8 +42,7 @@ export class InventoryService {
     // uncomment later 
     // const vanID = this.getVanID();
     // const ppID = this.getppID();
-    const serviceName = this.getServiceDetails();
-    const parentAPI = this.getParentAPI();
+
     if (authKey && protocol && host && facility) {
       // uncomment later 
       // this.inventoryUrl = `${environment.INVENTORY_URL}protocol=${protocol}&host=${host}&user=${authKey}&app=${environment.app}&fallback=${environment.fallbackUrl}&back=${environment.redirInUrl}&facility=${facility}&ben=${benID}&visit=${visit}&flow=${flowID}&reg=${regID}&vanID=${vanID}&ppID=${ppID}&serviceName=${serviceName}&parentAPI=${parentAPI}&currentLanguage=${language}`;
@@ -61,10 +60,6 @@ export class InventoryService {
       return sessionStorage.getItem('key');
     } else 
     return undefined;
-  }
-
-  getFlowID() {
-
   }
 
   getFacilityID() {

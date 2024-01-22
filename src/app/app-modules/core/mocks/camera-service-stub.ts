@@ -23,13 +23,13 @@
 
 export class CameraServiceStub {
 
-    public capture(titleAlign: string = 'center') {
+    public capture(titleAlign = 'center') {
     }
 
-    public viewImage(benImageCode: string, titleAlign: string = 'center') {
+    public viewImage(benImageCode: string, titleAlign = 'center') {
     }
 
-    public annotate(image: string, points: any, titleAlign: string = 'center') {
+    public annotate(image: string, points: any, titleAlign = 'center') {
     }
 
     public graph() {

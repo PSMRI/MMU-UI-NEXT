@@ -22,7 +22,6 @@
 
 
 import { Component } from '@angular/core';
-import { Router, RouteConfigLoadStart, RouteConfigLoadEnd, ResolveStart, NavigationCancel, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -43,7 +42,7 @@ export class AppComponent {
   //       this.spinnerService.show();
   //     } else if (event instanceof NavigationEnd || event instanceof RouteConfigLoadEnd) {
   //       setTimeout(this.spinnerService.hide(), 500);
-  //     } else if (event instanceof NavigationError ) {
+  //     } else if (event instanceof NavigationError) {
   //       setTimeout(this.spinnerService.hide(), 500);
   //     } else if (event instanceof NavigationCancel) {
   //       setTimeout(this.spinnerService.hide(), 500);

@@ -63,7 +63,7 @@ export class CommonDialogComponent implements OnInit, DoCheck {
   public selectedOption :any;
   confirmcalibration!: boolean;
   current_language_set: any;
-  confirmHealthID: boolean = false;
+  confirmHealthID = false;
   alertFetsenseMessage: any;
   confirmCBAC: any;
   cbacData: any;

@@ -23,22 +23,22 @@
 
 export class ConfirmationServiceStub {
 
-  public confirm(title: string, message: string, btnOkText: string = 'OK', btnCancelText: string = 'Cancel') {
+  public confirm(title: string, message: string, btnOkText = 'OK', btnCancelText = 'Cancel') {
   }
 
-  public alert(message: string, status: string = 'info', btnOkText: string = 'OK'): void {
+  public alert(message: string, status = 'info', btnOkText = 'OK'): void {
   }
 
-  public remarks(message: string, titleAlign: string = 'center', messageAlign: string = 'center', btnOkText: string = 'Submit', btnCancelText: string = "Cancel") {
+  public remarks(message: string, titleAlign = 'center', messageAlign = 'center', btnOkText = 'Submit', btnCancelText = "Cancel") {
   }
 
-  public editRemarks(message: string, comments: string, titleAlign: string = 'center', messageAlign: string = 'center', btnOkText: string = 'Submit') {
+  public editRemarks(message: string, comments: string, titleAlign = 'center', messageAlign = 'center', btnOkText = 'Submit') {
   }
 
-  public notify(message: string, mandatories: any, titleAlign: string = 'center', messageAlign: string = 'center', btnOkText: string = 'OK') {
+  public notify(message: string, mandatories: any, titleAlign = 'center', messageAlign = 'center', btnOkText = 'OK') {
   }
 
-  public choice(message: string, values: any, titleAlign: string = 'center', messageAlign: string = 'center', btnOkText: string = 'Confirm', btnCancelText: string = 'Cancel') {
+  public choice(message: string, values: any, titleAlign = 'center', messageAlign = 'center', btnOkText = 'Confirm', btnCancelText = 'Cancel') {
   }
 
 }
