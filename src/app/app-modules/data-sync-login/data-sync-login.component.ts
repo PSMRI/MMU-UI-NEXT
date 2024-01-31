@@ -1,47 +1,46 @@
-/* 
-* AMRIT – Accessible Medical Records via Integrated Technology 
-* Integrated EHR (Electronic Health Records) Solution 
-*
-* Copyright (C) "Piramal Swasthya Management and Research Institute" 
-*
-* This file is part of AMRIT.
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see https://www.gnu.org/licenses/.
-*/
+/*
+ * AMRIT – Accessible Medical Records via Integrated Technology
+ * Integrated EHR (Electronic Health Records) Solution
+ *
+ * Copyright (C) "Piramal Swasthya Management and Research Institute"
+ *
+ * This file is part of AMRIT.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see https://www.gnu.org/licenses/.
+ */
 
-
-import { Component, OnInit, Inject, Injector, DoCheck } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, OnInit, Inject, Injector, DoCheck } from '@angular/core';
+import { Router } from '@angular/router';
 
 import * as CryptoJS from 'crypto-js';
-import { HttpServiceService } from "../../app-modules/core/services/http-service.service";
-import { ConfirmationService } from "../../app-modules/core/services";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { SetLanguageComponent } from "../../app-modules/core/components/set-language.component";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SetLanguageComponent } from '../core/components/set-language.component';
+import { ConfirmationService } from '../core/services';
+import { HttpServiceService } from '../core/services/http-service.service';
 
 @Component({
-  selector: "app-data-sync-login",
-  templateUrl: "./data-sync-login.component.html",
-  styleUrls: ["./data-sync-login.component.css"],
+  selector: 'app-data-sync-login',
+  templateUrl: './data-sync-login.component.html',
+  styleUrls: ['./data-sync-login.component.css'],
   // providers: [DataSyncService],
 })
 export class DataSyncLoginComponent implements OnInit, DoCheck {
   userName: any;
   password: any;
 
-  dynamictype = "password";
+  dynamictype = 'password';
   dialogRef: any;
   data: any;
   showProgressBar = false;
@@ -49,8 +48,8 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
   encryptedVar: any;
   key: any;
   iv: any;
-  SALT = "RandomInitVector";
-  Key_IV = "Piramal12Piramal";
+  SALT = 'RandomInitVector';
+  Key_IV = 'Piramal12Piramal';
   encPassword: any;
   _keySize: any;
   _ivSize: any;
@@ -90,60 +89,55 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
   }
 
   showPWD() {
-    this.dynamictype = "text";
+    this.dynamictype = 'text';
   }
 
   hidePWD() {
-    this.dynamictype = "password";
+    this.dynamictype = 'password';
   }
 
   get keySize() {
     return this._keySize;
   }
-  
+
   set keySize(value) {
     this._keySize = value;
   }
-  
-  
-  
+
   get iterationCount() {
     return this._iterationCount;
   }
-  
-  
-  
+
   set iterationCount(value) {
     this._iterationCount = value;
   }
-  
-  
-  
+
   generateKey(salt: any, passPhrase: any) {
     return CryptoJS.PBKDF2(passPhrase, CryptoJS.enc.Hex.parse(salt), {
       hasher: CryptoJS.algo.SHA512,
       keySize: this.keySize / 32,
-      iterations: this._iterationCount
-    })
+      iterations: this._iterationCount,
+    });
   }
-  
-  
-  
+
   encryptWithIvSalt(salt: any, iv: any, passPhrase: any, plainText: any) {
     const key = this.generateKey(salt, passPhrase);
     const encrypted = CryptoJS.AES.encrypt(plainText, key, {
-      iv: CryptoJS.enc.Hex.parse(iv)
+      iv: CryptoJS.enc.Hex.parse(iv),
     });
     return encrypted.ciphertext.toString(CryptoJS.enc.Base64);
   }
-  
+
   encrypt(passPhrase: any, plainText: any) {
-    const iv = CryptoJS.lib.WordArray.random(this._ivSize / 8).toString(CryptoJS.enc.Hex);
-    const salt = CryptoJS.lib.WordArray.random(this.keySize / 8).toString(CryptoJS.enc.Hex);
+    const iv = CryptoJS.lib.WordArray.random(this._ivSize / 8).toString(
+      CryptoJS.enc.Hex
+    );
+    const salt = CryptoJS.lib.WordArray.random(this.keySize / 8).toString(
+      CryptoJS.enc.Hex
+    );
     const ciphertext = this.encryptWithIvSalt(salt, iv, passPhrase, plainText);
     return salt + iv + ciphertext;
   }
-  
 
   // checkCurrentUser(){
   //   if(this.userName != localStorage.getItem('username')){
@@ -159,7 +153,7 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
   */
   dataSyncLogin() {
     this.showProgressBar = true;
-    const encriptPassword = this.encrypt(this.Key_IV, this.password)
+    const encriptPassword = this.encrypt(this.Key_IV, this.password);
 
     if (this.userName && this.password) {
       // this.dataSyncService
@@ -282,24 +276,24 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
       //                 // this.confirmationService.alert(res.errorMessage, 'error');
       //               }
       //             });
-        //       } else {
-        //         this.confirmationService.alert(res.errorMessage, "error");
-        //         this.showProgressBar = false;
-        //       }
-        //     } else {
-        //       this.confirmationService.alert(res.errorMessage, "error");
-        //       this.showProgressBar = false;
-        //       sessionStorage.setItem(
-        //         "authorizeToViewTMcasesheet",
-        //         "NotAuthorized"
-        //       );
-        //     }
-        //   },
-        //   (err: any) => {
-        //     this.confirmationService.alert(err.errorMessage, "error");
-        //     this.showProgressBar = false;
-        //   }
-        // );
+      //       } else {
+      //         this.confirmationService.alert(res.errorMessage, "error");
+      //         this.showProgressBar = false;
+      //       }
+      //     } else {
+      //       this.confirmationService.alert(res.errorMessage, "error");
+      //       this.showProgressBar = false;
+      //       sessionStorage.setItem(
+      //         "authorizeToViewTMcasesheet",
+      //         "NotAuthorized"
+      //       );
+      //     }
+      //   },
+      //   (err: any) => {
+      //     this.confirmationService.alert(err.errorMessage, "error");
+      //     this.showProgressBar = false;
+      //   }
+      // );
     } else {
       this.confirmationService.alert(
         this.current_language_set.alerts.info.usernamenPass
@@ -308,7 +302,7 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
     }
   }
 
-  //uncomment above later till here 
+  //uncomment above later till here
 
   //added get datasync data on login to a new method
   getDataSyncMMU(res: any) {
@@ -317,28 +311,28 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
       (this.data && this.data.provideAuthorizationToViewTmCS)
     ) {
       const mmuService = res.data.previlegeObj.filter((item: any) => {
-        return item.serviceName == "MMU";
+        return item.serviceName == 'MMU';
       });
       // sessionStorage.setItem("key", res.data.key);
       localStorage.setItem(
-        "dataSyncProviderServiceMapID",
+        'dataSyncProviderServiceMapID',
         mmuService[0].providerServiceMapID
       );
       if (this.data.provideAuthorizationToViewTmCS) {
-        sessionStorage.setItem("authorizeToViewTMcasesheet", "Authorized");
+        sessionStorage.setItem('authorizeToViewTMcasesheet', 'Authorized');
       } else {
-        console.log("normal flow");
+        console.log('normal flow');
       }
       this.dialogRef.close(true);
     } else {
       this.showProgressBar = false;
-      sessionStorage.setItem("authorizeToViewTMcasesheet", "NotAuthorized");
-      this.router.navigate(["/datasync/workarea"]);
+      sessionStorage.setItem('authorizeToViewTMcasesheet', 'NotAuthorized');
+      this.router.navigate(['/datasync/workarea']);
     }
   }
 
   closeDialog() {
-    sessionStorage.setItem("authorizeToViewTMcasesheet", "NotAuthorized");
+    sessionStorage.setItem('authorizeToViewTMcasesheet', 'NotAuthorized');
     this.dialogRef.close(false);
   }
 }

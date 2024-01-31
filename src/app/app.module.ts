@@ -1,44 +1,76 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MaterialModule } from './app-modules/core/material.module';
-import { UserLoginModule } from './user-login/user-login.module';
-import { CoreModule } from './app-modules/core/core.module';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { HttpInterceptorService } from './app-modules/core/services/http-interceptor.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { CoreModule } from './app-modules/core/core.module';
+import { MaterialModule } from './app-modules/core/material.module';
+import { HttpInterceptorService } from './app-modules/core/services/http-interceptor.service';
+import { BrowserModule } from '@angular/platform-browser';
+import { LoginComponent } from './app-modules/login/login.component';
+import { ServiceComponent } from './app-modules/service/service.component';
+import { ServicePointComponent } from './app-modules/service-point/service-point.component';
+import { SetSecurityQuestionsComponent } from './app-modules/set-security-questions/set-security-questions.component';
+import { SetPasswordComponent } from './app-modules/set-password/set-password.component';
+import { TmLogoutComponent } from './app-modules/tm-logout/tm-logout.component';
+import { DataSyncLoginComponent } from './app-modules/data-sync-login/data-sync-login.component';
+import { ServicePointResolve } from './app-modules/service-point/service-point-resolve.service';
+import { ServicePointService } from './app-modules/service-point/service-point.service';
+import { ResetPasswordComponent } from './app-modules/reset-password/reset-password.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WebcamModule } from 'ngx-webcam';
+import { RegistrarService } from './app-modules/registrar/shared/services/registrar.service';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    ServiceComponent,
+    ServicePointComponent,
+    SetSecurityQuestionsComponent,
+    SetPasswordComponent,
+    ResetPasswordComponent,
+    TmLogoutComponent,
+    DataSyncLoginComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     MatIconModule,
-    MatFormFieldModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    UserLoginModule,
-    CoreModule.forRoot()
+    MatGridListModule,
+    WebcamModule,
+    CoreModule.forRoot(),
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],  
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     HttpClient,
+    ServicePointResolve,
+    ServicePointService,
+    RegistrarService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,
       multi: true,
     },
-  ],  
-  bootstrap: [AppComponent]
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

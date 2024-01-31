@@ -1,0 +1,188 @@
+<app-header [showRoles]="false"></app-header>
+
+<div class="container" style="margin-top: 5%">
+  <section>
+    <div class="col-md-3 col-sm-3 col-3"></div>
+    <div class="col-md-6 col-sm-6 col-6">
+      <mat-card class="m-b-100">
+        <mat-card-header>
+          <img
+            src="assets/images/Swasthya.png"
+            alt="Logo"
+            style="margin: auto auto" />
+        </mat-card-header>
+        <mat-card-content>
+          <form [formGroup]="servicePointForm">
+            <div class="form-group m-t-25">
+              <!-- <mat-radio-group
+                id="sessionID"
+                formControlName="sessionID"
+                name="sessionID"
+                (change)="filterVansList()">
+                <strong>{{ currentLanguageSet?.serviceType }}:</strong>
+                <mat-radio-button
+                  class="radio-btn"
+                  color="primary"
+                  *ngFor="let session of sessionsList"
+                  [value]="session.sessionID"
+                  >{{ session.sessionName }}</mat-radio-button
+                >
+              </mat-radio-group> -->
+              <mat-radio-group
+                formControlName="sessionID"
+                (change)="filterVansList()">
+                <strong>{{ currentLanguageSet?.serviceType }}:</strong>
+                <mat-radio-button
+                  class="radio-btn"
+                  color="primary"
+                  *ngFor="let session of sessionsList"
+                  [value]="session.sessionID">
+                  {{ session.sessionName }}
+                </mat-radio-button>
+              </mat-radio-group>
+
+              <mat-form-field [style.width]="'100%'" class="alignField">
+                <select
+                  required
+                  [style.width]="'100%'"
+                  placeholder="{{ currentLanguageSet?.van }}"
+                  name="vanID"
+                  formControlName="vanID"
+                  matNativeControl
+                  (change)="filterServicePointsList()">
+                  <option *ngFor="let van of vansList" [value]="van.vanID">
+                    {{ van.vanNoAndType }}
+                  </option>
+                </select>
+              </mat-form-field>
+
+              <mat-form-field [style.width]="'100%'" class="alignField">
+                <input
+                  autocomplete="off"
+                  allowText="inputFieldValidator"
+                  matInput
+                  placeholder="
+                {{ currentLanguageSet?.casesheet?.servicePoint }}"
+                  aria-label="Service Point"
+                  [required]="true"
+                  [matAutocomplete]="auto"
+                  formControlName="servicePointName"
+                  name="servicePointName"
+                  (input)="getDemographics()"
+                  (ngModelChange)="getDemographics()"
+                  (keyup)="
+                    filterServicePointVan(
+                      servicePointForm.controls.servicePointName
+                    )
+                  " />
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                  <mat-option
+                    *ngFor="let servicePoint of filteredServicePoints"
+                    [value]="servicePoint.servicePointName">
+                    {{ servicePoint.servicePointName }}</mat-option
+                  >
+                </mat-autocomplete>
+              </mat-form-field>
+
+              <mat-form-field [style.width]="'100%'" class="alignField">
+                <select
+                  [style.width]="'100%'"
+                  class="align-Field"
+                  formControlName="stateID"
+                  name="stateID"
+                  [required]="true"
+                  matNativeControl
+                  (change)="
+                    fetchDistrictsOnStateSelection(
+                      servicePointForm.controls.stateID.value
+                    )
+                  ">
+                  <option
+                    *ngFor="let state of statesList"
+                    [value]="state.stateID">
+                    {{ state.stateName }}
+                  </option>
+                </select>
+              </mat-form-field>
+
+              <mat-form-field [style.width]="'100%'" class="alignField">
+                <select
+                  [style.width]="'100%'"
+                  class="alignField"
+                  formControlName="districtID"
+                  name="districtID"
+                  matNativeControl
+                  [required]="true"
+                  (change)="
+                    fetchSubDistrictsOnDistrictSelection(
+                      servicePointForm.controls.districtID.value
+                    )
+                  ">
+                  <option
+                    *ngFor="let district of districtList"
+                    [value]="district.districtID">
+                    {{ district.districtName }}
+                  </option>
+                </select>
+              </mat-form-field>
+
+              <mat-form-field [style.width]="'100%'" class="alignField">
+                <select
+                  [style.width]="'100%'"
+                  class="alignField"
+                  formControlName="blockID"
+                  name="blockID"
+                  matNativeControl
+                  [required]="true"
+                  (change)="
+                    onSubDistrictChange(servicePointForm.controls.blockID.value)
+                  ">
+                  <option
+                    *ngFor="let taluk of subDistrictList"
+                    [value]="taluk.blockID">
+                    {{ taluk.blockName }}
+                  </option>
+                </select>
+              </mat-form-field>
+
+              <mat-form-field [style.width]="'100%'" class="alignField">
+                <select
+                  [style.width]="'100%'"
+                  class="alignField"
+                  formControlName="districtBranchID"
+                  name="districtBranchID"
+                  matNativeControl
+                  (change)="
+                    onDistrictBranchSelection(
+                      servicePointForm.controls.districtBranchID.value
+                    )
+                  "
+                  [required]="true">
+                  <option
+                    *ngFor="let street of villageList"
+                    [value]="street.districtBranchID">
+                    {{ street.villageName }}
+                  </option>
+                </select>
+              </mat-form-field>
+            </div>
+
+            <mat-card-actions>
+              <button
+                mat-raised-button
+                color="primary"
+                (click)="saveLocationDataToStorage()"
+                class="pull-right p-l-r-38 font-regular f-s-18"
+                [disabled]="!servicePointForm.valid">
+                {{ currentLanguageSet?.spoke_selection?.continue }}
+              </button>
+            </mat-card-actions>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-3 col-sm-3 col-3"></div>
+  </section>
+</div>
+
+<app-footer></app-footer>
