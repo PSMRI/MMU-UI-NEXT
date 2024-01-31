@@ -1,0 +1,26 @@
+#fingerPrint {
+    padding: 0px;
+}
+
+.mat-form-field {
+    line-height: unset;
+}
+
+.box {
+    height: 60px;
+}
+.dropdownValueOccupation {
+    display: block;
+    line-height: 28px;
+    padding: 10px 15px;
+    text-align: left;
+    text-decoration: none;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    height: inherit;
+    white-space: inherit;
+    overflow: visible;
+    text-overflow: unset;
+    width: 400px;
+  }

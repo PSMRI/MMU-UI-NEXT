@@ -18,6 +18,8 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "useDefineForClassFields": false,
     "lib": [
       "ES2022",
@@ -28,6 +30,7 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "fullTemplateTypeCheck": true
   }
 }

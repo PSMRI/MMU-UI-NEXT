@@ -1,45 +1,44 @@
 /*
-* AMRIT – Accessible Medical Records via Integrated Technology
-* Integrated EHR (Electronic Health Records) Solution
-*
-* Copyright (C) "Piramal Swasthya Management and Research Institute"
-*
-* This file is part of AMRIT.
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see https://www.gnu.org/licenses/.
-*/
-
+ * AMRIT – Accessible Medical Records via Integrated Technology
+ * Integrated EHR (Electronic Health Records) Solution
+ *
+ * Copyright (C) "Piramal Swasthya Management and Research Institute"
+ *
+ * This file is part of AMRIT.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see https://www.gnu.org/licenses/.
+ */
 
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
-const SERVER_IP =  '<%= SERVER_IP %>';
+const SERVER_IP = '<%= SERVER_IP %>';
 const SWYMED_IP = '<%= SWYMED_IP %>';
 const ADMIN_API = '<%= ADMIN_API_BASE %>';
 const COMMON_API_OPEN = '<%= COMMON_API_BASE %>';
 const COMMON_API = '<%= COMMON_API_BASE %>';
-const MMU_API =  '<%= MMU_API_BASE %>';
+const MMU_API = '<%= MMU_API_BASE %>';
 const TM_API = '<%= TM_API_BASE %>';
 const COMMON_API_OPEN_SYNC = '<%= COMMON_API_OPEN_SYNC %>';
-const SCHEDULER_API =  '<%= SCHEDULER_API_BASE %>';
-const SCHEDULER_UI =  '<%= SCHEDULER_UI_BASE %>';
-const INVENTORY_UI =  '<%= INVENTORY_UI_BASE %>';
-const IDENTITY_API =  '<%= IDENTITY_API_BASE %>';
+const SCHEDULER_API = '<%= SCHEDULER_API_BASE %>';
+const SCHEDULER_UI = '<%= SCHEDULER_UI_BASE %>';
+const INVENTORY_UI = '<%= INVENTORY_UI_BASE %>';
+const IDENTITY_API = '<%= IDENTITY_API_BASE %>';
 
-const mmuUICasesheet ='<%= MMU_UI_BASE %>';
+const mmuUICasesheet = '<%= MMU_UI_BASE %>';
 
 const biologicalScreeningDeviceAPI = `${ADMIN_API}/diagnostics/biologicalScreeningDevice`;
 
@@ -48,9 +47,9 @@ export const environment = {
   isMMUOfflineSync: false,
 
   app: `MMU`,
-  RBSTest:`RBS Test`,
-  visualAcuityTest:`Visual Acuity Test`,
-  haemoglobinTest : `Haemoglobin Test`,
+  RBSTest: `RBS Test`,
+  visualAcuityTest: `Visual Acuity Test`,
+  haemoglobinTest: `Haemoglobin Test`,
   parentAPI: `${MMU_API}`,
 
   INVENTORY_URL: `${INVENTORY_UI}/#/redirin?`,
@@ -98,7 +97,7 @@ export const environment = {
   /**
    * Master Data Urls
    */
-  getNCDScreeningIDRSDetails : `${MMU_API}NCD/getBenIdrsDetailsFrmNurse`,
+  getNCDScreeningIDRSDetails: `${MMU_API}NCD/getBenIdrsDetailsFrmNurse`,
   getDistrictListUrl: `${MMU_API}location/get/districtMaster/`,
   getSubDistrictListUrl: `${MMU_API}location/get/districtBlockMaster/`,
   getVillageListUrl: `${MMU_API}location/get/villageMasterFromBlockID/`,
@@ -133,7 +132,6 @@ export const environment = {
   oncologistWorklist: `${MMU_API}common/getOncologist-worklist-New/`,
   pharmacistWorklist: `${MMU_API}common/getPharma-worklist-New/`,
 
-
   // New API
   getBeneficiaryDetail: `${MMU_API}registrar/get/benDetailsByRegIDForLeftPanelNew`,
 
@@ -155,8 +153,8 @@ export const environment = {
   getStatesURL: `${MMU_API}location/get/stateMaster`,
   getDistrictsURL: `${MMU_API}location/get/districtMaster/`,
   countryId: 1,
-  updateNCDScreeningIDRSDetailsUrl :`${MMU_API}NCD/update/idrsScreen`,
-  previousVisitDataUrl:`${MMU_API}common/getBenSymptomaticQuestionnaireDetails`,
+  updateNCDScreeningIDRSDetailsUrl: `${MMU_API}NCD/update/idrsScreen`,
+  previousVisitDataUrl: `${MMU_API}common/getBenSymptomaticQuestionnaireDetails`,
   /**
    * NCD SCREENING API URLs
    */
@@ -164,17 +162,16 @@ export const environment = {
   // getNCDScreeningVisitDetails: `${MMU_API}CS-cancerScreening/getBenDataFrmNurseToDocVisitDetailsScreen`,
   getNCDScreeningVisitDetails: `${MMU_API}NCD/getBenVisitDetailsFrmNurseNCDScreening`,
   getNCDScreeningDetails: `${MMU_API}NCD/get/nurseData`,
-  getNCDScreeningHistoryDetails : `${MMU_API}NCD/getBenHistoryDetails`,
-  getNCDSceeriningVitalDetails : `${MMU_API}NCD/getBenVitalDetailsFrmNurse`,
+  getNCDScreeningHistoryDetails: `${MMU_API}NCD/getBenHistoryDetails`,
+  getNCDSceeriningVitalDetails: `${MMU_API}NCD/getBenVitalDetailsFrmNurse`,
   getNCDScreeningDoctorDetails: `${MMU_API}/NCD/getBenCaseRecordFromDoctorNCDScreening`,
-  previousPhyscialactivityHistoryUrl : `${MMU_API}common/getBenPhysicalHistory`,
+  previousPhyscialactivityHistoryUrl: `${MMU_API}common/getBenPhysicalHistory`,
   previousDiabetesHistoryUrl: `${MMU_API}common/getBenPreviousDiabetesHistoryDetails`,
   previousReferredHistoryUrl: `${MMU_API}common/getBenPreviousReferralHistoryDetails`,
   updateNCDScreeningDetails: `${MMU_API}NCD/update/nurseData`,
-  updateNCDScreeningHistoryDetailsUrl :`${MMU_API}NCD/update/historyScreen`,
+  updateNCDScreeningHistoryDetailsUrl: `${MMU_API}NCD/update/historyScreen`,
 
-
-  updateNCDVitalsDetailsUrl:`${MMU_API}NCD/update/vitalScreen`,
+  updateNCDVitalsDetailsUrl: `${MMU_API}NCD/update/vitalScreen`,
   /**
    * GENERAL OPD QUICK CONSULT API URLs
    */
@@ -183,7 +180,6 @@ export const environment = {
   saveDoctorNCDScreeningDetails: `${MMU_API}/NCD/save/doctorData`,
   getGeneralOPDQuickConsultVisitDetails: `${MMU_API}genOPD-QC-quickConsult/getBenDataFrmNurseToDocVisitDetailsScreen`,
   getGeneralOPDQuickConsultVitalDetails: `${MMU_API}genOPD-QC-quickConsult/getBenVitalDetailsFrmNurse`,
-
 
   /**
    * ANC API URLs
@@ -241,7 +237,6 @@ export const environment = {
   getGeneralOPDVitalDetailsUrl: `${MMU_API}generalOPD/getBenVitalDetailsFrmNurse`,
   getGeneralOPDExaminationDetailsUrl: `${MMU_API}generalOPD/getBenExaminationDetails`,
 
-
   /**
    * Covid API Urls
    */
@@ -257,7 +252,6 @@ export const environment = {
   getCovidCareVitalDetailsUrl: `${MMU_API}pandemic/covid/getBenVitalDetailsFrmNurseCovid`,
   getCovidDoctorDetails: `${MMU_API}pandemic/covid/getBenCaseRecordFromDoctorCovid`,
   updateCovidDoctorDetails: `${MMU_API}pandemic/covid/update/doctorData`,
-
 
   /**
    * comman API for fetching state and cities
@@ -282,8 +276,6 @@ export const environment = {
   getNCDCareHistoryDetailsUrl: `${MMU_API}NCDCare/getBenNCDCareHistoryDetails`,
   getNCDCareVitalDetailsUrl: `${MMU_API}NCDCare/getBenVitalDetailsFrmNurseNCDCare`,
 
-
-
   /**
    * PNC Urls
    */
@@ -301,9 +293,8 @@ export const environment = {
   updatePNCVitalsDetailsUrl: `${MMU_API}PNC/update/vitalScreen`,
   updatePNCExaminationDetailsUrl: `${MMU_API}PNC/update/examinationScreen`,
 
-
   /*
-  */
+   */
   getPreviousSignificiantFindingUrl: `${MMU_API}common/getDoctorPreviousSignificantFindings`,
 
   getCancerScreeningDoctorDetails: `${MMU_API}CS-cancerScreening/getBenCaseRecordFromDoctorCS`,
@@ -322,7 +313,6 @@ export const environment = {
   updatePNCDoctorDetails: `${MMU_API}PNC/update/doctorData`,
 
   // getCasesheetDataUrl: `${MMU_API}common/get/Case-sheet/printData`,
-
 
   previousPastHistoryUrl: `${MMU_API}common/getBenPastHistory`,
   previousMedicationHistoryUrl: `${MMU_API}common/getBenMedicationHistory`,
@@ -383,9 +373,9 @@ export const environment = {
   saveFile: `${MMU_API}commonInsert/saveFiles`,
   viewFileData: `${MMU_API}common/downloadFile`,
   ioturl: `${biologicalScreeningDeviceAPI}`,
-  deviceStatusurl:`${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/connection_status`,
-  deviceBluetoothurl:`${biologicalScreeningDeviceAPI}/api/v1/bluetooth/service_discovery`,
-  connectdeviceBluetoothurl:`${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub_connection`,
+  deviceStatusurl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/connection_status`,
+  deviceBluetoothurl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/service_discovery`,
+  connectdeviceBluetoothurl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub_connection`,
 
   startWeighturl: '/api/v1/physical_tests/weight',
   startTempurl: '/api/v1/physical_tests/temperature',
@@ -404,35 +394,30 @@ export const environment = {
   nurseWorklistTMreferred: `${MMU_API}common/getNurseWorklistTMreferred/`,
 
   //fetch TM Casesheet
-    getTMCasesheetData: `${MMU_API}common/get/Case-sheet/TMReferredprintData`,
+  getTMCasesheetData: `${MMU_API}common/get/Case-sheet/TMReferredprintData`,
 
-    /*Load HRP Details */
-  loadHRPUrl:`${MMU_API}ANC/getHRPStatus`,
+  /*Load HRP Details */
+  loadHRPUrl: `${MMU_API}ANC/getHRPStatus`,
 
   /*Doctor signature download */
   downloadSignUrl: `${COMMON_API}signature1/`,
 
-
   //SH20094090,calibration integration,09-06-2021
-    getCalibrationStrips: `${ADMIN_API}/fetchCalibrationStrips`,
-    deviceDisconnectUrl:`${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/disconnect`,
-    getLanguageList: `${COMMON_API}beneficiary/getLanguageList`,
+  getCalibrationStrips: `${ADMIN_API}/fetchCalibrationStrips`,
+  deviceDisconnectUrl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/disconnect`,
+  getLanguageList: `${COMMON_API}beneficiary/getLanguageList`,
 
-    calculateBmiStatus:  `${TM_API}common/calculateBMIStatus`,
-    validateSecurityQuestionAndAnswerUrl: `${COMMON_API_OPEN}user/validateSecurityQuestionAndAnswer`,
-    getTransactionIdForChangePasswordUrl: `${COMMON_API_OPEN}user/getTransactionIdForChangePassword`,
+  calculateBmiStatus: `${TM_API}common/calculateBMIStatus`,
+  validateSecurityQuestionAndAnswerUrl: `${COMMON_API_OPEN}user/validateSecurityQuestionAndAnswer`,
+  getTransactionIdForChangePasswordUrl: `${COMMON_API_OPEN}user/getTransactionIdForChangePassword`,
 
-     /*Covid vaccination Urls */
-     vaccinationTypeAndDoseMasterUrl: `${COMMON_API}covid/master/VaccinationTypeAndDoseTaken`,
-     saveCovidVaccinationDetailsUrl: `${COMMON_API}covid/saveCovidVaccinationDetails`,
-     previousCovidVaccinationUrl: `${COMMON_API}covid/getCovidVaccinationDetails`,
+  /*Covid vaccination Urls */
+  vaccinationTypeAndDoseMasterUrl: `${COMMON_API}covid/master/VaccinationTypeAndDoseTaken`,
+  saveCovidVaccinationDetailsUrl: `${COMMON_API}covid/saveCovidVaccinationDetails`,
+  previousCovidVaccinationUrl: `${COMMON_API}covid/getCovidVaccinationDetails`,
 
-       /* SWAASA Urls*/
-    getResultStatusURL: `${COMMON_API}lungAssessment/startAssesment`,
-    getAssessmentUrl: `${COMMON_API}lungAssessment/getAssesment`,
-    getAssessmentIdUrl: `${COMMON_API}swaalungAssessmentsa/getAssesmentDetails`,
-
-
+  /* SWAASA Urls*/
+  getResultStatusURL: `${COMMON_API}lungAssessment/startAssesment`,
+  getAssessmentUrl: `${COMMON_API}lungAssessment/getAssesment`,
+  getAssessmentIdUrl: `${COMMON_API}swaalungAssessmentsa/getAssesmentDetails`,
 };
-
-
