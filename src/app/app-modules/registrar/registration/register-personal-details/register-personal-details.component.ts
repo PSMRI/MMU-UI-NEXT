@@ -78,7 +78,7 @@ export class RegisterPersonalDetailsComponent implements OnInit {
 
   @HostListener('window:scroll')
   onScrollEvent() {
-    this.datepicker.hide();
+    // this.datepicker.hide();
   }
 
   regexDob =
@@ -107,8 +107,6 @@ export class RegisterPersonalDetailsComponent implements OnInit {
     this.setDateLimits();
     this.setDefaultAgeUnit();
     this.loadMasterDataObservable();
-    this.setPhoneSelectionEnabledByDefault();
-    this.setImageChangeFlagToFalseByDefault();
     this.setCalendarConfig();
     // this.dateForCalendar = '18/12/1994';
     // console.log(this.patientRevisit,'revisit personal');
@@ -138,18 +136,6 @@ export class RegisterPersonalDetailsComponent implements OnInit {
     }
   }
 
-  setPhoneSelectionEnabledByDefault() {
-    this.isMobileNoRequired = true;
-    this.personalDetailsForm.patchValue({
-      checked: true,
-    });
-  }
-
-  setImageChangeFlagToFalseByDefault() {
-    this.personalDetailsForm.patchValue({
-      imageChangeFlag: false,
-    });
-  }
   /**
    *
    * Load Basic Master Data Observable
@@ -418,7 +404,7 @@ export class RegisterPersonalDetailsComponent implements OnInit {
    * Gender Selection - Transgender Confirmation
    */
 
-  maritalStatusMaster = [];
+  maritalStatusMaster: any = [];
   onGenderSelected() {
     const genderMaster = this.masterData.genderMaster;
     genderMaster.forEach((element: any, i: any) => {

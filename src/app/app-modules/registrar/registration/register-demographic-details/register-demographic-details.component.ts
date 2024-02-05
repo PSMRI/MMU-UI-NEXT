@@ -41,6 +41,11 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 import { RegisterEditLocationComponent } from '../register-edit-location/register-edit-location.component';
+import {
+  MatAutocomplete,
+  MatAutocompleteTrigger,
+  _MatAutocompleteBase,
+} from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-register-demographic-details',
@@ -87,6 +92,7 @@ export class RegisterDemographicDetailsComponent implements OnInit, OnDestroy {
   dialogRef!: MatDialogRef<RegisterEditLocationComponent>;
   currentLanguageSet: any;
   locationData: any;
+  demographicsVillageList: any;
 
   constructor(
     private registrarService: RegistrarService,
@@ -115,6 +121,10 @@ export class RegisterDemographicDetailsComponent implements OnInit, OnDestroy {
     } else if (!this.patientRevisit) {
       this.loadLocationFromStorage();
     }
+
+    this.demographicsVillageList = this.demographicDetailsForm.controls[
+      'villages'
+    ] as FormArray;
   }
 
   ngOnDestroy() {

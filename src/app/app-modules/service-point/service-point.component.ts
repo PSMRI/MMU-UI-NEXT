@@ -375,7 +375,9 @@ export class ServicePointComponent implements OnInit {
     if (stateID) {
       this.statesList.forEach((item: any) => {
         if (item.stateID == stateID)
-          this.servicePointForm.controls.stateName.setValue(item.stateName);
+          return this.servicePointForm.controls.stateName.setValue(
+            item.stateName
+          );
       });
     }
     this.registrarService.getDistrictList(stateID).subscribe((res: any) => {
@@ -396,7 +398,7 @@ export class ServicePointComponent implements OnInit {
     if (districtID) {
       this.districtList.forEach((item: any) => {
         if (item.districtID == districtID)
-          this.servicePointForm.controls.districtName.setValue(
+          return this.servicePointForm.controls.districtName.setValue(
             item.districtName
           );
       });
@@ -420,7 +422,9 @@ export class ServicePointComponent implements OnInit {
     if (blockID) {
       this.subDistrictList.forEach((item: any) => {
         if (item.blockID == blockID)
-          this.servicePointForm.controls.blockName.setValue(item.blockName);
+          return this.servicePointForm.controls.blockName.setValue(
+            item.blockName
+          );
       });
     }
     this.registrarService.getVillageList(blockID).subscribe((res: any) => {
@@ -440,7 +444,9 @@ export class ServicePointComponent implements OnInit {
     if (districtBranchID) {
       this.villageList.forEach((item: any) => {
         if (item.districtBranchID == districtBranchID)
-          this.servicePointForm.controls.villageName.setValue(item.villageName);
+          return this.servicePointForm.controls.villageName.setValue(
+            item.villageName
+          );
       });
     }
   }

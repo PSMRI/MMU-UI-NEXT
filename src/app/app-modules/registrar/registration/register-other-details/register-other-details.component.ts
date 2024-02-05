@@ -30,6 +30,7 @@ import {
   FormArray,
   FormBuilder,
   Validators,
+  AbstractControl,
 } from '@angular/forms';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
@@ -57,31 +58,7 @@ export class RegisterOtherDetailsComponent implements OnInit, OnDestroy {
   govLength = 0;
   otherGovLength!: number;
   patterns: any;
-  // patterns = [
-  //   {
-  //     'govtIdentityTypeID': 1, allow: 'number', error: 'Enter 12 Digit Aadhar Number',
-  //     maxLength: 12, pattern: /^\d{4}\d{4}\d{4}$/, 'identityType': 'Aadhar'
-  //   },
-  //   {
-  //     'govtIdentityTypeID': 2, allow: 'alphanumeric', error: 'Enter 12 Character Voter ID',
-  //     maxLength: 15, pattern: /^([A-Za-z]+[0-9]|[0-9]+[A-Za-z])[A-Za-z0-9]*$/, 'identityType': 'Voter ID'
-  //   },
-  //   {
-  //     'govtIdentityTypeID': 3, allow: 'alphanumerichyphen', error: 'Enter 18 Character Driving License ID',
-  //     maxLength: 18, pattern: /^([A-Za-z]+[0-9]|[0-9]+[A-Za-z])[A-Za-z0-9]*$/, 'identityType': 'Driving License'
-  //   },
-  //   {
-  //     'govtIdentityTypeID': 4, allow: 'alphanumeric', error: 'Enter 10 Character Pan ID',
-  //     maxLength: 10, pattern: /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/, 'identityType': 'PAN'
-  //   },
-  //   {
-  //     'govtIdentityTypeID': 5, allow: 'alphanumeric', error: 'Enter 15 Character Passport',
-  //     maxLength: 15, pattern: /^([A-Za-z]+[0-9]|[0-9]+[A-Za-z])[A-Za-z0-9]*$/, 'identityType': 'Passport'
-  //   },
-  //   {
-  //     'govtIdentityTypeID': 6, allow: 'alphanumeric', error: 'Enter 15 Character Rationcard  ID',
-  //     maxLength: 15, pattern: /^([A-Za-z]+[0-9]|[0-9]+[A-Za-z])[A-Za-z0-9]*$/, 'identityType': 'Ration Card'
-  //   }]
+  otherGovIdList: any;
 
   @Input()
   otherDetailsForm!: FormGroup;
@@ -103,7 +80,18 @@ export class RegisterOtherDetailsComponent implements OnInit, OnDestroy {
     this.fetchLanguageResponse();
     this.assignPattern();
     this.loadMasterDataObservable();
+    this.otherGovIdList = this.otherDetailsForm.get('govID') as FormArray;
     //  console.log(this.patientRevisit,'revisit others');
+  }
+
+  getGovIDControls(): AbstractControl[] | null {
+    const govIDControl = this.otherDetailsForm.get('govID');
+    return govIDControl instanceof FormArray ? govIDControl.controls : null;
+  }
+
+  getOtherGovIDControls(): AbstractControl[] | null {
+    const govIDControl = this.otherDetailsForm.get('otherGovID');
+    return govIDControl instanceof FormArray ? govIDControl.controls : null;
   }
 
   assignPattern() {
@@ -670,7 +658,9 @@ export class RegisterOtherDetailsComponent implements OnInit, OnDestroy {
    * Remove ID from New IDs
    *
    */
-  removeID(idtype: any, index: any, length: any) {
+  removeID(idtype: any, index: any) {
+    let length = 0;
+    length = this.otherDetailsForm.get('govID')?.value.length;
     // console.log(index, 'index');
     // console.log(length, 'length')
     //id type '1' means govID

@@ -76,6 +76,9 @@ export class RegistrationComponent
   utils = new RegistrationUtils(this.fb);
 
   beneficiaryRegistrationForm!: FormGroup;
+  personalDetailsForm!: FormGroup;
+  demographicDetailsForm!: FormGroup;
+  otherDetailsForm!: FormGroup;
   patientRevisit = false;
   postButtonText: any;
   revisitData: any;
@@ -108,9 +111,20 @@ export class RegistrationComponent
   ngOnInit() {
     this.fetchLanguageResponse();
     // Initialize Registration Form
-    this.beneficiaryRegistrationForm = new RegistrationUtils(
-      this.fb
-    ).createRegistrationDetailsForm();
+    const registrationUtils = new RegistrationUtils(this.fb);
+
+    this.beneficiaryRegistrationForm =
+      registrationUtils.createRegistrationDetailsForm();
+
+    this.personalDetailsForm = this.beneficiaryRegistrationForm.get(
+      'personalDetailsForm'
+    ) as FormGroup;
+    this.demographicDetailsForm = this.beneficiaryRegistrationForm.get(
+      'demographicDetailsForm'
+    ) as FormGroup;
+    this.otherDetailsForm = this.beneficiaryRegistrationForm.get(
+      'otherDetailsForm'
+    ) as FormGroup;
 
     // Call For MAster Data which will be loaded in Sub Components
     this.callMasterDataObservable();
@@ -228,7 +242,7 @@ export class RegistrationComponent
     this.govIDReset();
     this.otherDetails.resetForm();
     this.demographicDetails.setDemographicDefaults();
-    this.personalDetails.setPhoneSelectionEnabledByDefault();
+    // this.personalDetails.setPhoneSelectionEnabledByDefault();
     this.personalDetails.enableMaritalStatus = false;
     this.personalDetails.enableMarriageDetails = false;
     this.setStep(0); //open personal details in accordian

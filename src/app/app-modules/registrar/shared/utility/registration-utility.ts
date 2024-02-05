@@ -29,7 +29,7 @@ export class RegistrationUtils {
    *  Registration Form Below
    **/
   createRegistrationDetailsForm() {
-    return this.fb.group({
+    return new FormGroup({
       personalDetailsForm: this.createPersonalDetailsForm(),
       demographicDetailsForm: this.createDemographicDetailsForm(),
       otherDetailsForm: this.createOtherDetailsForm(),
@@ -49,7 +49,7 @@ export class RegistrationUtils {
       parentRelation: null,
       benRelationshipType: null,
       benPhMapID: null,
-      imageChangeFlag: null,
+      imageChangeFlag: false,
       firstName: null,
       lastName: null,
       gender: null,
@@ -67,7 +67,7 @@ export class RegistrationUtils {
       educationQualificationName: null,
       occupation: null,
       occupationOther: null,
-      checked: null,
+      checked: true,
       phoneNo: null,
       age: null,
       ageUnit: null,

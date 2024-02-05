@@ -43,9 +43,8 @@ export class RegistrarService {
     return this.http
       .post(environment.registrarMasterDataUrl, tmpSPID)
       .subscribe((res: any) => {
-        console.log(JSON.stringify(res.json().data), 'json data');
-        if (res.json().data)
-          this.registrationMasterDetails.next(res.json().data);
+        console.log(JSON.stringify(res.data), 'json data');
+        if (res.data) this.registrationMasterDetails.next(res.data);
       });
   }
 
@@ -55,9 +54,9 @@ export class RegistrarService {
         beneficiaryRegID: benRegID,
       })
       .subscribe((res: any) => {
-        if (res.json().data) {
-          console.log(res.json().data, 'res json data');
-          this.beneficiaryDetails.next(res.json().data);
+        if (res.data) {
+          console.log(res.data, 'res json data');
+          this.beneficiaryDetails.next(res.data);
         }
       });
   }
@@ -83,7 +82,7 @@ export class RegistrarService {
 
   // quickSearchByPhoneNO(searchTerm: any) {
   //   return this.http.get(environment.quickSearchUrl, searchTerm)
-  //     .map((res) => res.json().data);
+  //     .map((res) => res.data);
   // }
 
   clearBeneficiaryEditDetails() {

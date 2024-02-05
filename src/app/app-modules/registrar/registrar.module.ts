@@ -36,6 +36,9 @@ import { CoreModule } from '../core/core.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegistrarRoutingModule } from './registrar-routing.module';
 import { RegistrationComponent } from './registration/registration.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   imports: [
@@ -43,6 +46,9 @@ import { RegistrationComponent } from './registration/registration.component';
     MaterialModule,
     FormsModule,
     CoreModule,
+    MatSelectModule,
+    MatInputModule,
+    MatFormFieldModule,
     RegistrarRoutingModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
@@ -54,10 +60,10 @@ import { RegistrationComponent } from './registration/registration.component';
     RegistrationComponent,
     // SearchComponent,
     // SearchDialogComponent,
-    // RegisterPersonalDetailsComponent,
-    // RegisterDemographicDetailsComponent,
-    // RegisterOtherDetailsComponent,
-    // RegisterEditLocationComponent
+    RegisterPersonalDetailsComponent,
+    RegisterDemographicDetailsComponent,
+    RegisterOtherDetailsComponent,
+    RegisterEditLocationComponent,
   ],
 })
 export class RegistrarModule {}

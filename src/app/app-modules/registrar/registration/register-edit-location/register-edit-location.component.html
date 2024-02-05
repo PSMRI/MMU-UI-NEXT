@@ -1,8 +1,11 @@
-<!-- <div>
+<div>
   <div class="title info">
     <h4>{{ currentLanguageSet?.bendetails?.editLocation }}</h4>
-    <button class="pull-right close-btn" (click)="closeDialog()" md-icon-button>
-      <md-icon class="md-24">close</md-icon>
+    <button
+      class="pull-right close-btn"
+      (click)="closeDialog()"
+      mat-icon-button>
+      <mat-icon class="md-24">close</mat-icon>
     </button>
   </div>
 </div>
@@ -13,73 +16,83 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
-          <md-select
-            class="p-t-12 m-t-20"
-            [style.width]="'100%'"
-            placeholder="
-                    {{ currentLanguageSet?.ro?.locInfo?.state }}"
-            formControlName="stateID"
-            [required]="true"
-            (change)="onStateChange()">
-            <md-option *ngFor="let state of statesList" [value]="state.stateID">
-              {{ state.stateName | titlecase }}
-            </md-option>
-          </md-select>
+          <mat-form-field>
+            <mat-label>{{ currentLanguageSet?.ro?.locInfo?.state }}</mat-label>
+            <select
+              class="p-t-12 m-t-20"
+              [style.width]="'100%'"
+              matNativeControl
+              formControlName="stateID"
+              [required]="true"
+              (change)="onStateChange()">
+              <option *ngFor="let state of statesList" [value]="state.stateID">
+                {{ state.stateName | titlecase }}
+              </option>
+            </select>
+          </mat-form-field>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
-          <md-select
-            class="p-t-12 m-t-20"
-            [style.width]="'100%'"
-            placeholder="
-                    {{ currentLanguageSet?.ro?.locInfo?.districtTownCity }}"
-            [required]="true"
-            formControlName="districtID"
-            (change)="onDistrictChange()">
-            <md-option
-              *ngFor="let district of districtList"
-              [value]="district.districtID">
-              {{ district.districtName | titlecase }}
-            </md-option>
-          </md-select>
+          <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.ro?.locInfo?.districtTownCity
+            }}</mat-label>
+            <select
+              class="p-t-12 m-t-20"
+              [style.width]="'100%'"
+              [required]="true"
+              matNativeControl
+              formControlName="districtID"
+              (change)="onDistrictChange()">
+              <option
+                *ngFor="let district of districtList"
+                [value]="district.districtID">
+                {{ district.districtName | titlecase }}
+              </option>
+            </select>
+          </mat-form-field>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
-          <md-select
-            class="p-t-12 m-t-20"
-            [style.width]="'100%'"
-            placeholder="
-                    {{ currentLanguageSet?.ro?.locInfo?.taluk }}"
-            [required]="true"
-            formControlName="blockID"
-            (change)="onSubDistrictChange()">
-            <md-option
-              *ngFor="let subDistrict of subDistrictList"
-              [value]="subDistrict.blockID">
-              {{ subDistrict.blockName | titlecase }}
-            </md-option>
-          </md-select>
+          <mat-form-field>
+            <mat-label>{{ currentLanguageSet?.ro?.locInfo?.taluk }}</mat-label>
+            <select
+              class="p-t-12 m-t-20"
+              [style.width]="'100%'"
+              [required]="true"
+              matNativeControl
+              formControlName="blockID"
+              (change)="onSubDistrictChange()">
+              <option
+                *ngFor="let subDistrict of subDistrictList"
+                [value]="subDistrict.blockID">
+                {{ subDistrict.blockName | titlecase }}
+              </option>
+            </select>
+          </mat-form-field>
         </div>
       </div>
 
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
-          <md-select
-            class="p-t-12 m-t-20"
-            [style.width]="'100%'"
-            placeholder="
-          {{ currentLanguageSet?.ro?.locInfo?.street }}"
-            [required]="true"
-            formControlName="villageID"
-            (change)="onVillageChange()">
-            <md-option
-              *ngFor="let village of villageList"
-              [value]="village.districtBranchID"
-              >{{ village.villageName | titlecase }}
-            </md-option>
-          </md-select>
+          <mat-form-field>
+            <mat-label>{{ currentLanguageSet?.ro?.locInfo?.street }}</mat-label>
+            <select
+              class="p-t-12 m-t-20"
+              [style.width]="'100%'"
+              [required]="true"
+              matNativeControl
+              formControlName="villageID"
+              (change)="onVillageChange()">
+              <option
+                *ngFor="let village of villageList"
+                [value]="village.districtBranchID">
+                {{ village.villageName | titlecase }}
+              </option>
+            </select>
+          </mat-form-field>
         </div>
       </div>
 
@@ -87,7 +100,7 @@
         <br />
         <br />
         <button
-          md-raised-button
+          mat-raised-button
           color="primary"
           type="submit"
           class="input-full-width"
@@ -100,7 +113,7 @@
         <br />
         <br />
         <button
-          md-raised-button
+          mat-raised-button
           color="primary"
           type="submit"
           class="input-full-width"
@@ -110,4 +123,4 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>

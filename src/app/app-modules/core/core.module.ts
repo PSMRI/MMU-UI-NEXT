@@ -43,7 +43,8 @@ import { HttpServiceService } from './services/http-service.service';
 import { InventoryService } from './services/inventory.service';
 import { IotService } from './services/iot.service';
 import { CameraDialogComponent } from './components/camera-dialog/camera-dialog.component';
-import { WebcamModule } from 'ngx-webcam';
+import { WebcamImage, WebcamInitError, WebcamModule } from 'ngx-webcam';
+import { CanDeactivateGuardService } from './services/can-deactivate-guard.service';
 
 @NgModule({
   imports: [
@@ -121,10 +122,14 @@ export class CoreModule {
         CommonService,
         InventoryService,
         SetLanguageComponent,
-        // CanDeactivateGuardService,
+        CanDeactivateGuardService,
         // MasterdataService,
         HttpServiceService,
         IotService,
+        {
+          provide: [WebcamImage, WebcamInitError],
+          useClass: WebcamModule,
+        },
         // {
         //   provide: Http,
         //   useFactory: HttpInterceptorFactory,

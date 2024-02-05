@@ -89,19 +89,17 @@
           </span>
         </li>
         <li *ngIf="status" class="alignDropDown">
-          <mat-form-field>
-            <mat-select
-              class="form-control drop-arrow border-radius-20 height-30 width120px pull-right"
-              name="app_language"
-              [(ngModel)]="app_language"
-              (change)="changeLanguage(app_language)">
-              <mat-option
-                *ngFor="let language of languageArray"
-                [value]="language.languageName"
-                >{{ language.languageName }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+          <select
+            class="form-control drop-arrow border-radius-20 height-30 width120px pull-right"
+            name="app_language"
+            [(ngModel)]="app_language"
+            (change)="changeLanguage(app_language)">
+            <option
+              *ngFor="let language of languageArray"
+              [value]="language.languageName">
+              {{ language.languageName }}
+            </option>
+          </select>
         </li>
         <li *ngIf="status" class="alignWord">
           <span>{{ currentLanguageSet?.common?.SelectLanguage }}: </span>

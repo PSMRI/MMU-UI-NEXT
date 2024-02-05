@@ -1,6 +1,6 @@
-<!-- <div [formGroup]="demographicDetailsForm">
+<div [formGroup]="demographicDetailsForm">
   <div class="panel-body">
-    <md-slide-toggle
+    <mat-slide-toggle
       id="demographicsToggle"
       formControlName="checked"
       color="primary"
@@ -15,217 +15,226 @@
           font-weight: bold;
         "
         >{{ demographicsEditText }}</span
-      ></md-slide-toggle
+      ></mat-slide-toggle
     >
     <div class="clearfix"></div>
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
-          <md-select
-            class="p-t-12 m-t-20"
-            [style.width]="'100%'"
-            placeholder="
-                    {{ currentLanguageSet?.ro?.locInfo?.state }}"
-            formControlName="stateID"
-            [required]="true"
-            [disabled]="disableState">
-            <md-option *ngFor="let state of statesList" [value]="state.stateID"
-              >{{ state.stateName | titlecase }}
-            </md-option>
-          </md-select>
+          <mat-form-field>
+            <mat-label>{{ currentLanguageSet?.ro?.locInfo?.state }}</mat-label>
+            <select
+              class="p-t-12 m-t-20"
+              [style.width]="'100%'"
+              matNativeControl
+              formControlName="stateID"
+              [required]="true"
+              [disabled]="disableState">
+              <option *ngFor="let state of statesList" [value]="state.stateID">
+                {{ state.stateName | titlecase }}
+              </option>
+            </select>
+          </mat-form-field>
         </div>
       </div>
 
       <div
         formArrayName="villages"
         class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-20">
-        <div
-          *ngFor="
-            let village of demographicDetailsForm.controls['villages'][
-              'controls'
-            ];
-            let i = index
-          ">
+        <div *ngFor="let village of demographicsVillageList; let i = index">
           <div [formGroupName]="i">
-            <md-form-field class="example-full-width">
+            <mat-form-field class="example-full-width">
               <input
                 autocomplete="off"
-                mdInput
                 type="text"
-                mdInput
-                placeholder="
-                    {{ currentLanguageSet?.ro?.locInfo?.street }}"
+                matInput
                 name="villageID"
                 formControlName="villageID"
-                [mdAutocomplete]="auto"
+                [matAutocomplete]="auto"
                 (keyup)="suggestedVillageList(village, i)" />
-
-              <md-autocomplete
-                #auto="mdAutocomplete"
+              <mat-autocomplete
+                autoActiveFirstOption
+                #auto="matAutocomplete"
                 (optionSelected)="
                   filterVillage($event.option.value, i);
                   onChangeVillage($event.option.value)
                 "
                 [displayWith]="displayVillage">
-                <md-option
+                <mat-option
                   *ngFor="let village of suggestedvillageList[i]"
                   [value]="village">
                   {{ village.villageName | titlecase }}
-                </md-option>
-              </md-autocomplete>
-            </md-form-field>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
           </div>
         </div>
       </div>
 
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
-          <md-select
-            class="p-t-12 m-t-20"
-            [style.width]="'100%'"
-            placeholder="
-                    {{ currentLanguageSet?.ro?.locInfo?.districtTownCity }}"
-            [required]="true"
-            formControlName="districtID"
-            [disabled]="disableDistrict">
-            <md-option
-              *ngFor="let district of districtList"
-              [value]="district.districtID"
-              >{{ district.districtName | titlecase }}
-            </md-option>
-          </md-select>
+          <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.ro?.locInfo?.districtTownCity
+            }}</mat-label>
+            <select
+              class="p-t-12 m-t-20"
+              [style.width]="'100%'"
+              matNativeControl
+              [required]="true"
+              formControlName="districtID"
+              [disabled]="disableDistrict">
+              <option
+                *ngFor="let district of districtList"
+                [value]="district.districtID">
+                {{ district.districtName | titlecase }}
+              </option>
+            </select>
+          </mat-form-field>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
-          <md-select
-            class="p-t-12 m-t-20"
-            [style.width]="'100%'"
-            placeholder="
-                    {{ currentLanguageSet?.ro?.locInfo?.taluk }}"
-            [required]="true"
-            formControlName="blockID"
-            [disabled]="disableSubDistrict">
-            <md-option
-              *ngFor="let subDistrict of subDistrictList"
-              [value]="subDistrict.blockID"
-              >{{ subDistrict.blockName | titlecase }}
-            </md-option>
-          </md-select>
+          <mat-form-field>
+            <mat-label>{{ currentLanguageSet?.ro?.locInfo?.taluk }}</mat-label>
+            <select
+              class="p-t-12 m-t-20"
+              [style.width]="'100%'"
+              matNativeControl
+              [required]="true"
+              formControlName="blockID"
+              [disabled]="disableSubDistrict">
+              <option
+                *ngFor="let subDistrict of subDistrictList"
+                [value]="subDistrict.blockID">
+                {{ subDistrict.blockName | titlecase }}
+              </option>
+            </select>
+          </mat-form-field>
         </div>
       </div>
       <div class="clearfix"></div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
-          <md-select
-            class="p-t-12 m-t-20"
-            [style.width]="'100%'"
-            placeholder="
-                    {{ currentLanguageSet?.ro?.locInfo?.zone }}"
-            disabled="true"
-            formControlName="zoneID">
-            <md-option *ngFor="let zones of zonesList" [value]="zones.zoneID"
-              >{{ zones.zoneName | titlecase }}
-            </md-option>
-          </md-select>
+          <mat-form-field>
+            <mat-label>{{ currentLanguageSet?.ro?.locInfo?.zone }}</mat-label>
+            <select
+              class="p-t-12 m-t-20"
+              [style.width]="'100%'"
+              matNativeControl
+              [disabled]="true"
+              formControlName="zoneID">
+              <option *ngFor="let zones of zonesList" [value]="zones.zoneID">
+                {{ zones.zoneName | titlecase }}
+              </option>
+            </select>
+          </mat-form-field>
         </div>
       </div>
 
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
-          <md-select
-            class="p-t-12 m-t-20"
-            [style.width]="'100%'"
-            placeholder="
-                    {{ currentLanguageSet?.ro?.locInfo?.parkingPlace }}"
-            disabled="true"
-            formControlName="parkingPlace">
-            <md-option
-              *ngFor="let parkingPlace of parkingPlaceList"
-              [value]="parkingPlace.parkingPlaceID"
-              >{{ parkingPlace.parkingPlaceName | titlecase }}
-            </md-option>
-          </md-select>
+          <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.ro?.locInfo?.parkingPlace
+            }}</mat-label>
+            <select
+              class="p-t-12 m-t-20"
+              [style.width]="'100%'"
+              matNativeControl
+              [disabled]="true"
+              formControlName="parkingPlace">
+              <option
+                *ngFor="let parkingPlace of parkingPlaceList"
+                [value]="parkingPlace.parkingPlaceID">
+                {{ parkingPlace.parkingPlaceName | titlecase }}
+              </option>
+            </select>
+          </mat-form-field>
         </div>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
-          <md-select
-            class="p-t-12 m-t-20"
-            [style.width]="'100%'"
-            placeholder="
-                    {{ currentLanguageSet?.casesheet?.servicePoint }}"
-            disabled="true"
-            formControlName="servicePoint">
-            <md-option
-              *ngFor="let servicePoint of servicePointList"
-              [value]="servicePoint.servicePointID"
-              >{{ servicePoint.servicePointName | titlecase }}
-            </md-option>
-          </md-select>
+          <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.casesheet?.servicePoint
+            }}</mat-label>
+            <select
+              class="p-t-12 m-t-20"
+              [style.width]="'100%'"
+              matNativeControl
+              [disabled]="true"
+              formControlName="servicePoint">
+              <option
+                *ngFor="let servicePoint of servicePointList"
+                [value]="servicePoint.servicePointID">
+                {{ servicePoint.servicePointName | titlecase }}
+              </option>
+            </select>
+          </mat-form-field>
         </div>
       </div>
 
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-20">
-        <md-form-field [style.width]="'100%'">
+        <mat-form-field [style.width]="'100%'">
           <input
             autocomplete="off"
-            mdInput
+            matInput
             placeholder="
                     {{ currentLanguageSet?.ro?.locInfo?.habitation }}"
             allowText="address"
             formControlName="habitation"
             maxlength="50" />
-        </md-form-field>
+        </mat-form-field>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-20">
-        <md-form-field [style.width]="'100%'">
+        <mat-form-field [style.width]="'100%'">
           <input
             autocomplete="off"
-            mdInput
+            matInput
             placeholder="
                     {{ currentLanguageSet?.ro?.locInfo?.address1 }}"
             allowText="address"
             formControlName="addressLine1"
             maxlength="50" />
-        </md-form-field>
+        </mat-form-field>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-20">
-        <md-form-field [style.width]="'100%'">
+        <mat-form-field [style.width]="'100%'">
           <input
             autocomplete="off"
-            mdInput
+            matInput
             placeholder="
                     {{ currentLanguageSet?.ro?.locInfo?.address2 }}"
             allowText="address"
             formControlName="addressLine2"
             maxlength="50" />
-        </md-form-field>
+        </mat-form-field>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-20">
-        <md-form-field [style.width]="'100%'">
+        <mat-form-field [style.width]="'100%'">
           <input
             autocomplete="off"
-            mdInput
+            matInput
             placeholder="
                     {{ currentLanguageSet?.ro?.locInfo?.address3 }}"
             allowText="address"
             formControlName="addressLine3"
             maxlength="50" />
-        </md-form-field>
+        </mat-form-field>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-20">
-        <md-form-field [style.width]="'100%'">
+        <mat-form-field [style.width]="'100%'">
           <input
             autocomplete="off"
-            mdInput
+            matInput
             placeholder="
                     {{ currentLanguageSet?.ro?.locInfo?.pincode }}"
             allowText="number"
             maxlength="6"
             formControlName="pincode" />
-        </md-form-field>
+        </mat-form-field>
       </div>
     </div>
   </div>
-</div> -->
+</div>

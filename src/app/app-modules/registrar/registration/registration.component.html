@@ -1,4 +1,4 @@
-<!-- <div class="row">
+<div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 page-header">
     <h3>
       <span *ngIf="patientRevisit"
@@ -25,9 +25,7 @@
         }}</span>
       </mat-expansion-panel-header>
       <app-register-personal-details
-        [personalDetailsForm]="
-          beneficiaryRegistrationForm.controls.personalDetailsForm
-        "
+        [personalDetailsForm]="personalDetailsForm"
         [patientRevisit]="patientRevisit"></app-register-personal-details>
     </mat-expansion-panel>
     <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
@@ -38,9 +36,7 @@
         </span>
       </mat-expansion-panel-header>
       <app-register-demographic-details
-        [demographicDetailsForm]="
-          beneficiaryRegistrationForm.controls.demographicDetailsForm
-        "
+        [demographicDetailsForm]="demographicDetailsForm"
         [patientRevisit]="patientRevisit"></app-register-demographic-details>
     </mat-expansion-panel>
     <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)">
@@ -51,9 +47,7 @@
         </span>
       </mat-expansion-panel-header>
       <app-register-other-details
-        [otherDetailsForm]="
-          beneficiaryRegistrationForm.controls.otherDetailsForm
-        "
+        [otherDetailsForm]="otherDetailsForm"
         [patientRevisit]="patientRevisit"></app-register-other-details>
     </mat-expansion-panel>
   </mat-accordion>
@@ -97,4 +91,4 @@
       {{ currentLanguageSet?.common?.submit }}
     </button>
   </div>
-</div> -->
+</div>
