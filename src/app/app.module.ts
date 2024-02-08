@@ -30,6 +30,8 @@ import { WebcamModule } from 'ngx-webcam';
 import { RegistrarService } from './app-modules/registrar/shared/services/registrar.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { NurseDoctorModule } from './app-modules/nurse-doctor/nurse-doctor.module';
+import { RegistrarModule } from './app-modules/registrar/registrar.module';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { MatInputModule } from '@angular/material/input';
   ],
   imports: [
     BrowserModule,
+    NurseDoctorModule,
+    RegistrarModule,
     FormsModule,
     MatIconModule,
     ReactiveFormsModule,

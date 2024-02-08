@@ -20,7 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {
   NavigationCancel,
   NavigationEnd,
@@ -38,12 +38,17 @@ import { SpinnerService } from './app-modules/core/services';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  isAuthenticated: boolean = false;
   constructor(
     private router: Router,
     private spinnerService: SpinnerService
   ) {}
+  @Input()
+  showRoles = false;
 
   OnInit() {
+    const isAuth: any = sessionStorage.getItem('isAuthenticated');
+    this.isAuthenticated = isAuth;
     this.router.events.subscribe(event => {
       if (
         event instanceof ResolveStart ||
