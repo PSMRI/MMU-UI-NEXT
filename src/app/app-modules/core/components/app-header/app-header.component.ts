@@ -114,7 +114,8 @@ export class AppHeaderComponent implements OnInit {
       const role: any = localStorage.getItem('role');
       this.roles = JSON.parse(role);
       this.filteredNavigation = this.navigation.filter(item => {
-        return this.roles.includes(item.role);
+        if (this.roles !== null && this.roles.length > 0)
+          return this.roles.includes(item.role);
       });
     }
     if (this.isAuthenticated) {

@@ -11,7 +11,7 @@
     margin-left: 10px;
     margin-right: 10px;
     border-radius: 5px;
-    margin-top: 80px;
+    margin-top: 50px;
 }
   
 .formIcons {
@@ -42,7 +42,7 @@ mat-card-title {
 }
   
 .full-width {
-    width: 100%;
+    /* width: 100%; */
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -114,4 +114,8 @@ mat-card-title {
 
 .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: white !important;
+}
+
+.justify-content-between {
+    justify-content: space-between;
 }

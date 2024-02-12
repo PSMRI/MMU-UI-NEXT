@@ -39,6 +39,14 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTableModule } from '@angular/material/table';
+import { SearchComponent } from './search/search.component';
+import { SearchDialogComponent } from './search-dialog/search-dialog.component';
 
 @NgModule({
   imports: [
@@ -49,6 +57,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSelectModule,
     MatInputModule,
     MatFormFieldModule,
+    MatIconModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule,
+    MatTableModule,
     RegistrarRoutingModule,
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
@@ -58,8 +72,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   declarations: [
     DashboardComponent,
     RegistrationComponent,
-    // SearchComponent,
-    // SearchDialogComponent,
+    SearchComponent,
+    SearchDialogComponent,
     RegisterPersonalDetailsComponent,
     RegisterDemographicDetailsComponent,
     RegisterOtherDetailsComponent,
