@@ -11,7 +11,7 @@
     display: inline-block;
 }
 
-md-icon {
+mat-icon {
     color: #A8A8B1;
 }
 
@@ -81,7 +81,7 @@ h5 {
     font-weight: normal;
 }
 
-md-expansion-panel {
+mat-expansion-panel {
     margin: 0.5%;
 }
 
@@ -99,4 +99,8 @@ md-expansion-panel {
         display: block;
         padding: 15px;
     }
+}
+
+.searchButton {
+    float: right !important;
 }

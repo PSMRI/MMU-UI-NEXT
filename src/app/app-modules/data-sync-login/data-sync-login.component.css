@@ -1,4 +1,4 @@
-md-card {
+mat-card {
   padding: 0 !important;
   width: 400px;
   margin-left: 10px;
@@ -24,15 +24,13 @@ md-card {
   position: absolute;
   right: 20px;
   top: 20px;
-  font-size: 18px;
+  font-size: 25px;
   z-index: 1;
 }
 
 .sync-login-title {
   text-align: center;
   background-color: #0277bd; 
-  padding-top: 12px;
-  padding-bottom: 12px;
   color: white;
   border: 1px solid white;
 }
@@ -45,6 +43,8 @@ md-card {
 
 .sync-login-title h4 {
   display: inline-block;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .box {
@@ -58,6 +58,10 @@ md-card {
 }
 
 .input-full-width {
+  width: 100%;
+}
+
+.full-width {
   width: 100%;
 }
 
@@ -83,4 +87,18 @@ md-card {
   /* Black fallback color */
   background-color: rgba(0, 0, 0, 0.3);
   /* Black w/opacity */
+}
+
+.full-width-login {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  height: 35px;
+}
+
+button.submit {
+  background: #0277bd;
 }

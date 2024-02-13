@@ -34,7 +34,13 @@
           >{{ status ? 'Online' : 'Offline' }}</span
         >
         <span
-          [ngClass]="{ online: status, offline: !status }"
+          [style.background]="status ? 'green' : 'red'"
+          style="
+            display: inline-block;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+          "
           *ngIf="
             currentLanguageSet !== null && currentLanguageSet !== undefined
           "></span>

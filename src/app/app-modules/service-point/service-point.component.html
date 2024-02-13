@@ -4,7 +4,7 @@
   <section>
     <div class="col-md-3 col-sm-3 col-3"></div>
     <div class="col-md-6 col-sm-6 col-6">
-      <mat-card class="m-b-100">
+      <mat-card class="matCardService">
         <mat-card-header>
           <img
             src="assets/images/Swasthya.png"
@@ -42,27 +42,31 @@
               </mat-radio-group>
 
               <mat-form-field [style.width]="'100%'" class="alignField">
+                <mat-label>{{ currentLanguageSet?.van }}</mat-label>
                 <select
                   required
                   [style.width]="'100%'"
-                  placeholder="{{ currentLanguageSet?.van }}"
                   name="vanID"
                   formControlName="vanID"
                   matNativeControl
                   (change)="filterServicePointsList()">
-                  <option *ngFor="let van of vansList" [value]="van.vanID">
+                  <option
+                    class="alignOption"
+                    *ngFor="let van of vansList"
+                    [value]="van.vanID">
                     {{ van.vanNoAndType }}
                   </option>
                 </select>
               </mat-form-field>
 
               <mat-form-field [style.width]="'100%'" class="alignField">
+                <mat-label>{{
+                  currentLanguageSet?.casesheet?.servicePoint
+                }}</mat-label>
                 <input
                   autocomplete="off"
                   allowText="inputFieldValidator"
                   matInput
-                  placeholder="
-                {{ currentLanguageSet?.casesheet?.servicePoint }}"
                   aria-label="Service Point"
                   [required]="true"
                   [matAutocomplete]="auto"
@@ -77,6 +81,7 @@
                   " />
                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
                   <mat-option
+                    class="alignOption"
                     *ngFor="let servicePoint of filteredServicePoints"
                     [value]="servicePoint.servicePointName">
                     {{ servicePoint.servicePointName }}</mat-option
@@ -85,6 +90,7 @@
               </mat-form-field>
 
               <mat-form-field [style.width]="'100%'" class="alignField">
+                <mat-label>State</mat-label>
                 <select
                   [style.width]="'100%'"
                   class="align-Field"
@@ -98,6 +104,7 @@
                     )
                   ">
                   <option
+                    class="alignOption"
                     *ngFor="let state of statesList"
                     [value]="state.stateID">
                     {{ state.stateName }}
@@ -106,6 +113,7 @@
               </mat-form-field>
 
               <mat-form-field [style.width]="'100%'" class="alignField">
+                <mat-label>District/Town/City</mat-label>
                 <select
                   [style.width]="'100%'"
                   class="alignField"
@@ -119,6 +127,7 @@
                     )
                   ">
                   <option
+                    class="alignOption"
                     *ngFor="let district of districtList"
                     [value]="district.districtID">
                     {{ district.districtName }}
@@ -127,6 +136,7 @@
               </mat-form-field>
 
               <mat-form-field [style.width]="'100%'" class="alignField">
+                <mat-label>Taluk/Tehsil</mat-label>
                 <select
                   [style.width]="'100%'"
                   class="alignField"
@@ -138,6 +148,7 @@
                     onSubDistrictChange(servicePointForm.controls.blockID.value)
                   ">
                   <option
+                    class="alignOption"
                     *ngFor="let taluk of subDistrictList"
                     [value]="taluk.blockID">
                     {{ taluk.blockName }}
@@ -146,6 +157,7 @@
               </mat-form-field>
 
               <mat-form-field [style.width]="'100%'" class="alignField">
+                <mat-label>Street/Panchayat/Village</mat-label>
                 <select
                   [style.width]="'100%'"
                   class="alignField"
@@ -159,6 +171,7 @@
                   "
                   [required]="true">
                   <option
+                    class="alignOption"
                     *ngFor="let street of villageList"
                     [value]="street.districtBranchID">
                     {{ street.villageName }}
@@ -167,12 +180,12 @@
               </mat-form-field>
             </div>
 
-            <mat-card-actions>
+            <mat-card-actions style="text-align: center">
               <button
                 mat-raised-button
                 color="primary"
                 (click)="saveLocationDataToStorage()"
-                class="pull-right p-l-r-38 font-regular f-s-18"
+                class="continueButton pull-right p-l-r-38 font-regular f-s-18"
                 [disabled]="!servicePointForm.valid">
                 {{ currentLanguageSet?.spoke_selection?.continue }}
               </button>

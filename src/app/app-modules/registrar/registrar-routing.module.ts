@@ -25,6 +25,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CanDeactivateGuardService } from '../../app-modules/core/services/can-deactivate-guard.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -36,19 +37,19 @@ const routes: Routes = [
         redirectTo: 'search',
         pathMatch: 'full',
       },
-      // {
-      //   path: 'search',
-      //   component: SearchComponent
-      // },
+      {
+        path: 'search',
+        component: SearchComponent,
+      },
       {
         path: 'registration',
         component: RegistrationComponent,
         canDeactivate: [CanDeactivateGuardService],
       },
-      // {
-      //   path: 'search/:beneficiaryID',
-      //   component: RegistrationComponent
-      // }
+      {
+        path: 'search/:beneficiaryID',
+        component: RegistrationComponent,
+      },
     ],
   },
 ];

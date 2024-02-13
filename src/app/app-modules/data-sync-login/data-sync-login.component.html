@@ -1,13 +1,12 @@
 <div
   class="login-form-container"
   [ngClass]="{ stretch: data && data.masterDowloadFirstTime }">
-  <button
+  <mat-icon
     *ngIf="data?.masterDowloadFirstTime || data?.provideAuthorizationToViewTmCS"
-    class="close-button"
     (click)="closeDialog()"
-    mat-icon-button>
-    <mat-icon class="md-24">close</mat-icon>
-  </button>
+    class="close-button cursorPointer md-24"
+    >close</mat-icon
+  >
   <mat-card class="m-t-40">
     <mat-card-title class="sync-login-title">
       <h4>
@@ -30,18 +29,15 @@
         (ngSubmit)="loginForm.valid && dataSyncLogin()">
         <div class="container-fluid">
           <div class="row no-gutters">
-            <div class="col-xs-1 col-md-1 col-sm-1 box">
-              <span class="material-icons prefix-icon">account_box</span>
-            </div>
             <div class="col-xs-11 col-md-11 col-sm-11 box">
               <mat-form-field class="full-width">
-                <mat-icon>person</mat-icon>
+                <mat-icon matPrefix>account_box</mat-icon>
+                <mat-label>Enter User Name</mat-label>
                 <input
                   matInput
                   allowText="usernameValidator"
                   type="text"
                   id="userID"
-                  placeholder="Enter User Name"
                   formControlName="userName"
                   name="userName"
                   #focus />
@@ -49,20 +45,14 @@
             </div>
           </div>
           <div class="row no-gutters">
-            <div class="col-xs-1 col-md-1 col-sm-1 box">
-              <span class="material-icons prefix-icon">lock</span>
-            </div>
             <div class="col-xs-11 col-md-11 col-sm-11 box">
               <mat-form-field class="full-width">
+                <mat-icon matPrefix>lock</mat-icon>
+                <mat-label>Enter Password</mat-label>
                 <input
                   matInput
                   [type]="dynamictype"
                   autocomplete="off"
-                  placeholder="{{
-                    current_language_set?.common?.password
-                      ? current_language_set?.common?.password
-                      : 'Password'
-                  }}"
                   id="password"
                   placeholder="Enter Password"
                   formControlName="password"
@@ -89,7 +79,7 @@
                 mat-raised-button
                 color="primary"
                 type="submit"
-                class="input-full-width">
+                class="full-width-login submit">
                 {{
                   current_language_set?.common?.proceed
                     ? current_language_set?.common?.proceed

@@ -1033,6 +1033,7 @@ em {
   width: 100%;
   background: #40454d;
   background: #404a5b;
+  left: 0px;
 }
 
 .multiSelect {
@@ -1808,7 +1809,7 @@ em {
 }
 
 input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hover {
-  -webkit-box-shadow: 0 0 0 20px white inset;
+  -webkit-box-shadow: 0 0 0 20px whitesmoke inset;
   border-bottom: 2px solid #e6e6e6;
   bottom: 1px;
 }
