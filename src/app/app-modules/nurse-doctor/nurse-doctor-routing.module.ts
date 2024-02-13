@@ -39,10 +39,10 @@ const routes: Routes = [
         redirectTo: 'nurse-worklist',
         pathMatch: 'full',
       },
-      {
-        path: 'nurse-worklist',
-        component: NurseWorklistComponent,
-      },
+      // {
+      //   path: 'nurse-worklist',
+      //   component: NurseWorklistComponent,
+      // },
       {
         path: 'nurse-worklist',
         component: NurseWorklistTabsComponent,

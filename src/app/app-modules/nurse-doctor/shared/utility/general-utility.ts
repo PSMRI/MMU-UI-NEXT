@@ -23,16 +23,13 @@
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 export class GeneralUtils {
-  serviceLineDetails: any = null;
   constructor(private fb: FormBuilder) {}
-  ngOnInIt() {
-    this.serviceLineDetails = localStorage.getItem('serviceLineDetails');
-  }
 
   /**
    *  Vitals Form Below
    **/
   createGeneralVitalDetailsForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
       benVisitID: null,
@@ -64,8 +61,8 @@ export class GeneralUtils {
       painInChestChecked: null,
       shortnessOfBreathChecked: null,
       createdBy: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -84,6 +81,8 @@ export class GeneralUtils {
    *  General Examination Form Below ** Part of Examination Form
    **/
   createGeneralExaminationForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
+
     return this.fb.group({
       consciousness: null,
       coherence: null,
@@ -105,8 +104,8 @@ export class GeneralUtils {
       edema: null,
       extentOfEdema: null,
       edemaType: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -114,6 +113,7 @@ export class GeneralUtils {
    * Head to Toe Examination Form ** Part of Examination Form
    **/
   createHeadToToeExaminationForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       headtoToeExam: null,
       head: null,
@@ -129,8 +129,8 @@ export class GeneralUtils {
       skin: null,
       hair: null,
       nails: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -152,6 +152,7 @@ export class GeneralUtils {
    * Gastro Intestinal System Form ** Part of Systemic Examination Form ** Part of Examination Form
    **/
   createGastroIntestinalSystemForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       inspection: null,
       palpation_AbdomenTexture: null,
@@ -162,8 +163,8 @@ export class GeneralUtils {
       percussion: null,
       auscultation: null,
       analRegion: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -171,6 +172,7 @@ export class GeneralUtils {
    * Cardio Vascular System Form ** Part of Systemic Examination Form ** Part of Examination Form
    **/
   createCardioVascularSystemForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       jugularVenousPulse_JVP: null,
       apexbeatLocation: null,
@@ -180,8 +182,8 @@ export class GeneralUtils {
       additionalHeartSounds: null,
       murmurs: null,
       pericardialRub: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -189,6 +191,7 @@ export class GeneralUtils {
    * Respiratory System Form ** Part of Systemic Examination Form ** Part of Examination Form
    **/
   createRespiratorySystemForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       trachea: null,
       inspection: null,
@@ -201,8 +204,8 @@ export class GeneralUtils {
       auscultation_PleuralRub: null,
       auscultation_ConductedSounds: null,
       percussion: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -210,6 +213,7 @@ export class GeneralUtils {
    * Central Nervous System Form ** Part of Systemic Examination Form ** Part of Examination Form
    **/
   createCentralNervousSystemForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       handedness: null,
       cranialNervesExamination: null,
@@ -219,8 +223,8 @@ export class GeneralUtils {
       cerebellarSigns: null,
       signsOfMeningealIrritation: null,
       skull: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -228,6 +232,7 @@ export class GeneralUtils {
    * Musculo Skeletal System Form ** Part of Systemic Examination Form ** Part of Examination Form
    **/
   createMusculoSkeletalSystemForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       joint_TypeOfJoint: null,
       joint_Laterality: null,
@@ -238,8 +243,8 @@ export class GeneralUtils {
       lowerLimb_Abnormality: null,
       chestWall: null,
       spine: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -247,12 +252,13 @@ export class GeneralUtils {
    * Genito Urinary System Form ** Part of Systemic Examination Form ** Part of Examination Form
    **/
   createGenitoUrinarySystemForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       renalAngle: null,
       suprapubicRegion: null,
       externalGenitalia: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -261,6 +267,7 @@ export class GeneralUtils {
    * ## Control added to Systemic form in Systemic Component if Visit Categor is ANC
    **/
   createObstetricExaminationForANCForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       fundalHeight: null,
       fHAndPOA_Status: null,
@@ -272,8 +279,8 @@ export class GeneralUtils {
       fetalPresentation: null,
       abdominalScars: null,
       sfh: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -281,6 +288,7 @@ export class GeneralUtils {
    * ANC Forms
    */
   createPatientANCDetailsForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
       benVisitID: null,
@@ -292,12 +300,13 @@ export class GeneralUtils {
       expDelDt: null,
       duration: null,
       trimesterNumber: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createPatientANCImmunizationForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       tT_1Status: null,
       dateReceivedForTT_1: null,
@@ -312,12 +321,13 @@ export class GeneralUtils {
       benVisitID: null,
       providerServiceMapID: null,
       createdBy: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createObstetricFormulaForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       gravida_G: null,
       termDeliveries_T: null,
@@ -330,8 +340,8 @@ export class GeneralUtils {
       benVisitID: null,
       providerServiceMapID: null,
       createdBy: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -364,65 +374,72 @@ export class GeneralUtils {
   }
 
   createComorbidityConcurrentConditionsForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
       comorbidityConcurrentConditionsList: new FormArray([]),
     });
   }
 
   createDevelopmentHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       grossMotorMilestones: null,
       fineMotorMilestones: null,
       socialMilestones: null,
       languageMilestones: null,
       developmentProblems: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createFamilyHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       familyDiseaseList: new FormArray([]),
       isGeneticDisorder: null,
       geneticDisorder: null,
       isConsanguineousMarrige: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createFeedingHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       typeOfFeed: null,
       compFeedStartAge: null,
       noOfCompFeedPerDay: null,
       foodIntoleranceStatus: null,
       typeofFoodIntolerance: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createMedicationHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
       medicationHistoryList: new FormArray([]),
     });
   }
 
   createImmunizationHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
       immunizationList: new FormArray([]),
     });
   }
 
   createMenstrualHistoryForm(disableFlag = true) {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       menstrualCycleStatus: null,
       menstrualCycleStatusID: null,
@@ -433,33 +450,36 @@ export class GeneralUtils {
       bloodFlowDuration: null,
       menstrualProblemList: null,
       lMPDate: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createOtherVaccinesForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
       otherVaccines: this.fb.array([]),
     });
   }
 
   createPastHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
       pastIllness: new FormArray([]),
       pastSurgery: new FormArray([]),
     });
   }
 
   createPastObstericHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       totalNoOfPreg: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
       complicationPregList: new FormArray([]),
       pastObstericHistoryList: new FormArray([]),
     });
@@ -505,6 +525,7 @@ export class GeneralUtils {
   }
 
   createPerinatalHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       deliveryPlaceID: null,
       placeOfDelivery: null,
@@ -516,12 +537,13 @@ export class GeneralUtils {
       otherComplicationAtBirth: null,
       gestation: null,
       birthWeight_kg: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createGeneralPersonalHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       dietaryType: null,
       physicalActivityType: null,
@@ -529,8 +551,8 @@ export class GeneralUtils {
       tobaccoUseStatus: null,
       alcoholIntakeStatus: null,
       allergyStatus: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
       tobaccoList: new FormArray([]),
       alcoholList: new FormArray([]),
       allergicList: new FormArray([]),
@@ -542,6 +564,7 @@ export class GeneralUtils {
    */
 
   createGeneralFindingsForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
       benVisitID: null,
@@ -552,12 +575,13 @@ export class GeneralUtils {
       isForHistory: null,
       complaints: this.fb.array([this.initChiefComplaints()]),
       createdBy: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   initChiefComplaints(): FormGroup {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       chiefComplaint: null,
       chiefComplaintID: null,
@@ -565,20 +589,21 @@ export class GeneralUtils {
       conceptID: null,
       unitOfDuration: null,
       description: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createGeneralDiagnosisForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       provisionalDiagnosisList: this.fb.array([
         this.initProvisionalDiagnosisList(),
       ]),
       instruction: null,
       prescriptionID: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -598,6 +623,7 @@ export class GeneralUtils {
   }
 
   createANCDiagnosisForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       gravida_G: null,
       duration: null,
@@ -610,12 +636,13 @@ export class GeneralUtils {
       dateOfDeath: null,
       causeOfDeath: null,
       prescriptionID: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createNCDCareDiagnosisForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       // ncdScreeningConditionID: null,
       ncdScreeningConditionArray: [null, Validators.required],
@@ -624,8 +651,8 @@ export class GeneralUtils {
       ncdCareType: null,
       ncdComplication: null,
       prescriptionID: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
       provisionalDiagnosisList: this.fb.array([
         this.initProvisionalDiagnosisList(),
       ]),
@@ -633,12 +660,13 @@ export class GeneralUtils {
   }
 
   createCovidCareDiagnosisForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       prescriptionID: null,
       specialistDiagnosis: null,
       doctorDiagnosis: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
   // createNCDScreeningDiagnosisForm() {
@@ -646,24 +674,26 @@ export class GeneralUtils {
   //     prescriptionID : null,
   //     specialistDiagnosis: null,
   //     doctorDiagnosis: null,
-  //     vanID: JSON.parse(this.serviceLineDetails).vanID,
-  //     parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+  //     vanID: JSON.parse(serviceLineDetails).vanID,
+  //     parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
   //   });
   // }
 
   createNCDScreeningDiagnosisForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       provisionalDiagnosisList: this.fb.array([
         this.initProvisionalDiagnosisList(),
       ]),
       instruction: null,
       prescriptionID: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createPNCDiagnosisForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       provisionalDiagnosisList: this.fb.array([
         this.initProvisionalDiagnosisList(),
@@ -676,25 +706,27 @@ export class GeneralUtils {
       dateOfDeath: null,
       causeOfDeath: null,
       prescriptionID: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createGeneraldoctorinvestigationForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       labTest: null,
       radiologyTest: null,
       externalInvestigations: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createDrugPrescriptionForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
       prescribedDrugs: this.fb.array([]),
     });
   }
@@ -706,6 +738,7 @@ export class GeneralUtils {
     } else {
       unit = prescription.drugStrength;
     }
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       id: id,
       drugID: prescription.drugID,
@@ -723,8 +756,8 @@ export class GeneralUtils {
       sctCode: prescription.sctCode,
       sctTerm: prescription.sctTerm,
       createdBy: prescription.createdBy || undefined,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
       isEDL: prescription.isEDL,
     });
   }
@@ -788,6 +821,7 @@ export class GeneralUtils {
   }
 
   createPatientPNCForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       deliveryPlace: null,
       otherDeliveryPlace: null,
@@ -801,8 +835,8 @@ export class GeneralUtils {
       gestationName: null,
       birthWeightOfNewborn: null,
       newBornHealthStatus: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -818,25 +852,27 @@ export class GeneralUtils {
   }
 
   createPhysicalActivityHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       ID: null,
       physicalActivityType: null,
       activityType: null,
       pAID: null,
       score: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createNCDScreeningFamilyHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       familyDiseaseList: new FormArray([]),
       isGeneticDisorder: null,
       geneticDisorder: null,
       isConsanguineousMarrige: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 }

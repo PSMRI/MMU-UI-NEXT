@@ -45,6 +45,7 @@ import { IotService } from './services/iot.service';
 import { CameraDialogComponent } from './components/camera-dialog/camera-dialog.component';
 import { WebcamImage, WebcamInitError, WebcamModule } from 'ngx-webcam';
 import { CanDeactivateGuardService } from './services/can-deactivate-guard.service';
+import { BeneficiaryDetailsComponent } from './components/beneficiary-details/beneficiary-details.component';
 
 @NgModule({
   imports: [
@@ -64,7 +65,7 @@ import { CanDeactivateGuardService } from './services/can-deactivate-guard.servi
     // ProvisionalSearchComponent,
     // TextareaDialogComponent,
     // SpinnerComponent,
-    // BeneficiaryDetailsComponent,
+    BeneficiaryDetailsComponent,
     AppFooterComponent,
     AppHeaderComponent,
     // PreviousDetailsComponent,
@@ -82,7 +83,7 @@ import { CanDeactivateGuardService } from './services/can-deactivate-guard.servi
     CameraDialogComponent,
     // TextareaDialogComponent,
     // SpinnerComponent,
-    // BeneficiaryDetailsComponent,
+    BeneficiaryDetailsComponent,
     // AppFooterComponent,
     // AppHeaderComponent,
     // PreviousDetailsComponent,

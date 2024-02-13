@@ -80,7 +80,7 @@ export class MasterdataService {
     return this.http
       .get(this.visitDetailMasterDataUrl)
       .subscribe((res: any) => {
-        this.visitDetailMasterDataSource.next(res.json().data);
+        this.visitDetailMasterDataSource.next(res.data);
       });
   }
 
@@ -101,7 +101,7 @@ export class MasterdataService {
         )
         // return this.http.get(this.nurseMasterDataUrl+visitID)
         .subscribe((res: any) => {
-          this.nurseMasterDataSource.next(res.json().data);
+          this.nurseMasterDataSource.next(res.data);
         })
     );
   }
@@ -144,9 +144,9 @@ export class MasterdataService {
         )
         //return this.http.get(this.doctorMasterDataUrl+visitID+"/"+providerServiceID)
         .subscribe((res: any) => {
-          console.log('res.json().data', res.json().data);
+          console.log('res.data', res.data);
 
-          this.doctorMasterDataSource.next(res.json().data);
+          this.doctorMasterDataSource.next(res.data);
         })
     );
   }

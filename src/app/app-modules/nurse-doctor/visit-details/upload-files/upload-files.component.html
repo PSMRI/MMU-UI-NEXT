@@ -1,0 +1,58 @@
+<div class="row m-t-10">
+  <div class="col-xs-12">
+    <label for="upload-file" style="color: gray" *ngIf="!disableFileSelection">
+      {{ currentLanguageSet?.uploadFileSizeLimit }} :{{ maxFileSize }}
+      {{ currentLanguageSet?.mb }} ,
+      {{ currentLanguageSet?.supportedFileFormats }} )</label
+    >
+    <br />
+    <section>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="disableFileSelection"
+        (click)="triggerLog($event)">
+        {{ currentLanguageSet?.nurseData?.visitDetailsForm?.selectFile }}
+      </button>
+      <span class="span-style">
+        <input
+          autocomplete="off"
+          type="file"
+          id="fileUpload"
+          #filelist
+          style="display: inline-block"
+          (change)="uploadFile($event)" />
+      </span>
+      <button
+        mat-raised-button
+        color="primary"
+        class="pull-right"
+        (click)="checkForDuplicateUpload()"
+        *ngIf="!disableFileSelection">
+        {{ currentLanguageSet?.nurseData?.visitDetailsForm?.uploadFiles }}
+      </button>
+      <button
+        *ngIf="disableFileSelection || enableForNCDScreening"
+        mat-raised-button
+        color="primary"
+        (click)="viewNurseSelectedFiles()">
+        {{ currentLanguageSet?.nurseData?.visitDetailsForm?.viewFiles }}
+      </button>
+      <div style="margin: 20px 0px 0px 0px">
+        <mat-chip-listbox *ngIf="fileObj.length > 0">
+          <mat-chip-option
+            *ngFor="let file of fileObj"
+            [ngClass]="{ chipEdit: file.isUploaded }"
+            >{{ file.fileName }}
+            <button
+              matChipRemove
+              *ngIf="!file.isUploaded"
+              (click)="remove(file)">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-option>
+        </mat-chip-listbox>
+      </div>
+    </section>
+  </div>
+</div>

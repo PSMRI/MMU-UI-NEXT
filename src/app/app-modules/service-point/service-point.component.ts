@@ -288,7 +288,7 @@ export class ServicePointComponent implements OnInit {
         this.router.navigate(['/registrar/registration']);
         break;
       case 'Nurse':
-        this.router.navigate(['/common/nurse-worklist']);
+        this.router.navigate(['/nurse-doctor/nurse-worklist']);
         break;
       case 'Doctor':
         this.router.navigate(['/common/doctor-worklist']);

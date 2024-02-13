@@ -23,11 +23,7 @@
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 export class VisitDetailUtils {
-  serviceLineDetails: any;
   constructor(private fb: FormBuilder) {}
-  ngOnInIt() {
-    this.serviceLineDetails = localStorage.getItem('serviceLineDetails');
-  }
 
   createPatientVisitForm(diasableFlag: boolean = false) {
     return this.fb.group({
@@ -47,6 +43,7 @@ export class VisitDetailUtils {
   }
 
   createPatientAdherenceForm(disableFlag: boolean = false) {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
       benVisitID: null,
@@ -57,20 +54,21 @@ export class VisitDetailUtils {
       toReferral: { value: null, disabled: disableFlag },
       referralReason: { value: null, disabled: disableFlag },
       progress: { value: null, disabled: disableFlag },
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createPatientInvestigationsForm(disableFlag: boolean = false) {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
       benVisitID: null,
       providerServiceMapID: null,
       createdBy: null,
       laboratoryList: { value: [], disabled: disableFlag },
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -83,6 +81,7 @@ export class VisitDetailUtils {
   }
 
   createPatientChiefComplaintsForm(disableFlag: any): FormGroup {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
       benVisitID: null,
@@ -94,12 +93,13 @@ export class VisitDetailUtils {
       unitOfDuration: { value: null, disabled: disableFlag },
       description: { value: null, disabled: disableFlag },
       createdBy: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createPatientVisitDetails(disableFlag: boolean = false) {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
       providerServiceMapID: null,
@@ -113,8 +113,8 @@ export class VisitDetailUtils {
       healthFacilityLocation: null,
       reportFilePath: null,
       createdBy: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
   createPatientFileUploadDetailsForm(disableFlag: boolean = false) {
@@ -124,6 +124,7 @@ export class VisitDetailUtils {
   }
 
   createPatientCovidForm(disableFlag: boolean = false) {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
       benVisitID: null,
@@ -153,8 +154,8 @@ export class VisitDetailUtils {
       recommendation: this.fb.array([]),
       //recommendation:{value : null , disabled  :disableFlag},
       createdBy: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
   createPatientDiseaseForm(disableFlag: boolean = false) {

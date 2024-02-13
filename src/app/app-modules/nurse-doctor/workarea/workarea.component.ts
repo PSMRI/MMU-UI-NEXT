@@ -130,6 +130,7 @@ export class WorkareaComponent implements OnInit, CanComponentDeactivate {
   showProgressBar: boolean = false;
   enableLungAssessment: boolean = false;
   enableProvisionalDiag: boolean = false;
+  patientVisitForm!: FormGroup;
 
   constructor(
     private router: Router,
@@ -196,6 +197,9 @@ export class WorkareaComponent implements OnInit, CanComponentDeactivate {
         disableFlag
       ),
     });
+    this.patientVisitForm = this.patientMedicalForm.get(
+      'patientVisitForm'
+    ) as FormGroup;
     this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
     this.visitID = localStorage.getItem('visitID');
     this.nurseFlag = localStorage.getItem('nurseFlag');

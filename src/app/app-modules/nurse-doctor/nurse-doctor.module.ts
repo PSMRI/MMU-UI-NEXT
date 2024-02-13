@@ -40,6 +40,19 @@ import { NurseWorklistComponent } from './nurse-worklist/nurse-worklist.componen
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { NurseWorklistTabsComponent } from './nurse-worklist-tabs/nurse-worklist-tabs.component';
 import { NurseRefferedWorklistComponent } from './nurse-worklist-tabs/nurse-reffered-worklist/nurse-reffered-worklist.component';
+import { WorkareaComponent } from './workarea/workarea.component';
+import { VisitDetailsComponent } from './visit-details/visit-details.component';
+import { PatientVisitDetailsComponent } from './visit-details/visit-details/visit-details.component';
+import { CovidVaccinationStatusComponent } from './visit-details/covid-vaccination-status/covid-vaccination-status.component';
+import { ChiefComplaintsComponent } from './visit-details/chief-complaints/chief-complaints.component';
+import { AdherenceComponent } from './visit-details/adherence/adherence.component';
+import { InvestigationsComponent } from './visit-details/investigations/investigations.component';
+import { SymptomsComponent } from './visit-details/symptoms/symptoms.component';
+import { ContactHistoryComponent } from './visit-details/contact-history/contact-history.component';
+import { TravelHistoryComponent } from './visit-details/travel-history/travel-history.component';
+import { UploadFilesComponent } from './visit-details/upload-files/upload-files.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { DiseaseconfirmationComponent } from './visit-details/diseaseconfirmation/diseaseconfirmation.component';
 
 @NgModule({
   imports: [
@@ -55,6 +68,7 @@ import { NurseRefferedWorklistComponent } from './nurse-worklist-tabs/nurse-reff
     HttpClientModule,
     MaterialModule,
     MatTableModule,
+    MatChipsModule,
   ],
   declarations: [
     NurseWorklistComponent,
@@ -101,12 +115,13 @@ import { NurseRefferedWorklistComponent } from './nurse-worklist-tabs/nurse-reff
     // AncDetailsComponent,
     // AncImmunizationComponent,
     // ObstetricFormulaComponent,
-    // VisitDetailsComponent,
+    VisitDetailsComponent,
+    PatientVisitDetailsComponent,
     // VisitCategoryComponent,
-    // ChiefComplaintsComponent,
-    // AdherenceComponent,
-    // InvestigationsComponent,
-    // UploadFilesComponent,
+    ChiefComplaintsComponent,
+    AdherenceComponent,
+    InvestigationsComponent,
+    UploadFilesComponent,
     // HistoryComponent,
     // ExaminationComponent,
     // VitalsComponent,
@@ -115,7 +130,7 @@ import { NurseRefferedWorklistComponent } from './nurse-worklist-tabs/nurse-reff
     // PncComponent,
     // NcdScreeningComponent,
     // DashboardComponent,
-    // WorkareaComponent,
+    WorkareaComponent,
     // CancerCaseRecordComponent,
     // GeneralCaseRecordComponent,
     // CancerReferComponent,
@@ -151,9 +166,9 @@ import { NurseRefferedWorklistComponent } from './nurse-worklist-tabs/nurse-reff
     // BeneficiaryMctsCallHistoryComponent,
     // BeneficiaryPlatformHistoryComponent,
     // ReportsComponent,
-    // TravelHistoryComponent,
-    // ContactHistoryComponent,
-    // SymptomsComponent,
+    TravelHistoryComponent,
+    ContactHistoryComponent,
+    SymptomsComponent,
     // CovidDiagnosisComponent,
     // IdrsComponent,
     // NcdScreeningDiagnosisComponent,
@@ -161,11 +176,11 @@ import { NurseRefferedWorklistComponent } from './nurse-worklist-tabs/nurse-reff
     // FamilyHistoryNcdscreeningComponent,
     NurseWorklistTabsComponent,
     NurseRefferedWorklistComponent,
-    // DiseaseconfirmationComponent,
+    DiseaseconfirmationComponent,
     // TmcconfirmationComponent,
     // TmVisitDetailsComponent,
     // PrescribeTmMedicineComponent,
-    // CovidVaccinationStatusComponent
+    CovidVaccinationStatusComponent,
   ],
 
   providers: [

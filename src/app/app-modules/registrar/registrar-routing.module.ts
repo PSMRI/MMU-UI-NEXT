@@ -24,11 +24,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CanDeactivateGuardService } from '../../app-modules/core/services/can-deactivate-guard.service';
 import { RegistrationComponent } from './registration/registration.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
-    // component: DashboardComponent,
+    component: DashboardComponent,
     children: [
       {
         path: '',

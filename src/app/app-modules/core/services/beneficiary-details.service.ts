@@ -45,8 +45,8 @@ export class BeneficiaryDetailsService {
       })
       .subscribe(
         (res: any) => {
-          if (res.json().data) {
-            this.beneficiaryDetails.next(res.json().data);
+          if (res.data) {
+            this.beneficiaryDetails.next(res.data);
           }
         },
         (err: any) => {

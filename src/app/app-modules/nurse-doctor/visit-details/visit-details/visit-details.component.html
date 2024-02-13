@@ -1,0 +1,109 @@
+<!-- {{patientVisitDetailsForm.value | json}} -->
+
+<div class="row m-t-20" [formGroup]="patientVisitDetailsForm">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box" *ngIf="mode === 'view'">
+    <mat-form-field class="input-full-width">
+      <input
+        autocomplete="off"
+        matInput
+        defaultNull
+        placeholder="
+      {{ currentLanguageSet?.Reports?.visitcode }}"
+        name="visitCode"
+        formControlName="visitCode" />
+    </mat-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <mat-select
+      class="input-full-width"
+      placeholder="{{
+        currentLanguageSet?.nurseData?.visitDetailsForm?.reasonForVisit
+      }}"
+      name="visitReason"
+      formControlName="visitReason"
+      (change)="
+        reasonSelected(patientVisitDetailsForm.controls['visitReason'].value)
+      "
+      required>
+      <mat-option
+        *ngFor="let visitReasons of templateVisitReasons"
+        [value]="visitReasons.visitReason">
+        {{ visitReasons.visitReason }}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    *ngIf="patientVisitDetailsForm!.controls['visitReason']?.value">
+    <mat-select
+      class="input-full-width"
+      placeholder="{{
+        currentLanguageSet?.nurseData?.visitDetailsForm?.visitCategory
+      }}"
+      name="visitCategory"
+      formControlName="visitCategory"
+      (change)="
+        checkCategoryDependent(
+          patientVisitDetailsForm.controls['visitCategory'].value
+        )
+      "
+      required>
+      <mat-option
+        *ngFor="let VisitCategories of templateFilterVisitCategories"
+        [value]="VisitCategories.visitCategory">
+        {{ VisitCategories.visitCategory }}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    *ngIf="
+      showPregnancyStatus &&
+      patientVisitDetailsForm!.controls['visitCategory']?.value !== null &&
+      patientVisitDetailsForm!.controls['visitCategory']?.value !== undefined &&
+      patientVisitDetailsForm!.controls['visitCategory']?.value !== 'PNC'
+    ">
+    <mat-select
+      class="input-full-width"
+      placeholder="{{
+        currentLanguageSet?.nurseData?.visitDetailsForm?.pregnancyStatus
+      }}"
+      id="pregnancyStatus"
+      name="pregnancyStatus"
+      formControlName="pregnancyStatus"
+      [attr.readonly]="
+        patientVisitDetailsForm.controls['visitCategory'].value === 'ANC'
+      ">
+      <mat-option
+        *ngFor="let pregnancyStatus of templatePregnancyStatus"
+        [value]="pregnancyStatus">
+        {{ pregnancyStatus }}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    *ngIf="
+      patientVisitDetailsForm!.controls['pregnancyStatus']?.value &&
+      patientVisitDetailsForm!.controls['pregnancyStatus']?.value === 'Yes' &&
+      patientVisitDetailsForm!.controls['visitCategory']?.value !== 'PNC'
+    ">
+    <mat-form-field class="input-full-width">
+      <input
+        autocomplete="off"
+        matInput
+        defaultNull
+        allowText="number"
+        placeholder="{{
+          currentLanguageSet?.nurseData?.visitDetailsForm?.MCTSOrRCHID
+        }}"
+        maxlength="20"
+        name="rCHID"
+        formControlName="rCHID" />
+    </mat-form-field>
+  </div>
+</div>
