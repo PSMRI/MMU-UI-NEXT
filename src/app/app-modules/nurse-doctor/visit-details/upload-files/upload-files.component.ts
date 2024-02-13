@@ -27,6 +27,7 @@ import {
   Input,
   OnChanges,
   Output,
+  DoCheck,
 } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { NurseService } from '../../shared/services/nurse.service';
@@ -41,7 +42,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './upload-files.component.html',
   styleUrls: ['./upload-files.component.css'],
 })
-export class UploadFilesComponent implements OnInit {
+export class UploadFilesComponent implements OnInit, DoCheck, OnChanges {
   fileList!: FileList;
   file: any;
   fileContent: any;
@@ -89,7 +90,7 @@ export class UploadFilesComponent implements OnInit {
     this.fetchLanguageResponse();
   }
 
-  OnChanges() {
+  ngOnChanges() {
     if (this.mode == 'view' && !this.enableFileSelection) {
       this.disableFileSelection = true;
     } else if (this.mode == 'view' && this.enableFileSelection) {
@@ -321,7 +322,7 @@ export class UploadFilesComponent implements OnInit {
   }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
   }
 

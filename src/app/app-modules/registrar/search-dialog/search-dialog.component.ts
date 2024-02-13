@@ -26,6 +26,7 @@ import {
   ViewChild,
   ChangeDetectorRef,
   AfterViewChecked,
+  DoCheck,
 } from '@angular/core';
 import { CommonService } from '../../core/services/common-services.service';
 import { RegistrarService } from '../shared/services/registrar.service';
@@ -54,7 +55,7 @@ interface Beneficary {
   templateUrl: './search-dialog.component.html',
   styleUrls: ['./search-dialog.component.css'],
 })
-export class SearchDialogComponent implements OnInit {
+export class SearchDialogComponent implements OnInit, DoCheck {
   // for ID Manpulation
   masterData: any;
   masterDataSubscription: any;
@@ -261,7 +262,7 @@ export class SearchDialogComponent implements OnInit {
   }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
   }
 

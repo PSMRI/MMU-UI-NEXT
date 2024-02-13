@@ -20,7 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, DoCheck, Input, OnInit } from '@angular/core';
+import { Component, DoCheck, Input, OnDestroy, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormArray,
@@ -91,9 +91,6 @@ export class DiseaseconfirmationComponent implements OnInit {
     }
   }
 
-  OnDestroy() {
-    // localStorage.removeItem('benVisitNo');
-  }
   getData() {
     return this.diseaseFormsGroup.get('diseaseFormsArray') as FormArray;
   }

@@ -28,6 +28,7 @@ import {
   OnChanges,
   Output,
   DoCheck,
+  OnDestroy,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
@@ -43,7 +44,9 @@ import {
   templateUrl: './contact-history.component.html',
   styleUrls: ['./contact-history.component.css'],
 })
-export class ContactHistoryComponent implements OnInit, DoCheck {
+export class ContactHistoryComponent
+  implements OnInit, DoCheck, OnChanges, OnDestroy
+{
   @Input()
   patientCovidForm!: FormGroup;
 
@@ -95,14 +98,14 @@ export class ContactHistoryComponent implements OnInit, DoCheck {
     this.currentLanguageSet = getLanguageJson.currentLanguageObject;
   }
   // Ends
-  OnChanges() {
+  ngOnChanges() {
     if (this.mode == 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getContactDetails(benRegID, visitID);
     }
   }
-  OnDestroy() {
+  ngOnDestroy() {
     if (this.contactHistoryMasterData)
       this.contactHistoryMasterData.unsubscribe();
 

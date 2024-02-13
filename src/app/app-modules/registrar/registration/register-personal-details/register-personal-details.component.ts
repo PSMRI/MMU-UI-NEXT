@@ -27,6 +27,8 @@ import {
   ChangeDetectorRef,
   ViewChild,
   HostListener,
+  DoCheck,
+  OnDestroy,
 } from '@angular/core';
 import {
   FormGroup,
@@ -53,7 +55,9 @@ import { setTheme } from 'ngx-bootstrap/utils';
   templateUrl: './register-personal-details.component.html',
   styleUrls: ['./register-personal-details.component.css'],
 })
-export class RegisterPersonalDetailsComponent implements OnInit {
+export class RegisterPersonalDetailsComponent
+  implements OnInit, DoCheck, OnDestroy
+{
   colorTheme = 'theme-dark-blue';
 
   bsConfig!: Partial<BsDatepickerConfig>;
@@ -127,7 +131,7 @@ export class RegisterPersonalDetailsComponent implements OnInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  OnDestroy() {
+  ngOnDestroy() {
     if (this.masterDataSubscription) {
       this.masterDataSubscription.unsubscribe();
     }
@@ -823,7 +827,7 @@ export class RegisterPersonalDetailsComponent implements OnInit {
   }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
   }
 

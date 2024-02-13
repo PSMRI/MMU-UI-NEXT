@@ -23,17 +23,18 @@
         <div class="select-container">
           <mat-form-field>
             <mat-label>{{ currentLanguageSet?.ro?.locInfo?.state }}</mat-label>
-            <select
+            <mat-select
               class="p-t-12 m-t-20"
               [style.width]="'100%'"
-              matNativeControl
               formControlName="stateID"
               [required]="true"
               [disabled]="disableState">
-              <option *ngFor="let state of statesList" [value]="state.stateID">
+              <mat-option
+                *ngFor="let state of statesList"
+                [value]="state.stateID">
                 {{ state.stateName | titlecase }}
-              </option>
-            </select>
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
@@ -78,19 +79,18 @@
             <mat-label>{{
               currentLanguageSet?.ro?.locInfo?.districtTownCity
             }}</mat-label>
-            <select
+            <mat-select
               class="p-t-12 m-t-20"
               [style.width]="'100%'"
-              matNativeControl
               [required]="true"
               formControlName="districtID"
               [disabled]="disableDistrict">
-              <option
+              <mat-option
                 *ngFor="let district of districtList"
                 [value]="district.districtID">
                 {{ district.districtName | titlecase }}
-              </option>
-            </select>
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
@@ -98,19 +98,18 @@
         <div class="select-container">
           <mat-form-field>
             <mat-label>{{ currentLanguageSet?.ro?.locInfo?.taluk }}</mat-label>
-            <select
+            <mat-select
               class="p-t-12 m-t-20"
               [style.width]="'100%'"
-              matNativeControl
               [required]="true"
               formControlName="blockID"
               [disabled]="disableSubDistrict">
-              <option
+              <mat-option
                 *ngFor="let subDistrict of subDistrictList"
                 [value]="subDistrict.blockID">
                 {{ subDistrict.blockName | titlecase }}
-              </option>
-            </select>
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
@@ -119,16 +118,17 @@
         <div class="select-container">
           <mat-form-field>
             <mat-label>{{ currentLanguageSet?.ro?.locInfo?.zone }}</mat-label>
-            <select
+            <mat-select
               class="p-t-12 m-t-20"
               [style.width]="'100%'"
-              matNativeControl
               [disabled]="true"
               formControlName="zoneID">
-              <option *ngFor="let zones of zonesList" [value]="zones.zoneID">
+              <mat-option
+                *ngFor="let zones of zonesList"
+                [value]="zones.zoneID">
                 {{ zones.zoneName | titlecase }}
-              </option>
-            </select>
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
@@ -139,18 +139,17 @@
             <mat-label>{{
               currentLanguageSet?.ro?.locInfo?.parkingPlace
             }}</mat-label>
-            <select
+            <mat-select
               class="p-t-12 m-t-20"
               [style.width]="'100%'"
-              matNativeControl
               [disabled]="true"
               formControlName="parkingPlace">
-              <option
+              <mat-option
                 *ngFor="let parkingPlace of parkingPlaceList"
                 [value]="parkingPlace.parkingPlaceID">
                 {{ parkingPlace.parkingPlaceName | titlecase }}
-              </option>
-            </select>
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
@@ -160,18 +159,17 @@
             <mat-label>{{
               currentLanguageSet?.casesheet?.servicePoint
             }}</mat-label>
-            <select
+            <mat-select
               class="p-t-12 m-t-20"
               [style.width]="'100%'"
-              matNativeControl
               [disabled]="true"
               formControlName="servicePoint">
-              <option
+              <mat-option
                 *ngFor="let servicePoint of servicePointList"
                 [value]="servicePoint.servicePointID">
                 {{ servicePoint.servicePointName | titlecase }}
-              </option>
-            </select>
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>

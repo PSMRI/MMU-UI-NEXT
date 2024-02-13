@@ -1,12 +1,10 @@
 <div class="container-fluid">
   <mat-tab-group>
-    <mat-tab label="1"
-      >{{ currentLanguageSet?.nurse_tabs?.visit }}
+    <mat-tab [label]="currentLanguageSet?.nurse_tabs?.visit">
       <app-nurse-worklist></app-nurse-worklist>
     </mat-tab>
 
-    <mat-tab label="2"
-      >{{ currentLanguageSet?.referredToTC }}
+    <mat-tab [label]="currentLanguageSet?.referredToTC">
       <app-nurse-reffered-worklist></app-nurse-reffered-worklist>
     </mat-tab>
   </mat-tab-group>

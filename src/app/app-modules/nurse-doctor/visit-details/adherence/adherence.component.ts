@@ -39,7 +39,7 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
   templateUrl: './adherence.component.html',
   styleUrls: ['./adherence.component.css'],
 })
-export class AdherenceComponent implements OnInit, DoCheck {
+export class AdherenceComponent implements OnInit, DoCheck, OnChanges {
   @Input()
   patientAdherenceForm!: FormGroup;
 
@@ -70,7 +70,7 @@ export class AdherenceComponent implements OnInit, DoCheck {
     this.currentLanguageSet = getLanguageJson.currentLanguageObject;
   }
   // Ends
-  OnChanges() {
+  ngOnChanges() {
     if (this.mode == 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');

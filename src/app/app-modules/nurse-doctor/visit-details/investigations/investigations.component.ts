@@ -28,6 +28,7 @@ import {
   OnChanges,
   Output,
   DoCheck,
+  OnDestroy,
 } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -45,7 +46,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './investigations.component.html',
   styleUrls: ['./investigations.component.css'],
 })
-export class InvestigationsComponent implements OnInit, DoCheck {
+export class InvestigationsComponent implements OnInit, DoCheck, OnDestroy {
   @Input()
   patientInvestigationsForm!: FormGroup;
 
@@ -105,7 +106,7 @@ export class InvestigationsComponent implements OnInit, DoCheck {
       });
   }
 
-  OnDestroy() {
+  ngOnDestroy() {
     if (this.nurseMasterDataSubscription)
       this.nurseMasterDataSubscription.unsubscribe();
     if (this.getInvestigationDetails)

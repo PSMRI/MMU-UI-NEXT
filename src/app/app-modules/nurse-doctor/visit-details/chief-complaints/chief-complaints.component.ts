@@ -29,6 +29,7 @@ import {
   Output,
   DoCheck,
   ViewChild,
+  OnDestroy,
 } from '@angular/core';
 import {
   FormBuilder,
@@ -57,7 +58,7 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './chief-complaints.component.html',
   styleUrls: ['./chief-complaints.component.css'],
 })
-export class ChiefComplaintsComponent implements OnInit {
+export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
   @Input()
   patientChiefComplaintsForm!: FormGroup;
 
@@ -108,7 +109,7 @@ export class ChiefComplaintsComponent implements OnInit {
     this.nurseService.clearNCDScreeningProvision();
   }
 
-  DoCheck() {
+  ngDoCheck() {
     this.assignSelectedLanguage();
   }
   assignSelectedLanguage() {
@@ -124,8 +125,6 @@ export class ChiefComplaintsComponent implements OnInit {
       ? chiefComplaintsControl.controls
       : null;
   }
-
-  OnChanges() {}
 
   nurseMasterDataSubscription: any;
   getNurseMasterData() {
@@ -254,7 +253,7 @@ export class ChiefComplaintsComponent implements OnInit {
     });
   }
 
-  OnDestroy() {
+  ngOnDestroy() {
     if (this.nurseMasterDataSubscription)
       this.nurseMasterDataSubscription.unsubscribe();
 

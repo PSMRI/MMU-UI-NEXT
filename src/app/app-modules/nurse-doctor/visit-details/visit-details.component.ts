@@ -20,7 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 
 import { ConfirmationService } from '../../core/services/confirmation.service';
@@ -33,7 +33,7 @@ import { SetLanguageComponent } from '../../core/components/set-language.compone
   templateUrl: './visit-details.component.html',
   styleUrls: ['./visit-details.component.css'],
 })
-export class VisitDetailsComponent implements OnInit {
+export class VisitDetailsComponent implements OnInit, DoCheck {
   @Input()
   patientVisitForm!: FormGroup;
 
@@ -67,6 +67,7 @@ export class VisitDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.assignSelectedLanguage();
     this.patientVisitDetailsForm = this.patientVisitForm.get(
       'patientVisitDetailsForm'
     ) as FormGroup;
@@ -143,7 +144,7 @@ export class VisitDetailsComponent implements OnInit {
     this.showCOVID = false;
     this.showNcdScreeningVisit = false;
   }
-  DoCheck() {
+  ngDoCheck() {
     this.assignSelectedLanguage();
   }
   assignSelectedLanguage() {

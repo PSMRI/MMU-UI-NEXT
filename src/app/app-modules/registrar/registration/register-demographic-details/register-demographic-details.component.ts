@@ -21,7 +21,7 @@
  */
 
 import { ConfirmationService } from './../../../core/services/confirmation.service';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, DoCheck } from '@angular/core';
 import { RegistrarService } from '../../shared/services/registrar.service';
 import {
   FormGroup,
@@ -52,7 +52,9 @@ import {
   templateUrl: './register-demographic-details.component.html',
   styleUrls: ['./register-demographic-details.component.css'],
 })
-export class RegisterDemographicDetailsComponent implements OnInit, OnDestroy {
+export class RegisterDemographicDetailsComponent
+  implements OnInit, OnDestroy, DoCheck
+{
   disabled: any = false;
   flag: any = false;
   villgeBranch: any;
@@ -1330,7 +1332,7 @@ export class RegisterDemographicDetailsComponent implements OnInit, OnDestroy {
   }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
     if (
       this.currentLanguageSet !== undefined &&

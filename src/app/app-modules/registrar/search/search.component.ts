@@ -20,7 +20,13 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  ViewChild,
+  DoCheck,
+} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SearchDialogComponent } from '../search-dialog/search-dialog.component';
 import { ConfirmationService } from '../../core/services/confirmation.service';
@@ -39,7 +45,7 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, DoCheck {
   rowsPerPage = 5;
   activePage = 1;
   pagedList = [];
@@ -422,7 +428,7 @@ export class SearchComponent implements OnInit {
   }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
   }
 

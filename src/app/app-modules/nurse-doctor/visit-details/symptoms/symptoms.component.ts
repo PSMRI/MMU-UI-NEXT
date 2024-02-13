@@ -27,6 +27,8 @@ import {
   EventEmitter,
   Output,
   DoCheck,
+  OnChanges,
+  OnDestroy,
 } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 import {
@@ -42,7 +44,9 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
   templateUrl: './symptoms.component.html',
   styleUrls: ['./symptoms.component.css'],
 })
-export class SymptomsComponent implements OnInit {
+export class SymptomsComponent
+  implements OnInit, DoCheck, OnChanges, OnDestroy
+{
   @Input()
   patientCovidForm!: FormGroup;
   symptomsList: any = [];
@@ -79,7 +83,7 @@ export class SymptomsComponent implements OnInit {
   /*
    * JA354063 - Multilingual Changes added on 13/10/21
    */
-  DoCheck() {
+  ngDoCheck() {
     this.assignSelectedLanguage();
   }
   assignSelectedLanguage() {
@@ -88,14 +92,14 @@ export class SymptomsComponent implements OnInit {
     this.currentLanguageSet = getLanguageJson.currentLanguageObject;
   }
   // Ends
-  OnChanges() {
+  ngOnChanges() {
     if (this.mode == 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getHistoryDetails(benRegID, visitID);
     }
   }
-  OnDestroy() {
+  ngOnDestroy() {
     if (this.nurseMasterDataSubscription)
       this.nurseMasterDataSubscription.unsubscribe();
 

@@ -20,7 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject, Input, DoCheck } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { RegistrarService } from '../../shared/services/registrar.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -33,7 +33,7 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
   templateUrl: './register-edit-location.component.html',
   styleUrls: ['./register-edit-location.component.css'],
 })
-export class RegisterEditLocationComponent implements OnInit {
+export class RegisterEditLocationComponent implements OnInit, DoCheck {
   statesList: any;
   districtList: any;
   subDistrictList: any;
@@ -263,7 +263,7 @@ export class RegisterEditLocationComponent implements OnInit {
   }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
   }
 

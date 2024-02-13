@@ -20,7 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RegistrarService } from 'src/app/app-modules/registrar/shared/services/registrar.service';
 import { SetLanguageComponent } from '../core/components/set-language.component';
@@ -39,7 +39,7 @@ import {
   templateUrl: './service-point.component.html',
   styleUrls: ['./service-point.component.css'],
 })
-export class ServicePointComponent implements OnInit {
+export class ServicePointComponent implements OnInit, DoCheck {
   // @ViewChild('f') form: any;
 
   designation: any;
@@ -484,7 +484,7 @@ export class ServicePointComponent implements OnInit {
   }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
   }
 

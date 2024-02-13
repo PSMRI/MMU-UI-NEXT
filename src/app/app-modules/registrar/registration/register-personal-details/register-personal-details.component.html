@@ -1,7 +1,7 @@
 <!-- Most of the SPANs in this code are for correction of UI layout-->
 <div class="m-t-10" [formGroup]="personalDetailsForm">
   <div class="row">
-    <div id="image_row" class="col-md-2 col-md-push-10 text-center">
+    <div id="image_row" class="col-md-2 order-md-last text-center">
       <div class="row">
         <div class="col-xs-12">
           <div *ngIf="personalDetailsForm.value.image === null">
@@ -33,429 +33,437 @@
       </div>
     </div>
 
-    <div id="data_row" class="col-md-10 col-md-pull-2">
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field [style.width]="'100%'">
-          <input
-            defaultNull
-            autocomplete="off"
-            matInput
-            placeholder="
+    <div id="data_row" class="col-md-10 order-md-first">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field style="width: 100%">
+            <input
+              defaultNull
+              autocomplete="off"
+              matInput
+              placeholder="
           {{ currentLanguageSet?.ro?.personalInfo?.firstName }}"
-            name="First Name"
-            allowText="alphabet"
-            formControlName="firstName"
-            minlength="2"
-            maxlength="30"
-            [min]="2"
-            required />
-          <mat-error
-            *ngIf="
-              personalDetailsForm.controls['firstName'].errors?.['required']
-            "
-            >{{
-              currentLanguageSet?.benDetailsAlert?.firstNameMandatory
-            }}</mat-error
-          >
-          <mat-error
-            *ngIf="
-              personalDetailsForm.controls['firstName'].errors?.['minlength']
-            "
-            >{{
-              currentLanguageSet?.benDetailsAlert?.minCharRequired
-            }}</mat-error
-          >
-        </mat-form-field>
-      </div>
+              name="First Name"
+              allowText="alphabet"
+              formControlName="firstName"
+              minlength="2"
+              maxlength="30"
+              [min]="2"
+              required />
+            <mat-error
+              *ngIf="
+                personalDetailsForm.controls['firstName'].errors?.['required']
+              "
+              >{{
+                currentLanguageSet?.benDetailsAlert?.firstNameMandatory
+              }}</mat-error
+            >
+            <mat-error
+              *ngIf="
+                personalDetailsForm.controls['firstName'].errors?.['minlength']
+              "
+              >{{
+                currentLanguageSet?.benDetailsAlert?.minCharRequired
+              }}</mat-error
+            >
+          </mat-form-field>
+        </div>
 
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field [style.width]="'100%'">
-          <input
-            defaultNull
-            autocomplete="off"
-            allowText="alphabet"
-            matInput
-            placeholder="{{ currentLanguageSet?.ro?.personalInfo?.lastName }}"
-            formControlName="lastName"
-            maxlength="50" />
-        </mat-form-field>
-      </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field style="width: 100%">
+            <input
+              defaultNull
+              autocomplete="off"
+              allowText="alphabet"
+              matInput
+              placeholder="{{ currentLanguageSet?.ro?.personalInfo?.lastName }}"
+              formControlName="lastName"
+              maxlength="50" />
+          </mat-form-field>
+        </div>
 
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <div class="row">
-          <div class="col-xs-2 col-sm-2 m-t-15" style="padding-top: 7px">
-            <mat-checkbox
-              checked="checked"
-              formControlName="checked"
-              (change)="checkMobileNoIsRequired($event)"></mat-checkbox>
-          </div>
-          <div class="col-xs-10 col-sm-10 m-l-10-">
-            <mat-form-field [style.width]="'100%'">
-              <mat-label
-                >{{
-                  currentLanguageSet?.ro?.personalInfo?.contactNo
-                }}.</mat-label
-              >
-              <input
-                defaultNull
-                autocomplete="off"
-                matInput
-                allowText="number"
-                name="phoneNo"
-                [required]="isMobileNoRequired"
-                (blur)="getParentDetails()"
-                minlength="10"
-                formControlName="phoneNo"
-                maxlength="10"
-                name="contactNo"
-                [min]="10" />
-              <mat-error
-                *ngIf="
-                  personalDetailsForm.controls['phoneNo'].errors?.['required']
-                "
-                >{{
-                  currentLanguageSet?.benDetailsAlert?.mobNoMandatory
-                }}</mat-error
-              >
-              <mat-error
-                *ngIf="
-                  personalDetailsForm.controls['phoneNo'].errors?.['minlength']
-                "
-                >{{
-                  currentLanguageSet?.benDetailsAlert?.minDigitsRequired
-                }}</mat-error
-              >
-            </mat-form-field>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <div class="row">
+            <div class="col-xs-2 col-sm-2 m-t-15" style="padding-top: 7px">
+              <mat-checkbox
+                checked="checked"
+                formControlName="checked"
+                (change)="checkMobileNoIsRequired($event)"></mat-checkbox>
+            </div>
+            <div class="col-xs-10 col-sm-10 m-l-10-">
+              <mat-form-field style="width: 100%">
+                <mat-label
+                  >{{
+                    currentLanguageSet?.ro?.personalInfo?.contactNo
+                  }}.</mat-label
+                >
+                <input
+                  defaultNull
+                  autocomplete="off"
+                  matInput
+                  allowText="number"
+                  name="phoneNo"
+                  [required]="isMobileNoRequired"
+                  (blur)="getParentDetails()"
+                  minlength="10"
+                  formControlName="phoneNo"
+                  maxlength="10"
+                  name="contactNo"
+                  [min]="10" />
+                <mat-error
+                  *ngIf="
+                    personalDetailsForm.controls['phoneNo'].errors?.['required']
+                  "
+                  >{{
+                    currentLanguageSet?.benDetailsAlert?.mobNoMandatory
+                  }}</mat-error
+                >
+                <mat-error
+                  *ngIf="
+                    personalDetailsForm.controls['phoneNo'].errors?.[
+                      'minlength'
+                    ]
+                  "
+                  >{{
+                    currentLanguageSet?.benDetailsAlert?.minDigitsRequired
+                  }}</mat-error
+                >
+              </mat-form-field>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.ro?.personalInfo?.gender
+            }}</mat-label>
+            <mat-select
+              style="width: 100%"
+              required
+              (change)="onGenderSelected()"
+              formControlName="gender">
+              <mat-option
+                *ngFor="let gender of masterData?.genderMaster"
+                [value]="gender.genderID">
+                {{ gender.genderName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field style="width: 100%">
+            <input
+              autocomplete="off"
+              matInput
+              allowText="number"
+              required
+              placeholder="{{ currentLanguageSet?.ro?.personalInfo?.age }}"
+              (change)="onAgeEntered()"
+              formControlName="age"
+              maxlength="3" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-label>{{
-            currentLanguageSet?.ro?.personalInfo?.gender
+            currentLanguageSet?.ro?.personalInfo?.ageUnit
           }}</mat-label>
-          <select
-            [style.width]="'100%'"
-            required
-            (change)="onGenderSelected()"
-            matNativeControl
-            formControlName="gender">
-            <option
-              *ngFor="let gender of masterData?.genderMaster"
-              [value]="gender.genderID">
-              {{ gender.genderName }}
-            </option>
-          </select>
-        </mat-form-field>
-      </div>
+          <mat-form-field>
+            <mat-select
+              style="width: 100%"
+              required
+              (change)="onAgeUnitEntered()"
+              formControlName="ageUnit">
+              <mat-option value="Days">Days</mat-option>
+              <mat-option value="Months">Months</mat-option>
+              <mat-option value="Years">Years</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field [style.width]="'100%'">
-          <input
-            autocomplete="off"
-            matInput
-            allowText="number"
-            required
-            placeholder="{{ currentLanguageSet?.ro?.personalInfo?.age }}"
-            (change)="onAgeEntered()"
-            formControlName="age"
-            maxlength="3" />
-        </mat-form-field>
-      </div>
-
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-label>{{
-          currentLanguageSet?.ro?.personalInfo?.ageUnit
-        }}</mat-label>
-        <mat-form-field>
-          <select
-            [style.width]="'100%'"
-            required
-            matNativeControl
-            (change)="onAgeUnitEntered()"
-            formControlName="ageUnit">
-            <option value="Days">Days</option>
-            <option value="Months">Months</option>
-            <option value="Years">Years</option>
-          </select>
-        </mat-form-field>
-      </div>
-
-      <!-- <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+        <!-- <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
         <mat-form-field [style.width]="'96%'">
           <mat-icon matSuffix>event</mat-icon>
         </mat-form-field>
       </div> -->
 
-      <div
-        class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box"
-        *ngIf="enableMaritalStatus">
-        <mat-form-field>
-          <mat-label>{{
-            currentLanguageSet?.ro?.personalInfo?.maritalStatus
-          }}</mat-label>
-          <select
-            [style.width]="'100%'"
-            (change)="onMaritalStatusChanged()"
-            [required]="enableMaritalStatus"
-            matNativeControl
-            formControlName="maritalStatus">
-            <option
-              *ngFor="let maritalStatus of maritalStatusMaster"
-              [value]="maritalStatus.maritalStatusID">
-              {{ maritalStatus.status | titlecase }}
-            </option>
-          </select>
-        </mat-form-field>
-      </div>
+        <div
+          class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box"
+          *ngIf="enableMaritalStatus">
+          <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.ro?.personalInfo?.maritalStatus
+            }}</mat-label>
+            <mat-select
+              style="width: 100%"
+              (change)="onMaritalStatusChanged()"
+              [required]="enableMaritalStatus"
+              formControlName="maritalStatus">
+              <mat-option
+                *ngFor="let maritalStatus of maritalStatusMaster"
+                [value]="maritalStatus.maritalStatusID">
+                {{ maritalStatus.status | titlecase }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-      <div
-        class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box"
-        *ngIf="enableMaritalStatus && enableMarriageDetails">
-        <mat-form-field [style.width]="'100%'">
-          <input
-            autocomplete="off"
-            matInput
-            allowText="alphaspace"
-            [required]="enableSpouseMandatory"
-            placeholder="{{ currentLanguageSet?.ro?.personalInfo?.spouseName }}"
-            formControlName="spouseName"
-            minlength="2"
-            maxlength="50" />
-          <mat-error
-            *ngIf="
-              personalDetailsForm.controls['spouseName'].errors?.['minlength']
-            "
-            >{{
-              currentLanguageSet?.common?.pleaseprovideatleastthreecharacter
-            }}</mat-error
-          >
-        </mat-form-field>
-      </div>
+        <div
+          class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box"
+          *ngIf="enableMaritalStatus && enableMarriageDetails">
+          <mat-form-field style="width: 100%">
+            <input
+              autocomplete="off"
+              matInput
+              allowText="alphaspace"
+              [required]="enableSpouseMandatory"
+              placeholder="{{
+                currentLanguageSet?.ro?.personalInfo?.spouseName
+              }}"
+              formControlName="spouseName"
+              minlength="2"
+              maxlength="50" />
+            <mat-error
+              *ngIf="
+                personalDetailsForm.controls['spouseName'].errors?.['minlength']
+              "
+              >{{
+                currentLanguageSet?.common?.pleaseprovideatleastthreecharacter
+              }}</mat-error
+            >
+          </mat-form-field>
+        </div>
 
-      <div
-        *ngIf="enableMaritalStatus && enableMarriageDetails"
-        class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field [style.width]="'100%'">
-          <input
-            autocomplete="off"
-            matInput
-            allowText="number"
-            (change)="checkAgeAtMarriage()"
-            [required]="enableMarriageDetails"
-            formControlName="ageAtMarriage"
-            minlength="2"
-            maxlength="3"
-            placeholder="{{
-              currentLanguageSet?.ro?.personalInfo?.ageAtMarriage
-            }}" />
-          <mat-error
-            *ngIf="
-              personalDetailsForm.controls['ageAtMarriage'].errors?.[
-                'minlength'
-              ]
-            "
-            >{{ currentLanguageSet?.common?.invalidMarriageAge }}</mat-error
-          >
-          <mat-error
-            *ngIf="
-              personalDetailsForm.controls['ageAtMarriage'].errors?.[
-                'maxlength'
-              ]
-            "
-            >{{ currentLanguageSet?.common?.invalidMarriageAge }}</mat-error
-          >
-        </mat-form-field>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field>
-          <mat-label>{{
-            currentLanguageSet?.ro?.personalInfo?.literacyStatus
-          }}</mat-label>
-          <select
-            [style.width]="'100%'"
-            matNativeControl
-            formControlName="literacyStatus"
-            (change)="changeLiteracyStatus()">
-            <option value="Illiterate">Illiterate</option>
-            <option value="Illiterate (can sign)">Illiterate (can sign)</option>
-            <option value="Literate">Literate</option>
-          </select>
-        </mat-form-field>
-      </div>
+        <div
+          *ngIf="enableMaritalStatus && enableMarriageDetails"
+          class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field style="width: 100%">
+            <input
+              autocomplete="off"
+              matInput
+              allowText="number"
+              (change)="checkAgeAtMarriage()"
+              [required]="enableMarriageDetails"
+              formControlName="ageAtMarriage"
+              minlength="2"
+              maxlength="3"
+              placeholder="{{
+                currentLanguageSet?.ro?.personalInfo?.ageAtMarriage
+              }}" />
+            <mat-error
+              *ngIf="
+                personalDetailsForm.controls['ageAtMarriage'].errors?.[
+                  'minlength'
+                ]
+              "
+              >{{ currentLanguageSet?.common?.invalidMarriageAge }}</mat-error
+            >
+            <mat-error
+              *ngIf="
+                personalDetailsForm.controls['ageAtMarriage'].errors?.[
+                  'maxlength'
+                ]
+              "
+              >{{ currentLanguageSet?.common?.invalidMarriageAge }}</mat-error
+            >
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.ro?.personalInfo?.literacyStatus
+            }}</mat-label>
+            <mat-select
+              style="width: 100%"
+              formControlName="literacyStatus"
+              (change)="changeLiteracyStatus()">
+              <mat-option value="Illiterate">Illiterate</mat-option>
+              <mat-option value="Illiterate (can sign)">
+                Illiterate (can sign)
+              </mat-option>
+              <mat-option value="Literate">Literate</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-      <div
-        *ngIf="personalDetailsForm.value.literacyStatus === 'Literate'"
-        class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field>
-          <mat-label>
-            {{ currentLanguageSet?.ro?.personalInfo?.educationalQualification }}
-          </mat-label>
-          <select
-            [style.width]="'100%'"
-            [required]="personalDetailsForm.value.literacyStatus === 'Literate'"
-            formControlName="educationQualification"
-            matNativeControl
-            (change)="onEducationQualificationChanged()">
-            <option
-              *ngFor="let qualification of masterData?.qualificationMaster"
-              [value]="qualification.educationID">
-              {{ qualification.educationType | titlecase }}
-            </option>
-          </select>
-        </mat-form-field>
-      </div>
+        <div
+          *ngIf="personalDetailsForm.value.literacyStatus === 'Literate'"
+          class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field>
+            <mat-label>
+              {{
+                currentLanguageSet?.ro?.personalInfo?.educationalQualification
+              }}
+            </mat-label>
+            <mat-select
+              style="width: 100%"
+              [required]="
+                personalDetailsForm.value.literacyStatus === 'Literate'
+              "
+              formControlName="educationQualification"
+              (change)="onEducationQualificationChanged()">
+              <mat-option
+                *ngFor="let qualification of masterData?.qualificationMaster"
+                [value]="qualification.educationID">
+                {{ qualification.educationType | titlecase }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <div class="row">
-          <div class="col-xs-2 col-sm-2 m-t-15" style="padding-top: 7px">
-            <mat-checkbox
-              checked="checked"
-              formControlName="checked"
-              (change)="checkOccuptionsRequired($event)"></mat-checkbox>
-          </div>
-          <div class="col-xs-10 col-sm-10 m-l-10-">
-            <mat-form-field>
-              <mat-label>
-                {{ currentLanguageSet?.ro?.personalInfo?.occupation }}
-              </mat-label>
-              <select
-                [style.width]="'100%'"
-                formControlName="occupation"
-                matNativeControl
-                [required]="isOccuptionRequired"
-                (change)="getOccupationName()">
-                <option
-                  class="dropdownValueOccupation"
-                  *ngFor="let occupation of masterData?.occupationMaster"
-                  [value]="occupation.occupationID">
-                  {{ occupation.occupationType | titlecase }}
-                </option>
-              </select>
-            </mat-form-field>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <div class="row">
+            <div class="col-xs-2 col-sm-2 m-t-15" style="padding-top: 7px">
+              <mat-checkbox
+                checked="checked"
+                formControlName="checked"
+                (change)="checkOccuptionsRequired($event)"></mat-checkbox>
+            </div>
+            <div class="col-xs-10 col-sm-10 m-l-10-">
+              <mat-form-field>
+                <mat-label>
+                  {{ currentLanguageSet?.ro?.personalInfo?.occupation }}
+                </mat-label>
+                <mat-select
+                  style="width: 100%"
+                  formControlName="occupation"
+                  [required]="isOccuptionRequired"
+                  (change)="getOccupationName()">
+                  <mat-option
+                    class="dropdownValueOccupation"
+                    *ngFor="let occupation of masterData?.occupationMaster"
+                    [value]="occupation.occupationID">
+                    {{ occupation.occupationType | titlecase }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field>
-          <mat-label>
-            {{ currentLanguageSet?.ro?.personalInfo?.incomeStatus }}
-          </mat-label>
-          <select
-            [style.width]="'100%'"
-            (change)="onIncomeChanged()"
-            matNativeControl
-            formControlName="income">
-            <option
-              *ngFor="let incomeStatus of masterData?.incomeMaster"
-              [value]="incomeStatus.incomeStatusID">
-              {{ incomeStatus.incomeStatus }}
-            </option>
-          </select>
-        </mat-form-field>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field [style.width]="'100%'">
-          <input
-            defaultNull
-            autocomplete="off"
-            allowText="number"
-            matInput
-            placeholder="{{
-              currentLanguageSet?.ro?.personalInfo?.monthlyFamilyIncome
-            }}"
-            formControlName="monthlyFamilyIncome"
-            maxlength="7" />
-        </mat-form-field>
-      </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field>
+            <mat-label>
+              {{ currentLanguageSet?.ro?.personalInfo?.incomeStatus }}
+            </mat-label>
+            <mat-select
+              style="width: 100%"
+              (change)="onIncomeChanged()"
+              formControlName="income">
+              <mat-option
+                *ngFor="let incomeStatus of masterData?.incomeMaster"
+                [value]="incomeStatus.incomeStatusID">
+                {{ incomeStatus.incomeStatus }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field style="width: 100%">
+            <input
+              defaultNull
+              autocomplete="off"
+              allowText="number"
+              matInput
+              placeholder="{{
+                currentLanguageSet?.ro?.personalInfo?.monthlyFamilyIncome
+              }}"
+              formControlName="monthlyFamilyIncome"
+              maxlength="7" />
+          </mat-form-field>
+        </div>
 
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field>
-          <mat-label>
-            {{ currentLanguageSet?.ro?.personalInfo?.literacyStatus }}
-          </mat-label>
-          <select
-            [style.width]="'100%'"
-            matNativeControl
-            formControlName="literacyStatus"
-            (change)="changeLiteracyStatus()">
-            <option value="Illiterate">Illiterate</option>
-            <option value="Illiterate (can sign)">Illiterate (can sign)</option>
-            <option value="Literate">Literate</option>
-          </select>
-        </mat-form-field>
-      </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field>
+            <mat-label>
+              {{ currentLanguageSet?.ro?.personalInfo?.literacyStatus }}
+            </mat-label>
+            <mat-select
+              style="width: 100%"
+              formControlName="literacyStatus"
+              (change)="changeLiteracyStatus()">
+              <mat-option value="Illiterate">Illiterate</mat-option>
+              <mat-option value="Illiterate (can sign)">
+                Illiterate (can sign)
+              </mat-option>
+              <mat-option value="Literate">Literate</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-      <div
-        *ngIf="personalDetailsForm.value.literacyStatus === 'Literate'"
-        class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field>
-          <mat-label>
-            {{ currentLanguageSet?.ro?.personalInfo?.educationalQualification }}
-          </mat-label>
-          <select
-            [style.width]="'100%'"
-            [required]="personalDetailsForm.value.literacyStatus === 'Literate'"
-            matNativeControl
-            formControlName="educationQualification"
-            (change)="onEducationQualificationChanged()">
-            <option
-              *ngFor="let qualification of masterData?.qualificationMaster"
-              [value]="qualification.educationID">
-              {{ qualification.educationType | titlecase }}
-            </option>
-          </select>
-        </mat-form-field>
-      </div>
+        <div
+          *ngIf="personalDetailsForm.value.literacyStatus === 'Literate'"
+          class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field>
+            <mat-label>
+              {{
+                currentLanguageSet?.ro?.personalInfo?.educationalQualification
+              }}
+            </mat-label>
+            <mat-select
+              style="width: 100%"
+              [required]="
+                personalDetailsForm.value.literacyStatus === 'Literate'
+              "
+              formControlName="educationQualification"
+              (change)="onEducationQualificationChanged()">
+              <mat-option
+                *ngFor="let qualification of masterData?.qualificationMaster"
+                [value]="qualification.educationID">
+                {{ qualification.educationType | titlecase }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
 
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <div class="row">
-          <div class="col-xs-2 col-sm-2 m-t-15" style="padding-top: 7px">
-            <mat-checkbox
-              checked="checked"
-              formControlName="checked"
-              (change)="checkOccuptionsRequired($event)"></mat-checkbox>
-          </div>
-          <div class="col-xs-10 col-sm-10 m-l-10-">
-            <mat-form-field>
-              <mat-label>{{
-                currentLanguageSet?.ro?.personalInfo?.occupation
-              }}</mat-label>
-              <select
-                [style.width]="'100%'"
-                matNativeControl
-                formControlName="occupation"
-                [required]="isOccuptionRequired"
-                (change)="getOccupationName()">
-                <option
-                  *ngFor="let occupation of masterData?.occupationMaster"
-                  [value]="occupation.occupationID">
-                  {{ occupation.occupationType | titlecase }}
-                </option>
-              </select>
-            </mat-form-field>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <div class="row">
+            <div class="col-xs-2 col-sm-2 m-t-15" style="padding-top: 7px">
+              <mat-checkbox
+                checked="checked"
+                formControlName="checked"
+                (change)="checkOccuptionsRequired($event)"></mat-checkbox>
+            </div>
+            <div class="col-xs-10 col-sm-10 m-l-10-">
+              <mat-form-field>
+                <mat-label>{{
+                  currentLanguageSet?.ro?.personalInfo?.occupation
+                }}</mat-label>
+                <mat-select
+                  style="width: 100%"
+                  formControlName="occupation"
+                  [required]="isOccuptionRequired"
+                  (change)="getOccupationName()">
+                  <mat-option
+                    *ngFor="let occupation of masterData?.occupationMaster"
+                    [value]="occupation.occupationID">
+                    {{ occupation.occupationType | titlecase }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div
-        *ngIf="personalDetailsForm.value.occupation === '7'"
-        class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field [style.width]="'100%'">
-          <input
-            autocomplete="off"
-            matInput
-            allowText="alphaspace"
-            placeholder="{{
-              currentLanguageSet?.ro?.personalInfo?.otherOccupation
-            }}"
-            formControlName="occupationOther"
-            minlength="3"
-            maxlength="50"
-            [required]="true" />
-        </mat-form-field>
+        <div
+          *ngIf="personalDetailsForm.value.occupation === '7'"
+          class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field style="width: 100%">
+            <input
+              autocomplete="off"
+              matInput
+              allowText="alphaspace"
+              placeholder="{{
+                currentLanguageSet?.ro?.personalInfo?.otherOccupation
+              }}"
+              formControlName="occupationOther"
+              minlength="3"
+              maxlength="50"
+              [required]="true" />
+          </mat-form-field>
+        </div>
       </div>
     </div>
   </div>

@@ -20,7 +20,14 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, DoCheck, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  DoCheck,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService } from '../../core/services/confirmation.service';
 import { NurseService } from '../shared/services';
@@ -36,7 +43,7 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './nurse-worklist.component.html',
   styleUrls: ['./nurse-worklist.component.css'],
 })
-export class NurseWorklistComponent implements OnInit, DoCheck {
+export class NurseWorklistComponent implements OnInit, DoCheck, OnDestroy {
   rowsPerPage = 5;
   activePage = 1;
   pagedList: any = [];
@@ -91,7 +98,7 @@ export class NurseWorklistComponent implements OnInit, DoCheck {
     this.currentLanguageSet = getLanguageJson.currentLanguageObject;
   }
   // Ends
-  OnDestroy() {
+  ngOnDestroy() {
     localStorage.removeItem('currentRole');
   }
 

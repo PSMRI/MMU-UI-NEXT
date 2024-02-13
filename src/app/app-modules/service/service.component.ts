@@ -20,7 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SetLanguageComponent } from '../core/components/set-language.component';
 import { ConfirmationService } from '../core/services';
@@ -31,7 +31,7 @@ import { HttpServiceService } from '../core/services/http-service.service';
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.css'],
 })
-export class ServiceComponent implements OnInit {
+export class ServiceComponent implements OnInit, DoCheck {
   servicesList: any;
   serviceIDs: any;
   fullName: any;
@@ -163,7 +163,7 @@ export class ServiceComponent implements OnInit {
   }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
   }
 

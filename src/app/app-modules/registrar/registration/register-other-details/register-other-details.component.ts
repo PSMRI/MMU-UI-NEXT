@@ -20,7 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, DoCheck } from '@angular/core';
 import { RegistrarService } from '../../shared/services/registrar.service';
 import { RegistrationUtils } from '../../shared/utility/registration-utility';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
@@ -40,7 +40,9 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
   templateUrl: './register-other-details.component.html',
   styleUrls: ['./register-other-details.component.css'],
 })
-export class RegisterOtherDetailsComponent implements OnInit, OnDestroy {
+export class RegisterOtherDetailsComponent
+  implements OnInit, DoCheck, OnDestroy
+{
   utils = new RegistrationUtils(this.fb);
 
   masterData: any;
@@ -851,7 +853,7 @@ export class RegisterOtherDetailsComponent implements OnInit, OnDestroy {
   }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
     this.assignPattern();
     const id = this.otherDetailsForm.controls['govID'].value;

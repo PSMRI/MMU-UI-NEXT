@@ -44,19 +44,18 @@
             <mat-label>{{
               currentLanguageSet?.ro?.otherInfo?.community
             }}</mat-label>
-            <select
+            <mat-select
               class="p-t-12"
               [style.width]="'100%'"
-              matNativeControl
               formControlName="community"
               required
               (change)="onCommunityChanged()">
-              <option
+              <mat-option
                 *ngFor="let community of masterData?.communityMaster"
                 [value]="community.communityID">
                 {{ community.communityType }}
-              </option>
-            </select>
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
@@ -112,18 +111,17 @@
             <mat-label>{{
               currentLanguageSet?.ro?.otherInfo?.religion
             }}</mat-label>
-            <select
+            <mat-select
               class="p-t-12"
               [style.width]="'100%'"
-              matNativeControl
               formControlName="religion"
               (change)="getReligionName()">
-              <option
+              <mat-option
                 *ngFor="let religion of masterData?.religionMaster"
                 [value]="religion.religionID">
                 {{ religion.religionType | titlecase }}
-              </option>
-            </select>
+              </mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
       </div>
@@ -163,19 +161,18 @@
               <mat-label>{{
                 currentLanguageSet?.ro?.otherInfo?.govtIDType
               }}</mat-label>
-              <select
+              <mat-select
                 class="p-t-12"
                 [style.width]="'40%'"
-                matNativeControl
                 (change)="filtergovIDs(id.value.type, i)"
                 formControlName="type"
                 style="line-height: unset">
-                <option
+                <mat-option
                   *ngFor="let govIDType of govIDMaster[i]?.govIdEntityMaster"
                   [value]="govIDType.govtIdentityTypeID">
                   {{ govIDType.identityType }}
-                </option>
-              </select>
+                </mat-option>
+              </mat-select>
               <mat-form-field
                 [style.width]="'35%'"
                 style="line-height: unset"
@@ -266,24 +263,23 @@
             "
             class="row">
             <ng-container [formGroupName]="i">
-              <select
+              <mat-select
                 class="p-t-12"
                 [style.width]="'40%'"
                 formControlName="type"
-                matNativeControl
                 (change)="filterOtherGovIDs(id.value.type, i)"
                 style="line-height: unset"
                 placeholder="{{
                   currentLanguageSet?.ro?.otherInfo?.govtHealthProgramType
                 }}">
-                <option
+                <mat-option
                   *ngFor="
                     let govIDType of otherGovIDMaster[i]?.otherGovIdEntityMaster
                   "
                   [value]="govIDType.govtIdentityTypeID">
                   {{ govIDType.identityType }}
-                </option>
-              </select>
+                </mat-option>
+              </mat-select>
               <mat-form-field
                 [style.width]="'35%'"
                 style="line-height: unset"

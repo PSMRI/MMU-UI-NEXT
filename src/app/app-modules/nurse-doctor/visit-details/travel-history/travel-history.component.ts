@@ -27,6 +27,8 @@ import {
   Input,
   OnChanges,
   Output,
+  DoCheck,
+  OnDestroy,
 } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, FormArray } from '@angular/forms';
 import {
@@ -46,7 +48,9 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
   templateUrl: './travel-history.component.html',
   styleUrls: ['./travel-history.component.css'],
 })
-export class TravelHistoryComponent implements OnInit {
+export class TravelHistoryComponent
+  implements OnInit, OnChanges, DoCheck, OnDestroy
+{
   @Input()
   patientCovidForm!: FormGroup;
   @Input()
@@ -125,7 +129,7 @@ export class TravelHistoryComponent implements OnInit {
     this.getStateNames();
     this.getCountryNames();
   }
-  OnChanges() {
+  ngOnChanges() {
     if (this.mode == 'view') {
       this.readTravel = true;
       const visitID = localStorage.getItem('visitID');
@@ -133,7 +137,7 @@ export class TravelHistoryComponent implements OnInit {
       this.getHistoryDetails(benRegID, visitID);
     }
   }
-  OnDestroy() {
+  ngOnDestroy() {
     if (this.covidHistory) this.covidHistory.unsubscribe();
 
     if (this.nurseMasterDataSubscription)
@@ -755,7 +759,7 @@ export class TravelHistoryComponent implements OnInit {
   // }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
   }
 

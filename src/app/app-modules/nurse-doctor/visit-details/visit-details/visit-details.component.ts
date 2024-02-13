@@ -20,7 +20,14 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  DoCheck,
+  OnDestroy,
+} from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 
 import { MasterdataService, DoctorService } from '../../shared/services';
@@ -33,7 +40,9 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
   templateUrl: './visit-details.component.html',
   styleUrls: ['./visit-details.component.css'],
 })
-export class PatientVisitDetailsComponent implements OnInit {
+export class PatientVisitDetailsComponent
+  implements OnInit, DoCheck, OnChanges, OnDestroy
+{
   @Input()
   patientVisitDetailsForm!: FormGroup;
 
@@ -63,7 +72,7 @@ export class PatientVisitDetailsComponent implements OnInit {
     this.getBenificiaryDetails();
   }
 
-  OnChanges() {
+  ngOnChanges() {
     if (this.mode == 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
@@ -74,7 +83,7 @@ export class PatientVisitDetailsComponent implements OnInit {
     // }
   }
 
-  OnDestroy() {
+  ngOnDestroy() {
     if (this.visitCategorySubscription)
       this.visitCategorySubscription.unsubscribe();
 
@@ -278,7 +287,7 @@ export class PatientVisitDetailsComponent implements OnInit {
   // }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
   }
 

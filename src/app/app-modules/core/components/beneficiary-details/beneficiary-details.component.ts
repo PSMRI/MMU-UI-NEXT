@@ -20,7 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BeneficiaryDetailsService } from '../../services/beneficiary-details.service';
 import { HttpServiceService } from '../../services/http-service.service';
@@ -31,7 +31,7 @@ import { SetLanguageComponent } from '../set-language.component';
   templateUrl: './beneficiary-details.component.html',
   styleUrls: ['./beneficiary-details.component.css'],
 })
-export class BeneficiaryDetailsComponent implements OnInit, DoCheck {
+export class BeneficiaryDetailsComponent implements OnInit, DoCheck, OnDestroy {
   beneficiary: any;
   today: any;
   beneficiaryDetailsSubscription: any;
@@ -82,7 +82,7 @@ export class BeneficiaryDetailsComponent implements OnInit, DoCheck {
     this.current_language_set = getLanguageJson.currentLanguageObject;
   }
 
-  OnDestroy() {
+  ngOnDestroy() {
     if (this.beneficiaryDetailsSubscription)
       this.beneficiaryDetailsSubscription.unsubscribe();
   }

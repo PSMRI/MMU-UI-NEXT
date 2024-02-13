@@ -29,6 +29,7 @@ import {
   ElementRef,
   AfterViewChecked,
   OnDestroy,
+  DoCheck,
 } from '@angular/core';
 import {
   FormGroup,
@@ -62,7 +63,12 @@ import { of } from 'rxjs';
   styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent
-  implements OnInit, AfterViewChecked, OnDestroy, CanComponentDeactivate
+  implements
+    OnInit,
+    AfterViewChecked,
+    OnDestroy,
+    CanComponentDeactivate,
+    DoCheck
 {
   @ViewChild(RegisterOtherDetailsComponent)
   private otherDetails!: RegisterOtherDetailsComponent;
@@ -1132,7 +1138,7 @@ export class RegistrationComponent
   }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
   }
 

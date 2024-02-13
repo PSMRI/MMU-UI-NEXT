@@ -27,6 +27,8 @@ import {
   AfterViewChecked,
   Input,
   ChangeDetectorRef,
+  DoCheck,
+  OnDestroy,
 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
@@ -57,7 +59,9 @@ import { CanComponentDeactivate } from '../../core/services/can-deactivate-guard
   templateUrl: './workarea.component.html',
   styleUrls: ['./workarea.component.css'],
 })
-export class WorkareaComponent implements OnInit, CanComponentDeactivate {
+export class WorkareaComponent
+  implements OnInit, CanComponentDeactivate, DoCheck, OnDestroy
+{
   @ViewChild('sidenav')
   sidenav: any;
 
@@ -2938,7 +2942,7 @@ export class WorkareaComponent implements OnInit, CanComponentDeactivate {
     } else this.ncdScreeningMode = new String('update');
   }
 
-  OnDestroy() {
+  ngOnDestroy() {
     if (this.visitDetailMasterDataSubscription)
       this.visitDetailMasterDataSubscription.unsubscribe();
     if (this.beneficiaryDetailsSubscription)
@@ -3284,7 +3288,7 @@ export class WorkareaComponent implements OnInit, CanComponentDeactivate {
   }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
-  DoCheck() {
+  ngDoCheck() {
     this.fetchLanguageResponse();
   }
 
