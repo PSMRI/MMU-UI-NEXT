@@ -135,6 +135,7 @@ export class WorkareaComponent
   enableLungAssessment: boolean = false;
   enableProvisionalDiag: boolean = false;
   patientVisitForm!: FormGroup;
+  patientReferForm!: FormGroup;
 
   constructor(
     private router: Router,
@@ -349,10 +350,14 @@ export class WorkareaComponent
               'patientCaseRecordForm',
               new CancerUtils(this.fb).createCancerDiagnosisForm()
             );
-            this.patientMedicalForm.addControl(
-              'patientReferForm',
-              new CancerUtils(this.fb).createCancerReferForm()
-            );
+            this.patientMedicalForm = this.fb.group({
+              patientReferForm: new CancerUtils(
+                this.fb
+              ).createCancerReferForm(),
+            });
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
 
             this.patchCancerFindings();
 
@@ -394,10 +399,14 @@ export class WorkareaComponent
               'patientCaseRecordForm',
               new GeneralUtils(this.fb).createGeneralCaseRecord()
             );
-            this.patientMedicalForm.addControl(
-              'patientReferForm',
-              new CancerUtils(this.fb).createCancerReferForm()
-            );
+            this.patientMedicalForm = this.fb.group({
+              patientReferForm: new CancerUtils(
+                this.fb
+              ).createCancerReferForm(),
+            });
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
 
             this.patchGeneralFinding();
 
@@ -452,6 +461,9 @@ export class WorkareaComponent
               'patientReferForm',
               new CancerUtils(this.fb).createCancerReferForm()
             );
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
             this.showRefer = true;
             this.referMode = new String(mode);
           }
@@ -489,6 +501,9 @@ export class WorkareaComponent
               'patientReferForm',
               new CancerUtils(this.fb).createCancerReferForm()
             );
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
 
             this.patchGeneralFinding();
 
@@ -542,6 +557,9 @@ export class WorkareaComponent
               'patientReferForm',
               new CancerUtils(this.fb).createCancerReferForm()
             );
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
 
             this.patchGeneralFinding();
             this.getANCDiagnosis();
@@ -584,6 +602,9 @@ export class WorkareaComponent
               'patientReferForm',
               new CancerUtils(this.fb).createCancerReferForm()
             );
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
 
             this.patchGeneralFinding();
 
@@ -623,6 +644,9 @@ export class WorkareaComponent
               'patientReferForm',
               new CancerUtils(this.fb).createCancerReferForm()
             );
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
 
             this.patchGeneralFinding();
 
@@ -814,7 +838,7 @@ export class WorkareaComponent
                 if (this.isSpecialist) {
                   this.router.navigate(['/common/tcspecialist-worklist']);
                 } else {
-                  this.router.navigate(['/common/doctor-worklist']);
+                  this.router.navigate(['/nurse-doctor/doctor-worklist']);
                 }
               } else {
                 this.resetSpinnerandEnableTheSubmitButton();
@@ -846,7 +870,7 @@ export class WorkareaComponent
                 if (this.isSpecialist) {
                   this.router.navigate(['/common/tcspecialist-worklist']);
                 } else {
-                  this.router.navigate(['/common/doctor-worklist']);
+                  this.router.navigate(['/nurse-doctor/doctor-worklist']);
                 }
               } else {
                 this.resetSpinnerandEnableTheSubmitButton();
@@ -876,7 +900,7 @@ export class WorkareaComponent
                 if (this.isSpecialist) {
                   this.router.navigate(['/common/tcspecialist-worklist']);
                 } else {
-                  this.router.navigate(['/common/doctor-worklist']);
+                  this.router.navigate(['/nurse-doctor/doctor-worklist']);
                 }
               } else {
                 this.resetSpinnerandEnableTheSubmitButton();
@@ -1020,7 +1044,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2177,7 +2201,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2208,7 +2232,7 @@ export class WorkareaComponent
             if (this.isSpecialist) {
               this.router.navigate(['/common/tcspecialist-worklist']);
             } else {
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             }
           } else {
             this.resetSpinnerandEnableTheSubmitButton();
@@ -2329,7 +2353,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2470,7 +2494,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2506,7 +2530,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2543,7 +2567,7 @@ export class WorkareaComponent
               sessionStorage.removeItem('instFlag');
               sessionStorage.removeItem('suspectFlag');
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2647,7 +2671,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2679,7 +2703,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');

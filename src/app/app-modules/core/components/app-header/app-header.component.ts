@@ -50,7 +50,7 @@ export class AppHeaderComponent implements OnInit {
       ],
     },
     { role: 'Nurse', link: '/nurse-worklist', label: 'Nurse' },
-    { role: 'Doctor', link: '/common/doctor-worklist', label: 'Doctor' },
+    { role: 'Doctor', link: '/doctor-worklist', label: 'Doctor' },
     { role: 'Lab Technician', link: '/lab/worklist', label: 'Lab Technician' },
     {
       role: 'Pharmacist',
@@ -233,7 +233,7 @@ export class AppHeaderComponent implements OnInit {
       },
       {
         role: 'Doctor',
-        link: '/common/doctor-worklist',
+        link: '/nurse-doctor/doctor-worklist',
         label: this.currentLanguageSet.role_selection.Doctor,
       },
       {

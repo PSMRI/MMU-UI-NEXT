@@ -53,6 +53,10 @@ import { TravelHistoryComponent } from './visit-details/travel-history/travel-hi
 import { UploadFilesComponent } from './visit-details/upload-files/upload-files.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { DiseaseconfirmationComponent } from './visit-details/diseaseconfirmation/diseaseconfirmation.component';
+import { DoctorWorklistComponent } from './doctor-worklist/doctor-worklist.component';
+import { GeneralReferComponent } from './refer/general-refer/general-refer.component';
+import { ReferComponent } from './refer/refer.component';
+import { CancerReferComponent } from './refer/cancer-refer/cancer-refer.component';
 
 @NgModule({
   imports: [
@@ -110,7 +114,7 @@ import { DiseaseconfirmationComponent } from './visit-details/diseaseconfirmatio
     // ObstetricHistoryComponent,
     // FamilyDiseaseHistoryComponent,
     // PersonalHistoryComponent,
-    // DoctorWorklistComponent,
+    DoctorWorklistComponent,
     // AncComponent,
     // AncDetailsComponent,
     // AncImmunizationComponent,
@@ -133,11 +137,11 @@ import { DiseaseconfirmationComponent } from './visit-details/diseaseconfirmatio
     WorkareaComponent,
     // CancerCaseRecordComponent,
     // GeneralCaseRecordComponent,
-    // CancerReferComponent,
-    // GeneralReferComponent,
+    CancerReferComponent,
+    GeneralReferComponent,
     // CancerCaseSheetComponent,
     // GeneralCaseSheetComponent,
-    // ReferComponent,
+    ReferComponent,
     // PrintPageSelectComponent,
     // PreviousVisitDetailsComponent,
     // FindingsComponent,
