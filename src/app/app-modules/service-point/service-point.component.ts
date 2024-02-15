@@ -291,7 +291,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
         this.router.navigate(['/nurse-doctor/nurse-worklist']);
         break;
       case 'Doctor':
-        this.router.navigate(['/common/doctor-worklist']);
+        this.router.navigate(['/nurse-doctor/doctor-worklist']);
         break;
       case 'Lab Technician':
         this.router.navigate(['/lab']);

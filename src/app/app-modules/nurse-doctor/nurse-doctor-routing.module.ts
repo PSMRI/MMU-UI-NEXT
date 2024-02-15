@@ -26,8 +26,8 @@ import { DashboardComponent } from '../registrar/dashboard/dashboard.component';
 import { WorkareaComponent } from './workarea/workarea.component';
 import { WorkareaCanActivate } from './workarea/workarea-can-activate.service';
 import { CanDeactivateGuardService } from '../core/services/can-deactivate-guard.service';
-import { NurseWorklistComponent } from './nurse-worklist/nurse-worklist.component';
 import { NurseWorklistTabsComponent } from './nurse-worklist-tabs/nurse-worklist-tabs.component';
+import { DoctorWorklistComponent } from './doctor-worklist/doctor-worklist.component';
 
 const routes: Routes = [
   {
@@ -47,10 +47,10 @@ const routes: Routes = [
         path: 'nurse-worklist',
         component: NurseWorklistTabsComponent,
       },
-      // {
-      //   path: 'doctor-worklist',
-      //   component: DoctorWorklistComponent
-      // },
+      {
+        path: 'doctor-worklist',
+        component: DoctorWorklistComponent,
+      },
       // {
       //   path: 'radiologist-worklist',
       //   component: RadiologistWorklistComponent

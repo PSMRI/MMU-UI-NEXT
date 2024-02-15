@@ -62,6 +62,10 @@ import { HistoryComponent } from './history/history.component';
 import { FamilyDiseaseHistoryComponent } from './history/cancer-history/family-disease-history/family-disease-history.component';
 import { CancerHistoryComponent } from './history/cancer-history/cancer-history.component';
 import { PncComponent } from './pnc/pnc.component';
+import { DoctorWorklistComponent } from './doctor-worklist/doctor-worklist.component';
+import { GeneralReferComponent } from './refer/general-refer/general-refer.component';
+import { ReferComponent } from './refer/refer.component';
+import { CancerReferComponent } from './refer/cancer-refer/cancer-refer.component';
 
 @NgModule({
   imports: [
@@ -120,7 +124,7 @@ import { PncComponent } from './pnc/pnc.component';
     // ObstetricHistoryComponent,
     FamilyDiseaseHistoryComponent,
     // PersonalHistoryComponent,
-    // DoctorWorklistComponent,
+    DoctorWorklistComponent,
     AncComponent,
     AncDetailsComponent,
     AncImmunizationComponent,
@@ -143,11 +147,11 @@ import { PncComponent } from './pnc/pnc.component';
     WorkareaComponent,
     // CancerCaseRecordComponent,
     // GeneralCaseRecordComponent,
-    // CancerReferComponent,
-    // GeneralReferComponent,
+    CancerReferComponent,
+    GeneralReferComponent,
     // CancerCaseSheetComponent,
     // GeneralCaseSheetComponent,
-    // ReferComponent,
+    ReferComponent,
     // PrintPageSelectComponent,
     // PreviousVisitDetailsComponent,
     // FindingsComponent,

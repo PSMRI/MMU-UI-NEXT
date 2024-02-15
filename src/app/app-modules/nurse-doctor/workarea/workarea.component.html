@@ -241,20 +241,6 @@
               </div>
             </div>
           </mat-step>
-        
-          <mat-step *ngIf="showRefer" label="Refer">
-            <ng-template matStepLabel>{{currentLanguageSet?.Referdetails?.revisitAndRefer}}</ng-template>
-            <app-refer [referMode]="referMode" [visitCategory]='visitCategory' [patientReferForm]='patientMedicalForm.controls.patientReferForm'></app-refer>
-            <div class="row m-t-20">
-              <div class="col-sm-12 step-btn m-b-40">
-                <button *ngIf="doctorFlag == 1" mat-raised-button color='primary' class="btn-green" [disabled]="disableSubmitButton" (click)="submitDoctorDiagnosisForm()" type="submit">{{currentLanguageSet?.common?.submit}}
-                </button>
-                <button *ngIf="doctorFlag != 1" mat-raised-button color='primary' class="btn-green" (click)="updateDoctorDiagnosisForm()" type="submit">{{doctorUpdateAndTCSubmit}}</button>
-                <button *ngIf="tm && !isSpecialist" mat-raised-button class="btn-green" color="primary" type="button" (click)="openScheduler()">{{currentLanguageSet?.common?.scheduleForTM}}</button>
-                <button mat-raised-button color='primary' matStepperPrevious type="button">{{currentLanguageSet?.common?.back}}</button>
-              </div>
-            </div>
-          </mat-step>
 
           <mat-step *ngIf="showQuickConsult">
             <ng-template matStepLabel>{{currentLanguageSet?.historyData?.QuickConsultDetails?.quickconsult}}
@@ -270,6 +256,46 @@
               </div>
             </div>
           </mat-step> -->
+
+          <mat-step *ngIf="showRefer" label="Refer">
+            <ng-template matStepLabel>{{
+              currentLanguageSet?.Referdetails?.revisitAndRefer
+            }}</ng-template>
+            <app-refer
+              [referMode]="referMode"
+              [visitCategory]="visitCategory"
+              [patientReferForm]="patientReferForm"></app-refer>
+            <div class="row m-t-20">
+              <div class="col-sm-12 step-btn m-b-40">
+                <button
+                  *ngIf="doctorFlag === 1"
+                  mat-raised-button
+                  color="primary"
+                  class="btn-green"
+                  [disabled]="disableSubmitButton"
+                  (click)="submitDoctorDiagnosisForm()"
+                  type="submit">
+                  {{ currentLanguageSet?.common?.submit }}
+                </button>
+                <button
+                  *ngIf="doctorFlag !== 1"
+                  mat-raised-button
+                  color="primary"
+                  class="btn-green"
+                  (click)="updateDoctorDiagnosisForm()"
+                  type="submit">
+                  {{ doctorUpdateAndTCSubmit }}
+                </button>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  matStepperPrevious
+                  type="button">
+                  {{ currentLanguageSet?.common?.back }}
+                </button>
+              </div>
+            </div>
+          </mat-step>
         </mat-horizontal-stepper>
       </form>
     </div>
