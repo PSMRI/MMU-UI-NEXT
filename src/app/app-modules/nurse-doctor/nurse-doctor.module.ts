@@ -53,6 +53,15 @@ import { TravelHistoryComponent } from './visit-details/travel-history/travel-hi
 import { UploadFilesComponent } from './visit-details/upload-files/upload-files.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { DiseaseconfirmationComponent } from './visit-details/diseaseconfirmation/diseaseconfirmation.component';
+import { AncDetailsComponent } from './anc/anc-details/anc-details.component';
+import { AncComponent } from './anc/anc.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ObstetricFormulaComponent } from './anc/obstetric-formula/obstetric-formula.component';
+import { AncImmunizationComponent } from './anc/anc-immunization/anc-immunization.component';
+import { HistoryComponent } from './history/history.component';
+import { FamilyDiseaseHistoryComponent } from './history/cancer-history/family-disease-history/family-disease-history.component';
+import { CancerHistoryComponent } from './history/cancer-history/cancer-history.component';
+import { PncComponent } from './pnc/pnc.component';
 
 @NgModule({
   imports: [
@@ -69,6 +78,7 @@ import { DiseaseconfirmationComponent } from './visit-details/diseaseconfirmatio
     MaterialModule,
     MatTableModule,
     MatChipsModule,
+    MatDatepickerModule,
   ],
   declarations: [
     NurseWorklistComponent,
@@ -106,15 +116,15 @@ import { DiseaseconfirmationComponent } from './visit-details/diseaseconfirmatio
     // GeneralPersonalHistoryComponent,
     // PastHistoryComponent,
     // GeneralOpdHistoryComponent,
-    // CancerHistoryComponent,
+    CancerHistoryComponent,
     // ObstetricHistoryComponent,
-    // FamilyDiseaseHistoryComponent,
+    FamilyDiseaseHistoryComponent,
     // PersonalHistoryComponent,
     // DoctorWorklistComponent,
-    // AncComponent,
-    // AncDetailsComponent,
-    // AncImmunizationComponent,
-    // ObstetricFormulaComponent,
+    AncComponent,
+    AncDetailsComponent,
+    AncImmunizationComponent,
+    ObstetricFormulaComponent,
     VisitDetailsComponent,
     PatientVisitDetailsComponent,
     // VisitCategoryComponent,
@@ -122,12 +132,12 @@ import { DiseaseconfirmationComponent } from './visit-details/diseaseconfirmatio
     AdherenceComponent,
     InvestigationsComponent,
     UploadFilesComponent,
-    // HistoryComponent,
+    HistoryComponent,
     // ExaminationComponent,
     // VitalsComponent,
     // CaseRecordComponent,
     // AncComponent,
-    // PncComponent,
+    PncComponent,
     // NcdScreeningComponent,
     // DashboardComponent,
     WorkareaComponent,
