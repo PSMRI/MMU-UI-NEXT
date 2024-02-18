@@ -1,4 +1,4 @@
-<!-- {{ referForm.value | json}} -->
+{{ referForm.value | json }}
 <mat-expansion-panel [formGroup]="referForm" expanded="true">
   <mat-expansion-panel-header>
     <h5>{{ currentLanguageSet?.Referdetails?.revisitAndRefer }}</h5>
@@ -149,8 +149,9 @@
             [matDatepicker]="picker"
             formControlName="revisitDate"
             [min]="tomorrow"
-            (change)="checkdate(revisitDate)" />
-          <mat-hint>MM/DD/YYYY</mat-hint>
+            (change)="checkdate(revisitDate)"
+            [value]="revisitDate | date: 'dd/MM/yyyy'" />
+          <mat-hint>DD/MM/YYYY</mat-hint>
           <mat-datepicker-toggle
             matSuffix
             [for]="picker"></mat-datepicker-toggle>

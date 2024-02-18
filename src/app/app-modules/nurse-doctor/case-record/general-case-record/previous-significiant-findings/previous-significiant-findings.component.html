@@ -1,0 +1,78 @@
+<div class="row m-t-20">
+  <div class="col-sm-12">
+    <div *ngIf="dataSource.data.length > 0" class="pull-right">
+      <mat-form-field id="filterbox" class="m-t-20-">
+        <input
+          autocomplete="off"
+          matInput
+          placeholder="{{ current_language_set?.common?.inTableSearch }}"
+          #filterTerm
+          (keyup)="filterPreviousSignificiantFindingsList(filterTerm.value)" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="clearfix"></div>
+    <section class="table-responsive">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        aria-describedby="significantFindings">
+        <ng-container matColumnDef="sno">
+          <th
+            mat-header-cell
+            style="border-bottom: none"
+            *matHeaderCellDef
+            mat-sort-header>
+            {{ current_language_set?.casesheet?.serialNo }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.sno }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="significantfindings">
+          <th
+            mat-header-cell
+            style="border-bottom: none"
+            *matHeaderCellDef
+            mat-sort-header>
+            {{
+              current_language_set?.Significantfindingsdetails
+                ?.significantfindings
+            }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.significantFindings }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="captureddate">
+          <th
+            mat-header-cell
+            style="border-bottom: none"
+            *matHeaderCellDef
+            mat-sort-header>
+            {{ current_language_set?.Significantfindingsdetails?.captureddate }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.captureDate | date: 'dd/MM/yyyy' }}
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <div
+        class="pull-center"
+        style="margin-top: 5px"
+        [hidden]="dataSource.data.length > 0">
+        <strong>{{ current_language_set?.noRecordsFound }}</strong>
+      </div>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        [pageSize]="5"
+        showFirstLastButtons
+        aria-label="Select patient in doctorWorklist">
+      </mat-paginator>
+    </section>
+  </div>
+</div>

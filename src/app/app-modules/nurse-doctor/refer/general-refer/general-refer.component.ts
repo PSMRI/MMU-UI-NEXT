@@ -175,7 +175,7 @@ export class GeneralReferComponent implements OnInit, DoCheck, OnDestroy {
   patchReferDetails(referDetails: any) {
     this.revisitDate = referDetails.revisitDate;
     this.referralReason = referDetails.referralReason;
-    this.revisitDate = this.datepipe.transform(this.revisitDate, 'yyyy-MM-dd');
+    this.revisitDate = this.datepipe.transform(this.revisitDate, 'dd/MM/yyyy');
     const temp: any = [];
     if (referDetails.refrredToAdditionalServiceList) {
       this.previousServiceList = referDetails.refrredToAdditionalServiceList;

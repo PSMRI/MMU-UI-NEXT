@@ -46,6 +46,7 @@ import { CameraDialogComponent } from './components/camera-dialog/camera-dialog.
 import { WebcamImage, WebcamInitError, WebcamModule } from 'ngx-webcam';
 import { CanDeactivateGuardService } from './services/can-deactivate-guard.service';
 import { BeneficiaryDetailsComponent } from './components/beneficiary-details/beneficiary-details.component';
+import { ViewRadiologyUploadedFilesComponent } from './components/view-radiology-uploaded-files/view-radiology-uploaded-files.component';
 
 @NgModule({
   imports: [
@@ -68,10 +69,11 @@ import { BeneficiaryDetailsComponent } from './components/beneficiary-details/be
     BeneficiaryDetailsComponent,
     AppFooterComponent,
     AppHeaderComponent,
+    ViewRadiologyUploadedFilesComponent,
     // PreviousDetailsComponent,
     // ShowCommitAndVersionDetailsComponent,CalibrationComponent,
     // myEmail, myMobileNumber, OpenModalDirective, ConfirmatoryDiagnosisDirective, myName, myPassword, StringValidator, NullDefaultValueDirective, NumberValidator, DisableFormControlDirective,
-    // ViewRadiologyUploadedFilesComponent, IotcomponentComponent,IotBluetoothComponent,AllergenSearchComponent, DataSyncLoginComponent,OpenPreviousVisitDetailsComponent,
+    // IotcomponentComponent,IotBluetoothComponent,AllergenSearchComponent, DataSyncLoginComponent,OpenPreviousVisitDetailsComponent,
   ],
   exports: [
     MaterialModule,

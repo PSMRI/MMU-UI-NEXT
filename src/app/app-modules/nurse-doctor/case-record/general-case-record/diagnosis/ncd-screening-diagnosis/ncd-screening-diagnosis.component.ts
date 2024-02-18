@@ -1,0 +1,218 @@
+/*
+ * AMRIT – Accessible Medical Records via Integrated Technology
+ * Integrated EHR (Electronic Health Records) Solution
+ *
+ * Copyright (C) "Piramal Swasthya Management and Research Institute"
+ *
+ * This file is part of AMRIT.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see https://www.gnu.org/licenses/.
+ */
+
+import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
+import { ConfirmationService } from 'src/app/app-modules/core/services';
+import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
+import {
+  DoctorService,
+  NurseService,
+} from 'src/app/app-modules/nurse-doctor/shared/services';
+import { GeneralUtils } from 'src/app/app-modules/nurse-doctor/shared/utility';
+@Component({
+  selector: 'app-ncd-screening-diagnosis',
+  templateUrl: './ncd-screening-diagnosis.component.html',
+  styleUrls: ['./ncd-screening-diagnosis.component.css'],
+})
+export class NcdScreeningDiagnosisComponent
+  implements OnInit, OnChanges, DoCheck
+{
+  utils = new GeneralUtils(this.fb);
+
+  @Input()
+  generalDiagnosisForm!: FormGroup;
+
+  @Input()
+  caseRecordMode!: string;
+
+  diagnosisSubscription: any;
+  designation!: string;
+  specialist!: boolean;
+  doctorDiagnosis: any;
+  current_language_set: any;
+  enableProvisionalDiag!: boolean;
+  constructor(
+    private fb: FormBuilder,
+    private doctorService: DoctorService,
+    private confirmationService: ConfirmationService,
+    private httpServiceService: HttpServiceService,
+    private nurseService: NurseService
+  ) {}
+
+  ngOnInit() {
+    console.log('caseRecordMode', this.caseRecordMode);
+    console.log('doctorDiagnosis', this.doctorDiagnosis);
+    // if(this.generalDiagnosisForm.controls['specialistDiagnosis'] !=undefined)
+    // this.generalDiagnosisForm.controls['specialistDiagnosis'].disable();
+    // this.specialist = false;
+    // this.designation = localStorage.getItem("designation");
+    // if (this.designation == "TC Specialist") {
+    //   this.generalDiagnosisForm.controls['specialistDiagnosis'].enable();
+    //   this.specialist = true;
+    // } else {
+    //   this.generalDiagnosisForm.controls['specialistDiagnosis'].disable();
+    //   this.specialist = false;
+    // }
+    // if (this.designation == "TC Specialist") {
+    //   this.generalDiagnosisForm.controls['doctorDiagnosis'].disable();
+    //   this.specialist = true;
+    // } else {
+    //   this.generalDiagnosisForm.controls['doctorDiagnosis'].enable();
+    //   this.specialist = false;
+    // }
+    this.nurseService.enableProvisionalDiag$.subscribe(response => {
+      if (response == true) {
+        this.enableProvisionalDiag = true;
+      } else {
+        this.enableProvisionalDiag = false;
+      }
+    });
+  }
+  get specialistDaignosis() {
+    return this.generalDiagnosisForm.get('instruction');
+  }
+
+  get doctorDaignosis() {
+    return this.generalDiagnosisForm.get('provisionalDiagnosis');
+  }
+  ngDoCheck() {
+    this.assignSelectedLanguage();
+  }
+  assignSelectedLanguage() {
+    const getLanguageJson = new SetLanguageComponent(this.httpServiceService);
+    getLanguageJson.setLanguage();
+    this.current_language_set = getLanguageJson.currentLanguageObject;
+  }
+  ngOnChanges() {
+    if (this.caseRecordMode == 'view') {
+      const beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
+      const visitID = localStorage.getItem('visitID');
+      const visitCategory = localStorage.getItem('visitCategory');
+      this.getDiagnosisDetails(beneficiaryRegID, visitID, visitCategory);
+    }
+  }
+
+  getDiagnosisDetails(beneficiaryRegID: any, visitID: any, visitCategory: any) {
+    this.diagnosisSubscription = this.doctorService
+      .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
+      .subscribe((res: any) => {
+        if (res && res.statusCode == 200 && res.data && res.data.diagnosis) {
+          this.patchDiagnosisDetails(res.data.diagnosis);
+        }
+      });
+  }
+
+  // patchDiagnosisDetails(diagnosis) {
+  //   //
+
+  //   // diagnosis.doctorDiagnosis = this.doctorDiagnosis;
+  //   // referFormData.revisitDate = referForm.controls["doctorDiagnosis"].value;
+  //   console.log("diagnosis",diagnosis.doctorDiagnonsis);
+
+  //   this.generalDiagnosisForm.patchValue({'doctorDiagnosis' : diagnosis.doctorDiagnonsis});
+  //   // this.generalDiagnosisForm.patchValue({'prescriptionID' : diagnosis.prescriptionID });
+  //   this.generalDiagnosisForm.patchValue(diagnosis);
+
+  // }
+
+  patchDiagnosisDetails(diagnosis: any) {
+    this.generalDiagnosisForm.patchValue(diagnosis);
+    const generalArray = this.generalDiagnosisForm.controls[
+      'provisionalDiagnosisList'
+    ] as FormArray;
+
+    const previousArray = diagnosis.provisionalDiagnosisList;
+    let j = 0;
+    if (
+      previousArray != undefined &&
+      previousArray != null &&
+      previousArray.length > 0
+    ) {
+      previousArray.forEach((i: any) => {
+        generalArray.at(j).patchValue({
+          conceptID: i.conceptID,
+          term: i.term,
+          provisionalDiagnosis: i.term,
+        });
+        (<FormGroup>generalArray.at(j)).controls[
+          'provisionalDiagnosis'
+        ].disable();
+        if (generalArray.length < previousArray.length) {
+          this.addDiagnosis();
+        }
+        j++;
+      });
+    }
+  }
+
+  addDiagnosis() {
+    const diagnosisListForm = this.generalDiagnosisForm.controls[
+      'provisionalDiagnosisList'
+    ] as FormArray;
+    if (diagnosisListForm.length < 30) {
+      diagnosisListForm.push(this.utils.initProvisionalDiagnosisList());
+    } else {
+      this.current_language_set.alerts.info.maxDiagnosis;
+    }
+  }
+
+  deleteDiagnosis(index: any, diagnosisList?: FormArray) {
+    const diagnosisListForm = this.generalDiagnosisForm.controls[
+      'provisionalDiagnosisList'
+    ] as FormArray;
+    if (!diagnosisListForm.at(index).invalid) {
+      this.confirmationService
+        .confirm(`warn`, this.current_language_set.alerts.info.warn)
+        .subscribe(result => {
+          if (result) {
+            const diagnosisListForm = this.generalDiagnosisForm.controls[
+              'provisionalDiagnosisList'
+            ] as FormArray;
+            if (diagnosisListForm.length > 1) {
+              diagnosisListForm.removeAt(index);
+            } else {
+              diagnosisListForm.removeAt(index);
+              diagnosisListForm.push(this.utils.initProvisionalDiagnosisList());
+            }
+          }
+        });
+    } else {
+      if (diagnosisListForm.length > 1) {
+        diagnosisListForm.removeAt(index);
+      } else {
+        diagnosisListForm.removeAt(index);
+        diagnosisListForm.push(this.utils.initProvisionalDiagnosisList());
+      }
+    }
+  }
+
+  checkProvisionalDiagnosisValidity(diagnosis: any) {
+    const tempDiagnosis = diagnosis.value;
+    if (tempDiagnosis.conceptID && tempDiagnosis.term) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
