@@ -47,6 +47,8 @@ import { WebcamImage, WebcamInitError, WebcamModule } from 'ngx-webcam';
 import { CanDeactivateGuardService } from './services/can-deactivate-guard.service';
 import { BeneficiaryDetailsComponent } from './components/beneficiary-details/beneficiary-details.component';
 import { ViewRadiologyUploadedFilesComponent } from './components/view-radiology-uploaded-files/view-radiology-uploaded-files.component';
+import { PreviousDetailsComponent } from './components/previous-details/previous-details.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -58,6 +60,7 @@ import { ViewRadiologyUploadedFilesComponent } from './components/view-radiology
     ReactiveFormsModule,
     // ChartsModule,
     WebcamModule,
+    MatTableModule,
     // PaginationModule.forRoot()
   ],
   declarations: [
@@ -71,6 +74,7 @@ import { ViewRadiologyUploadedFilesComponent } from './components/view-radiology
     AppHeaderComponent,
     ViewRadiologyUploadedFilesComponent,
     // PreviousDetailsComponent,
+    PreviousDetailsComponent,
     // ShowCommitAndVersionDetailsComponent,CalibrationComponent,
     // myEmail, myMobileNumber, OpenModalDirective, ConfirmatoryDiagnosisDirective, myName, myPassword, StringValidator, NullDefaultValueDirective, NumberValidator, DisableFormControlDirective,
     // IotcomponentComponent,IotBluetoothComponent,AllergenSearchComponent, DataSyncLoginComponent,OpenPreviousVisitDetailsComponent,
@@ -88,7 +92,7 @@ import { ViewRadiologyUploadedFilesComponent } from './components/view-radiology
     BeneficiaryDetailsComponent,
     // AppFooterComponent,
     // AppHeaderComponent,
-    // PreviousDetailsComponent,
+    PreviousDetailsComponent,
     // PaginationModule,
     // myEmail, myMobileNumber, OpenModalDirective, ConfirmatoryDiagnosisDirective, myName, myPassword, DisableFormControlDirective, StringValidator, NumberValidator, NullDefaultValueDirective,
     // IotcomponentComponent,

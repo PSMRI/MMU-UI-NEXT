@@ -135,6 +135,8 @@ export class WorkareaComponent
   enableLungAssessment: boolean = false;
   enableProvisionalDiag: boolean = false;
   patientVisitForm!: FormGroup;
+  patientANCForm!: FormGroup;
+  patientPNCForm!: FormGroup;
   patientReferForm!: FormGroup;
   patientCaseRecordForm!: FormGroup;
 
@@ -206,6 +208,7 @@ export class WorkareaComponent
     this.patientVisitForm = this.patientMedicalForm.get(
       'patientVisitForm'
     ) as FormGroup;
+
     this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
     this.visitID = localStorage.getItem('visitID');
     this.nurseFlag = localStorage.getItem('nurseFlag');
@@ -488,6 +491,10 @@ export class WorkareaComponent
             'patientPNCForm',
             new GeneralUtils(this.fb).createPatientPNCForm()
           );
+          this.patientPNCForm = this.patientMedicalForm.get(
+            'patientPNCForm'
+          ) as FormGroup;
+
           this.patientMedicalForm.addControl(
             'patientHistoryForm',
             new GeneralUtils(this.fb).createGeneralHistoryForm()
@@ -547,6 +554,10 @@ export class WorkareaComponent
             'patientANCForm',
             new GeneralUtils(this.fb).createPatientANCForm()
           );
+          this.patientANCForm = this.patientMedicalForm.get(
+            'patientANCForm'
+          ) as FormGroup;
+
           this.patientMedicalForm.addControl(
             'patientHistoryForm',
             new GeneralUtils(this.fb).createGeneralHistoryForm()

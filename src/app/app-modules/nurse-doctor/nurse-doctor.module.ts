@@ -53,6 +53,12 @@ import { TravelHistoryComponent } from './visit-details/travel-history/travel-hi
 import { UploadFilesComponent } from './visit-details/upload-files/upload-files.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { DiseaseconfirmationComponent } from './visit-details/diseaseconfirmation/diseaseconfirmation.component';
+import { AncDetailsComponent } from './anc/anc-details/anc-details.component';
+import { AncComponent } from './anc/anc.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ObstetricFormulaComponent } from './anc/obstetric-formula/obstetric-formula.component';
+import { AncImmunizationComponent } from './anc/anc-immunization/anc-immunization.component';
+import { PncComponent } from './pnc/pnc.component';
 import { DoctorWorklistComponent } from './doctor-worklist/doctor-worklist.component';
 import { GeneralReferComponent } from './refer/general-refer/general-refer.component';
 import { ReferComponent } from './refer/refer.component';
@@ -93,6 +99,7 @@ import { LabService } from '../lab/shared/services';
     MaterialModule,
     MatTableModule,
     MatChipsModule,
+    MatDatepickerModule,
   ],
   declarations: [
     NurseWorklistComponent,
@@ -135,10 +142,10 @@ import { LabService } from '../lab/shared/services';
     // FamilyDiseaseHistoryComponent,
     // PersonalHistoryComponent,
     DoctorWorklistComponent,
-    // AncComponent,
-    // AncDetailsComponent,
-    // AncImmunizationComponent,
-    // ObstetricFormulaComponent,
+    AncComponent,
+    AncDetailsComponent,
+    AncImmunizationComponent,
+    ObstetricFormulaComponent,
     VisitDetailsComponent,
     PatientVisitDetailsComponent,
     // VisitCategoryComponent,
@@ -151,7 +158,7 @@ import { LabService } from '../lab/shared/services';
     // VitalsComponent,
     CaseRecordComponent,
     // AncComponent,
-    // PncComponent,
+    PncComponent,
     // NcdScreeningComponent,
     // DashboardComponent,
     WorkareaComponent,
