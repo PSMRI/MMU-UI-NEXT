@@ -46,6 +46,8 @@ import { CameraDialogComponent } from './components/camera-dialog/camera-dialog.
 import { WebcamImage, WebcamInitError, WebcamModule } from 'ngx-webcam';
 import { CanDeactivateGuardService } from './services/can-deactivate-guard.service';
 import { BeneficiaryDetailsComponent } from './components/beneficiary-details/beneficiary-details.component';
+import { PreviousDetailsComponent } from './components/previous-details/previous-details.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -57,6 +59,7 @@ import { BeneficiaryDetailsComponent } from './components/beneficiary-details/be
     ReactiveFormsModule,
     // ChartsModule,
     WebcamModule,
+    MatTableModule,
     // PaginationModule.forRoot()
   ],
   declarations: [
@@ -68,7 +71,7 @@ import { BeneficiaryDetailsComponent } from './components/beneficiary-details/be
     BeneficiaryDetailsComponent,
     AppFooterComponent,
     AppHeaderComponent,
-    // PreviousDetailsComponent,
+    PreviousDetailsComponent,
     // ShowCommitAndVersionDetailsComponent,CalibrationComponent,
     // myEmail, myMobileNumber, OpenModalDirective, ConfirmatoryDiagnosisDirective, myName, myPassword, StringValidator, NullDefaultValueDirective, NumberValidator, DisableFormControlDirective,
     // ViewRadiologyUploadedFilesComponent, IotcomponentComponent,IotBluetoothComponent,AllergenSearchComponent, DataSyncLoginComponent,OpenPreviousVisitDetailsComponent,
@@ -86,7 +89,7 @@ import { BeneficiaryDetailsComponent } from './components/beneficiary-details/be
     BeneficiaryDetailsComponent,
     // AppFooterComponent,
     // AppHeaderComponent,
-    // PreviousDetailsComponent,
+    PreviousDetailsComponent,
     // PaginationModule,
     // myEmail, myMobileNumber, OpenModalDirective, ConfirmatoryDiagnosisDirective, myName, myPassword, DisableFormControlDirective, StringValidator, NumberValidator, NullDefaultValueDirective,
     // IotcomponentComponent,

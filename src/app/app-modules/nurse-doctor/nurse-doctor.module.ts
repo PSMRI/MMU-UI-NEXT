@@ -58,9 +58,6 @@ import { AncComponent } from './anc/anc.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ObstetricFormulaComponent } from './anc/obstetric-formula/obstetric-formula.component';
 import { AncImmunizationComponent } from './anc/anc-immunization/anc-immunization.component';
-import { HistoryComponent } from './history/history.component';
-import { FamilyDiseaseHistoryComponent } from './history/cancer-history/family-disease-history/family-disease-history.component';
-import { CancerHistoryComponent } from './history/cancer-history/cancer-history.component';
 import { PncComponent } from './pnc/pnc.component';
 import { DoctorWorklistComponent } from './doctor-worklist/doctor-worklist.component';
 import { GeneralReferComponent } from './refer/general-refer/general-refer.component';
@@ -120,9 +117,9 @@ import { CancerReferComponent } from './refer/cancer-refer/cancer-refer.componen
     // GeneralPersonalHistoryComponent,
     // PastHistoryComponent,
     // GeneralOpdHistoryComponent,
-    CancerHistoryComponent,
+    // CancerHistoryComponent,
     // ObstetricHistoryComponent,
-    FamilyDiseaseHistoryComponent,
+    // FamilyDiseaseHistoryComponent,
     // PersonalHistoryComponent,
     DoctorWorklistComponent,
     AncComponent,
@@ -136,7 +133,7 @@ import { CancerReferComponent } from './refer/cancer-refer/cancer-refer.componen
     AdherenceComponent,
     InvestigationsComponent,
     UploadFilesComponent,
-    HistoryComponent,
+    // HistoryComponent,
     // ExaminationComponent,
     // VitalsComponent,
     // CaseRecordComponent,
