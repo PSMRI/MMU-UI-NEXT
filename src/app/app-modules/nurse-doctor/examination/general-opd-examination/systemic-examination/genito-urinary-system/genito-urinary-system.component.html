@@ -1,0 +1,53 @@
+<!-- {{genitoUrinarySystemForm.value | json}} -->
+<div class="row m-t-20" [formGroup]="genitoUrinarySystemForm">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <mat-form-field class="input-full-width" class="textarea-full-width">
+      <textarea
+        matInput
+        allowText="textAreaValidator"
+        defaultNull
+        matTextareaAutosize
+        name="renalAngle"
+        formControlName="renalAngle"
+        placeholder="{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+            ?.genitoANC_OPD_PNC?.renalAngle
+        }}"
+        maxlength="300"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <mat-form-field class="input-full-width" class="textarea-full-width">
+      <textarea
+        matInput
+        allowText="textAreaValidator"
+        defaultNull
+        matTextareaAutosize
+        name="suprapubicRegion"
+        formControlName="suprapubicRegion"
+        placeholder="{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+            ?.genitoANC_OPD_PNC?.suprapubicregion
+        }}"
+        maxlength="300"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <mat-form-field class="input-full-width" class="textarea-full-width">
+      <textarea
+        matInput
+        allowText="textAreaValidator"
+        defaultNull
+        matTextareaAutosize
+        name="externalGenitalia"
+        formControlName="externalGenitalia"
+        placeholder="{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+            ?.genitoANC_OPD_PNC?.externalgenitalia
+        }}"
+        maxlength="300"></textarea>
+    </mat-form-field>
+  </div>
+</div>

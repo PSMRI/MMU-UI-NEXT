@@ -83,6 +83,24 @@ import { PncDiagnosisComponent } from './case-record/general-case-record/diagnos
 import { CovidDiagnosisComponent } from './case-record/general-case-record/diagnosis/covid-diagnosis/covid-diagnosis.component';
 import { NcdScreeningDiagnosisComponent } from './case-record/general-case-record/diagnosis/ncd-screening-diagnosis/ncd-screening-diagnosis.component';
 import { LabService } from '../lab/shared/services';
+import { ExaminationComponent } from './examination/examination.component';
+import { SystemicExaminationComponent } from './examination/general-opd-examination/systemic-examination/systemic-examination.component';
+import { GeneralOpdExaminationComponent } from './examination/general-opd-examination/general-opd-examination.component';
+import { GeneralExaminationComponent } from './examination/general-opd-examination/general-examination/general-examination.component';
+import { HeadToToeExaminationComponent } from './examination/general-opd-examination/head-to-toe-examination/head-to-toe-examination.component';
+import { ObstetricExaminationComponent } from './examination/general-opd-examination/systemic-examination/obstetric-examination/obstetric-examination.component';
+import { OralExaminationComponent } from './examination/cancer-examination/oral-examination/oral-examination.component';
+import { BreastExaminationComponent } from './examination/cancer-examination/breast-examination/breast-examination.component';
+import { AbdominalExaminationComponent } from './examination/cancer-examination/abdominal-examination/abdominal-examination.component';
+import { GynecologicalExaminationComponent } from './examination/cancer-examination/gynecological-examination/gynecological-examination.component';
+import { CancerExaminationComponent } from './examination/cancer-examination/cancer-examination.component';
+import { RespiratorySystemComponent } from './examination/general-opd-examination/systemic-examination/respiratory-system/respiratory-system.component';
+import { MusculoskeletalSystemComponent } from './examination/general-opd-examination/systemic-examination/musculoskeletal-system/musculoskeletal-system.component';
+import { GenitoUrinarySystemComponent } from './examination/general-opd-examination/systemic-examination/genito-urinary-system/genito-urinary-system.component';
+import { GastroIntestinalSystemComponent } from './examination/general-opd-examination/systemic-examination/gastro-intestinal-system/gastro-intestinal-system.component';
+import { CentralNervousSystemComponent } from './examination/general-opd-examination/systemic-examination/central-nervous-system/central-nervous-system.component';
+import { CardioVascularSystemComponent } from './examination/general-opd-examination/systemic-examination/cardio-vascular-system/cardio-vascular-system.component';
+import { SignsAndSymptomsComponent } from './examination/cancer-examination/signs-and-symptoms/signs-and-symptoms.component';
 
 @NgModule({
   imports: [
@@ -105,23 +123,23 @@ import { LabService } from '../lab/shared/services';
     NurseWorklistComponent,
     // PrintPageSelectComponent,
     // QuickConsultComponent,
-    // CancerExaminationComponent,
-    // GynecologicalExaminationComponent,
-    // AbdominalExaminationComponent,
-    // BreastExaminationComponent,
-    // OralExaminationComponent,
-    // SignsAndSymptomsComponent,
-    // ObstetricExaminationComponent,
-    // GenitoUrinarySystemComponent,
-    // CentralNervousSystemComponent,
-    // MusculoskeletalSystemComponent,
-    // RespiratorySystemComponent,
-    // GastroIntestinalSystemComponent,
-    // CardioVascularSystemComponent,
-    // SystemicExaminationComponent,
-    // HeadToToeExaminationComponent,
-    // GeneralExaminationComponent,
-    // GeneralOpdExaminationComponent,
+    CancerExaminationComponent,
+    GynecologicalExaminationComponent,
+    AbdominalExaminationComponent,
+    BreastExaminationComponent,
+    OralExaminationComponent,
+    SignsAndSymptomsComponent,
+    ObstetricExaminationComponent,
+    GenitoUrinarySystemComponent,
+    CentralNervousSystemComponent,
+    MusculoskeletalSystemComponent,
+    RespiratorySystemComponent,
+    GastroIntestinalSystemComponent,
+    CardioVascularSystemComponent,
+    SystemicExaminationComponent,
+    HeadToToeExaminationComponent,
+    GeneralExaminationComponent,
+    GeneralOpdExaminationComponent,
     // CancerPatientVitalsComponent,
     // GeneralPatientVitalsComponent,
     // MedicationHistoryComponent,
@@ -154,7 +172,7 @@ import { LabService } from '../lab/shared/services';
     InvestigationsComponent,
     UploadFilesComponent,
     // HistoryComponent,
-    // ExaminationComponent,
+    ExaminationComponent,
     // VitalsComponent,
     CaseRecordComponent,
     // AncComponent,

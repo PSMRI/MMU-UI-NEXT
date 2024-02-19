@@ -1,0 +1,454 @@
+<!-- {{signsForm.value | json}} -->
+<div class="row m-t-10" [formGroup]="signsForm">
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.shortnessofbreath
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    <mat-radio-group
+      name="shortnessOfBreath"
+      formControlName="shortnessOfBreath">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell" *ngIf="female">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.lumpinbreast
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell" *ngIf="female">
+    <mat-radio-group
+      name="lumpInTheBreast"
+      id="lumpInTheBreast"
+      formControlName="lumpInTheBreast">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.coughweeks
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    <mat-radio-group name="coughgt2Weeks" formControlName="coughgt2Weeks">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell" *ngIf="female">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.bloodstaineddischargefromnipple
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell" *ngIf="female">
+    <mat-radio-group
+      name="bloodStainedDischargeFromNipple"
+      id="bloodStainedDischargeFromNipple"
+      formControlName="bloodStainedDischargeFromNipple">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.bloodinsputum
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    <mat-radio-group name="bloodInSputum" formControlName="bloodInSputum">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell" *ngIf="female">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.changeinshapeandsizeofbreasts
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell" *ngIf="female">
+    <mat-radio-group
+      name="changeInShapeAndSizeOfBreasts"
+      id="changeInShapeAndSizeOfBreasts"
+      formControlName="changeInShapeAndSizeOfBreasts">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.difficultyinopeningmouth
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    <mat-radio-group
+      name="difficultyInOpeningMouth"
+      formControlName="difficultyInOpeningMouth">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell" *ngIf="female">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.vaginalbleedingbetweenperiods
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell" *ngIf="female">
+    <mat-radio-group
+      name="vaginalBleedingBetweenPeriods"
+      id="vaginalBleedingBetweenPeriods"
+      formControlName="vaginalBleedingBetweenPeriods">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.nonhealing
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    <mat-radio-group
+      name="nonHealingUlcerOrPatchOrGrowth"
+      formControlName="nonHealingUlcerOrPatchOrGrowth">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div
+    class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell"
+    *ngIf="female30">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.vaginalbleedingaftermenopause
+    }}
+  </div>
+  <div
+    class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell"
+    *ngIf="female30">
+    <mat-radio-group
+      name="vaginalBleedingAfterMenopause"
+      id="vaginalBleedingAfterMenopause"
+      formControlName="vaginalBleedingAfterMenopause">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.changeInTheToneOfVoice
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    <mat-radio-group
+      name="changeInTheToneOfVoice"
+      formControlName="changeInTheToneOfVoice">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.breastEnlargement
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell">
+    <mat-radio-group
+      name="breastEnlargement"
+      formControlName="breastEnlargement">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell" *ngIf="female">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.foulsmellingvaginaldischarge
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 custom-cell" *ngIf="female">
+    <mat-radio-group
+      name="foulSmellingVaginalDischarge"
+      id="foulSmellingVaginalDischarge"
+      formControlName="foulSmellingVaginalDischarge">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.yes
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12">
+    <mat-form-field class="form-textarea">
+      <textarea
+        matInput
+        allowText="textAreaValidator"
+        defaultNull
+        maxlength="300"
+        name="observation"
+        formControlName="observation"
+        matTextareaAutosize
+        placeholder="{{
+          currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+            ?.symptoms?.briefHistory
+        }}"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-3 m-t-10 custom-cell">
+    {{
+      currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
+        ?.lymphnodes
+    }}
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-9 m-t-10 custom-cell">
+    <mat-radio-group
+      name="lymphNode_Enlarged"
+      formControlName="lymphNode_Enlarged"
+      (change)="checkLymph(lymphNode_Enlarged)">
+      <mat-radio-button color="primary" class="form-radio-btn" [value]="true">{{
+        currentLanguageSet?.common?.enlarged
+      }}</mat-radio-button>
+      <mat-radio-button
+        color="primary"
+        class="form-radio-btn"
+        [value]="false"
+        >{{ currentLanguageSet?.common?.notEnlarged }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 table-responsive">
+    <table
+      class="table table-bordered"
+      mat-table
+      [dataSource]="dataSource"
+      formArrayName="lymphNodes"
+      *ngIf="lymphNode_Enlarged"
+      aria-describedby="lymphNodes">
+      <ng-container matColumnDef="left">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          {{ currentLanguageSet?.common?.left }}
+        </th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <mat-button-toggle-group
+            [attr.name]="'size_Left_' + i"
+            formControlName="size_Left">
+            <mat-button-toggle value="<3 cm"> < 3 </mat-button-toggle>
+            <mat-button-toggle value="3-6 cm">3-6 cm </mat-button-toggle>
+            <mat-button-toggle value=">6 cm">6 cm </mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mobility_left">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          {{
+            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+              ?.symptoms?.mobility
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <mat-button-toggle-group
+            [attr.name]="'mobility_Left_' + i"
+            formControlName="mobility_Left">
+            <mat-button-toggle [value]="true"> + </mat-button-toggle>
+            <mat-button-toggle [value]="false"> - </mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lymphnodes">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          {{
+            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+              ?.symptoms?.lymphnodes
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          {{ element.get('lymphNodeName').value }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mobility_right">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          {{
+            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+              ?.symptoms?.mobility
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <mat-button-toggle-group
+            [attr.name]="'mobility_Right_' + i"
+            formControlName="mobility_Right">
+            <mat-button-toggle [value]="true"> + </mat-button-toggle>
+            <mat-button-toggle [value]="false"> - </mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="right">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          {{ currentLanguageSet?.common?.right }}
+        </th>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <mat-button-toggle-group
+            [attr.name]="'size_Right_' + i"
+            formControlName="size_Right">
+            <mat-button-toggle value="<3 cm"> < 3 </mat-button-toggle>
+            <mat-button-toggle value="3-6 cm">3-6 cm </mat-button-toggle>
+            <mat-button-toggle value=">6 cm">6 cm</mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+  <div
+    class="pull-center"
+    style="margin-top: 5px"
+    [hidden]="dataSource.data.length > 0">
+    <strong>{{ currentLanguageSet?.noRecordsFound }}</strong>
+  </div>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    [pageSize]="5"
+    showFirstLastButtons
+    aria-label="Select patient in nurseWorklist">
+  </mat-paginator>
+</div>

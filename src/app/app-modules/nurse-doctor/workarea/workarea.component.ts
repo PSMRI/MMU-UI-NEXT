@@ -139,6 +139,7 @@ export class WorkareaComponent
   patientPNCForm!: FormGroup;
   patientReferForm!: FormGroup;
   patientCaseRecordForm!: FormGroup;
+  patientExaminationForm!: FormGroup;
 
   constructor(
     private router: Router,
@@ -338,10 +339,14 @@ export class WorkareaComponent
             'patientVitalsForm',
             new CancerUtils(this.fb).createNurseCancerPatientVitalsForm()
           );
-          this.patientMedicalForm.addControl(
-            'patientExaminationForm',
-            new CancerUtils(this.fb).createCancerExaminationForm()
-          );
+          this.patientMedicalForm = this.fb.group({
+            patientExaminationForm: new CancerUtils(
+              this.fb
+            ).createCancerExaminationForm(),
+          });
+          this.patientExaminationForm = this.patientMedicalForm.get(
+            'patientExaminationForm'
+          ) as FormGroup;
 
           this.getCurrentVitals();
 
@@ -392,10 +397,14 @@ export class WorkareaComponent
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
           );
-          this.patientMedicalForm.addControl(
-            'patientExaminationForm',
-            new GeneralUtils(this.fb).createPatientExaminationForm()
-          );
+          this.patientMedicalForm = this.fb.group({
+            patientExaminationForm: new GeneralUtils(
+              this.fb
+            ).createPatientExaminationForm(),
+          });
+          this.patientExaminationForm = this.patientMedicalForm.get(
+            'patientExaminationForm'
+          ) as FormGroup;
 
           this.getCurrentVitals();
 
@@ -503,10 +512,14 @@ export class WorkareaComponent
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
           );
-          this.patientMedicalForm.addControl(
-            'patientExaminationForm',
-            new GeneralUtils(this.fb).createPatientExaminationForm()
-          );
+          this.patientMedicalForm = this.fb.group({
+            patientExaminationForm: new GeneralUtils(
+              this.fb
+            ).createPatientExaminationForm(),
+          });
+          this.patientExaminationForm = this.patientMedicalForm.get(
+            'patientExaminationForm'
+          ) as FormGroup;
 
           this.getCurrentVitals();
 
@@ -566,10 +579,14 @@ export class WorkareaComponent
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
           );
-          this.patientMedicalForm.addControl(
-            'patientExaminationForm',
-            new GeneralUtils(this.fb).createPatientExaminationForm()
-          );
+          this.patientMedicalForm = this.fb.group({
+            patientExaminationForm: new GeneralUtils(
+              this.fb
+            ).createPatientExaminationForm(),
+          });
+          this.patientExaminationForm = this.patientMedicalForm.get(
+            'patientExaminationForm'
+          ) as FormGroup;
 
           this.getCurrentVitals();
           this.patchLMPDate();
