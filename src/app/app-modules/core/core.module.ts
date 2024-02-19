@@ -48,6 +48,8 @@ import { CanDeactivateGuardService } from './services/can-deactivate-guard.servi
 import { BeneficiaryDetailsComponent } from './components/beneficiary-details/beneficiary-details.component';
 import { PreviousDetailsComponent } from './components/previous-details/previous-details.component';
 import { MatTableModule } from '@angular/material/table';
+import { IotcomponentComponent } from './components/iotcomponent/iotcomponent.component';
+import { CalibrationComponent } from './components/calibration/calibration.component';
 
 @NgModule({
   imports: [
@@ -72,9 +74,12 @@ import { MatTableModule } from '@angular/material/table';
     AppFooterComponent,
     AppHeaderComponent,
     PreviousDetailsComponent,
-    // ShowCommitAndVersionDetailsComponent,CalibrationComponent,
+    // ShowCommitAndVersionDetailsComponent,
+    CalibrationComponent,
     // myEmail, myMobileNumber, OpenModalDirective, ConfirmatoryDiagnosisDirective, myName, myPassword, StringValidator, NullDefaultValueDirective, NumberValidator, DisableFormControlDirective,
-    // ViewRadiologyUploadedFilesComponent, IotcomponentComponent,IotBluetoothComponent,AllergenSearchComponent, DataSyncLoginComponent,OpenPreviousVisitDetailsComponent,
+    // ViewRadiologyUploadedFilesComponent,
+    IotcomponentComponent,
+    // IotBluetoothComponent,AllergenSearchComponent, DataSyncLoginComponent,OpenPreviousVisitDetailsComponent,
   ],
   exports: [
     MaterialModule,
@@ -92,8 +97,10 @@ import { MatTableModule } from '@angular/material/table';
     PreviousDetailsComponent,
     // PaginationModule,
     // myEmail, myMobileNumber, OpenModalDirective, ConfirmatoryDiagnosisDirective, myName, myPassword, DisableFormControlDirective, StringValidator, NumberValidator, NullDefaultValueDirective,
-    // IotcomponentComponent,
-    // AllergenSearchComponent, DataSyncLoginComponent,CalibrationComponent,OpenPreviousVisitDetailsComponent
+    IotcomponentComponent,
+    // AllergenSearchComponent, DataSyncLoginComponent,
+    CalibrationComponent,
+    //OpenPreviousVisitDetailsComponent
   ],
   // entryComponents: [
   //   CommonDialogComponent,
@@ -104,10 +111,11 @@ import { MatTableModule } from '@angular/material/table';
   //   ProvisionalSearchComponent,
   //   ShowCommitAndVersionDetailsComponent,
   //   ViewRadiologyUploadedFilesComponent,
-  //   IotcomponentComponent,
+  // IotcomponentComponent,
   // IotBluetoothComponent,
   //   AllergenSearchComponent,
-  //   DataSyncLoginComponent,CalibrationComponent,
+  //   DataSyncLoginComponent,
+  // CalibrationComponent,
   //   OpenPreviousVisitDetailsComponent
   // ]
 })

@@ -138,6 +138,7 @@ export class WorkareaComponent
   patientANCForm!: FormGroup;
   patientPNCForm!: FormGroup;
   patientReferForm!: FormGroup;
+  patientVitalsForm!: FormGroup;
 
   constructor(
     private router: Router,
@@ -326,6 +327,9 @@ export class WorkareaComponent
               'patientVitalsForm',
               new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
             );
+            this.patientVitalsForm = this.patientMedicalForm.get(
+              'patientVitalsForm'
+            ) as FormGroup;
             this.showVitals = true;
           }
         } else if (categoryValue == 'Cancer Screening') {
@@ -337,6 +341,9 @@ export class WorkareaComponent
             'patientVitalsForm',
             new CancerUtils(this.fb).createNurseCancerPatientVitalsForm()
           );
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientExaminationForm',
             new CancerUtils(this.fb).createCancerExaminationForm()
@@ -386,6 +393,9 @@ export class WorkareaComponent
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
           );
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientExaminationForm',
             new GeneralUtils(this.fb).createPatientExaminationForm()
@@ -433,6 +443,9 @@ export class WorkareaComponent
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
           );
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientHistoryForm',
             new GeneralUtils(this.fb).createNCDScreeningHistoryForm()
@@ -487,6 +500,9 @@ export class WorkareaComponent
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
           );
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientExaminationForm',
             new GeneralUtils(this.fb).createPatientExaminationForm()
@@ -545,6 +561,9 @@ export class WorkareaComponent
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
           );
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientExaminationForm',
             new GeneralUtils(this.fb).createPatientExaminationForm()
@@ -598,6 +617,9 @@ export class WorkareaComponent
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
           );
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
 
           this.getCurrentVitals();
 
@@ -640,6 +662,9 @@ export class WorkareaComponent
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
           );
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
 
           this.getCurrentVitals();
 

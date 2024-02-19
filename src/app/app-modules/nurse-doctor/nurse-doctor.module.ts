@@ -63,6 +63,9 @@ import { DoctorWorklistComponent } from './doctor-worklist/doctor-worklist.compo
 import { GeneralReferComponent } from './refer/general-refer/general-refer.component';
 import { ReferComponent } from './refer/refer.component';
 import { CancerReferComponent } from './refer/cancer-refer/cancer-refer.component';
+import { VitalsComponent } from './vitals/vitals.component';
+import { CancerPatientVitalsComponent } from './vitals/cancer-patient-vitals/cancer-patient-vitals.component';
+import { GeneralPatientVitalsComponent } from './vitals/general-patient-vitals/general-patient-vitals.component';
 
 @NgModule({
   imports: [
@@ -102,8 +105,8 @@ import { CancerReferComponent } from './refer/cancer-refer/cancer-refer.componen
     // HeadToToeExaminationComponent,
     // GeneralExaminationComponent,
     // GeneralOpdExaminationComponent,
-    // CancerPatientVitalsComponent,
-    // GeneralPatientVitalsComponent,
+    CancerPatientVitalsComponent,
+    GeneralPatientVitalsComponent,
     // MedicationHistoryComponent,
     // DevelopmentHistoryComponent,
     // FeedingHistoryComponent,
@@ -135,7 +138,7 @@ import { CancerReferComponent } from './refer/cancer-refer/cancer-refer.componen
     UploadFilesComponent,
     // HistoryComponent,
     // ExaminationComponent,
-    // VitalsComponent,
+    VitalsComponent,
     // CaseRecordComponent,
     // AncComponent,
     PncComponent,
