@@ -101,6 +101,9 @@ import { GastroIntestinalSystemComponent } from './examination/general-opd-exami
 import { CentralNervousSystemComponent } from './examination/general-opd-examination/systemic-examination/central-nervous-system/central-nervous-system.component';
 import { CardioVascularSystemComponent } from './examination/general-opd-examination/systemic-examination/cardio-vascular-system/cardio-vascular-system.component';
 import { SignsAndSymptomsComponent } from './examination/cancer-examination/signs-and-symptoms/signs-and-symptoms.component';
+import { VitalsComponent } from './vitals/vitals.component';
+import { CancerPatientVitalsComponent } from './vitals/cancer-patient-vitals/cancer-patient-vitals.component';
+import { GeneralPatientVitalsComponent } from './vitals/general-patient-vitals/general-patient-vitals.component';
 
 @NgModule({
   imports: [
@@ -140,8 +143,8 @@ import { SignsAndSymptomsComponent } from './examination/cancer-examination/sign
     HeadToToeExaminationComponent,
     GeneralExaminationComponent,
     GeneralOpdExaminationComponent,
-    // CancerPatientVitalsComponent,
-    // GeneralPatientVitalsComponent,
+    CancerPatientVitalsComponent,
+    GeneralPatientVitalsComponent,
     // MedicationHistoryComponent,
     // DevelopmentHistoryComponent,
     // FeedingHistoryComponent,
@@ -173,8 +176,8 @@ import { SignsAndSymptomsComponent } from './examination/cancer-examination/sign
     UploadFilesComponent,
     // HistoryComponent,
     ExaminationComponent,
-    // VitalsComponent,
     CaseRecordComponent,
+    VitalsComponent,
     // AncComponent,
     PncComponent,
     // NcdScreeningComponent,
