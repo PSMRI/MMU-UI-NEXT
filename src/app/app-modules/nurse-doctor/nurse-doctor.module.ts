@@ -126,6 +126,22 @@ import { PhysicalActivityHistoryComponent } from './history/general-opd-history/
 import { FamilyHistoryNcdscreeningComponent } from './history/general-opd-history/family-history-ncdscreening/family-history-ncdscreening.component';
 import { RadiologistWorklistComponent } from './radiologist-worklist/radiologist-worklist.component';
 import { OncologistWorklistComponent } from './oncologist-worklist/oncologist-worklist.component';
+import { CancerCaseSheetComponent } from './case-sheet/cancer-case-sheet/cancer-case-sheet.component';
+import { GeneralCaseSheetComponent } from './case-sheet/general-case-sheet/general-case-sheet.component';
+import { HistoryCaseSheetComponent } from './case-sheet/general-case-sheet/history-case-sheet/history-case-sheet.component';
+import { ExaminationCaseSheetComponent } from './case-sheet/general-case-sheet/examination-case-sheet/examination-case-sheet.component';
+import { AncCaseSheetComponent } from './case-sheet/general-case-sheet/anc-case-sheet/anc-case-sheet.component';
+import { CaseSheetComponent } from './case-sheet/case-sheet.component';
+import { PncCaseSheetComponent } from './case-sheet/general-case-sheet/pnc-case-sheet/pnc-case-sheet.component';
+import { DoctorDiagnosisCaseSheetComponent } from './case-sheet/general-case-sheet/doctor-diagnosis-case-sheet/doctor-diagnosis-case-sheet.component';
+import { ImageToCanvasComponent } from './case-sheet/cancer-case-sheet/image-to-canvas/image-to-canvas.component';
+import { CancerDoctorDiagnosisCaseSheetComponent } from './case-sheet/cancer-case-sheet/cancer-doctor-diagnosis-case-sheet/cancer-doctor-diagnosis-case-sheet.component';
+import { CancerHistoryCaseSheetComponent } from './case-sheet/cancer-case-sheet/cancer-history-case-sheet/cancer-history-case-sheet.component';
+import { CancerExaminationCaseSheetComponent } from './case-sheet/cancer-case-sheet/cancer-examination-case-sheet/cancer-examination-case-sheet.component';
+import { PrintPageSelectComponent } from './print-page-select/print-page-select.component';
+import { PrescribeTmMedicineComponent } from './case-sheet/prescribe-tm-medicine/prescribe-tm-medicine.component';
+import { TmcconfirmationComponent } from './tm-visit-details/tmcconfirmation/tmcconfirmation.component';
+import { TmVisitDetailsComponent } from './tm-visit-details/tm-visit-details.component';
 
 @NgModule({
   imports: [
@@ -146,7 +162,7 @@ import { OncologistWorklistComponent } from './oncologist-worklist/oncologist-wo
   ],
   declarations: [
     NurseWorklistComponent,
-    // PrintPageSelectComponent,
+    PrintPageSelectComponent,
     // QuickConsultComponent,
     CancerExaminationComponent,
     GynecologicalExaminationComponent,
@@ -209,10 +225,10 @@ import { OncologistWorklistComponent } from './oncologist-worklist/oncologist-wo
     GeneralCaseRecordComponent,
     CancerReferComponent,
     GeneralReferComponent,
-    // CancerCaseSheetComponent,
-    // GeneralCaseSheetComponent,
+    CancerCaseSheetComponent,
+    GeneralCaseSheetComponent,
     ReferComponent,
-    // PrintPageSelectComponent,
+    PrintPageSelectComponent,
     PreviousVisitDetailsComponent,
     FindingsComponent,
     DiagnosisComponent,
@@ -223,20 +239,20 @@ import { OncologistWorklistComponent } from './oncologist-worklist/oncologist-wo
     OncologistWorklistComponent,
     GeneralOpdDiagnosisComponent,
     AncDiagnosisComponent,
-    // CaseSheetComponent,
+    CaseSheetComponent,
     NcdCareDiagnosisComponent,
     PncDiagnosisComponent,
     PreviousSignificiantFindingsComponent,
     ViewTestReportComponent,
-    // HistoryCaseSheetComponent,
-    // ExaminationCaseSheetComponent,
-    // AncCaseSheetComponent,
-    // PncCaseSheetComponent,
-    // DoctorDiagnosisCaseSheetComponent,
-    // ImageToCanvasComponent,
-    // CancerDoctorDiagnosisCaseSheetComponent,
-    // CancerHistoryCaseSheetComponent,
-    // CancerExaminationCaseSheetComponent,
+    HistoryCaseSheetComponent,
+    ExaminationCaseSheetComponent,
+    AncCaseSheetComponent,
+    PncCaseSheetComponent,
+    DoctorDiagnosisCaseSheetComponent,
+    ImageToCanvasComponent,
+    CancerDoctorDiagnosisCaseSheetComponent,
+    CancerHistoryCaseSheetComponent,
+    CancerExaminationCaseSheetComponent,
     BeneficiaryMctsCallHistoryComponent,
     BeneficiaryPlatformHistoryComponent,
     // ReportsComponent,
@@ -251,9 +267,9 @@ import { OncologistWorklistComponent } from './oncologist-worklist/oncologist-wo
     NurseWorklistTabsComponent,
     NurseRefferedWorklistComponent,
     DiseaseconfirmationComponent,
-    // TmcconfirmationComponent,
-    // TmVisitDetailsComponent,
-    // PrescribeTmMedicineComponent,
+    TmcconfirmationComponent,
+    TmVisitDetailsComponent,
+    PrescribeTmMedicineComponent,
     CovidVaccinationStatusComponent,
   ],
 

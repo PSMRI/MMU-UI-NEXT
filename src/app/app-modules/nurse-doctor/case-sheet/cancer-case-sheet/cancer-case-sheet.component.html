@@ -1,0 +1,96 @@
+<nav class="navbar navbar-default navbar-fixed-top" *ngIf="!hideBack">
+  <div class="container non-printable">
+    <div class="row">
+      <button
+        mat-raised-button
+        color="primary"
+        class="pull-right"
+        (click)="printPage()">
+        {{ currentLanguageSet?.casesheet?.print }}
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        class="pull-left"
+        (click)="goBack()">
+        {{ currentLanguageSet?.casesheet?.back }}
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="m-t-60 non-printable"></div>
+
+<div>
+  <app-cancer-doctor-diagnosis-case-sheet
+    [printPagePreviewSelect]="printPagePreviewSelect"
+    [caseSheetData]="caseSheetData"
+    [previous]="previous"></app-cancer-doctor-diagnosis-case-sheet>
+  <div class="page-break"></div>
+  <ng-container *ngIf="printPagePreviewSelect.caseSheetHistory">
+    <app-cancer-history-case-sheet
+      [caseSheetData]="caseSheetData"
+      [previous]="previous"></app-cancer-history-case-sheet>
+    <div class="page-break"></div>
+  </ng-container>
+  <ng-container *ngIf="printPagePreviewSelect.caseSheetExamination">
+    <app-cancer-examination-case-sheet
+      [caseSheetData]="caseSheetData"
+      [previous]="previous"></app-cancer-examination-case-sheet>
+  </ng-container>
+</div>
+
+<button
+  mat-mini-fab
+  matTooltip="{{ currentLanguageSet?.casesheet?.workList }}"
+  matTooltipPosition="left"
+  class="example-fab back non-printable"
+  color="primary"
+  (click)="goBack()"
+  *ngIf="!hideBack">
+  <mat-icon>chevron_left</mat-icon>
+</button>
+
+<button
+  mat-mini-fab
+  matTooltip="{{ currentLanguageSet?.casesheet?.goTop }}"
+  matTooltipPosition="left"
+  class="example-fab upward non-printable"
+  color="primary"
+  (click)="goToTop()"
+  *ngIf="!previous">
+  <mat-icon>arrow_upward</mat-icon>
+</button>
+
+<button
+  mat-mini-fab
+  matTooltip="{{ currentLanguageSet?.casesheet?.printCaseheet }}"
+  matTooltipPosition="left"
+  class="example-fab print non-printable"
+  color="primary"
+  (click)="printPage()"
+  *ngIf="!previous">
+  <mat-icon>print</mat-icon>
+</button>
+
+<button
+  mat-mini-fab
+  matTooltip="{{ currentLanguageSet?.casesheet?.caseComponent }}"
+  matTooltipPosition="left"
+  class="example-fab select non-printable"
+  color="primary"
+  (click)="selectPrintPage()"
+  *ngIf="!previous">
+  <mat-icon>view_module</mat-icon>
+</button>
+
+<button
+  *ngIf="oncologistRemarks"
+  mat-mini-fab
+  matTooltip="{{ currentLanguageSet?.common?.enterOncologistObservation }}"
+  matTooltipPosition="right"
+  class="comment-fab edit non-printable"
+  color="primary"
+  (click)="getOncologistRemarks()">
+  <mat-icon>edit</mat-icon>
+</button>

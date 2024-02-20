@@ -210,7 +210,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
           if (print) {
             const url = environment.newTaburl;
             window.open(
-              url + '/#/common/print/' + serviceType + '/' + 'previous'
+              url + '/#/nurse-doctor/print/' + serviceType + '/' + 'previous'
             );
           } else {
             // this.dialog.open(CaseSheetComponent, {

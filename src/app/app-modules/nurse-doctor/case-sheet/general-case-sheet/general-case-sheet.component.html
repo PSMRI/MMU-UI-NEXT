@@ -1,0 +1,112 @@
+<div class="container non-printable m-t-10" *ngIf="!hideBack">
+  <div class="row">
+    <button
+      *ngIf="enablePrescriptionButton === true"
+      mat-raised-button
+      color="primary"
+      class="pull-right"
+      style="margin-left: 10px"
+      (click)="prescribeTMMedicine()">
+      {{ currentLanguageSet?.casesheet?.PrescribeTmMedicine }}
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="pull-right"
+      (click)="downloadCasesheet()">
+      {{ currentLanguageSet?.casesheet?.print }}
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="pull-left"
+      (click)="goBack()">
+      {{ currentLanguageSet?.common?.back }}
+    </button>
+  </div>
+</div>
+
+<button
+  mat-mini-fab
+  matTooltip="{{ currentLanguageSet?.casesheet?.workList }}"
+  matTooltipPosition="left"
+  class="example-fab back non-printable"
+  color="primary"
+  (click)="goBack()"
+  *ngIf="!hideBack">
+  <mat-icon>chevron_left</mat-icon>
+</button>
+
+<button
+  mat-mini-fab
+  matTooltip="{{ currentLanguageSet?.casesheet?.goTop }}"
+  matTooltipPosition="left"
+  class="example-fab upward non-printable"
+  color="primary"
+  (click)="goToTop()"
+  *ngIf="!previous">
+  <mat-icon>arrow_upward</mat-icon>
+</button>
+
+<button
+  mat-mini-fab
+  matTooltip="{{ currentLanguageSet?.casesheet?.printCaseheet }}"
+  matTooltipPosition="left"
+  class="example-fab print non-printable"
+  color="primary"
+  (click)="downloadCasesheet()"
+  *ngIf="!previous">
+  <mat-icon>print</mat-icon>
+</button>
+
+<button
+  *ngIf="!hideSelectQC"
+  mat-mini-fab
+  matTooltip="{{ currentLanguageSet?.casesheet?.caseComponent }}"
+  matTooltipPosition="left"
+  matTooltipClass="iemr-tooltip"
+  class="example-fab select non-printable"
+  color="primary"
+  (click)="selectPrintPage()">
+  <mat-icon>view_module</mat-icon>
+</button>
+
+<div class="p-t-10 p-b-10">
+  <app-doctor-diagnosis-case-sheet
+    [printPagePreviewSelect]="printPagePreviewSelect"
+    [caseSheetData]="caseSheetData"
+    [previous]="previous"></app-doctor-diagnosis-case-sheet>
+  <div class="page-break" *ngIf="visitCategory !== 'General OPD (QC)'"></div>
+  <ng-container *ngIf="printPagePreviewSelect?.caseSheetANC">
+    <app-anc-case-sheet
+      *ngIf="visitCategory === 'ANC'"
+      [caseSheetData]="caseSheetData"
+      [previous]="previous"></app-anc-case-sheet>
+    <div class="page-break"></div>
+  </ng-container>
+  <ng-container *ngIf="printPagePreviewSelect?.caseSheetPNC">
+    <app-pnc-case-sheet
+      *ngIf="visitCategory === 'PNC'"
+      [caseSheetData]="caseSheetData"
+      [previous]="previous"></app-pnc-case-sheet>
+    <div class="page-break"></div>
+  </ng-container>
+  <ng-container *ngIf="printPagePreviewSelect?.caseSheetHistory">
+    <app-history-case-sheet
+      *ngIf="visitCategory !== 'General OPD (QC)'"
+      [caseSheetData]="caseSheetData"
+      [previous]="previous"></app-history-case-sheet>
+    <div class="page-break"></div>
+  </ng-container>
+  <ng-container *ngIf="printPagePreviewSelect?.caseSheetExamination">
+    <app-examination-case-sheet
+      *ngIf="
+        visitCategory !== 'NCD care' &&
+        visitCategory !== 'General OPD (QC)' &&
+        visitCategory !== 'NCD screening' &&
+        visitCategory !== 'COVID-19 Screening'
+      "
+      [caseSheetData]="caseSheetData"
+      [previous]="previous"></app-examination-case-sheet>
+  </ng-container>
+</div>

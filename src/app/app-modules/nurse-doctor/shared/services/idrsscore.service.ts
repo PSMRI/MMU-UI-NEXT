@@ -307,7 +307,7 @@ export class IdrsscoreService {
     this.hypertensionSelectedFlag.next(0);
   }
 
-  isHypertensionConfirmed = null;
+  isHypertensionConfirmed = false;
 
   setConfirmedDiabeticSelected() {
     this.confirmedDiabeticSelected = 1;
@@ -318,5 +318,5 @@ export class IdrsscoreService {
     this.confirmedDiabeticSelectedFlag.next(0);
   }
 
-  isDiabeticsConfirmed = null;
+  isDiabeticsConfirmed = false;
 }

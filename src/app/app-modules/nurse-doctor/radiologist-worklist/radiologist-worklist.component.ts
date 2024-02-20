@@ -279,7 +279,9 @@ export class RadiologistWorklistComponent
               beneficiary.beneficiaryRegID
             );
             localStorage.setItem('caseSheetVisitID', beneficiary.benVisitID);
-            this.router.navigate(['/common/print/' + 'MMU' + '/' + 'current']);
+            this.router.navigate([
+              '/nurse-doctor/print/' + 'MMU' + '/' + 'current',
+            ]);
           }
         });
     }

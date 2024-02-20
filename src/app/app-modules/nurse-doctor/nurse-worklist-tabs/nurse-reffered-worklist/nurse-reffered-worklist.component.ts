@@ -401,6 +401,6 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
     localStorage.setItem('caseSheetTMFlag', 'true');
   }
   routeToCaseSheet() {
-    this.router.navigate(['/common/print/' + 'MMU' + '/' + 'current']);
+    this.router.navigate(['/nurse-doctor/print/' + 'MMU' + '/' + 'current']);
   }
 }
