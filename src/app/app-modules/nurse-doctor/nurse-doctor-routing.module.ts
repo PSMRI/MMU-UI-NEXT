@@ -28,6 +28,7 @@ import { WorkareaCanActivate } from './workarea/workarea-can-activate.service';
 import { CanDeactivateGuardService } from '../core/services/can-deactivate-guard.service';
 import { NurseWorklistTabsComponent } from './nurse-worklist-tabs/nurse-worklist-tabs.component';
 import { DoctorWorklistComponent } from './doctor-worklist/doctor-worklist.component';
+import { GeneralCaseRecordComponent } from './case-record/general-case-record/general-case-record.component';
 
 const routes: Routes = [
   {
@@ -75,10 +76,10 @@ const routes: Routes = [
   //   path: 'print/:serviceType/:printablePage',
   //   component: CaseSheetComponent
   // },
-  // {
-  //   path: 'generalcaserec',
-  //   component: GeneralCaseRecordComponent
-  // }
+  {
+    path: 'generalcaserec',
+    component: GeneralCaseRecordComponent,
+  },
 ];
 
 @NgModule({

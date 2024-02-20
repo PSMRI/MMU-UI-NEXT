@@ -46,6 +46,7 @@ import { CameraDialogComponent } from './components/camera-dialog/camera-dialog.
 import { WebcamImage, WebcamInitError, WebcamModule } from 'ngx-webcam';
 import { CanDeactivateGuardService } from './services/can-deactivate-guard.service';
 import { BeneficiaryDetailsComponent } from './components/beneficiary-details/beneficiary-details.component';
+import { ViewRadiologyUploadedFilesComponent } from './components/view-radiology-uploaded-files/view-radiology-uploaded-files.component';
 import { PreviousDetailsComponent } from './components/previous-details/previous-details.component';
 import { MatTableModule } from '@angular/material/table';
 import { IotcomponentComponent } from './components/iotcomponent/iotcomponent.component';
@@ -86,6 +87,8 @@ import { myEmailDirective } from './directives/email/myEmail.directive';
     BeneficiaryDetailsComponent,
     AppFooterComponent,
     AppHeaderComponent,
+    ViewRadiologyUploadedFilesComponent,
+    // PreviousDetailsComponent,
     PreviousDetailsComponent,
     // ShowCommitAndVersionDetailsComponent,
     CalibrationComponent,

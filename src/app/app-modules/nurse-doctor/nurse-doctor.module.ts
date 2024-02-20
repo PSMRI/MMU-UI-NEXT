@@ -63,6 +63,44 @@ import { DoctorWorklistComponent } from './doctor-worklist/doctor-worklist.compo
 import { GeneralReferComponent } from './refer/general-refer/general-refer.component';
 import { ReferComponent } from './refer/refer.component';
 import { CancerReferComponent } from './refer/cancer-refer/cancer-refer.component';
+import { CancerCaseRecordComponent } from './case-record/cancer-case-record/cancer-case-record.component';
+import { GeneralCaseRecordComponent } from './case-record/general-case-record/general-case-record.component';
+import { BeneficiaryPlatformHistoryComponent } from './case-record/beneficiary-platform-history/beneficiary-platform-history.component';
+import { BeneficiaryMctsCallHistoryComponent } from './case-record/beneficiary-mcts-call-history/beneficiary-mcts-call-history.component';
+import { CaseRecordComponent } from './case-record/case-record.component';
+import { TestAndRadiologyComponent } from './case-record/general-case-record/test-and-radiology/test-and-radiology.component';
+import { ViewTestReportComponent } from './case-record/general-case-record/test-and-radiology/view-test-report/view-test-report.component';
+import { PreviousVisitDetailsComponent } from './case-record/general-case-record/previous-visit-details/previous-visit-details.component';
+import { PreviousSignificiantFindingsComponent } from './case-record/general-case-record/previous-significiant-findings/previous-significiant-findings.component';
+import { PrescriptionComponent } from './case-record/general-case-record/prescription/prescription.component';
+import { FindingsComponent } from './case-record/general-case-record/findings/findings.component';
+import { DiagnosisComponent } from './case-record/general-case-record/diagnosis/diagnosis.component';
+import { DoctorInvestigationsComponent } from './case-record/general-case-record/doctor-investigations/doctor-investigations.component';
+import { GeneralOpdDiagnosisComponent } from './case-record/general-case-record/diagnosis/general-opd-diagnosis/general-opd-diagnosis.component';
+import { AncDiagnosisComponent } from './case-record/general-case-record/diagnosis/anc-diagnosis/anc-diagnosis.component';
+import { NcdCareDiagnosisComponent } from './case-record/general-case-record/diagnosis/ncd-care-diagnosis/ncd-care-diagnosis.component';
+import { PncDiagnosisComponent } from './case-record/general-case-record/diagnosis/pnc-diagnosis/pnc-diagnosis.component';
+import { CovidDiagnosisComponent } from './case-record/general-case-record/diagnosis/covid-diagnosis/covid-diagnosis.component';
+import { NcdScreeningDiagnosisComponent } from './case-record/general-case-record/diagnosis/ncd-screening-diagnosis/ncd-screening-diagnosis.component';
+import { LabService } from '../lab/shared/services';
+import { ExaminationComponent } from './examination/examination.component';
+import { SystemicExaminationComponent } from './examination/general-opd-examination/systemic-examination/systemic-examination.component';
+import { GeneralOpdExaminationComponent } from './examination/general-opd-examination/general-opd-examination.component';
+import { GeneralExaminationComponent } from './examination/general-opd-examination/general-examination/general-examination.component';
+import { HeadToToeExaminationComponent } from './examination/general-opd-examination/head-to-toe-examination/head-to-toe-examination.component';
+import { ObstetricExaminationComponent } from './examination/general-opd-examination/systemic-examination/obstetric-examination/obstetric-examination.component';
+import { OralExaminationComponent } from './examination/cancer-examination/oral-examination/oral-examination.component';
+import { BreastExaminationComponent } from './examination/cancer-examination/breast-examination/breast-examination.component';
+import { AbdominalExaminationComponent } from './examination/cancer-examination/abdominal-examination/abdominal-examination.component';
+import { GynecologicalExaminationComponent } from './examination/cancer-examination/gynecological-examination/gynecological-examination.component';
+import { CancerExaminationComponent } from './examination/cancer-examination/cancer-examination.component';
+import { RespiratorySystemComponent } from './examination/general-opd-examination/systemic-examination/respiratory-system/respiratory-system.component';
+import { MusculoskeletalSystemComponent } from './examination/general-opd-examination/systemic-examination/musculoskeletal-system/musculoskeletal-system.component';
+import { GenitoUrinarySystemComponent } from './examination/general-opd-examination/systemic-examination/genito-urinary-system/genito-urinary-system.component';
+import { GastroIntestinalSystemComponent } from './examination/general-opd-examination/systemic-examination/gastro-intestinal-system/gastro-intestinal-system.component';
+import { CentralNervousSystemComponent } from './examination/general-opd-examination/systemic-examination/central-nervous-system/central-nervous-system.component';
+import { CardioVascularSystemComponent } from './examination/general-opd-examination/systemic-examination/cardio-vascular-system/cardio-vascular-system.component';
+import { SignsAndSymptomsComponent } from './examination/cancer-examination/signs-and-symptoms/signs-and-symptoms.component';
 import { VitalsComponent } from './vitals/vitals.component';
 import { CancerPatientVitalsComponent } from './vitals/cancer-patient-vitals/cancer-patient-vitals.component';
 import { GeneralPatientVitalsComponent } from './vitals/general-patient-vitals/general-patient-vitals.component';
@@ -86,6 +124,8 @@ import { FeedingHistoryComponent } from './history/general-opd-history/feeding-h
 import { OtherVaccinesComponent } from './history/general-opd-history/other-vaccines/other-vaccines.component';
 import { PhysicalActivityHistoryComponent } from './history/general-opd-history/physical-activity-history/physical-activity-history.component';
 import { FamilyHistoryNcdscreeningComponent } from './history/general-opd-history/family-history-ncdscreening/family-history-ncdscreening.component';
+import { RadiologistWorklistComponent } from './radiologist-worklist/radiologist-worklist.component';
+import { OncologistWorklistComponent } from './oncologist-worklist/oncologist-worklist.component';
 
 @NgModule({
   imports: [
@@ -108,23 +148,23 @@ import { FamilyHistoryNcdscreeningComponent } from './history/general-opd-histor
     NurseWorklistComponent,
     // PrintPageSelectComponent,
     // QuickConsultComponent,
-    // CancerExaminationComponent,
-    // GynecologicalExaminationComponent,
-    // AbdominalExaminationComponent,
-    // BreastExaminationComponent,
-    // OralExaminationComponent,
-    // SignsAndSymptomsComponent,
-    // ObstetricExaminationComponent,
-    // GenitoUrinarySystemComponent,
-    // CentralNervousSystemComponent,
-    // MusculoskeletalSystemComponent,
-    // RespiratorySystemComponent,
-    // GastroIntestinalSystemComponent,
-    // CardioVascularSystemComponent,
-    // SystemicExaminationComponent,
-    // HeadToToeExaminationComponent,
-    // GeneralExaminationComponent,
-    // GeneralOpdExaminationComponent,
+    CancerExaminationComponent,
+    GynecologicalExaminationComponent,
+    AbdominalExaminationComponent,
+    BreastExaminationComponent,
+    OralExaminationComponent,
+    SignsAndSymptomsComponent,
+    ObstetricExaminationComponent,
+    GenitoUrinarySystemComponent,
+    CentralNervousSystemComponent,
+    MusculoskeletalSystemComponent,
+    RespiratorySystemComponent,
+    GastroIntestinalSystemComponent,
+    CardioVascularSystemComponent,
+    SystemicExaminationComponent,
+    HeadToToeExaminationComponent,
+    GeneralExaminationComponent,
+    GeneralOpdExaminationComponent,
     CancerPatientVitalsComponent,
     GeneralPatientVitalsComponent,
     MedicationHistoryComponent,
@@ -157,37 +197,37 @@ import { FamilyHistoryNcdscreeningComponent } from './history/general-opd-histor
     InvestigationsComponent,
     UploadFilesComponent,
     HistoryComponent,
-    // ExaminationComponent,
+    ExaminationComponent,
+    CaseRecordComponent,
     VitalsComponent,
-    // CaseRecordComponent,
     // AncComponent,
     PncComponent,
     // NcdScreeningComponent,
     // DashboardComponent,
     WorkareaComponent,
-    // CancerCaseRecordComponent,
-    // GeneralCaseRecordComponent,
+    CancerCaseRecordComponent,
+    GeneralCaseRecordComponent,
     CancerReferComponent,
     GeneralReferComponent,
     // CancerCaseSheetComponent,
     // GeneralCaseSheetComponent,
     ReferComponent,
     // PrintPageSelectComponent,
-    // PreviousVisitDetailsComponent,
-    // FindingsComponent,
-    // DiagnosisComponent,
-    // PrescriptionComponent,
-    // DoctorInvestigationsComponent,
-    // TestAndRadiologyComponent,
-    // RadiologistWorklistComponent,
-    // OncologistWorklistComponent,
-    // GeneralOpdDiagnosisComponent,
-    // AncDiagnosisComponent,
+    PreviousVisitDetailsComponent,
+    FindingsComponent,
+    DiagnosisComponent,
+    PrescriptionComponent,
+    DoctorInvestigationsComponent,
+    TestAndRadiologyComponent,
+    RadiologistWorklistComponent,
+    OncologistWorklistComponent,
+    GeneralOpdDiagnosisComponent,
+    AncDiagnosisComponent,
     // CaseSheetComponent,
-    // NcdCareDiagnosisComponent,
-    // PncDiagnosisComponent,
-    // PreviousSignificiantFindingsComponent,
-    // ViewTestReportComponent,
+    NcdCareDiagnosisComponent,
+    PncDiagnosisComponent,
+    PreviousSignificiantFindingsComponent,
+    ViewTestReportComponent,
     // HistoryCaseSheetComponent,
     // ExaminationCaseSheetComponent,
     // AncCaseSheetComponent,
@@ -197,17 +237,17 @@ import { FamilyHistoryNcdscreeningComponent } from './history/general-opd-histor
     // CancerDoctorDiagnosisCaseSheetComponent,
     // CancerHistoryCaseSheetComponent,
     // CancerExaminationCaseSheetComponent,
-    // BeneficiaryMctsCallHistoryComponent,
-    // BeneficiaryPlatformHistoryComponent,
+    BeneficiaryMctsCallHistoryComponent,
+    BeneficiaryPlatformHistoryComponent,
     // ReportsComponent,
     TravelHistoryComponent,
     ContactHistoryComponent,
     SymptomsComponent,
-    // CovidDiagnosisComponent,
+    CovidDiagnosisComponent,
     // IdrsComponent,
-    // NcdScreeningDiagnosisComponent,
     PhysicalActivityHistoryComponent,
     FamilyHistoryNcdscreeningComponent,
+    NcdScreeningDiagnosisComponent,
     NurseWorklistTabsComponent,
     NurseRefferedWorklistComponent,
     DiseaseconfirmationComponent,
@@ -225,6 +265,7 @@ import { FamilyHistoryNcdscreeningComponent } from './history/general-opd-histor
     HttpServiceService,
     IdrsscoreService,
     TestInVitalsService,
+    LabService,
   ],
   // entryComponents: [PrintPageSelectComponent, ViewTestReportComponent, BeneficiaryMctsCallHistoryComponent, PrescribeTmMedicineComponent]
 })

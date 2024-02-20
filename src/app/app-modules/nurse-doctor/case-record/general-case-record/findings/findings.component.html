@@ -1,0 +1,290 @@
+<!-- {{ generalFindingsForm.value | json}} -->
+<!-- <div class="row m-t-20" *ngIf="complaintList.length >= 1">
+  <div class="col-xs-12">
+    <table
+      class="table table-bordered"
+      mat-table
+      [dataSource]="dataSource"
+      aria-describedby="chiefComplaintDetails">
+      <ng-container matColumnDef="chiefComplaintsDetails">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          {{
+            current_language_set?.nurseData?.chiefComplaintsDetails
+              ?.chiefComplaints
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.chiefComplaint }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="duration">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          {{ current_language_set?.nurseData?.chiefComplaintsDetails?.duration }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.duration }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="unitOfDuration">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          {{
+            current_language_set?.nurseData?.chiefComplaintsDetails
+              ?.unitOfDuration
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{
+            element.unitOfDuration === 'Hours'
+              ? 'Hour(s)'
+              : element.unitOfDuration === 'Days'
+                ? 'Day(s)'
+                : element.unitOfDuration === 'Weeks'
+                  ? 'Week(s)'
+                  : element.unitOfDuration === 'Months'
+                    ? 'Month(s)'
+                    : element.unitOfDuration === 'Years'
+                      ? 'Year(s)'
+                      : element.unitOfDuration
+          }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          {{
+            current_language_set?.nurseData?.chiefComplaintsDetails?.description
+          }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.description }}
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <div
+      class="pull-center"
+      style="margin-top: 5px"
+      [hidden]="dataSource.data.length > 0">
+      <strong>{{ current_language_set?.noRecordsFound }}</strong>
+    </div>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      [pageSize]="5"
+      showFirstLastButtons
+      aria-label="Select patient in doctorWorklist">
+    </mat-paginator>
+  </div>
+</div>
+
+<div [formGroup]="generalFindingsForm">
+  <div class="row m-t-10">
+    <div class="col-xs-12" formArrayName="complaints">
+      <div
+        class="row multi-row-select"
+        *ngFor="
+          let complaint of generalFindingsForm.controls.complaints['controls'];
+          let i = index;
+          let isLast = last;
+          let isOdd = odd
+        "
+        [ngClass]="{ odd: !isOdd }">
+        <ng-container [formGroupName]="i">
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+            <mat-form-field class="input-full-width">
+              <input
+                autocomplete="off"
+                type="text"
+                matInput
+                placeholder="{{
+                  current_language_set?.nurseData?.chiefComplaintsDetails
+                    ?.chiefComplaints
+                }}"
+                name="chiefComplaint"
+                formControlName="chiefComplaint"
+                #complaintType
+                (keyup)="suggestChiefComplaintList(complaint, i)"
+                [matAutocomplete]="auto" />
+            </mat-form-field>
+
+            <mat-form-field
+              #auto="matAutocomplete"
+              [displayWith]="displayChiefComplaint"
+              (optionSelected)="
+                filterComplaints($event.option.value, i);
+                getSCTid($event.option.value, i)
+              ">
+              <mat-option
+                *ngFor="let compl of suggestedChiefComplaintList[i]"
+                [value]="compl">
+                {{ compl.chiefComplaint }}
+              </mat-option>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box" [hidden]="true">
+            <mat-form-field class="input-full-width">
+              <input
+                autocomplete="off"
+                matInput
+                defaultNull
+                readonly="true"
+                name="SCTID"
+                formControlName="conceptID"
+                placeholder="{{
+                  current_language_set?.nurseData?.chiefComplaintsDetails?.SCTID
+                }}" />
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+            <mat-form-field class="input-full-width">
+              <input
+                autocomplete="off"
+                matInput
+                defaultNull
+                allowText="number"
+                maxlength="2"
+                name="duration"
+                formControlName="duration"
+                placeholder="{{
+                  current_language_set?.nurseData?.chiefComplaintsDetails
+                    ?.duration
+                }}"
+                [disableFormControl]="!complaint.value.chiefComplaint"
+                (change)="validateDuration(complaint)" />
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+            <mat-form-field>
+              <mat-select
+                class="input-full-width"
+                name="unitOfDuration"
+                formControlName="unitOfDuration"
+                placeholder="{{
+                  current_language_set?.nurseData?.chiefComplaintsDetails
+                    ?.selectunitOfDuration
+                }}"
+                [disableFormControl]="!complaint.value.duration"
+                (change)="validateDuration(complaint)">
+                <mat-option value="Hours">Hour(s)</mat-option>
+                <mat-option value="Days">Day(s)</mat-option>
+                <mat-option value="Weeks">Week(s)</mat-option>
+                <mat-option value="Months">Month(s)</mat-option>
+                <mat-option value="Years">Year(s)</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+            <mat-form-field class="input-full-width">
+              <textarea
+                matInput
+                defaultNull
+                allowText="textAreaValidator"
+                matTextareaAutosize
+                name="description"
+                [disableFormControl]="!complaint.value.chiefComplaint"
+                formControlName="description"
+                placeholder="{{
+                  current_language_set?.nurseData?.chiefComplaintsDetails
+                    ?.description
+                }} "></textarea>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 box">
+            <button
+              mat-mini-fab
+              [id]="'removeBtn' + i"
+              *ngIf="i != 0 || (i == 0 && complaint.touched)"
+              (click)="removeCheifComplaint(i, complaint)"
+              color="warn">
+              <span class="material-icons">close</span>
+            </button>
+            <button
+              mat-mini-fab
+              [id]="'addBtn' + i"
+              *ngIf="isLast"
+              [disabled]="checkComplaintFormValidity(complaint)"
+              (click)="addCheifComplaint()"
+              color="primary">
+              <span class="material-icons">add</span>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="row m-t-20">
+    <div class="col-xs-12 col-sm-6">
+      <mat-form-field class="input-full-width">
+        <textarea
+          matInput
+          defaultNull
+          allowText="textAreaValidator"
+          matTextareaAutosize
+          maxlength="300"
+          name="otherSymptoms"
+          formControlName="otherSymptoms"
+          placeholder="{{ current_language_set?.Find?.otherSymptoms }}">
+        </textarea>
+      </mat-form-field>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <mat-form-field class="input-full-width">
+        <textarea
+          matInput
+          allowText="textAreaValidator"
+          defaultNull
+          matTextareaAutosize
+          maxlength="300"
+          name="clinicalObservation"
+          formControlName="clinicalObservation"
+          placeholder="{{ current_language_set?.casesheet?.clinicalObs }}">
+        </textarea>
+      </mat-form-field>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-xs-12 col-sm-6">
+      <mat-form-field class="input-full-width">
+        <textarea
+          matInput
+          defaultNull
+          allowText="textAreaValidator"
+          matTextareaAutosize
+          maxlength="300"
+          name="significantFindings"
+          formControlName="significantFindings"
+          placeholder="{{ current_language_set?.casesheet?.significantFind }}">
+        </textarea>
+      </mat-form-field>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <mat-checkbox
+        class="control-label"
+        checked="checked"
+        formControlName="isForHistory"
+        [value]="true"
+        >{{
+          current_language_set?.Find?.showThisFindingsOnNextVisit
+        }}</mat-checkbox
+      >
+    </div>
+  </div>
+</div> -->
