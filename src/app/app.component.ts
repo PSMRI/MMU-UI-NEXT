@@ -45,26 +45,4 @@ export class AppComponent {
   ) {}
   @Input()
   showRoles = false;
-
-  OnInit() {
-    const isAuth: any = sessionStorage.getItem('isAuthenticated');
-    this.isAuthenticated = isAuth;
-    this.router.events.subscribe(event => {
-      if (
-        event instanceof ResolveStart ||
-        event instanceof RouteConfigLoadStart
-      ) {
-        this.spinnerService.show();
-      } else if (
-        event instanceof NavigationEnd ||
-        event instanceof RouteConfigLoadEnd
-      ) {
-        setTimeout(() => this.spinnerService.hide(), 500);
-      } else if (event instanceof NavigationError) {
-        setTimeout(() => this.spinnerService.hide(), 500);
-      } else if (event instanceof NavigationCancel) {
-        setTimeout(() => this.spinnerService.hide(), 500);
-      }
-    });
-  }
 }

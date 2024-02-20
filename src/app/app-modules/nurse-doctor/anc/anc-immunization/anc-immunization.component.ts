@@ -158,8 +158,8 @@ export class AncImmunizationComponent
     this.patientANCImmunizationForm.patchValue({ tT_3Status: null });
     this.patientANCImmunizationForm.patchValue({ dateReceivedForTT_3: null });
     this.patientANCImmunizationForm.patchValue({ facilityNameOfTT_3: null });
-    if (tT_2Status == 'Received') {
-      if (this.dateReceivedForTT_1 == null) {
+    if (tT_2Status === 'Received') {
+      if (this.dateReceivedForTT_1 === null) {
         this.tT_1Date = this.dob;
       } else {
         this.tT_1Date = this.dateReceivedForTT_1;
@@ -202,11 +202,14 @@ export class AncImmunizationComponent
     this.checkedTT_3Status = false;
     this.patientANCImmunizationForm.patchValue({ dateReceivedForTT_3: null });
     this.patientANCImmunizationForm.patchValue({ facilityNameOfTT_3: null });
-    if (tT_3Status == 'Received') {
-      if (this.tT_2Status == 'Received' && this.dateReceivedForTT_2 != null) {
+    if (tT_3Status === 'Received') {
+      if (this.tT_2Status === 'Received' && this.dateReceivedForTT_2 != null) {
         this.tT_3Date = this.dateReceivedForTT_2;
       } else {
-        if (this.tT_1Status == 'Received' && this.dateReceivedForTT_1 != null) {
+        if (
+          this.tT_1Status === 'Received' &&
+          this.dateReceivedForTT_1 != null
+        ) {
           this.tT_3Date = this.dateReceivedForTT_1;
         } else {
           this.tT_3Date = this.dob;

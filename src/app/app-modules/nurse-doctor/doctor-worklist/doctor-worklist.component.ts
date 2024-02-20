@@ -121,7 +121,7 @@ export class DoctorWorklistComponent implements OnInit, OnDestroy, DoCheck {
     this.beneficiaryMetaData = [];
     this.doctorService.getDoctorWorklist().subscribe(
       (data: any) => {
-        if (data && data.statusCode == 200 && data.data) {
+        if (data && data.statusCode === 200 && data.data) {
           console.log('doctor worklist', JSON.stringify(data.data, null, 4));
           this.beneficiaryMetaData = data.data;
           data.data.map((item: any) => {
@@ -178,18 +178,18 @@ export class DoctorWorklistComponent implements OnInit, OnDestroy, DoCheck {
         console.log('item', JSON.stringify(item, null, 4));
         for (const key in item) {
           if (
-            key == 'beneficiaryID' ||
-            key == 'benName' ||
-            key == 'genderName' ||
-            key == 'age' ||
-            key == 'statusMessage' ||
-            key == 'VisitCategory' ||
-            key == 'benVisitNo' ||
-            key == 'districtName' ||
-            key == 'preferredPhoneNum' ||
-            key == 'villageName' ||
-            key == 'beneficiaryRegID' ||
-            key == 'visitDate'
+            key === 'beneficiaryID' ||
+            key === 'benName' ||
+            key === 'genderName' ||
+            key === 'age' ||
+            key === 'statusMessage' ||
+            key === 'VisitCategory' ||
+            key === 'benVisitNo' ||
+            key === 'districtName' ||
+            key === 'preferredPhoneNum' ||
+            key === 'villageName' ||
+            key === 'beneficiaryRegID' ||
+            key === 'visitDate'
           ) {
             const value: string = '' + item[key];
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
@@ -225,13 +225,13 @@ export class DoctorWorklistComponent implements OnInit, OnDestroy, DoCheck {
     console.log('beneficiary', JSON.stringify(beneficiary, null, 4));
 
     localStorage.setItem('visitCode', beneficiary.visitCode);
-    if (beneficiary.statusCode == 1) {
+    if (beneficiary.statusCode === 1) {
       this.routeToWorkArea(beneficiary);
-    } else if (beneficiary.statusCode == 2) {
+    } else if (beneficiary.statusCode === 2) {
       this.confirmationService.alert(beneficiary.statusMessage);
-    } else if (beneficiary.statusCode == 3) {
+    } else if (beneficiary.statusCode === 3) {
       this.routeToWorkArea(beneficiary);
-    } else if (beneficiary.statusCode == 9 || beneficiary.statusCode == 10) {
+    } else if (beneficiary.statusCode === 9 || beneficiary.statusCode === 10) {
       this.viewAndPrintCaseSheet(beneficiary);
     }
   }
@@ -294,13 +294,13 @@ export class DoctorWorklistComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   checkDoctorStatusAtTcCancelled(beneficiary: any) {
-    if (beneficiary.doctorFlag == 2 || beneficiary.nurseFlag == 2) {
+    if (beneficiary.doctorFlag === 2 || beneficiary.nurseFlag === 2) {
       this.confirmationService.alert(beneficiary.statusMessage);
-    } else if (beneficiary.doctorFlag == 1) {
+    } else if (beneficiary.doctorFlag === 1) {
       this.routeToWorkArea(beneficiary);
-    } else if (beneficiary.doctorFlag == 3) {
+    } else if (beneficiary.doctorFlag === 3) {
       this.routeToWorkArea(beneficiary);
-    } else if (beneficiary.doctorFlag == 9) {
+    } else if (beneficiary.doctorFlag === 9) {
       this.viewAndPrintCaseSheet(beneficiary);
     }
   }
@@ -311,21 +311,21 @@ export class DoctorWorklistComponent implements OnInit, OnDestroy, DoCheck {
       statusMessage: '',
     };
     if (
-      beneficiaryVisitDetials.doctorFlag == 2 ||
-      beneficiaryVisitDetials.nurseFlag == 2
+      beneficiaryVisitDetials.doctorFlag === 2 ||
+      beneficiaryVisitDetials.nurseFlag === 2
     ) {
       status.statusCode = 2;
       status.statusMessage = this.currentLanguageSet.alerts.info.pending;
-    } else if (beneficiaryVisitDetials.doctorFlag == 1) {
+    } else if (beneficiaryVisitDetials.doctorFlag === 1) {
       status.statusCode = 1;
       status.statusMessage = this.currentLanguageSet.alerts.info.pendingConsult;
-    } else if (beneficiaryVisitDetials.doctorFlag == 3) {
+    } else if (beneficiaryVisitDetials.doctorFlag === 3) {
       status.statusCode = 3;
       status.statusMessage = this.currentLanguageSet.alerts.info.labtestDone;
-    } else if (beneficiaryVisitDetials.specialist_flag == 100) {
+    } else if (beneficiaryVisitDetials.specialist_flag === 100) {
       status.statusCode = 10;
       status.statusMessage = this.currentLanguageSet.common.tmReferred;
-    } else if (beneficiaryVisitDetials.doctorFlag == 9) {
+    } else if (beneficiaryVisitDetials.doctorFlag === 9) {
       status.statusCode = 9;
       status.statusMessage = 'Consultation Done';
     }

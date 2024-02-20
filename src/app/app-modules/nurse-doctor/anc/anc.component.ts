@@ -86,13 +86,13 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
     this.current_language_set = getLanguageJson.currentLanguageObject;
   }
   ngOnChanges() {
-    if (this.mode == 'view') {
+    if (this.mode === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.patchDataToFields(benRegID, visitID);
     }
 
-    if (this.mode == 'update') {
+    if (this.mode === 'update') {
       this.updatePatientANC(this.patientANCForm);
     }
   }
@@ -125,7 +125,7 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
       .updateANCDetails(patientANCForm, temp)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data != null) {
             this.getHRPDetails();
             this.confirmationService.alert(res.data.response, 'success');
             this.patientANCForm.markAsPristine();
@@ -148,7 +148,7 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
           if (
             ancCareData != null &&
             ancCareData != undefined &&
-            ancCareData.statusCode == 200 &&
+            ancCareData.statusCode === 200 &&
             ancCareData.data != null
           ) {
             const temp = ancCareData.data.ANCCareDetail;
@@ -197,8 +197,8 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
     this.doctorService
       .getHRPDetails(beneficiaryRegID, visitCode)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
-          if (res.data.isHRP == true) {
+        if (res && res.statusCode === 200 && res.data) {
+          if (res.data.isHRP === true) {
             this.beneficiaryDetailsService.setHRPPositive();
           } else {
             this.beneficiaryDetailsService.resetHRPPositive();

@@ -148,16 +148,16 @@
             </div>
           </mat-step>
 
-          <!-- <mat-step *ngIf="showHistory" label="History">
+          <mat-step *ngIf="showHistory" label="History">
             <ng-template matStepLabel>{{
               currentLanguageSet?.common?.history
             }}</ng-template>
-            <nurse-history
-              [historyMode]="historyMode"
+            <app-nurse-history
+              [mode]="historyMode"
               [visitCategory]="visitCategory"
               [pregnancyStatus]="pregnancyStatus"
               [primeGravidaStatus]="primeGravidaStatus"
-              [patientHistoryForm]="patientHistoryForm"></nurse-history>
+              [patientHistoryForm]="patientHistoryForm"></app-nurse-history>
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
                 <button
@@ -188,7 +188,7 @@
                 </button>
               </div>
             </div>
-          </mat-step> -->
+          </mat-step>
 
           <mat-step *ngIf="showVitals" label="Vitals">
             <ng-template matStepLabel>{{

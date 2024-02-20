@@ -127,7 +127,7 @@ export class ObstetricFormulaComponent implements OnInit, DoCheck, OnChanges {
     if (this.stillBirth) gravidaValue = gravidaValue + +this.stillBirth;
 
     if (
-      formControlName == 'abortions_A' &&
+      formControlName === 'abortions_A' &&
       this.abortions_A &&
       this.abortions_A > 5
     ) {
@@ -137,7 +137,7 @@ export class ObstetricFormulaComponent implements OnInit, DoCheck, OnChanges {
     }
 
     if (
-      formControlName == 'stillBirth' &&
+      formControlName === 'stillBirth' &&
       this.stillBirth &&
       this.stillBirth > 9
     ) {

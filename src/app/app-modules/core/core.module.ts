@@ -50,6 +50,19 @@ import { PreviousDetailsComponent } from './components/previous-details/previous
 import { MatTableModule } from '@angular/material/table';
 import { IotcomponentComponent } from './components/iotcomponent/iotcomponent.component';
 import { CalibrationComponent } from './components/calibration/calibration.component';
+import { ProvisionalSearchComponent } from './components/provisional-search/provisional-search.component';
+import { ConfirmatoryDiagnosisDirective } from './directives/confirmatory-diagnosis.directive';
+import { DisableFormControlDirective } from './directives/disableFormControl.directive';
+import { NullDefaultValueDirective } from './directives/null-default-value.directive';
+import { OpenModalDirective } from './directives/open-modal.directive';
+import { AllergenSearchComponent } from './components/allergen-search/allergen-search.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { StringValidatorDirective } from './directives/stringValidator.directive';
+import { myPasswordDirective } from './directives/password/myPassword.directive';
+import { NumberValidatorDirective } from './directives/numberValidator.directive';
+import { myNameDirective } from './directives/name/myName.directive';
+import { myMobileNumberDirective } from './directives/MobileNumber/myMobileNumber.directive';
+import { myEmailDirective } from './directives/email/myEmail.directive';
 
 @NgModule({
   imports: [
@@ -67,19 +80,30 @@ import { CalibrationComponent } from './components/calibration/calibration.compo
   declarations: [
     CommonDialogComponent,
     CameraDialogComponent,
-    // ProvisionalSearchComponent,
+    ProvisionalSearchComponent,
     // TextareaDialogComponent,
-    // SpinnerComponent,
+    SpinnerComponent,
     BeneficiaryDetailsComponent,
     AppFooterComponent,
     AppHeaderComponent,
     PreviousDetailsComponent,
     // ShowCommitAndVersionDetailsComponent,
     CalibrationComponent,
-    // myEmail, myMobileNumber, OpenModalDirective, ConfirmatoryDiagnosisDirective, myName, myPassword, StringValidator, NullDefaultValueDirective, NumberValidator, DisableFormControlDirective,
+    myEmailDirective,
+    myMobileNumberDirective,
+    OpenModalDirective,
+    ConfirmatoryDiagnosisDirective,
+    myNameDirective,
+    myPasswordDirective,
+    StringValidatorDirective,
+    NullDefaultValueDirective,
+    NumberValidatorDirective,
+    DisableFormControlDirective,
     // ViewRadiologyUploadedFilesComponent,
     IotcomponentComponent,
-    // IotBluetoothComponent,AllergenSearchComponent, DataSyncLoginComponent,OpenPreviousVisitDetailsComponent,
+    // IotBluetoothComponent,
+    AllergenSearchComponent,
+    // OpenPreviousVisitDetailsComponent,
   ],
   exports: [
     MaterialModule,
@@ -90,15 +114,24 @@ import { CalibrationComponent } from './components/calibration/calibration.compo
     // ShowCommitAndVersionDetailsComponent,
     CameraDialogComponent,
     // TextareaDialogComponent,
-    // SpinnerComponent,
+    SpinnerComponent,
     BeneficiaryDetailsComponent,
     // AppFooterComponent,
     // AppHeaderComponent,
     PreviousDetailsComponent,
     // PaginationModule,
-    // myEmail, myMobileNumber, OpenModalDirective, ConfirmatoryDiagnosisDirective, myName, myPassword, DisableFormControlDirective, StringValidator, NumberValidator, NullDefaultValueDirective,
+    myEmailDirective,
+    myMobileNumberDirective,
+    OpenModalDirective,
+    ConfirmatoryDiagnosisDirective,
+    myNameDirective,
+    myPasswordDirective,
+    DisableFormControlDirective,
+    StringValidatorDirective,
+    NumberValidatorDirective,
+    NullDefaultValueDirective,
     IotcomponentComponent,
-    // AllergenSearchComponent, DataSyncLoginComponent,
+    AllergenSearchComponent,
     CalibrationComponent,
     //OpenPreviousVisitDetailsComponent
   ],
@@ -151,7 +184,3 @@ export class CoreModule {
     };
   }
 }
-
-// export function HttpInterceptorFactory(backend: XHRBackend, options: RequestOptions, router: Router, spinner: SpinnerService, confirmation: ConfirmationService) {
-//   return new HttpInterceptor(backend, options, router, spinner, confirmation);
-// }

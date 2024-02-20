@@ -1,0 +1,149 @@
+<!-- {{ otherVaccinesForm.value | json }} -->
+<div class="row m-t-10" [formGroup]="otherVaccinesForm">
+  <div class="col-xs-12" formArrayName="otherVaccines">
+    <div class="row text-right">
+      <span class="font-history-label m-t-10">{{
+        currentLanguageSet?.historyData?.Othervaccineshistory
+          ?.previousothervaccineshistory
+      }}</span>
+      <button
+        type="button"
+        mat-icon-button
+        matTooltip="{{
+          this.currentLanguageSet?.DurationData?.previousDetails
+        }}"
+        id="previousANCOtherVaccines"
+        class="pull-right"
+        color="primary"
+        (click)="getPreviousOtherVaccineDetails()">
+        <mat-icon class="md-18">history</mat-icon>
+      </button>
+    </div>
+    <div
+      class="row multi-row-select"
+      *ngFor="
+        let vaccine of getOtherVaccines();
+        let i = index;
+        let isLast = last;
+        let isOdd = odd
+      "
+      [ngClass]="{ odd: !isOdd }">
+      <ng-container [formGroupName]="i">
+        <div class="col-xs-12 col-sm-6 col-md-3 box">
+          <mat-form-field>
+            <mat-select
+              class="select-full-width"
+              name="vaccineName"
+              formControlName="vaccineName"
+              placeholder="{{
+                currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
+                  ?.nameofVaccine
+              }}"
+              (change)="filterOtherVaccineList($event, i, vaccine)">
+              <mat-option
+                *ngFor="let vaccine of vaccineSelectList[i]"
+                [value]="vaccine">
+                {{ vaccine.vaccineName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-xs-12 col-sm-6 col-md-3 box"
+          *ngIf="vaccine.value.vaccineName?.vaccineName !== 'Other'"
+          [hidden]="true">
+          <mat-form-field class="input-full-width">
+            <input
+              matInput
+              name="sctCode"
+              formControlName="sctCode"
+              placeholder="{{
+                currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
+                  ?.vaccineSctCode
+              }}"
+              readonly />
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-xs-12 col-sm-6 col-md-2 box"
+          *ngIf="vaccine.value.vaccineName?.vaccineName === 'Other'">
+          <mat-form-field class="input-full-width">
+            <input
+              autocomplete="off"
+              matInput
+              appDefaultNull
+              placeholder="{{
+                currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
+                  ?.others
+              }}"
+              maxlength="50"
+              allowText="alphaspace"
+              name="otherVaccineName"
+              formControlName="otherVaccineName" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-2 box">
+          <mat-form-field class="input-full-width">
+            <input
+              autocomplete="off"
+              matInput
+              appDefaultNull
+              placeholder="{{
+                currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
+                  ?.ageatReceived
+              }}"
+              maxlength="2"
+              allowText="number"
+              name="actualReceivingAge"
+              formControlName="actualReceivingAge"
+              [disabled]="!vaccine.value.vaccineName"
+              (change)="validateAge(vaccine)" />
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-xs-10 col-sm-4 col-md-2 box"
+          *ngIf="vaccine.value.actualReceivingAge > 0">
+          <mat-form-field>
+            <mat-select
+              class="select-full-width"
+              name="receivedFacilityName"
+              formControlName="receivedFacilityName"
+              placeholder="{{
+                currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
+                  ?.facilityName
+              }}"
+              [disabled]="!vaccine.value.actualReceivingAge">
+              <mat-option value="Govt Facility">Govt Facility</mat-option>
+              <mat-option value="Pvt Facility">Pvt Facility</mat-option>
+              <mat-option value="Other">Other</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-2 col-md-2 box action-btn-container pull-right">
+          <button
+            md-mini-fab
+            color="warn"
+            id="removeOtherVaccine"
+            *ngIf="i !== 0 || (i === 0 && vaccine.touched)"
+            (click)="removeOtherVaccine(i, vaccine)">
+            <mat-icon class="md-18">close</mat-icon>
+          </button>
+          <button
+            md-mini-fab
+            color="primary"
+            *ngIf="isLast"
+            [disabled]="checkValidity(vaccine)"
+            id="addOtherVaccine"
+            (click)="addOtherVaccine()">
+            <mat-icon class="md-18">add</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
