@@ -20,36 +20,21 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { WorklistComponent } from './worklist/worklist.component';
+import { TestBed, inject } from '@angular/core/testing';
 
-const routes: Routes = [
-  {
-    // path: '',
-    // component: DashboardComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: 'worklist',
-        pathMatch: 'full',
-      },
-      {
-        path: 'worklist',
-        component: WorklistComponent,
-      },
-      // {
-      //   path: 'patient/:beneficiaryRegID',
-      //   component: WorkareaComponent,
-      //   canActivate: [WorkareaCanActivate],
-      //   canDeactivate: [CanDeactivateGuardService]
-      // },
-    ],
-  },
-];
+import { PharmacistService } from './pharmacist.service';
 
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class LabRoutingModule {}
+describe('PharmacistService', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [PharmacistService],
+    });
+  });
+
+  it('should be created', inject(
+    [PharmacistService],
+    (service: PharmacistService) => {
+      expect(service).toBeTruthy();
+    }
+  ));
+});

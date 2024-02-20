@@ -89,21 +89,28 @@ const routes: Routes = [
         module => module.NurseDoctorModule
       ),
   },
-  //   {
-  //     path: 'lab',
-  //     canActivate: [AuthGuard],
-  //     loadChildren: './app-modules/lab/lab.module#LabModule'
-  //   },
-  //   {
-  //     path: 'pharmacist',
-  //     canActivate: [AuthGuard],
-  //     loadChildren: './app-modules/pharmacist/pharmacist.module#PharmacistModule'
-  //   },
-  //   {
-  //     path: 'datasync',
-  //     canActivate: [AuthGuard],
-  //     loadChildren: './app-modules/data-sync/dataSync.module#DataSYNCModule'
-  //   },
+  {
+    path: 'lab',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./app-modules/lab/lab.module').then(module => module.LabModule),
+  },
+  {
+    path: 'pharmacist',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./app-modules/pharmacist/pharmacist.module').then(
+        module => module.PharmacistModule
+      ),
+  },
+  // {
+  //   path: 'datasync',
+  //   canActivate: [AuthGuard],
+  //   loadChildren: () =>
+  //   import('./app-modules/data-sync/dataSync.module').then(
+  //     module => module.DataSYNCModule
+  //   ),
+  // },
   //   // {
   //   //   path: '**',
   //   //   redirectTo: 'login',

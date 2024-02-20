@@ -24,26 +24,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '../core/core.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { LabRoutingModule } from './lab-routing.module';
-import { LabService, MasterDataService } from './shared/services';
-import { WorkareaComponent } from './workarea/workarea.component';
-import { WorklistComponent } from './worklist/worklist.component';
+
+import { PharmacistRoutingModule } from './pharmacist-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ViewFileComponent } from './view-file/view-file.component';
+import { WorklistComponent } from './worklist/worklist.component';
+
+import { PharmacistService } from './shared/services/pharmacist.service';
+import { RedirInComponent } from './redir-in/redir-in.component';
+import { RedirFallbackComponent } from './redir-fallback/redir-fallback.component';
+import { HttpClientModule } from '@angular/common/http';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from '../core/material.module';
 import { MatTableModule } from '@angular/material/table';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MaterialModule } from '../core/material.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   imports: [
     CommonModule,
-    LabRoutingModule,
+    PharmacistRoutingModule,
     CoreModule,
     ReactiveFormsModule,
     FormsModule,
@@ -57,13 +59,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDatepickerModule,
     MatTooltipModule,
   ],
-  // entryComponents: [ViewFileComponent],
   declarations: [
-    WorkareaComponent,
-    WorklistComponent,
     DashboardComponent,
-    ViewFileComponent,
+    WorklistComponent,
+    RedirInComponent,
+    RedirFallbackComponent,
   ],
-  providers: [LabService, MasterDataService],
+  providers: [PharmacistService],
 })
-export class LabModule {}
+export class PharmacistModule {}

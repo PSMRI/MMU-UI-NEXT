@@ -104,6 +104,8 @@ import { SignsAndSymptomsComponent } from './examination/cancer-examination/sign
 import { VitalsComponent } from './vitals/vitals.component';
 import { CancerPatientVitalsComponent } from './vitals/cancer-patient-vitals/cancer-patient-vitals.component';
 import { GeneralPatientVitalsComponent } from './vitals/general-patient-vitals/general-patient-vitals.component';
+import { RadiologistWorklistComponent } from './radiologist-worklist/radiologist-worklist.component';
+import { OncologistWorklistComponent } from './oncologist-worklist/oncologist-worklist.component';
 
 @NgModule({
   imports: [
@@ -197,8 +199,8 @@ import { GeneralPatientVitalsComponent } from './vitals/general-patient-vitals/g
     PrescriptionComponent,
     DoctorInvestigationsComponent,
     TestAndRadiologyComponent,
-    // RadiologistWorklistComponent,
-    // OncologistWorklistComponent,
+    RadiologistWorklistComponent,
+    OncologistWorklistComponent,
     GeneralOpdDiagnosisComponent,
     AncDiagnosisComponent,
     // CaseSheetComponent,

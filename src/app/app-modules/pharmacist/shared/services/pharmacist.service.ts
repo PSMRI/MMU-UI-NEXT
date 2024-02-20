@@ -20,36 +20,20 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { WorklistComponent } from './worklist/worklist.component';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
-const routes: Routes = [
-  {
-    // path: '',
-    // component: DashboardComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: 'worklist',
-        pathMatch: 'full',
-      },
-      {
-        path: 'worklist',
-        component: WorklistComponent,
-      },
-      // {
-      //   path: 'patient/:beneficiaryRegID',
-      //   component: WorkareaComponent,
-      //   canActivate: [WorkareaCanActivate],
-      //   canDeactivate: [CanDeactivateGuardService]
-      // },
-    ],
-  },
-];
+@Injectable()
+export class PharmacistService {
+  constructor(private http: HttpClient) {}
 
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class LabRoutingModule {}
+  getPharmacistWorklist() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
+    const vanID = JSON.parse(serviceLineDetails).vanID;
+    const fetchUrl =
+      localStorage.getItem('providerServiceID') +
+      `/${localStorage.getItem('serviceID')}/${vanID}`;
+    return this.http.get(environment.pharmacistWorklist + fetchUrl);
+  }
+}

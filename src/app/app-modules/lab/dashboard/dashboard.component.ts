@@ -20,36 +20,13 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { WorklistComponent } from './worklist/worklist.component';
+import { Component, OnInit } from '@angular/core';
 
-const routes: Routes = [
-  {
-    // path: '',
-    // component: DashboardComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: 'worklist',
-        pathMatch: 'full',
-      },
-      {
-        path: 'worklist',
-        component: WorklistComponent,
-      },
-      // {
-      //   path: 'patient/:beneficiaryRegID',
-      //   component: WorkareaComponent,
-      //   canActivate: [WorkareaCanActivate],
-      //   canDeactivate: [CanDeactivateGuardService]
-      // },
-    ],
-  },
-];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'],
 })
-export class LabRoutingModule {}
+export class DashboardComponent {
+  constructor() {}
+}

@@ -20,36 +20,34 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { WorklistComponent } from './worklist/worklist.component';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from '@angular/core';
+import { ConfirmationService } from './../../core/services/confirmation.service';
+import { Router, Route } from '@angular/router';
 
-const routes: Routes = [
-  {
-    // path: '',
-    // component: DashboardComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: 'worklist',
-        pathMatch: 'full',
-      },
-      {
-        path: 'worklist',
-        component: WorklistComponent,
-      },
-      // {
-      //   path: 'patient/:beneficiaryRegID',
-      //   component: WorkareaComponent,
-      //   canActivate: [WorkareaCanActivate],
-      //   canDeactivate: [CanDeactivateGuardService]
-      // },
-    ],
-  },
-];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+@Component({
+  selector: 'app-redir-fallback',
+  templateUrl: './redir-fallback.component.html',
+  styleUrls: ['./redir-fallback.component.css'],
 })
-export class LabRoutingModule {}
+export class RedirFallbackComponent implements AfterViewInit {
+  constructor(
+    private confirmationService: ConfirmationService,
+    private router: Router,
+    private cd: ChangeDetectorRef
+  ) {}
+
+  ngAfterViewInit() {
+    Promise.resolve(null).then(() => {
+      this.confirmationService.alert(
+        'Issues in connecting to Inventory, try again later',
+        'error'
+      );
+      this.router.navigate(['/pharmacist/pharmacist-worklist']);
+    });
+  }
+}

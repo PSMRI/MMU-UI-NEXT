@@ -20,36 +20,35 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { WorklistComponent } from './worklist/worklist.component';
+import { Injectable } from '@angular/core';
+import {
+  Router,
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from '@angular/router';
 
-const routes: Routes = [
-  {
-    // path: '',
-    // component: DashboardComponent,
-    children: [
-      {
-        path: '',
-        redirectTo: 'worklist',
-        pathMatch: 'full',
-      },
-      {
-        path: 'worklist',
-        component: WorklistComponent,
-      },
-      // {
-      //   path: 'patient/:beneficiaryRegID',
-      //   component: WorkareaComponent,
-      //   canActivate: [WorkareaCanActivate],
-      //   canDeactivate: [CanDeactivateGuardService]
-      // },
-    ],
-  },
-];
+@Injectable()
+export class WorkareaCanActivate implements CanActivate {
+  constructor(private router: Router) {}
 
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class LabRoutingModule {}
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if (
+      !(
+        localStorage.getItem('visitCode') &&
+        localStorage.getItem('benFlowID') &&
+        localStorage.getItem('visitCategory') &&
+        localStorage.getItem('beneficiaryRegID') &&
+        localStorage.getItem('visitID') &&
+        localStorage.getItem('beneficiaryID') &&
+        localStorage.getItem('doctorFlag') &&
+        localStorage.getItem('nurseFlag')
+      )
+    ) {
+      // this.router.navigate(['/common/doctor-worklist']);
+      return false;
+    } else {
+      return true;
+    }
+  }
+}

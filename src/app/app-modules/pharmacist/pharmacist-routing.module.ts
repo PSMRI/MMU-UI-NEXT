@@ -22,28 +22,33 @@
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { WorklistComponent } from './worklist/worklist.component';
+import { RedirInComponent } from './redir-in/redir-in.component';
+import { RedirFallbackComponent } from './redir-fallback/redir-fallback.component';
 
 const routes: Routes = [
   {
-    // path: '',
-    // component: DashboardComponent,
+    path: '',
+    component: DashboardComponent,
     children: [
       {
         path: '',
-        redirectTo: 'worklist',
+        redirectTo: 'pharmacist-worklist',
         pathMatch: 'full',
       },
       {
-        path: 'worklist',
+        path: 'pharmacist-worklist',
         component: WorklistComponent,
       },
-      // {
-      //   path: 'patient/:beneficiaryRegID',
-      //   component: WorkareaComponent,
-      //   canActivate: [WorkareaCanActivate],
-      //   canDeactivate: [CanDeactivateGuardService]
-      // },
+      {
+        path: 'redirin',
+        component: RedirInComponent,
+      },
+      {
+        path: 'redirfallback',
+        component: RedirFallbackComponent,
+      },
     ],
   },
 ];
@@ -52,4 +57,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class LabRoutingModule {}
+export class PharmacistRoutingModule {}
