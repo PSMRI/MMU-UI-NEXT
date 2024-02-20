@@ -62,10 +62,10 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
     'beneficiaryName',
     'gender',
     'age',
-    'status',
-    'fatherName',
+    'visitCategory',
     'district',
     'phoneNo',
+    'visitDate',
     'image',
   ];
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;

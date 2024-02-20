@@ -63,10 +63,10 @@ export class RadiologistWorklistComponent
     'beneficiaryName',
     'gender',
     'age',
-    'status',
-    'fatherName',
+    'visitCategory',
     'district',
     'phoneNo',
+    'visitDate',
     'image',
   ];
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;

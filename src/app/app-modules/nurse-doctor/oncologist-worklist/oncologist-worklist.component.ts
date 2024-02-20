@@ -55,10 +55,10 @@ export class OncologistWorklistComponent implements OnInit, DoCheck {
     'beneficiaryName',
     'gender',
     'age',
-    'status',
-    'fatherName',
+    'visitCategory',
     'district',
     'phoneNo',
+    'visitDate',
     'image',
   ];
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;

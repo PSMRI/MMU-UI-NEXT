@@ -59,16 +59,16 @@ export class AppHeaderComponent implements OnInit {
     },
     {
       role: 'Radiologist',
-      link: '/common/radiologist-worklist',
+      link: '/radiologist-worklist',
       label: 'Radiologist',
     },
     {
       role: 'Oncologist',
-      link: '/common/oncologist-worklist',
+      link: '/oncologist-worklist',
       label: 'Oncologist',
     },
     { role: 'DataSync', link: '/datasync', label: 'Data Sync' },
-    { role: 'Reports', link: '/common/reports', label: 'Reports' },
+    { role: 'Reports', link: '/reports', label: 'Reports' },
   ];
   // @Input('isDarkTheme')
   // isDarkTheme: Boolean;

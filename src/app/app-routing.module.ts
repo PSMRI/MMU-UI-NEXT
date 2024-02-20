@@ -31,7 +31,6 @@ import { TmLogoutComponent } from './app-modules/tm-logout/tm-logout.component';
 import { ServicePointComponent } from './app-modules/service-point/service-point.component';
 import { ServicePointResolve } from './app-modules/service-point/service-point-resolve.service';
 import { ResetPasswordComponent } from './app-modules/reset-password/reset-password.component';
-import { LoadChildrenCallback } from '@angular/router';
 
 const routes: Routes = [
   {
