@@ -33,7 +33,7 @@ import {
   templateUrl: './set-password.component.html',
   styleUrls: ['./set-password.component.css'],
 })
-export class SetPasswordComponent {
+export class SetPasswordComponent implements OnInit {
   newpwd: any;
   confirmpwd: any;
   uname: any;
@@ -59,7 +59,7 @@ export class SetPasswordComponent {
     this._iterationCount = 1989;
   }
 
-  OnInit() {
+  ngOnInit() {
     this.uname = localStorage.getItem('userName');
   }
 

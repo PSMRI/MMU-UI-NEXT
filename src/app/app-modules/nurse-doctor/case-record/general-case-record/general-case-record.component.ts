@@ -37,13 +37,13 @@ export class GeneralCaseRecordComponent implements DoCheck {
   generalCaseRecordForm!: FormGroup;
 
   @Input()
-  currentVitals: any;
+  currentVitals!: any;
 
   @Input()
-  caseRecordMode: any;
+  caseRecordMode!: string;
 
   @Input()
-  visitCategory: any;
+  visitCategory!: string;
 
   @Input()
   findings: any;

@@ -368,20 +368,18 @@ export class WorkareaComponent
           this.showExamination = true;
 
           if (mode) {
-            this.patientMedicalForm = this.fb.group({
-              patientCaseRecordForm: new CancerUtils(
-                this.fb
-              ).createCancerDiagnosisForm(),
-            });
+            this.patientMedicalForm.addControl(
+              'patientCaseRecordForm',
+              new CancerUtils(this.fb).createCancerDiagnosisForm()
+            );
             this.patientCaseRecordForm = this.patientMedicalForm.get(
               'patientCaseRecordForm'
             ) as FormGroup;
 
-            this.patientMedicalForm = this.fb.group({
-              patientReferForm: new CancerUtils(
-                this.fb
-              ).createCancerReferForm(),
-            });
+            this.patientMedicalForm.addControl(
+              'patientReferForm',
+              new CancerUtils(this.fb).createCancerReferForm()
+            );
             this.patientReferForm = this.patientMedicalForm.get(
               'patientReferForm'
             ) as FormGroup;
@@ -434,20 +432,18 @@ export class WorkareaComponent
           this.showExamination = true;
 
           if (mode) {
-            this.patientMedicalForm = this.fb.group({
-              patientCaseRecordForm: new GeneralUtils(
-                this.fb
-              ).createGeneralCaseRecord(),
-            });
+            this.patientMedicalForm.addControl(
+              'patientCaseRecordForm',
+              new GeneralUtils(this.fb).createGeneralCaseRecord()
+            );
             this.patientCaseRecordForm = this.patientMedicalForm.get(
               'patientCaseRecordForm'
             ) as FormGroup;
 
-            this.patientMedicalForm = this.fb.group({
-              patientReferForm: new CancerUtils(
-                this.fb
-              ).createCancerReferForm(),
-            });
+            this.patientMedicalForm.addControl(
+              'patientReferForm',
+              new CancerUtils(this.fb).createCancerReferForm()
+            );
             this.patientReferForm = this.patientMedicalForm.get(
               'patientReferForm'
             ) as FormGroup;
@@ -495,11 +491,10 @@ export class WorkareaComponent
           );
 
           if (mode) {
-            this.patientMedicalForm = this.fb.group({
-              patientCaseRecordForm: new GeneralUtils(
-                this.fb
-              ).createNCDScreeningCaseRecord(),
-            });
+            this.patientMedicalForm.addControl(
+              'patientCaseRecordForm',
+              new GeneralUtils(this.fb).createNCDScreeningCaseRecord()
+            );
             this.patientCaseRecordForm = this.patientMedicalForm.get(
               'patientCaseRecordForm'
             ) as FormGroup;
@@ -564,11 +559,11 @@ export class WorkareaComponent
           this.showExamination = true;
 
           if (mode) {
-            this.patientMedicalForm = this.fb.group({
-              patientCaseRecordForm: new GeneralUtils(
-                this.fb
-              ).createPNCCaseRecord(),
-            });
+            this.patientMedicalForm.addControl(
+              'patientCaseRecordForm',
+              new GeneralUtils(this.fb).createPNCCaseRecord()
+            );
+
             this.patientCaseRecordForm = this.patientMedicalForm.get(
               'patientCaseRecordForm'
             ) as FormGroup;
@@ -642,11 +637,10 @@ export class WorkareaComponent
           this.showVitals = true;
           this.showExamination = true;
           if (mode) {
-            this.patientMedicalForm = this.fb.group({
-              patientCaseRecordForm: new GeneralUtils(
-                this.fb
-              ).createANCCaseRecord(),
-            });
+            this.patientMedicalForm.addControl(
+              'patientCaseRecordForm',
+              new GeneralUtils(this.fb).createANCCaseRecord()
+            );
             this.patientCaseRecordForm = this.patientMedicalForm.get(
               'patientCaseRecordForm'
             ) as FormGroup;
@@ -698,11 +692,10 @@ export class WorkareaComponent
           this.showVitals = true;
 
           if (mode) {
-            this.patientMedicalForm = this.fb.group({
-              patientCaseRecordForm: new GeneralUtils(
-                this.fb
-              ).createNCDCareCaseRecord(),
-            });
+            this.patientMedicalForm.addControl(
+              'patientCaseRecordForm',
+              new GeneralUtils(this.fb).createNCDCareCaseRecord()
+            );
             this.patientCaseRecordForm = this.patientMedicalForm.get(
               'patientCaseRecordForm'
             ) as FormGroup;
@@ -751,11 +744,10 @@ export class WorkareaComponent
           this.showVitals = true;
 
           if (mode) {
-            this.patientMedicalForm = this.fb.group({
-              patientCaseRecordForm: new GeneralUtils(
-                this.fb
-              ).createCovidCareCaseRecord(),
-            });
+            this.patientMedicalForm.addControl(
+              'patientCaseRecordForm',
+              new GeneralUtils(this.fb).createCovidCareCaseRecord()
+            );
             this.patientCaseRecordForm = this.patientMedicalForm.get(
               'patientCaseRecordForm'
             ) as FormGroup;
@@ -822,7 +814,7 @@ export class WorkareaComponent
     this.showCaseRecord = false;
     this.showRefer = false;
 
-    this.changeDetectorRef.detectChanges();
+    // this.changeDetectorRef.detectChanges();
   }
 
   submitPatientMedicalDetailsForm(medicalForm: any) {

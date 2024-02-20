@@ -162,7 +162,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
           if (
             this.beneficiary &&
-            (this.beneficiary.genderName.toLowerCase() != 'female' ||
+            (this.beneficiary?.genderName?.toLowerCase() != 'female' ||
               this.beneficiary.ageVal <= 18)
           ) {
             const temp = this.surgeryMasterData.filter((item: any) => {
