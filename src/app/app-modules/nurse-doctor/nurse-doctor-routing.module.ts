@@ -29,6 +29,9 @@ import { CanDeactivateGuardService } from '../core/services/can-deactivate-guard
 import { NurseWorklistTabsComponent } from './nurse-worklist-tabs/nurse-worklist-tabs.component';
 import { DoctorWorklistComponent } from './doctor-worklist/doctor-worklist.component';
 import { GeneralCaseRecordComponent } from './case-record/general-case-record/general-case-record.component';
+import { CaseSheetComponent } from './case-sheet/case-sheet.component';
+import { RadiologistWorklistComponent } from './radiologist-worklist/radiologist-worklist.component';
+import { OncologistWorklistComponent } from './oncologist-worklist/oncologist-worklist.component';
 
 const routes: Routes = [
   {
@@ -52,14 +55,14 @@ const routes: Routes = [
         path: 'doctor-worklist',
         component: DoctorWorklistComponent,
       },
-      // {
-      //   path: 'radiologist-worklist',
-      //   component: RadiologistWorklistComponent
-      // },
-      // {
-      //   path: 'oncologist-worklist',
-      //   component: OncologistWorklistComponent
-      // },
+      {
+        path: 'radiologist-worklist',
+        component: RadiologistWorklistComponent,
+      },
+      {
+        path: 'oncologist-worklist',
+        component: OncologistWorklistComponent,
+      },
       // {
       //   path: 'reports',
       //   component: ReportsComponent
@@ -72,10 +75,10 @@ const routes: Routes = [
       },
     ],
   },
-  // {
-  //   path: 'print/:serviceType/:printablePage',
-  //   component: CaseSheetComponent
-  // },
+  {
+    path: 'print/:serviceType/:printablePage',
+    component: CaseSheetComponent,
+  },
   {
     path: 'generalcaserec',
     component: GeneralCaseRecordComponent,

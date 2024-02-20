@@ -300,7 +300,7 @@ export class PreviousVisitDetailsComponent
       visitDetail.beneficiaryRegID
     );
     localStorage.setItem('caseSheetVisitID', visitDetail.benVisitID);
-    this.router.navigate(['/common/print']);
+    this.router.navigate(['/nurse-doctor/print']);
     // }
   }
 
