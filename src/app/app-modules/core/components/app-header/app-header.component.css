@@ -6,13 +6,14 @@
     margin-top:5px !important;
     color: white
 }
-.white-icon {
+.white-icon { 
     color: white; /* Set the color to white */
   }
 .w85 { 
     width : 85%;
 }
 .nav-btn{
+    background-color: #c9cdce;
     box-sizing: border-box;
     position: relative;
     -webkit-user-select: none;
@@ -34,7 +35,6 @@
     padding: 0 16px;
     border-radius: 2px;
 
-    box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
 }
 .menu-font{
     font-size: 14px !important;
