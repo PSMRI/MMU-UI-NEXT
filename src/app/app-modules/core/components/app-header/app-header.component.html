@@ -2,12 +2,12 @@
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
+      <a class="navbar-brand" href=" "> </a>
       <button
-        type="button"
         class="navbar-toggler"
-        data-toggle="collapse"
-        data-target="#top-navbar"
-        aria-expanded="false">
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#top-navbar">
         <span class="navbar-toggler-icon"></span>
       </button>
       <a class="navbar-brand">
@@ -17,27 +17,41 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="top-navbar">
-      <ul class="navbar-nav ml-auto">
-        <li
-          *ngIf="isAuthenticated"
-          class="nav-item logout cursorPointer"
-          matTooltip="{{ currentLanguageSet?.logOut }}">
-          <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events -->
-          <a tabindex="{0}" (click)="logout()">
-            <span class="logoutIcon"></span>
-            <span style="color: #ffffff" class="hidden-sm hidden-md hidden-lg"
-              >Logout</span
-            >
-          </a>
+      <ul class="navbar-nav ms-auto">
+        <li *ngIf="status" class="nav-item alignWord">
+          <span>{{ currentLanguageSet?.common?.SelectLanguage }}: </span>
+        </li>
+        <li *ngIf="status" class="nav-item alignDropDown">
+          <select
+            class="form-control drop-arrow border-radius-20 height-30 width120px pull-right"
+            name="app_language"
+            [(ngModel)]="app_language"
+            (change)="changeLanguage(app_language)">
+            <option
+              *ngFor="let language of languageArray"
+              [value]="language.languageName">
+              {{ language.languageName }}
+            </option>
+          </select>
         </li>
 
         <li class="nav-item cursorPointer" *ngIf="isAuthenticated">
-          <span
-            class="fa fa-question-circle helpAlign"
-            matTooltip="{{ currentLanguageSet?.help }}"
+          <mat-icon
             alt="Help"
             [matMenuTriggerFor]="menu"
-            aria-label="Known about us"></span>
+            [matTooltip]="currentLanguageSet?.help"
+            >help_outline</mat-icon
+          >
+        </li>
+        <li
+          *ngIf="isAuthenticated"
+          class="nav-item cursorPointer"
+          matTooltip="{{ currentLanguageSet?.common?.connectBluetooth }}"
+          [ngClass]="{ connected: isConnected }">
+          <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events -->
+          <span class="material-icons iot" tabindex="{0}" (click)="openIOT()">
+            bluetooth_searching
+          </span>
         </li>
         <mat-menu #menu="matMenu" x-position="before" class="m-t-40">
           <button mat-menu-item (click)="showVersionAndCommitDetails()">
@@ -49,6 +63,20 @@
             }}</a>
           </button>
         </mat-menu>
+
+        <li
+          class="nav-item"
+          *ngIf="userName"
+          matTooltip="{{ currentLanguageSet?.user }}">
+          <a>
+            <img src="assets/images/user1.png" alt="user" />
+            <span style="color: #d9d9d9">
+              {{ currentLanguageSet?.user }}
+              <span style="color: #d9d9d9">:</span>
+              <span style="color: #ffffff">{{ userName | titlecase }}</span>
+            </span>
+          </a>
+        </li>
         <li
           *ngIf="servicePoint"
           class="nav-item servicePoint cursorPointer"
@@ -65,44 +93,13 @@
         </li>
 
         <li
-          class="nav-item"
-          *ngIf="userName"
-          matTooltip="{{ currentLanguageSet?.user }}">
-          <a>
-            <img src="assets/images/user1.png" alt="user" />
-            <span style="color: #d9d9d9">
-              {{ currentLanguageSet?.user }}
-              <span style="color: #d9d9d9">:</span>
-              <span style="color: #ffffff">{{ userName | titlecase }}</span>
-            </span>
-          </a>
-        </li>
-
-        <li
           *ngIf="isAuthenticated"
-          class="nav-item cursorPointer"
-          matTooltip="{{ currentLanguageSet?.common?.connectBluetooth }}"
-          [ngClass]="{ connected: isConnected }">
+          class="nav-item logout cursorPointer"
+          matTooltip="{{ currentLanguageSet?.logOut }}">
           <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events -->
-          <span class="material-icons iot" tabindex="{0}" (click)="openIOT()">
-            bluetooth_searching
-          </span>
-        </li>
-        <li *ngIf="status" class="nav-item alignDropDown">
-          <select
-            class="form-control drop-arrow border-radius-20 height-30 width120px pull-right"
-            name="app_language"
-            [(ngModel)]="app_language"
-            (change)="changeLanguage(app_language)">
-            <option
-              *ngFor="let language of languageArray"
-              [value]="language.languageName">
-              {{ language.languageName }}
-            </option>
-          </select>
-        </li>
-        <li *ngIf="status" class="nav-item alignWord">
-          <span>{{ currentLanguageSet?.common?.SelectLanguage }}: </span>
+          <a tabindex="{0}" (click)="logout()">
+            <mat-icon color="warn">power_settings_new</mat-icon>
+          </a>
         </li>
       </ul>
     </div>
