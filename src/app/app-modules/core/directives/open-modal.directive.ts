@@ -1,0 +1,120 @@
+/*
+ * AMRIT – Accessible Medical Records via Integrated Technology
+ * Integrated EHR (Electronic Health Records) Solution
+ *
+ * Copyright (C) "Piramal Swasthya Management and Research Institute"
+ *
+ * This file is part of AMRIT.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see https://www.gnu.org/licenses/.
+ */
+
+import {
+  Directive,
+  HostListener,
+  Inject,
+  Input,
+  ElementRef,
+  OnInit,
+  DoCheck,
+} from '@angular/core';
+import { FormArray, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ProvisionalSearchComponent } from '../../core/components/provisional-search/provisional-search.component';
+import { GeneralUtils } from '../../nurse-doctor/shared/utility/general-utility';
+import { SetLanguageComponent } from '../components/set-language.component';
+import { HttpServiceService } from '../services/http-service.service';
+import { MatDialog } from '@angular/material/dialog';
+
+@Directive({
+  selector: '[appOpenModal]',
+})
+export class OpenModalDirective implements OnInit, DoCheck {
+  @Input()
+  previousSelected: any;
+
+  @Input()
+  diagnosisListForm!: FormGroup;
+  currentLanguageSet: any;
+
+  @HostListener('keyup.enter') onKeyDown() {
+    this.openDialog();
+  }
+
+  @HostListener('click') onClick() {
+    if (this.el.nativeElement.nodeName != 'INPUT') this.openDialog();
+  }
+
+  utils = new GeneralUtils(this.fb);
+
+  constructor(
+    private fb: FormBuilder,
+    private el: ElementRef,
+    private dialog: MatDialog,
+    private httpServiceService: HttpServiceService
+  ) {}
+
+  ngOnInit() {
+    this.fetchLanguageResponse();
+  }
+
+  openDialog(): void {
+    const searchTerm = this.diagnosisListForm.value.provisionalDiagnosis;
+    if (searchTerm.length > 2) {
+      const dialogRef = this.dialog.open(ProvisionalSearchComponent, {
+        width: '800px',
+        //panelClass: 'fit-screen',
+        hasBackdrop: false,
+        data: {
+          searchTerm: searchTerm,
+          previousSelected: this.previousSelected,
+          diagonasisType:
+            this.currentLanguageSet.DiagnosisDetails.provisionaldiagnosis,
+        },
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          const formArray = this.diagnosisListForm.parent as FormArray;
+          const len = formArray.length;
+          for (let i = len - 1, j = 0; i < len + result.length - 1; i++, j++) {
+            (<FormGroup>formArray.at(i)).controls['term'].setValue(
+              result[j].term
+            );
+            (<FormGroup>formArray.at(i)).controls['conceptID'].setValue(
+              result[j].conceptID
+            );
+            (<FormGroup>formArray.at(i)).controls[
+              'provisionalDiagnosis'
+            ].setValue(result[j].term);
+            (<FormGroup>formArray.at(i)).controls[
+              'provisionalDiagnosis'
+            ].disable();
+            this.diagnosisListForm.markAsDirty();
+            if (formArray.length < len + result.length - 1)
+              formArray.push(this.utils.initProvisionalDiagnosisList());
+          }
+        }
+      });
+    }
+  }
+  ngDoCheck() {
+    this.fetchLanguageResponse();
+  }
+
+  fetchLanguageResponse() {
+    const getLanguageJson = new SetLanguageComponent(this.httpServiceService);
+    getLanguageJson.setLanguage();
+    this.currentLanguageSet = getLanguageJson.currentLanguageObject;
+  }
+}

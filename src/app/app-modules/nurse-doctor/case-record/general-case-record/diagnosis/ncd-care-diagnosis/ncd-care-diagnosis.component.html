@@ -1,0 +1,149 @@
+<!-- {{ generalDiagnosisForm.value | json }} -->
+<!-- <div class="m-t-10" [formGroup]="generalDiagnosisForm">
+  <div class="row">
+    <div class="col-xs-12 col-xs-6 box">
+      <mat-form-field>
+      <mat-select
+        class="input-full-width"
+        name="ncdScreeningConditionArray"
+        *ngIf="enableNCDCondition"
+        placeholder="{{ current_language_set?.casesheet?.ncdCondition }} *"
+        multiple
+        (change)="changeNcdScreeningCondition($event.value, $event)"
+        [(ngModel)]="temp"
+        [ngModelOptions]="{ standalone: true }">
+        <mat-option
+          *ngFor="let ncdCareCondition of ncdCareConditions"
+          [value]="ncdCareCondition.screeningCondition">
+          {{ ncdCareCondition.screeningCondition }}</mat-option
+        >
+      </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-xs-12" *ngIf="isNcdScreeningConditionOther">
+      <mat-form-field class="input-full-width">
+        <textarea
+          matInput
+          allowText="textAreaValidator"
+          matTextareaAutosize
+          defaultNull
+          name="ncdScreeningConditionOther"
+          maxlength="20"
+          formControlName="ncdScreeningConditionOther"
+          placeholder="{{ current_language_set?.nCDConditionOther }}">
+        </textarea>
+      </mat-form-field>
+    </div>
+    <div class="col-xs-12 col-xs-6 box">
+      <mat-form-field>
+      <mat-select
+        class="input-full-width"
+        name="ncdCareType"
+        formControlName="ncdCareType"
+        placeholder="{{ current_language_set?.casesheet?.typeOfNcd }}">
+        <mat-option
+          *ngFor="let ncdCareType of ncdCareTypes"
+          [value]="ncdCareType">
+          {{ ncdCareType.ncdCareType }}</mat-option
+        >
+      </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-xs-12" style="display: none">
+      <mat-form-field class="input-full-width">
+        <textarea
+          matInput
+          allowText="textAreaValidator"
+          matTextareaAutosize
+          defaultNull
+          name="ncdComplication"
+          maxlength="300"
+          formControlName="ncdComplication"
+          placeholder="{{ current_language_set?.casesheet?.ncdComplication }}">
+        </textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="m-t-10">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <header class="mat-expansion-panel-header m-t-5">
+            <h4>{{ current_language_set?.casesheet?.provisionalDiag }}</h4>
+          </header>
+          <ng-container formArrayName="provisionalDiagnosisList">
+            <div
+              class="col-xs-12 col-sm-12"
+              *ngFor="
+                let diagnosis of getProvisionalDiagnosisList();;
+                let i = index;
+                let isLast = last
+              ">
+              <ng-container [formGroupName]="i">
+                <div class="col-xs-12 col-sm-9 col-md-9 m-t-10">
+                  <mat-form-field class="input-full-width">
+                    <input
+                      matInput
+                      appOpenModal
+                      allowText="inputFieldValidator"
+                      [diagnosisListForm]="diagnosis"
+                      formControlName="provisionalDiagnosis"
+                      name="diagnosisProvided"
+                      maxlength="100"
+                      minlength="3"
+                      [previousSelected]="
+                        generalDiagnosisForm?.value?.provisionalDiagnosisList
+                      " />
+                    <mat-icon
+                      class="search-btn"
+                      matSuffix
+                      appOpenModal
+                      [diagnosisListForm]="diagnosis"
+                      [previousSelected]="
+                        generalDiagnosisForm?.value?.provisionalDiagnosisList
+                      "
+                      required
+                      >search</mat-icon
+                    >
+                  </mat-form-field>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3 m-t-10">
+                  <button
+                    mat-mini-fab
+                    type="button"
+                    *ngIf="isLast"
+                    [disabled]="checkProvisionalDiagnosisValidity(diagnosis)"
+                    class="pull-right"
+                    color="primary"
+                    (click)="addDiagnosis()">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                  <button
+                    mat-mini-fab
+                    type="button"
+                    class="pull-left"
+                    color="warn"
+                    *ngIf="
+                      diagnosis.controls['provisionalDiagnosis'].disabled ||
+                      i != 0 ||
+                      (i == 0 &&
+                        generalDiagnosisForm.controls[
+                          'provisionalDiagnosisList'
+                        ].controls[i].controls.provisionalDiagnosis.value !==
+                          null &&
+                        generalDiagnosisForm.controls[
+                          'provisionalDiagnosisList'
+                        ].controls[i].controls.provisionalDiagnosis.value !==
+                          '')
+                    "
+                    (click)="deleteDiagnosis(i, provisionalDiagnosisList)">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </div>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

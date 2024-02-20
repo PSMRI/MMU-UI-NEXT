@@ -291,7 +291,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
         this.router.navigate(['/nurse-doctor/nurse-worklist']);
         break;
       case 'Doctor':
-        this.router.navigate(['/common/doctor-worklist']);
+        this.router.navigate(['/nurse-doctor/doctor-worklist']);
         break;
       case 'Lab Technician':
         this.router.navigate(['/lab']);
@@ -300,10 +300,10 @@ export class ServicePointComponent implements OnInit, DoCheck {
         this.router.navigate(['/pharmacist']);
         break;
       case 'Radiologist':
-        this.router.navigate(['/common/radiologist-worklist']);
+        this.router.navigate(['/nurse-doctor/radiologist-worklist']);
         break;
       case 'Oncologist':
-        this.router.navigate(['/common/oncologist-worklist']);
+        this.router.navigate(['/nurse-doctor/oncologist-worklist']);
         break;
       default:
     }

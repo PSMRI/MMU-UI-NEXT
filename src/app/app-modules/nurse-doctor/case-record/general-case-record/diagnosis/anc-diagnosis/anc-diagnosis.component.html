@@ -1,0 +1,199 @@
+<!-- {{ generalDiagnosisForm.value | json}} -->
+<div class="m-t-10" [formGroup]="generalDiagnosisForm">
+  <div class="col-xs-12 text-right" *ngIf="visitCategory === 'ANC'">
+    <mat-label
+      *ngIf="showHRP === 'true' || complicationPregHRP === 'true'"
+      style="color: red"
+      ><h5>
+        <strong>** {{ current_language_set?.highRiskPregnancy }} **</strong>
+      </h5></mat-label
+    ><br />
+  </div>
+  <section>
+    <!-- First Row -->
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+        <mat-form-field class="input-full-width">
+          <input
+            autocomplete="off"
+            matInput
+            defaultNull
+            allowText="number"
+            maxlength="2"
+            name="gravida_G"
+            formControlName="gravida_G"
+            placeholder="{{ current_language_set?.casesheet?.gravida }}"
+            [readonly]="true" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+        <mat-form-field class="input-full-width">
+          <input
+            autocomplete="off"
+            matInput
+            defaultNull
+            name="duration"
+            formControlName="duration"
+            allowText="number"
+            placeholder="{{ current_language_set?.casesheet?.periodPreg }}"
+            allowMax="10"
+            [readonly]="true" />
+        </mat-form-field>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+        <mat-form-field>
+          <mat-select
+            class="select-full-width"
+            name="complicationOfCurrentPregnancyList"
+            formControlName="complicationOfCurrentPregnancyList"
+            placeholder="{{ current_language_set?.casesheet?.complications }}"
+            multiple
+            (change)="
+              resetOtherPregnancyComplication(
+                complicationOfCurrentPregnancyList,
+                0
+              );
+              displayPositive(complicationOfCurrentPregnancyList)
+            ">
+            <mat-option
+              *ngFor="let complication of masterData?.pregComplicationTypes"
+              [value]="complication"
+              [disabled]="
+                !showAllPregComplication &&
+                ((disableNonePregnancyComplication &&
+                  complication.pregComplicationType === 'None') ||
+                  (!disableNonePregnancyComplication &&
+                    complication.pregComplicationType !== 'None'))
+              ">
+              {{ complication.pregComplicationType }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div
+        class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+        *ngIf="showOtherPregnancyComplication">
+        <mat-form-field class="input-full-width">
+          <input
+            autocomplete="off"
+            matInput
+            defaultNull
+            placeholder="{{ current_language_set?.common?.otherComplication }}"
+            allowText="alphaspace"
+            maxlength="50"
+            name="otherCurrPregComplication"
+            formControlName="otherCurrPregComplication" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Second Row -->
+
+    <div class="row">
+      <div class="col-xs-6 m-t-20">
+        <mat-form-field class="input-full-width">
+          <textarea
+            matInput
+            allowText="textAreaValidator"
+            defaultNull
+            maxlength="300"
+            name="highRiskStatus"
+            formControlName="highRiskStatus"
+            placeholder="{{ current_language_set?.casesheet?.highStatus }}">
+          </textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-6 m-t-20">
+        <mat-form-field class="input-full-width">
+          <textarea
+            matInput
+            allowText="textAreaValidator"
+            defaultNull
+            maxlength="300"
+            name="highRiskCondition"
+            formControlName="highRiskCondition"
+            placeholder="{{ current_language_set?.casesheet?.highCondition }}">
+          </textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Third Row -->
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 box">
+        <div class="form-group">
+          <mat-label class="control-label" for="deathDuringANCCaseRecord">{{
+            current_language_set?.casesheet?.maternalDeath
+          }}</mat-label>
+          <div class="clearfix"></div>
+          <mat-radio-group
+            name="isMaternalDeath"
+            formControlName="isMaternalDeath"
+            (change)="checkWithDeathDetails()">
+            <mat-radio-button color="primary" [value]="true"
+              >Yes</mat-radio-button
+            >
+            <mat-radio-button color="primary" [value]="false"
+              >No</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fourth Row -->
+
+    <div class="row" *ngIf="generalDiagnosisForm.value.isMaternalDeath">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+        <mat-form-field class="input-full-width">
+          <input
+            autocomplete="off"
+            matInput
+            defaultNull
+            name="placeOfDeath"
+            allowText="alphaspace"
+            formControlName="placeOfDeath"
+            maxlength="50"
+            placeholder="{{ current_language_set?.casesheet?.placeOfDeath }}" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+        <mat-form-field [style.width]="'100%'">
+          <mat-label>{{
+            current_language_set?.casesheet?.dateOfDeath
+          }}</mat-label>
+          <input
+            matInput
+            [max]="today"
+            [matDatepicker]="picker"
+            formControlName="dateOfDeath"
+            [min]="minimumDeathDate" />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+        <mat-form-field class="input-full-width">
+          <input
+            autocomplete="off"
+            matInput
+            defaultNull
+            allowText="alphaspace"
+            name="causeOfDeath"
+            formControlName="causeOfDeath"
+            maxlength="50"
+            placeholder="{{ current_language_set?.casesheet?.causeOfDeath }}" />
+        </mat-form-field>
+      </div>
+    </div>
+  </section>
+</div>

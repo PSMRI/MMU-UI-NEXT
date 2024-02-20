@@ -135,6 +135,13 @@ export class WorkareaComponent
   enableLungAssessment: boolean = false;
   enableProvisionalDiag: boolean = false;
   patientVisitForm!: FormGroup;
+  patientANCForm!: FormGroup;
+  patientPNCForm!: FormGroup;
+  patientReferForm!: FormGroup;
+  patientCaseRecordForm!: FormGroup;
+  patientExaminationForm!: FormGroup;
+  patientVitalsForm!: FormGroup;
+  patientHistoryForm!: FormGroup;
 
   constructor(
     private router: Router,
@@ -204,6 +211,7 @@ export class WorkareaComponent
     this.patientVisitForm = this.patientMedicalForm.get(
       'patientVisitForm'
     ) as FormGroup;
+
     this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
     this.visitID = localStorage.getItem('visitID');
     this.nurseFlag = localStorage.getItem('nurseFlag');
@@ -212,7 +220,7 @@ export class WorkareaComponent
     this.getBeneficiaryDetails();
     this.getVisitReasonAndCategory();
     this.getVisitType();
-    this.getPregnancyStatus();
+    // this.getPregnancyStatus();
     this.ncdTemperature = false;
     this.enableProvisionalDiag = false;
     this.nurseService.clearMessage();
@@ -322,6 +330,9 @@ export class WorkareaComponent
               'patientVitalsForm',
               new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
             );
+            this.patientVitalsForm = this.patientMedicalForm.get(
+              'patientVitalsForm'
+            ) as FormGroup;
             this.showVitals = true;
           }
         } else if (categoryValue == 'Cancer Screening') {
@@ -329,6 +340,12 @@ export class WorkareaComponent
             'patientHistoryForm',
             new CancerUtils(this.fb).createNurseCancerHistoryForm()
           );
+          this.patientHistoryForm = this.patientMedicalForm.get(
+            'patientHistoryForm'
+          ) as FormGroup;
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientVitalsForm',
             new CancerUtils(this.fb).createNurseCancerPatientVitalsForm()
@@ -337,6 +354,12 @@ export class WorkareaComponent
             'patientExaminationForm',
             new CancerUtils(this.fb).createCancerExaminationForm()
           );
+          this.patientExaminationForm = this.patientMedicalForm.get(
+            'patientExaminationForm'
+          ) as FormGroup;
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
 
           this.getCurrentVitals();
 
@@ -345,14 +368,23 @@ export class WorkareaComponent
           this.showExamination = true;
 
           if (mode) {
-            this.patientMedicalForm.addControl(
-              'patientCaseRecordForm',
-              new CancerUtils(this.fb).createCancerDiagnosisForm()
-            );
-            this.patientMedicalForm.addControl(
-              'patientReferForm',
-              new CancerUtils(this.fb).createCancerReferForm()
-            );
+            this.patientMedicalForm = this.fb.group({
+              patientCaseRecordForm: new CancerUtils(
+                this.fb
+              ).createCancerDiagnosisForm(),
+            });
+            this.patientCaseRecordForm = this.patientMedicalForm.get(
+              'patientCaseRecordForm'
+            ) as FormGroup;
+
+            this.patientMedicalForm = this.fb.group({
+              patientReferForm: new CancerUtils(
+                this.fb
+              ).createCancerReferForm(),
+            });
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
 
             this.patchCancerFindings();
 
@@ -374,6 +406,12 @@ export class WorkareaComponent
             'patientHistoryForm',
             new GeneralUtils(this.fb).createGeneralHistoryForm(false)
           );
+          this.patientHistoryForm = this.patientMedicalForm.get(
+            'patientHistoryForm'
+          ) as FormGroup;
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
@@ -382,6 +420,12 @@ export class WorkareaComponent
             'patientExaminationForm',
             new GeneralUtils(this.fb).createPatientExaminationForm()
           );
+          this.patientExaminationForm = this.patientMedicalForm.get(
+            'patientExaminationForm'
+          ) as FormGroup;
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
 
           this.getCurrentVitals();
 
@@ -390,16 +434,25 @@ export class WorkareaComponent
           this.showExamination = true;
 
           if (mode) {
-            this.patientMedicalForm.addControl(
-              'patientCaseRecordForm',
-              new GeneralUtils(this.fb).createGeneralCaseRecord()
-            );
-            this.patientMedicalForm.addControl(
-              'patientReferForm',
-              new CancerUtils(this.fb).createCancerReferForm()
-            );
+            this.patientMedicalForm = this.fb.group({
+              patientCaseRecordForm: new GeneralUtils(
+                this.fb
+              ).createGeneralCaseRecord(),
+            });
+            this.patientCaseRecordForm = this.patientMedicalForm.get(
+              'patientCaseRecordForm'
+            ) as FormGroup;
 
-            this.patchGeneralFinding();
+            this.patientMedicalForm = this.fb.group({
+              patientReferForm: new CancerUtils(
+                this.fb
+              ).createCancerReferForm(),
+            });
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
+
+            // this.patchGeneralFinding();
 
             this.visitMode = new String(mode);
             this.vitalsMode = new String(mode);
@@ -417,6 +470,9 @@ export class WorkareaComponent
         } else if (categoryValue == 'NCD screening') {
           //removed for WDF
           // this.patientMedicalForm.addControl('NCDScreeningForm', new NCDScreeningUtils(this.fb).createNCDScreeningForm());
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
@@ -425,6 +481,9 @@ export class WorkareaComponent
             'patientHistoryForm',
             new GeneralUtils(this.fb).createNCDScreeningHistoryForm()
           );
+          this.patientHistoryForm = this.patientMedicalForm.get(
+            'patientHistoryForm'
+          ) as FormGroup;
           this.getCurrentVitals();
           this.showNCDScreening = true;
           this.showHistory = true;
@@ -436,10 +495,15 @@ export class WorkareaComponent
           );
 
           if (mode) {
-            this.patientMedicalForm.addControl(
-              'patientCaseRecordForm',
-              new GeneralUtils(this.fb).createNCDScreeningCaseRecord()
-            );
+            this.patientMedicalForm = this.fb.group({
+              patientCaseRecordForm: new GeneralUtils(
+                this.fb
+              ).createNCDScreeningCaseRecord(),
+            });
+            this.patientCaseRecordForm = this.patientMedicalForm.get(
+              'patientCaseRecordForm'
+            ) as FormGroup;
+
             this.patchGeneralFinding();
             this.showCaseRecord = true;
             this.visitMode = new String(mode);
@@ -452,6 +516,9 @@ export class WorkareaComponent
               'patientReferForm',
               new CancerUtils(this.fb).createCancerReferForm()
             );
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
             this.showRefer = true;
             this.referMode = new String(mode);
           }
@@ -460,10 +527,20 @@ export class WorkareaComponent
             'patientPNCForm',
             new GeneralUtils(this.fb).createPatientPNCForm()
           );
+          this.patientPNCForm = this.patientMedicalForm.get(
+            'patientPNCForm'
+          ) as FormGroup;
+
           this.patientMedicalForm.addControl(
             'patientHistoryForm',
             new GeneralUtils(this.fb).createGeneralHistoryForm()
           );
+          this.patientHistoryForm = this.patientMedicalForm.get(
+            'patientHistoryForm'
+          ) as FormGroup;
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
@@ -472,6 +549,12 @@ export class WorkareaComponent
             'patientExaminationForm',
             new GeneralUtils(this.fb).createPatientExaminationForm()
           );
+          this.patientExaminationForm = this.patientMedicalForm.get(
+            'patientExaminationForm'
+          ) as FormGroup;
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
 
           this.getCurrentVitals();
 
@@ -481,14 +564,22 @@ export class WorkareaComponent
           this.showExamination = true;
 
           if (mode) {
-            this.patientMedicalForm.addControl(
-              'patientCaseRecordForm',
-              new GeneralUtils(this.fb).createPNCCaseRecord()
-            );
+            this.patientMedicalForm = this.fb.group({
+              patientCaseRecordForm: new GeneralUtils(
+                this.fb
+              ).createPNCCaseRecord(),
+            });
+            this.patientCaseRecordForm = this.patientMedicalForm.get(
+              'patientCaseRecordForm'
+            ) as FormGroup;
+
             this.patientMedicalForm.addControl(
               'patientReferForm',
               new CancerUtils(this.fb).createCancerReferForm()
             );
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
 
             this.patchGeneralFinding();
 
@@ -511,10 +602,20 @@ export class WorkareaComponent
             'patientANCForm',
             new GeneralUtils(this.fb).createPatientANCForm()
           );
+          this.patientANCForm = this.patientMedicalForm.get(
+            'patientANCForm'
+          ) as FormGroup;
+
           this.patientMedicalForm.addControl(
             'patientHistoryForm',
             new GeneralUtils(this.fb).createGeneralHistoryForm()
           );
+          this.patientHistoryForm = this.patientMedicalForm.get(
+            'patientHistoryForm'
+          ) as FormGroup;
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
@@ -523,6 +624,13 @@ export class WorkareaComponent
             'patientExaminationForm',
             new GeneralUtils(this.fb).createPatientExaminationForm()
           );
+
+          this.patientExaminationForm = this.patientMedicalForm.get(
+            'patientExaminationForm'
+          ) as FormGroup;
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
 
           this.getCurrentVitals();
           this.patchLMPDate();
@@ -534,14 +642,22 @@ export class WorkareaComponent
           this.showVitals = true;
           this.showExamination = true;
           if (mode) {
-            this.patientMedicalForm.addControl(
-              'patientCaseRecordForm',
-              new GeneralUtils(this.fb).createANCCaseRecord()
-            );
+            this.patientMedicalForm = this.fb.group({
+              patientCaseRecordForm: new GeneralUtils(
+                this.fb
+              ).createANCCaseRecord(),
+            });
+            this.patientCaseRecordForm = this.patientMedicalForm.get(
+              'patientCaseRecordForm'
+            ) as FormGroup;
+
             this.patientMedicalForm.addControl(
               'patientReferForm',
               new CancerUtils(this.fb).createCancerReferForm()
             );
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
 
             this.patchGeneralFinding();
             this.getANCDiagnosis();
@@ -565,6 +681,12 @@ export class WorkareaComponent
             'patientHistoryForm',
             new GeneralUtils(this.fb).createGeneralHistoryForm(false)
           );
+          this.patientHistoryForm = this.patientMedicalForm.get(
+            'patientHistoryForm'
+          ) as FormGroup;
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
@@ -576,14 +698,22 @@ export class WorkareaComponent
           this.showVitals = true;
 
           if (mode) {
-            this.patientMedicalForm.addControl(
-              'patientCaseRecordForm',
-              new GeneralUtils(this.fb).createNCDCareCaseRecord()
-            );
+            this.patientMedicalForm = this.fb.group({
+              patientCaseRecordForm: new GeneralUtils(
+                this.fb
+              ).createNCDCareCaseRecord(),
+            });
+            this.patientCaseRecordForm = this.patientMedicalForm.get(
+              'patientCaseRecordForm'
+            ) as FormGroup;
+
             this.patientMedicalForm.addControl(
               'patientReferForm',
               new CancerUtils(this.fb).createCancerReferForm()
             );
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
 
             this.patchGeneralFinding();
 
@@ -604,6 +734,12 @@ export class WorkareaComponent
             'patientHistoryForm',
             new GeneralUtils(this.fb).createGeneralHistoryForm(false)
           );
+          this.patientHistoryForm = this.patientMedicalForm.get(
+            'patientHistoryForm'
+          ) as FormGroup;
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
@@ -615,14 +751,22 @@ export class WorkareaComponent
           this.showVitals = true;
 
           if (mode) {
-            this.patientMedicalForm.addControl(
-              'patientCaseRecordForm',
-              new GeneralUtils(this.fb).createCovidCareCaseRecord()
-            );
+            this.patientMedicalForm = this.fb.group({
+              patientCaseRecordForm: new GeneralUtils(
+                this.fb
+              ).createCovidCareCaseRecord(),
+            });
+            this.patientCaseRecordForm = this.patientMedicalForm.get(
+              'patientCaseRecordForm'
+            ) as FormGroup;
+
             this.patientMedicalForm.addControl(
               'patientReferForm',
               new CancerUtils(this.fb).createCancerReferForm()
             );
+            this.patientReferForm = this.patientMedicalForm.get(
+              'patientReferForm'
+            ) as FormGroup;
 
             this.patchGeneralFinding();
 
@@ -814,7 +958,7 @@ export class WorkareaComponent
                 if (this.isSpecialist) {
                   this.router.navigate(['/common/tcspecialist-worklist']);
                 } else {
-                  this.router.navigate(['/common/doctor-worklist']);
+                  this.router.navigate(['/nurse-doctor/doctor-worklist']);
                 }
               } else {
                 this.resetSpinnerandEnableTheSubmitButton();
@@ -846,7 +990,7 @@ export class WorkareaComponent
                 if (this.isSpecialist) {
                   this.router.navigate(['/common/tcspecialist-worklist']);
                 } else {
-                  this.router.navigate(['/common/doctor-worklist']);
+                  this.router.navigate(['/nurse-doctor/doctor-worklist']);
                 }
               } else {
                 this.resetSpinnerandEnableTheSubmitButton();
@@ -876,7 +1020,7 @@ export class WorkareaComponent
                 if (this.isSpecialist) {
                   this.router.navigate(['/common/tcspecialist-worklist']);
                 } else {
-                  this.router.navigate(['/common/doctor-worklist']);
+                  this.router.navigate(['/nurse-doctor/doctor-worklist']);
                 }
               } else {
                 this.resetSpinnerandEnableTheSubmitButton();
@@ -923,12 +1067,12 @@ export class WorkareaComponent
                       res.data.response,
                       'success'
                     );
-                    this.router.navigate(['/common/nurse-worklist']);
+                    this.router.navigate(['/nurse-doctor/nurse-worklist']);
                   } else if (res.statusCode == 9999) {
                     this.patientMedicalForm.reset();
                     this.removeBeneficiaryDataForNurseVisit();
                     this.confirmationService.alert(res.errorMessage, 'info');
-                    this.router.navigate(['/common/nurse-worklist']);
+                    this.router.navigate(['/nurse-doctor/nurse-worklist']);
                   } else {
                     this.resetSpinnerandEnableTheSubmitButton();
                     this.confirmationService.alert(res.errorMessage, 'error');
@@ -1020,7 +1164,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -1679,7 +1823,7 @@ export class WorkareaComponent
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
               this.doctorService.prescribedDrugData = null;
-              this.router.navigate(['/common/nurse-worklist']);
+              this.router.navigate(['/nurse-doctor/nurse-worklist']);
             } else {
               this.confirmationService.alert(res.errorMessage, 'error');
             }
@@ -2041,7 +2185,7 @@ export class WorkareaComponent
             this.patientMedicalForm.reset();
             this.removeBeneficiaryDataForNurseVisit();
             this.confirmationService.alert(res.data.response, 'success');
-            this.router.navigate(['/common/nurse-worklist']);
+            this.router.navigate(['/nurse-doctor/nurse-worklist']);
           } else {
             this.resetSpinnerandEnableTheSubmitButton();
             this.confirmationService.alert(res.errorMessage, 'error');
@@ -2177,7 +2321,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2208,7 +2352,7 @@ export class WorkareaComponent
             if (this.isSpecialist) {
               this.router.navigate(['/common/tcspecialist-worklist']);
             } else {
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             }
           } else {
             this.resetSpinnerandEnableTheSubmitButton();
@@ -2294,7 +2438,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForNurseVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/nurse-worklist']);
+              this.router.navigate(['/nurse-doctor/nurse-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2329,7 +2473,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2360,7 +2504,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForNurseVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/nurse-worklist']);
+              this.router.navigate(['/nurse-doctor/nurse-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2391,7 +2535,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForNurseVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/nurse-worklist']);
+              this.router.navigate(['/nurse-doctor/nurse-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2418,7 +2562,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForNurseVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/nurse-worklist']);
+              this.router.navigate(['/nurse-doctor/nurse-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2438,7 +2582,7 @@ export class WorkareaComponent
     //         this.patientMedicalForm.reset();
     //         this.removeBeneficiaryDataForNurseVisit();
     //         this.confirmationService.alert(res.data.response, 'success');
-    //         this.router.navigate(['/common/nurse-worklist']);
+    //         this.router.navigate(['/nurse-doctor/nurse-worklist']);
     //       } else {
     //         this.confirmationService.alert(res.errorMessage, 'error');
     //       }
@@ -2470,7 +2614,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2506,7 +2650,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2543,7 +2687,7 @@ export class WorkareaComponent
               sessionStorage.removeItem('instFlag');
               sessionStorage.removeItem('suspectFlag');
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2574,7 +2718,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForNurseVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/nurse-worklist']);
+              this.router.navigate(['/nurse-doctor/nurse-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2606,7 +2750,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForNurseVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/nurse-worklist']);
+              this.router.navigate(['/nurse-doctor/nurse-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2647,7 +2791,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');
@@ -2679,7 +2823,7 @@ export class WorkareaComponent
               this.patientMedicalForm.reset();
               this.removeBeneficiaryDataForDoctorVisit();
               this.confirmationService.alert(res.data.response, 'success');
-              this.router.navigate(['/common/doctor-worklist']);
+              this.router.navigate(['/nurse-doctor/doctor-worklist']);
             } else {
               this.resetSpinnerandEnableTheSubmitButton();
               this.confirmationService.alert(res.errorMessage, 'error');

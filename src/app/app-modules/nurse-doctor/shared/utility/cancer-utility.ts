@@ -23,11 +23,11 @@
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 export class CancerUtils {
-  serviceLineDetails: any = null;
+  // serviceLineDetails: any = null;
   constructor(private fb: FormBuilder) {}
 
   ngOnInIt() {
-    this.serviceLineDetails = localStorage.getItem('serviceLineDetails');
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
   }
 
   createCancerPatientFamilyMedicalHistoryForm() {
@@ -37,6 +37,7 @@ export class CancerUtils {
   }
 
   initDiseases(): FormGroup {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
       benVisitID: null,
@@ -46,13 +47,14 @@ export class CancerUtils {
       snomedCode: null,
       snomedTerm: null,
       familyMemberList: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
       createdBy: null,
     });
   }
 
   createCancerPatientPerosnalHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
       benVisitID: null,
@@ -82,12 +84,13 @@ export class CancerUtils {
       ssRadiationExposure: null,
       isThyroidDisorder: null,
       createdBy: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createCancerPatientObstetricHistoryForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
       benVisitID: null,
@@ -109,8 +112,8 @@ export class CancerUtils {
       menopauseAge: null,
       isPostMenopauseBleeding: null,
       createdBy: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -126,6 +129,7 @@ export class CancerUtils {
   }
 
   createNurseCancerPatientVitalsForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
       benVisitID: null,
@@ -148,8 +152,8 @@ export class CancerUtils {
       rbsTestResult: null,
       rbsTestRemarks: null,
       createdBy: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -164,6 +168,7 @@ export class CancerUtils {
   }
 
   createAbdominalExaminationForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       abdominalInspection_Normal: null,
       liver: null,
@@ -178,12 +183,13 @@ export class CancerUtils {
       lymphNode_ParaAortic_Right: null,
       observation: null,
       image: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createBreastExaminationForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       everBreastFed: null,
       breastFeedingDurationGTE6months: null,
@@ -198,12 +204,13 @@ export class CancerUtils {
       lumpTexture: null,
       referredToMammogram: null,
       image: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createGynecologicalExaminationForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       appearanceOfCervix: null,
       typeOfLesionList: null,
@@ -216,12 +223,13 @@ export class CancerUtils {
       filePath: null,
       experiencedPostCoitalBleeding: null,
       observation: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createOralExaminationForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       limitedMouthOpening: null,
       premalignantLesions: null,
@@ -231,8 +239,8 @@ export class CancerUtils {
       chronicBurningSensation: null,
       observation: null,
       image: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
@@ -243,8 +251,6 @@ export class CancerUtils {
       mobility_Left: null,
       size_Right: null,
       mobility_Right: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
     },
     {
       lymphNodeName: ' Sub Mandibular',
@@ -252,8 +258,6 @@ export class CancerUtils {
       mobility_Left: null,
       size_Right: null,
       mobility_Right: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
     },
     {
       lymphNodeName: ' Sub deep cervical',
@@ -261,8 +265,6 @@ export class CancerUtils {
       mobility_Left: null,
       size_Right: null,
       mobility_Right: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
     },
     {
       lymphNodeName: ' Jugulo-digastric',
@@ -270,8 +272,6 @@ export class CancerUtils {
       mobility_Left: null,
       size_Right: null,
       mobility_Right: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
     },
     {
       lymphNodeName: ' Mid cervical',
@@ -279,8 +279,6 @@ export class CancerUtils {
       mobility_Left: null,
       size_Right: null,
       mobility_Right: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
     },
     {
       lymphNodeName: ' Interior cervical',
@@ -288,8 +286,6 @@ export class CancerUtils {
       mobility_Left: null,
       size_Right: null,
       mobility_Right: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
     },
     {
       lymphNodeName: ' Supra clavicular',
@@ -297,8 +293,6 @@ export class CancerUtils {
       mobility_Left: null,
       size_Right: null,
       mobility_Right: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
     },
     {
       lymphNodeName: ' Posterior Triangle',
@@ -306,8 +300,6 @@ export class CancerUtils {
       mobility_Left: null,
       size_Right: null,
       mobility_Right: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
     },
     {
       lymphNodeName: ' Axillary Lymph Nodes',
@@ -315,12 +307,11 @@ export class CancerUtils {
       mobility_Left: null,
       size_Right: null,
       mobility_Right: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
     },
   ];
 
   createSignsForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       shortnessOfBreath: null,
       coughgt2Weeks: null,
@@ -338,33 +329,39 @@ export class CancerUtils {
       lymphNode_Enlarged: null,
       breastEnlargement: null,
       observation: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
       lymphNodes: this.fb.array(
-        this.lymphNodesArray.map(item => this.fb.group(item))
+        this.lymphNodesArray.map(item => ({
+          ...item,
+          vanID: JSON.parse(serviceLineDetails).vanID,
+          parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
+        }))
       ),
     });
   }
 
   createCancerReferForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       referredToInstituteID: null,
       refrredToAdditionalServiceList: null,
       referredToInstituteName: null,
       revisitDate: null,
       referralReason: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 
   createCancerDiagnosisForm() {
+    const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       provisionalDiagnosisPrimaryDoctor: null,
       provisionalDiagnosisOncologist: { value: null, disabled: true },
       remarks: null,
-      vanID: JSON.parse(this.serviceLineDetails).vanID,
-      parkingPlaceID: JSON.parse(this.serviceLineDetails).parkingPlaceID,
+      vanID: JSON.parse(serviceLineDetails).vanID,
+      parkingPlaceID: JSON.parse(serviceLineDetails).parkingPlaceID,
     });
   }
 }

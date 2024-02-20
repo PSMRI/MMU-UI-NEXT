@@ -1,0 +1,974 @@
+<!-- <div class="row m-t-20 m-b-20">
+  <div class="col-xs-12">
+    <mat-tab-group>
+      <mat-tab
+        *ngFor="let service of serviceOnState"
+        label="{{ service.serviceName }}">
+        <div>
+          <mat-form-field
+            class="example-container m-t-10"
+            *ngIf="!service.serviceLoaded"
+            autosize>
+            <div class="example-sidenav-content">
+              <button
+                type="button"
+                mat-raised-button
+                color="primary"
+                class="btn-green"
+                (click)="getServiceHistory(service.serviceID)">
+                {{ current_language_set?.common?.load }}
+                {{ service.serviceName }}
+                {{ current_language_set?.historyData?.history }}
+              </button>
+            </div>
+          </mat-form-field>
+          <div
+            *ngIf="
+              historyOfMMU?.length > 0 &&
+              hideMMUFetch &&
+              service.serviceID == '2'
+            "
+            class="m-t-20">
+            <mat-form-field id="filterbox" class="pull-right">
+              <mat-label>{{
+                current_language_set?.nurseData?.visitDetailsForm
+                  ?.visitCategory
+              }}</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                #filterMMU
+                (keyup)="filterMMUHistory(filterMMU.value)" />
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+          </div>
+          <section
+            class="m-t-20 overflow"
+            *ngIf="hideMMUFetch && service.serviceID == '2'">
+            <table
+            mat-table
+            [dataSource]="dataSource"
+            aria-describedby="previousVisit">
+            <ng-container matColumnDef="visitnommu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.visitnommu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 300px;
+                max-width: 120px;
+                word-break: normal;
+                vertical-align: middle;">
+              {{ element?.benVisitNo }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.casesheet?.date }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 300px;
+                max-width: 120px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+              {{ element?.benVisitDate | date: 'dd/MM/yyyy' }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="visitreasonmmu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.visitreasonmmu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 110px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+              {{ element?.VisitReason }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="visitcategorymmu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.visitcategorymmu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 110px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+              {{ element?.VisitReason }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="visitDetails">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.visitDetails }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 110px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+              {{ element?.VisitReason }}
+              <ng-container *ngIf="visit.benPreviousData">
+                <tr>
+                  <ng-container *ngIf="visit.benPreviousData.nurseData">
+                    <td>
+                      <ng-container
+                        *ngIf="
+                          visit.benPreviousData.nurseData.vitals
+                            .benAnthropometryDetail &&
+                          visit.benPreviousData.nurseData.vitals
+                            .benPhysicalVitalDetail
+                        ">
+                        <tr>
+                          <th
+                          mat-header-cell
+                          style="border-bottom: none"
+                          *matHeaderCellDef
+                          mat-sort-header>
+                          Height :
+                        </th>
+                          <td
+                          mat-cell
+                          *matCellDef="let element" >
+                            {{
+                              element.benPreviousData?.nurseData?.vitals
+                                ?.benAnthropometryDetail?.height_cm ||
+                                'NA'
+                            }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                          mat-header-cell
+                          style="border-bottom: none"
+                          *matHeaderCellDef
+                          mat-sort-header>
+                          Weight :
+                        </th>
+                          <td
+                          mat-cell
+                          *matCellDef="let element" >
+                            {{
+                              element.benPreviousData?.nurseData?.vitals
+                                ?.benAnthropometryDetail?.weight_Kg ||
+                                'NA'
+                            }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                          mat-header-cell
+                          style="border-bottom: none"
+                          *matHeaderCellDef
+                          mat-sort-header>
+                          SBP :
+                        </th>
+                          <td
+                          mat-cell
+                          *matCellDef="let element" >
+                            {{
+                              element.benPreviousData?.nurseData?.vitals
+                                ?.benPhysicalVitalDetail
+                                ?.averageSystolicBP || 'NA'
+                            }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                          mat-header-cell
+                          style="border-bottom: none"
+                          *matHeaderCellDef
+                          mat-sort-header>
+                          DBP :
+                        </th>
+                          <td
+                          mat-cell
+                          *matCellDef="let element" >
+                            {{
+                              element.benPreviousData?.nurseData?.vitals
+                                ?.benPhysicalVitalDetail
+                                ?.averageDiastolicBP || 'NA'
+                            }}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th
+                          mat-header-cell
+                          style="border-bottom: none"
+                          *matHeaderCellDef
+                          mat-sort-header>
+                          RBS :
+                        </th>
+                          <td
+                          mat-cell
+                          *matCellDef="let element" >
+                            {{
+                              element.benPreviousData?.nurseData?.vitals
+                                ?.benPhysicalVitalDetail
+                                ?.rbsTestResult || 'NA'
+                            }}
+                          </td>
+                        </tr>
+                      </ng-container>
+                    </td>
+                  </ng-container>
+                </tr>
+              </ng-container>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="visitcodemmu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.visitcodemmu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                max-width: 150px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+              {{ element?.visitCode }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="medicationmmu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.medicationmmu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                max-width: 150px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+              {{ element?.visitCode }}
+              <ng-container *ngIf="visit.benPreviousData">
+                <tr>
+                  <ng-container
+                    *ngIf="visit.benPreviousData.doctorData">
+                    <td>
+                      <ng-container
+                        *ngFor="
+                          let medicationmmu of visit.benPreviousData
+                            ?.doctorData?.prescription
+                        ">
+                        <tr *ngIf="medicationmmu.drugName !== null">
+                          {{
+                            medicationmmu.drugName
+                          }}
+                          {{
+                            medicationmmu.drugStrength
+                          }},
+                        </tr>
+                        <tr
+                          *ngIf="medicationmmu.drugName === null"></tr>
+                      </ng-container>
+                    </td>
+                  </ng-container>
+                </tr>
+              </ng-container>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="previewmmu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.previewmmu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 110px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+              <span
+                class="material-icons cursorPointer"
+                (click)="getVisitDetails('MMU', visit)"
+                >visibility</span
+              >
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="printpreviewmmu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.printpreviewmmu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 110px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+              <mat-icon
+                class="cursorPointer"
+                (click)="getVisitDetails('MMU', visit, true)">print</mat-icon>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <div
+            class="pull-center"
+            style="margin-top: 5px"
+            [hidden]="dataSource.data.length > 0">
+            <strong>{{ currentLanguageSet?.noRecordsFound }}</strong>
+          </div>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 20]"
+            [pageSize]="5"
+            showFirstLastButtons
+            aria-label="Select patient in beneficiaryPlatformHistory">
+          </mat-paginator>
+          </section>
+
+          <div
+            *ngIf="
+              historyOfTM?.length > 0 && hideTMFetch && service.serviceID == '4'
+            "
+            class="m-t-20">
+            <mat-form-field id="filterbox" class="pull-right">
+              <mat-label>{{ current_language_set?.nurseData?.visitDetailsForm?.visitCategory }}</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                #filterTM
+                (keyup)="filterTMHistory(filterTM.value)" />
+              <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+          </div>
+          <section
+            class="m-t-20 overflow"
+            *ngIf="hideTMFetch && service.serviceID == '4'">
+            <table
+            mat-table
+            [dataSource]="dataSource"
+            aria-describedby="visitCategory">
+
+            <ng-container matColumnDef="visitnommu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.visitnommu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 300px;
+                max-width: 120px;
+                word-break: normal;
+                vertical-align: middle;">
+              {{ element?.benVisitNo }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.casesheet?.date }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 300px;
+                max-width: 120px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+              {{ element?.benVisitDate | date: 'dd/MM/yyyy' }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="visitreasonmmu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.visitreasonmmu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 300px;
+                max-width: 120px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+              {{ element?.VisitReason }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="visitcategorymmu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.visitcategorymmu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 300px;
+                max-width: 120px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+              {{ element?.VisitCategory }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="visitcodemmu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.visitcodemmu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 300px;
+                max-width: 120px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+              {{ element?.visitCode }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="previewmmu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.previewmmu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 300px;
+                max-width: 120px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+                <span
+                class="material-icons cursorPointer"
+                (click)="getVisitDetails('TM', visit)"
+                >visibility</span
+                >
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="printpreviewmmu">
+              <th
+                mat-header-cell
+                style="border-bottom: none"
+                *matHeaderCellDef
+                mat-sort-header>
+                {{ current_language_set?.previousvisit?.printpreviewmmu }}
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element" 
+                style="
+                width: 300px;
+                max-width: 120px;
+                word-break: normal;
+                vertical-align: middle;
+              ">
+                <mat-icon
+                class="cursorPointer"
+                (click)="getVisitDetails('TM', visit, true)"
+                >print</mat-icon
+                >
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+            <div
+            class="pull-center"
+            style="margin-top: 5px"
+            [hidden]="dataSource.data.length > 0">
+            <strong>{{ currentLanguageSet?.noRecordsFound }}</strong>
+            </div>
+            <mat-paginator
+              [pageSizeOptions]="[5, 10, 20]"
+              [pageSize]="5"
+              showFirstLastButtons
+              aria-label="Select patient in beneficiaryPlatformHistory">
+            </mat-paginator>
+          </section>
+        </div>
+        <div
+          *ngIf="
+            historyOfMCTS?.length > 0 &&
+            hideMCTSFetch &&
+            service.serviceID == '6'
+          "
+          class="m-t-20">
+          <mat-form-field id="filterbox" class="pull-right">
+            <mat-label>{{
+              current_language_set?.previousvisit?.calltypemcts
+            }}</mat-label>
+            <input
+              autocomplete="off"
+              matInput
+              #filterMCTS
+              (keyup)="filterMCTSHistory(filterMCTS.value)" />
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        <section
+          class="m-t-20 overflow"
+          *ngIf="hideMCTSFetch && service.serviceID == '6'">
+          <table
+          mat-table
+          [dataSource]="dataSource"
+          aria-describedby="callType">
+          <ng-container matColumnDef="calltypemcts">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{ current_language_set?.previousvisit?.calltypemcts }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+            {{ element?.mctsOutboundCall?.displayOBCallType }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="calldatetimemcts">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{ current_language_set?.previousvisit?.calldatetimemcts }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+            {{ element?.createdDate }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="dataupdatemcts">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{ current_language_set?.previousvisit?.dataupdatemcts }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.changeLog?.split('|').join(',') }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="callstatusmcts">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{ current_language_set?.previousvisit?.callstatusmcts }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.callType?.callGroupType }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="callgrouptypemcts">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{ current_language_set?.previousvisit?.callgrouptypemcts }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.callType?.callType }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="SMSadvicemcts">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{ current_language_set?.previousvisit?.SMSadvicemcts }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.smsAdvice }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="remarks">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{ current_language_set?.common?.remarks }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.remark }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{ current_language_set?.previousvisit?.actions }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              <button
+              mat-raised-button
+              color="primary"
+              class="md-small"
+              (click)="getPatientMCTSCallHistory(call)">
+              {{ current_language_set?.common?.viewQnA }}
+            </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <div
+          class="pull-center"
+          style="margin-top: 5px"
+          [hidden]="dataSource.data.length > 0">
+          <strong>{{ currentLanguageSet?.noRecordsFound }}</strong>
+          </div>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 20]"
+            [pageSize]="5"
+            showFirstLastButtons
+            aria-label="Select patient in beneficiaryPlatformHistory">
+          </mat-paginator>
+        </section>
+        <div
+          *ngIf="
+            historyOf104?.length > 0 && hide104Fetch && service.serviceID == '3'
+          "
+          class="m-t-20">
+          <mat-form-field id="filterbox" class="pull-right">
+            <input
+              autocomplete="off"
+              matInput
+              placeholder="{{
+                current_language_set?.previousvisit?.ChiefComplaint104
+              }}"
+              #filter104
+              (keyup)="filter104History(filter104.value)" />
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        </div>
+        <section
+          class="m-t-20 overflow"
+          *ngIf="hide104Fetch && service.serviceID == '3'">
+          <table
+          mat-table
+          [dataSource]="dataSource"
+          aria-describedby="chiefComplaint">
+          <ng-container matColumnDef="id">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{ current_language_set?.common?.id }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.requestID ? element?.requestID : element?.benHistoryID }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name104">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{ current_language_set?.previousvisit?.name104 }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.patientName }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="age104">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{ current_language_set?.previousvisit?.age104 }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.patientAge }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="ChiefComplaint104">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{ current_language_set?.previousvisit?.ChiefComplaint104 }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              class="cursorPointer"
+              matTooltip="{{ case?.selecteDiagnosisID }}">
+              {{ case?.selecteDiagnosis }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="symptoms">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{
+                current_language_set?.ExaminationData
+                  ?.cancerScreeningExamination?.symptoms?.symptoms
+              }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.algorithm }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="provisionalSelected104">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{
+                current_language_set?.previousvisit?.provisionalSelected104
+              }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element"
+              class="cursorPointer"
+              matTooltip="{{ case?.selecteDiagnosisID }}">
+              {{ case?.selecteDiagnosis }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="recommendedaction104">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{
+                current_language_set?.previousvisit?.recommendedaction104
+              }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.addedAdvice }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actionByHao">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{
+                current_language_set?.previousvisit?.actionByHao
+              }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.actionByHAO }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actionByMo">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{
+                current_language_set?.previousvisit?.actionByMo
+              }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.actionByMo }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actionByCoPd">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{
+                current_language_set?.previousvisit?.actionByCoPd
+              }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.actionByCO }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="date">
+            <th
+              mat-header-cell
+              style="border-bottom: none"
+              *matHeaderCellDef
+              mat-sort-header>
+              {{
+                current_language_set?.common?.date
+              }}
+            </th>
+            <td
+              mat-cell
+              *matCellDef="let element">
+              {{ element?.createdDate }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <div
+          class="pull-center"
+          style="margin-top: 5px"
+          [hidden]="dataSource.data.length > 0">
+          <strong>{{ currentLanguageSet?.noRecordsFound }}</strong>
+          </div>
+          <mat-paginator
+            [pageSizeOptions]="[5, 10, 20]"
+            [pageSize]="5"
+            showFirstLastButtons
+            aria-label="Select patient in beneficiaryPlatformHistory">
+          </mat-paginator>
+        </section>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div> -->

@@ -24,7 +24,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup, FormArray, FormControl } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -43,9 +42,6 @@ export class DoctorService {
       localStorage.getItem('providerServiceID') +
       `/${localStorage.getItem('serviceID')}/${vanID}`;
     return this.http.get(environment.doctorWorkList + fetchUrl);
-    // .map(res => res.json());
-    // return this.http.get(environment.doctorWorkList + localStorage.getItem('providerServiceID'))
-    //   .map(res => res.json());
   }
 
   getServiceOnState() {

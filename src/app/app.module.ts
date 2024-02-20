@@ -32,6 +32,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { NurseDoctorModule } from './app-modules/nurse-doctor/nurse-doctor.module';
 import { RegistrarModule } from './app-modules/registrar/registrar.module';
+import { AudioRecordingService } from './app-modules/nurse-doctor/shared/services/audio-recording.service';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { RegistrarModule } from './app-modules/registrar/registrar.module';
     ServicePointResolve,
     ServicePointService,
     RegistrarService,
+    AudioRecordingService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,

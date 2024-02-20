@@ -26,8 +26,9 @@ import { DashboardComponent } from '../registrar/dashboard/dashboard.component';
 import { WorkareaComponent } from './workarea/workarea.component';
 import { WorkareaCanActivate } from './workarea/workarea-can-activate.service';
 import { CanDeactivateGuardService } from '../core/services/can-deactivate-guard.service';
-import { NurseWorklistComponent } from './nurse-worklist/nurse-worklist.component';
 import { NurseWorklistTabsComponent } from './nurse-worklist-tabs/nurse-worklist-tabs.component';
+import { DoctorWorklistComponent } from './doctor-worklist/doctor-worklist.component';
+import { GeneralCaseRecordComponent } from './case-record/general-case-record/general-case-record.component';
 
 const routes: Routes = [
   {
@@ -47,10 +48,10 @@ const routes: Routes = [
         path: 'nurse-worklist',
         component: NurseWorklistTabsComponent,
       },
-      // {
-      //   path: 'doctor-worklist',
-      //   component: DoctorWorklistComponent
-      // },
+      {
+        path: 'doctor-worklist',
+        component: DoctorWorklistComponent,
+      },
       // {
       //   path: 'radiologist-worklist',
       //   component: RadiologistWorklistComponent
@@ -75,10 +76,10 @@ const routes: Routes = [
   //   path: 'print/:serviceType/:printablePage',
   //   component: CaseSheetComponent
   // },
-  // {
-  //   path: 'generalcaserec',
-  //   component: GeneralCaseRecordComponent
-  // }
+  {
+    path: 'generalcaserec',
+    component: GeneralCaseRecordComponent,
+  },
 ];
 
 @NgModule({

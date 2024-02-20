@@ -1,0 +1,220 @@
+<mat-expansion-panel expanded="true">
+  <mat-expansion-panel-header>
+    <h5>{{ currentLanguageSet?.pncData?.pnc }}</h5>
+  </mat-expansion-panel-header>
+  <div [formGroup]="patientPNCForm" class="row m-t-20">
+    <!--{{patientPNCForm.value | json}}-->
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field>
+        <mat-select
+          class="select-full-width"
+          name="placeOfDelivery"
+          formControlName="deliveryPlace"
+          placeholder="{{ currentLanguageSet?.pncData?.placeofDelivery }}"
+          (selectionChange)="resetOtherPlaceOfDelivery()"
+          required>
+          <mat-option
+            *ngFor="let place of masterData?.deliveryPlaces"
+            [value]="place"
+            >{{ place.deliveryPlace }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+      *ngIf="deliveryPlace?.deliveryPlace === 'Other'">
+      <mat-form-field class="input-full-width">
+        <input
+          autocomplete="off"
+          matInput
+          appDefaultNull
+          placeholder="{{ currentLanguageSet?.pncData?.others }}"
+          maxlength="50"
+          formControlName="otherDeliveryPlace"
+          name="otherPlaceOfDelivery" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field>
+        <mat-select
+          class="select-full-width"
+          name="typeOfDelivery"
+          formControlName="deliveryType"
+          [disabled]="!patientPNCForm.value.deliveryPlace"
+          placeholder="{{ currentLanguageSet?.pncData?.typeofDelivery }}"
+          [required]="patientPNCForm.value.deliveryPlace">
+          <mat-option *ngFor="let type of selectDeliveryTypes" [value]="type">
+            {{ type.deliveryType }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field class="fieldAlignment fontStyle">
+        <mat-label class="fontStyle">{{
+          currentLanguageSet?.pncData?.dateofDelivery
+        }}</mat-label>
+        <input
+          matInput
+          style="width: 100%"
+          name="dateOfDelivery"
+          formControlName="dDate"
+          [max]="today"
+          [min]="minimumDeliveryDate"
+          [matDatepicker]="dodicker" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="dodicker"></mat-datepicker-toggle>
+        <mat-datepicker #dodicker></mat-datepicker>
+      </mat-form-field>
+      <!-- <md2-datepicker
+        [openOnFocus]="true"
+        [max]="today"
+        [min]="minimumDeliveryDate"
+        name="dateOfDelivery"
+        formControlName="dDate"
+        placeholder="{{ currentLanguageSet?.pncData?.dateofDelivery }}"
+      ></md2-datepicker> -->
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field>
+        <mat-select
+          class="select-full-width"
+          name="deliveryComplication"
+          formControlName="deliveryComplication"
+          placeholder="{{
+            currentLanguageSet?.historyData?.obstetrichistory
+              ?.deliverycomplicationtype
+          }}"
+          (selectionChange)="resetOtherDeliveryComplication()">
+          <mat-option
+            *ngFor="let complication of masterData?.deliveryComplicationTypes"
+            [value]="complication">
+            {{ complication.deliveryComplicationType }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+      *ngIf="deliveryComplication?.deliveryComplicationType === 'Other'">
+      <mat-form-field class="input-full-width">
+        <input
+          autocomplete="off"
+          matInput
+          appDefaultNull
+          placeholder="{{ currentLanguageSet?.pncData?.others }}"
+          maxlength="50"
+          name="othersDeliveryComplication"
+          formControlName="otherDeliveryComplication" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field>
+        <mat-select
+          class="select-full-width"
+          name="outcomeOfPregnancy"
+          formControlName="pregOutcome"
+          placeholder="{{ currentLanguageSet?.pncData?.outcomeofpregnancy }}">
+          <mat-option
+            *ngFor="let outcome of masterData?.pregOutcomes"
+            [value]="outcome">
+            {{ outcome.pregOutcome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field>
+        <mat-select
+          class="select-full-width"
+          name="postNatalComplication"
+          formControlName="postNatalComplication"
+          placeholder="{{ currentLanguageSet?.pncData?.postNatalComplication }}"
+          (selectionChange)="resetOtherPostNatalComplication()">
+          <mat-option
+            *ngFor="let complication of masterData?.postNatalComplications"
+            [value]="complication">
+            {{ complication.complicationValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+      *ngIf="postNatalComplication?.complicationValue === 'Other'">
+      <mat-form-field class="input-full-width">
+        <input
+          autocomplete="off"
+          matInput
+          appDefaultNull
+          placeholder="{{ currentLanguageSet?.pncData?.others }}"
+          maxlength="50"
+          name="otherPostNatalComplication"
+          formControlName="otherPostNatalComplication" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field>
+        <mat-select
+          class="select-full-width"
+          name="gestation"
+          formControlName="gestationName"
+          placeholder="{{
+            currentLanguageSet?.pncData?.gestationalAgeofNewborn
+          }}">
+          <mat-option
+            *ngFor="let gestation of masterData?.gestation"
+            [value]="gestation"
+            >{{ gestation.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field class="input-full-width">
+        <input
+          autocomplete="off"
+          matInput
+          appDefaultNull
+          placeholder="{{ currentLanguageSet?.pncData?.birthWeight }}"
+          maxlength="4"
+          allowText="decimal"
+          name="birthWeight_kg"
+          formControlName="birthWeightOfNewborn"
+          allowMax="6"
+          (keypress)="checkWeight()" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field>
+        <mat-select
+          class="input-full-width"
+          name="newBornHealthStatus"
+          formControlName="newBornHealthStatus"
+          placeholder="{{ currentLanguageSet?.pncData?.newBornHealthStatus }}">
+          <mat-option
+            *ngFor="
+              let newBornHealthStatus of masterData?.newbornHealthStatuses
+            "
+            [value]="newBornHealthStatus">
+            {{ newBornHealthStatus.newBornHealthStatus }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</mat-expansion-panel>

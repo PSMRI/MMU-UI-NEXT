@@ -1,0 +1,440 @@
+<!--{{generalExaminationForm.value | json}} -->
+<div class="row m-t-20" [formGroup]="generalExaminationForm">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <mat-select
+        class="select-full-width"
+        id="consciousness"
+        name="consciousness"
+        formControlName="consciousness"
+        placeholder="{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.consciousness
+        }}">
+        <mat-option
+          *ngFor="let consciousness of selectConsciousness"
+          [value]="consciousness.name">
+          {{ consciousness.name }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <mat-select
+        class="select-full-width"
+        id="cooperation"
+        name="cooperation"
+        formControlName="cooperation"
+        placeholder="{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.cooperation
+        }}">
+        <mat-option
+          *ngFor="let cooperation of selectCooperation"
+          [value]="cooperation.name">
+          {{ cooperation.name }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <mat-select
+        class="select-full-width"
+        id="builtAndAppearance"
+        name="builtAndAppearance"
+        formControlName="builtAndAppearance"
+        placeholder="{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.built
+        }}">
+        <mat-option *ngFor="let built of selectBuilt" [value]="built.name">
+          {{ built.name }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <label class="control-label" for="coherence">{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.coherence
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group
+        id="coherence"
+        name="coherence"
+        formControlName="coherence">
+        <mat-radio-button color="primary" class="radio-btn" value="Coherent">{{
+          currentLanguageSet?.common?.coherent
+        }}</mat-radio-button>
+        <mat-radio-button
+          color="primary"
+          class="radio-btn"
+          value="Incoherent"
+          >{{ currentLanguageSet?.common?.incoherent }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <mat-label class="control-label"
+        >{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.comfortness
+        }}
+      </mat-label>
+      <div class="clearfix"></div>
+      <mat-radio-group
+        id="comfortness"
+        name="comfortness"
+        formControlName="comfortness">
+        <mat-radio-button
+          color="primary"
+          class="radio-btn"
+          value="Comfortable"
+          >{{ currentLanguageSet?.common?.comfortable }}</mat-radio-button
+        >
+        <mat-radio-button
+          color="primary"
+          class="radio-btn"
+          value="Uncomfortable"
+          >{{ currentLanguageSet?.common?.uncomfortable }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <label class="control-label" for="gait">{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.gait
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group id="gait" name="gait" formControlName="gait">
+        <mat-radio-button color="primary" class="radio-btn" value="Normal">{{
+          currentLanguageSet?.common?.normal
+        }}</mat-radio-button>
+        <mat-radio-button color="primary" class="radio-btn" value="Limping">{{
+          currentLanguageSet?.common?.limping
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <label class="control-label" for="dangerSigns">{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.dangersigns
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group
+        id="dangerSigns"
+        name="dangerSigns"
+        formControlName="dangerSigns"
+        (change)="checkWithDangerSign()">
+        <mat-radio-button color="primary" class="radio-btn" value="Yes">{{
+          currentLanguageSet?.common?.yes
+        }}</mat-radio-button>
+        <mat-radio-button color="primary" class="radio-btn" value="No">{{
+          currentLanguageSet?.common?.no
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    [hidden]="dangerSigns !== 'Yes'">
+    <div class="form-group">
+      <mat-select
+        multiple
+        class="select-full-width"
+        id="typeOfDangerSigns"
+        name="typeOfDangerSigns"
+        formControlName="typeOfDangerSigns"
+        placeholder="{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.dangersigns
+        }}"
+        [required]="dangerSigns === 'Yes'">
+        <mat-option
+          *ngFor="let signs of selectDangerSigns"
+          [value]="signs.name">
+          {{ signs.name }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <label class="control-label" for="pallor">{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.pallor
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group id="pallor" name="pallor" formControlName="pallor">
+        <mat-radio-button color="primary" class="radio-btn" value="Present">{{
+          currentLanguageSet?.common?.present
+        }}</mat-radio-button>
+        <mat-radio-button color="primary" class="radio-btn" value="Absent">{{
+          currentLanguageSet?.common?.absent
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <label class="control-label" for="jaundice">{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.jaundice
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group id="jaundice" name="jaundice" formControlName="jaundice">
+        <mat-radio-button color="primary" class="radio-btn" value="Present">{{
+          currentLanguageSet?.common?.present
+        }}</mat-radio-button>
+        <mat-radio-button color="primary" class="radio-btn" value="Absent">{{
+          currentLanguageSet?.common?.absent
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <label class="control-label" for="cyanosis">{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.cyanosis
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group id="cyanosis" name="cyanosis" formControlName="cyanosis">
+        <mat-radio-button color="primary" class="radio-btn" value="Present">{{
+          currentLanguageSet?.common?.present
+        }}</mat-radio-button>
+        <mat-radio-button color="primary" class="radio-btn" value="Absent">{{
+          currentLanguageSet?.common?.absent
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <label class="control-label" for="clubbing">{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.clubbing
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group id="clubbing" name="clubbing" formControlName="clubbing">
+        <mat-radio-button color="primary" class="radio-btn" value="Present">{{
+          currentLanguageSet?.common?.present
+        }}</mat-radio-button>
+        <mat-radio-button color="primary" class="radio-btn" value="Absent">{{
+          currentLanguageSet?.common?.absent
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <label class="control-label" for="lymphadenopathy">{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.lymphadenopathy
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group
+        id="lymphadenopathy"
+        name="lymphadenopathy"
+        formControlName="lymphadenopathy"
+        (change)="checkWithLymphadenopathy()">
+        <mat-radio-button color="primary" class="radio-btn" value="Present">{{
+          currentLanguageSet?.common?.present
+        }}</mat-radio-button>
+        <mat-radio-button color="primary" class="radio-btn" value="Absent">{{
+          currentLanguageSet?.common?.absent
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    [hidden]="lymphadenopathy !== 'Present'">
+    <div class="form-group">
+      <mat-select
+        class="select-full-width"
+        id="lymphnodesInvolved"
+        name="lymphnodesInvolved"
+        formControlName="lymphnodesInvolved"
+        placeholder="{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.lymph
+        }}"
+        [required]="lymphadenopathy === 'Present'">
+        <mat-option
+          *ngFor="let lymphNodes of selectLymphNodes"
+          [value]="lymphNodes.name">
+          {{ lymphNodes.name }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    [hidden]="lymphadenopathy !== 'Present'">
+    <div class="form-group">
+      <mat-select
+        class="select-full-width"
+        id="typeOfLymphadenopathy"
+        name="typeOfLymphadenopathy"
+        formControlName="typeOfLymphadenopathy"
+        placeholder="{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.typeofLymphadenopathy
+        }}"
+        [required]="lymphadenopathy === 'Present'">
+        <mat-option
+          *ngFor="let typeOfLymphadenopathy of selectTypeOfLymphadenopathy"
+          [value]="typeOfLymphadenopathy.name">
+          {{ typeOfLymphadenopathy.name }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <div class="form-group">
+      <label class="control-label" for="edema">{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.edema
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group
+        id="edema"
+        name="edema"
+        formControlName="edema"
+        (change)="checkWithEdema()">
+        <mat-radio-button color="primary" class="radio-btn" value="Present">{{
+          currentLanguageSet?.common?.present
+        }}</mat-radio-button>
+        <mat-radio-button color="primary" class="radio-btn" value="Absent">{{
+          currentLanguageSet?.common?.absent
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    [hidden]="edema !== 'Present'">
+    <div class="form-group">
+      <mat-select
+        class="select-full-width"
+        id="extentOfEdema"
+        name="extentOfEdema"
+        formControlName="extentOfEdema"
+        placeholder="{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.extentofEdema
+        }}"
+        [required]="edema === 'Present'">
+        <mat-option
+          *ngFor="let extentOfEdema of selectExtentOfEdema"
+          [value]="extentOfEdema.name">
+          {{ extentOfEdema.name }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    [hidden]="edema !== 'Present'">
+    <div class="form-group">
+      <label class="control-label" for="typeOfEdema"
+        >{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.typeofEdema
+        }}*</label
+      >
+      <div class="clearfix"></div>
+      <mat-radio-group
+        id="edemaType"
+        name="edemaType"
+        formControlName="edemaType"
+        [required]="edema === 'Present'">
+        <mat-radio-button color="primary" class="radio-btn" value="Pitting">{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.pitting
+        }}</mat-radio-button>
+        <mat-radio-button
+          color="primary"
+          class="radio-btn"
+          value="Non-Pitting"
+          >{{
+            currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+              ?.genExamination?.nonPitting
+          }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div *ngIf="hideForANCAndQC">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <div class="form-group">
+        <label class="control-label" for="quickening">{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.quickening
+        }}</label>
+        <div class="clearfix"></div>
+        <mat-radio-group
+          id="quickening"
+          name="quickening"
+          formControlName="quickening">
+          <mat-radio-button color="primary" class="radio-btn" value="Present">{{
+            currentLanguageSet?.common?.present
+          }}</mat-radio-button>
+          <mat-radio-button color="primary" class="radio-btn" value="Absent">{{
+            currentLanguageSet?.common?.absent
+          }}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <div class="form-group">
+        <label class="control-label" for="foetalMovements">{{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.foetalmovements
+        }}</label>
+        <div class="clearfix"></div>
+        <mat-radio-group
+          id="foetalMovements"
+          name="foetalMovements"
+          formControlName="foetalMovements">
+          <mat-radio-button color="primary" class="radio-btn" value="Present">{{
+            currentLanguageSet?.common?.present
+          }}</mat-radio-button>
+          <mat-radio-button color="primary" class="radio-btn" value="Absent">{{
+            currentLanguageSet?.common?.absent
+          }}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+</div>

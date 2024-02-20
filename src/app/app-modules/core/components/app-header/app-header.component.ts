@@ -50,7 +50,7 @@ export class AppHeaderComponent implements OnInit {
       ],
     },
     { role: 'Nurse', link: '/nurse-worklist', label: 'Nurse' },
-    { role: 'Doctor', link: '/common/doctor-worklist', label: 'Doctor' },
+    { role: 'Doctor', link: '/doctor-worklist', label: 'Doctor' },
     { role: 'Lab Technician', link: '/lab/worklist', label: 'Lab Technician' },
     {
       role: 'Pharmacist',
@@ -59,16 +59,16 @@ export class AppHeaderComponent implements OnInit {
     },
     {
       role: 'Radiologist',
-      link: '/common/radiologist-worklist',
+      link: '/radiologist-worklist',
       label: 'Radiologist',
     },
     {
       role: 'Oncologist',
-      link: '/common/oncologist-worklist',
+      link: '/oncologist-worklist',
       label: 'Oncologist',
     },
     { role: 'DataSync', link: '/datasync', label: 'Data Sync' },
-    { role: 'Reports', link: '/common/reports', label: 'Reports' },
+    { role: 'Reports', link: '/reports', label: 'Reports' },
   ];
   // @Input('isDarkTheme')
   // isDarkTheme: Boolean;
@@ -233,7 +233,7 @@ export class AppHeaderComponent implements OnInit {
       },
       {
         role: 'Doctor',
-        link: '/common/doctor-worklist',
+        link: '/nurse-doctor/doctor-worklist',
         label: this.currentLanguageSet.role_selection.Doctor,
       },
       {

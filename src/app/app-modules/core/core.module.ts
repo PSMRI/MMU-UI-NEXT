@@ -46,6 +46,24 @@ import { CameraDialogComponent } from './components/camera-dialog/camera-dialog.
 import { WebcamImage, WebcamInitError, WebcamModule } from 'ngx-webcam';
 import { CanDeactivateGuardService } from './services/can-deactivate-guard.service';
 import { BeneficiaryDetailsComponent } from './components/beneficiary-details/beneficiary-details.component';
+import { ViewRadiologyUploadedFilesComponent } from './components/view-radiology-uploaded-files/view-radiology-uploaded-files.component';
+import { PreviousDetailsComponent } from './components/previous-details/previous-details.component';
+import { MatTableModule } from '@angular/material/table';
+import { IotcomponentComponent } from './components/iotcomponent/iotcomponent.component';
+import { CalibrationComponent } from './components/calibration/calibration.component';
+import { ProvisionalSearchComponent } from './components/provisional-search/provisional-search.component';
+import { ConfirmatoryDiagnosisDirective } from './directives/confirmatory-diagnosis.directive';
+import { DisableFormControlDirective } from './directives/disableFormControl.directive';
+import { NullDefaultValueDirective } from './directives/null-default-value.directive';
+import { OpenModalDirective } from './directives/open-modal.directive';
+import { AllergenSearchComponent } from './components/allergen-search/allergen-search.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { StringValidatorDirective } from './directives/stringValidator.directive';
+import { myPasswordDirective } from './directives/password/myPassword.directive';
+import { NumberValidatorDirective } from './directives/numberValidator.directive';
+import { myNameDirective } from './directives/name/myName.directive';
+import { myMobileNumberDirective } from './directives/MobileNumber/myMobileNumber.directive';
+import { myEmailDirective } from './directives/email/myEmail.directive';
 
 @NgModule({
   imports: [
@@ -57,21 +75,38 @@ import { BeneficiaryDetailsComponent } from './components/beneficiary-details/be
     ReactiveFormsModule,
     // ChartsModule,
     WebcamModule,
+    MatTableModule,
     // PaginationModule.forRoot()
   ],
   declarations: [
     CommonDialogComponent,
     CameraDialogComponent,
-    // ProvisionalSearchComponent,
+    ProvisionalSearchComponent,
     // TextareaDialogComponent,
-    // SpinnerComponent,
+    SpinnerComponent,
     BeneficiaryDetailsComponent,
     AppFooterComponent,
     AppHeaderComponent,
+    ViewRadiologyUploadedFilesComponent,
     // PreviousDetailsComponent,
-    // ShowCommitAndVersionDetailsComponent,CalibrationComponent,
-    // myEmail, myMobileNumber, OpenModalDirective, ConfirmatoryDiagnosisDirective, myName, myPassword, StringValidator, NullDefaultValueDirective, NumberValidator, DisableFormControlDirective,
-    // ViewRadiologyUploadedFilesComponent, IotcomponentComponent,IotBluetoothComponent,AllergenSearchComponent, DataSyncLoginComponent,OpenPreviousVisitDetailsComponent,
+    PreviousDetailsComponent,
+    // ShowCommitAndVersionDetailsComponent,
+    CalibrationComponent,
+    myEmailDirective,
+    myMobileNumberDirective,
+    OpenModalDirective,
+    ConfirmatoryDiagnosisDirective,
+    myNameDirective,
+    myPasswordDirective,
+    StringValidatorDirective,
+    NullDefaultValueDirective,
+    NumberValidatorDirective,
+    DisableFormControlDirective,
+    // ViewRadiologyUploadedFilesComponent,
+    IotcomponentComponent,
+    // IotBluetoothComponent,
+    AllergenSearchComponent,
+    // OpenPreviousVisitDetailsComponent,
   ],
   exports: [
     MaterialModule,
@@ -82,15 +117,26 @@ import { BeneficiaryDetailsComponent } from './components/beneficiary-details/be
     // ShowCommitAndVersionDetailsComponent,
     CameraDialogComponent,
     // TextareaDialogComponent,
-    // SpinnerComponent,
+    SpinnerComponent,
     BeneficiaryDetailsComponent,
     // AppFooterComponent,
     // AppHeaderComponent,
-    // PreviousDetailsComponent,
+    PreviousDetailsComponent,
     // PaginationModule,
-    // myEmail, myMobileNumber, OpenModalDirective, ConfirmatoryDiagnosisDirective, myName, myPassword, DisableFormControlDirective, StringValidator, NumberValidator, NullDefaultValueDirective,
-    // IotcomponentComponent,
-    // AllergenSearchComponent, DataSyncLoginComponent,CalibrationComponent,OpenPreviousVisitDetailsComponent
+    myEmailDirective,
+    myMobileNumberDirective,
+    OpenModalDirective,
+    ConfirmatoryDiagnosisDirective,
+    myNameDirective,
+    myPasswordDirective,
+    DisableFormControlDirective,
+    StringValidatorDirective,
+    NumberValidatorDirective,
+    NullDefaultValueDirective,
+    IotcomponentComponent,
+    AllergenSearchComponent,
+    CalibrationComponent,
+    //OpenPreviousVisitDetailsComponent
   ],
   // entryComponents: [
   //   CommonDialogComponent,
@@ -101,10 +147,11 @@ import { BeneficiaryDetailsComponent } from './components/beneficiary-details/be
   //   ProvisionalSearchComponent,
   //   ShowCommitAndVersionDetailsComponent,
   //   ViewRadiologyUploadedFilesComponent,
-  //   IotcomponentComponent,
+  // IotcomponentComponent,
   // IotBluetoothComponent,
   //   AllergenSearchComponent,
-  //   DataSyncLoginComponent,CalibrationComponent,
+  //   DataSyncLoginComponent,
+  // CalibrationComponent,
   //   OpenPreviousVisitDetailsComponent
   // ]
 })
@@ -140,7 +187,3 @@ export class CoreModule {
     };
   }
 }
-
-// export function HttpInterceptorFactory(backend: XHRBackend, options: RequestOptions, router: Router, spinner: SpinnerService, confirmation: ConfirmationService) {
-//   return new HttpInterceptor(backend, options, router, spinner, confirmation);
-// }
