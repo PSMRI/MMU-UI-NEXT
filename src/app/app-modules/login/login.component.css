@@ -47,6 +47,10 @@ mat-card-title {
     margin-bottom: 10px;
 }
   
+.text-input-fullwidth
+{
+    width: 100%;
+}
 .errorStyle {
     position: absolute;
     font-size: 12px;

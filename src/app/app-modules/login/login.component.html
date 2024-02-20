@@ -12,13 +12,12 @@
         (ngSubmit)="loginForm.valid && login()">
         <div class="row">
           <div class="col-xs-12 col-md-12 col-sm-12 m-t-25">
-            <mat-form-field class="full-width">
+            <mat-form-field class="full-width text-input-fullwidth">
               <mat-icon matPrefix>account_box</mat-icon>
               <mat-label>Enter User Name</mat-label>
               <input
                 matInput
                 allowText="usernameValidator"
-                type="text"
                 id="userID"
                 formControlName="userName"
                 name="userName"
@@ -28,7 +27,7 @@
         </div>
         <div class="row">
           <div class="col-xs-12 col-md-12 col-sm-12">
-            <mat-form-field class="full-width">
+            <mat-form-field class="full-width text-input-fullwidth">
               <mat-icon matPrefix>lock</mat-icon>
               <mat-label>Enter Password</mat-label>
               <input
