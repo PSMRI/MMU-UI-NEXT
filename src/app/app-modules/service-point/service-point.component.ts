@@ -300,10 +300,10 @@ export class ServicePointComponent implements OnInit, DoCheck {
         this.router.navigate(['/pharmacist']);
         break;
       case 'Radiologist':
-        this.router.navigate(['/common/radiologist-worklist']);
+        this.router.navigate(['/nurse-doctor/radiologist-worklist']);
         break;
       case 'Oncologist':
-        this.router.navigate(['/common/oncologist-worklist']);
+        this.router.navigate(['/nurse-doctor/oncologist-worklist']);
         break;
       default:
     }
