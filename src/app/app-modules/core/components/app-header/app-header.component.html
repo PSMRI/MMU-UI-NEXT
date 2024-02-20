@@ -1,29 +1,29 @@
 <nav class="navbar navbar-expand-lg navbar-iemr">
-  <div class="container">
+  <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href=" "> </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#top-navbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <a class="navbar-brand">
         <img src="assets/images/logo.png" alt="Logo" />
       </a>
     </div>
 
+    <button
+      class="navbar-toggler ms-auto"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#top-navbar,#main-navbar">
+      <mat-icon class="white-icon">menu</mat-icon>
+    </button>
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="top-navbar">
-      <ul class="navbar-nav ms-auto">
-        <li *ngIf="status" class="nav-item alignWord">
+    <div class="collapse navbar-collapse menu-font" id="top-navbar">
+      <ul class="navbar-nav ms-auto flex-row">
+        <li *ngIf="status" class="nav-item alignWord menu-font">
           <span>{{ currentLanguageSet?.common?.SelectLanguage }}: </span>
         </li>
         <li *ngIf="status" class="nav-item alignDropDown">
           <select
-            class="form-control drop-arrow border-radius-20 height-30 width120px pull-right"
+            style="font-size: 13px"
+            class="menu-font drop-arrow border-radius-20 height-30 width120px pull-right"
             name="app_language"
             [(ngModel)]="app_language"
             (change)="changeLanguage(app_language)">
@@ -35,14 +35,6 @@
           </select>
         </li>
 
-        <li class="nav-item cursorPointer" *ngIf="isAuthenticated">
-          <mat-icon
-            alt="Help"
-            [matMenuTriggerFor]="menu"
-            [matTooltip]="currentLanguageSet?.help"
-            >help_outline</mat-icon
-          >
-        </li>
         <li
           *ngIf="isAuthenticated"
           class="nav-item cursorPointer"
@@ -91,7 +83,14 @@
             </span>
           </a>
         </li>
-
+        <li class="nav-item cursorPointer" *ngIf="isAuthenticated">
+          <mat-icon
+            alt="Help"
+            [matMenuTriggerFor]="menu"
+            [matTooltip]="currentLanguageSet?.help"
+            >help_outline</mat-icon
+          >
+        </li>
         <li
           *ngIf="isAuthenticated"
           class="nav-item logout cursorPointer"
@@ -106,15 +105,14 @@
   </div>
 </nav>
 
-<div *ngIf="showRoles">
+<div *ngIf="showRoles" class="container-fluid">
   <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#"> </a>
-    <div class="container collapse navbar-collapse" id="main-navbar">
+    <div class="collapse navbar-collapse" id="main-navbar">
       <ul
         class="nav navbar-nav ml-auto"
         *ngFor="let item of filteredNavigation; let isLast = last">
         <li class="nav-item" *ngIf="item.role === 'Registrar'">
-          <button mat-button [matMenuTriggerFor]="items">
+          <button class="nav-btn" mat-button [matMenuTriggerFor]="items">
             {{ item.label }}
             <span class="caret"></span>
           </button>
@@ -135,6 +133,7 @@
         </li>
         <li class="nav-item" *ngIf="item.role !== 'Registrar'">
           <button
+            class="nav-btn"
             mat-button
             [routerLink]="[item.link]"
             routerLinkActive="active">
@@ -142,7 +141,7 @@
           </button>
         </li>
         <li class="nav-item" *ngIf="isLast">
-          <button mat-button routerLink="/common/reports">
+          <button class="nav-btn" mat-button routerLink="/common/reports">
             {{ currentLanguageSet?.common?.report }}
           </button>
         </li>
