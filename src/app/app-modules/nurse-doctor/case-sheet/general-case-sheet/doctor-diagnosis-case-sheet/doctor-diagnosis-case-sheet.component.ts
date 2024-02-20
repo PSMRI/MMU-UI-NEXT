@@ -38,7 +38,7 @@ export class DoctorDiagnosisCaseSheetComponent
   implements OnInit, OnChanges, DoCheck
 {
   @Input()
-  casesheetData: any;
+  caseSheetData: any;
   @Input()
   previous: any;
   @Input()
@@ -164,13 +164,13 @@ export class DoctorDiagnosisCaseSheetComponent
 
   ngOnChanges() {
     this.ncdScreeningCondition = null;
-    if (this.casesheetData) {
-      const temp2 = this.casesheetData.nurseData.covidDetails;
+    if (this.caseSheetData) {
+      const temp2 = this.caseSheetData.nurseData.covidDetails;
       const t = new Date();
       this.date =
         t.getDate() + '/' + (t.getMonth() + 1) + '/' + t.getFullYear();
 
-      this.beneficiaryDetails = this.casesheetData.BeneficiaryData;
+      this.beneficiaryDetails = this.caseSheetData.BeneficiaryData;
 
       if (this.beneficiaryDetails.serviceDate) {
         const sDate = new Date(this.beneficiaryDetails.serviceDate);
@@ -204,7 +204,7 @@ export class DoctorDiagnosisCaseSheetComponent
           ].join(':');
       }
 
-      const temp = this.casesheetData.nurseData.vitals;
+      const temp = this.caseSheetData.nurseData.vitals;
       this.currentVitals = Object.assign(
         {},
         temp.benAnthropometryDetail,
@@ -212,7 +212,7 @@ export class DoctorDiagnosisCaseSheetComponent
       );
 
       if (this.visitCategory != 'General OPD (QC)') {
-        this.caseRecords = this.casesheetData.doctorData;
+        this.caseRecords = this.caseSheetData.doctorData;
         if (
           this.caseRecords &&
           this.caseRecords.diagnosis &&
@@ -225,7 +225,7 @@ export class DoctorDiagnosisCaseSheetComponent
             );
         }
       } else {
-        const temp = this.casesheetData.doctorData;
+        const temp = this.caseSheetData.doctorData;
         this.caseRecords = {
           findings: temp.findings,
           prescription: temp.prescription,
@@ -263,7 +263,7 @@ export class DoctorDiagnosisCaseSheetComponent
         );
       }
 
-      this.ancDetails = this.casesheetData.nurseData.anc;
+      this.ancDetails = this.caseSheetData.nurseData.anc;
       if (
         this.caseRecords.diagnosis.complicationOfCurrentPregnancy !== undefined
       ) {
@@ -322,12 +322,12 @@ export class DoctorDiagnosisCaseSheetComponent
         }
       }
       if (
-        this.casesheetData.nurseData.idrs !== undefined &&
-        this.casesheetData.nurseData.idrs
+        this.caseSheetData.nurseData.idrs !== undefined &&
+        this.caseSheetData.nurseData.idrs
       ) {
-        if (this.casesheetData.nurseData.idrs.IDRSDetail) {
+        if (this.caseSheetData.nurseData.idrs.IDRSDetail) {
           this.idrsDetailsHistory =
-            this.casesheetData.nurseData.idrs.IDRSDetail;
+            this.caseSheetData.nurseData.idrs.IDRSDetail;
           this.temp1 = this.idrsDetailsHistory.idrsDetails.filter(
             (response: any) => response.answer === 'yes'
           );
@@ -339,18 +339,18 @@ export class DoctorDiagnosisCaseSheetComponent
               ) === index
           );
         }
-        if (this.casesheetData.nurseData.idrs.IDRSDetail) {
-          this.idrsScore = this.casesheetData.nurseData.idrs.IDRSDetail;
+        if (this.caseSheetData.nurseData.idrs.IDRSDetail) {
+          this.idrsScore = this.caseSheetData.nurseData.idrs.IDRSDetail;
         }
-        if (this.casesheetData.nurseData.idrs.IDRSDetail.suspectedDisease) {
+        if (this.caseSheetData.nurseData.idrs.IDRSDetail.suspectedDisease) {
           this.suspect =
-            this.casesheetData.nurseData.idrs.IDRSDetail.suspectedDisease.split(
+            this.caseSheetData.nurseData.idrs.IDRSDetail.suspectedDisease.split(
               ','
             );
         }
-        if (this.casesheetData.nurseData.idrs.IDRSDetail.confirmedDisease) {
+        if (this.caseSheetData.nurseData.idrs.IDRSDetail.confirmedDisease) {
           this.suspectt =
-            this.casesheetData.nurseData.idrs.IDRSDetail.confirmedDisease.split(
+            this.caseSheetData.nurseData.idrs.IDRSDetail.confirmedDisease.split(
               ','
             );
         }

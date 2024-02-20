@@ -39,7 +39,7 @@ export class ExaminationCaseSheetComponent
   previous: any;
 
   @Input()
-  casesheetData: any;
+  caseSheetData: any;
 
   visitCategory: any;
   beneficiaryRegID: any;
@@ -75,11 +75,11 @@ export class ExaminationCaseSheetComponent
 
   ngOnChanges() {
     if (
-      this.casesheetData &&
-      this.casesheetData.nurseData &&
-      this.casesheetData.nurseData.examination
+      this.caseSheetData &&
+      this.caseSheetData.nurseData &&
+      this.caseSheetData.nurseData.examination
     ) {
-      const examination = this.casesheetData.nurseData.examination;
+      const examination = this.caseSheetData.nurseData.examination;
 
       if (examination.generalExamination)
         this.generalExamination = examination.generalExamination;
@@ -114,8 +114,8 @@ export class ExaminationCaseSheetComponent
     }
     // let t = new Date();
     // this.date = t.getDate() + "/" + (t.getMonth() + 1) + "/" + t.getFullYear();
-    if (this.casesheetData && this.casesheetData.doctorData) {
-      this.referDetails = this.casesheetData.doctorData.Refer;
+    if (this.caseSheetData && this.caseSheetData.doctorData) {
+      this.referDetails = this.caseSheetData.doctorData.Refer;
       console.log('refer', this.referDetails);
       if (
         this.referDetails &&
@@ -143,9 +143,9 @@ export class ExaminationCaseSheetComponent
       }
       console.log(
         'referDetailsForReferexamination',
-        JSON.stringify(this.casesheetData, null, 4)
+        JSON.stringify(this.caseSheetData, null, 4)
       );
-      // if (this.casesheetData.doctorData.Refer) {
+      // if (this.caseSheetData.doctorData.Refer) {
       //   this.referDetails.revisitDate = this.datepipe.transform(this.referDetails.revisitDate, 'dd/MM/yyyy')
       // }
     }

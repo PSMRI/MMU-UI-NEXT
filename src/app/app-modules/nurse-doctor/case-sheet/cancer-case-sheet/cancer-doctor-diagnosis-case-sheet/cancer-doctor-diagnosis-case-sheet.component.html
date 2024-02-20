@@ -17,7 +17,7 @@
         {{ beneficiaryDetails?.VisitCategory }}
       </p>
     </div>
-    <div class="col-xs-6 text-right" *ngIf="casesheetData?.serviceID === 2">
+    <div class="col-xs-6 text-right" *ngIf="caseSheetData?.serviceID === 2">
       <p>
         <strong> {{ currentLanguageSet?.casesheet?.servicePoint }}: </strong>
         {{ servicePointName }}
@@ -226,7 +226,7 @@
         }}:
       </h5>
       <div class="textarea">
-        {{ casesheetData?.nurseData?.signsAndSymptoms?.observation }}
+        {{ caseSheetData?.nurseData?.signsAndSymptoms?.observation }}
       </div>
     </div>
   </div>
@@ -235,7 +235,7 @@
     <div class="col-xs-12">
       <h5>{{ currentLanguageSet?.casesheet?.oralExamination }}:</h5>
       <div class="textarea">
-        {{ casesheetData?.nurseData?.oralExamination?.observation }}
+        {{ caseSheetData?.nurseData?.oralExamination?.observation }}
       </div>
     </div>
   </div>
@@ -249,7 +249,7 @@
         }}:
       </h5>
       <div class="textarea">
-        {{ casesheetData?.nurseData?.abdominalExamination?.observation }}
+        {{ caseSheetData?.nurseData?.abdominalExamination?.observation }}
       </div>
     </div>
   </div>
@@ -263,7 +263,7 @@
         }}:
       </h5>
       <div class="textarea">
-        {{ casesheetData?.nurseData?.gynecologicalExamination?.observation }}
+        {{ caseSheetData?.nurseData?.gynecologicalExamination?.observation }}
       </div>
     </div>
   </div>

@@ -34,7 +34,7 @@ export class CancerHistoryCaseSheetComponent
   implements OnInit, OnChanges, DoCheck
 {
   @Input()
-  casesheetData: any;
+  caseSheetData: any;
   @Input()
   previous: any;
   familyDiseaseHistory: any;
@@ -60,41 +60,41 @@ export class CancerHistoryCaseSheetComponent
     this.currentLanguageSet = getLanguageJson.currentLanguageObject;
   }
   ngOnChanges() {
-    if (this.casesheetData) {
-      if (this.casesheetData.BeneficiaryData)
-        this.beneficiaryDetails = this.casesheetData.BeneficiaryData;
+    if (this.caseSheetData) {
+      if (this.caseSheetData.BeneficiaryData)
+        this.beneficiaryDetails = this.caseSheetData.BeneficiaryData;
 
       if (
-        this.casesheetData.nurseData &&
-        this.casesheetData.nurseData.familyDiseaseHistory
+        this.caseSheetData.nurseData &&
+        this.caseSheetData.nurseData.familyDiseaseHistory
       )
         this.familyDiseaseHistory =
-          this.casesheetData.nurseData.familyDiseaseHistory;
+          this.caseSheetData.nurseData.familyDiseaseHistory;
 
       if (
-        this.casesheetData.nurseData &&
-        this.casesheetData.nurseData.benPersonalDietHistory
+        this.caseSheetData.nurseData &&
+        this.caseSheetData.nurseData.benPersonalDietHistory
       )
         this.patientPersonalHistory = Object.assign(
           {},
-          this.casesheetData.nurseData.benPersonalDietHistory
+          this.caseSheetData.nurseData.benPersonalDietHistory
         );
 
       if (
-        this.casesheetData.nurseData &&
-        this.casesheetData.nurseData.patientPersonalHistory
+        this.caseSheetData.nurseData &&
+        this.caseSheetData.nurseData.patientPersonalHistory
       )
         this.patientPersonalHistory = Object.assign(
           this.patientPersonalHistory,
-          this.casesheetData.nurseData.patientPersonalHistory
+          this.caseSheetData.nurseData.patientPersonalHistory
         );
 
       if (
-        this.casesheetData.nurseData &&
-        this.casesheetData.nurseData.patientObstetricHistory
+        this.caseSheetData.nurseData &&
+        this.caseSheetData.nurseData.patientObstetricHistory
       )
         this.patientObstetricHistory =
-          this.casesheetData.nurseData.patientObstetricHistory;
+          this.caseSheetData.nurseData.patientObstetricHistory;
     }
   }
 

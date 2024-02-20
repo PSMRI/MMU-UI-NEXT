@@ -34,7 +34,7 @@ export class CancerDoctorDiagnosisCaseSheetComponent
   implements OnInit, OnChanges, DoCheck
 {
   @Input()
-  casesheetData: any;
+  caseSheetData: any;
   @Input()
   previous: any;
   @Input()
@@ -81,13 +81,13 @@ export class CancerDoctorDiagnosisCaseSheetComponent
   }
 
   ngOnChanges() {
-    console.log(this.casesheetData);
+    console.log(this.caseSheetData);
 
-    if (this.casesheetData) {
-      if (this.casesheetData.BeneficiaryData)
-        this.beneficiaryDetails = this.casesheetData.BeneficiaryData;
+    if (this.caseSheetData) {
+      if (this.caseSheetData.BeneficiaryData)
+        this.beneficiaryDetails = this.caseSheetData.BeneficiaryData;
       this.servicePointName =
-        this.casesheetData.nurseData.benVisitDetail.serviceProviderName;
+        this.caseSheetData.nurseData.benVisitDetail.serviceProviderName;
 
       if (this.beneficiaryDetails.serviceDate) {
         const sDate = new Date(this.beneficiaryDetails.serviceDate);
@@ -122,16 +122,16 @@ export class CancerDoctorDiagnosisCaseSheetComponent
       }
 
       if (
-        this.casesheetData.nurseData &&
-        this.casesheetData.nurseData.currentVitals
+        this.caseSheetData.nurseData &&
+        this.caseSheetData.nurseData.currentVitals
       )
-        this.currentVitals = this.casesheetData.nurseData.currentVitals;
+        this.currentVitals = this.caseSheetData.nurseData.currentVitals;
 
       if (
-        this.casesheetData.doctorData != undefined &&
-        this.casesheetData.doctorData.diagnosis
+        this.caseSheetData.doctorData != undefined &&
+        this.caseSheetData.doctorData.diagnosis
       )
-        this.caseSheetDiagnosisData = this.casesheetData.doctorData.diagnosis;
+        this.caseSheetDiagnosisData = this.caseSheetData.doctorData.diagnosis;
 
       this.getVaccinationTypeAndDoseMaster();
     }

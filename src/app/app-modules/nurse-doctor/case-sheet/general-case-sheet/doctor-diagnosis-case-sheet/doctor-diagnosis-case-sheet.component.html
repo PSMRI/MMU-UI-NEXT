@@ -19,7 +19,7 @@
         {{ beneficiaryDetails?.VisitCategory }}
       </p>
     </div>
-    <div class="col-xs-6 text-right" *ngIf="casesheetData?.serviceID === 2">
+    <div class="col-xs-6 text-right" *ngIf="caseSheetData?.serviceID === 2">
       <p>
         <strong> {{ currentLanguageSet?.casesheet?.servicePoint }}: </strong>
         {{ beneficiaryDetails?.servicePointName }}
@@ -615,7 +615,7 @@
               <td
                 *ngIf="
                   report?.componentName?.includes('ECG') &&
-                  report?.testResultValue ==== 'Abnormal'
+                  report?.testResultValue === 'Abnormal'
                 "
                 style="
                   width: 110px;
@@ -636,7 +636,7 @@
   <!-- End of Investigations -->
 
   <!--MMU-WDF-Investigations -->
-  <div class="row m-t-10" *ngIf="enableTCReferredMMUData ==== true">
+  <div class="row m-t-10" *ngIf="enableTCReferredMMUData === true">
     <div class="col-xs-12">
       <h4>{{ currentLanguageSet?.mmuInvestigation }}:</h4>
     </div>
@@ -729,7 +729,7 @@
   <!--End of external investigation-->
 
   <!--MMU-WDF-External investigation-->
-  <div class="row m-t-10" *ngIf="enableTCReferredMMUData ==== true">
+  <div class="row m-t-10" *ngIf="enableTCReferredMMUData === true">
     <div class="col-xs-12">
       <h4>{{ currentLanguageSet?.mmuExternalInvestigation }}:</h4>
       <div class="textarea">
@@ -1141,12 +1141,12 @@
             </div>
           </td>
         </tr>
-        <tr *ngIf="tmCaseSheet ==== 'true'">
+        <tr *ngIf="tmCaseSheet === 'true'">
           <th colspan="4" id="finalDiagnosis">
             {{ currentLanguageSet?.finalDiagnosis }}:
           </th>
         </tr>
-        <tr *ngIf="tmCaseSheet ==== 'true'">
+        <tr *ngIf="tmCaseSheet === 'true'">
           <td colspan="4">
             <div class="textarea">
               <div class="btn-group" *ngFor="let i of suspectt">
@@ -1270,7 +1270,7 @@
   <!-- End of Prescription -->
 
   <!--MMU-WDF-Prescription -->
-  <div class="row m-t-10" *ngIf="enableTCReferredMMUData ==== true">
+  <div class="row m-t-10" *ngIf="enableTCReferredMMUData === true">
     <div class="col-xs-12">
       <h4>{{ currentLanguageSet?.mmuPrescription }}:</h4>
     </div>
@@ -1365,7 +1365,7 @@
   <!-- End of MMU-WDF-Prescription -->
 
   <!-- Doctor's Sign -->
-  <div class="row m-t-50" *ngIf="enableTCReferredMMUData ==== true">
+  <div class="row m-t-50" *ngIf="enableTCReferredMMUData === true">
     <div class="col-xs-6">&nbsp;</div>
     <div class="col-xs-6">
       <p>
