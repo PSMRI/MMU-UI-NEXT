@@ -141,7 +141,7 @@
             <mat-select
               style="width: 100%"
               required
-              (change)="onGenderSelected()"
+              (selectionChange)="onGenderSelected()"
               formControlName="gender">
               <mat-option
                 *ngFor="let gender of masterData?.genderMaster"
@@ -167,14 +167,12 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-          <mat-label>{{
-            currentLanguageSet?.ro?.personalInfo?.ageUnit
-          }}</mat-label>
           <mat-form-field>
             <mat-select
               style="width: 100%"
               required
-              (change)="onAgeUnitEntered()"
+              placeholder="{{ currentLanguageSet?.ro?.personalInfo?.ageUnit }}"
+              (selectionChange)="onAgeUnitEntered()"
               formControlName="ageUnit">
               <mat-option value="Days">Days</mat-option>
               <mat-option value="Months">Months</mat-option>
@@ -183,12 +181,35 @@
           </mat-form-field>
         </div>
 
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field [style.width]="'96%'">
+            <mat-icon matSuffix>event</mat-icon>
+            <input
+              autocomplete="off"
+              readonly="true"
+              matInput
+              id="dob-input"
+              [(ngModel)]="dateForCalendar"
+              type="text"
+              #dobval
+              (onHidden)="dobChangeByCalender(dobval.value)"
+              (change)="dobChangeByCalender(dobval.value)"
+              [bsConfig]="bsConfig"
+              [minDate]="minDate"
+              [maxDate]="today"
+              #dp="bsDatepicker"
+              maxlength="10"
+              bsDatepicker
+              formControlName="dob"
+              placeholder="{{ currentLanguageSet?.ro?.personalInfo?.dob }}" />
+          </mat-form-field>
+        </div>
+
         <!-- <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
         <mat-form-field [style.width]="'96%'">
           <mat-icon matSuffix>event</mat-icon>
         </mat-form-field>
       </div> -->
-
         <div
           class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box"
           *ngIf="enableMaritalStatus">
@@ -198,7 +219,7 @@
             }}</mat-label>
             <mat-select
               style="width: 100%"
-              (change)="onMaritalStatusChanged()"
+              (selectionChange)="onMaritalStatusChanged()"
               [required]="enableMaritalStatus"
               formControlName="maritalStatus">
               <mat-option
@@ -278,7 +299,7 @@
             <mat-select
               style="width: 100%"
               formControlName="literacyStatus"
-              (change)="changeLiteracyStatus()">
+              (selectionChange)="changeLiteracyStatus()">
               <mat-option value="Illiterate">Illiterate</mat-option>
               <mat-option value="Illiterate (can sign)">
                 Illiterate (can sign)
@@ -303,7 +324,7 @@
                 personalDetailsForm.value.literacyStatus === 'Literate'
               "
               formControlName="educationQualification"
-              (change)="onEducationQualificationChanged()">
+              (selectionChange)="onEducationQualificationChanged()">
               <mat-option
                 *ngFor="let qualification of masterData?.qualificationMaster"
                 [value]="qualification.educationID">
@@ -314,43 +335,13 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-          <div class="row">
-            <div class="col-xs-2 col-sm-2 m-t-15" style="padding-top: 7px">
-              <mat-checkbox
-                checked="checked"
-                formControlName="checked"
-                (change)="checkOccuptionsRequired($event)"></mat-checkbox>
-            </div>
-            <div class="col-xs-10 col-sm-10 m-l-10-">
-              <mat-form-field>
-                <mat-label>
-                  {{ currentLanguageSet?.ro?.personalInfo?.occupation }}
-                </mat-label>
-                <mat-select
-                  style="width: 100%"
-                  formControlName="occupation"
-                  [required]="isOccuptionRequired"
-                  (change)="getOccupationName()">
-                  <mat-option
-                    class="dropdownValueOccupation"
-                    *ngFor="let occupation of masterData?.occupationMaster"
-                    [value]="occupation.occupationID">
-                    {{ occupation.occupationType | titlecase }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field>
             <mat-label>
               {{ currentLanguageSet?.ro?.personalInfo?.incomeStatus }}
             </mat-label>
             <mat-select
               style="width: 100%"
-              (change)="onIncomeChanged()"
+              (selectionChange)="onIncomeChanged()"
               formControlName="income">
               <mat-option
                 *ngFor="let incomeStatus of masterData?.incomeMaster"
@@ -375,24 +366,6 @@
           </mat-form-field>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-          <mat-form-field>
-            <mat-label>
-              {{ currentLanguageSet?.ro?.personalInfo?.literacyStatus }}
-            </mat-label>
-            <mat-select
-              style="width: 100%"
-              formControlName="literacyStatus"
-              (change)="changeLiteracyStatus()">
-              <mat-option value="Illiterate">Illiterate</mat-option>
-              <mat-option value="Illiterate (can sign)">
-                Illiterate (can sign)
-              </mat-option>
-              <mat-option value="Literate">Literate</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-
         <div
           *ngIf="personalDetailsForm.value.literacyStatus === 'Literate'"
           class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
@@ -408,7 +381,7 @@
                 personalDetailsForm.value.literacyStatus === 'Literate'
               "
               formControlName="educationQualification"
-              (change)="onEducationQualificationChanged()">
+              (selectionChange)="onEducationQualificationChanged()">
               <mat-option
                 *ngFor="let qualification of masterData?.qualificationMaster"
                 [value]="qualification.educationID">
@@ -435,7 +408,7 @@
                   style="width: 100%"
                   formControlName="occupation"
                   [required]="isOccuptionRequired"
-                  (change)="getOccupationName()">
+                  (selectionChange)="getOccupationName()">
                   <mat-option
                     *ngFor="let occupation of masterData?.occupationMaster"
                     [value]="occupation.occupationID">
