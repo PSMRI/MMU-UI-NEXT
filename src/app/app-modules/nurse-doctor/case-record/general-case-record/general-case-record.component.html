@@ -15,11 +15,11 @@
     <mat-expansion-panel-header>
       <h5>{{ current_language_set?.previousvisit?.Previousvisitdetails }}</h5>
     </mat-expansion-panel-header>
-    <!-- <app-previous-visit-details
-      [currentVitals]="currentVitals"></app-previous-visit-details> -->
+    <app-previous-visit-details
+      [currentVitals]="currentVitals"></app-previous-visit-details>
   </mat-expansion-panel>
 
-  <!-- <mat-expansion-panel>
+  <mat-expansion-panel>
     <mat-expansion-panel-header>
       <h5>{{ current_language_set?.Find?.findings }}</h5>
     </mat-expansion-panel-header>
@@ -35,13 +35,11 @@
     </mat-expansion-panel-header>
     <app-diagnosis
       [caseRecordMode]="caseRecordMode"
-      [generalDiagnosisForm]="
-        generalCaseRecordForm.controls.generalDiagnosisForm
-      "
+      [generalDiagnosisForm]="generalDiagnosisForm"
       [visitCategory]="visitCategory"></app-diagnosis>
   </mat-expansion-panel>
 
-  <mat-expansion-panel>
+  <!--  <mat-expansion-panel>
     <mat-expansion-panel-header>
       <h5>
         {{

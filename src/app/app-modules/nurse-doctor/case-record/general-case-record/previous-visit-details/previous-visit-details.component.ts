@@ -37,6 +37,9 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
 export class PreviousVisitDetailsComponent
   implements OnInit, OnChanges, DoCheck
 {
+  @Input()
+  currentVitals: any;
+
   lineChartOptions: any = {
     responsive: true,
     maintainAspectRatio: false,

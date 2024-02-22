@@ -47,11 +47,20 @@ export class GeneralCaseRecordComponent implements DoCheck {
 
   @Input()
   findings: any;
+
+  generalFindingsForm!: FormGroup;
+  generalDiagnosisForm!: FormGroup;
   current_language_set: any;
 
   constructor(private httpServiceService: HttpServiceService) {}
 
   ngDoCheck() {
+    this.generalFindingsForm = this.generalCaseRecordForm.get(
+      'generalFindingsForm'
+    ) as FormGroup;
+    this.generalDiagnosisForm = this.generalCaseRecordForm.get(
+      'generalDiagnosisForm'
+    ) as FormGroup;
     this.assignSelectedLanguage();
   }
   assignSelectedLanguage() {

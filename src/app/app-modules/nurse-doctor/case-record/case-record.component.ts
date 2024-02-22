@@ -37,7 +37,7 @@ export class CaseRecordComponent implements OnInit {
   visitCategory!: string;
 
   @Input()
-  caseRecordMode: any;
+  caseRecordMode!: string;
 
   @Input()
   findings: any;

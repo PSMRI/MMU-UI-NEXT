@@ -29,7 +29,13 @@ import {
   OnInit,
   DoCheck,
 } from '@angular/core';
-import { FormArray, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  Validators,
+  FormGroup,
+  AbstractControl,
+} from '@angular/forms';
 import { ProvisionalSearchComponent } from '../../core/components/provisional-search/provisional-search.component';
 import { GeneralUtils } from '../../nurse-doctor/shared/utility/general-utility';
 import { SetLanguageComponent } from '../components/set-language.component';
@@ -44,7 +50,7 @@ export class OpenModalDirective implements OnInit, DoCheck {
   previousSelected: any;
 
   @Input()
-  diagnosisListForm!: FormGroup;
+  diagnosisListForm!: AbstractControl<any, any>;
   currentLanguageSet: any;
 
   @HostListener('keyup.enter') onKeyDown() {
@@ -77,7 +83,7 @@ export class OpenModalDirective implements OnInit, DoCheck {
         hasBackdrop: false,
         data: {
           searchTerm: searchTerm,
-          previousSelected: this.previousSelected,
+          addedDiagnosis: this.previousSelected,
           diagonasisType:
             this.currentLanguageSet.DiagnosisDetails.provisionaldiagnosis,
         },

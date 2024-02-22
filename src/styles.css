@@ -218,3 +218,22 @@ hr {
   transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
   opacity: 0;
 }
+
+mat-mdc-form-field-label-always-float{
+  background-color:  white !important;
+}
+.mdc-text-field--filled,.mdc-text-field--focused
+{
+ background-color:  white !important;
+}
+.mat-mdc-form-field-focus-overlay {
+  background-color: white !important
+}
+
+.mat-mdc-form-field:hover .mat-mdc-form-field-focus-overlay {
+  background-color: white !important
+}
+
+.mat-mdc-form-field.mat-focused .mat-mdc-form-field-focus-overlay {
+  background-color: white !important
+}

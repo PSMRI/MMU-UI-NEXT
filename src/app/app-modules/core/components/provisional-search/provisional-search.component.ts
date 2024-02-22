@@ -146,7 +146,7 @@ export class ProvisionalSearchComponent implements OnInit, DoCheck {
             if (res.statusCode === 200) {
               this.showProgressBar = false;
               if (res.data && res.data.sctMaster.length > 0) {
-                this.showProgressBar = true;
+                this.showProgressBar = false;
                 this.diagnosis.data = res.data.sctMaster;
                 this.diagnosis.paginator = this.paginator;
                 //   if (pageNo === 0) {
