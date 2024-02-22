@@ -142,6 +142,9 @@ import { PrintPageSelectComponent } from './print-page-select/print-page-select.
 import { PrescribeTmMedicineComponent } from './case-sheet/prescribe-tm-medicine/prescribe-tm-medicine.component';
 import { TmcconfirmationComponent } from './tm-visit-details/tmcconfirmation/tmcconfirmation.component';
 import { TmVisitDetailsComponent } from './tm-visit-details/tm-visit-details.component';
+import { IdrsComponent } from './idrs/idrs.component';
+import { QuickConsultComponent } from './quick-consult/quick-consult.component';
+import { NcdScreeningComponent } from './ncd-screening/ncd-screening.component';
 
 @NgModule({
   imports: [
@@ -163,7 +166,7 @@ import { TmVisitDetailsComponent } from './tm-visit-details/tm-visit-details.com
   declarations: [
     NurseWorklistComponent,
     PrintPageSelectComponent,
-    // QuickConsultComponent,
+    QuickConsultComponent,
     CancerExaminationComponent,
     GynecologicalExaminationComponent,
     AbdominalExaminationComponent,
@@ -218,7 +221,7 @@ import { TmVisitDetailsComponent } from './tm-visit-details/tm-visit-details.com
     VitalsComponent,
     // AncComponent,
     PncComponent,
-    // NcdScreeningComponent,
+    NcdScreeningComponent,
     // DashboardComponent,
     WorkareaComponent,
     CancerCaseRecordComponent,
@@ -260,7 +263,7 @@ import { TmVisitDetailsComponent } from './tm-visit-details/tm-visit-details.com
     ContactHistoryComponent,
     SymptomsComponent,
     CovidDiagnosisComponent,
-    // IdrsComponent,
+    IdrsComponent,
     PhysicalActivityHistoryComponent,
     FamilyHistoryNcdscreeningComponent,
     NcdScreeningDiagnosisComponent,
