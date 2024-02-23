@@ -145,6 +145,7 @@ import { TmVisitDetailsComponent } from './tm-visit-details/tm-visit-details.com
 import { IdrsComponent } from './idrs/idrs.component';
 import { QuickConsultComponent } from './quick-consult/quick-consult.component';
 import { NcdScreeningComponent } from './ncd-screening/ncd-screening.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -210,7 +211,6 @@ import { NcdScreeningComponent } from './ncd-screening/ncd-screening.component';
     ObstetricFormulaComponent,
     VisitDetailsComponent,
     PatientVisitDetailsComponent,
-    // VisitCategoryComponent,
     ChiefComplaintsComponent,
     AdherenceComponent,
     InvestigationsComponent,
@@ -219,10 +219,9 @@ import { NcdScreeningComponent } from './ncd-screening/ncd-screening.component';
     ExaminationComponent,
     CaseRecordComponent,
     VitalsComponent,
-    // AncComponent,
     PncComponent,
     NcdScreeningComponent,
-    // DashboardComponent,
+    DashboardComponent,
     WorkareaComponent,
     CancerCaseRecordComponent,
     GeneralCaseRecordComponent,
@@ -286,6 +285,5 @@ import { NcdScreeningComponent } from './ncd-screening/ncd-screening.component';
     TestInVitalsService,
     LabService,
   ],
-  // entryComponents: [PrintPageSelectComponent, ViewTestReportComponent, BeneficiaryMctsCallHistoryComponent, PrescribeTmMedicineComponent]
 })
 export class NurseDoctorModule {}
