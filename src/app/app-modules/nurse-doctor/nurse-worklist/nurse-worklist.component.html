@@ -26,9 +26,7 @@
       </button>
       <button
         id="refresh"
-        md-raised-button
-        class="pull-right btn-green"
-        color="primary"
+        class="mat-blue pull-right"
         (click)="getNurseWorklist()">
         {{ currentLanguageSet?.common?.refresh }}
       </button>
@@ -38,17 +36,15 @@
     <div class="col-sm-12">
       <mat-card>
         <section class="table-responsive">
-          <div
-            class="mat-elevation-z8 responsiveTable"
-            style="margin-top: 30px">
+          <div class="mat-elevation-z8 responsiveTable">
             <table
               mat-table
               [dataSource]="dataSource"
               aria-describedby="nurseWorklist">
               <ng-container matColumnDef="sno">
                 <th
+                  class="tablet_css"
                   mat-header-cell
-                  style="border-bottom: none"
                   *matHeaderCellDef
                   mat-sort-header>
                   {{ currentLanguageSet?.casesheet?.serialNo }}

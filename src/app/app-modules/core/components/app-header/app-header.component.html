@@ -58,6 +58,7 @@
 
         <li
           class="nav-item"
+          style="margin-top: 6px"
           *ngIf="userName"
           matTooltip="{{ currentLanguageSet?.user }}">
           <a>
@@ -72,6 +73,7 @@
         <li
           *ngIf="servicePoint"
           class="nav-item servicePoint cursorPointer"
+          style="margin-top: 6px"
           [routerLink]="'/servicePoint'"
           matTooltip="{{ currentLanguageSet?.servicePoint }}">
           <a>
@@ -83,7 +85,10 @@
             </span>
           </a>
         </li>
-        <li class="nav-item cursorPointer" *ngIf="isAuthenticated">
+        <li
+          class="nav-item cursorPointer"
+          *ngIf="isAuthenticated"
+          style="margin-top: 6px">
           <mat-icon
             alt="Help"
             [matMenuTriggerFor]="menu"
@@ -94,6 +99,7 @@
         <li
           *ngIf="isAuthenticated"
           class="nav-item logout cursorPointer"
+          style="margin-top: 6px"
           matTooltip="{{ currentLanguageSet?.logOut }}">
           <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events -->
           <a tabindex="{0}" (click)="logout()">

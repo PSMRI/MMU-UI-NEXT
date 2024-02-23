@@ -85,3 +85,33 @@ ul li div {
 .description {
   padding-top: 15px;
 }
+
+.mat-mdc-row:hover {
+  color: #0277bd !important;
+}
+.mat-mdc-row:nth-child(2n){
+  background-color: #f9f9f9;
+}
+.table-responsive {
+  /* width: 100%; */
+  margin: 15px;
+  overflow-y: hidden;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  border: 1px solid #ddd;
+}
+.mat-tab-group {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.tablet_css >>>.mat-mdc-header-row {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing:inline-block !important;
+  height: var(--mat-table-header-container-height, 56px);
+  color: block !important;
+  font-family: unset !important;
+  line-height: var(--mat-table-header-headline-line-height);
+  font-size: unset !important;
+  font-weight: var(--mat-table-header-headline-weight, 500);
+}
+
+
+
