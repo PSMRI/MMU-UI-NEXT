@@ -1,4 +1,4 @@
-<!-- {{ generalDiagnosisForm.value | json}}
+{{ generalDiagnosisForm.value | json }}
 <div class="m-t-10" [formGroup]="generalDiagnosisForm">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
@@ -26,7 +26,7 @@
                   maxlength="100"
                   minlength="3"
                   [previousSelected]="
-                    generalDiagnosisForm?.value?.provisionalDiagnosisList
+                    generalDiagnosisForm.value.provisionalDiagnosisList
                   "
                   required />
                 <mat-icon
@@ -35,7 +35,7 @@
                   appOpenModal
                   [diagnosisListForm]="diagnosis"
                   [previousSelected]="
-                    generalDiagnosisForm?.value?.provisionalDiagnosisList
+                    generalDiagnosisForm.value.provisionalDiagnosisList
                   "
                   >search</mat-icon
                 >
@@ -58,16 +58,15 @@
                 class="pull-left"
                 color="warn"
                 *ngIf="
-                  diagnosis.controls['provisionalDiagnosis'].disabled ||
-                  i != 0 ||
-                  (i == 0 &&
-                    generalDiagnosisForm.controls['provisionalDiagnosisList']
-                      .controls[i].controls.provisionalDiagnosis.value !==
-                      null &&
-                    generalDiagnosisForm.controls['provisionalDiagnosisList']
-                      .controls[i].controls.provisionalDiagnosis.value !== '')
+                  diagnosis.get('provisionalDiagnosis')?.disabled ||
+                  i !== 0 ||
+                  (i === 0 &&
+                    generalDiagnosisForm.get('provisionalDiagnosisList')?.value
+                      .provisionalDiagnosis !== null &&
+                    generalDiagnosisForm.get('provisionalDiagnosisList')?.value
+                      .provisionalDiagnosis !== '')
                 "
-                (click)="deleteDiagnosis(i, provisionalDiagnosisList)">
+                (click)="deleteDiagnosis(i, diagnosis)">
                 <mat-icon>close</mat-icon>
               </button>
             </div>
@@ -76,4 +75,4 @@
       </ng-container>
     </div>
   </div>
-</div> -->
+</div>

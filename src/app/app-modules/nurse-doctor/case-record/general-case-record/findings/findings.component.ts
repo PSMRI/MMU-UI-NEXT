@@ -125,6 +125,13 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
       this.beneficiaryDetailSubscription.unsubscribe();
   }
 
+  getComplaints(): AbstractControl[] | null {
+    const complaintsControl = this.generalFindingsForm.get('complaints');
+    return complaintsControl instanceof FormArray
+      ? complaintsControl.controls
+      : null;
+  }
+
   findingSubscription: any;
   getFindingDetails(beneficiaryRegID: any, visitID: any, visitCategory: any) {
     this.findingSubscription = this.doctorService
@@ -200,7 +207,8 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
         }
       });
   }
-  getSCTid(event: any, index: any) {
+  getSCTid(events: any, index: any) {
+    const event: any = events.option?.value;
     console.log('called', index, event);
     this.masterdataService.getSnomedCTRecord(event.chiefComplaint).subscribe(
       (res: any) => {
@@ -220,7 +228,8 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     });
   }
 
-  filterComplaints(chiefComplaintValue: any, i: any) {
+  filterComplaints(event: any, i: any) {
+    const chiefComplaintValue: any = event.option.value;
     this.suggestChiefComplaintList(
       this.fb.group({ chiefComplaint: chiefComplaintValue }),
       i
@@ -267,7 +276,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     complaintFormArray.push(this.formUtils.initChiefComplaints());
   }
 
-  removeCheifComplaint(i: number, complaintForm: FormGroup) {
+  removeCheifComplaint(i: number, complaintForm: AbstractControl<any, any>) {
     this.confirmationService
       .confirm(`warn`, this.current_language_set.alerts.info.warn)
       .subscribe(result => {
@@ -297,8 +306,8 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
           if (this.selectedChiefComplaintList[i])
             this.selectedChiefComplaintList[i] = null;
 
-          // if (this.suggestChiefComplaintList[i])
-          //   this.suggestedChiefComplaintList[i] = null;
+          if (this.suggestedChiefComplaintList[i])
+            this.suggestedChiefComplaintList[i] = null;
 
           if (complaintFormArray.length == 1 && complaintForm)
             complaintForm.reset();
@@ -377,7 +386,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     else this.nurseService.setNCDScreeningProvision(false);
   }
 
-  validateDuration(formGroup: FormGroup, event?: Event) {
+  validateDuration(formGroup: AbstractControl<any, any>, event?: Event) {
     let duration = null;
     let durationUnit = null;
     let flag = true;
@@ -406,7 +415,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     return complaint && complaint.chiefComplaint;
   }
 
-  suggestChiefComplaintList(complaintForm: FormGroup, i: any) {
+  suggestChiefComplaintList(complaintForm: AbstractControl<any, any>, i: any) {
     const complaint = complaintForm.value.chiefComplaint;
     if (typeof complaint === 'string') {
       if (

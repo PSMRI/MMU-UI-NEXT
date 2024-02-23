@@ -139,7 +139,7 @@ export class GeneralOpdDiagnosisComponent implements OnChanges, DoCheck {
     }
   }
 
-  deleteDiagnosis(index: any, diagnosisList?: FormArray) {
+  deleteDiagnosis(index: any, diagnosisList?: AbstractControl<any, any>) {
     const diagnosisListForm = this.generalDiagnosisForm.controls[
       'provisionalDiagnosisList'
     ] as FormArray;

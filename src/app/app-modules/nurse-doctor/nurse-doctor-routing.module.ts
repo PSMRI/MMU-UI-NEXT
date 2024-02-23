@@ -22,7 +22,6 @@
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from '../registrar/dashboard/dashboard.component';
 import { WorkareaComponent } from './workarea/workarea.component';
 import { WorkareaCanActivate } from './workarea/workarea-can-activate.service';
 import { CanDeactivateGuardService } from '../core/services/can-deactivate-guard.service';
@@ -32,6 +31,7 @@ import { GeneralCaseRecordComponent } from './case-record/general-case-record/ge
 import { CaseSheetComponent } from './case-sheet/case-sheet.component';
 import { RadiologistWorklistComponent } from './radiologist-worklist/radiologist-worklist.component';
 import { OncologistWorklistComponent } from './oncologist-worklist/oncologist-worklist.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {

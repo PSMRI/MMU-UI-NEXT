@@ -1,5 +1,5 @@
-<!-- {{ generalDiagnosisForm.value | json}} -->
-<!-- <div class="m-t-10" [formGroup]="generalDiagnosisForm">
+{{ generalDiagnosisForm.value | json }}
+<div class="m-t-10" [formGroup]="generalDiagnosisForm">
   <section>
     <div class="row">
       <div class="col-xs-12 col-sm-6">
@@ -9,9 +9,7 @@
         <ng-container formArrayName="provisionalDiagnosisList">
           <div
             *ngFor="
-              let diagnosis of generalDiagnosisForm.controls[
-                'provisionalDiagnosisList'
-              ]['controls'];
+              let diagnosis of getProvisionalDiagnosisList();
               let i = index;
               let isLast = last
             "
@@ -29,16 +27,16 @@
                     maxlength="100"
                     minlength="3"
                     [previousSelected]="
-                      generalDiagnosisForm?.value?.provisionalDiagnosisList
+                      generalDiagnosisForm.value.provisionalDiagnosisList
                     " />
                   <mat-icon
                     class="search-btn"
-                    *ngIf="!diagnosis.controls['provisionalDiagnosis'].disabled"
+                    *ngIf="!diagnosis.get('provisionalDiagnosis')?.disabled"
                     matSuffix
                     appOpenModal
                     [diagnosisListForm]="diagnosis"
                     [previousSelected]="
-                      generalDiagnosisForm?.value?.provisionalDiagnosisList
+                      generalDiagnosisForm.value.provisionalDiagnosisList
                     "
                     >search</mat-icon
                   >
@@ -50,10 +48,10 @@
                   type="button"
                   color="warn"
                   *ngIf="
-                    i != 0 ||
-                    (i == 0 &&
+                    i !== 0 ||
+                    (i === 0 &&
                       (diagnosis.touched ||
-                        diagnosis.controls['provisionalDiagnosis'].disabled))
+                        diagnosis.get('provisionalDiagnosis')?.disabled))
                   "
                   (click)="removeProvisionalDiagnosis(i, diagnosis)">
                   <mat-icon>close</mat-icon>
@@ -81,9 +79,7 @@
         <ng-container formArrayName="confirmatoryDiagnosisList">
           <div
             *ngFor="
-              let confirmatoryDiagnosis of generalDiagnosisForm.controls[
-                'confirmatoryDiagnosisList'
-              ]['controls'];
+              let confirmatoryDiagnosis of getConfirmatoryDiagnosisList();
               let i = index;
               let isLast = last
             "
@@ -100,19 +96,19 @@
                     maxlength="100"
                     minlength="3"
                     [previousSelected]="
-                      generalDiagnosisForm?.value?.confirmatoryDiagnosisList
+                      generalDiagnosisForm.value.confirmatoryDiagnosisList
                     " />
                   <mat-icon
                     class="search-btn"
                     *ngIf="
-                      !confirmatoryDiagnosis.controls['confirmatoryDiagnosis']
-                        .disabled
+                      !confirmatoryDiagnosis.get('confirmatoryDiagnosis')
+                        ?.disabled
                     "
                     matSuffix
                     appConfirmatoryDiagnosis
                     [diagnosisListForm]="confirmatoryDiagnosis"
                     [previousSelected]="
-                      generalDiagnosisForm?.value?.confirmatoryDiagnosisList
+                      generalDiagnosisForm.value.confirmatoryDiagnosisList
                     "
                     >search</mat-icon
                   >
@@ -124,11 +120,11 @@
                   type="button"
                   color="warn"
                   *ngIf="
-                    i != 0 ||
-                    (i == 0 &&
+                    i !== 0 ||
+                    (i === 0 &&
                       (confirmatoryDiagnosis.touched ||
-                        confirmatoryDiagnosis.controls['confirmatoryDiagnosis']
-                          .disabled))
+                        confirmatoryDiagnosis.get('confirmatoryDiagnosis')
+                          ?.disabled))
                   "
                   (click)="
                     removeConfirmatoryDiagnosis(i, confirmatoryDiagnosis)
@@ -232,4 +228,4 @@
       </div>
     </div>
   </section>
-</div> -->
+</div>

@@ -159,8 +159,7 @@ export class DoctorWorklistComponent implements OnInit, OnDestroy, DoCheck {
       element.arrival = false;
       element.preferredPhoneNum = element.preferredPhoneNum || 'Not Available';
       element.visitDate =
-        moment(element.visitDate).format('DD-MM-YYYY HH:mm A') ||
-        'Not Available';
+        moment(element.visitDate, 'DD-MM-YYYY HH:mm A') || 'Not Available';
       element.benVisitDate =
         moment(element.benVisitDate).format('DD-MM-YYYY HH:mm A ') ||
         'Not Available';

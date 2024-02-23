@@ -62,12 +62,13 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
       <div
+        *ngIf="dataSource.data.length > 0"
         class="pull-center"
-        style="margin-top: 5px"
-        [hidden]="dataSource.data.length > 0">
+        style="margin-top: 5px">
         <strong>{{ current_language_set?.noRecordsFound }}</strong>
       </div>
       <mat-paginator
+        [hidden]="dataSource.data.length > 0"
         [pageSizeOptions]="[5, 10, 20]"
         [pageSize]="5"
         showFirstLastButtons

@@ -57,6 +57,24 @@ export class PncDiagnosisComponent
   caseRecordMode!: string;
   current_language_set: any;
 
+  getProvisionalDiagnosisList(): AbstractControl[] | null {
+    const provisionalDiagnosisListControl = this.generalDiagnosisForm.get(
+      'provisionalDiagnosisList'
+    );
+    return provisionalDiagnosisListControl instanceof FormArray
+      ? provisionalDiagnosisListControl.controls
+      : null;
+  }
+
+  getConfirmatoryDiagnosisList(): AbstractControl[] | null {
+    const confirmatoryDiagnosisListControl = this.generalDiagnosisForm.get(
+      'confirmatoryDiagnosisList'
+    );
+    return confirmatoryDiagnosisListControl instanceof FormArray
+      ? confirmatoryDiagnosisListControl.controls
+      : null;
+  }
+
   constructor(
     private confirmationService: ConfirmationService,
     private fb: FormBuilder,
@@ -114,15 +132,6 @@ export class PncDiagnosisComponent
           }
         }
       );
-  }
-
-  getProvisionalDiagnosisList(): AbstractControl[] | null {
-    const provisionalDiagnosisListControl = this.generalDiagnosisForm.get(
-      'provisionalDiagnosisList'
-    );
-    return provisionalDiagnosisListControl instanceof FormArray
-      ? provisionalDiagnosisListControl.controls
-      : null;
   }
 
   diagnosisSubscription: any;

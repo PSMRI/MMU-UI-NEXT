@@ -29,7 +29,13 @@ import {
   OnInit,
   DoCheck,
 } from '@angular/core';
-import { FormArray, FormBuilder, Validators, FormGroup } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  Validators,
+  FormGroup,
+  AbstractControl,
+} from '@angular/forms';
 import { GeneralUtils } from '../../nurse-doctor/shared/utility/general-utility';
 import { SetLanguageComponent } from '../components/set-language.component';
 import { HttpServiceService } from '../services/http-service.service';
@@ -43,7 +49,8 @@ export class ConfirmatoryDiagnosisDirective implements OnInit, DoCheck {
   previousSelected: any;
 
   @Input()
-  diagnosisListForm!: FormGroup;
+  diagnosisListForm!: AbstractControl<any, any>;
+
   currentLanguageSet: any;
 
   @HostListener('keyup.enter') onKeyDown() {
@@ -74,7 +81,7 @@ export class ConfirmatoryDiagnosisDirective implements OnInit, DoCheck {
         // panelClass: 'fit-screen',
         data: {
           searchTerm: searchTerm,
-          previousSelected: this.previousSelected,
+          addedDiagnosis: this.previousSelected,
           diagonasisType: this.currentLanguageSet.confirmDiagnosis,
         },
       });

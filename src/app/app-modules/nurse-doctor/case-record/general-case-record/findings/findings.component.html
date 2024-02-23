@@ -1,5 +1,5 @@
 <!-- {{ generalFindingsForm.value | json}} -->
-<!-- <div class="row m-t-20" *ngIf="complaintList.length >= 1">
+<div class="row m-t-20" *ngIf="complaintList.length >= 1">
   <div class="col-xs-12">
     <table
       class="table table-bordered"
@@ -28,7 +28,9 @@
           style="border-bottom: none"
           *matHeaderCellDef
           mat-sort-header>
-          {{ current_language_set?.nurseData?.chiefComplaintsDetails?.duration }}
+          {{
+            current_language_set?.nurseData?.chiefComplaintsDetails?.duration
+          }}
         </th>
         <td mat-cell *matCellDef="let element">
           {{ element?.duration }}
@@ -101,7 +103,7 @@
       <div
         class="row multi-row-select"
         *ngFor="
-          let complaint of generalFindingsForm.controls.complaints['controls'];
+          let complaint of getComplaints();
           let i = index;
           let isLast = last;
           let isOdd = odd
@@ -125,19 +127,18 @@
                 [matAutocomplete]="auto" />
             </mat-form-field>
 
-            <mat-form-field
+            <mat-autocomplete
               #auto="matAutocomplete"
               [displayWith]="displayChiefComplaint"
               (optionSelected)="
-                filterComplaints($event.option.value, i);
-                getSCTid($event.option.value, i)
+                filterComplaints($event, i); getSCTid($event, i)
               ">
               <mat-option
                 *ngFor="let compl of suggestedChiefComplaintList[i]"
                 [value]="compl">
                 {{ compl.chiefComplaint }}
               </mat-option>
-            </mat-form-field>
+            </mat-autocomplete>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box" [hidden]="true">
             <mat-form-field class="input-full-width">
@@ -167,7 +168,7 @@
                   current_language_set?.nurseData?.chiefComplaintsDetails
                     ?.duration
                 }}"
-                [disableFormControl]="!complaint.value.chiefComplaint"
+                [disabled]="!complaint.value.chiefComplaint"
                 (change)="validateDuration(complaint)" />
             </mat-form-field>
           </div>
@@ -181,7 +182,7 @@
                   current_language_set?.nurseData?.chiefComplaintsDetails
                     ?.selectunitOfDuration
                 }}"
-                [disableFormControl]="!complaint.value.duration"
+                [disabled]="!complaint.value.duration"
                 (change)="validateDuration(complaint)">
                 <mat-option value="Hours">Hour(s)</mat-option>
                 <mat-option value="Days">Day(s)</mat-option>
@@ -199,7 +200,7 @@
                 allowText="textAreaValidator"
                 matTextareaAutosize
                 name="description"
-                [disableFormControl]="!complaint.value.chiefComplaint"
+                [disabled]="!complaint.value.chiefComplaint"
                 formControlName="description"
                 placeholder="{{
                   current_language_set?.nurseData?.chiefComplaintsDetails
@@ -211,7 +212,7 @@
             <button
               mat-mini-fab
               [id]="'removeBtn' + i"
-              *ngIf="i != 0 || (i == 0 && complaint.touched)"
+              *ngIf="i !== 0 || (i === 0 && complaint.touched)"
               (click)="removeCheifComplaint(i, complaint)"
               color="warn">
               <span class="material-icons">close</span>
@@ -280,11 +281,10 @@
         class="control-label"
         checked="checked"
         formControlName="isForHistory"
-        [value]="true"
         >{{
           current_language_set?.Find?.showThisFindingsOnNextVisit
         }}</mat-checkbox
       >
     </div>
   </div>
-</div> -->
+</div>

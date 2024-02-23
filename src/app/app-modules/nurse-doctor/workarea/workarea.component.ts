@@ -142,6 +142,8 @@ export class WorkareaComponent
   patientExaminationForm!: FormGroup;
   patientVitalsForm!: FormGroup;
   patientHistoryForm!: FormGroup;
+  patientQuickConsultForm!: FormGroup;
+  idrsScreeningForm!: FormGroup;
 
   constructor(
     private router: Router,
@@ -322,6 +324,10 @@ export class WorkareaComponent
               'patientQuickConsultForm',
               new QuickConsultUtils(this.fb).createQuickConsultForm()
             );
+            this.patientQuickConsultForm = this.patientMedicalForm.get(
+              'patientQuickConsultForm'
+            ) as FormGroup;
+
             this.visitMode = new String(mode);
             this.showQuickConsult = true;
             this.quickConsultMode = new String(mode);
@@ -466,13 +472,14 @@ export class WorkareaComponent
         } else if (categoryValue == 'NCD screening') {
           //removed for WDF
           // this.patientMedicalForm.addControl('NCDScreeningForm', new NCDScreeningUtils(this.fb).createNCDScreeningForm());
-          this.patientVitalsForm = this.patientMedicalForm.get(
-            'patientVitalsForm'
-          ) as FormGroup;
+
           this.patientMedicalForm.addControl(
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
           );
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientHistoryForm',
             new GeneralUtils(this.fb).createNCDScreeningHistoryForm()
@@ -489,6 +496,9 @@ export class WorkareaComponent
             'idrsScreeningForm',
             new NCDScreeningUtils(this.fb).createIDRSForm()
           );
+          this.idrsScreeningForm = this.patientMedicalForm.get(
+            'idrsScreeningForm'
+          ) as FormGroup;
 
           if (mode) {
             this.patientMedicalForm.addControl(
