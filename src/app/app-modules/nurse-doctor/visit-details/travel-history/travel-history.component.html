@@ -4,10 +4,10 @@
       <br />
       <h5>{{ currentLanguageSet?.travel?.haveyouTravelledlast14days }}</h5>
       <br />
+      <mat-label> {{ currentLanguageSet?.travelledLastDays }}</mat-label>
       <mat-radio-group
         class="test"
         [style.width]="'50%'"
-        placeholder="Travelled last 14 days"
         formControlName="travelStatus"
         name="travelStatus"
         (change)="travelStatuschange(travelStatus)"
@@ -73,12 +73,12 @@
                     </h4>
                     <br />
                     <div style="text-align: center">
+                      <mat-label>{{
+                        currentLanguageSet?.travel?.modeofTravel
+                      }}</mat-label>
                       <mat-select
                         [style.width]="'70%'"
                         class="test"
-                        placeholder="{{
-                          currentLanguageSet?.travel?.modeofTravel
-                        }}"
                         name="modeOfTravelDomestic"
                         formControlName="modeOfTravelDomestic"
                         id="modeOfTravelDomestic"
@@ -96,8 +96,10 @@
                       <h5 style="text-align: center; color: black; size: 30px">
                         {{ currentLanguageSet?.travel?.locationTravelledFrom }}
                       </h5>
+                      <mat-label>{{
+                        currentLanguageSet?.travel?.state
+                      }}</mat-label>
                       <mat-select
-                        placeholder="{{ currentLanguageSet?.travel?.state }}"
                         [style.width]="'70%'"
                         name="fromStateDom"
                         id="fromStateDom"
@@ -110,9 +112,11 @@
                         </mat-option>
                       </mat-select>
 
+                      <mat-label>{{
+                        currentLanguageSet?.travel?.district
+                      }}</mat-label>
                       <mat-select
                         [style.width]="'70%'"
-                        placeholder="{{ currentLanguageSet?.travel?.district }}"
                         id="fromDistrictDom"
                         name="fromDistrictDom"
                         formControlName="fromDistrictDom"
@@ -126,11 +130,11 @@
                         </mat-option>
                       </mat-select>
 
+                      <mat-label>{{
+                        currentLanguageSet?.travel?.subDistrict
+                      }}</mat-label>
                       <mat-select
                         [style.width]="'70%'"
-                        placeholder="{{
-                          currentLanguageSet?.travel?.subDistrict
-                        }}"
                         id="fromSubDistrictDom"
                         formControlName="fromSubDistrictDom"
                         name="fromSubDistrictDom"
@@ -146,8 +150,10 @@
                       <h5 style="text-align: center; color: black; size: 30px">
                         {{ currentLanguageSet?.travel?.locationTravelledTo }}
                       </h5>
+                      <mat-label>{{
+                        currentLanguageSet?.travel?.state
+                      }}</mat-label>
                       <mat-select
-                        placeholder="{{ currentLanguageSet?.travel?.state }}"
                         [style.width]="'70%'"
                         name="toStateDom"
                         formControlName="toStateDom"
@@ -160,9 +166,11 @@
                         </mat-option>
                       </mat-select>
 
+                      <mat-label>{{
+                        currentLanguageSet?.travel?.district
+                      }}</mat-label>
                       <mat-select
                         [style.width]="'70%'"
-                        placeholder="{{ currentLanguageSet?.travel?.district }}"
                         name="toDistrictDom"
                         formControlName="toDistrictDom"
                         id="toDistrictDom"
@@ -174,11 +182,11 @@
                         </mat-option>
                       </mat-select>
 
+                      <mat-label>{{
+                        currentLanguageSet?.travel?.subDistrict
+                      }}</mat-label>
                       <mat-select
                         [style.width]="'70%'"
-                        placeholder="{{
-                          currentLanguageSet?.travel?.subDistrict
-                        }}"
                         name="toSubDistrictDom"
                         id="toSubDistrictDom"
                         formControlName="toSubDistrictDom"
@@ -225,14 +233,14 @@
                     </h4>
                     <br />
                     <div style="text-align: center">
+                      <mat-label>{{
+                        currentLanguageSet?.travel?.modeofTravel
+                      }}</mat-label>
                       <mat-select
                         [style.width]="'70%'"
                         class="test"
                         id="modeOfTravelInter"
                         formControlName="modeOfTravelInter"
-                        placeholder="{{
-                          currentLanguageSet?.travel?.modeofTravel
-                        }}"
                         name="modeOfTravelInter"
                         (selectionChange)="
                           travelinternationalStatuschange(modeOfTravelInter)
@@ -250,8 +258,10 @@
                         {{ currentLanguageSet?.travel?.locationTravelledFrom }}
                       </h5>
 
+                      <mat-label>{{
+                        currentLanguageSet?.travel?.country
+                      }}</mat-label>
                       <mat-select
-                        placeholder="{{ currentLanguageSet?.travel?.country }}"
                         [style.width]="'70%'"
                         id="fromCountryInter"
                         formControlName="fromCountryInter"
@@ -266,9 +276,11 @@
                         </mat-option>
                       </mat-select>
 
+                      <mat-label>{{
+                        currentLanguageSet?.travel?.city
+                      }}</mat-label>
                       <mat-select
                         [style.width]="'70%'"
-                        placeholder="{{ currentLanguageSet?.travel?.city }}"
                         formControlName="fromCityInter"
                         id="fromCityInter"
                         name="fromCityInter"
@@ -284,8 +296,10 @@
                       <h5 style="text-align: center; color: black; size: 40px">
                         {{ currentLanguageSet?.travel?.locationTravelledTo }}
                       </h5>
+                      <mat-label>{{
+                        currentLanguageSet?.travel?.country
+                      }}</mat-label>
                       <mat-select
-                        placeholder="{{ currentLanguageSet?.travel?.country }}"
                         [style.width]="'70%'"
                         formControlName="toCountryInter"
                         name="toCountryInter"
@@ -298,9 +312,11 @@
                         </mat-option>
                       </mat-select>
 
+                      <mat-label>{{
+                        currentLanguageSet?.travel?.city
+                      }}</mat-label>
                       <mat-select
                         [style.width]="'70%'"
-                        placeholder="{{ currentLanguageSet?.travel?.city }}"
                         name="toCityInter"
                         id="toCityInter"
                         formControlName="toCityInter"

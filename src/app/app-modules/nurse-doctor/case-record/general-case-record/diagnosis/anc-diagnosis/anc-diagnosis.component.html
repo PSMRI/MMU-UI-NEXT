@@ -15,6 +15,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
         <mat-form-field class="input-full-width">
+          <mat-label>{{ current_language_set?.casesheet?.gravida }}</mat-label>
           <input
             autocomplete="off"
             matInput
@@ -23,13 +24,15 @@
             maxlength="2"
             name="gravida_G"
             formControlName="gravida_G"
-            placeholder="{{ current_language_set?.casesheet?.gravida }}"
             [readonly]="true" />
         </mat-form-field>
       </div>
 
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
         <mat-form-field class="input-full-width">
+          <mat-label>{{
+            current_language_set?.casesheet?.periodPreg
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
@@ -37,18 +40,19 @@
             name="duration"
             formControlName="duration"
             allowText="number"
-            placeholder="{{ current_language_set?.casesheet?.periodPreg }}"
             allowMax="10"
             [readonly]="true" />
         </mat-form-field>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
         <mat-form-field>
+          <mat-label>{{
+            current_language_set?.casesheet?.complications
+          }}</mat-label>
           <mat-select
             class="select-full-width"
             name="complicationOfCurrentPregnancyList"
             formControlName="complicationOfCurrentPregnancyList"
-            placeholder="{{ current_language_set?.casesheet?.complications }}"
             multiple
             (change)="
               resetOtherPregnancyComplication(
@@ -76,11 +80,13 @@
         class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
         *ngIf="showOtherPregnancyComplication">
         <mat-form-field class="input-full-width">
+          <mat-label>{{
+            current_language_set?.common?.otherComplication
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
             defaultNull
-            placeholder="{{ current_language_set?.common?.otherComplication }}"
             allowText="alphaspace"
             maxlength="50"
             name="otherCurrPregComplication"
@@ -94,28 +100,32 @@
     <div class="row">
       <div class="col-xs-6 m-t-20">
         <mat-form-field class="input-full-width">
+          <mat-label>{{
+            current_language_set?.casesheet?.highStatus
+          }}</mat-label>
           <textarea
             matInput
             allowText="textAreaValidator"
             defaultNull
             maxlength="300"
             name="highRiskStatus"
-            formControlName="highRiskStatus"
-            placeholder="{{ current_language_set?.casesheet?.highStatus }}">
+            formControlName="highRiskStatus">
           </textarea>
         </mat-form-field>
       </div>
 
       <div class="col-xs-6 m-t-20">
         <mat-form-field class="input-full-width">
+          <mat-label>{{
+            current_language_set?.casesheet?.highCondition
+          }}</mat-label>
           <textarea
             matInput
             allowText="textAreaValidator"
             defaultNull
             maxlength="300"
             name="highRiskCondition"
-            formControlName="highRiskCondition"
-            placeholder="{{ current_language_set?.casesheet?.highCondition }}">
+            formControlName="highRiskCondition">
           </textarea>
         </mat-form-field>
       </div>
@@ -150,6 +160,9 @@
     <div class="row" *ngIf="generalDiagnosisForm.value.isMaternalDeath">
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
         <mat-form-field class="input-full-width">
+          <mat-label>{{
+            current_language_set?.casesheet?.placeOfDeath
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
@@ -157,8 +170,7 @@
             name="placeOfDeath"
             allowText="alphaspace"
             formControlName="placeOfDeath"
-            maxlength="50"
-            placeholder="{{ current_language_set?.casesheet?.placeOfDeath }}" />
+            maxlength="50" />
         </mat-form-field>
       </div>
 
@@ -183,6 +195,9 @@
 
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
         <mat-form-field class="input-full-width">
+          <mat-label>{{
+            current_language_set?.casesheet?.causeOfDeath
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
@@ -190,8 +205,7 @@
             allowText="alphaspace"
             name="causeOfDeath"
             formControlName="causeOfDeath"
-            maxlength="50"
-            placeholder="{{ current_language_set?.casesheet?.causeOfDeath }}" />
+            maxlength="50" />
         </mat-form-field>
       </div>
     </div>

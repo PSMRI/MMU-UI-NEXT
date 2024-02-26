@@ -2,10 +2,10 @@
   <div class="col-sm-12">
     <div *ngIf="dataSource.data.length > 0" class="pull-right">
       <mat-form-field id="filterbox" class="m-t-20-">
+        <mat-label>{{ current_language_set?.common?.inTableSearch }}</mat-label>
         <input
           autocomplete="off"
           matInput
-          placeholder="{{ current_language_set?.common?.inTableSearch }}"
           #filterTerm
           (keyup)="filterPreviousSignificiantFindingsList(filterTerm.value)" />
         <mat-icon matSuffix>search</mat-icon>

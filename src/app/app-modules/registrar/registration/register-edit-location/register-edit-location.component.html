@@ -23,7 +23,7 @@
               [style.width]="'100%'"
               formControlName="stateID"
               [required]="true"
-              (change)="onStateChange()">
+              (selectionChange)="onStateChange()">
               <mat-option
                 *ngFor="let state of statesList"
                 [value]="state.stateID">
@@ -44,7 +44,7 @@
               [style.width]="'100%'"
               [required]="true"
               formControlName="districtID"
-              (change)="onDistrictChange()">
+              (selectionChange)="onDistrictChange()">
               <mat-option
                 *ngFor="let district of districtList"
                 [value]="district.districtID">
@@ -63,7 +63,7 @@
               [style.width]="'100%'"
               [required]="true"
               formControlName="blockID"
-              (change)="onSubDistrictChange()">
+              (selectionChange)="onSubDistrictChange()">
               <mat-option
                 *ngFor="let subDistrict of subDistrictList"
                 [value]="subDistrict.blockID">
@@ -83,7 +83,7 @@
               [style.width]="'100%'"
               [required]="true"
               formControlName="villageID"
-              (change)="onVillageChange()">
+              (selectionChange)="onVillageChange()">
               <mat-option
                 *ngFor="let village of villageList"
                 [value]="village.districtBranchID">

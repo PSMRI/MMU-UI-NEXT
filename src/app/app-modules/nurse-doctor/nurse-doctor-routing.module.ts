@@ -32,6 +32,7 @@ import { CaseSheetComponent } from './case-sheet/case-sheet.component';
 import { RadiologistWorklistComponent } from './radiologist-worklist/radiologist-worklist.component';
 import { OncologistWorklistComponent } from './oncologist-worklist/oncologist-worklist.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes = [
   {
@@ -63,10 +64,10 @@ const routes: Routes = [
         path: 'oncologist-worklist',
         component: OncologistWorklistComponent,
       },
-      // {
-      //   path: 'reports',
-      //   component: ReportsComponent
-      // },
+      {
+        path: 'reports',
+        component: ReportsComponent,
+      },
       {
         path: 'attendant/:attendant/patient/:beneficiaryRegID',
         component: WorkareaComponent,

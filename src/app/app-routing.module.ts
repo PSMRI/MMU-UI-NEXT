@@ -102,14 +102,14 @@ const routes: Routes = [
         module => module.PharmacistModule
       ),
   },
-  // {
-  //   path: 'datasync',
-  //   canActivate: [AuthGuard],
-  //   loadChildren: () =>
-  //   import('./app-modules/data-sync/dataSync.module').then(
-  //     module => module.DataSYNCModule
-  //   ),
-  // },
+  {
+    path: 'datasync',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./app-modules/data-sync/dataSync.module').then(
+        module => module.DataSYNCModule
+      ),
+  },
   //   // {
   //   //   path: '**',
   //   //   redirectTo: 'login',

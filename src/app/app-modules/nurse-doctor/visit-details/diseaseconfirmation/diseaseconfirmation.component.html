@@ -1,6 +1,5 @@
 <div class="row m-t-10 p-t-30" [formGroup]="diseaseFormsGroup">
   <div class="col-xs-3 col-sm-3 col-md-12 col-lg-12">
-    {{ diseaseFormsGroup.value | json }}
     <div class="checkbox-group" formArrayName="diseaseFormsArray">
       <ng-container
         *ngFor="let item of getDiseaseFormArray(); let i = index"

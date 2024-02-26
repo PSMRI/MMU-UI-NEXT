@@ -64,6 +64,9 @@ import { NumberValidatorDirective } from './directives/numberValidator.directive
 import { myNameDirective } from './directives/name/myName.directive';
 import { myMobileNumberDirective } from './directives/MobileNumber/myMobileNumber.directive';
 import { myEmailDirective } from './directives/email/myEmail.directive';
+import { OpenPreviousVisitDetailsComponent } from './components/open-previous-visit-details/open-previous-visit-details.component';
+import { ShowCommitAndVersionDetailsComponent } from './components/show-commit-and-version-details/show-commit-and-version-details.component';
+import { IotBluetoothComponent } from './components/iot-bluetooth/iot-bluetooth.component';
 
 @NgModule({
   imports: [
@@ -82,15 +85,13 @@ import { myEmailDirective } from './directives/email/myEmail.directive';
     CommonDialogComponent,
     CameraDialogComponent,
     ProvisionalSearchComponent,
-    // TextareaDialogComponent,
     SpinnerComponent,
     BeneficiaryDetailsComponent,
     AppFooterComponent,
     AppHeaderComponent,
     ViewRadiologyUploadedFilesComponent,
-    // PreviousDetailsComponent,
     PreviousDetailsComponent,
-    // ShowCommitAndVersionDetailsComponent,
+    ShowCommitAndVersionDetailsComponent,
     CalibrationComponent,
     myEmailDirective,
     myMobileNumberDirective,
@@ -102,25 +103,21 @@ import { myEmailDirective } from './directives/email/myEmail.directive';
     NullDefaultValueDirective,
     NumberValidatorDirective,
     DisableFormControlDirective,
-    // ViewRadiologyUploadedFilesComponent,
     IotcomponentComponent,
-    // IotBluetoothComponent,
+    IotBluetoothComponent,
     AllergenSearchComponent,
-    // OpenPreviousVisitDetailsComponent,
+    OpenPreviousVisitDetailsComponent,
   ],
   exports: [
     MaterialModule,
     CommonDialogComponent,
     AppFooterComponent,
     AppHeaderComponent,
-    // IotBluetoothComponent,
-    // ShowCommitAndVersionDetailsComponent,
+    IotBluetoothComponent,
+    ShowCommitAndVersionDetailsComponent,
     CameraDialogComponent,
-    // TextareaDialogComponent,
     SpinnerComponent,
     BeneficiaryDetailsComponent,
-    // AppFooterComponent,
-    // AppHeaderComponent,
     PreviousDetailsComponent,
     // PaginationModule,
     myEmailDirective,
@@ -136,24 +133,8 @@ import { myEmailDirective } from './directives/email/myEmail.directive';
     IotcomponentComponent,
     AllergenSearchComponent,
     CalibrationComponent,
-    //OpenPreviousVisitDetailsComponent
+    OpenPreviousVisitDetailsComponent,
   ],
-  // entryComponents: [
-  //   CommonDialogComponent,
-  //   CameraDialogComponent,
-  //   TextareaDialogComponent,
-  //   SpinnerComponent,
-  //   PreviousDetailsComponent,
-  //   ProvisionalSearchComponent,
-  //   ShowCommitAndVersionDetailsComponent,
-  //   ViewRadiologyUploadedFilesComponent,
-  // IotcomponentComponent,
-  // IotBluetoothComponent,
-  //   AllergenSearchComponent,
-  //   DataSyncLoginComponent,
-  // CalibrationComponent,
-  //   OpenPreviousVisitDetailsComponent
-  // ]
 })
 export class CoreModule {
   static forRoot(): ModuleWithProviders<CoreModule> {

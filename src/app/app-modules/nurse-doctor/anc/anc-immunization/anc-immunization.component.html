@@ -4,11 +4,13 @@
     <div
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="enableTTStatus_1_2 || enableTTStatus_1_2_b">
+      <mat-label>{{
+        current_language_set?.ancData?.ancImmune?.tt1Status
+      }}</mat-label>
       <mat-select
         class="input-full-width"
         name="tT_1Status"
         formControlName="tT_1Status"
-        placeholder="{{ current_language_set?.ancData?.ancImmune?.tt1Status }}"
         (selectionChange)="checkTT_1Status(tT_1Status)">
         <mat-option
           *ngFor="let immunizationStatus_1 of selectImmunizationStatus"
@@ -78,11 +80,13 @@
         (enableTTStatus_1_2 && tT_1Status !== null) ||
         (enableTTStatus_1_2_b && tT_1Status !== null)
       ">
+      <mat-label>{{
+        current_language_set?.ancData?.ancImmune?.tt2Status
+      }}</mat-label>
       <mat-select
         class="input-full-width"
         name="tT_2Status"
         formControlName="tT_2Status"
-        placeholder="{{ current_language_set?.ancData?.ancImmune?.tt2Status }}"
         (selectionChange)="checkTT_2Status(tT_2Status)">
         <mat-option
           *ngFor="let immunizationStatus_2 of selectImmunizationStatus"
@@ -158,13 +162,13 @@
         (enableTTStatus_1_2_b && tT_1Status !== null && tT_2Status !== null) ||
         (enableTTStatus_1_2 && tT_1Status === 'NA' && tT_2Status !== null)
       ">
+      <mat-label>{{
+        current_language_set?.ancData?.ancImmune?.ttBoosterStatus
+      }}</mat-label>
       <mat-select
         class="input-full-width"
         name="tT_3Status"
         formControlName="tT_3Status"
-        placeholder="{{
-          current_language_set?.ancData?.ancImmune?.ttBoosterStatus
-        }}"
         (selectionChange)="checkTT_3Status(tT_3Status)">
         <mat-option
           *ngFor="let immunizationStatus_3 of selectImmunizationStatus"

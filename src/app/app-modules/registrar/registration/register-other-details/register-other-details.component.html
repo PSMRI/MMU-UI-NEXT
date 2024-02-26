@@ -3,10 +3,12 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <mat-form-field [style.width]="'100%'">
+          <mat-label>{{
+            currentLanguageSet?.ro?.otherInfo?.fatherName
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
-            placeholder="{{ currentLanguageSet?.ro?.otherInfo?.fatherName }}"
             allowText="alphaspace"
             formControlName="fatherName"
             maxlength="50"
@@ -15,10 +17,12 @@
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <mat-form-field [style.width]="'100%'">
+          <mat-label>{{
+            currentLanguageSet?.ro?.otherInfo?.motherName
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
-            placeholder="{{ currentLanguageSet?.ro?.otherInfo?.motherName }}"
             allowText="alphaspace"
             formControlName="motherName"
             maxlength="50" />
@@ -26,12 +30,13 @@
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <mat-form-field [style.width]="'100%'">
+          <mat-label>{{
+            currentLanguageSet?.ro?.otherInfo?.emailID
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
             appValidateEmail
-            placeholder="
-          {{ currentLanguageSet?.ro?.otherInfo?.emailID }}"
             formControlName="emailID" />
           <mat-error *ngIf="!otherDetailsForm.controls['emailID'].valid">
             {{ currentLanguageSet?.ro?.otherInfo?.emailID }}</mat-error
@@ -62,10 +67,12 @@
       <div class="clearfix"></div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <mat-form-field [style.width]="'100%'">
+          <mat-label>{{
+            currentLanguageSet?.ro?.otherInfo?.bankName
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
-            placeholder="{{ currentLanguageSet?.ro?.otherInfo?.bankName }}"
             allowText="alphaspace"
             maxLength="100"
             formControlName="bankName" />
@@ -73,10 +80,12 @@
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <mat-form-field [style.width]="'100%'">
+          <mat-label>{{
+            currentLanguageSet?.ro?.otherInfo?.branchName
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
-            placeholder="{{ currentLanguageSet?.ro?.otherInfo?.branchName }}"
             allowText="alphanumericspace"
             maxLength="100"
             formControlName="branchName" />
@@ -84,10 +93,12 @@
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <mat-form-field [style.width]="'100%'">
+          <mat-label>{{
+            currentLanguageSet?.ro?.otherInfo?.accountNo
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
-            placeholder="{{ currentLanguageSet?.ro?.otherInfo?.accountNo }}."
             allowText="number"
             maxLength="20"
             formControlName="accountNo" />
@@ -95,10 +106,12 @@
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <mat-form-field [style.width]="'100%'">
+          <mat-label>{{
+            currentLanguageSet?.ro?.otherInfo?.ifscCode
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
-            placeholder="{{ currentLanguageSet?.ro?.otherInfo?.ifscCode }}"
             maxLength="15"
             allowText="alphanumeric"
             formControlName="ifscCode" />
@@ -130,12 +143,12 @@
         class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
           <mat-form-field [style.width]="'100%'">
+            <mat-label>{{
+              currentLanguageSet?.ro?.otherInfo?.otherReligion
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
-              placeholder="{{
-                currentLanguageSet?.ro?.otherInfo?.otherReligion
-              }}"
               allowText="alphaspace"
               [required]="true"
               formControlName="religionOther"
@@ -177,12 +190,12 @@
                 [style.width]="'35%'"
                 style="line-height: unset"
                 class="mleft15">
+                <mat-label>{{
+                  currentLanguageSet?.ro?.otherInfo?.govtIDNumber
+                }}</mat-label>
                 <input
                   autocomplete="off"
                   matInput
-                  placeholder="{{
-                    currentLanguageSet?.ro?.otherInfo?.govtIDNumber
-                  }}"
                   [pattern]="
                     otherDetailsForm.controls['govID'].value[i].pattern
                   "
@@ -284,13 +297,14 @@
                 [style.width]="'35%'"
                 style="line-height: unset"
                 class="mleft15">
+                <mat-label>
+                  {{
+                    currentLanguageSet?.ro?.otherInfo?.govtHealthProgramIDNumber
+                  }}</mat-label
+                >
                 <input
                   autocomplete="off"
                   matInput
-                  placeholder="
-                {{
-                    currentLanguageSet?.ro?.otherInfo?.govtHealthProgramIDNumber
-                  }}"
                   [readonly]="
                     otherDetailsForm.controls['otherGovID'].value[i].type ===
                     null
