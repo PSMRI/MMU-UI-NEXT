@@ -10,10 +10,10 @@
     <br />
     <br />
     <span *ngIf="!contactFlag">
+      <mat-label>{{ currentLanguageSet?.covid?.historyOfContact }}</mat-label>
       <mat-select
         class="input-full-width vox"
         [multiple]="true"
-        placeholder="{{ currentLanguageSet?.covid?.historyOfContact }}"
         name="contactStatus"
         formControlName="contactStatus"
         id="contactStatus"

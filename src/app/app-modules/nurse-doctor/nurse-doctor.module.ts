@@ -146,6 +146,7 @@ import { IdrsComponent } from './idrs/idrs.component';
 import { QuickConsultComponent } from './quick-consult/quick-consult.component';
 import { NcdScreeningComponent } from './ncd-screening/ncd-screening.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   imports: [
@@ -257,7 +258,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CancerExaminationCaseSheetComponent,
     BeneficiaryMctsCallHistoryComponent,
     BeneficiaryPlatformHistoryComponent,
-    // ReportsComponent,
+    ReportsComponent,
     TravelHistoryComponent,
     ContactHistoryComponent,
     SymptomsComponent,

@@ -53,6 +53,7 @@ import { IdrsscoreService } from '../shared/services/idrsscore.service';
 import { MatDialog } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { CanComponentDeactivate } from '../../core/services/can-deactivate-guard.service';
+import { OpenPreviousVisitDetailsComponent } from '../../core/components/open-previous-visit-details/open-previous-visit-details.component';
 
 @Component({
   selector: 'app-workarea',
@@ -3464,14 +3465,14 @@ export class WorkareaComponent
   }
 
   openBenPreviousisitDetails() {
-    // this.mdDialog.open(OpenPreviousVisitDetailsComponent, {
-    //   disableClose: true,
-    //   width: '95%',
-    //   panelClass: 'preview-casesheet',
-    //   data: {
-    //     previous: true,
-    //   }
-    // });
+    this.mdDialog.open(OpenPreviousVisitDetailsComponent, {
+      disableClose: true,
+      width: '95%',
+      panelClass: 'preview-casesheet',
+      data: {
+        previous: true,
+      },
+    });
   }
   //--End--
 }

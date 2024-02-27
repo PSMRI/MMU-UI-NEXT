@@ -12,13 +12,13 @@
   <div class="row no-gutters">
     <div class="col-xs-12 col-sm-4">
       <mat-form-field class="input-full-width">
+        <mat-label>{{ placeHolderSearch }}</mat-label>
         <input
           autocomplete="off"
           #inputSearch="ngModel"
           minlength="3"
           maxlength="100"
           matInput
-          placeholder="{{ placeHolderSearch }}"
           [(ngModel)]="input.searchTerm"
           (keyup.enter)="search(input.searchTerm, 0)"
           (ngModelChange)="resetData()" />

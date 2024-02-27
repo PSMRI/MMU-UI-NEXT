@@ -24,7 +24,7 @@
     </div>
   </mat-dialog-content>
   <mat-dialog-actions align="center">
-    <h3 md-dialog-title>
+    <h3 mat-dialog-title>
       <div class="row">
         <button
           mat-raised-button
@@ -105,7 +105,7 @@
           <mat-form-field [style.width]="'100%'">
             <input
               autocomplete="off"
-              mdInput
+              matInput
               placeholder="{{ mark.point }}."
               maxlength="30"
               [(ngModel)]="mark.description" />

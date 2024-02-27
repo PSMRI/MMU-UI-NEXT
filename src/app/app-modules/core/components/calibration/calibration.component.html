@@ -11,12 +11,12 @@
 <div class="container-fluid">
   <mat-dialog-content>
     <mat-form-field>
+      <mat-label>{{
+        current_language_set?.coreComponents?.inTableSearchStripCode
+      }}</mat-label>
       <input
         autocomplete="off"
-        mat-Input
-        placeholder="{{
-          current_language_set?.coreComponents?.inTableSearchStripCode
-        }}"
+        matInput
         #filterTerm
         (keyup)="filterPreviousData(filterTerm.value)" />
       <mat-icon mdSuffix>search</mat-icon>
