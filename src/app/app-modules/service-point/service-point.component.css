@@ -1,26 +1,28 @@
 .radio-btn {
-    margin-left: 8px;
+  margin-left: 8px;
 }
+
 .alignField {
-margin-top: 10px;
+  margin-top: 10px;
 }
-.align-Field{
-    margin-top: -10px;
+
+.align-Field {
+  margin-top: -10px;
 }
 
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .matCardService {
-    width: 500px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 5px;
-    align-items: center;
-  }
+  width: 500px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  align-items: center;
+}
 
 .mat-option {
   white-space: nowrap;
@@ -65,4 +67,8 @@ mat-card-actions {
 .mat-raised-button.mat-primary[disabled] {
   background-color: rgba(0, 0, 0, 0.12);
   color: rgba(0, 0, 0, 0.38);
+}
+
+.alignField>>>.mat-mdc-select-trigger {
+  border-bottom-style: unset !important;
 }

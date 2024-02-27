@@ -27,7 +27,7 @@
       <button
         id="refresh"
         mat-raised-button
-        class="pull-right btn-green"
+        class="pull-right mat_blue"
         color="primary"
         (click)="loadWorklist()">
         {{ currentLanguageSet?.common?.refresh }}
@@ -38,9 +38,7 @@
     <div class="col-sm-12">
       <mat-card>
         <section class="table-responsive">
-          <div
-            class="mat-elevation-z8 responsiveTable"
-            style="margin-top: 30px">
+          <div class="mat-elevation-z8 responsiveTable">
             <table
               mat-table
               [dataSource]="dataSource"
@@ -210,10 +208,11 @@
           <div
             class="pull-center"
             style="margin-top: 5px"
-            [hidden]="dataSource.data.length > 0">
+            *ngIf="dataSource.data.length === 0">
             <strong>{{ currentLanguageSet?.noRecordsFound }}</strong>
           </div>
           <mat-paginator
+            [hidden]="dataSource.data.length === 0"
             [pageSizeOptions]="[5, 10, 20]"
             [pageSize]="5"
             showFirstLastButtons

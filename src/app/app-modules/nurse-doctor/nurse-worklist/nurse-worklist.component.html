@@ -26,7 +26,7 @@
       </button>
       <button
         id="refresh"
-        class="mat-blue pull-right"
+        class="mat_blue pull-right"
         (click)="getNurseWorklist()">
         {{ currentLanguageSet?.common?.refresh }}
       </button>
@@ -43,8 +43,8 @@
               aria-describedby="nurseWorklist">
               <ng-container matColumnDef="sno">
                 <th
-                  class="tablet_css"
                   mat-header-cell
+                  style="border-bottom: none"
                   *matHeaderCellDef
                   mat-sort-header>
                   {{ currentLanguageSet?.casesheet?.serialNo }}
@@ -209,7 +209,18 @@
             [hidden]="dataSource.data.length > 0">
             <strong>{{ currentLanguageSet?.noRecordsFound }}</strong>
           </div>
+          <ul class="description" *ngIf="dataSource.data.length > 0">
+            <li>
+              <div class="first-visit-marker"></div>
+              <p>{{ currentLanguageSet?.common?.firstVisit }}</p>
+            </li>
+            <li>
+              <div class="revisit-marker"></div>
+              <p>{{ currentLanguageSet?.common?.reVisit }}</p>
+            </li>
+          </ul>
           <mat-paginator
+            [hidden]="dataSource.data.length === 0"
             [pageSizeOptions]="[5, 10, 20]"
             [pageSize]="5"
             showFirstLastButtons

@@ -8,8 +8,7 @@
     <br />
     <section>
       <button
-        mat-raised-button
-        color="primary"
+        class="mat_blue"
         [disabled]="disableFileSelection"
         (click)="triggerLog($event)">
         {{ currentLanguageSet?.nurseData?.visitDetailsForm?.selectFile }}
@@ -24,17 +23,14 @@
           (change)="uploadFile($event)" />
       </span>
       <button
-        mat-raised-button
-        color="primary"
-        class="pull-right"
+        class="mat_blue pull-right"
         (click)="checkForDuplicateUpload()"
         *ngIf="!disableFileSelection">
         {{ currentLanguageSet?.nurseData?.visitDetailsForm?.uploadFiles }}
       </button>
       <button
         *ngIf="disableFileSelection || enableForNCDScreening"
-        mat-raised-button
-        color="primary"
+        class="mat_blue"
         (click)="viewNurseSelectedFiles()">
         {{ currentLanguageSet?.nurseData?.visitDetailsForm?.viewFiles }}
       </button>
@@ -45,6 +41,7 @@
             [ngClass]="{ chipEdit: file.isUploaded }"
             >{{ file.fileName }}
             <button
+              class="mat_blue"
               matChipRemove
               *ngIf="!file.isUploaded"
               (click)="remove(file)">

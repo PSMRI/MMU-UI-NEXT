@@ -251,8 +251,19 @@
             [hidden]="dataSource.data.length > 0">
             <strong>{{ currentLanguageSet?.noRecordsFound }}</strong>
           </div>
+          <ul class="description" *ngIf="dataSource.data.length > 0">
+            <li>
+              <div class="first-visit-marker"></div>
+              <p>{{ currentLanguageSet?.common?.firstVisit }}</p>
+            </li>
+            <li>
+              <div class="revisit-marker"></div>
+              <p>{{ currentLanguageSet?.common?.reVisit }}</p>
+            </li>
+          </ul>
           <mat-paginator
             [pageSizeOptions]="[5, 10, 20]"
+            [hidden]="dataSource.data.length === 0"
             [pageSize]="5"
             showFirstLastButtons
             aria-label="Select patient in doctorWorklist">

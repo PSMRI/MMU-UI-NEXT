@@ -1,21 +1,4 @@
 <div class="container-fluid">
-  <button
-    md-mini-fab
-    class="example-fab"
-    color="primary"
-    (click)="sideNavModeChange(sidenav)">
-    <mat-icon>account_box</mat-icon>
-  </button>
-
-  <button
-    md-mini-fab
-    class="previousIcon"
-    color="primary"
-    (click)="openBenPreviousisitDetails()"
-    matTooltip="{{ currentLanguageSet?.benPreviousVisitDetails }}">
-    <mat-icon class="iconStyle"> description</mat-icon>
-  </button>
-
   <div class="overlay" *ngIf="showProgressBar">
     <div class="overlay-content">
       <mat-spinner></mat-spinner>
@@ -47,9 +30,7 @@
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
                 <button
-                  mat-raised-button
-                  color="primary"
-                  matStepperNext
+                  class="mat_blue"
                   type="button"
                   (click)="checkMandatory()">
                   {{ currentLanguageSet?.common?.next }}
@@ -79,18 +60,10 @@
               [patientANCForm]="patientANCForm"></app-nurse-anc>
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
-                <button
-                  mat-raised-button
-                  color="primary"
-                  matStepperNext
-                  type="button">
+                <button class="mat_blue" type="button">
                   {{ currentLanguageSet?.common?.next }}
                 </button>
-                <button
-                  mat-raised-button
-                  color="primary"
-                  matStepperPrevious
-                  type="button">
+                <button class="mat_blue" matStepperPrevious type="button">
                   {{ currentLanguageSet?.common?.back }}
                 </button>
                 <button
@@ -118,11 +91,7 @@
               [patientPNCForm]="patientPNCForm"></app-nurse-pnc>
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
-                <button
-                  mat-raised-button
-                  color="primary"
-                  matStepperNext
-                  type="button">
+                <button class="mat_blue" type="button">
                   {{ currentLanguageSet?.common?.next }}
                 </button>
                 <button
@@ -160,11 +129,7 @@
               [patientHistoryForm]="patientHistoryForm"></app-nurse-history>
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
-                <button
-                  mat-raised-button
-                  color="primary"
-                  matStepperNext
-                  type="button">
+                <button class="mat_blue" type="button">
                   {{ currentLanguageSet?.common?.next }}
                 </button>
                 <button
@@ -315,12 +280,7 @@
                   type="button">
                   {{ currentLanguageSet?.common?.submit }}
                 </button>
-                <button
-                  *ngIf="showCaseRecord"
-                  mat-raised-button
-                  color="primary"
-                  matStepperNext
-                  type="button">
+                <button *ngIf="showCaseRecord" class="mat_blue" type="button">
                   {{ currentLanguageSet?.common?.next }}
                 </button>
                 <button
@@ -462,5 +422,20 @@
         </mat-horizontal-stepper>
       </form>
     </div>
+    <button
+      style="margin-left: 10px; position: absolute"
+      class="mat_blue_circle"
+      (click)="sideNavModeChange(sidenav)">
+      <mat-icon>account_box</mat-icon>
+    </button>
+
+    <button
+      style="margin-left: 55px; position: absolute"
+      class="mat_blue_circle"
+      (click)="openBenPreviousisitDetails()"
+      matTooltip="{{ currentLanguageSet?.benPreviousVisitDetails }}">
+      <mat-icon class="iconStyle"> description</mat-icon>
+    </button>
   </mat-sidenav-container>
+  <div></div>
 </div>

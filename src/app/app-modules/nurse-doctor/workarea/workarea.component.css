@@ -29,7 +29,8 @@ md-card {
   max-width: 250px;
 }
 
-.example-sidenav-fab-container .mat-sidenav-content, .example-sidenav-fab-container md-sidenav {
+.example-sidenav-fab-container .mat-sidenav-content,
+.example-sidenav-fab-container md-sidenav {
   display: flex;
 }
 
@@ -48,24 +49,9 @@ md-card {
   padding: 20px 0px;
 }
 
-.example-fab.mat-mini-fab {
-  position: fixed;
-  left: 20px;
-  bottom: 50px;
-  z-index: 3;
-}
 .textcolor {
   color: gray;
-  float:left;
-}
-.previousIcon {
-  position: fixed;
-  left: 65px;
-  bottom: 50px;
-  z-index: 3;
-  height: 40px;
-  width: 40px;
-  border: none;
+  float: left;
 }
 
 
@@ -74,7 +60,7 @@ md-card {
     padding: 0px !important;
   }
 
-  .example-sidenav-fab-container{
+  .example-sidenav-fab-container {
     height: stretch;
   }
 
@@ -88,10 +74,9 @@ md-card {
   }
 }
 
-.m-b-40{
+.m-b-40 {
   margin-bottom: 40px;
 }
-
 
 .overlay {
   height: 100%;
@@ -101,14 +86,12 @@ md-card {
   justify-content: center;
   position: fixed;
   z-index: 1001;
-  /* Sit on top */
   left: 0;
   top: 0;
   background-color: rgb(0, 0, 0);
-  /* Black fallback color */
   background-color: rgba(0, 0, 0, 0.3);
-  /* Black w/opacity */
 }
+
 .overlay:root {
   padding: 0px;
 }

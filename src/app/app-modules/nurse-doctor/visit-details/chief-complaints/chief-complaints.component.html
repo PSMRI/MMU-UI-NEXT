@@ -3,10 +3,9 @@
   class="row m-t-20"
   *ngIf="!benChiefComplaints"
   [formGroup]="patientChiefComplaintsForm">
-  {{ patientChiefComplaintsForm.value | json }}
   <div class="col-xs-12" formArrayName="complaints">
     <div
-      class="row multi-row-select"
+      class="row multi-row-select input_style"
       *ngFor="
         let complaint of getCheifComplaints();
         let i = index;
@@ -16,7 +15,7 @@
       [ngClass]="{ odd: !isOdd }">
       <div [formGroupName]="i">
         <div class="col-xs-12 col-sm-6 col-md-4">
-          <mat-form-field class="input-full-width">
+          <mat-form-field class="input-full-width-chief">
             <input
               autocomplete="off"
               type="text"
@@ -121,6 +120,7 @@
           <button
             type="button"
             md-mini-fab
+            class="btn-warn"
             [id]="'removeBtn' + i"
             *ngIf="i !== 0 || (i === 0 && complaint.touched)"
             (click)="removeCheifComplaint(i, complaint)"
@@ -128,6 +128,7 @@
             <span class="material-icons">close</span>
           </button>
           <button
+            class="mat_blue_circle"
             type="button"
             md-mini-fab
             [id]="'addBtn' + i"
