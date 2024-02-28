@@ -1,27 +1,18 @@
 <!-- {{patientVisitDetailsForm.value | json}} -->
-
 <div class="row m-t-20" [formGroup]="patientVisitDetailsForm">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box" *ngIf="mode === 'view'">
     <mat-form-field class="input-full-width">
       <mat-label>{{ currentLanguageSet?.Reports?.visitcode }}</mat-label>
-      <input
-        autocomplete="off"
-        matInput
-        appDefaultNull
-        name="visitCode"
-        formControlName="visitCode" />
+      <input matInput name="visitCode" formControlName="visitCode" />
     </mat-form-field>
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
     <mat-label>{{
-      currentLanguageSet?.nurseData?.patientVisitDetailsForm?.reasonForVisit
+      currentLanguageSet?.nurseData?.visitDetailsForm?.reasonForVisit
     }}</mat-label>
     <mat-select
       class="input-full-width"
-      placeholder="{{
-        currentLanguageSet?.nurseData?.patientVisitDetailsForm?.reasonForVisit
-      }}"
       name="visitReason"
       formControlName="visitReason"
       (change)="
@@ -40,7 +31,7 @@
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="patientVisitDetailsForm!.controls['visitReason']?.value">
     <mat-label>{{
-      currentLanguageSet?.nurseData?.patientVisitDetailsForm?.visitCategory
+      currentLanguageSet?.nurseData?.visitDetailsForm?.visitCategory
     }}</mat-label>
     <mat-select
       class="input-full-width"
@@ -69,7 +60,7 @@
       patientVisitDetailsForm!.controls['visitCategory']?.value !== 'PNC'
     ">
     <mat-label>{{
-      currentLanguageSet?.nurseData?.patientVisitDetailsForm?.pregnancyStatus
+      currentLanguageSet?.nurseData?.visitDetailsForm?.pregnancyStatus
     }}</mat-label>
     <mat-select
       class="input-full-width"
@@ -96,7 +87,7 @@
     ">
     <mat-form-field class="input-full-width">
       <mat-label>{{
-        currentLanguageSet?.nurseData?.patientVisitDetailsForm?.MCTSOrRCHID
+        currentLanguageSet?.nurseData?.visitDetailsForm?.MCTSOrRCHID
       }}</mat-label>
       <input
         autocomplete="off"

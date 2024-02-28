@@ -30,15 +30,15 @@
       <ng-container [formGroupName]="i">
         <div class="col-xs-12 col-sm-6 col-md-3">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.historyData?.ancHistory
+                ?.medicationANC_OPD_NCD_PNC?.currentMedication
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
               allowText="inputFieldValidator"
-              placeholder="{{
-                currentLanguageSet?.historyData?.ancHistory
-                  ?.medicationANC_OPD_NCD_PNC?.currentMedication
-              }}"
               maxlength="50"
               formControlName="currentMedication"
               name="currentMedication" />
@@ -47,13 +47,13 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="{{
-                currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
-              }}"
               allowText="number"
               maxlength="2"
               formControlName="timePeriodAgo"
@@ -65,9 +65,11 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3">
           <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.DurationData?.durationUnit
+            }}</mat-label>
             <mat-select
               class="select-full-width"
-              placeholder="{{ currentLanguageSet?.DurationData?.durationUnit }}"
               formControlName="timePeriodUnit"
               name="timePeriodAgoUnit"
               [disabled]="!medicationHistory.value.timePeriodAgo"

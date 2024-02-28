@@ -19,14 +19,14 @@
   <div>
     <div class="box col-xs-12 col-sm-6 col-md-6 col-lg-6">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
+            ?.typeofFeeds
+        }}</mat-label>
         <mat-select
           class="select-full-width"
           name="typeOfFeedsDuringFirst6Months"
-          formControlName="typeOfFeed"
-          placeholder="{{
-            currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
-              ?.typeofFeeds
-          }}">
+          formControlName="typeOfFeed">
           <mat-option
             *ngFor="let feedsAge of masterData?.feedTypes"
             [value]="feedsAge.value"
@@ -40,14 +40,14 @@
 
     <div class="box col-xs-12 col-sm-6 col-md-6 col-lg-6" *ngIf="age > 6">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
+            ?.ageatweaning
+        }}</mat-label>
         <mat-select
           class="select-full-width"
           name="ageAtWeaningFeedIntroduced"
           formControlName="compFeedStartAge"
-          placeholder="{{
-            currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
-              ?.ageatweaning
-          }}"
           (selectionChange)="resetNoOfCompFeedPerDay()">
           <mat-option
             *ngFor="let feedType of masterData?.compFeedAges"
@@ -62,14 +62,14 @@
       class="box col-xs-12 col-sm-6 col-md-6 col-lg-6"
       *ngIf="compFeedStartAge">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
+            ?.numberofComplimentaryfoodservings
+        }}</mat-label>
         <mat-select
           class="select-full-width"
           name="complimentaryFoodNumber"
-          formControlName="noOfCompFeedPerDay"
-          placeholder="{{
-            currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
-              ?.numberofComplimentaryfoodservings
-          }}">
+          formControlName="noOfCompFeedPerDay">
           <mat-option
             *ngFor="let feedsNumber of masterData?.compFeedServings"
             [value]="feedsNumber.value"
@@ -104,15 +104,15 @@
       class="box col-xs-12 col-sm-6 col-md-6 col-lg-6"
       *ngIf="foodIntoleranceStatus">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
+            ?.typeofFoodIntolerance
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           maxlength="50"
-          placeholder="{{
-            currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
-              ?.typeofFoodIntolerance
-          }}"
           allowText="alphaspace"
           formControlName="typeofFoodIntolerance"
           name="foodIntoleranceType" />

@@ -38,14 +38,14 @@
         <ng-container [formGroupName]="i">
           <div class="col-sm-6 col-md-3 box">
             <mat-form-field>
+              <mat-label>{{
+                currentLanguageSet?.historyData?.ancHistory
+                  ?.pastIllnessDataANC_OPD_NCD_PNC?.illness
+              }}</mat-label>
               <mat-select
                 class="select-full-width"
                 name="pastAcuteIllness"
                 formControlName="illnessType"
-                placeholder="{{
-                  currentLanguageSet?.historyData?.ancHistory
-                    ?.pastIllnessDataANC_OPD_NCD_PNC?.illness
-                }}"
                 (selectionChange)="
                   filterPastIllnessType($event.value, i, pastIllness)
                 ">
@@ -62,16 +62,16 @@
             class="col-sm-6 col-md-3 box"
             *ngIf="pastIllness.value.illnessType?.illnessType === 'Other'">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
+                  ?.others
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
                 maxlength="50"
                 allowText="alphaspace"
-                placeholder="{{
-                  currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
-                    ?.others
-                }}"
                 name="otherIllnessType"
                 formControlName="otherIllnessType" />
             </mat-form-field>
@@ -79,14 +79,13 @@
 
           <div class="col-sm-6 col-md-2 box">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="{{
-                  currentLanguageSet?.nurseData?.chiefComplaintsDetails
-                    ?.duration
-                }}"
                 allowText="number"
                 maxlength="2"
                 name="timePeriodAgo"
@@ -101,11 +100,11 @@
 
           <div class="col-sm-4 col-md-2 box">
             <mat-form-field>
+              <mat-label>{{
+                currentLanguageSet?.DurationData?.timeperiodAgo
+              }}</mat-label>
               <mat-select
                 class="select-full-width"
-                placeholder="{{
-                  currentLanguageSet?.DurationData?.timeperiodAgo
-                }}"
                 name="timePeriodUnit"
                 formControlName="timePeriodUnit"
                 (change)="validateDuration(pastIllness)"
@@ -166,12 +165,12 @@
       <ng-container [formGroupName]="i">
         <div class="col-sm-6 col-md-3 box">
           <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.historyData?.ancHistory
+                ?.pastHOSurgeryANC_OPD_NCD_PNC?.hoSurgery
+            }}</mat-label>
             <mat-select
               class="select-full-width"
-              placeholder="{{
-                currentLanguageSet?.historyData?.ancHistory
-                  ?.pastHOSurgeryANC_OPD_NCD_PNC?.hoSurgery
-              }}"
               formControlName="surgeryType"
               name="surgeryType"
               (selectionChange)="filterPastSurgeryType($event, i, pastSurgery)">
@@ -188,16 +187,16 @@
           class="col-sm-6 col-md-3 box"
           *ngIf="pastSurgery.value.surgeryType?.surgeryType === 'Other'">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
+                ?.others
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
               maxlength="50"
               allowText="alphaspace"
-              placeholder="{{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
-                  ?.others
-              }}"
               name="otherSurgeryType"
               formControlName="otherSurgeryType" />
           </mat-form-field>
@@ -205,13 +204,13 @@
 
         <div class="col-sm-6 col-md-2 box">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="{{
-                currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
-              }}"
               allowText="number"
               maxlength="2"
               name="timePeriodAgo"
@@ -226,12 +225,12 @@
 
         <div class="col-sm-4 col-md-2 box">
           <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.DurationData?.timeperiodAgo
+            }}</mat-label>
             <mat-select
               class="select-full-width"
               formControlName="timePeriodUnit"
-              placeholder="{{
-                currentLanguageSet?.DurationData?.timeperiodAgo
-              }}"
               name="timePeriodUnit"
               [disabled]="!pastSurgery.value.timePeriodAgo"
               (change)="validateDuration(pastSurgery)">

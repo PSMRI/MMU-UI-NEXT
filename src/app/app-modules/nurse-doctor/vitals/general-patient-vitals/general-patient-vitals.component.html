@@ -14,15 +14,14 @@
       <div class="row m-t-10">
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.vitalsDetails
+                ?.AnthropometryDataANC_OPD_NCD_PNC?.height
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="
-            {{
-                currentLanguageSet?.vitalsDetails
-                  ?.AnthropometryDataANC_OPD_NCD_PNC?.height
-              }}"
               allowText="decimal"
               id="height_cm"
               name="height_cm"
@@ -37,15 +36,14 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.vitalsDetails
+                ?.AnthropometryDataANC_OPD_NCD_PNC?.weight
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="
-            {{
-                currentLanguageSet?.vitalsDetails
-                  ?.AnthropometryDataANC_OPD_NCD_PNC?.weight
-              }}"
               (change)="checkWeight(weight_Kg)"
               (blur)="calculateBMI()"
               allowText="decimal"
@@ -68,14 +66,14 @@
           class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
           *ngIf="totalMonths > 60">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.vitalsDetails
+                ?.AnthropometryDataANC_OPD_NCD_PNC?.BMI
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="{{
-                currentLanguageSet?.vitalsDetails
-                  ?.AnthropometryDataANC_OPD_NCD_PNC?.BMI
-              }}"
               allowText="decimal"
               [readonly]="true"
               [ngClass]="{ abnormal: !normalBMI }"
@@ -213,15 +211,14 @@
         <div *ngIf="hideForANCAndQC">
           <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
+                  ?.waistCircumference
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="
-              {{
-                  currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
-                    ?.waistCircumference
-                }}"
                 allowText="decimal"
                 [ngClass]="{
                   abnormal:
@@ -243,15 +240,14 @@
           <div *ngIf="visitCategory !== 'NCD screening'">
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
               <mat-form-field class="input-full-width">
+                <mat-label>{{
+                  currentLanguageSet?.vitalsDetails
+                    ?.AnthropometryDataANC_OPD_NCD_PNC?.hipCircumference
+                }}</mat-label>
                 <input
                   autocomplete="off"
                   matInput
                   appDefaultNull
-                  placeholder="
-                {{
-                    currentLanguageSet?.vitalsDetails
-                      ?.AnthropometryDataANC_OPD_NCD_PNC?.hipCircumference
-                  }}"
                   allowText="decimal"
                   (change)="checkHip(hipCircumference_cm)"
                   (blur)="hipWaistRatio()"
@@ -265,15 +261,14 @@
 
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
               <mat-form-field class="input-full-width">
+                <mat-label>{{
+                  currentLanguageSet?.vitalsDetails
+                    ?.AnthropometryDataANC_OPD_NCD_PNC?.waisttoHipRatio
+                }}</mat-label>
                 <input
                   autocomplete="off"
                   matInput
                   appDefaultNull
-                  placeholder="
-                {{
-                    currentLanguageSet?.vitalsDetails
-                      ?.AnthropometryDataANC_OPD_NCD_PNC?.waisttoHipRatio
-                  }}"
                   [ngClass]="{ abnormal: !normalWaistHipRatio }"
                   allowText="decimal"
                   [readonly]="true"
@@ -366,15 +361,14 @@
               class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
               *ngIf="benAge <= 2">
               <mat-form-field class="input-full-width">
+                <mat-label>{{
+                  currentLanguageSet?.vitalsDetails
+                    ?.AnthropometryDataANC_OPD_NCD_PNC?.headCircumference
+                }}</mat-label>
                 <input
                   autocomplete="off"
                   matInput
                   appDefaultNull
-                  placeholder="
-                {{
-                    currentLanguageSet?.vitalsDetails
-                      ?.AnthropometryDataANC_OPD_NCD_PNC?.headCircumference
-                  }}"
                   allowText="decimal"
                   (change)="checkHeadCircumference(headCircumference_cm)"
                   [ngClass]="{
@@ -393,16 +387,14 @@
               class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
               *ngIf="benAge <= 6">
               <mat-form-field class="input-full-width">
+                <mat-label>{{
+                  currentLanguageSet?.vitalsDetails
+                    ?.AnthropometryDataANC_OPD_NCD_PNC?.midUpperArmCircumference
+                }}</mat-label>
                 <input
                   autocomplete="off"
                   matInput
                   appDefaultNull
-                  placeholder="
-                {{
-                    currentLanguageSet?.vitalsDetails
-                      ?.AnthropometryDataANC_OPD_NCD_PNC
-                      ?.midUpperArmCircumference
-                  }}"
                   allowText="decimal"
                   (change)="
                     checkMidUpperArmCircumference(
@@ -472,15 +464,14 @@
       <div class="row m-t-20">
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
+                ?.temperature
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="
-            {{
-                currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
-                  ?.temperature
-              }}"
               allowText="decimal"
               [ngClass]="{ abnormal: temperature < 96 || temperature > 100 }"
               name="temperature"
@@ -501,15 +492,14 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
+                ?.pulseRate
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="
-            {{
-                currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
-                  ?.pulseRate
-              }}"
               [ngClass]="{ abnormal: pulseRate < 49 || pulseRate > 200 }"
               allowText="number"
               maxlength="3"
@@ -532,11 +522,11 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
+            <mat-label>{{ currentLanguageSet?.sPOTwoWithUnit }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="{{ currentLanguageSet?.sPOTwoWithUnit }}"
               allowText="number"
               maxlength="3"
               name="sPO2"
@@ -555,15 +545,14 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
+                ?.systolicBP
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="
-            {{
-                currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
-                  ?.systolicBP
-              }}"
               [ngClass]="{
                 abnormal:
                   systolicBP_1stReading < 110 || systolicBP_1stReading > 140
@@ -593,15 +582,14 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
+                ?.diastolicBP
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="
-            {{
-                currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
-                  ?.diastolicBP
-              }}"
               [ngClass]="{
                 abnormal:
                   diastolicBP_1stReading < 60 || diastolicBP_1stReading > 90
@@ -632,15 +620,14 @@
         <div *ngIf="visitCategory !== 'NCD screening'">
           <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
+                  ?.respiratoryRate
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="
-              {{
-                  currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
-                    ?.respiratoryRate
-                }}"
                 allowText="number"
                 [ngClass]="{
                   abnormal: respiratoryRate < 11 || respiratoryRate > 23
@@ -662,15 +649,14 @@
             <div class="row col-xs-12 col-sm-12 m-t-10">
               <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
                 <mat-form-field class="input-full-width">
+                  <mat-label>{{
+                    currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
+                      ?.fasting
+                  }}</mat-label>
                   <input
                     autocomplete="off"
                     matInput
                     appDefaultNull
-                    placeholder="
-                  {{
-                      currentLanguageSet?.vitalsDetails
-                        ?.vitalsCancerscreening_QC?.fasting
-                    }}"
                     allowText="number"
                     allowMax="900"
                     maxlength="3"
@@ -693,15 +679,14 @@
 
               <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
                 <mat-form-field class="input-full-width">
+                  <mat-label>{{
+                    currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
+                      ?.random
+                  }}</mat-label>
                   <input
                     autocomplete="off"
                     matInput
                     appDefaultNull
-                    placeholder="
-                  {{
-                      currentLanguageSet?.vitalsDetails
-                        ?.vitalsCancerscreening_QC?.random
-                    }}"
                     allowText="number"
                     allowMax="900"
                     maxlength="3"
@@ -721,15 +706,14 @@
 
               <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
                 <mat-form-field class="input-full-width">
+                  <mat-label>{{
+                    currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
+                      ?.postPrandial
+                  }}</mat-label>
                   <input
                     autocomplete="off"
                     matInput
                     appDefaultNull
-                    placeholder="
-                  {{
-                      currentLanguageSet?.vitalsDetails
-                        ?.vitalsCancerscreening_QC?.postPrandial
-                    }}"
                     name="bloodGlucose_2hr_PP"
                     id="bloodGlucose_2hr_PP"
                     formControlName="bloodGlucose_2hr_PP"
@@ -767,11 +751,11 @@
           </div>
           <div class="col-xs-10 col-sm-10">
             <mat-form-field class="input-full-width">
+              <mat-label>{{ currentLanguageSet?.rbsTestResult }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="{{ currentLanguageSet?.rbsTestResult }}"
                 allowText="number"
                 [disabled]="rbsResultChange()"
                 name="rbsTestResult"
@@ -796,12 +780,12 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
+            <mat-label>{{ currentLanguageSet?.rbsTestRemarks }}</mat-label>
             <input
               autocomplete="off"
               allowText="textAreaValidator"
               matInput
               appDefaultNull
-              placeholder="{{ currentLanguageSet?.rbsTestRemarks }}"
               name="rbsTestRemarks"
               id="rbsTestRemarks"
               formControlName="rbsTestRemarks"

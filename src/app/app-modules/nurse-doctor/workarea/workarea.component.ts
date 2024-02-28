@@ -414,9 +414,6 @@ export class WorkareaComponent
           this.patientHistoryForm = this.patientMedicalForm.get(
             'patientHistoryForm'
           ) as FormGroup;
-          this.patientVitalsForm = this.patientMedicalForm.get(
-            'patientVitalsForm'
-          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
@@ -455,7 +452,7 @@ export class WorkareaComponent
               'patientReferForm'
             ) as FormGroup;
 
-            // this.patchGeneralFinding();
+            this.patchGeneralFinding();
 
             this.visitMode = new String(mode);
             this.vitalsMode = new String(mode);

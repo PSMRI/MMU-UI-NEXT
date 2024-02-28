@@ -1,14 +1,14 @@
 <!-- {{centralNervousSystemForm.value | json}} -->
 <div class="row m-t-20" [formGroup]="centralNervousSystemForm">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <mat-label>{{
+      currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+        ?.centralANC_OPD_PNC?.handedness
+    }}</mat-label>
     <mat-select
       class="select-full-width"
       name="handedness"
-      formControlName="handedness"
-      placeholder="{{
-        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
-          ?.centralANC_OPD_PNC?.handedness
-      }}">
+      formControlName="handedness">
       <mat-option
         *ngFor="let handedness of selectHandedness"
         [value]="handedness.name">
@@ -19,6 +19,10 @@
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <mat-form-field class="input-full-width" class="textarea-full-width">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.cranial
+      }}</mat-label>
       <textarea
         matInput
         allowText="textAreaValidator"
@@ -26,16 +30,16 @@
         matTextareaAutosize
         name="cranialNervesExamination"
         formControlName="cranialNervesExamination"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
-            ?.centralANC_OPD_PNC?.cranial
-        }}"
         maxlength="300"></textarea>
     </mat-form-field>
   </div>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <mat-form-field class="input-full-width" class="textarea-full-width">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.motorsystem
+      }}</mat-label>
       <textarea
         matInput
         allowText="textAreaValidator"
@@ -43,16 +47,16 @@
         matTextareaAutosize
         name="motorSystem"
         formControlName="motorSystem"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
-            ?.centralANC_OPD_PNC?.motorsystem
-        }}"
         maxlength="300"></textarea>
     </mat-form-field>
   </div>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <mat-form-field class="input-full-width" class="textarea-full-width">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.sensorysystem
+      }}</mat-label>
       <textarea
         matInput
         allowText="textAreaValidator"
@@ -60,16 +64,16 @@
         matTextareaAutosize
         name="sensorySystem"
         formControlName="sensorySystem"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
-            ?.centralANC_OPD_PNC?.sensorysystem
-        }}"
         maxlength="300"></textarea>
     </mat-form-field>
   </div>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <mat-form-field class="input-full-width" class="textarea-full-width">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.autonomicsystem
+      }}</mat-label>
       <textarea
         matInput
         allowText="textAreaValidator"
@@ -77,16 +81,16 @@
         matTextareaAutosize
         name="autonomicSystem"
         formControlName="autonomicSystem"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
-            ?.centralANC_OPD_PNC?.autonomicsystem
-        }}"
         maxlength="300"></textarea>
     </mat-form-field>
   </div>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <mat-form-field class="input-full-width" class="textarea-full-width">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.cerebellarsigns
+      }}</mat-label>
       <textarea
         matInput
         allowText="textAreaValidator"
@@ -94,10 +98,6 @@
         matTextareaAutosize
         name="cerebellarSigns"
         formControlName="cerebellarSigns"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
-            ?.centralANC_OPD_PNC?.cerebellarsigns
-        }}"
         maxlength="300"></textarea>
     </mat-form-field>
   </div>
@@ -122,6 +122,10 @@
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <mat-form-field class="input-full-width" class="textarea-full-width">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.skull
+      }}</mat-label>
       <textarea
         matInput
         allowText="textAreaValidator"
@@ -129,10 +133,6 @@
         matTextareaAutosize
         name="skull"
         formControlName="skull"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
-            ?.centralANC_OPD_PNC?.skull
-        }}"
         maxlength="300"></textarea>
     </mat-form-field>
   </div>

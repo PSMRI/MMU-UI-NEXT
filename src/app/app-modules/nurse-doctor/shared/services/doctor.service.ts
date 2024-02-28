@@ -36,6 +36,10 @@ export class DoctorService {
   constructor(private http: HttpClient) {}
 
   getDoctorWorklist() {
+    console.log(
+      'getDoctorWorklistUrl',
+      localStorage.getItem('providerServiceID')
+    );
     const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     const vanID = JSON.parse(serviceLineDetails).vanID;
     const fetchUrl =

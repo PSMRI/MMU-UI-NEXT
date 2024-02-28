@@ -10,15 +10,14 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
         <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.vitalsDetails?.AnthropometryDataANC_OPD_NCD_PNC
+              ?.height
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
             appDefaultNull
-            placeholder="
-          {{
-              currentLanguageSet?.vitalsDetails
-                ?.AnthropometryDataANC_OPD_NCD_PNC?.height
-            }}"
             allowText="decimal"
             allowMax="350"
             name="height_cm"
@@ -31,15 +30,14 @@
 
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
         <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.vitalsDetails?.AnthropometryDataANC_OPD_NCD_PNC
+              ?.weight
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
             appDefaultNull
-            placeholder="
-          {{
-              currentLanguageSet?.vitalsDetails
-                ?.AnthropometryDataANC_OPD_NCD_PNC?.weight
-            }}"
             allowText="decimal"
             allowMax="500"
             name="weight_Kg"
@@ -60,13 +58,13 @@
         class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10"
         *ngIf="totalMonths > 60">
         <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.vitalsDetails?.AnthropometryDataANC_OPD_NCD_PNC
+              ?.BMI
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
-            placeholder="{{
-              currentLanguageSet?.vitalsDetails
-                ?.AnthropometryDataANC_OPD_NCD_PNC?.BMI
-            }}"
             allowText="decimal"
             name="BMI"
             [ngClass]="{ abnormal: !normalBMI }"
@@ -202,15 +200,14 @@
 
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
         <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
+              ?.waistCircumference
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
             appDefaultNull
-            placeholder="
-          {{
-              currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
-                ?.waistCircumference
-            }}"
             allowText="decimal"
             allowMax="350"
             name="waistCircumference_cm"
@@ -231,15 +228,14 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 m-t-10">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
+                  ?.systolicBP
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="
-              {{
-                  currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
-                    ?.systolicBP
-                }}"
                 allowText="number"
                 allowMax="400"
                 name="systolicBP_1stReading"
@@ -263,15 +259,14 @@
 
           <div class="col-xs-12 col-sm-6 m-t-10">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
+                  ?.diastolicBP
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="
-              {{
-                  currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
-                    ?.diastolicBP
-                }}"
                 allowText="number"
                 allowMax="240"
                 name="diastolicBP_1stReading"
@@ -303,15 +298,14 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 m-t-10">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
+                  ?.systolicBP
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="
-              {{
-                  currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
-                    ?.systolicBP
-                }}"
                 allowText="number"
                 allowMax="400"
                 formControlName="systolicBP_2ndReading"
@@ -333,15 +327,14 @@
 
           <div class="col-xs-12 col-sm-6 m-t-10">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
+                  ?.diastolicBP
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="
-              {{
-                  currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
-                    ?.diastolicBP
-                }}"
                 allowText="number"
                 allowMax="240"
                 formControlName="diastolicBP_2ndReading"
@@ -371,15 +364,14 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 m-t-10">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
+                  ?.systolicBP
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="
-              {{
-                  currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
-                    ?.systolicBP
-                }}"
                 allowText="number"
                 allowMax="400"
                 formControlName="systolicBP_3rdReading"
@@ -401,15 +393,14 @@
 
           <div class="col-xs-12 col-sm-6 m-t-10">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
+                  ?.diastolicBP
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="
-              {{
-                  currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
-                    ?.diastolicBP
-                }}"
                 allowText="number"
                 allowMax="240"
                 formControlName="diastolicBP_3rdReading"
@@ -435,14 +426,13 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
         <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC?.HbA1c
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
             appDefaultNull
-            placeholder="
-          {{
-              currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC?.HbA1c
-            }}"
             allowText="decimal"
             allowMax="100"
             maxlength="5"
@@ -456,15 +446,14 @@
 
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
         <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
+              ?.hemoglobin
+          }}</mat-label>
           <input
             autocomplete="off"
             matInput
             appDefaultNull
-            placeholder="
-          {{
-              currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
-                ?.hemoglobin
-            }}"
             allowText="decimal"
             maxlength="5"
             allowMax="20"
@@ -481,11 +470,11 @@
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
         <mat-form-field class="input-full-width">
+          <mat-label>{{ currentLanguageSet?.sPOTwoWithUnit }}</mat-label>
           <input
             autocomplete="off"
             matInput
             appDefaultNull
-            placeholder="{{ currentLanguageSet?.sPOTwoWithUnit }}"
             allowText="number"
             maxlength="3"
             name="sPO2"
@@ -512,15 +501,14 @@
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
+                  ?.fasting
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="
-              {{
-                  currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
-                    ?.fasting
-                }}"
                 allowText="number"
                 allowMax="900"
                 name="bloodGlucose_Fasting"
@@ -539,15 +527,14 @@
 
           <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
+                  ?.random
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="
-              {{
-                  currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
-                    ?.random
-                }}"
                 allowText="number"
                 allowMax="900"
                 name="bloodGlucose_Random"
@@ -566,15 +553,14 @@
 
           <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
+                  ?.postPrandial
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="
-              {{
-                  currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
-                    ?.postPrandial
-                }}"
                 allowText="number"
                 allowMax="900"
                 name="bloodGlucose_2HrPostPrandial"
@@ -608,11 +594,11 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
         <mat-form-field class="input-full-width">
+          <mat-label>{{ currentLanguageSet?.rbsTestResult }}</mat-label>
           <input
             autocomplete="off"
             matInput
             appDefaultNull
-            placeholder="{{ currentLanguageSet?.rbsTestResult }}"
             allowText="number"
             name="rbsTestResult"
             id="rbsTestResult"
@@ -633,12 +619,12 @@
       <div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
           <mat-form-field class="input-full-width">
+            <mat-label>{{ currentLanguageSet?.rbsTestRemarks }}</mat-label>
             <input
               autocomplete="off"
               allowText="textAreaValidator"
               matInput
               appDefaultNull
-              placeholder="{{ currentLanguageSet?.rbsTestRemarks }}"
               [ngClass]=""
               name="rbsTestRemarks"
               id="rbsTestRemarks"

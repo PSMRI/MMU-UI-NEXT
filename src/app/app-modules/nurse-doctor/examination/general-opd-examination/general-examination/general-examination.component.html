@@ -2,15 +2,15 @@
 <div class="row m-t-20" [formGroup]="generalExaminationForm">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
     <div class="form-group">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.consciousness
+      }}</mat-label>
       <mat-select
         class="select-full-width"
         id="consciousness"
         name="consciousness"
-        formControlName="consciousness"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
-            ?.genExamination?.consciousness
-        }}">
+        formControlName="consciousness">
         <mat-option
           *ngFor="let consciousness of selectConsciousness"
           [value]="consciousness.name">
@@ -22,15 +22,15 @@
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
     <div class="form-group">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.cooperation
+      }}</mat-label>
       <mat-select
         class="select-full-width"
         id="cooperation"
         name="cooperation"
-        formControlName="cooperation"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
-            ?.genExamination?.cooperation
-        }}">
+        formControlName="cooperation">
         <mat-option
           *ngFor="let cooperation of selectCooperation"
           [value]="cooperation.name">
@@ -42,15 +42,15 @@
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
     <div class="form-group">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.built
+      }}</mat-label>
       <mat-select
         class="select-full-width"
         id="builtAndAppearance"
         name="builtAndAppearance"
-        formControlName="builtAndAppearance"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
-            ?.genExamination?.built
-        }}">
+        formControlName="builtAndAppearance">
         <mat-option *ngFor="let built of selectBuilt" [value]="built.name">
           {{ built.name }}
         </mat-option>
@@ -156,16 +156,16 @@
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     [hidden]="dangerSigns !== 'Yes'">
     <div class="form-group">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.dangersigns
+      }}</mat-label>
       <mat-select
         multiple
         class="select-full-width"
         id="typeOfDangerSigns"
         name="typeOfDangerSigns"
         formControlName="typeOfDangerSigns"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
-            ?.genExamination?.dangersigns
-        }}"
         [required]="dangerSigns === 'Yes'">
         <mat-option
           *ngFor="let signs of selectDangerSigns"
@@ -274,15 +274,15 @@
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     [hidden]="lymphadenopathy !== 'Present'">
     <div class="form-group">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.lymph
+      }}</mat-label>
       <mat-select
         class="select-full-width"
         id="lymphnodesInvolved"
         name="lymphnodesInvolved"
         formControlName="lymphnodesInvolved"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
-            ?.genExamination?.lymph
-        }}"
         [required]="lymphadenopathy === 'Present'">
         <mat-option
           *ngFor="let lymphNodes of selectLymphNodes"
@@ -297,15 +297,15 @@
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     [hidden]="lymphadenopathy !== 'Present'">
     <div class="form-group">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.typeofLymphadenopathy
+      }}</mat-label>
       <mat-select
         class="select-full-width"
         id="typeOfLymphadenopathy"
         name="typeOfLymphadenopathy"
         formControlName="typeOfLymphadenopathy"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
-            ?.genExamination?.typeofLymphadenopathy
-        }}"
         [required]="lymphadenopathy === 'Present'">
         <mat-option
           *ngFor="let typeOfLymphadenopathy of selectTypeOfLymphadenopathy"
@@ -342,15 +342,15 @@
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     [hidden]="edema !== 'Present'">
     <div class="form-group">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+          ?.genExamination?.extentofEdema
+      }}</mat-label>
       <mat-select
         class="select-full-width"
         id="extentOfEdema"
         name="extentOfEdema"
         formControlName="extentOfEdema"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
-            ?.genExamination?.extentofEdema
-        }}"
         [required]="edema === 'Present'">
         <mat-option
           *ngFor="let extentOfEdema of selectExtentOfEdema"

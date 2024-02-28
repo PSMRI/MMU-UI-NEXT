@@ -28,12 +28,12 @@
       <div [formGroupName]="i">
         <div class="col-xs-12 col-sm-6 col-md-3 box">
           <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.historyData?.cancerScreeningHistory
+                ?.familyMedical?.diseaseType
+            }}</mat-label>
             <mat-select
               class="input-full-width"
-              placeholder="{{
-                currentLanguageSet?.historyData?.cancerScreeningHistory
-                  ?.familyMedical?.diseaseType
-              }}"
               name="cancerDiseaseType"
               formControlName="cancerDiseaseType"
               (selectionChange)="
@@ -55,6 +55,10 @@
             'Any other Cancer'
           ">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.historyData?.cancerScreeningHistory
+                ?.familyMedical?.otherCancerDetails
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
@@ -62,23 +66,19 @@
               name="otherDiseaseType"
               formControlName="otherDiseaseType"
               allowText="alphaspace"
-              placeholder="{{
-                currentLanguageSet?.historyData?.cancerScreeningHistory
-                  ?.familyMedical?.otherCancerDetails
-              }}"
               maxlength="25" />
           </mat-form-field>
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3 box" [hidden]="true">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
+                ?.sctCode
+            }}</mat-label>
             <input
               maxlength="100"
               matInput
-              placeholder="{{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
-                  ?.sctCode
-              }}"
               [style.width]="'100%'"
               formControlName="snomedCode"
               readonly />
@@ -87,13 +87,13 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 box">
           <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.historyData?.cancerScreeningHistory
+                ?.familyMedical?.familyMembers
+            }}</mat-label>
             <mat-select
               class="input-full-width"
               multiple
-              placeholder="{{
-                currentLanguageSet?.historyData?.cancerScreeningHistory
-                  ?.familyMedical?.familyMembers
-              }}"
               name="familyMemberList"
               formControlName="familyMemberList"
               #memberSelect>

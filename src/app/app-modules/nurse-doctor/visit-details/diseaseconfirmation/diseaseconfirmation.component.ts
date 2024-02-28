@@ -95,12 +95,17 @@ export class DiseaseconfirmationComponent implements OnInit {
     return this.diseaseFormsGroup.get('diseaseFormsArray') as FormArray;
   }
 
-  getDiseaseFormArray(): AbstractControl[] | null {
-    const chiefComplaintsControl =
-      this.diseaseFormsGroup.get('diseaseFormsArray');
-    return chiefComplaintsControl instanceof FormArray
-      ? chiefComplaintsControl.value
-      : null;
+  // getDiseaseFormArray(): AbstractControl[] | null {
+  //   const diseaseFormsArrayControl =
+  //     this.diseaseFormsGroup.get('diseaseFormsArray');
+  //   return diseaseFormsArrayControl instanceof FormArray
+  //     ? diseaseFormsArrayControl.value
+  //     : null;
+  // }
+
+  getDiseaseFormArray(): any {
+    return (this.diseaseFormsGroup.get('diseaseFormsArray') as FormArray)
+      .controls;
   }
 
   addMoreDiseases(data: any) {

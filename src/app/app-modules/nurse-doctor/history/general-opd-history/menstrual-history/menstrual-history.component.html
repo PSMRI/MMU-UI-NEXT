@@ -17,14 +17,14 @@
 </div>
 <div class="row m-t-10" [formGroup]="menstrualHistoryForm">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <mat-label>{{
+      currentLanguageSet?.historyData?.ancHistory?.menstrualHistoryANC
+        ?.menstrualCycleStatus
+    }}</mat-label>
     <mat-select
       class="select-full-width"
       name="menstrualCycleStatus"
       formControlName="menstrualCycleStatus"
-      placeholder="{{
-        currentLanguageSet?.historyData?.ancHistory?.menstrualHistoryANC
-          ?.menstrualCycleStatus
-      }}"
       (selectionChange)="checkMenstrualCycleStatus()">
       <mat-option
         *ngFor="let status of masterData?.menstrualCycleStatus"
@@ -53,14 +53,14 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.menstrual
+            ?.lengthofMenstrualCycle
+        }}</mat-label>
         <mat-select
           class="select-full-width"
           name="cycleLength"
-          formControlName="cycleLength"
-          placeholder="{{
-            currentLanguageSet?.historyData?.opdNCDPNCHistory?.menstrual
-              ?.lengthofMenstrualCycle
-          }}">
+          formControlName="cycleLength">
           <mat-option
             *ngFor="let cycleLength of masterData?.menstrualCycleLengths"
             [value]="cycleLength"
@@ -72,14 +72,14 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.menstrual
+            ?.menstrualBloodFlowDuration
+        }}</mat-label>
         <mat-select
           class="select-full-width"
           name="bloodFlowDuration"
-          formControlName="bloodFlowDuration"
-          placeholder="{{
-            currentLanguageSet?.historyData?.opdNCDPNCHistory?.menstrual
-              ?.menstrualBloodFlowDuration
-          }}">
+          formControlName="bloodFlowDuration">
           <mat-option
             *ngFor="
               let cycleDuration of masterData?.menstrualCycleBloodFlowDuration
@@ -99,15 +99,15 @@
     ">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.menstrual
+            ?.menstrualProblems
+        }}</mat-label>
         <mat-select
           multiple
           class="select-full-width"
           name="problemName"
-          formControlName="menstrualProblemList"
-          placeholder="{{
-            currentLanguageSet?.historyData?.opdNCDPNCHistory?.menstrual
-              ?.menstrualProblems
-          }}">
+          formControlName="menstrualProblemList">
           <mat-option
             *ngFor="let problem of masterData?.menstrualProblem"
             [value]="problem"

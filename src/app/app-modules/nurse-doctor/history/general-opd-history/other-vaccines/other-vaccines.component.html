@@ -31,14 +31,14 @@
       <ng-container [formGroupName]="i">
         <div class="col-xs-12 col-sm-6 col-md-3 box">
           <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
+                ?.nameofVaccine
+            }}</mat-label>
             <mat-select
               class="select-full-width"
               name="vaccineName"
               formControlName="vaccineName"
-              placeholder="{{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
-                  ?.nameofVaccine
-              }}"
               (change)="filterOtherVaccineList($event, i, vaccine)">
               <mat-option
                 *ngFor="let vaccine of vaccineSelectList[i]"
@@ -54,15 +54,11 @@
           *ngIf="vaccine.value.vaccineName?.vaccineName !== 'Other'"
           [hidden]="true">
           <mat-form-field class="input-full-width">
-            <input
-              matInput
-              name="sctCode"
-              formControlName="sctCode"
-              placeholder="{{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
-                  ?.vaccineSctCode
-              }}"
-              readonly />
+            <mat-label>{{
+              currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
+                ?.vaccineSctCode
+            }}</mat-label>
+            <input matInput name="sctCode" formControlName="sctCode" readonly />
           </mat-form-field>
         </div>
 
@@ -70,14 +66,14 @@
           class="col-xs-12 col-sm-6 col-md-2 box"
           *ngIf="vaccine.value.vaccineName?.vaccineName === 'Other'">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
+                ?.others
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="{{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
-                  ?.others
-              }}"
               maxlength="50"
               allowText="alphaspace"
               name="otherVaccineName"
@@ -87,14 +83,14 @@
 
         <div class="col-xs-12 col-sm-6 col-md-2 box">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
+                ?.ageatReceived
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="{{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
-                  ?.ageatReceived
-              }}"
               maxlength="2"
               allowText="number"
               name="actualReceivingAge"
@@ -108,14 +104,14 @@
           class="col-xs-10 col-sm-4 col-md-2 box"
           *ngIf="vaccine.value.actualReceivingAge > 0">
           <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
+                ?.facilityName
+            }}</mat-label>
             <mat-select
               class="select-full-width"
               name="receivedFacilityName"
               formControlName="receivedFacilityName"
-              placeholder="{{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
-                  ?.facilityName
-              }}"
               [disabled]="!vaccine.value.actualReceivingAge">
               <mat-option value="Govt Facility">Govt Facility</mat-option>
               <mat-option value="Pvt Facility">Pvt Facility</mat-option>

@@ -34,12 +34,12 @@
   <div class="row m-t-10">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.tobaccoUse
+        }}</mat-label>
         <mat-select
           class="input-full-width"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.tobaccoUse
-          }}"
           name="tobaccoUse"
           formControlName="tobaccoUse"
           (slectionChange)="checkTobaccoUseStatus(tobaccoUse)">
@@ -56,15 +56,15 @@
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="tobaccoUse && tobaccoUse !== 'Never Used'">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.startAge
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           allowText="number"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.startAge
-          }}"
           maxlength="3"
           name="startAge_year"
           formControlName="startAge_year"
@@ -80,15 +80,15 @@
         tobaccoUse !== 'Currently Using'
       ">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.stopAge
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           allowText="number"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.stopAge
-          }}"
           maxlength="3"
           name="endAge_year"
           formControlName="endAge_year"
@@ -100,13 +100,13 @@
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="tobaccoUse && tobaccoUse !== 'Never Used'">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.typeofTobaccoProductsused
+        }}</mat-label>
         <mat-select
           class="input-full-width"
           multiple
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.typeofTobaccoProductsused
-          }} "
           name="typeOfTobaccoProductList"
           formControlName="typeOfTobaccoProductList"
           (slectionChange)="tobaccoSelected()">
@@ -123,15 +123,15 @@
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="doSmokeCigarettes || doSmokeBeedi">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.cigarettes
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           allowText="number"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.cigarettes
-          }}"
           maxlength="2"
           name="quantityPerDay"
           formControlName="quantityPerDay" />
@@ -213,16 +213,16 @@
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="isBetelNutChewing">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.durationofbetelquidinmouth
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           [min]="1"
           allowText="number"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.durationofbetelquidinmouth
-          }}"
           maxlength="2"
           name="durationOfBetelQuid"
           formControlName="durationOfBetelQuid"
@@ -234,12 +234,12 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.alcoholuse
+        }}</mat-label>
         <mat-select
           class="input-full-width"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.alcoholuse
-          }} "
           name="alcoholUse"
           formControlName="alcoholUse"
           (selectionChange)="checkUsageOfAlcohol()">
@@ -280,12 +280,12 @@
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="alcoholUse && alcoholUse !== 'Never Used' && ssAlcoholUsed">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.frequency
+        }}</mat-label>
         <mat-select
           class="input-full-width"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.frequency
-          }} "
           name="frequencyOfAlcoholUsed"
           formControlName="frequencyOfAlcoholUsed">
           <mat-option
@@ -299,12 +299,12 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.dietType
+        }}</mat-label>
         <mat-select
           class="input-full-width"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.dietType
-          }} "
           name="dietType"
           formControlName="dietType">
           <mat-option
@@ -317,15 +317,15 @@
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.weeklyintakeofOutsidemeal
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           allowText="number "
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.weeklyintakeofOutsidemeal
-          }} "
           maxlength="2 "
           name="intakeOfOutsidePreparedMeal"
           formControlName="intakeOfOutsidePreparedMeal" />
@@ -334,6 +334,10 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.fruitconsumption
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
@@ -341,10 +345,6 @@
           allowText="number "
           (keypress)="preventFruitConsumption($event)"
           (change)="checkFruitConsumption()"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.fruitconsumption
-          }} "
           maxlength="1"
           name="fruitConsumptionDays"
           formControlName="fruitConsumptionDays" />
@@ -355,16 +355,16 @@
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="fruitConsumptionDays && fruitConsumptionDays !== '0'">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.quantityconsumed
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           allowText="number "
           (change)="fruitConsumptionPerDayCheck($event)"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.quantityconsumed
-          }} "
           maxlength="2"
           name="fruitQuantityPerDay"
           formControlName="fruitQuantityPerDay" />
@@ -373,6 +373,10 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.vegetableconsumption
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
@@ -380,10 +384,6 @@
           allowText="number "
           (keypress)="preventVegetableConsumption($event)"
           (change)="checkVegetableConsumption()"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.vegetableconsumption
-          }} "
           maxlength="1 "
           name="vegetableConsumptionDays"
           formControlName="vegetableConsumptionDays" />
@@ -394,16 +394,16 @@
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="vegetableConsumptionDays && vegetableConsumptionDays !== '0'">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.quantityconsumed
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           allowText="number "
           (change)="vegetableConsumptionPerDayCheck($event)"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.quantityconsumed
-          }} "
           maxlength="2 "
           name="vegetableQuantityPerDay"
           formControlName="vegetableQuantityPerDay" />
@@ -412,13 +412,13 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.typeofoilconsumed
+        }}</mat-label>
         <mat-select
           class="input-full-width"
           multiple
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.typeofoilconsumed
-          }} "
           (selectionChange)="oilSelected()"
           name="typeOfOilConsumedList"
           formControlName="typeOfOilConsumedList">
@@ -433,12 +433,12 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.physicalActivityType
+        }}</mat-label>
         <mat-select
           class="input-full-width"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.physicalActivityType
-          }} "
           name="physicalActivityType"
           formControlName="physicalActivityType">
           <mat-option

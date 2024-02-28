@@ -30,7 +30,7 @@
           currentLanguageSet?.nurseData?.adherenceDetails?.reason
         }}</mat-label>
         <textarea
-          mdInput
+          matInput
           appDefaultNull
           mdTextareaAutosize
           allowText="textAreaValidator"
@@ -43,7 +43,9 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+    <div
+      class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box"
+      style="margin-top: 20px">
       <mat-label class="control-label" for="drug">{{
         currentLanguageSet?.nurseData?.adherenceDetails?.referral
       }}</mat-label>
@@ -66,13 +68,14 @@
 
     <div
       class="col-xs-12 col-sm-6 col-md-8 col-lg-8 box"
+      style="margin-top: 20px"
       *ngIf="toReferral !== null && !toReferral">
       <mat-form-field class="input-full-width" class="textarea-full-width">
         <mat-label>{{
           currentLanguageSet?.nurseData?.adherenceDetails?.reason
         }}</mat-label>
         <textarea
-          mdInput
+          matInput
           appDefaultNull
           mdTextareaAutosize
           allowText="textAreaValidator"

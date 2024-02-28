@@ -20,11 +20,11 @@
   <div class="row m-t-10">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.nurseData?.visitDetailsForm?.pregnancyStatus
+        }}</mat-label>
         <mat-select
           class="input-full-width"
-          placeholder="{{
-            currentLanguageSet?.nurseData?.visitDetailsForm?.pregnancyStatus
-          }}"
           name="pregnancyStatus"
           formControlName="pregnancyStatus"
           [disabled]="true"
@@ -61,12 +61,12 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.nooftimespregnant
+        }}</mat-label>
         <mat-select
           class="input-full-width"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
-              ?.nooftimespregnant
-          }}"
           name="pregnant_No"
           formControlName="pregnant_No"
           (selectionChange)="checkWithPregnantTimes()">
@@ -83,15 +83,15 @@
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="pregnant_No && pregnant_No !== '0'">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.nooflivingchildren
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           allowText="number"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
-              ?.nooflivingchildren
-          }}"
           maxlength="2"
           name="noOfLivingChild"
           formControlName="noOfLivingChild"
@@ -164,15 +164,15 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.ageatmenarche
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           allowText="number"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
-              ?.ageatmenarche
-          }}"
           maxlength="2"
           name="menarche_Age"
           formControlName="menarche_Age"
@@ -203,16 +203,16 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.lengthofMenstrualCycle
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           allowText="number"
           name="menstrualCycleLength"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
-              ?.lengthofMenstrualCycle
-          }}"
           maxlength="2"
           formControlName="menstrualCycleLength"
           (change)="checkLengthMenstrualCycle($event)" />
@@ -221,15 +221,15 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.menstrualFlowduration
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           allowText="number"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
-              ?.menstrualFlowduration
-          }}"
           maxlength="2"
           name="menstrualFlowDuration"
           formControlName="menstrualFlowDuration"
@@ -239,12 +239,12 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.typeofFlow
+        }}</mat-label>
         <mat-select
           class="input-full-width"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
-              ?.typeofFlow
-          }}"
           name="menstrualFlowType"
           formControlName="menstrualFlowType">
           <mat-option
@@ -298,15 +298,15 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.ageAtmenopause
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
           allowText="number"
-          placeholder="{{
-            currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
-              ?.ageAtmenopause
-          }}"
           maxlength="2"
           name="menopauseAge"
           formControlName="menopauseAge"

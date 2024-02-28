@@ -19,11 +19,13 @@
   <div>
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.pncData?.placeofDelivery
+        }}</mat-label>
         <mat-select
           class="select-full-width"
           name="placeOfDelivery"
           formControlName="placeOfDelivery"
-          placeholder="{{ currentLanguageSet?.pncData?.placeofDelivery }}"
           (selectionChange)="resetOtherPlaceOfDelivery()">
           <mat-option
             *ngFor="let place of masterData?.deliveryPlaces"
@@ -38,13 +40,13 @@
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="placeOfDelivery?.deliveryPlace === 'Other'">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric?.others
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
-          placeholder="{{
-            currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric?.others
-          }}"
           maxlength="50"
           allowText="alphabet"
           formControlName="otherPlaceOfDelivery"
@@ -54,11 +56,11 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{ currentLanguageSet?.pncData?.typeofDelivery }}</mat-label>
         <mat-select
           class="select-full-width"
           name="typeOfDelivery"
-          formControlName="typeOfDelivery"
-          placeholder="{{ currentLanguageSet?.pncData?.typeofDelivery }}">
+          formControlName="typeOfDelivery">
           <mat-option
             *ngFor="let deliveryType of selectDeliveryTypes"
             [disabled]="!perinatalHistoryForm.value.placeOfDelivery"
@@ -71,14 +73,14 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.perinatal_OPD
+            ?.complicationatBirth
+        }}</mat-label>
         <mat-select
           class="select-full-width"
           name="complicationAtBirth"
           formControlName="complicationAtBirth"
-          placeholder="{{
-            currentLanguageSet?.historyData?.opdNCDPNCHistory?.perinatal_OPD
-              ?.complicationatBirth
-          }}"
           (selectionChange)="resetOtherComplicationAtBirth()">
           <mat-option
             *ngFor="let birthComplication of masterData?.birthComplications"
@@ -93,13 +95,13 @@
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="complicationAtBirth?.complicationValue === 'Other'">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric?.others
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
-          placeholder="{{
-            currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric?.others
-          }}"
           maxlength="50"
           allowText="alphaspace"
           name="otherComplicationAtBirth"
@@ -109,14 +111,14 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.perinatal_OPD
+            ?.gestation
+        }}</mat-label>
         <mat-select
           class="select-full-width"
           name="gestation"
-          formControlName="gestation"
-          placeholder="{{
-            currentLanguageSet?.historyData?.opdNCDPNCHistory?.perinatal_OPD
-              ?.gestation
-          }}">
+          formControlName="gestation">
           <mat-option
             *ngFor="let gestation of masterData?.gestation"
             [value]="gestation.name"
@@ -128,14 +130,14 @@
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.perinatal_OPD
+            ?.birthWeight
+        }}</mat-label>
         <input
           autocomplete="off"
           matInput
           appDefaultNull
-          placeholder="{{
-            currentLanguageSet?.historyData?.opdNCDPNCHistory?.perinatal_OPD
-              ?.birthWeight
-          }}"
           maxlength="4"
           allowText="decimal"
           name="birthWeight_kg"

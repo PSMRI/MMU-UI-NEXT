@@ -10,9 +10,7 @@
           color="primary"
           (change)="checked($event, item)"
           [disabled]="isDoctor">
-          {{
-            diseaseFormsGroup.controls['diseaseFormsArray'].value?.diseaseName
-          }}
+          {{ item.value.diseaseName }}
         </mat-checkbox>
       </ng-container>
     </div>

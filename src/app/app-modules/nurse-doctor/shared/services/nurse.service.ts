@@ -497,7 +497,7 @@ export class NurseService {
     visitCategory: any
   ): Observable<any> {
     if (visitCategory == 'ANC') {
-      return of({
+      const visitDeatilsData: any = {
         visitDetails: this.postPatientVisitDetails(
           patientVisitForm.controls.patientVisitDetailsForm.value,
           patientVisitForm.controls.patientFileUploadDetailsForm.value
@@ -514,10 +514,11 @@ export class NurseService {
           patientVisitForm.controls.patientInvestigationsForm.value,
           benVisitID
         ),
-      });
+      };
+      return visitDeatilsData;
     }
     if (visitCategory == 'General OPD') {
-      return of({
+      const visitDeatilsData: any = {
         visitDetails: this.postPatientVisitDetails(
           patientVisitForm.controls.patientVisitDetailsForm.value,
           patientVisitForm.controls.patientFileUploadDetailsForm.value
@@ -526,10 +527,11 @@ export class NurseService {
           patientVisitForm.controls.patientChiefComplaintsForm.value.complaints,
           benVisitID
         ),
-      });
+      };
+      return visitDeatilsData;
     }
     if (visitCategory == 'PNC') {
-      return of({
+      const visitDeatilsData: any = {
         visitDetails: this.postPatientVisitDetails(
           patientVisitForm.controls.patientVisitDetailsForm.value,
           patientVisitForm.controls.patientFileUploadDetailsForm.value
@@ -538,10 +540,11 @@ export class NurseService {
           patientVisitForm.controls.patientChiefComplaintsForm.value.complaints,
           benVisitID
         ),
-      });
+      };
+      return visitDeatilsData;
     }
     if (visitCategory == 'NCD care') {
-      return of({
+      const visitDeatilsData: any = {
         visitDetails: this.postPatientVisitDetails(
           patientVisitForm.controls.patientVisitDetailsForm.value,
           patientVisitForm.controls.patientFileUploadDetailsForm.value
@@ -554,10 +557,11 @@ export class NurseService {
           patientVisitForm.controls.patientInvestigationsForm.value,
           benVisitID
         ),
-      });
+      };
+      return visitDeatilsData;
     }
     if (visitCategory == 'COVID-19 Screening') {
-      return of({
+      const visitDeatilsData: any = {
         visitDetails: this.postPatientVisitDetails(
           patientVisitForm.controls.patientVisitDetailsForm.value,
           patientVisitForm.controls.patientFileUploadDetailsForm.value
@@ -566,10 +570,11 @@ export class NurseService {
           patientVisitForm.controls.patientCovidForm.value,
           benVisitID
         ),
-      });
+      };
+      return visitDeatilsData;
     }
     if (visitCategory == 'NCD screening') {
-      return of({
+      const visitDeatilsData: any = {
         visitDetails: this.postPatientVisitDetails(
           patientVisitForm.controls.patientVisitDetailsForm.value,
           patientVisitForm.controls.patientFileUploadDetailsForm.value
@@ -578,7 +583,8 @@ export class NurseService {
           patientVisitForm.controls.patientChiefComplaintsForm.value.complaints,
           benVisitID
         ),
-      });
+      };
+      return visitDeatilsData;
     }
     return new Observable(observer => {
       observer.complete();
@@ -591,7 +597,7 @@ export class NurseService {
       providerServiceMapID: localStorage.getItem('providerServiceID'),
       createdBy: localStorage.getItem('userName'),
     });
-    // console.log('visit details', JSON.stringify(patientVisitDetails, null, 4));
+    console.log('visit details', JSON.stringify(patientVisitDetails, null, 4));
     return patientVisitDetails;
   }
 
@@ -713,7 +719,7 @@ export class NurseService {
     visitCategory: any
   ): Observable<any> {
     if (visitCategory == 'ANC') {
-      return of({
+      const examDetailsData: any = {
         generalExamination: this.postGeneralExaminationForm(
           patientExaminationForm.generalExaminationForm,
           benVisitID
@@ -751,11 +757,12 @@ export class NurseService {
             .obstetricExaminationForANCForm,
           benVisitID
         ),
-      });
+      };
+      return examDetailsData;
     }
 
     if (visitCategory == 'General OPD') {
-      return of({
+      const examDetailsData: any = {
         generalExamination: this.postGeneralExaminationForm(
           patientExaminationForm.generalExaminationForm,
           benVisitID
@@ -793,11 +800,12 @@ export class NurseService {
             .genitoUrinarySystemForm,
           benVisitID
         ),
-      });
+      };
+      return examDetailsData;
     }
 
     if (visitCategory == 'PNC') {
-      return of({
+      const examDetailsData: any = {
         generalExamination: this.postGeneralExaminationForm(
           patientExaminationForm.generalExaminationForm,
           benVisitID
@@ -835,7 +843,8 @@ export class NurseService {
             .genitoUrinarySystemForm,
           benVisitID
         ),
-      });
+      };
+      return examDetailsData;
     }
     return new Observable(observer => {
       observer.complete();

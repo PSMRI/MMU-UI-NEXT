@@ -9,9 +9,9 @@
     </div>
 
     <div class="col-xs-6 custom-cell">
+      <mat-label>{{ currentLanguageSet?.common?.select }}</mat-label>
       <mat-select
         floatPlaceholder="never"
-        placeholder="{{ currentLanguageSet?.common?.select }}"
         name="limitedMouthOpening"
         formControlName="limitedMouthOpening">
         <mat-option value="none"> None </mat-option>
@@ -60,10 +60,10 @@
     <div
       class="col-xs-6 custom-cell"
       *ngIf="premalignantLesions && premalignantLesions.value">
+      <mat-label>{{ currentLanguageSet?.common?.select }}</mat-label>
       <mat-select
         multiple
         floatPlaceholder="never"
-        placeholder="{{ currentLanguageSet?.common?.select }}"
         name="preMalignantLesionTypeList"
         id="preMalignantLesionTypeList"
         formControlName="preMalignantLesionTypeList">
@@ -93,16 +93,16 @@
       class="col-xs-6 custom-cell other"
       *ngIf="premalignantLesions && premalignantLesions.value && showOther">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.oral
+            ?.otherlesion
+        }}</mat-label>
         <input
           autocomplete="off"
           allowText="textAreaValidator"
           matInput
           defaultNull
           maxlength="50"
-          placeholder="{{
-            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
-              ?.oral?.otherlesion
-          }}"
           name="otherLesionType"
           id="otherLesionType"
           formControlName="otherLesionType" />
@@ -178,6 +178,10 @@
 
   <div class="col-xs-12 textarea-full-height">
     <mat-form-field class="form-textarea col-xs-12">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+          ?.abdominal?.observation
+      }}</mat-label>
       <textarea
         matInput
         allowText="textAreaValidator"
@@ -185,11 +189,7 @@
         maxlength="500"
         matTextareaAutosize
         name="observation"
-        formControlName="observation"
-        placeholder="{{
-          currentLanguageSet?.ExaminationData?.cancerScreeningExamination
-            ?.abdominal?.observation
-        }}"></textarea>
+        formControlName="observation"></textarea>
     </mat-form-field>
   </div>
 </div>

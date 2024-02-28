@@ -39,14 +39,14 @@
         <div *ngIf="!familyDisease.value.deleted" class="multi-row-select">
           <div class="col-xs-12 col-sm-6 col-md-3 box">
             <mat-form-field>
+              <mat-label>{{
+                currentLanguageSet?.historyData?.ancHistory
+                  ?.familyHistoryDataANC_OPD_NCD_PNC?.diseaseType
+              }}</mat-label>
               <mat-select
                 class="select-full-width"
                 name="diseaseType"
                 formControlName="diseaseType"
-                placeholder="{{
-                  currentLanguageSet?.historyData?.ancHistory
-                    ?.familyHistoryDataANC_OPD_NCD_PNC?.diseaseType
-                }}"
                 (selectionnChange)="
                   filterFamilyDiseaseList($event, i, familyDisease)
                 "
@@ -64,14 +64,14 @@
             class="col-xs-12 col-sm-6 col-md-3 box"
             *ngIf="familyDisease.value.diseaseType?.diseaseType === 'Other'">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
+                  ?.others
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
                 appDefaultNull
-                placeholder="{{
-                  currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
-                    ?.others
-                }}"
                 maxlength="50"
                 allowText="alphaspace"
                 name="otherDiseaseType"
@@ -81,13 +81,13 @@
 
           <div class="col-xs-12 col-sm-6 col-md-3 box" [hidden]="true">
             <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
+                  ?.sctCode
+              }}</mat-label>
               <input
                 maxlength="100"
                 matInput
-                placeholder="{{
-                  currentLanguageSet?.historyData?.opdNCDPNCHistory
-                    ?.otherVaccine?.sctCode
-                }}"
                 [style.width]="'100%'"
                 formControlName="snomedCode"
                 readonly />
@@ -96,15 +96,15 @@
 
           <div class="col-xs-12 col-sm-6 col-md-3 box">
             <mat-form-field>
+              <mat-label>{{
+                currentLanguageSet?.historyData?.ancHistory
+                  ?.familyHistoryDataANC_OPD_NCD_PNC?.familyMember
+              }}</mat-label>
               <mat-select
                 class="select-full-width"
                 multiple
                 name="familyMembers"
                 formControlName="familyMembers"
-                placeholder="{{
-                  currentLanguageSet?.historyData?.ancHistory
-                    ?.familyHistoryDataANC_OPD_NCD_PNC?.familyMember
-                }}"
                 [disabled]="
                   !familyDisease.value.diseaseType ||
                   familyDisease.value.diseaseType?.diseaseType === 'None'
@@ -167,15 +167,15 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 box" *ngIf="isGeneticDisorder">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.historyData?.ancHistory
+                ?.familyHistoryDataANC_OPD_NCD_PNC?.geneticDisorders
+            }}</mat-label>
             <input
               autocomplete="off"
               allowText="inputFieldValidator"
               matInput
               appDefaultNull
-              placeholder="{{
-                currentLanguageSet?.historyData?.ancHistory
-                  ?.familyHistoryDataANC_OPD_NCD_PNC?.geneticDisorders
-              }}"
               maxlength="50"
               name="geneticDisorder"
               formControlName="geneticDisorder" />

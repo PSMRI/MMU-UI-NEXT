@@ -176,8 +176,8 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   labResults: any = [];
-  radiologyResults = [];
-  archivedResults = [];
+  radiologyResults: any = [];
+  archivedResults: any = [];
   testResultsSubscription: any;
   getTestResults(beneficiaryRegID: any, visitID: any, visitCategory: any) {
     this.testResultsSubscription = this.doctorService
@@ -245,7 +245,7 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
       itemsPerPage: this.currentLabRowsPerPage,
     });
   }
-  currentLabPagedList = [];
+  currentLabPagedList: any = [];
   currentLabPageChanged(event: any): void {
     console.log('called', event);
     const startItem = (event.page - 1) * event.itemsPerPage;
@@ -272,25 +272,25 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
     );
     ViewTestReport.afterClosed().subscribe(result => {
       if (result) {
-        // this.labService.viewFileContent(result).subscribe((res: any) => {
-        //   const blob = new Blob([res], { type: res.type });
-        //   console.log(blob, 'blob');
-        //   const url = window.URL.createObjectURL(blob);
-        //   // window.open(url);
-        //   let a = document.createElement('a');
-        //   a.href = url;
-        //   a.download = result.fileName;
-        //   document.body.appendChild(a);
-        //   a.click();
-        //   document.body.removeChild(a);
-        // });
+        this.labService.viewFileContent(result).subscribe((res: any) => {
+          const blob = new Blob([res], { type: res.type });
+          console.log(blob, 'blob');
+          const url = window.URL.createObjectURL(blob);
+          // window.open(url);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = result.fileName;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        });
       }
     });
   }
   enableArchiveView: boolean = false;
-  archivedLabResults = [];
+  archivedLabResults: any = [];
   filteredArchivedLabResults: any = [];
-  archivedRadiologyResults = [];
+  archivedRadiologyResults: any = [];
   visitedDate: any;
   visitCode: any;
   showArchivedTestResult(visitCode: any) {
@@ -342,7 +342,7 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
     });
   }
 
-  previousLabPagedList = [];
+  previousLabPagedList: any = [];
   previousLabPageChanged(event: any): void {
     console.log('called', event);
     const startItem = (event.page - 1) * event.itemsPerPage;

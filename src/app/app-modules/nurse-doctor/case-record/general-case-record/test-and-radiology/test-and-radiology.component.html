@@ -1,14 +1,14 @@
-<!-- <mat-tab-group>
+<mat-tab-group>
   <mat-tab label="{{ current_language_set?.Reports?.labtestreports }}">
     <div *ngIf="labResults?.length > 0" class="m-t-20">
       <mat-form-field id="filterbox" class="pull-right">
         <input
           autocomplete="off"
-          matInput
+          mdInput
           placeholder="{{ current_language_set?.labTechnicianData?.testName }}"
           #filterTerm
           (keyup)="filterProcedures(filterTerm.value)" />
-        <mat-icon matSuffix>search</mat-icon>
+        <mat-icon mdSuffix>search</mat-icon>
       </mat-form-field>
     </div>
 
@@ -16,293 +16,260 @@
 
     <section class="m-t-20 overflow">
       <table
-        class="table table-bordered"
-        mat-table
-        [dataSource]="dataSource"
+        class="table table-responsive table-bordered"
         aria-describedby="labTechnician">
-        <ng-container matColumnDef="date">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
-            {{ current_language_set?.common?.date }}
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element?.createdDate | date: 'dd/MM/yyyy, h:mm a' }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="testName">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
-            {{ current_language_set?.labTechnicianData?.testName }}
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element?.procedureName }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="componentName">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
-            {{ current_language_set?.labTechnicianData?.componentName }}
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element?.procedureName }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="result">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
-            {{ current_language_set?.labTechnicianData?.result }}
-          </th>
-          <td
-            *ngIf="!element?.componentName?.includes('ECG')"
-            style="width: 110px; word-break: normal; vertical-align: middle"
-            mat-cell
-            *matCellDef="let element">
-            {{ element?.testResultValue }}
-          </td>
-          <td
-            *ngIf="
-              element?.componentName?.includes('ECG') &&
-              element?.testResultValue !== 'Abnormal'
-            "
-            style="width: 110px; word-break: normal; vertical-align: middle">
-            {{ element?.testResultValue }}
-          </td>
-          <td
-            *ngIf="
-              element?.componentName?.includes('ECG') &&
-              element?.testResultValue === 'Abnormal'
-            "
-            style="width: 110px; word-break: normal; vertical-align: middle">
-            {{ element?.testResultValue }} -
-            {{ element?.ecgAbnormalities.join(',') }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="measurementUnit">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
-            {{ current_language_set?.labTechnicianData?.measurementUnit }}
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element?.testResultUnit }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="remarks">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
-            {{ current_language_set?.common?.remarks }}
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ element?.remarks }}
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <thead>
+          <tr>
+            <th style="width: 20%" id="date">
+              {{ current_language_set?.common?.date }}
+            </th>
+            <th style="width: 15%" id="testName">
+              {{ current_language_set?.labTechnicianData?.testName }}
+            </th>
+            <th style="width: 20%" id="componentName">
+              {{ current_language_set?.labTechnicianData?.componentName }}
+            </th>
+            <th style="width: 20%" id="result">
+              {{ current_language_set?.common?.result }}
+            </th>
+            <th style="width: 10%" id="measurementUnit">
+              {{ current_language_set?.labTechnicianData?.measurementUnit }}
+            </th>
+            <th style="width: 20%" id="remarks">
+              {{ current_language_set?.common?.remarks }}
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngIf="filteredLabResults?.length === 0">
+          <tr>
+            <td colspan="6">
+              <h4 class="norecord">
+                {{ current_language_set?.Reports?.notestresultsfound }}
+              </h4>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="filteredLabResults?.length > 0">
+          <ng-container *ngFor="let test of currentLabPagedList; let i = index">
+            <tr>
+              <td
+                [attr.rowspan]="test?.componentList.length + 1"
+                style="
+                  max-width: 100px;
+                  vertical-align: middle;
+                  border: 1px solid #ddd;
+                ">
+                {{ test?.createdDate | date: 'dd/MM/yyyy, h:mm a' }}
+              </td>
+              <td
+                [attr.rowspan]="test?.componentList.length + 1"
+                style="
+                  max-width: 200px;
+                  word-break: normal;
+                  vertical-align: middle;
+                  border: 1px solid #ddd;
+                ">
+                {{ test?.procedureName }}
+              </td>
+            </tr>
+            <tr *ngFor="let component of test?.componentList">
+              <td
+                style="
+                  width: 300px;
+                  max-width: 120px;
+                  word-break: normal;
+                  vertical-align: middle;
+                ">
+                {{ component?.componentName }}
+              </td>
+              <td
+                *ngIf="!component?.componentName?.includes('ECG')"
+                style="
+                  width: 110px;
+                  word-break: normal;
+                  vertical-align: middle;
+                ">
+                {{ component?.testResultValue }}
+              </td>
+              <td
+                *ngIf="
+                  component?.componentName?.includes('ECG') &&
+                  component?.testResultValue !== 'Abnormal'
+                "
+                style="
+                  width: 110px;
+                  word-break: normal;
+                  vertical-align: middle;
+                ">
+                {{ component?.testResultValue }}
+              </td>
+              <td
+                *ngIf="
+                  component?.componentName?.includes('ECG') &&
+                  component?.testResultValue === 'Abnormal'
+                "
+                style="
+                  width: 110px;
+                  word-break: normal;
+                  vertical-align: middle;
+                ">
+                {{ component?.testResultValue }} -
+                {{ component?.ecgAbnormalities.join(',') }}
+              </td>
+              <td
+                style="
+                  width: 150px;
+                  word-break: normal;
+                  vertical-align: middle;
+                ">
+                {{ component?.testResultUnit }}
+              </td>
+              <td
+                style="
+                  max-width: 150px;
+                  word-break: normal;
+                  vertical-align: middle;
+                ">
+                {{ component?.remarks }}
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+        <tfoot>
+          <tr *ngIf="filteredLabResults?.length > 0">
+            <td colspan="2">
+              <div class="totalCount">
+                {{ current_language_set?.common?.totalCount }} :
+                {{ filteredLabResults.length }}
+              </div>
+            </td>
+            <td colspan="7">
+              <mat-paginator
+                class="pull-right"
+                (pageChanged)="currentLabPageChanged($event)"
+                *ngIf="filteredLabResults.length"
+                previousText="&lsaquo;"
+                nextText="&rsaquo;"
+                firstText="&laquo;"
+                lastText="&raquo;"></mat-paginator>
+            </td>
+          </tr>
+        </tfoot>
       </table>
-      <div
-        class="pull-center"
-        style="margin-top: 5px"
-        [hidden]="dataSource.data.length > 0">
-        <strong>{{ current_language_set?.noRecordsFound }}</strong>
-      </div>
-      <mat-paginator
-        [pageSizeOptions]="[5, 10, 20]"
-        [pageSize]="5"
-        showFirstLastButtons
-        aria-label="Select patient in doctorWorklist">
-      </mat-paginator>
     </section>
   </mat-tab>
 
   <mat-tab label="{{ current_language_set?.Reports?.radiologyreports }}">
     <div class="m-t-20 overflow">
       <table
-        class="table table-bordered"
-        mat-table
-        [dataSource]="dataSource"
+        class="table table-responsive table-bordered"
         aria-describedby="testResults">
-        <ng-container matColumnDef="testName">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
+        <tr>
+          <th style="width: 20%" id="testName">
             {{ current_language_set?.labTechnicianData?.testName }}
           </th>
-          <td mat-cell *matCellDef="let element">
-            {{ radiologyReport.procedureName }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="componentName">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
+          <th style="width: 20%" id="componentName">
             {{ current_language_set?.labTechnicianData?.componentName }}
           </th>
-          <td
-            mat-cell
-            *matCellDef="let element"
-            style="
-              width: 300px;
-              max-width: 120px;
-              word-break: normal;
-              vertical-align: middle;
-            ">
-            {{ test?.componentName }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="remarks">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
+          <th style="width: 20%" id="remarks">
             {{ current_language_set?.common?.remarks }}
           </th>
-          <td
-            mat-cell
-            *matCellDef="let element"
-            style="
-              max-width: 150px;
-              word-break: normal;
-              vertical-align: middle;
-            ">
-            {{ test?.remarks }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="report">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
+          <th style="width: 20%" id="report">
             {{ current_language_set?.common?.report }}
           </th>
-          <td
-            mat-cell
-            *matCellDef="let element"
-            style="
-              max-width: 150px;
-              word-break: normal;
-              vertical-align: middle;
-            ">
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="showTestResult(test.fileIDs)">
-              {{ current_language_set?.nurseData?.visitDetailsForm?.viewFiles }}
-            </button>
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </tr>
+        <tbody *ngIf="radiologyResults?.length === 0">
+          <tr>
+            <td colspan="4">
+              <h4 class="norecord">
+                {{ current_language_set?.Reports?.noradiologyreportsfound }}
+              </h4>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="radiologyResults?.length > 0">
+          <ng-container
+            *ngFor="let radiologyReport of radiologyResults; let i = index">
+            <tr>
+              <td [attr.rowspan]="radiologyReport?.componentList.length + 1">
+                {{ radiologyReport.procedureName }}
+              </td>
+            </tr>
+            <tr *ngFor="let test of radiologyReport?.componentList">
+              <td
+                style="
+                  width: 300px;
+                  max-width: 120px;
+                  word-break: normal;
+                  vertical-align: middle;
+                ">
+                {{ test?.componentName }}
+              </td>
+              <td
+                style="
+                  max-width: 150px;
+                  word-break: normal;
+                  vertical-align: middle;
+                ">
+                {{ test?.remarks }}
+              </td>
+              <td
+                style="
+                  max-width: 150px;
+                  word-break: normal;
+                  vertical-align: middle;
+                ">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="showTestResult(test.fileIDs)">
+                  {{
+                    current_language_set?.nurseData?.visitDetailsForm?.viewFiles
+                  }}
+                </button>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
       </table>
-      <div
-        class="pull-center"
-        style="margin-top: 5px"
-        [hidden]="dataSource.data.length > 0">
-        <strong>{{ current_language_set?.noRecordsFound }}</strong>
-      </div>
-      <mat-paginator
-        [pageSizeOptions]="[5, 10, 20]"
-        [pageSize]="5"
-        showFirstLastButtons
-        aria-label="Select patient in doctorWorklist">
-      </mat-paginator>
     </div>
   </mat-tab>
 
   <mat-tab label="{{ current_language_set?.Reports?.archivedreports }}">
     <div class="m-t-20 overflow">
       <table
-        class="table table-bordered"
-        mat-table
-        [dataSource]="dataSource"
+        class="table table-responsive table-bordered"
         aria-describedby="visitCode">
-        <ng-container matColumnDef="date">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
-            {{ current_language_set?.casesheet?.date }}
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ archivedReport.date | date: 'dd/MM/yyyy' }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="visitcode">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
-            {{ current_language_set?.Reports?.visitcode }}
-          </th>
-          <td mat-cell *matCellDef="let element">
-            {{ archivedReport.visitCode }}
-          </td>
-        </ng-container>
-
-        <ng-container matColumnDef="view">
-          <th
-            mat-header-cell
-            style="border-bottom: none"
-            *matHeaderCellDef
-            mat-sort-header>
-            {{ current_language_set?.Reports?.view }}
-          </th>
-          <td mat-cell *matCellDef="let element">
-            <em
-              class="material-icons cursorPointer"
-              (click)="showArchivedTestResult(archivedReport)"
-              >visibility</em
-            >
-          </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr>
+          <th id="date">{{ current_language_set?.casesheet?.date }}</th>
+          <th id="visitcode">{{ current_language_set?.Reports?.visitcode }}</th>
+          <th id="view">{{ current_language_set?.Reports?.view }}</th>
+        </tr>
+        <tbody *ngIf="archivedResults?.length === 0">
+          <tr>
+            <td colspan="3">
+              <h4 class="norecord">
+                {{ current_language_set?.Reports?.noarchivedreportsfound }}
+              </h4>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="archivedResults?.length > 0">
+          <tr *ngFor="let archivedReport of archivedResults">
+            <td>{{ archivedReport.date | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ archivedReport.visitCode }}</td>
+            <td>
+              <!-- eslint-disable-next-line  @angular-eslint/template/click-events-have-key-events -->
+              <em
+                class="material-icons cursorPointer"
+                tabindex="{0}"
+                (click)="showArchivedTestResult(archivedReport)"
+                >visibility</em
+              >
+            </td>
+          </tr>
+        </tbody>
       </table>
-      <div
-        class="pull-center"
-        style="margin-top: 5px"
-        [hidden]="dataSource.data.length > 0">
-        <strong>{{ current_language_set?.noRecordsFound }}</strong>
-      </div>
-      <mat-paginator
-        [pageSizeOptions]="[5, 10, 20]"
-        [pageSize]="5"
-        showFirstLastButtons
-        aria-label="Select patient in doctorWorklist">
-      </mat-paginator>
     </div>
     <div *ngIf="enableArchiveView">
       <div class="m-t-20">
@@ -326,13 +293,13 @@
           <mat-form-field id="filterbox" class="pull-right">
             <input
               autocomplete="off"
-              matInput
+              mdInput
               placeholder="{{
                 current_language_set?.labTechnicianData.testName
               }}"
               #filterTerm
               (keyup)="filterArchivedProcedures(filterTerm.value)" />
-            <mat-icon matSuffix>search</mat-icon>
+            <mat-icon mdSuffix>search</mat-icon>
           </mat-form-field>
         </div>
       </div>
@@ -341,153 +308,147 @@
 
       <section class="m-t-20 overflow">
         <table
-          class="table table-bordered"
-          mat-table
-          [dataSource]="dataSource"
+          class="table table-responsive table-bordered"
           aria-describedby="componentDetails">
-          <ng-container matColumnDef="date1">
-            <th
-              mat-header-cell
-              style="border-bottom: none"
-              *matHeaderCellDef
-              mat-sort-header>
-              {{ current_language_set?.common?.date }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              style="
-                max-width: 100px;
-                vertical-align: middle;
-                border: 1px solid #ddd;
-              ">
-              {{ test?.createdDate | date: 'dd/MM/yyyy, h:mm a' }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="testName1">
-            <th
-              mat-header-cell
-              style="border-bottom: none"
-              *matHeaderCellDef
-              mat-sort-header>
-              {{ current_language_set?.labTechnicianData?.testName }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              style="
-                max-width: 200px;
-                word-break: normal;
-                vertical-align: middle;
-                border: 1px solid #ddd;
-              ">
-              {{ test?.procedureName }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="componentName1">
-            <th
-              mat-header-cell
-              style="border-bottom: none"
-              *matHeaderCellDef
-              mat-sort-header>
-              {{ current_language_set?.labTechnicianData?.componentName }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              style="
-                max-width: 200px;
-                word-break: normal;
-                vertical-align: middle;
-                border: 1px solid #ddd;
-              ">
-              {{ component?.componentName }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="result1">
-            <th
-              mat-header-cell
-              style="border-bottom: none"
-              *matHeaderCellDef
-              mat-sort-header>
-              {{ current_language_set?.common?.result }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              *ngIf="!component?.componentName?.includes('ECG')"
-              style="width: 110px; word-break: normal; vertical-align: middle">
-              {{ component?.testResultValue }}
-            </td>
-
-            <td
-              *ngIf="
-                component?.componentName?.includes('ECG') &&
-                component?.testResultValue !== 'Abnormal'
-              "
-              style="width: 110px; word-break: normal; vertical-align: middle">
-              {{ component?.testResultValue }}
-            </td>
-            <td
-              *ngIf="
-                component?.componentName?.includes('ECG') &&
-                component?.testResultValue === 'Abnormal'
-              "
-              style="width: 110px; word-break: normal; vertical-align: middle">
-              {{ component?.testResultValue }} -
-              {{ component?.ecgAbnormalities.join(',') }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="measurementUnit1">
-            <th
-              mat-header-cell
-              style="border-bottom: none"
-              *matHeaderCellDef
-              mat-sort-header>
-              {{ current_language_set?.labTechnicianData?.measurementUnit }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              style="width: 150px; word-break: normal; vertical-align: middle">
-              {{ component?.testResultUnit }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="remarks1">
-            <th
-              mat-header-cell
-              style="border-bottom: none"
-              *matHeaderCellDef
-              mat-sort-header>
-              {{ current_language_set?.common?.remarks }}
-            </th>
-            <td
-              mat-cell
-              *matCellDef="let element"
-              style="width: 150px; word-break: normal; vertical-align: middle">
-              {{ component?.remarks }}
-            </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          <thead>
+            <tr>
+              <th style="width: 20%" id="date1">
+                {{ current_language_set?.common?.date }}
+              </th>
+              <th style="width: 20%" id="testName1">
+                {{ current_language_set?.labTechnicianData?.testName }}
+              </th>
+              <th style="width: 20%" id="componentName1">
+                {{ current_language_set?.labTechnicianData?.componentName }}
+              </th>
+              <th style="width: 10%" id="result1">
+                {{ current_language_set?.common?.result }}
+              </th>
+              <th style="width: 10%" id="measurementUnit1">
+                {{ current_language_set?.labTechnicianData?.measurementUnit }}
+              </th>
+              <th style="width: 20%" id="remarks1">
+                {{ current_language_set?.common?.remarks }}
+              </th>
+            </tr>
+          </thead>
+          <tbody *ngIf="filteredArchivedLabResults?.length === 0">
+            <tr>
+              <td colspan="6">
+                <h4 class="norecord">
+                  {{ current_language_set?.Reports?.notestresultsfound }}
+                </h4>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="filteredArchivedLabResults?.length > 0">
+            <ng-container
+              *ngFor="let test of previousLabPagedList; let i = index">
+              <tr>
+                <td
+                  [attr.rowspan]="test?.componentList.length + 1"
+                  style="
+                    max-width: 100px;
+                    vertical-align: middle;
+                    border: 1px solid #ddd;
+                  ">
+                  {{ test?.createdDate | date: 'dd/MM/yyyy, h:mm a' }}
+                </td>
+                <td
+                  [attr.rowspan]="test?.componentList.length + 1"
+                  style="
+                    max-width: 200px;
+                    word-break: normal;
+                    vertical-align: middle;
+                    border: 1px solid #ddd;
+                  ">
+                  {{ test?.procedureName }}
+                </td>
+              </tr>
+              <tr *ngFor="let component of test?.componentList">
+                <td
+                  style="
+                    width: 300px;
+                    max-width: 120px;
+                    word-break: normal;
+                    vertical-align: middle;
+                  ">
+                  {{ component?.componentName }}
+                </td>
+                <td
+                  *ngIf="!component?.componentName?.includes('ECG')"
+                  style="
+                    width: 110px;
+                    word-break: normal;
+                    vertical-align: middle;
+                  ">
+                  {{ component?.testResultValue }}
+                </td>
+                <td
+                  *ngIf="
+                    component?.componentName?.includes('ECG') &&
+                    component?.testResultValue !== 'Abnormal'
+                  "
+                  style="
+                    width: 110px;
+                    word-break: normal;
+                    vertical-align: middle;
+                  ">
+                  {{ component?.testResultValue }}
+                </td>
+                <td
+                  *ngIf="
+                    component?.componentName?.includes('ECG') &&
+                    component?.testResultValue === 'Abnormal'
+                  "
+                  style="
+                    width: 110px;
+                    word-break: normal;
+                    vertical-align: middle;
+                  ">
+                  {{ component?.testResultValue }} -
+                  {{ component?.ecgAbnormalities.join(',') }}
+                </td>
+                <td
+                  style="
+                    width: 150px;
+                    word-break: normal;
+                    vertical-align: middle;
+                  ">
+                  {{ component?.testResultUnit }}
+                </td>
+                <td
+                  style="
+                    max-width: 150px;
+                    word-break: normal;
+                    vertical-align: middle;
+                  ">
+                  {{ component?.remarks }}
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+          <tfoot>
+            <tr *ngIf="filteredArchivedLabResults.length > 0">
+              <td colspan="2">
+                <div class="totalCount">
+                  {{ current_language_set?.common?.totalCount }} :
+                  {{ filteredArchivedLabResults.length }}
+                </div>
+              </td>
+              <td colspan="7">
+                <mat-paginator
+                  class="pull-right"
+                  (pageChanged)="previousLabPageChanged($event)"
+                  *ngIf="filteredArchivedLabResults.length"
+                  previousText="&lsaquo;"
+                  nextText="&rsaquo;"
+                  firstText="&laquo;"
+                  lastText="&raquo;"></mat-paginator>
+              </td>
+            </tr>
+          </tfoot>
         </table>
-        <div
-          class="pull-center"
-          style="margin-top: 5px"
-          [hidden]="dataSource.data.length > 0">
-          <strong>{{ current_language_set?.noRecordsFound }}</strong>
-        </div>
-        <mat-paginator
-          [pageSizeOptions]="[5, 10, 20]"
-          [pageSize]="5"
-          showFirstLastButtons
-          aria-label="Select patient in doctorWorklist">
-        </mat-paginator>
       </section>
       <div>
         <div class="m-t-20">
@@ -512,64 +473,40 @@
         <div class="clearfix"></div>
         <div class="m-t-20 overflow">
           <table
-            class="table table-bordered"
-            mat-table
-            [dataSource]="dataSource"
+            class="table table-responsive table-bordered"
             aria-describedby="archivedRadiologyResultTbl">
-            <ng-container matColumnDef="testName3">
-              <th
-                mat-header-cell
-                style="border-bottom: none"
-                *matHeaderCellDef
-                mat-sort-header>
+            <tr>
+              <th id="testName3">
                 {{ current_language_set?.labTechnicianData?.testName }}
               </th>
-              <td
-                mat-cell
-                *matCellDef="let element"
-                style="
-                  width: 150px;
-                  word-break: normal;
-                  vertical-align: middle;
-                ">
-                {{ radiologyReport.procedureName }}
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="report3">
-              <th
-                mat-header-cell
-                style="border-bottom: none"
-                *matHeaderCellDef
-                mat-sort-header>
-                {{ current_language_set?.common?.report }}
-              </th>
-              <td mat-cell *matCellDef="let element">
-                <em
-                  class="material-icons"
-                  (click)="showArchivedRadiologyTestResult(radiologyReport)"
-                  >visibility</em
-                >
-              </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+              <th id="report3">{{ current_language_set?.common?.report }}</th>
+            </tr>
+            <tbody *ngIf="archivedRadiologyResults.length === 0">
+              <tr>
+                <td colspan="2">
+                  <h4 class="norecord">
+                    {{ current_language_set?.Reports?.noradiologyreportsfound }}
+                  </h4>
+                </td>
+              </tr>
+            </tbody>
+            <tbody *ngIf="archivedRadiologyResults.length > 0">
+              <tr *ngFor="let radiologyReport of archivedRadiologyResults">
+                <td>{{ radiologyReport.procedureName }}</td>
+                <td>
+                  <!-- eslint-disable-next-line  @angular-eslint/template/click-events-have-key-events -->
+                  <em
+                    class="material-icons"
+                    tabindex="{0}"
+                    (click)="showArchivedRadiologyTestResult(radiologyReport)"
+                    >visibility</em
+                  >
+                </td>
+              </tr>
+            </tbody>
           </table>
-          <div
-            class="pull-center"
-            style="margin-top: 5px"
-            [hidden]="dataSource.data.length > 0">
-            <strong>{{ current_language_set?.noRecordsFound }}</strong>
-          </div>
-          <mat-paginator
-            [pageSizeOptions]="[5, 10, 20]"
-            [pageSize]="5"
-            showFirstLastButtons
-            aria-label="Select patient in doctorWorklist">
-          </mat-paginator>
         </div>
       </div>
     </div>
   </mat-tab>
-</mat-tab-group> -->
+</mat-tab-group>

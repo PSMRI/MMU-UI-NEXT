@@ -219,16 +219,16 @@
       class="col-xs-6 custom-cell"
       *ngIf="lumpInBreast && lumpInBreast.value">
       <mat-form-field class="form-input-text">
+        <mat-label>{{
+          currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+            ?.breast?.lumpSize
+        }}</mat-label>
         <input
           autocomplete="off"
           allowText="inputFieldValidator"
           allowText="inputFieldValidator"
           matInput
           defaultNull
-          placeholder="{{
-            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
-              ?.breast?.lumpSize
-          }}"
           maxlength="100"
           name="lumpSize"
           id="lumpSize"
@@ -248,15 +248,15 @@
       class="col-xs-6 custom-cell"
       *ngIf="lumpInBreast && lumpInBreast.value">
       <mat-form-field class="form-input-text">
+        <mat-label>{{
+          currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+            ?.breast?.lumpShape
+        }}</mat-label>
         <input
           autocomplete="off"
           allowText="inputFieldValidator"
           matInput
           defaultNull
-          placeholder="{{
-            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
-              ?.breast?.lumpShape
-          }}"
           maxlength="100"
           name="lumpShape"
           id="lumpShape"
@@ -276,15 +276,15 @@
       class="col-xs-6 custom-cell"
       *ngIf="lumpInBreast && lumpInBreast.value">
       <mat-form-field class="form-input-text">
+        <mat-label>{{
+          currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+            ?.breast?.lumpTexture
+        }}</mat-label>
         <input
           autocomplete="off"
           allowText="inputFieldValidator"
           matInput
           defaultNull
-          placeholder="{{
-            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
-              ?.breast?.lumpTexture
-          }}"
           maxlength="100"
           name="lumpTexture"
           id="lumpTexture"

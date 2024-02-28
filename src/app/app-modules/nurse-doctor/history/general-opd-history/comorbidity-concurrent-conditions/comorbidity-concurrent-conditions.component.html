@@ -29,12 +29,12 @@
       <ng-container [formGroupName]="i">
         <div class="col-xs-12 col-sm-6 col-md-3 box">
           <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.historyData?.ancHistory
+                ?.combordityANC_OPD_NCD_PNC?.comorbidConditions
+            }}</mat-label>
             <mat-select
               class="select-full-width"
-              placeholder="{{
-                currentLanguageSet?.historyData?.ancHistory
-                  ?.combordityANC_OPD_NCD_PNC?.comorbidConditions
-              }}"
               formControlName="comorbidConditions"
               name="comorbidConditions"
               (selectionChange)="
@@ -61,14 +61,14 @@
               ?.comorbidCondition === 'Other'
           ">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
+                ?.others
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="{{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
-                  ?.others
-              }}"
               maxlength="50"
               allowText="alphaspace"
               name="otherComorbidCondition"
@@ -78,11 +78,13 @@
 
         <div class="col-xs-12 col-sm-6 col-md-2 box">
           <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.DurationData?.duration
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
               appDefaultNull
-              placeholder="{{ currentLanguageSet?.DurationData?.duration }}"
               maxlength="2"
               allowText="number"
               name="timePeriodAgo"
@@ -98,9 +100,11 @@
 
         <div class="col-xs-12 col-sm-6 col-md-2 box">
           <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.DurationData?.durationUnit
+            }}</mat-label>
             <mat-select
               class="select-full-width"
-              placeholder="{{ currentLanguageSet?.DurationData?.durationUnit }}"
               name="timePeriodUnit"
               formControlName="timePeriodUnit"
               [disabled]="

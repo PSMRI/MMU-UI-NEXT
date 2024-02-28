@@ -2,11 +2,11 @@
   <div class="row m-t-10">
     <div class="col-xs-8 col-sm-6 col-md-4">
       <div class="sw">
-        <mat-label>{{ currentLanguageSet?.common?.inTableSearch }}</mat-label>
         <input
           type="search"
           class="search"
           autocomplete="off"
+          placeholder="{{ currentLanguageSet?.common?.inTableSearch }}"
           name="filterTerm"
           [(ngModel)]="filterTerm"
           (keyup)="filterBeneficiaryList(filterTerm)" />
