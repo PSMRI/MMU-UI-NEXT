@@ -19,7 +19,6 @@
           <mat-form-field>
             <mat-label>{{ currentLanguageSet?.ro?.locInfo?.state }}</mat-label>
             <mat-select
-              class="p-t-12 m-t-20"
               [style.width]="'100%'"
               formControlName="stateID"
               [required]="true"
@@ -40,7 +39,6 @@
               currentLanguageSet?.ro?.locInfo?.districtTownCity
             }}</mat-label>
             <mat-select
-              class="p-t-12 m-t-20"
               [style.width]="'100%'"
               [required]="true"
               formControlName="districtID"
@@ -59,7 +57,6 @@
           <mat-form-field>
             <mat-label>{{ currentLanguageSet?.ro?.locInfo?.taluk }}</mat-label>
             <mat-select
-              class="p-t-12 m-t-20"
               [style.width]="'100%'"
               [required]="true"
               formControlName="blockID"
@@ -79,7 +76,6 @@
           <mat-form-field>
             <mat-label>{{ currentLanguageSet?.ro?.locInfo?.street }}</mat-label>
             <mat-select
-              class="p-t-12 m-t-20"
               [style.width]="'100%'"
               [required]="true"
               formControlName="villageID"
@@ -94,29 +90,22 @@
         </div>
       </div>
 
-      <div class="pull-right break">
-        <br />
-        <br />
+      <div style="text-align: end; margin-bottom: 10px">
         <button
           mat-raised-button
-          color="primary"
+          class="mat_blue"
+          style="margin-right: 5px"
           type="submit"
-          class="input-full-width"
+          (click)="closeDialog()">
+          {{ currentLanguageSet?.common?.cancel }}
+        </button>
+        <button
+          mat-raised-button
+          class="mat_blue"
+          type="submit"
           [disabled]="demographicEditDetailsForm.invalid"
           (click)="onSubmitEditLocation()">
           {{ currentLanguageSet?.common?.ok }}
-        </button>
-      </div>
-      <div class="pull-right cancel">
-        <br />
-        <br />
-        <button
-          mat-raised-button
-          color="primary"
-          type="submit"
-          class="input-full-width"
-          (click)="closeDialog()">
-          {{ currentLanguageSet?.common?.cancel }}
         </button>
       </div>
     </div>

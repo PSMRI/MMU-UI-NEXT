@@ -50,7 +50,6 @@
               currentLanguageSet?.ro?.otherInfo?.community
             }}</mat-label>
             <mat-select
-              class="p-t-12"
               [style.width]="'100%'"
               formControlName="community"
               required
@@ -125,7 +124,6 @@
               currentLanguageSet?.ro?.otherInfo?.religion
             }}</mat-label>
             <mat-select
-              class="p-t-12"
               [style.width]="'100%'"
               formControlName="religion"
               (change)="getReligionName()">
@@ -157,37 +155,36 @@
         </div>
       </div>
       <span class="clearfix"></span>
+      <div></div>
       <!-- NEW ID DETAILS for BENEFICIARY -->
-      <section class="mleft15">
-        <section
-          class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mtop20"
-          formArrayName="govID">
+      <section class="row col-12">
+        <section class="col-6 row mtop20" formArrayName="govID">
           <!-- Gov IDs-->
           <section
             *ngFor="
               let id of getGovIDControls();
               let i = index;
               let isLast = last
-            "
-            class="row">
+            ">
             <ng-container [formGroupName]="i">
-              <mat-label>{{
-                currentLanguageSet?.ro?.otherInfo?.govtIDType
-              }}</mat-label>
-              <mat-select
-                class="p-t-12"
-                [style.width]="'40%'"
-                (change)="filtergovIDs(id.value.type, i)"
-                formControlName="type"
-                style="line-height: unset">
-                <mat-option
-                  *ngFor="let govIDType of govIDMaster[i]?.govIdEntityMaster"
-                  [value]="govIDType.govtIdentityTypeID">
-                  {{ govIDType.identityType }}
-                </mat-option>
-              </mat-select>
+              <mat-form-field [style.width]="'40%'" style="line-height: unset">
+                <mat-label>{{
+                  currentLanguageSet?.ro?.otherInfo?.govtIDType
+                }}</mat-label>
+                <mat-select
+                  (change)="filtergovIDs(id.value.type, i)"
+                  formControlName="type"
+                  style="line-height: unset">
+                  <mat-option
+                    *ngFor="let govIDType of govIDMaster[i]?.govIdEntityMaster"
+                    [value]="govIDType.govtIdentityTypeID">
+                    {{ govIDType.identityType }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
               <mat-form-field
-                [style.width]="'35%'"
+                [style.width]="'40%'"
                 style="line-height: unset"
                 class="mleft15">
                 <mat-label>{{
@@ -223,14 +220,15 @@
                   otherDetailsForm.get('govID')?.value.length > 1 ||
                   otherDetailsForm.controls['govID']?.value[i].type
                 "
-                color="warn"
+                class="mat_warn_circle"
                 (click)="removeID(1, i)">
                 <mat-icon class="md-18" aria-label="Remove ID">close</mat-icon>
               </button>
               <span *ngIf="i < govLength - 1">
                 <button
                   md-mini-fab
-                  color="primary"
+                  style="margin-left: 3px"
+                  class="mat_gray_circle"
                   *ngIf="isLast"
                   [disabled]="
                     !otherDetailsForm.controls['govID'].value[i].idValue
@@ -264,20 +262,16 @@
             </ng-container>
           </section>
         </section>
-        <section
-          class="col-xs-12 col-sm-6 col-md-6 col-lg-6 mtop20"
-          formArrayName="otherGovID">
+        <section class="col-6 row mtop20" formArrayName="otherGovID">
           <!-- Other Gov IDs-->
           <section
             *ngFor="
               let id of getOtherGovIDControls();
               let i = index;
               let isLast = last
-            "
-            class="row">
+            ">
             <ng-container [formGroupName]="i">
               <mat-select
-                class="p-t-12"
                 [style.width]="'40%'"
                 formControlName="type"
                 (change)="filterOtherGovIDs(id.value.type, i)"
@@ -318,7 +312,7 @@
               </mat-form-field>
               <button
                 md-mini-fab
-                color="warn"
+                class="mat_warn_circle"
                 *ngIf="
                   otherDetailsForm.get('otherGovID')?.value[i]?.idValue
                     ?.length > 1 ||
@@ -334,7 +328,8 @@
               <span *ngIf="i < otherGovLength - 1">
                 <button
                   md-mini-fab
-                  color="primary"
+                  style="margin-left: 3px"
+                  class="mat_gray_circle"
                   *ngIf="isLast"
                   [disabled]="
                     !otherDetailsForm.controls['otherGovID'].value[i].idValue
