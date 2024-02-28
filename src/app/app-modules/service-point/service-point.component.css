@@ -69,6 +69,6 @@ mat-card-actions {
   color: rgba(0, 0, 0, 0.38);
 }
 
-.alignField>>>.mat-mdc-select-trigger {
+/* .alignField>>>.mat-mdc-select-trigger {
   border-bottom-style: unset !important;
-}
+} */

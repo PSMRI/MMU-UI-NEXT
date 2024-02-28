@@ -103,7 +103,6 @@
 
 .mat_blue_circle {
   background-color: #0277bd;
-  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
   min-width: 0;
   border-radius: 50%;
   border-color: unset !important;
@@ -113,6 +112,34 @@
   height: 40px;
   padding: 0;
   /* position: fixed; */
+  left: 20px;
+  bottom: 50px;
+  z-index: 3;
+}
+.mat_gray_circle {
+  background-color: rgba(0, 0, 0, 0.12);
+  min-width: 0;
+  border-radius: 50%;
+  border-color: unset !important;
+  color:#00000061;
+  border: unset;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  left: 20px;
+  bottom: 50px;
+  z-index: 3;
+}
+.mat_warn_circle {
+  background-color: #ff5252;
+  min-width: 0;
+  border-radius: 50%;
+  border-color: unset !important;
+  color:white ;
+  border: unset;
+  width: 40px;
+  height: 40px;
+  padding: 0;
   left: 20px;
   bottom: 50px;
   z-index: 3;
@@ -345,10 +372,19 @@ h5 {
   border-bottom-style: groove;
 }
 
+.mdc-line-ripple::before, .mdc-line-ripple::after {
+ 
+  border-bottom-style:unset !important;
+}
+.mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
+  border-bottom-style: groove ;
+}
 .mat-step-icon-selected {
   background-color: #0277bd !important;
 }
-
+.mat-step-icon-state-edit {
+  background-color: #0277bd !important;
+}
 .mat-drawer-opened {
   background-color: #f2f2f0 !important;
 

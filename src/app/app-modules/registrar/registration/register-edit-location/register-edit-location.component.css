@@ -17,17 +17,14 @@
 
 
 .close-btn {
-    color: white !important;
-}
+    color: #fff !important;
+    background-color: #0277bd;
+    border: unset;
+    left: 20px;
+    bottom: 50px;
+    z-index: 3;
 
-.cancel{
-    
-    margin-right: 15px;
 }
-/*.break{
-
-margin-right: 50px;
-}*/
 .formMargin{
     margin-right: 30px;
     margin-left: 30px;

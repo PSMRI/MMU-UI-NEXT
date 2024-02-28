@@ -9,8 +9,7 @@
     <button
       id="moveToSearch"
       mat-raised-button
-      color="primary"
-      class="pull-right m-r-5 searchButton"
+      class="pull-right m-r-5 searchButton mat_blue"
       (click)="confirmFormReset(false)">
       {{ currentLanguageSet?.common?.search }}
     </button>
@@ -66,27 +65,27 @@
     <button
       id="resetButton"
       *ngIf="!patientRevisit"
+      class="mat_blue"
+      style="margin-right: 10px"
       mat-raised-button
-      color="primary"
       type="reset"
       (click)="confirmFormReset(true)">
       {{ currentLanguageSet?.common?.reset }}
     </button>
     <button
       id="saveButton"
-      class="btn-green"
+      class="mat_blue"
+      style="margin-right: 10px"
       mat-raised-button
       *ngIf="patientRevisit"
-      color="accent"
       type="button"
       (click)="updateBeneficiaryDetails()">
       {{ currentLanguageSet?.common?.update }}
     </button>
     <button
       id="submitButton"
-      class="btn-green"
+      class="mat_blue"
       mat-raised-button
-      color="primary"
       type="accent"
       (click)="postButtonCall()">
       {{ currentLanguageSet?.common?.submit }}
