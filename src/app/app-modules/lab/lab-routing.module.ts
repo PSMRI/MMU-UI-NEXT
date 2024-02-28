@@ -45,8 +45,8 @@ const routes: Routes = [
       {
         path: 'patient/:beneficiaryRegID',
         component: WorkareaComponent,
-        canActivate: [WorkareaCanActivate],
-        canDeactivate: [CanDeactivateGuardService],
+        // canActivate: [WorkareaCanActivate],
+        // canDeactivate: [CanDeactivateGuardService],
       },
     ],
   },

@@ -35,6 +35,7 @@ import {
   FormBuilder,
   Validators,
   FormControl,
+  AbstractControl,
 } from '@angular/forms';
 import { ConfirmationService } from '../../core/services/confirmation.service';
 import { LabService, MasterDataService } from '../shared/services';
@@ -50,6 +51,8 @@ import { environment } from 'src/environments/environment';
 import { SetLanguageComponent } from '../../core/components/set-language.component';
 import { Observable, of } from 'rxjs';
 import { IotcomponentComponent } from '../../core/components/iotcomponent/iotcomponent.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-workarea',
@@ -72,8 +75,8 @@ export class WorkareaComponent
   labForm!: FormArray;
   radiologyForm!: FormArray;
   externalForm!: FormGroup;
-  archiveList = [];
-  filteredArchiveList = [];
+  archiveList: any = [];
+  filteredArchiveList: any = [];
   blankTable = [undefined, undefined, undefined, undefined];
   loadingErrorMessage =
     'There were some issues fetching Beneficiary Information, Please try again.';
@@ -171,6 +174,28 @@ export class WorkareaComponent
     } else {
       this.errorLoading(this.loadingErrorMessage);
     }
+  }
+
+  // labTechnicianData(): AbstractControl[] | null {
+  //   const diseaseFormsArrayControl =
+  //     this.technicianForm.get('labForm');
+  //   return diseaseFormsArrayControl instanceof FormArray
+  //     ? diseaseFormsArrayControl.value
+  //     : null;
+  // }
+  // labTechnicianData
+
+  labTechnicianData(): any {
+    console.log('labTechnicianData', this.technicianForm.get('labForm'));
+    return (this.technicianForm.get('labForm') as FormArray).controls;
+  }
+
+  radiologyFormData(): any {
+    return (this.technicianForm.get('radiologyForm') as FormArray).controls;
+  }
+
+  externalFormData(): any {
+    return (this.technicianForm.get('externalForm') as FormArray).controls;
   }
 
   /**
@@ -439,10 +464,13 @@ export class WorkareaComponent
     this.router.navigate(['/lab/worklist']);
   }
   ///////////////////////////////////////////ARCHIVE RELATED CODE BELOW/////////////////////
-  radiologyFile: any = [];
-  laboratoryData: any = [];
-  filteredRadiologyData = [];
-  filteredLaboratoryData = [];
+  // radiologyFile: any = [];
+  // laboratoryData: any = [];
+  laboratoryData = new MatTableDataSource<any>();
+  radiologyFile = new MatTableDataSource<any>();
+  @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
+  filteredRadiologyData: any = [];
+  filteredLaboratoryData: any = [];
 
   loadArchive(archive: any) {
     if (archive && archive.length) {
@@ -451,11 +479,16 @@ export class WorkareaComponent
       this.filteredArchiveList = this.archiveList;
       this.archiveList.forEach((fileSplit: any) => {
         if (fileSplit.procedureType == 'Radiology') {
-          this.radiologyFile.push(fileSplit);
-          this.filteredRadiologyData = this.radiologyFile;
+          this.radiologyFile.data.push(fileSplit);
+          this.radiologyFile.paginator = this.paginator;
+          this.filteredRadiologyData = this.radiologyFile.data;
+          this.radiologyFile.paginator = this.paginator;
         } else {
-          this.laboratoryData.push(fileSplit);
-          this.filteredLaboratoryData = this.laboratoryData;
+          this.laboratoryData.data.push(fileSplit);
+          this.laboratoryData.paginator = this.paginator;
+          const temLaboratoryData: any = [];
+          this.filteredLaboratoryData = this.laboratoryData.data;
+          this.laboratoryData.paginator = this.paginator;
         }
       });
     }
@@ -463,15 +496,18 @@ export class WorkareaComponent
 
   filterProceduresLab(searchTerm?: string) {
     if (!searchTerm) {
-      this.laboratoryData = this.filteredLaboratoryData;
+      this.laboratoryData.data = this.filteredLaboratoryData;
+      this.laboratoryData.paginator = this.paginator;
     } else {
-      this.laboratoryData = [];
-      this.filteredLaboratoryData.forEach(item => {
+      this.laboratoryData.data = [];
+      this.laboratoryData.paginator = this.paginator;
+      this.filteredLaboratoryData.forEach((item: any) => {
         for (const key in item) {
           if (key == 'procedureName') {
             const value: string = '' + item[key];
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
-              this.laboratoryData.push(item);
+              this.laboratoryData.data.push(item);
+              this.laboratoryData.paginator = this.paginator;
               // this.filteredLaboratoryData.push(item);
               break;
             }
@@ -483,15 +519,18 @@ export class WorkareaComponent
 
   filterProceduresRadiology(searchTerm?: string) {
     if (!searchTerm) {
-      this.radiologyFile = this.filteredRadiologyData;
+      this.radiologyFile.data = this.filteredRadiologyData;
+      this.radiologyFile.paginator = this.paginator;
     } else {
-      this.radiologyFile = [];
-      this.filteredRadiologyData.forEach(item => {
+      this.radiologyFile.data = [];
+      this.radiologyFile.paginator = this.paginator;
+      this.filteredRadiologyData.forEach((item: any) => {
         for (const key in item) {
           if (key == 'procedureName') {
             const value: string = '' + item[key];
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
-              this.radiologyFile.push(item);
+              this.radiologyFile.data.push(item);
+              this.radiologyFile.paginator = this.paginator;
 
               break;
             }
@@ -822,9 +861,7 @@ export class WorkareaComponent
   fileIDs: any = [];
   radiologyObj: any;
   radiologyTestArrayResults: any = [];
-  /**
-   * submitDetails for Submit // SUBMIT BUTTON ACTION CODE
-   */
+
   submitDetails(labCompleted: any) {
     let option;
     if (labCompleted) {
@@ -844,38 +881,37 @@ export class WorkareaComponent
       .subscribe(
         res => {
           if (res) {
-            const techForm = this.dataLoad.technicalDataRestruct(
+            const techForm: any = this.dataLoad.technicalDataRestruct(
               Object.assign({}, this.technicianForm.value)
             );
-            // if (techForm && ((techForm.labTestResults && techForm.labTestResults.length) || (techForm.radiologyTestResults && techForm.radiologyTestResults.length))) {
-            // techForm['labCompleted'] = labCompleted;
-            // techForm['createdBy'] = localStorage.getItem('userName');
-            // techForm['doctorFlag'] = localStorage.getItem('doctorFlag');
-            // techForm['nurseFlag'] = localStorage.getItem('nurseFlag');
-            // techForm['beneficiaryRegID'] =
-            //   localStorage.getItem('beneficiaryRegID');
-            // techForm['beneficiaryID'] = localStorage.getItem('beneficiaryID');
-            // techForm['benFlowID'] = localStorage.getItem('benFlowID');
-            // techForm['visitID'] = localStorage.getItem('visitID');
-            // techForm['visitCode'] = localStorage.getItem('visitCode');
-            // techForm['providerServiceMapID'] =
-            //   localStorage.getItem('providerServiceID');
+            techForm['labCompleted'] = labCompleted;
+            techForm['createdBy'] = localStorage.getItem('userName');
+            techForm['doctorFlag'] = localStorage.getItem('doctorFlag');
+            techForm['nurseFlag'] = localStorage.getItem('nurseFlag');
+            techForm['beneficiaryRegID'] =
+              localStorage.getItem('beneficiaryRegID');
+            techForm['beneficiaryID'] = localStorage.getItem('beneficiaryID');
+            techForm['benFlowID'] = localStorage.getItem('benFlowID');
+            techForm['visitID'] = localStorage.getItem('visitID');
+            techForm['visitCode'] = localStorage.getItem('visitCode');
+            techForm['providerServiceMapID'] =
+              localStorage.getItem('providerServiceID');
 
-            // if (localStorage.getItem('specialist_flag') == 'null') {
-            //   techForm['specialist_flag'] = null;
-            // } else {
-            //   techForm['specialist_flag'] =
-            //     localStorage.getItem('specialist_flag');
-            // }
-
-            const serviceLineDetailsString =
+            if (
+              localStorage.getItem('specialist_flag') == 'null' ||
+              localStorage.getItem('specialist_flag') == ''
+            ) {
+              techForm['specialist_flag'] = null;
+            } else {
+              techForm['specialist_flag'] =
+                localStorage.getItem('specialist_flag');
+            }
+            const serviceLineDetails: any =
               localStorage.getItem('serviceLineDetails');
-            const servicePointDetails = serviceLineDetailsString
-              ? JSON.parse(serviceLineDetailsString)
-              : null;
+            const servicePointDetails = JSON.parse(serviceLineDetails);
 
-            // techForm['vanID'] = servicePointDetails.vanID;
-            // techForm['parkingPlaceID'] = servicePointDetails.parkingPlaceID;
+            techForm['vanID'] = servicePointDetails.vanID;
+            techForm['parkingPlaceID'] = servicePointDetails.parkingPlaceID;
             if (!techForm.labTestResults) {
               techForm['labTestResults'] = [];
             }
@@ -937,6 +973,10 @@ export class WorkareaComponent
         err => {}
       );
   }
+  /**
+   * submitDetails for Submit // SUBMIT BUTTON ACTION CODE
+   */
+
   sideNavModeChange(sidenav: any) {
     const deviceHeight = window.screen.height;
     const deviceWidth = window.screen.width;
