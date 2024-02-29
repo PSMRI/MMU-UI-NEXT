@@ -23,6 +23,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import moment from 'moment';
+import RecordRTC from 'recordrtc';
 import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -62,13 +63,15 @@ export class AudioRecordingService {
     }
 
     this._recordingTime.next('00:00');
-    navigator.mediaDevices.getUserMedia({ audio: true }).then(s => {
-      this.stream = s;
-      this.record();
-    });
-    // .catch(error => {
-    //   this._recordingFailed.next();
-    // });
+    navigator.mediaDevices
+      .getUserMedia({ audio: true })
+      .then(s => {
+        this.stream = s;
+        this.record();
+      })
+      .catch(error => {
+        this._recordingFailed.next('Error in recording');
+      });
   }
 
   abortRecording() {
@@ -76,10 +79,10 @@ export class AudioRecordingService {
   }
 
   private record() {
-    // this.recorder = new RecordRTC.StereoAudioRecorder(this.stream, {
-    //   type: "audio",
-    //   mimeType: "audio/webm"
-    // });
+    this.recorder = new RecordRTC.StereoAudioRecorder(this.stream, {
+      type: 'audio',
+      mimeType: 'audio/webm',
+    });
 
     this.recorder.record();
     this.startTime = moment();
@@ -102,23 +105,23 @@ export class AudioRecordingService {
   }
 
   stopRecording() {
-    // if (this.recorder) {
-    //   this.recorder.stop(
-    //     (blob: any) => {
-    //       if (this.startTime) {
-    //         const mp3Name = encodeURIComponent(
-    //           "audio_" + new Date().getTime() + ".wav"
-    //         );
-    //         this.stopMedia();
-    //         this._recorded.next({ blob: blob, title: mp3Name });
-    //       }
-    //     },
-    //     () => {
-    //       this.stopMedia();
-    //       this._recordingFailed.next();
-    //     }
-    //   );
-    // }
+    if (this.recorder) {
+      this.recorder.stop(
+        (blob: any) => {
+          if (this.startTime) {
+            const mp3Name = encodeURIComponent(
+              'audio_' + new Date().getTime() + '.wav'
+            );
+            this.stopMedia();
+            this._recorded.next({ blob: blob, title: mp3Name });
+          }
+        },
+        () => {
+          this.stopMedia();
+          this._recordingFailed.next('Recording Failed');
+        }
+      );
+    }
   }
 
   private stopMedia() {

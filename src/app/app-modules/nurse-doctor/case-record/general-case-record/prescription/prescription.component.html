@@ -42,7 +42,7 @@
           name="form"
           [(ngModel)]="currentPrescription.formName"
           placeholder="{{ current_language_set?.Prescription?.form }}"
-          (selectioChange)="getFormValueChanged()"
+          (change)="getFormValueChanged()"
           required>
           <mat-option
             *ngFor="let item of drugFormMaster"
