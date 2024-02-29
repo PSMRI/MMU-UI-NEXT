@@ -86,13 +86,21 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
     this.current_language_set = getLanguageJson.currentLanguageObject;
   }
   ngOnChanges() {
-    if (this.mode === 'view') {
+    if (
+      this.mode !== undefined &&
+      this.mode !== null &&
+      this.mode.toLowerCase() === 'view'
+    ) {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.patchDataToFields(benRegID, visitID);
     }
 
-    if (this.mode === 'update') {
+    if (
+      this.mode !== undefined &&
+      this.mode !== null &&
+      this.mode.toLowerCase() === 'update'
+    ) {
       this.updatePatientANC(this.patientANCForm);
     }
   }
