@@ -1,4 +1,4 @@
-<!-- <mat-accordion [formGroup]="diagnosisForm">
+<mat-accordion [formGroup]="diagnosisForm">
   <mat-expansion-panel expanded="true">
     <mat-expansion-panel-header>
       <h5>{{ current_language_set?.previousvisit?.Previousvisitdetails }}</h5>
@@ -17,13 +17,13 @@
                 {{
                   current_language_set?.vitalsDetails
                     ?.AnthropometryDataANC_OPD_NCD_PNC?.weight
-                }}: <span>{{ vitals?.weight_Kg }}</span>
+                }}: <span>{{ currentVitals?.weight_Kg }}</span>
               </td>
               <td>
                 {{
                   current_language_set?.vitalsDetails
                     ?.AnthropometryDataANC_OPD_NCD_PNC?.height
-                }}: <span>{{ vitals?.height_cm }}</span>
+                }}: <span>{{ currentVitals?.height_cm }}</span>
               </td>
               <td>
                 {{
@@ -31,7 +31,7 @@
                     ?.AnthropometryDataANC_OPD_NCD_PNC?.waist
                 }}:
                 <span [ngClass]="{ abnormal: !normalWaist }">{{
-                  vitals?.waistCircumference_cm
+                  currentVitals?.waistCircumference_cm
                 }}</span>
               </td>
             </tr>
@@ -53,15 +53,15 @@
                   current_language_set?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.HbA1c
                 }}(%):
-                <span [ngClass]="{ abnormal: +vitals?.hbA1C > 5.7 }">{{
-                  vitals?.hbA1C
+                <span [ngClass]="{ abnormal: +currentVitals?.hbA1C > 5.7 }">{{
+                  currentVitals?.hbA1C
                 }}</span>
               </td>
               <td>
                 {{
                   current_language_set?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.hemoglobin
-                }}: <span>{{ vitals?.hemoglobin }}</span>
+                }}: <span>{{ currentVitals?.hemoglobin }}</span>
               </td>
             </tr>
             <tr>
@@ -69,9 +69,10 @@
                 {{ current_language_set?.sPOTwoWithUnit }}:
                 <span
                   [ngClass]="{
-                    abnormal: vitals?.sPO2 < 1 || vitals?.sPO2 > 100
+                    abnormal:
+                      currentVitals?.sPO2 < 1 || currentVitals?.sPO2 > 100
                   }"
-                  >{{ vitals?.sPO2 }}</span
+                  >{{ currentVitals?.sPO2 }}</span
                 >
               </td>
             </tr>
@@ -85,19 +86,19 @@
                 {{
                   current_language_set?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.systolic
-                }}: <span>{{ vitals?.systolicBP_1stReading }}</span>
+                }}: <span>{{ currentVitals?.systolicBP_1stReading }}</span>
               </td>
               <td>
                 {{
                   current_language_set?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.systolic
-                }}: <span>{{ vitals?.systolicBP_2ndReading }}</span>
+                }}: <span>{{ currentVitals?.systolicBP_2ndReading }}</span>
               </td>
               <td>
                 {{
                   current_language_set?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.systolic
-                }}: <span>{{ vitals?.systolicBP_3rdReading }}</span>
+                }}: <span>{{ currentVitals?.systolicBP_3rdReading }}</span>
               </td>
             </tr>
             <tr>
@@ -105,19 +106,19 @@
                 {{
                   current_language_set?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.diastolic
-                }}: <span>{{ vitals?.diastolicBP_1stReading }}</span>
+                }}: <span>{{ currentVitals?.diastolicBP_1stReading }}</span>
               </td>
               <td>
                 {{
                   current_language_set?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.diastolic
-                }}: <span>{{ vitals?.diastolicBP_2ndReading }}</span>
+                }}: <span>{{ currentVitals?.diastolicBP_2ndReading }}</span>
               </td>
               <td>
                 {{
                   current_language_set?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.diastolic
-                }}: <span>{{ vitals?.diastolicBP_3rdReading }}</span>
+                }}: <span>{{ currentVitals?.diastolicBP_3rdReading }}</span>
               </td>
             </tr>
             <tr>
@@ -132,8 +133,10 @@
                     ?.fasting
                 }}:
                 <span
-                  [ngClass]="{ abnormal: vitals?.bloodGlucose_Fasting > 100 }"
-                  >{{ vitals?.bloodGlucose_Fasting }}</span
+                  [ngClass]="{
+                    abnormal: currentVitals?.bloodGlucose_Fasting > 100
+                  }"
+                  >{{ currentVitals?.bloodGlucose_Fasting }}</span
                 >
               </td>
               <td>
@@ -142,8 +145,10 @@
                     ?.random
                 }}:
                 <span
-                  [ngClass]="{ abnormal: vitals?.bloodGlucose_Random > 140 }"
-                  >{{ vitals?.bloodGlucose_Random }}</span
+                  [ngClass]="{
+                    abnormal: currentVitals?.bloodGlucose_Random > 140
+                  }"
+                  >{{ currentVitals?.bloodGlucose_Random }}</span
                 >
               </td>
               <td>
@@ -153,9 +158,9 @@
                 }}:
                 <span
                   [ngClass]="{
-                    abnormal: vitals?.bloodGlucose_2HrPostPrandial > 140
+                    abnormal: currentVitals?.bloodGlucose_2HrPostPrandial > 140
                   }"
-                  >{{ vitals?.bloodGlucose_2HrPostPrandial }}</span
+                  >{{ currentVitals?.bloodGlucose_2HrPostPrandial }}</span
                 >
               </td>
             </tr>
@@ -179,7 +184,7 @@
           *ngIf="weightChartData.length && weightChartLabels.length">
           <h5>{{ current_language_set?.previousvisit?.bodyweighttrends }}</h5>
 
-          <canvas
+          <!-- <canvas
             baseChart
             [datasets]="weightChartData"
             [labels]="weightChartLabels"
@@ -187,7 +192,7 @@
             [colors]="weightChartColors"
             [legend]="weightChartLegend"
             [chartType]="weightChartType"
-            (chartClick)="chartClicked('bw')"></canvas>
+            (chartClick)="chartClicked('bw')"></canvas> -->
         </div>
         <div class="no_records" *ngIf="!weightChartData.length">
           <h4>{{ current_language_set?.common?.previousRecordWeight }}</h4>
@@ -208,7 +213,7 @@
           <h5>
             {{ current_language_set?.previousvisit?.bloodPressureTrends }}
           </h5>
-          <canvas
+          <!-- <canvas
             baseChart
             [datasets]="bpChartData"
             [labels]="bpChartLabels"
@@ -216,7 +221,7 @@
             [colors]="bpChartColors"
             [legend]="bpChartLegend"
             [chartType]="bpChartType"
-            (chartClick)="chartClicked('bp')"></canvas>
+            (chartClick)="chartClicked('bp')"></canvas> -->
         </div>
         <div class="no_records" *ngIf="!bpChartData.length">
           <h4>
@@ -239,7 +244,7 @@
           *ngIf="bgChartData.length && bgChartLabels.length">
           <h5>{{ current_language_set?.common?.bloodGlucoseTrend }}</h5>
 
-          <canvas
+          <!-- <canvas
             baseChart
             [datasets]="bgChartData"
             [labels]="bgChartLabels"
@@ -247,7 +252,7 @@
             [colors]="bgChartColors"
             [legend]="bgChartLegend"
             [chartType]="bgChartType"
-            (chartClick)="chartClicked('bg')"></canvas>
+            (chartClick)="chartClicked('bg')"></canvas> -->
         </div>
         <div class="no_records" *ngIf="!bgChartData.length">
           <h4>
@@ -265,12 +270,12 @@
   <mat-expansion-panel
     *ngIf="
       findings &&
-      ((findings.briefHistory && findings.briefHistory != '') ||
-        (findings.oralExamination && findings.oralExamination != '') ||
+      ((findings.briefHistory && findings.briefHistory !== '') ||
+        (findings.oralExamination && findings.oralExamination !== '') ||
         (findings.abdominalExamination &&
-          findings.abdominalExamination != '') ||
+          findings.abdominalExamination !== '') ||
         (findings.gynecologicalExamination &&
-          findings.gynecologicalExamination != ''))
+          findings.gynecologicalExamination !== ''))
     ">
     <mat-expansion-panel-header>
       <h5>{{ current_language_set?.Find?.findings }}</h5>
@@ -279,7 +284,7 @@
       <div
         class="col-xs-12 col-sm-12 col-md-6"
         *ngIf="
-          findings && findings.briefHistory && findings.briefHistory != ''
+          findings && findings.briefHistory && findings.briefHistory !== ''
         ">
         <mat-form-field class="textarea-full-width">
           <textarea
@@ -299,7 +304,9 @@
       <div
         class="col-xs-12 col-sm-12 col-md-6"
         *ngIf="
-          findings && findings.oralExamination && findings.oralExamination != ''
+          findings &&
+          findings.oralExamination &&
+          findings.oralExamination !== ''
         ">
         <mat-form-field class="textarea-full-width">
           <textarea
@@ -320,7 +327,7 @@
         *ngIf="
           findings &&
           findings.abdominalExamination &&
-          findings.abdominalExamination != ''
+          findings.abdominalExamination !== ''
         ">
         <mat-form-field class="textarea-full-width">
           <textarea
@@ -341,7 +348,7 @@
         *ngIf="
           findings &&
           findings.gynecologicalExamination &&
-          findings.gynecologicalExamination != ''
+          findings.gynecologicalExamination !== ''
         ">
         <mat-form-field class="textarea-full-width">
           <textarea
@@ -362,7 +369,7 @@
       <div class="col-xs-12">
         <h4>
           {{
-            current_langugae_set?.ExaminationData?.cancerScreeningExamination
+            current_language_set?.ExaminationData?.cancerScreeningExamination
               ?.breast?.breastExamination
           }}
           - <small>{{ current_language_set?.common?.resultMammogram }}</small>
@@ -431,4 +438,4 @@
       </div>
     </div>
   </mat-expansion-panel>
-</mat-accordion> -->
+</mat-accordion>

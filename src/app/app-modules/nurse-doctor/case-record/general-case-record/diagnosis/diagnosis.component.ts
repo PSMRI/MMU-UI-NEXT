@@ -37,6 +37,7 @@ import { AncDiagnosisComponent } from './anc-diagnosis/anc-diagnosis.component';
 })
 export class DiagnosisComponent {
   @Input()
+  @Input()
   generalDiagnosisForm!: FormGroup;
 
   @Input()
@@ -44,7 +45,6 @@ export class DiagnosisComponent {
 
   @Input()
   caseRecordMode!: string;
-
   constructor(
     private fb: FormBuilder,
     private nurseService: NurseService,

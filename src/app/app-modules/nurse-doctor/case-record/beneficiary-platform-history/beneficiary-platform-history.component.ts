@@ -20,7 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DoctorService } from '../../shared/services';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
@@ -29,6 +29,8 @@ import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-la
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 import { environment } from 'src/environments/environment';
 import { BeneficiaryMctsCallHistoryComponent } from '../beneficiary-mcts-call-history/beneficiary-mcts-call-history.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-beneficiary-platform-history',
   templateUrl: './beneficiary-platform-history.component.html',
@@ -36,6 +38,30 @@ import { BeneficiaryMctsCallHistoryComponent } from '../beneficiary-mcts-call-hi
 })
 export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   current_language_set: any;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
+  dataSource = new MatTableDataSource<any>();
+
+  @ViewChild(MatPaginator) TmPaginator: MatPaginator | null = null;
+  historyOfTM = new MatTableDataSource<any>();
+
+  @ViewChild(MatPaginator) paginator104: MatPaginator | null = null;
+  historyOf104 = new MatTableDataSource<any>();
+
+  @ViewChild(MatPaginator) MctsPaginator: MatPaginator | null = null;
+  historyOfMCTS = new MatTableDataSource<any>();
+
+  displayedColumns = [
+    'visitnommu',
+    'date',
+    'visitreasonmmu',
+    'visitcategorymmu',
+    'visitdetailsmmu',
+    'visitcodemmu',
+    'medicationmmu',
+    'previewmmu',
+    'printpreviewmmu',
+  ];
 
   constructor(
     private doctorService: DoctorService,
@@ -100,7 +126,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   previousMMUHistoryRowsPerPage = 5;
   previousMMUHistoryActivePage = 1;
   rotate = true;
-  historyOfMMU: any = [];
   filteredMMUHistory: any = [];
   hideMMUFetch: boolean = false;
 
@@ -113,14 +138,14 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         this.serviceOnState = [];
         this.serviceOnState = this.checkServiceLoader(services, 2);
         console.log('dataget', JSON.stringify(data, null, 4));
-        this.historyOfMMU = data.data;
+        this.dataSource.data = data.data;
         // this.filteredMMUHistory = data.data;
         this.getEachVisitData();
       }
     });
   }
   getEachVisitData() {
-    this.historyOfMMU.forEach((item: any, i: any) => {
+    this.dataSource.data.forEach((item: any, i: any) => {
       if (item.visitCode) {
         const reqObj = {
           VisitCategory: item.VisitCategory,
@@ -130,7 +155,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         };
         this.doctorService.getMMUCasesheetData(reqObj).subscribe((res: any) => {
           if (res.statusCode == 200 && res.data !== null) {
-            this.historyOfMMU[i]['benPreviousData'] = res.data;
+            this.dataSource.data[i]['benPreviousData'] = res.data;
             //this.previousVisitData.push({ 'benPreviousData': res.data});
             this.filteredMMUHistory = res.data;
             this.previousMMUHistoryPageChanged({
@@ -141,7 +166,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         });
       }
     });
-    console.log('previous data', this.historyOfMMU);
+    console.log('previous data', this.dataSource.data);
   }
   checkServiceLoader(services: any, serviceID: any) {
     services.forEach((service: any) => {
@@ -159,10 +184,10 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   }
   filterMMUHistory(searchTerm?: string) {
     if (!searchTerm) {
-      this.filteredMMUHistory = this.historyOfMMU;
+      this.filteredMMUHistory = this.dataSource.data;
     } else {
       this.filteredMMUHistory = [];
-      this.historyOfMMU.forEach((item: any) => {
+      this.dataSource.data.forEach((item: any) => {
         const value: string = '' + item.VisitCategory;
         if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
           this.filteredMMUHistory.push(item);
@@ -177,12 +202,12 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
     });
   }
 
-  previousMMUHistoryPagedList = [];
+  previousMMUHistoryPagedList: any = [];
   previousMMUHistoryPageChanged(event: any): void {
     console.log('called', event);
     const startItem = (event.page - 1) * event.itemsPerPage;
     const endItem = event.page * event.itemsPerPage;
-    this.previousMMUHistoryPagedList = this.historyOfMMU.slice(
+    this.previousMMUHistoryPagedList = this.dataSource.data.slice(
       startItem,
       endItem
     );
@@ -233,7 +258,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   hideMCTSFetch: boolean = false;
   previousMCTSHistoryRowsPerPage = 5;
   previousMCTSHistoryActivePage = 1;
-  historyOfMCTS = [];
+  // historyOfMCTS = [];
   filteredMCTSHistory: any = [];
   getMCTSHistory() {
     this.doctorService.getMCTSHistory().subscribe((data: any) => {
@@ -245,7 +270,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         const services = this.serviceOnState;
         this.serviceOnState = [];
         this.serviceOnState = this.checkServiceLoader(services, 6);
-        this.historyOfMCTS = data.data;
+        this.historyOfMCTS.data = data.data;
         this.filteredMCTSHistory = data.data;
         this.previousMCTSHistoryPageChanged({
           page: this.previousMCTSHistoryActivePage,
@@ -257,10 +282,10 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
 
   filterMCTSHistory(searchTerm?: string) {
     if (!searchTerm) {
-      this.filteredMCTSHistory = this.historyOfMCTS;
+      this.filteredMCTSHistory = this.historyOfMCTS.data;
     } else {
       this.filteredMCTSHistory = [];
-      this.historyOfMCTS.forEach((item: any) => {
+      this.historyOfMCTS.data.forEach((item: any) => {
         const value: string = '' + item.mctsOutboundCall.displayOBCallType;
         if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
           this.filteredMCTSHistory.push(item);
@@ -290,7 +315,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   hide104Fetch: boolean = false;
   previous104HistoryRowsPerPage = 5;
   previous104HistoryActivePage = 1;
-  historyOf104 = [];
+  // historyOf104 = [];
   filtered104History: any = [];
   get104History() {
     this.doctorService.get104History().subscribe((data: any) => {
@@ -302,7 +327,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         this.serviceOnState = [];
         this.serviceOnState = this.checkServiceLoader(services, 3);
         console.log('dataget', data);
-        this.historyOf104 = data.data;
+        this.historyOf104.data = data.data;
         this.filtered104History = data.data;
         this.previous104HistoryPageChanged({
           page: this.previous104HistoryActivePage,
@@ -314,10 +339,10 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
 
   filter104History(searchTerm?: string) {
     if (!searchTerm) {
-      this.filtered104History = this.historyOf104;
+      this.filtered104History = this.historyOf104.data;
     } else {
       this.filtered104History = [];
-      this.historyOf104.forEach((item: any) => {
+      this.historyOf104.data.forEach((item: any) => {
         const value: string = '' + item.diseaseSummary;
         if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
           this.filtered104History.push(item);
@@ -374,7 +399,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   }
   previousTMHistoryRowsPerPage = 5;
   previousTMHistoryActivePage = 1;
-  historyOfTM = [];
   filteredTMHistory: any = [];
   hideTMFetch: boolean = false;
 
@@ -388,7 +412,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         this.serviceOnState = [];
         this.serviceOnState = this.checkServiceLoader(services, 4);
         console.log('dataget', JSON.stringify(data, null, 4));
-        this.historyOfTM = data.data;
+        this.historyOfTM.data = data.data;
         this.filteredTMHistory = data.data;
         this.previousTMHistoryPageChanged({
           page: this.previousTMHistoryActivePage,
@@ -400,10 +424,10 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
 
   filterTMHistory(searchTerm?: string) {
     if (!searchTerm) {
-      this.filteredTMHistory = this.historyOfTM;
+      this.filteredTMHistory = this.historyOfTM.data;
     } else {
       this.filteredTMHistory = [];
-      this.historyOfTM.forEach((item: any) => {
+      this.historyOfTM.data.forEach((item: any) => {
         const value: string = '' + item.VisitCategory;
         if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
           this.filteredTMHistory.push(item);
