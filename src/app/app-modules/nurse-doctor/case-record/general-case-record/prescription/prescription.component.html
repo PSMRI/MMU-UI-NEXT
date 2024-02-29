@@ -1,7 +1,7 @@
-<!-- <form #prescriptionForm="ngForm" class="m-t-20">
+<form #prescriptionForm="ngForm" class="m-t-20">
   <section class="row no-row">
     <div class="col-md-3" style="padding-bottom: 8px">
-      <div *ngIf="isStockAvalable == 'primary'">
+      <div *ngIf="isStockAvalable === 'primary'">
         <mat-icon
           style="
             background-color: green;
@@ -17,7 +17,7 @@
           current_language_set?.stockAvailability
         }}</span>
       </div>
-      <div *ngIf="isStockAvalable == 'warn'">
+      <div *ngIf="isStockAvalable === 'warn'">
         <mat-icon
           style="
             background-color: #c30d0d;
@@ -42,7 +42,7 @@
           name="form"
           [(ngModel)]="currentPrescription.formName"
           placeholder="{{ current_language_set?.Prescription?.form }}"
-          (change)="getFormValueChanged()"
+          (selectioChange)="getFormValueChanged()"
           required>
           <mat-option
             *ngFor="let item of drugFormMaster"
@@ -69,11 +69,9 @@
           [matAutocomplete]="autoGroup" />
         <mat-autocomplete
           #autoGroup="matAutocomplete"
-          [displayWith]="displayFn">
-          <mat-option
-            *ngFor="let item of subFilteredDrugMaster"
-            [value]="item"
-            (onSelectionChange)="selectMedicineObject($event)">
+          [displayWith]="displayFn"
+          (optionSelected)="selectMedicineObject($event)">
+          <mat-option *ngFor="let item of subFilteredDrugMaster" [value]="item">
             {{ item.itemName }} {{ item.strength }}{{ item.unitOfMeasurement }}
             {{ item.quantityInHand ? '(' + item.quantityInHand + ')' : '' }}
           </mat-option>
@@ -159,8 +157,8 @@
       class="col-md-2 box"
       *ngIf="
         currentPrescription.formID &&
-        currentPrescription.formID != '1' &&
-        currentPrescription.formID != '2'
+        currentPrescription.formID !== '1' &&
+        currentPrescription.formID !== '2'
       ">
       <mat-form-field>
         <mat-select
@@ -236,16 +234,13 @@
   </section>
 </form>
 
-<div *ngIf="drugPrescriptionForm.controls.prescribedDrugs.value.length > 0">
+<div *ngIf="drugPrescriptionForm.get('prescribedDrugs')?.value.length > 0">
   <hr />
   <div [formGroup]="drugPrescriptionForm">
     <div class="row" formArrayName="prescribedDrugs">
       <div
         class="col-xs-12"
-        *ngFor="
-          let drug of drugPrescriptionForm?.controls.prescribedDrugs?.controls;
-          let j = index
-        ">
+        *ngFor="let drug of getPrescribedDrugs(); let j = index">
         <ng-container
           [formGroupName]="j"
           *ngIf="j >= pageLimits[0] && j < pageLimits[1]">
@@ -357,7 +352,7 @@
     </div>
   </div>
   <mat-paginator
-    [length]="drugPrescriptionForm?.controls.prescribedDrugs?.value.length"
+    [length]="drugPrescriptionForm.get('prescribedDrugs')?.value.length"
     [pageSizeOptions]="[5, 10, 20]"
     [pageSize]="pageSize"
     hidePageSize="true"
@@ -365,4 +360,4 @@
     showFirstLastButtons
     aria-label="Select patient in doctorWorklist">
   </mat-paginator>
-</div> -->
+</div>

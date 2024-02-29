@@ -26,7 +26,7 @@
             }}</ng-template>
             <app-visit-details
               [mode]="visitMode"
-              [patientVisitForm]="patientVisitForm"></app-visit-details>
+              [patientVisitDataForm]="patientVisitForm"></app-visit-details>
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
                 <button
@@ -350,7 +350,7 @@
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
                 <button
-                  *ngIf="doctorFlag === 1"
+                  *ngIf="doctorFlag === '1'"
                   mat-raised-button
                   color="primary"
                   class="mat_blue"
@@ -360,7 +360,7 @@
                   {{ currentLanguageSet?.common?.submit }}
                 </button>
                 <button
-                  *ngIf="doctorFlag !== 1"
+                  *ngIf="doctorFlag !== '1'"
                   mat-raised-button
                   color="primary"
                   class="mat_blue"

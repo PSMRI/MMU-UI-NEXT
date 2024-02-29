@@ -35,7 +35,7 @@ import { SetLanguageComponent } from '../../core/components/set-language.compone
 })
 export class VisitDetailsComponent implements OnInit, DoCheck {
   @Input()
-  patientVisitForm!: FormGroup;
+  patientVisitDataForm!: FormGroup;
 
   @Input()
   mode!: string;
@@ -68,28 +68,28 @@ export class VisitDetailsComponent implements OnInit, DoCheck {
 
   ngOnInit() {
     this.assignSelectedLanguage();
-    this.patientVisitDetailsForm = this.patientVisitForm.get(
+    this.patientVisitDetailsForm = this.patientVisitDataForm.get(
       'patientVisitDetailsForm'
     ) as FormGroup;
-    this.covidVaccineStatusForm = this.patientVisitForm.get(
+    this.covidVaccineStatusForm = this.patientVisitDataForm.get(
       'covidVaccineStatusForm'
     ) as FormGroup;
-    this.patientChiefComplaintsForm = this.patientVisitForm.get(
+    this.patientChiefComplaintsForm = this.patientVisitDataForm.get(
       'patientChiefComplaintsForm'
     ) as FormGroup;
-    this.patientAdherenceForm = this.patientVisitForm.get(
+    this.patientAdherenceForm = this.patientVisitDataForm.get(
       'patientAdherenceForm'
     ) as FormGroup;
-    this.patientInvestigationsForm = this.patientVisitForm.get(
+    this.patientInvestigationsForm = this.patientVisitDataForm.get(
       'patientInvestigationsForm'
     ) as FormGroup;
-    this.patientCovidForm = this.patientVisitForm.get(
+    this.patientCovidForm = this.patientVisitDataForm.get(
       'patientCovidForm'
     ) as FormGroup;
-    this.patientFileUploadDetailsForm = this.patientVisitForm.get(
+    this.patientFileUploadDetailsForm = this.patientVisitDataForm.get(
       'patientFileUploadDetailsForm'
     ) as FormGroup;
-    this.patientDiseaseForm = this.patientVisitForm.get(
+    this.patientDiseaseForm = this.patientVisitDataForm.get(
       'patientDiseaseForm'
     ) as FormGroup;
     this.getVisitCategory();
@@ -97,7 +97,7 @@ export class VisitDetailsComponent implements OnInit, DoCheck {
 
   getVisitCategory() {
     (<FormGroup>(
-      this.patientVisitForm.controls['patientVisitDetailsForm']
+      this.patientVisitDataForm.controls['patientVisitDetailsForm']
     )).controls['visitCategory'].valueChanges.subscribe(categoryValue => {
       if (categoryValue) {
         this.visitCategory = categoryValue;

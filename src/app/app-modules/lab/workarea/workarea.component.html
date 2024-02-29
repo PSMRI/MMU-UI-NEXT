@@ -1,4 +1,4 @@
-<!-- <div class="container-fluid" *ngIf="technicianForm">
+<div class="container-fluid" *ngIf="technicianForm">
   <button
     mat-mini-fab
     class="example-fab"
@@ -27,17 +27,17 @@
               class="container-fluid"
               style="min-height: 400px">
               <mat-accordion>
-                <div *ngIf="labForm?.controls">
+                <div *ngIf="labTechnicianData()">
                   <section
                     class="row"
                     *ngFor="
-                      let procedure of labForm?.controls;
+                      let procedure of labTechnicianData();
                       let i = index;
                       let isLast = last
                     ">
                     <ng-container [formGroupName]="i">
                       <mat-expansion-panel
-                        [expanded]="i == stepExpand"
+                        [expanded]="i === stepExpand"
                         hideToggle>
                         <mat-expansion-panel-header>
                           <mat-panel-title>
@@ -45,12 +45,12 @@
                           </mat-panel-title>
                           <button
                             matTooltip="{{ current_language_set?.startTest }}"
-                            mat-button
+                            md-button
                             type="button"
                             class="button-style"
                             style="margin-right: 15px"
                             *ngIf="
-                              procedure?.value?.procedureStartAPI != undefined
+                              procedure?.value?.procedureStartAPI !== undefined
                             "
                             (click)="
                               openIOTModal(procedure, i);
@@ -65,9 +65,10 @@
                           class="container-fluid">
                           <div class="row">
                             <div
-                              class="col-sm-4 col-mat-4 cl-lg-4"
+                              class="col-sm-4 col-md-4 cl-lg-4"
                               *ngFor="
-                                let component of procedure?.controls['compListDetails'];
+                                let component of procedure?.controls
+                                  .compListDetails.controls;
                                 let j = index;
                                 let innerLast = last
                               ">
@@ -99,7 +100,7 @@
                                       class="container-fluid"
                                       #textboxChoice
                                       *ngIf="
-                                        component.value.inputType == 'TextBox'
+                                        component.value.inputType === 'TextBox'
                                       ">
                                       <div
                                         style="text-align: center"
@@ -148,7 +149,7 @@
                                                 ? true
                                                 : false ||
                                                     (procedure.value
-                                                      .procedureName !=
+                                                      .procedureName !==
                                                       testName &&
                                                       procedure.value
                                                         .isMandatory === true)
@@ -183,7 +184,7 @@
                                     <section
                                       #radioChoice
                                       *ngIf="
-                                        component.value.inputType ==
+                                        component.value.inputType ===
                                         'RadioButton'
                                       ">
                                       <div style="padding-bottom: 10%">
@@ -197,7 +198,7 @@
                                               ? true
                                               : false ||
                                                   (procedure.value
-                                                    .procedureName !=
+                                                    .procedureName !==
                                                     testName &&
                                                     procedure.value
                                                       .isMandatory === true)
@@ -231,7 +232,7 @@
                                               ? true
                                               : false ||
                                                   (procedure.value
-                                                    .procedureName !=
+                                                    .procedureName !==
                                                     testName &&
                                                     procedure.value
                                                       .isMandatory === true)
@@ -277,7 +278,7 @@
                                     <section
                                       #dropdownChoice
                                       *ngIf="
-                                        component.value.inputType == 'DropDown'
+                                        component.value.inputType === 'DropDown'
                                       ">
                                       <div>
                                         <mat-select
@@ -297,7 +298,7 @@
                                               ? true
                                               : false ||
                                                   (procedure.value
-                                                    .procedureName !=
+                                                    .procedureName !==
                                                     testName &&
                                                     procedure.value
                                                       .isMandatory === true)
@@ -382,9 +383,7 @@
                             maxFileSize
                           }}
                           {{ current_language_set?.mb }} ,
-                          {{
-                            current_language_set?.supportedFileFormats
-                          }}
+                          {{ current_language_set?.supportedFileFormats }}
                           )</label
                         >
                         <br />
@@ -420,7 +419,7 @@
                               style="margin-top: 3px"
                               *ngIf="
                                 fileObj &&
-                                (fileObj | json) != '{}' &&
+                                (fileObj | json) !== '{}' &&
                                 fileObj[procedure?.value.procedureID]
                               "
                               (click)="
@@ -462,7 +461,7 @@
                               autocomplete="off"
                               matInput
                               [formControl]="
-                                procedure.controls['compDetails'].controls['remarks']
+                                procedure.value.compDetails.remarks
                               "
                               allowText="alphanumericspace"
                               maxLength="300"
@@ -524,136 +523,98 @@
                 </div>
                 <div class="clearfix"></div>
                 <section class="table-responsive">
-                  <table
-                    class="table table-bordered"
-                    [mat2Data]="laboratoryData"
-                    #mat2="mat2DataTable"
-                    [rowsPerPage]="5"
-                    [activePage]="1"
-                    class="table"
-                    aria-describedby="laboratoryData">
-                    <thead *ngIf="laboratoryData.length">
-                      <tr>
-                        <th style="width: 20%" id="date">
-                          {{ current_language_set?.common?.date }}
-                        </th>
-                        <th style="width: 20%" id="testName">
-                          {{ current_language_set?.labTechnicianData.testName }}
-                        </th>
-                        <th style="width: 20%" id="componentName">
-                          {{
-                            current_language_set?.labTechnicianData
-                              .componentName
-                          }}
-                        </th>
-                        <th style="width: 10%" id="result">
-                          {{ current_language_set?.common?.result }}
-                        </th>
-                        <th style="width: 10%" id="measurementUnit">
-                          {{
-                            current_language_set?.labTechnicianData
-                              .measurementUnit
-                          }}
-                        </th>
-                        <th style="width: 20%" id="remarks">
-                          {{ current_language_set?.common?.remarks }}
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <ng-template [ngIf]="!laboratoryData.length">
-                        <tr>
-                          <td colspan="6" style="text-align: center">
-                            <h3>
-                              {{
-                                current_language_set?.Reports
-                                  ?.notestresultsfound
-                              }}
-                            </h3>
-                          </td>
-                        </tr>
-                        <tr *ngFor="let row of blankTable">
-                          <td colspan="7">&nbsp;</td>
-                        </tr>
-                      </ng-template>
-                      <ng-container
-                        *ngFor="let comps of mat2.data; let i = index">
-                        <tr>
-                          <td
-                            [attr.rowspan]="comps?.componentList.length + 1"
-                            style="
-                              max-width: 100px;
-                              vertical-align: middle;
-                              border: 1px solid #ddd;
-                            ">
-                            {{
-                              comps?.createdDate | date: 'dd/MM/yyyy, h:mm a'
-                            }}
-                          </td>
-                          <td
-                            [attr.rowspan]="comps?.componentList.length + 1"
-                            style="
-                              max-width: 200px;
-                              word-break: normal;
-                              vertical-align: middle;
-                              border: 1px solid #ddd;
-                            ">
-                            {{ comps?.procedureName }}
-                          </td>
-                        </tr>
-                        <tr *ngFor="let component of comps?.componentList">
-                          <td
-                            style="
-                              width: 300px;
-                              max-width: 120px;
-                              word-break: normal;
-                              vertical-align: middle;
-                            ">
-                            {{ component?.componentName }}
-                          </td>
-                          <td
-                            style="
-                              width: 150px;
-                              word-break: normal;
-                              vertical-align: middle;
-                            ">
-                            {{ component?.testResultValue }}
-                          </td>
-                          <td
-                            style="
-                              width: 150px;
-                              word-break: normal;
-                              vertical-align: middle;
-                            ">
-                            {{ component?.testResultUnit }}
-                          </td>
-                          <td
-                            style="
-                              max-width: 150px;
-                              word-break: normal;
-                              vertical-align: middle;
-                            ">
-                            {{ component?.remarks }}
-                          </td>
-                        </tr>
-                      </ng-container>
-                    </tbody>
-                    <tfoot *ngIf="laboratoryData.length">
-                      <tr>
-                        <td colspan="4 ">
-                          <div
-                            *ngIf="laboratoryData.length > 0"
-                            class="totalCount">
-                            {{ current_language_set?.common?.totalCount }} :
-                            {{ laboratoryData.length }}
-                          </div>
-                        </td>
-                        <td colspan="2" style="text-align: right">
-                          <mat2-pagination></mat2-pagination>
-                        </td>
-                      </tr>
-                    </tfoot>
-                  </table>
+                  <mat-table [dataSource]="laboratoryData">
+                    <ng-container matColumnDef="date">
+                      <mat-header-cell *matHeaderCellDef>{{
+                        current_language_set?.common?.date
+                      }}</mat-header-cell>
+                      <mat-cell *matCellDef="let row">{{
+                        row.createdDate | date: 'dd/MM/yyyy, h:mm a'
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="testName">
+                      <mat-header-cell *matHeaderCellDef>{{
+                        current_language_set?.labTechnicianData.testName
+                      }}</mat-header-cell>
+                      <mat-cell *matCellDef="let row">{{
+                        row.procedureName
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="componentName">
+                      <mat-header-cell *matHeaderCellDef>{{
+                        current_language_set?.labTechnicianData.componentName
+                      }}</mat-header-cell>
+                      <mat-cell *matCellDef="let row">{{
+                        row.componentList[0]?.componentName
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="result">
+                      <mat-header-cell *matHeaderCellDef>{{
+                        current_language_set?.common?.result
+                      }}</mat-header-cell>
+                      <mat-cell *matCellDef="let row">{{
+                        row.componentList[0]?.testResultValue
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="measurementUnit">
+                      <mat-header-cell *matHeaderCellDef>{{
+                        current_language_set?.labTechnicianData.measurementUnit
+                      }}</mat-header-cell>
+                      <mat-cell *matCellDef="let row">{{
+                        row.componentList[0]?.testResultUnit
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="remarks">
+                      <mat-header-cell *matHeaderCellDef>{{
+                        current_language_set?.common?.remarks
+                      }}</mat-header-cell>
+                      <mat-cell *matCellDef="let row">{{
+                        row.componentList[0]?.remarks
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <mat-header-row
+                      *matHeaderRowDef="[
+                        'date',
+                        'testName',
+                        'componentName',
+                        'result',
+                        'measurementUnit',
+                        'remarks'
+                      ]"></mat-header-row>
+                    <mat-row
+                      *matRowDef="
+                        let row;
+                        columns: [
+                          'date',
+                          'testName',
+                          'componentName',
+                          'result',
+                          'measurementUnit',
+                          'remarks'
+                        ]
+                      "></mat-row>
+                  </mat-table>
+                  <div *ngIf="laboratoryData.data.length === 0">
+                    <h3>
+                      {{ current_language_set?.Reports?.notestresultsfound }}
+                    </h3>
+                  </div>
+                  <div
+                    *ngIf="laboratoryData.data.length > 0"
+                    class="totalCount">
+                    {{ current_language_set?.common?.totalCount }} :
+                    {{ laboratoryData.data.length }}
+                  </div>
+                  <mat-paginator
+                    [hidden]="laboratoryData.data.length > 0"
+                    [pageSize]="5"
+                    showFirstLastButtons></mat-paginator>
                 </section>
               </mat-card>
             </section>
@@ -683,7 +644,96 @@
                 </div>
                 <div class="clearfix"></div>
                 <section class="table-responsive">
-                  <table
+                  <mat-table [dataSource]="radiologyFile">
+                    <ng-container matColumnDef="date1">
+                      <mat-header-cell *matHeaderCellDef>{{
+                        current_language_set?.common?.date
+                      }}</mat-header-cell>
+                      <mat-cell *matCellDef="let row">{{
+                        row.createdDate | date: 'dd/MM/yyyy, h:mm a'
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="testName1">
+                      <mat-header-cell *matHeaderCellDef>{{
+                        current_language_set?.labTechnicianData.testName
+                      }}</mat-header-cell>
+                      <mat-cell *matCellDef="let row">{{
+                        row.procedureName
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="componentName1">
+                      <mat-header-cell *matHeaderCellDef>{{
+                        current_language_set?.labTechnicianData.componentName
+                      }}</mat-header-cell>
+                      <mat-cell *matCellDef="let row">{{
+                        row.componentList[0]?.componentName
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="result1">
+                      <mat-header-cell *matHeaderCellDef>{{
+                        current_language_set?.common?.result
+                      }}</mat-header-cell>
+                      <mat-cell *matCellDef="let row">{{
+                        row.componentList[0]?.remarks
+                      }}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="measurementUnit1">
+                      <mat-header-cell *matHeaderCellDef>{{
+                        current_language_set?.labTechnicianData.measurementUnit
+                      }}</mat-header-cell>
+                      <mat-cell *matCellDef="let row"></mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="remarks1">
+                      <mat-header-cell *matHeaderCellDef>{{
+                        current_language_set?.common?.remarks
+                      }}</mat-header-cell>
+                      <mat-cell *matCellDef="let row"></mat-cell>
+                    </ng-container>
+
+                    <mat-header-row
+                      *matHeaderRowDef="[
+                        'date1',
+                        'testName1',
+                        'componentName1',
+                        'result1',
+                        'measurementUnit1',
+                        'remarks1'
+                      ]"></mat-header-row>
+                    <mat-row
+                      *matRowDef="
+                        let row;
+                        columns: [
+                          'date1',
+                          'testName1',
+                          'componentName1',
+                          'result1',
+                          'measurementUnit1',
+                          'remarks1'
+                        ]
+                      "></mat-row>
+                  </mat-table>
+
+                  <div *ngIf="radiologyFile.data.length === 0">
+                    <h3>
+                      {{
+                        current_language_set?.Reports?.noradiologyreportsfound
+                      }}
+                    </h3>
+                  </div>
+                  <div *ngIf="radiologyFile.data.length > 0" class="totalCount">
+                    {{ current_language_set?.common?.totalCount }} :
+                    {{ radiologyFile.data.length }}
+                  </div>
+                  <mat-paginator
+                    [hidden]="radiologyFile.data.length > 0"
+                    [pageSize]="5"
+                    showFirstLastButtons></mat-paginator>
+                  <!-- <table
                     class="table table-bordered"
                     [mat2Data]="radiologyFile"
                     #mat2="mat2DataTable"
@@ -812,7 +862,7 @@
                         </td>
                       </tr>
                     </tfoot>
-                  </table>
+                  </table> -->
                 </section>
               </mat-card>
             </section>
@@ -844,4 +894,4 @@
       </div>
     </div>
   </mat-sidenav-container>
-</div> -->
+</div>

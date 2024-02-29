@@ -75,7 +75,6 @@ import { PreviousSignificiantFindingsComponent } from './case-record/general-cas
 import { PrescriptionComponent } from './case-record/general-case-record/prescription/prescription.component';
 import { FindingsComponent } from './case-record/general-case-record/findings/findings.component';
 import { DiagnosisComponent } from './case-record/general-case-record/diagnosis/diagnosis.component';
-import { DoctorInvestigationsComponent } from './case-record/general-case-record/doctor-investigations/doctor-investigations.component';
 import { GeneralOpdDiagnosisComponent } from './case-record/general-case-record/diagnosis/general-opd-diagnosis/general-opd-diagnosis.component';
 import { AncDiagnosisComponent } from './case-record/general-case-record/diagnosis/anc-diagnosis/anc-diagnosis.component';
 import { NcdCareDiagnosisComponent } from './case-record/general-case-record/diagnosis/ncd-care-diagnosis/ncd-care-diagnosis.component';
@@ -147,6 +146,8 @@ import { QuickConsultComponent } from './quick-consult/quick-consult.component';
 import { NcdScreeningComponent } from './ncd-screening/ncd-screening.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReportsComponent } from './reports/reports.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DoctorInvestigationsComponent } from './case-record/general-case-record/doctor-investigations/doctor-investigations.component';
 
 @NgModule({
   imports: [
@@ -164,6 +165,7 @@ import { ReportsComponent } from './reports/reports.component';
     MatTableModule,
     MatChipsModule,
     MatDatepickerModule,
+    NgxPaginationModule,
   ],
   declarations: [
     NurseWorklistComponent,

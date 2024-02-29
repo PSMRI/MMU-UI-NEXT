@@ -38,7 +38,7 @@ export class BeneficiaryMctsCallHistoryComponent implements OnInit, DoCheck {
     private httpServiceService: HttpServiceService
   ) {}
 
-  callDetails = [];
+  callDetails: any = [];
   filteredCallDetails: any = [];
   callDetailsRowsPerPage = 5;
   callDetailsActivePage = 1;
@@ -78,7 +78,7 @@ export class BeneficiaryMctsCallHistoryComponent implements OnInit, DoCheck {
     });
   }
 
-  callDetailsPagedList = [];
+  callDetailsPagedList: any = [];
   callDetailsPageChanged(event: any): void {
     console.log('called', event);
     const startItem = (event.page - 1) * event.itemsPerPage;

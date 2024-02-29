@@ -442,3 +442,14 @@ h5 {
   --mdc-checkbox-unselected-hover-state-layer-color: black;
   --mdc-checkbox-unselected-pressed-state-layer-color: black;
 }
+
+html{
+  --mdc-checkbox-selected-focus-icon-color: #0bc559 !important;
+  --mdc-checkbox-selected-hover-icon-color: #0bc559 !important;
+  --mdc-checkbox-selected-icon-color: #0bc559 !important;
+  --mdc-checkbox-selected-pressed-icon-color: #0bc559 !important;
+ 
+  --mdc-checkbox-selected-focus-state-layer-color: #0bc559 !important;
+  --mdc-checkbox-selected-hover-state-layer-color: #0bc559 !important;
+  --mdc-checkbox-selected-pressed-state-layer-color: #0bc559 !important;
+}
