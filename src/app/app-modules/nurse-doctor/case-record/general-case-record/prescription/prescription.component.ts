@@ -37,6 +37,7 @@ import {
   FormControl,
   FormArray,
   NgForm,
+  AbstractControl,
 } from '@angular/forms';
 import { MasterdataService, DoctorService } from '../../../shared/services';
 import { GeneralUtils } from '../../../shared/utility/general-utility';
@@ -112,7 +113,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
 
   filteredDrugMaster: any = [];
   filteredDrugDoseMaster: any = [];
-  subFilteredDrugMaster = [];
+  subFilteredDrugMaster: any = [];
   drugMaster: any;
   drugFormMaster: any;
   drugDoseMaster: any;
@@ -135,6 +136,14 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
     private masterdataService: MasterdataService,
     private httpServiceService: HttpServiceService
   ) {}
+
+  getPrescribedDrugs(): AbstractControl[] | null {
+    const prescribedDrugsControl =
+      this.drugPrescriptionForm.get('prescribedDrugs');
+    return prescribedDrugsControl instanceof FormArray
+      ? prescribedDrugsControl.controls
+      : null;
+  }
 
   ngOnInit() {
     this.createdBy = localStorage.getItem('userName');
@@ -166,12 +175,12 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
     }
   }
 
-  displayFn(option: any): string | undefined {
+  displayFn(option: any) {
     return option
       ? `${option.itemName} ${option.strength}${
           option.unitOfMeasurement ? option.unitOfMeasurement : ''
         }${option.quantityInHand ? '(' + option.quantityInHand + ')' : ''}`
-      : undefined;
+      : 'null';
   }
 
   getFormValueChanged() {

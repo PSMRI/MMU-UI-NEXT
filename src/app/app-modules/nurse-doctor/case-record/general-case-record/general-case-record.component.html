@@ -39,7 +39,7 @@
       [visitCategory]="visitCategory"></app-diagnosis>
   </mat-expansion-panel>
 
-  <!--  <mat-expansion-panel>
+  <mat-expansion-panel>
     <mat-expansion-panel-header>
       <h5>
         {{
@@ -49,9 +49,9 @@
     </mat-expansion-panel-header>
     <app-doctor-investigations
       [caseRecordMode]="caseRecordMode"
-      [visitCategory]="visitCategory"
+      [visit]="visitCategory"
       [generalDoctorInvestigationForm]="
-        generalCaseRecordForm.controls.generalDoctorInvestigationForm
+        generalDoctorInvestigationForm
       "></app-doctor-investigations>
   </mat-expansion-panel>
 
@@ -61,10 +61,8 @@
     </mat-expansion-panel-header>
     <app-prescription
       [caseRecordMode]="caseRecordMode"
-      [drugPrescriptionForm]="
-        generalCaseRecordForm.controls.drugPrescriptionForm
-      "></app-prescription>
-  </mat-expansion-panel> -->
+      [drugPrescriptionForm]="drugPrescriptionForm"></app-prescription>
+  </mat-expansion-panel>
 
   <mat-expansion-panel>
     <mat-expansion-panel-header>

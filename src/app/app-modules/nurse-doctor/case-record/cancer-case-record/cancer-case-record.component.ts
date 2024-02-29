@@ -148,7 +148,7 @@ export class CancerCaseRecordComponent
   findings: any;
 
   @Input()
-  vitals: any;
+  currentVitals: any;
 
   @Input()
   pregnancyStatus: any;
@@ -196,7 +196,7 @@ export class CancerCaseRecordComponent
     this.current_language_set = getLanguageJson.currentLanguageObject;
   }
   ngAfterViewInit() {
-    console.log(this.vitals, 'graph');
+    console.log(this.currentVitals, 'graph');
   }
 
   ngOnDestroy() {
@@ -439,10 +439,10 @@ export class CancerCaseRecordComponent
   // }
 
   calculateBMI() {
-    if (this.vitals != null)
+    if (this.currentVitals != null)
       return +(
-        (this.vitals.weight_Kg /
-          (this.vitals.height_cm * this.vitals.height_cm)) *
+        (this.currentVitals.weight_Kg /
+          (this.currentVitals.height_cm * this.currentVitals.height_cm)) *
         10000
       ).toFixed(1);
     else return 0;

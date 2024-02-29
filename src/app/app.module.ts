@@ -33,6 +33,7 @@ import { MatInputModule } from '@angular/material/input';
 import { NurseDoctorModule } from './app-modules/nurse-doctor/nurse-doctor.module';
 import { RegistrarModule } from './app-modules/registrar/registrar.module';
 import { AudioRecordingService } from './app-modules/nurse-doctor/shared/services/audio-recording.service';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { AudioRecordingService } from './app-modules/nurse-doctor/shared/service
     AppRoutingModule,
     MatGridListModule,
     WebcamModule,
+    NgxPaginationModule,
     CoreModule.forRoot(),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

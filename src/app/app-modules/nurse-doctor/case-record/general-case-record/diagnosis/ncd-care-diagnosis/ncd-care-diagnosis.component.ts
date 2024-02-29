@@ -270,7 +270,7 @@ export class NcdCareDiagnosisComponent implements OnInit, DoCheck {
     }
   }
 
-  deleteDiagnosis(index: any, diagnosisList?: FormArray) {
+  deleteDiagnosis(index: any, diagnosisList: AbstractControl<any, any>) {
     const diagnosisListForm = this.generalDiagnosisForm.controls[
       'provisionalDiagnosisList'
     ] as FormArray;
@@ -309,7 +309,8 @@ export class NcdCareDiagnosisComponent implements OnInit, DoCheck {
     }
   }
 
-  changeNcdScreeningCondition(value: any, event: any) {
+  changeNcdScreeningCondition(eventValue: any, event: any) {
+    const value: any = event.value;
     let flag = false;
     if (value != undefined && value != null && value.length > 0) {
       value.forEach((element: any) => {

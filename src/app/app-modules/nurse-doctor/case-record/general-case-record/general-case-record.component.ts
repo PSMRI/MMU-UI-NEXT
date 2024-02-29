@@ -22,7 +22,7 @@
 
 import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Form, FormBuilder, FormGroup } from '@angular/forms';
 
 import { MasterdataService } from '../../shared/services';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
@@ -37,7 +37,7 @@ export class GeneralCaseRecordComponent implements DoCheck {
   generalCaseRecordForm!: FormGroup;
 
   @Input()
-  currentVitals!: any;
+  currentVitals: any;
 
   @Input()
   caseRecordMode!: string;
@@ -50,6 +50,8 @@ export class GeneralCaseRecordComponent implements DoCheck {
 
   generalFindingsForm!: FormGroup;
   generalDiagnosisForm!: FormGroup;
+  generalDoctorInvestigationForm!: FormGroup;
+  drugPrescriptionForm!: FormGroup;
   current_language_set: any;
 
   constructor(private httpServiceService: HttpServiceService) {}
@@ -60,6 +62,12 @@ export class GeneralCaseRecordComponent implements DoCheck {
     ) as FormGroup;
     this.generalDiagnosisForm = this.generalCaseRecordForm.get(
       'generalDiagnosisForm'
+    ) as FormGroup;
+    this.generalDoctorInvestigationForm = this.generalCaseRecordForm.get(
+      'generalDoctorInvestigationForm'
+    ) as FormGroup;
+    this.drugPrescriptionForm = this.generalCaseRecordForm.get(
+      'drugPrescriptionForm'
     ) as FormGroup;
     this.assignSelectedLanguage();
   }

@@ -4,7 +4,7 @@
       <mat-form-field id="filterbox" class="pull-right">
         <input
           autocomplete="off"
-          mdInput
+          matInput
           placeholder="{{ current_language_set?.labTechnicianData?.testName }}"
           #filterTerm
           (keyup)="filterProcedures(filterTerm.value)" />
@@ -293,7 +293,7 @@
           <mat-form-field id="filterbox" class="pull-right">
             <input
               autocomplete="off"
-              mdInput
+              matInput
               placeholder="{{
                 current_language_set?.labTechnicianData.testName
               }}"

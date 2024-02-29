@@ -280,7 +280,10 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
               beneficiary.labObject.specialist_flag
             );
           } else {
-            localStorage.setItem('specialist_flag', '');
+            const storedValue = localStorage.getItem('specialist_flag');
+            const specialistFlag =
+              storedValue !== null ? JSON.parse(storedValue) : null;
+            // localStorage.setItem('specialist_flag',JSON.stringify({ value : null}));
           }
           console.log(localStorage.getItem('visitCode'), 'visitCodebeforedave');
           this.router.navigate(['/lab/patient/', beneficiary.beneficiaryRegID]);

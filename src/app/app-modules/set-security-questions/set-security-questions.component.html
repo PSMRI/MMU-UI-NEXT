@@ -35,7 +35,7 @@
               <mat-form-field style="width: 100%">
                 <input
                   id="ans1"
-                  mdInput
+                  matInput
                   allowText="answerValidator"
                   placeholder="Answer 1"
                   [(ngModel)]="answer1"
@@ -66,7 +66,7 @@
               <mat-form-field style="width: 100%">
                 <input
                   id="ans2"
-                  mdInput
+                  matInput
                   allowText="answerValidator"
                   [disabled]="!form1.valid"
                   placeholder="Answer 2"
@@ -98,7 +98,7 @@
               <mat-form-field style="width: 100%">
                 <input
                   id="ans3"
-                  mdInput
+                  matInput
                   allowText="answerValidator"
                   placeholder="Answer 3"
                   [disabled]="!form2.valid"
@@ -135,7 +135,7 @@
                   >lock</mat-icon
                 >
                 <input
-                  mdInput
+                  matInput
                   type="{{ dynamictype }}"
                   placeholder="New Password"
                   [(ngModel)]="newpwd"
@@ -174,7 +174,7 @@
                   >lock</mat-icon
                 >
                 <input
-                  mdInput
+                  matInput
                   type="{{ dynamictype }}"
                   placeholder="Confirm Password"
                   [(ngModel)]="confirmpwd"

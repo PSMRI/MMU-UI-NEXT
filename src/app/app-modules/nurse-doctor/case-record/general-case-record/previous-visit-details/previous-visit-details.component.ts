@@ -149,7 +149,7 @@ export class PreviousVisitDetailsComponent
   }
 
   ngOnChanges() {
-    console.log('current vitals', this.vitals);
+    console.log('current vitals', this.currentVitals);
   }
   ngDoCheck() {
     this.assignSelectedLanguage();
