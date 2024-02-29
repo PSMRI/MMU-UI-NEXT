@@ -1,6 +1,6 @@
 <app-header [showRoles]="false"></app-header>
 
-<div class="container" style="margin-top: 5%">
+<div class="container" style="margin-top: 5%; margin-bottom: 5%">
   <section>
     <div class="col-md-3 col-sm-3 col-3"></div>
     <div class="col-md-6 col-sm-6 col-6">
@@ -27,7 +27,9 @@
                 </mat-radio-button>
               </mat-radio-group>
 
-              <mat-form-field [style.width]="'100%'" class="alignField">
+              <mat-form-field
+                [style.width]="'100%'"
+                style="margin: 0px -8px -8px -8px">
                 <mat-label>{{ currentLanguageSet?.van }}</mat-label>
                 <mat-select
                   required
@@ -44,7 +46,7 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field [style.width]="'100%'" class="alignField">
+              <mat-form-field [style.width]="'100%'" style="margin: -8px">
                 <mat-label>{{
                   currentLanguageSet?.casesheet?.servicePoint
                 }}</mat-label>
@@ -74,7 +76,7 @@
                 </mat-autocomplete>
               </mat-form-field>
 
-              <mat-form-field [style.width]="'100%'" class="alignField">
+              <mat-form-field [style.width]="'100%'" style="margin: -8px">
                 <mat-label>State</mat-label>
                 <mat-select
                   [style.width]="'100%'"
@@ -96,11 +98,10 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field [style.width]="'100%'" class="alignField">
+              <mat-form-field [style.width]="'100%'" style="margin: -8px">
                 <mat-label>District/Town/City</mat-label>
                 <mat-select
                   [style.width]="'100%'"
-                  class="alignField"
                   formControlName="districtID"
                   name="districtID"
                   [required]="true"
@@ -118,11 +119,10 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field [style.width]="'100%'" class="alignField">
+              <mat-form-field [style.width]="'100%'" style="margin: -8px">
                 <mat-label>Taluk/Tehsil</mat-label>
                 <mat-select
                   [style.width]="'100%'"
-                  class="alignField"
                   formControlName="blockID"
                   name="blockID"
                   [required]="true"
@@ -138,11 +138,10 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field [style.width]="'100%'" class="alignField">
+              <mat-form-field [style.width]="'100%'" style="margin: -8px">
                 <mat-label>Street/Panchayat/Village</mat-label>
                 <mat-select
                   [style.width]="'100%'"
-                  class="alignField"
                   formControlName="districtBranchID"
                   name="districtBranchID"
                   (selectionChange)="

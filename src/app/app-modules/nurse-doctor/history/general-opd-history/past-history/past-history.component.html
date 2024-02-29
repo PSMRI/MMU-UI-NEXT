@@ -1,7 +1,7 @@
 <!-- {{ pastHistoryForm.value | json}} -->
-<div class="row" [formGroup]="pastHistoryForm">
+<div [formGroup]="pastHistoryForm">
   <div>
-    <div class="col-xs-12 text-right">
+    <div class="col-12" style="float: right; text-align: end">
       <span class="font-history-label">{{
         currentLanguageSet?.historyData?.Previousillness
           ?.previousillnessandsurgery
@@ -11,7 +11,7 @@
         mat-icon-button
         matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
         id="previousANCPastHistory"
-        class="pull-right"
+        class="mat_icon_blue"
         color="primary"
         (click)="getPreviousPastHistory()">
         <mat-icon class="md-18">history</mat-icon>

@@ -12,7 +12,6 @@ md-input-container {
 
 mat-card {
   min-height: 400px;
-  padding: 15px;
 }
 
 :host /deep/ .pagination {
@@ -181,4 +180,7 @@ ul li div {
 .totalCount,
 .description {
   padding-top: 15px;
+}
+.mat-pagenator >>> .mat-mdc-paginator {
+  display:unset !important;
 }

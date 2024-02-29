@@ -29,6 +29,9 @@
 
 .action button {
     border: 1px solid lightgray;
+    margin-left: 5px;
+    width: 60px;
+    
 }
 
 .success {

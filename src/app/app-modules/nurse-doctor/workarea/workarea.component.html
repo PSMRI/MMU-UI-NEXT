@@ -69,8 +69,7 @@
                 </button>
                 <button
                   mat-raised-button
-                  color="primary"
-                  class="btn-green"
+                  class="mat_blue"
                   *ngIf="ancMode"
                   [disabled]="
                     !patientMedicalForm.controls['patientANCForm'].dirty
@@ -97,7 +96,7 @@
                 </button>
                 <button
                   mat-raised-button
-                  color="primary"
+                  class="mat_blue"
                   matStepperPrevious
                   type="button">
                   {{ currentLanguageSet?.common?.back }}
@@ -105,7 +104,7 @@
                 <button
                   mat-raised-button
                   color="primary"
-                  class="btn-green"
+                  class="mat_blue"
                   *ngIf="pncMode"
                   [disabled]="
                     !patientMedicalForm.controls['patientPNCForm'].dirty
@@ -136,6 +135,7 @@
                 <button
                   mat-raised-button
                   color="primary"
+                  class="mat_blue"
                   matStepperPrevious
                   type="button">
                   {{ currentLanguageSet?.common?.back }}
@@ -143,7 +143,7 @@
                 <button
                   mat-raised-button
                   color="primary"
-                  class="btn-green"
+                  class="mat_blue"
                   *ngIf="historyMode"
                   (click)="updatePatientHistory()"
                   [disabled]="
@@ -170,8 +170,7 @@
               <div class="col-sm-12 step-btn m-b-40">
                 <button
                   mat-raised-button
-                  color="primary"
-                  class="btn-green"
+                  class="mat_blue"
                   type="button"
                   *ngIf="!showExamination && !showRefer && !showNCDScreening"
                   [disabled]="disableSubmitButton"
@@ -180,7 +179,7 @@
                 </button>
                 <button
                   mat-raised-button
-                  color="primary"
+                  class="mat_blue"
                   *ngIf="showExamination || showCaseRecord || showNCDScreening"
                   matStepperNext
                   type="button">
@@ -188,15 +187,14 @@
                 </button>
                 <button
                   mat-raised-button
-                  color="primary"
+                  class="mat_blue"
                   matStepperPrevious
                   type="button">
                   {{ currentLanguageSet?.common?.back }}
                 </button>
                 <button
                   mat-raised-button
-                  color="primary"
-                  class="btn-green"
+                  class="mat_blue"
                   *ngIf="vitalsMode"
                   (click)="updatePatientVitals()"
                   [disabled]="
@@ -224,8 +222,7 @@
               <div class="col-sm-12 step-btn m-b-40">
                 <button
                   mat-raised-button
-                  color="primary"
-                  class="btn-green"
+                  class="mat_blue"
                   type="button"
                   *ngIf="!showRefer"
                   [disabled]="disableSubmitButton"
@@ -234,7 +231,7 @@
                 </button>
                 <button
                   mat-raised-button
-                  color="primary"
+                  class="mat_blue"
                   *ngIf="showCaseRecord"
                   matStepperNext
                   type="button">
@@ -242,15 +239,14 @@
                 </button>
                 <button
                   mat-raised-button
-                  color="primary"
+                  class="mat_blue"
                   matStepperPrevious
                   type="button">
                   {{ currentLanguageSet?.common?.back }}
                 </button>
                 <button
                   mat-raised-button
-                  class="btn-green"
-                  color="primary"
+                  class="mat_blue"
                   *ngIf="examinationMode"
                   (click)="updatePatientExamination()"
                   [disabled]="!patientExaminationForm.dirty"
@@ -275,7 +271,7 @@
                   *ngIf="!ncdScreeningMode"
                   mat-raised-button
                   color="primary"
-                  class="btn-green"
+                  class="mat_blue"
                   [disabled]="disableSubmitButton"
                   (click)="submitPatientMedicalDetailsForm(patientMedicalForm)"
                   type="button">
@@ -291,6 +287,7 @@
                 <button
                   mat-raised-button
                   color="primary"
+                  class="mat_blue"
                   matStepperPrevious
                   type="button">
                   {{ currentLanguageSet?.common?.back }}
@@ -298,7 +295,7 @@
                 <button
                   *ngIf="ncdScreeningMode"
                   mat-raised-button
-                  class="btn-green"
+                  class="mat_blue"
                   color="primary"
                   type="button"
                   (click)="updatePatientNcdScreening()"
@@ -323,6 +320,7 @@
               <div class="col-sm-12 step-btn m-b-40">
                 <button
                   mat-raised-button
+                  class="mat_blue"
                   color="primary"
                   *ngIf="showExamination || showHistory"
                   matStepperNext
@@ -332,6 +330,7 @@
                 <button
                   mat-raised-button
                   color="primary"
+                  class="mat_blue"
                   matStepperPrevious
                   type="button">
                   {{ currentLanguageSet?.common?.back }}
@@ -354,7 +353,7 @@
                   *ngIf="doctorFlag === 1"
                   mat-raised-button
                   color="primary"
-                  class="btn-green"
+                  class="mat_blue"
                   [disabled]="disableSubmitButton"
                   (click)="submitDoctorDiagnosisForm()"
                   type="submit">
@@ -364,7 +363,7 @@
                   *ngIf="doctorFlag !== 1"
                   mat-raised-button
                   color="primary"
-                  class="btn-green"
+                  class="mat_blue"
                   (click)="updateDoctorDiagnosisForm()"
                   type="submit">
                   {{ doctorUpdateAndTCSubmit }}
@@ -372,6 +371,7 @@
                 <button
                   mat-raised-button
                   color="primary"
+                  class="mat_blue"
                   matStepperPrevious
                   type="button">
                   {{ currentLanguageSet?.common?.back }}
@@ -399,7 +399,7 @@
                   *ngIf="doctorFlag === 1"
                   mat-raised-button
                   color="primary"
-                  class="btn-green"
+                  class="mat_blue"
                   [disabled]="disableSubmitButton"
                   (click)="submitDoctorDiagnosisForm()"
                   type="button">
@@ -409,7 +409,7 @@
                   *ngIf="doctorFlag !== 1"
                   mat-raised-button
                   color="primary"
-                  class="btn-green"
+                  class="mat_blue"
                   (click)="updateQuickConsultDiagnosisForm()"
                   type="button">
                   {{ doctorUpdateAndTCSubmit }}
@@ -417,6 +417,7 @@
                 <button
                   mat-raised-button
                   color="primary"
+                  class="mat_blue"
                   matStepperPrevious
                   type="button">
                   {{ currentLanguageSet?.common?.back }}

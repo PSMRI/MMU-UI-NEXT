@@ -144,6 +144,34 @@
   bottom: 50px;
   z-index: 3;
 }
+.mat_icon_blue{
+  background-color: white;
+  min-width: 0;
+  border-radius: 50%;
+  border-color: unset !important;
+  color:#0277bd ;
+  border: unset;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  left: 20px;
+  bottom: 50px;
+  z-index: 3;
+}
+.mat_icon_white{
+  background-color: #0277bd;
+  min-width: 0;
+  border-radius: 50%;
+  border-color: unset !important;
+  color:white ;
+  border: unset;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  left: 20px;
+  bottom: 50px;
+  z-index: 3;
+}
 
 .mat-form-field {
   line-height: unset;
