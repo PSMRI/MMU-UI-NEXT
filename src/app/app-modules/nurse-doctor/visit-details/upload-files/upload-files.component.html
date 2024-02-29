@@ -29,6 +29,7 @@
         {{ currentLanguageSet?.nurseData?.visitDetailsForm?.uploadFiles }}
       </button>
       <button
+        style="margin-left: 10px"
         *ngIf="disableFileSelection || enableForNCDScreening"
         class="mat_blue"
         (click)="viewNurseSelectedFiles()">
