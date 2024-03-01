@@ -244,6 +244,7 @@ export class RegistrationComponent
    */
   resetBeneficiaryForm() {
     this.beneficiaryRegistrationForm.reset();
+    this.setCheckBoxByDefault();
     this.ageUnitReset();
     this.govIDReset();
     this.otherDetails.resetForm();
@@ -254,6 +255,9 @@ export class RegistrationComponent
     this.personalDetails.isMobileNoRequired = true;
     this.personalDetails.isOccuptionRequired = true;
     this.setStep(0); //open personal details in accordian
+    this.personalDetailsForm.patchValue({
+      checked: true,
+    });
   }
 
   confirmFormReset(reset: any) {
@@ -344,6 +348,12 @@ export class RegistrationComponent
     (<FormGroup>(
       this.beneficiaryRegistrationForm.controls['personalDetailsForm']
     )).patchValue({ ageUnit: 'Years' });
+  }
+
+  setCheckBoxByDefault() {
+    (<FormGroup>this.personalDetailsForm.controls['checked']).patchValue({
+      checked: true,
+    });
   }
 
   /**
