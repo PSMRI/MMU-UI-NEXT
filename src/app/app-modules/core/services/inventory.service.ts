@@ -100,6 +100,7 @@ export class InventoryService {
     const serviceLineDetailsData: any =
       localStorage.getItem('serviceLineDetails');
     const serviceLineDetails = JSON.parse(serviceLineDetailsData);
+    return serviceLineDetails.parkingPlaceID;
   }
 
   getServiceDetails() {

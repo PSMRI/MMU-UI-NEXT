@@ -24,8 +24,8 @@
       </span>
       <button
         class="mat_blue pull-right"
-        (click)="checkForDuplicateUpload()"
-        *ngIf="!disableFileSelection">
+        mat-raised-button
+        (click)="checkForDuplicateUpload()">
         {{ currentLanguageSet?.nurseData?.visitDetailsForm?.uploadFiles }}
       </button>
       <button

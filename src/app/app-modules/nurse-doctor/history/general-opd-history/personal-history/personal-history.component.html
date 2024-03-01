@@ -538,16 +538,17 @@
                 appDefaultNull
                 maxlength="200"
                 formControlName="snomedTerm"
-                (selectionChange)="removeSnomedCode(allergy, i)"
-                [disabled]="!allergy.value.allergyType"
+                (change)="removeSnomedCode(allergy, i)"
                 (keyup.enter)="searchComponents(allergy, i, allergy)" />
-              <mat-icon
-                class="search-btn cursorPointer"
-                mdSuffix
-                (click)="searchComponents(allergy, i, allergy)"
-                [class.toolbar-icon-disabled]="componentFlag"
-                >search</mat-icon
-              >
+              <button>
+                <mat-icon
+                  class="search-btn cursorPointer"
+                  matSuffix
+                  (click)="searchComponents(allergy, i, allergy)"
+                  [class.toolbar-icon-disabled]="componentFlag"
+                  >search</mat-icon
+                >
+              </button>
             </mat-form-field>
           </div>
 

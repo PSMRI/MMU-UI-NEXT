@@ -572,7 +572,7 @@ export class GeneralUtils {
       clinicalObservation: null,
       otherSymptoms: null,
       significantFindings: null,
-      isForHistory: true,
+      isForHistory: false,
       complaints: this.fb.array([this.initChiefComplaints()]),
       createdBy: null,
       vanID: JSON.parse(serviceLineDetails).vanID,
