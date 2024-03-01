@@ -1,12 +1,4 @@
 <div class="container-fluid" *ngIf="technicianForm">
-  <button
-    mat-mini-fab
-    class="example-fab"
-    color="primary"
-    (click)="sideNavModeChange(sidenav)">
-    <mat-icon>account_box</mat-icon>
-  </button>
-
   <mat-sidenav-container class="example-sidenav-fab-container">
     <mat-sidenav #sidenav mode="side" opened="false">
       <div class="example-scrolling-content">
@@ -16,7 +8,7 @@
 
     <div class="example-scrolling-content">
       <form [formGroup]="technicianForm">
-        <mat-tab-group>
+        <mat-tab-group class="tabs_css">
           <mat-tab
             label="{{
               current_language_set?.labTechnicianData?.laboratoryinformation
@@ -29,7 +21,7 @@
               <mat-accordion>
                 <div *ngIf="labTechnicianData()">
                   <section
-                    class="row"
+                    class=""
                     *ngFor="
                       let procedure of labTechnicianData();
                       let i = index;
@@ -41,7 +33,7 @@
                         hideToggle>
                         <mat-expansion-panel-header>
                           <mat-panel-title>
-                            {{ procedure.value.procedureName }}&nbsp;
+                            <h5>{{ procedure.value.procedureName }}&nbsp;</h5>
                           </mat-panel-title>
                           <button
                             matTooltip="{{ current_language_set?.startTest }}"
@@ -66,6 +58,7 @@
                           <div class="row">
                             <div
                               class="col-sm-4 col-md-4 cl-lg-4"
+                              style="margin-bottom: 20px"
                               *ngFor="
                                 let component of procedure?.controls
                                   .compListDetails.controls;
@@ -75,7 +68,7 @@
                               <ng-container [formGroupName]="j">
                                 <mat-card style="margin-top: 10px; padding: 0">
                                   <mat-card-title
-                                    style="padding: 24px"
+                                    style="padding: 15px"
                                     class="overlay">
                                     {{ component.value.testComponentName }}
                                   </mat-card-title>
@@ -94,24 +87,16 @@
                                         ?.stripsNotAvailable
                                     }}
                                   </mat-checkbox>
-                                  <mat-card-content
-                                    style="padding: 0 24px 24px 24px">
+                                  <mat-card-content>
                                     <section
                                       class="container-fluid"
                                       #textboxChoice
                                       *ngIf="
                                         component.value.inputType === 'TextBox'
                                       ">
-                                      <div
-                                        style="text-align: center"
-                                        class="row">
+                                      <div style="text-align: center" class="">
                                         <mat-form-field
-                                          style="
-                                            width: 70%;
-                                            padding-bottom: 10%;
-                                            margin-bottom: 10%;
-                                            margin-top: 5%;
-                                          "
+                                          style="width: 93%; margin-left: -38px"
                                           [ngClass]="{
                                             'mat-input-invalid':
                                               component.value.abnormal,
@@ -187,7 +172,7 @@
                                         component.value.inputType ===
                                         'RadioButton'
                                       ">
-                                      <div style="padding-bottom: 10%">
+                                      <div>
                                         <span
                                           *ngIf="
                                             procedure.value.isMandatory ===
@@ -204,14 +189,14 @@
                                                       .isMandatory === true)
                                                 ? true
                                                 : false
-                                          "
-                                          ><p style="font-size: 12px">
+                                          ">
+                                          <p style="font-size: 12px">
                                             {{
                                               current_language_set
                                                 ?.coreComponents?.mandatory
                                             }}*
-                                          </p></span
-                                        >
+                                          </p>
+                                        </span>
 
                                         <mat-radio-group
                                           formControlName="compOptSelected"
@@ -316,27 +301,16 @@
                                         </mat-select>
                                       </div>
                                     </section>
-                                    <div
-                                      style="
-                                        bottom: -5px;
-                                        position: absolute;
-                                        width: 90%;
-                                        text-align: center;
-                                      "
-                                      class="row">
-                                      <mat-form-field [style.width]="'95%'">
-                                        <input
-                                          autocomplete="off"
-                                          matInput
-                                          formControlName="remarks"
-                                          allowText="alphanumericspace"
-                                          maxLength="300"
-                                          placeholder="{{
-                                            current_language_set?.common
-                                              ?.remarks
-                                          }}" />
-                                      </mat-form-field>
-                                    </div>
+                                    <mat-form-field class="mat_form_field">
+                                      <input
+                                        autocomplete="off"
+                                        matInput
+                                        formControlName="remarks"
+                                        allowText="alphanumericspace"
+                                        placeholder="{{
+                                          current_language_set?.common?.remarks
+                                        }}" />
+                                    </mat-form-field>
                                   </mat-card-content>
                                 </mat-card>
                               </ng-container>
@@ -384,21 +358,22 @@
                           }}
                           {{ current_language_set?.mb }} ,
                           {{ current_language_set?.supportedFileFormats }}
-                          )</label
-                        >
+                        </label>
                         <br />
                         <section>
                           <div class="col-xs-12 col-sm-12 col-mat-12 col-lg-12">
                             <button
                               mat-raised-button
                               color="primary"
-                              class="pull-left"
+                              class="pull-left mat_blue"
                               (click)="filelist.click()">
                               {{
                                 current_language_set?.nurseData
                                   ?.visitDetailsForm?.selectFile
                               }}
                             </button>
+                          </div>
+                          <div>
                             <span class="span-style">
                               <input
                                 autocomplete="off"
@@ -415,7 +390,7 @@
                             <button
                               mat-raised-button
                               color="primary"
-                              class="pull-right"
+                              class="pull-right mat_blue"
                               style="margin-top: 3px"
                               *ngIf="
                                 fileObj &&
@@ -430,46 +405,40 @@
                                   ?.visitDetailsForm?.viewFiles
                               }}
                             </button>
-                          </div>
-                          <div
-                            class="col-xs-12 col-sm-12 col-mat-12 col-lg-12 margin-style">
-                            <button
-                              mat-raised-button
-                              color="primary"
-                              class="pull-right"
-                              (click)="
-                                saveUploadDetails(procedure?.value.procedureID)
-                              ">
-                              {{
-                                current_language_set?.nurseData
-                                  ?.visitDetailsForm?.uploadFiles
-                              }}
-                            </button>
+                            <div
+                              class="col-xs-12 col-sm-12 col-mat-12 col-lg-12 margin-style">
+                              <button
+                                mat-raised-button
+                                color="primary"
+                                class="pull-right mat_blue"
+                                (click)="
+                                  saveUploadDetails(
+                                    procedure?.value.procedureID
+                                  )
+                                ">
+                                {{
+                                  current_language_set?.nurseData
+                                    ?.visitDetailsForm?.uploadFiles
+                                }}
+                              </button>
+                            </div>
+                            <div>
+                              <mat-form-field [style.width]="'95%'">
+                                <input
+                                  autocomplete="off"
+                                  matInput
+                                  [formControl]="
+                                    procedure.value.compDetails.remarks
+                                  "
+                                  allowText="alphanumericspace"
+                                  maxLength="300"
+                                  placeholder="{{
+                                    current_language_set?.common?.remarks
+                                  }}" />
+                              </mat-form-field>
+                            </div>
                           </div>
                         </section>
-                        <div
-                          style="
-                            bottom: 10px;
-                            position: absolute;
-                            width: 90%;
-                            margin: 5px;
-                            text-align: center;
-                          "
-                          class="row">
-                          <mat-form-field [style.width]="'95%'">
-                            <input
-                              autocomplete="off"
-                              matInput
-                              [formControl]="
-                                procedure.value.compDetails.remarks
-                              "
-                              allowText="alphanumericspace"
-                              maxLength="300"
-                              placeholder="{{
-                                current_language_set?.common?.remarks
-                              }}" />
-                          </mat-form-field>
-                        </div>
                       </mat-card-content>
                     </mat-card>
                   </ng-container>
@@ -874,7 +843,7 @@
           <button
             mat-raised-button
             id="submitButton"
-            class="btn-green"
+            class="mat_blue"
             color="primary"
             (click)="validateSubmit(true)"
             [disabled]="technicianForm.invalid"
@@ -885,6 +854,7 @@
             id="resetButton"
             [disabled]="!technicianForm.dirty"
             mat-raised-button
+            class="mat_blue"
             color="primary"
             type="submit"
             (click)="confirmFormReset()">
@@ -892,6 +862,14 @@
           </button>
         </div>
       </div>
+      <button
+        mat-mini-fab
+        class="example-fab mat_blue_circle"
+        color="primary"
+        style="margin-bottom: 40px"
+        (click)="sideNavModeChange(sidenav)">
+        <mat-icon>account_box</mat-icon>
+      </button>
     </div>
   </mat-sidenav-container>
 </div>
