@@ -34,6 +34,8 @@
 
   .adv-button {
     margin: 0 10px;
+    width: 45%;
+    border-color: unset !important;
   }
 
   .buttonGrp button {
@@ -159,4 +161,10 @@
   .alignBox {
     display: flex;
     justify-content: space-between;
+  }
+
+  .reg-button {
+    float: right;
+    border-color: unset !important;
+    width: 45%;
   }
