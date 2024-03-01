@@ -44,6 +44,9 @@
         <div *ngFor="let village of demographicsVillageList; let i = index">
           <div [formGroupName]="i">
             <mat-form-field class="example-full-width">
+              <mat-label>{{
+                currentLanguageSet?.ro?.locInfo?.street
+              }}</mat-label>
               <input
                 autocomplete="off"
                 type="text"

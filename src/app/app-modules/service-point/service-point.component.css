@@ -44,7 +44,7 @@ mat-card-actions {
   float: right;
 }
 
-.continueButton {
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
   background-color: #0277bd;
   margin: 0 4px;
   margin-left: 0;
