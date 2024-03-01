@@ -103,6 +103,7 @@ export class RegisterPersonalDetailsComponent
   }
 
   ngOnInit() {
+    this.setcheckBoxEnabledByDefault();
     this.fetchLanguageResponse();
     // let a = new Date();
     // console.log(a);
@@ -114,6 +115,9 @@ export class RegisterPersonalDetailsComponent
     this.setCalendarConfig();
     // this.dateForCalendar = '18/12/1994';
     // console.log(this.patientRevisit,'revisit personal');
+    this.personalDetailsForm.patchValue({
+      checked: true,
+    });
   }
 
   setCalendarConfig() {
@@ -296,6 +300,9 @@ export class RegisterPersonalDetailsComponent
         element.benPhoneMaps[0].parentBenRegID) ||
       null
     }`;
+    this.personalDetailsForm.patchValue({
+      checked: true,
+    });
   }
 
   /**
@@ -388,6 +395,11 @@ export class RegisterPersonalDetailsComponent
     } else {
       this.isOccuptionRequired = false;
     }
+  }
+
+  setcheckBoxEnabledByDefault() {
+    this.isMobileNoRequired = true;
+    this.isOccuptionRequired = true;
   }
 
   /**

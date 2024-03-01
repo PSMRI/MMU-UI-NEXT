@@ -83,7 +83,7 @@ md-expansion-panel strong {
     padding: 5px;
 }
 
-[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+/* [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
     background-color: #0277bd;
     margin: 0 4px;
     margin-left: 0;
@@ -101,4 +101,4 @@ md-expansion-panel strong {
     text-decoration: none;
     vertical-align: baseline;
     cursor: pointer;
-  }
+  } */
