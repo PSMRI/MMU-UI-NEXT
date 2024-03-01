@@ -180,7 +180,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
       ? `${option.itemName} ${option.strength}${
           option.unitOfMeasurement ? option.unitOfMeasurement : ''
         }${option.quantityInHand ? '(' + option.quantityInHand + ')' : ''}`
-      : 'null';
+      : '';
   }
 
   getFormValueChanged() {
@@ -396,6 +396,8 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
     this.currentPrescription.route = '';
     this.currentPrescription.instructions = '';
     this.currentPrescription.formName = '';
+    this.currentPrescription.drugID = '';
+    this.currentPrescription.formID = '';
 
     this.prescriptionForm.form.markAsUntouched();
     this.isStockAvalable = '';

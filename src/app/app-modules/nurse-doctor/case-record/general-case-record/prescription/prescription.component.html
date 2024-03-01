@@ -42,7 +42,7 @@
           name="form"
           [(ngModel)]="currentPrescription.formName"
           placeholder="{{ current_language_set?.Prescription?.form }}"
-          (change)="getFormValueChanged()"
+          (selectionChange)="getFormValueChanged()"
           required>
           <mat-option
             *ngFor="let item of drugFormMaster"
@@ -55,15 +55,16 @@
 
     <div class="col-md-3 box">
       <mat-form-field class="input-full-width">
+        <mat-label>{{
+          current_language_set?.Prescription?.medicine
+        }}</mat-label>
         <input
-          autocomplete="off"
           type="text"
           name="medicine"
           [disabled]="!currentPrescription.formID"
           matInput
           [(ngModel)]="tempDrugName"
           (keyup)="filterMedicine(tempDrugName)"
-          placeholder="{{ current_language_set?.Prescription?.medicine }}"
           (blur)="reEnterMedicine()"
           required
           [matAutocomplete]="autoGroup" />

@@ -34,9 +34,7 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
   templateUrl: './previous-visit-details.component.html',
   styleUrls: ['./previous-visit-details.component.css'],
 })
-export class PreviousVisitDetailsComponent
-  implements OnInit, OnChanges, DoCheck
-{
+export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
   @Input()
   currentVitals: any;
 
@@ -148,9 +146,6 @@ export class PreviousVisitDetailsComponent
     this.loadGraphData();
   }
 
-  ngOnChanges() {
-    console.log('current vitals', this.currentVitals);
-  }
   ngDoCheck() {
     this.assignSelectedLanguage();
   }
