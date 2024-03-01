@@ -270,21 +270,21 @@ export class PatientVisitDetailsComponent
     this.patientVisitDetailsForm.patchValue({ rCHID: null });
   }
 
-  // get visitReason() {
-  //   return this.patientVisitDetailsForm.controls['visitReason'].value;
-  // }
+  get visitReason() {
+    return this.patientVisitDetailsForm.controls['visitReason'].value;
+  }
 
-  // get visitCategory() {
-  //   return this.patientVisitDetailsForm.controls['visitCategory'].value;
-  // }
+  get visitCategory() {
+    return this.patientVisitDetailsForm.controls['visitCategory'].value;
+  }
 
-  // get pregnancyStatus() {
-  //   return this.patientVisitDetailsForm.controls['pregnancyStatus'].value;
-  // }
+  get pregnancyStatus() {
+    return this.patientVisitDetailsForm.controls['pregnancyStatus'].value;
+  }
 
-  // get rCHID() {
-  //   return this.patientVisitDetailsForm.controls['rCHID'].value;
-  // }
+  get rCHID() {
+    return this.patientVisitDetailsForm.controls['rCHID'].value;
+  }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
   ngDoCheck() {

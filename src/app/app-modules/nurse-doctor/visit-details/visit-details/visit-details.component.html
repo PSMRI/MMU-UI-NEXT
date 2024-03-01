@@ -14,6 +14,7 @@
       currentLanguageSet?.nurseData?.visitDetailsForm?.reasonForVisit
     }}</mat-label>
     <mat-select
+      matInput
       class="input-full-width"
       name="visitReason"
       formControlName="visitReason"
@@ -38,6 +39,7 @@
     <mat-select
       class="input-full-width"
       name="visitCategory"
+      matInput
       formControlName="visitCategory"
       (selectionChange)="
         checkCategoryDependent(
@@ -65,6 +67,7 @@
       currentLanguageSet?.nurseData?.visitDetailsForm?.pregnancyStatus
     }}</mat-label>
     <mat-select
+      matInput
       class="input-full-width"
       id="pregnancyStatus"
       name="pregnancyStatus"
@@ -92,6 +95,7 @@
         currentLanguageSet?.nurseData?.visitDetailsForm?.MCTSOrRCHID
       }}</mat-label>
       <input
+        matInput
         autocomplete="off"
         matInput
         appDefaultNull
