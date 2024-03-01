@@ -17,7 +17,7 @@
       class="input-full-width"
       name="visitReason"
       formControlName="visitReason"
-      (change)="
+      (selectionChange)="
         reasonSelected(patientVisitDetailsForm.controls['visitReason'].value)
       "
       required>
@@ -39,7 +39,7 @@
       class="input-full-width"
       name="visitCategory"
       formControlName="visitCategory"
-      (change)="
+      (selectionChange)="
         checkCategoryDependent(
           patientVisitDetailsForm.controls['visitCategory'].value
         )

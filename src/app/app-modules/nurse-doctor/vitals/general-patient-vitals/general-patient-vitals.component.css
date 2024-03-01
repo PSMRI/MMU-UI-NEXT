@@ -82,3 +82,23 @@ md-expansion-panel strong {
 .valueCheck {
     padding: 5px;
 }
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    background-color: #0277bd;
+    margin: 0 4px;
+    margin-left: 0;
+    margin-right: 0;
+    color: white;
+    position: relative;
+    min-width: 88px;
+    line-height: 36px;
+    padding: 0 16px;
+    border-radius: 2px;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    cursor: pointer;
+  }

@@ -251,6 +251,8 @@ export class RegistrationComponent
     // this.personalDetails.setPhoneSelectionEnabledByDefault();
     this.personalDetails.enableMaritalStatus = false;
     this.personalDetails.enableMarriageDetails = false;
+    this.personalDetails.isMobileNoRequired = true;
+    this.personalDetails.isOccuptionRequired = true;
     this.setStep(0); //open personal details in accordian
   }
 
