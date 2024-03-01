@@ -53,7 +53,7 @@
               [style.width]="'100%'"
               formControlName="community"
               required
-              (change)="onCommunityChanged()">
+              (selectionChange)="onCommunityChanged()">
               <mat-option
                 *ngFor="let community of masterData?.communityMaster"
                 [value]="community.communityID">
@@ -126,7 +126,7 @@
             <mat-select
               [style.width]="'100%'"
               formControlName="religion"
-              (change)="getReligionName()">
+              (selectionChange)="getReligionName()">
               <mat-option
                 *ngFor="let religion of masterData?.religionMaster"
                 [value]="religion.religionID">
@@ -172,7 +172,7 @@
                   currentLanguageSet?.ro?.otherInfo?.govtIDType
                 }}</mat-label>
                 <mat-select
-                  (change)="filtergovIDs(id.value.type, i)"
+                  (selectionChange)="filtergovIDs(id.value.type, i)"
                   formControlName="type"
                   style="line-height: unset">
                   <mat-option
@@ -274,7 +274,7 @@
               <mat-select
                 [style.width]="'40%'"
                 formControlName="type"
-                (change)="filterOtherGovIDs(id.value.type, i)"
+                (selectionChange)="filterOtherGovIDs(id.value.type, i)"
                 style="line-height: unset"
                 placeholder="{{
                   currentLanguageSet?.ro?.otherInfo?.govtHealthProgramType

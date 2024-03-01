@@ -38,6 +38,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   current_language_set: any;
+  filterMMU: any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   dataSource = new MatTableDataSource<any>();

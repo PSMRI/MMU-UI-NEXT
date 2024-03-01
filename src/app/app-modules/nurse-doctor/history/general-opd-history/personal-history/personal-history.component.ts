@@ -961,11 +961,15 @@ export class GeneralPersonalHistoryComponent
     i: any,
     allergyForm: AbstractControl<any, any>
   ): void {
-    const searchTerm = term.value.snomedTerm;
+    const searchTerm = term;
     // let searchTerm = <FormArray>this.generalPersonalHistoryForm.controls['snomedTerm'];allergicList
     // let searchTerm = this.generalPersonalHistoryForm.controls['snomedTerm'];
     console.log('searchTerm', this.generalPersonalHistoryForm);
-    if (searchTerm.length > 2) {
+    if (
+      searchTerm != null &&
+      searchTerm != undefined &&
+      searchTerm.length > 2
+    ) {
       const dialogRef = this.dialog.open(AllergenSearchComponent, {
         data: { searchTerm: searchTerm },
       });

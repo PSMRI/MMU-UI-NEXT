@@ -45,13 +45,14 @@ export class InventoryService {
     const facility = this.getFacilityID();
     const protocol = this.getProtocol();
     const host = this.getHost();
-    // uncomment later
-    // const vanID = this.getVanID();
-    // const ppID = this.getppID();
+    const vanID = this.getVanID();
+    const ppID = this.getppID();
+    const serviceName = this.getServiceDetails();
+    const parentAPI = this.getParentAPI();
 
     if (authKey && protocol && host && facility) {
       // uncomment later
-      // this.inventoryUrl = `${environment.INVENTORY_URL}protocol=${protocol}&host=${host}&user=${authKey}&app=${environment.app}&fallback=${environment.fallbackUrl}&back=${environment.redirInUrl}&facility=${facility}&ben=${benID}&visit=${visit}&flow=${flowID}&reg=${regID}&vanID=${vanID}&ppID=${ppID}&serviceName=${serviceName}&parentAPI=${parentAPI}&currentLanguage=${language}`;
+      this.inventoryUrl = `${environment.INVENTORY_URL}protocol=${protocol}&host=${host}&user=${authKey}&app=${environment.app}&fallback=${environment.fallbackUrl}&back=${environment.redirInUrl}&facility=${facility}&ben=${benID}&visit=${visit}&flow=${flowID}&reg=${regID}&vanID=${vanID}&ppID=${ppID}&serviceName=${serviceName}&parentAPI=${parentAPI}&currentLanguage=${language}`;
       console.log(this.inventoryUrl);
       window.location.href = this.inventoryUrl;
     } else {
@@ -89,16 +90,17 @@ export class InventoryService {
     return `${this.document.location.host}${this.document.location.pathname}`;
   }
 
-  // uncomment later
-  // getVanID() {
-  //   const serviceLineDetails = JSON.parse(localStorage.getItem('serviceLineDetails'));
-  //   return serviceLineDetails.vanID;
-
-  // }
-  // getppID() {
-  //   const serviceLineDetails = JSON.parse(localStorage.getItem('serviceLineDetails'));
-  //   return serviceLineDetails.parkingPlaceID;
-  // }
+  getVanID() {
+    const serviceLineDetailsData: any =
+      localStorage.getItem('serviceLineDetails');
+    const serviceLineDetails = JSON.parse(serviceLineDetailsData);
+    return serviceLineDetails.vanID;
+  }
+  getppID() {
+    const serviceLineDetailsData: any =
+      localStorage.getItem('serviceLineDetails');
+    const serviceLineDetails = JSON.parse(serviceLineDetailsData);
+  }
 
   getServiceDetails() {
     const serviceName = localStorage.getItem('serviceName');

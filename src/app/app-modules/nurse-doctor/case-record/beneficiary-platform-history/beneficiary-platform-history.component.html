@@ -5,23 +5,22 @@
         *ngFor="let service of serviceOnState"
         label="{{ service.serviceName }}">
         <div>
-          <mat-form-field
+          <div
+            class="example-sidenav-content"
             class="example-container m-t-10"
             *ngIf="!service.serviceLoaded"
             autosize>
-            <div class="example-sidenav-content">
-              <button
-                type="button"
-                mat-raised-button
-                color="primary"
-                class="btn-green"
-                (click)="getServiceHistory(service.serviceID)">
-                {{ current_language_set?.common?.load }}
-                {{ service.serviceName }}
-                {{ current_language_set?.historyData?.history }}
-              </button>
-            </div>
-          </mat-form-field>
+            <button
+              type="button"
+              mat-raised-button
+              color="primary"
+              class="btn-green"
+              (click)="getServiceHistory(service.serviceID)">
+              {{ current_language_set?.common?.load }}
+              {{ service.serviceName }}
+              {{ current_language_set?.historyData?.history }}
+            </button>
+          </div>
           <div
             *ngIf="
               dataSource.data.length > 0 &&
@@ -29,15 +28,15 @@
               service.serviceID === '2'
             "
             class="m-t-20">
-            <mat-form-field id="filterbox" class="pull-right">
-              <mat-label>{{
-                current_language_set?.nurseData?.visitDetailsForm?.visitCategory
-              }}</mat-label>
+            <mat-form-field id="filterbox" class="m-t-20" style="width: 100%">
               <input
                 autocomplete="off"
                 matInput
-                #filterMMU
-                (keyup)="filterMMUHistory(filterMMU.value)" />
+                placeholder="{{
+                  current_language_set?.labTechnicianData?.inTableSearch
+                }}"
+                #filterTerm
+                (keyup)="filterMMUHistory(filterTerm.value)" />
               <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
           </div>
@@ -349,6 +348,7 @@
                     word-break: normal;
                     vertical-align: middle;
                   ">
+                  <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events -->
                   <mat-icon
                     class="cursorPointer"
                     (click)="getVisitDetails('MMU', element, true)"

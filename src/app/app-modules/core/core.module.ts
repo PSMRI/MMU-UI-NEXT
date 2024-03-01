@@ -67,6 +67,7 @@ import { myEmailDirective } from './directives/email/myEmail.directive';
 import { OpenPreviousVisitDetailsComponent } from './components/open-previous-visit-details/open-previous-visit-details.component';
 import { ShowCommitAndVersionDetailsComponent } from './components/show-commit-and-version-details/show-commit-and-version-details.component';
 import { IotBluetoothComponent } from './components/iot-bluetooth/iot-bluetooth.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   imports: [
@@ -76,7 +77,7 @@ import { IotBluetoothComponent } from './components/iot-bluetooth/iot-bluetooth.
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    // ChartsModule,
+    NgChartsModule,
     WebcamModule,
     MatTableModule,
     // PaginationModule.forRoot()
@@ -134,6 +135,7 @@ import { IotBluetoothComponent } from './components/iot-bluetooth/iot-bluetooth.
     AllergenSearchComponent,
     CalibrationComponent,
     OpenPreviousVisitDetailsComponent,
+    NgChartsModule,
   ],
 })
 export class CoreModule {

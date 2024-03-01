@@ -180,7 +180,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
       ? `${option.itemName} ${option.strength}${
           option.unitOfMeasurement ? option.unitOfMeasurement : ''
         }${option.quantityInHand ? '(' + option.quantityInHand + ')' : ''}`
-      : 'null';
+      : '';
   }
 
   getFormValueChanged() {
@@ -252,7 +252,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
         unitOfMeasurement: this.currentPrescription.drugUnit,
       };
     } else if (this.tempDrugName && !this.currentPrescription.drugID) {
-      this.tempDrugName = null;
+      this.tempDrugName = '';
     } else {
       this.clearCurrentDetails();
       this.getFormDetails();
@@ -260,9 +260,9 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   selectMedicineObject(event: any) {
-    const option = event.source.value;
+    const option = event.option.value;
     console.log('here', event);
-    if (event.isUserInput) {
+    if (option) {
       if (this.checkNotIssued(option.itemID)) {
         this.currentPrescription['id'] = option.id;
         this.currentPrescription['drugName'] = option.itemName;
@@ -289,7 +289,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
             )
             .subscribe(res => {
               if (!res) {
-                this.tempDrugName = null;
+                this.tempDrugName = '';
                 this.currentPrescription['id'] = '';
                 this.currentPrescription['drugName'] = '';
                 this.currentPrescription['drugID'] = '';
@@ -375,7 +375,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
     //   sctCode: null,
     //   sctTerm: null
     // };
-    this.tempDrugName = null;
+    this.tempDrugName = '';
     this.currentPrescription.dose = '';
     this.currentPrescription.frequency = '';
     this.currentPrescription.duration = '';
@@ -387,7 +387,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
     this.isStockAvalable = '';
   }
   clearCurrentaddDetails() {
-    this.tempDrugName = null;
+    this.tempDrugName = '';
     this.currentPrescription.dose = '';
     this.currentPrescription.frequency = '';
     this.currentPrescription.duration = '';
@@ -396,6 +396,8 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
     this.currentPrescription.route = '';
     this.currentPrescription.instructions = '';
     this.currentPrescription.formName = '';
+    this.currentPrescription.drugID = '';
+    this.currentPrescription.formID = '';
 
     this.prescriptionForm.form.markAsUntouched();
     this.isStockAvalable = '';

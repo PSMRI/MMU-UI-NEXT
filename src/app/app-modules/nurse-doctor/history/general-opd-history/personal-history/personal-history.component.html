@@ -141,7 +141,7 @@
         <mat-select
           class="select-full-width"
           formControlName="alcoholIntakeStatus"
-          (change)="checkAlcoholStatus()">
+          (selectionChange)="checkAlcoholStatus()">
           <mat-option value="Yes">Yes</mat-option>
           <mat-option value="No">No</mat-option>
           <mat-option value="Discontinued">Discontinued</mat-option>
@@ -158,7 +158,7 @@
         <mat-select
           class="select-full-width"
           formControlName="allergyStatus"
-          (change)="checkAllergicStatus()">
+          (selectionChange)="checkAllergicStatus()">
           <mat-option value="Yes">Yes</mat-option>
           <mat-option value="No">No</mat-option>
           <mat-option value="Discontinued">Don't Know</mat-option>
@@ -253,7 +253,7 @@
           <div class="col-xs-12 col-sm-6 col-md-2 box">
             <mat-radio-group
               formControlName="perDay"
-              (change)="perDayChange()"
+              (selectionChange)="perDayChange()"
               [disabled]="!tobacco.value.number">
               <mat-radio-button
                 color="primary"
@@ -282,7 +282,7 @@
                 maxlength="2"
                 allowText="number"
                 formControlName="duration"
-                (change)="validateDuration(tobacco)"
+                (selectionChange)="validateDuration(tobacco)"
                 [disabled]="!tobacco.value.number" />
             </mat-form-field>
           </div>
@@ -360,7 +360,7 @@
             <mat-select
               class="select-full-width"
               formControlName="typeOfAlcohol"
-              (change)="filterAlcoholList($event, i)">
+              (selectionChange)="filterAlcoholList($event, i)">
               <mat-option
                 *ngFor="let alcohol of alcoholSelectList[i]"
                 [value]="alcohol"
@@ -439,7 +439,7 @@
                 maxlength="2"
                 allowText="number"
                 formControlName="duration"
-                (change)="validateDuration(alcohol)"
+                (selectionChange)="validateDuration(alcohol)"
                 [disabled]="!alcohol.value.avgAlcoholConsumption" />
             </mat-form-field>
           </div>
@@ -452,7 +452,7 @@
               <mat-select
                 class="select-full-width"
                 formControlName="durationUnit"
-                (change)="validateDuration(alcohol)"
+                (selectionChange)="validateDuration(alcohol)"
                 [disabled]="!alcohol.value.duration">
                 <mat-option value="Days">Day(s)</mat-option>
                 <mat-option value="Weeks">Week(s)</mat-option>
@@ -516,7 +516,7 @@
               <mat-select
                 class="select-full-width"
                 formControlName="allergyType"
-                (change)="filterAlleryList($event, i)">
+                (selectionChange)="filterAlleryList($event, i)">
                 <mat-option
                   *ngFor="let allergy of allerySelectList[i]"
                   [value]="allergy"
@@ -538,7 +538,7 @@
                 appDefaultNull
                 maxlength="200"
                 formControlName="snomedTerm"
-                (change)="removeSnomedCode(allergy, i)"
+                (selectionChange)="removeSnomedCode(allergy, i)"
                 [disabled]="!allergy.value.allergyType"
                 (keyup.enter)="searchComponents(allergy, i, allergy)" />
               <mat-icon
@@ -578,7 +578,7 @@
                 class="select-full-width"
                 multiple
                 formControlName="typeOfAllergicReactions"
-                (change)="canEnableOtherAllergy(allergy)"
+                (selectionChange)="canEnableOtherAllergy(allergy)"
                 [disabled]="!allergy.value.snomedTerm">
                 <mat-option
                   *ngFor="
