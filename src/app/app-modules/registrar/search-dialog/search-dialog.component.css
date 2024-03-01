@@ -43,8 +43,9 @@
 }
 
 .close-btn {
-    color: white !important;
+    /* color: white !important; */
     float: right;
+    border: none;
 }
 
 .box{
