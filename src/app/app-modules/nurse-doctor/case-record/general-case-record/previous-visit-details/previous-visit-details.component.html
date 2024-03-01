@@ -4,20 +4,20 @@
   <div class="col-xs-12 col-sm-12 col-md-6">
     <h4>{{ current_language_set?.previousvisit?.currentvitals }}</h4>
     <table
-      class="table table-bordered table-responsive vitals-table"
-      aria-describedby="vitals">
+      class="table table-bordered table-responsive currentVitals-table"
+      aria-describedby="currentVitals">
       <tr>
         <td>
           {{
             current_language_set?.vitalsDetails
               ?.AnthropometryDataANC_OPD_NCD_PNC?.weight
-          }}: <span>{{ vitals?.weight_Kg }}</span>
+          }}: <span>{{ currentVitals?.weight_Kg }}</span>
         </td>
         <td>
           {{
             current_language_set?.vitalsDetails
               ?.AnthropometryDataANC_OPD_NCD_PNC?.height
-          }}: <span>{{ vitals?.height_cm }}</span>
+          }}: <span>{{ currentVitals?.height_cm }}</span>
         </td>
         <td>
           {{
@@ -40,18 +40,22 @@
           }}:
           <span
             [ngClass]="{
-              abnormal: +vitals?.temperature < 96 || +vitals?.temperature > 100
+              abnormal:
+                +currentVitals?.temperature < 96 ||
+                +currentVitals?.temperature > 100
             }"
-            >{{ vitals?.temperature }}</span
+            >{{ currentVitals?.temperature }}</span
           >
         </td>
         <td>
           {{ current_language_set?.common?.hR }}:
           <span
             [ngClass]="{
-              abnormal: +vitals?.pulseRate < 49 || +vitals?.pulseRate > 101
+              abnormal:
+                +currentVitals?.pulseRate < 49 ||
+                +currentVitals?.pulseRate > 101
             }"
-            >{{ vitals?.pulseRate }}</span
+            >{{ currentVitals?.pulseRate }}</span
           >
         </td>
         <td>
@@ -59,9 +63,10 @@
           <span
             [ngClass]="{
               abnormal:
-                +vitals?.respiratoryRate < 11 || +vitals?.respiratoryRate > 19
+                +currentVitals?.respiratoryRate < 11 ||
+                +currentVitals?.respiratoryRate > 19
             }"
-            >{{ vitals?.respiratoryRate }}</span
+            >{{ currentVitals?.respiratoryRate }}</span
           >
         </td>
       </tr>
@@ -69,8 +74,10 @@
         <td>
           {{ current_language_set?.sPOTwoWithUnit }}:
           <span
-            [ngClass]="{ abnormal: vitals?.sPO2 < 1 || vitals?.sPO2 > 100 }"
-            >{{ vitals?.sPO2 }}</span
+            [ngClass]="{
+              abnormal: currentVitals?.sPO2 < 1 || currentVitals?.sPO2 > 100
+            }"
+            >{{ currentVitals?.sPO2 }}</span
           >
         </td>
       </tr>
@@ -86,10 +93,10 @@
             <span
               [ngClass]="{
                 abnormal:
-                  +vitals?.systolicBP_1stReading > 80 ||
-                  +vitals?.systolicBP_1stReading > 100
+                  +currentVitals?.systolicBP_1stReading > 80 ||
+                  +currentVitals?.systolicBP_1stReading > 100
               }"
-              >{{ vitals?.systolicBP_1stReading }}</span
+              >{{ currentVitals?.systolicBP_1stReading }}</span
             >
           </div>
           <div class="secondHalf">
@@ -97,10 +104,10 @@
             <span
               [ngClass]="{
                 abnormal:
-                  +vitals?.diastolicBP_1stReading > 120 ||
-                  +vitals?.diastolicBP_1stReading > 140
+                  +currentVitals?.diastolicBP_1stReading > 120 ||
+                  +currentVitals?.diastolicBP_1stReading > 140
               }"
-              >{{ vitals?.diastolicBP_1stReading }}</span
+              >{{ currentVitals?.diastolicBP_1stReading }}</span
             >
           </div>
         </td>

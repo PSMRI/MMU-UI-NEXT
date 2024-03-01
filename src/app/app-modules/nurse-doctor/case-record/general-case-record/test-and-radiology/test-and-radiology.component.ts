@@ -71,6 +71,7 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
     // this.getTestResults(this.beneficiaryRegID, this.visitID, this.visitCategory);
 
     this.testInVitalsService.vitalRBSTestResult$.subscribe(response => {
+      console.log('vital subscription response: ', response);
       if (response.visitCode) {
         if (response.rbsTestResult) {
           this.vitalsRBSResp = null;
@@ -92,13 +93,12 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
             ],
           };
         }
-
-        this.getTestResults(
-          this.beneficiaryRegID,
-          this.visitID,
-          this.visitCategory
-        );
       }
+      this.getTestResults(
+        this.beneficiaryRegID,
+        this.visitID,
+        this.visitCategory
+      );
     });
 
     this.testInVitalsService.vitalRBSTestResultInUpdate$.subscribe(

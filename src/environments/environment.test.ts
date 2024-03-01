@@ -297,7 +297,7 @@ export const environment = {
   savePNCDoctorDetailsUrl: `${MMU_API}PNC/save/doctorData`,
 
   getPNCVisitDetailsUrl: `${MMU_API}PNC/getBenVisitDetailsFrmNursePNC`,
-  getPNCDetailsUrl: `${MMU_API}PNC//getBenPNCDetailsFrmNursePNC`,
+  getPNCDetailsUrl: `${MMU_API}PNC/getBenPNCDetailsFrmNursePNC`,
   getPNCVitalsDetailsUrl: `${MMU_API}PNC/getBenVitalDetailsFrmNurse`,
   getPNCHistoryDetailsUrl: `${MMU_API}PNC/getBenHistoryDetails`,
   getPNCExaminationDataUrl: `${MMU_API}PNC/getBenExaminationDetailsPNC`,

@@ -82,18 +82,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
-    <div
-      class="pull-center"
-      style="margin-top: 5px"
-      [hidden]="dataSource.data.length > 0">
-      <strong>{{ current_language_set?.noRecordsFound }}</strong>
-    </div>
-    <mat-paginator
-      [pageSizeOptions]="[5, 10, 20]"
-      [pageSize]="5"
-      showFirstLastButtons
-      aria-label="Select patient in doctorWorklist">
-    </mat-paginator>
   </div>
 </div>
 

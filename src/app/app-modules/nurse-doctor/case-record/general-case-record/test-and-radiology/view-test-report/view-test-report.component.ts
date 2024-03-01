@@ -50,11 +50,10 @@ export class ViewTestReportComponent implements OnInit, DoCheck {
     private httpServiceService: HttpServiceService
   ) {}
 
-  testReport = [];
   ngOnInit() {
     console.log('data', this.data);
-    this.testReport = this.data;
-    console.log('this.testReport ', this.testReport);
+    this.dataSource.data = this.data;
+    console.log('this.testReport ', this.dataSource.data);
   }
   ngDoCheck() {
     this.assignSelectedLanguage();

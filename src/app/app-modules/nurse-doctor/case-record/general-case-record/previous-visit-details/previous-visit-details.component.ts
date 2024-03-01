@@ -127,9 +127,6 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
 
   //Ends Bg Chart
 
-  @Input()
-  vitals: any;
-
   previousVisitDetails: any;
   current_language_set: any;
 
@@ -272,10 +269,10 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
   // }
 
   calculateBMI() {
-    if (this.vitals)
+    if (this.currentVitals)
       return +(
-        (this.vitals.weight_Kg /
-          (this.vitals.height_cm * this.vitals.height_cm)) *
+        (this.currentVitals.weight_Kg /
+          (this.currentVitals.height_cm * this.currentVitals.height_cm)) *
         10000
       ).toFixed(1);
     else return 0;

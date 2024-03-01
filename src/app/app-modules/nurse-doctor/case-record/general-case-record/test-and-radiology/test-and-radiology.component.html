@@ -144,14 +144,14 @@
               </div>
             </td>
             <td colspan="7">
-              <mat-paginator
+              <pagination-controls
                 class="pull-right"
                 (pageChanged)="currentLabPageChanged($event)"
                 *ngIf="filteredLabResults.length"
                 previousText="&lsaquo;"
                 nextText="&rsaquo;"
                 firstText="&laquo;"
-                lastText="&raquo;"></mat-paginator>
+                lastText="&raquo;"></pagination-controls>
             </td>
           </tr>
         </tfoot>
