@@ -5,11 +5,14 @@
     matDialogClose
     matTooltip="{{ current_language_set?.common?.close }}"
     (click)="closeDialog()"
-    class="pull-right exit width-20px">
+    class="pull-right exit mat_icon_white">
     <mat-icon>close</mat-icon>
   </button>
 </div>
-<div class="container-fluid" *ngIf="fileObj && fileObj.length > 0">
+<div
+  class="container-fluid"
+  style="margin-bottom: 10px"
+  *ngIf="fileObj && fileObj.length > 0">
   <!-- <mat-chip-list *ngIf="fileObj && fileObj.length > 0"> -->
   <mat-chip
     *ngFor="let file of fileObj"

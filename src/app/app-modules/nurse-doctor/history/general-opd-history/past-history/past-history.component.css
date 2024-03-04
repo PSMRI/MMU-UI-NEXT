@@ -1,4 +1,4 @@
-/* .select-full-width {
+.select-full-width {
     width: 100%;
     white-space: nowrap;
     overflow: hidden;
@@ -16,6 +16,20 @@
     font-weight: 600;
 }
 
-.box {
+.box {  
     height: 60px;
-} */
+}
+mat-form-field >>> 
+.mdc-text-field--filled, .mdc-text-field--focused {
+    background-color: #f0f5f5 !important;
+}
+mat-form-field >>> .mat-mdc-text-field-wrapper {
+    height:unset !important;
+}
+.multi_row_select{
+    padding: 10px 0px; 
+}
+.mat_border_style >>>.mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input :disabled {
+    border-bottom-style: dotted !important;
+}
+

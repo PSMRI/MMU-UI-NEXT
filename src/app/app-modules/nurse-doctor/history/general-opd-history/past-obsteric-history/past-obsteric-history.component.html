@@ -1,6 +1,6 @@
 <!-- {{ pastObstericHistoryForm.value | json }} -->
-<div class="row m-t-10 text-right">
-  <span class="font-history-label m-t-10">{{
+<div class="col-12" style="text-align: end">
+  <span class="font-history-label">{{
     currentLanguageSet?.historyData?.obstetrichistory?.previousObstetricHist
   }}</span>
   <button
@@ -8,7 +8,7 @@
     mat-icon-button
     matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
     id="previousANCPastObstetricHistory"
-    class="pull-right"
+    class="mat_icon_blue"
     color="primary"
     (click)="getPreviousObstetricHistory()">
     <mat-icon class="md-18">history</mat-icon>

@@ -1,7 +1,7 @@
-<div class="row m-t-10" [formGroup]="familyHistoryForm">
-  <div class="col-xs-12" formArrayName="familyDiseaseList">
-    <div class="row text-right">
-      <span class="font-history-label m-t-10">{{
+<div class="" [formGroup]="familyHistoryForm">
+  <div class="col-12" formArrayName="familyDiseaseList">
+    <div class="col-12" style="text-align: end">
+      <span class="font-history-label">{{
         currentLanguageSet?.historyData?.ancHistory
           ?.familyHistoryDataANC_OPD_NCD_PNC?.previousFamilyHistory
       }}</span>
@@ -10,14 +10,15 @@
         mat-icon-button
         matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
         id="previousANCFamilyHistory"
-        class="pull-right"
+        class="mat_icon_blue"
         color="primary"
         (click)="getPreviousFamilyHistory()">
         <mat-icon class="md-18">history</mat-icon>
       </button>
     </div>
     <div
-      class="row multi-row-select"
+      class="col-12 row multi_row_select"
+      style="margin: 15px 0px 15px 0px; background-color: #f0f5f5"
       *ngFor="
         let familyDisease of getFamilyDiseases();
         let i = index;
@@ -26,7 +27,7 @@
       "
       [ngClass]="{ odd: !isOdd }">
       <ng-container [formGroupName]="i">
-        <div class="col-xs-12 col-sm-6 col-md-3 box">
+        <div class="col-3 box">
           <mat-label>{{
             currentLanguageSet?.historyData?.ancHistory
               ?.familyHistoryDataANC_OPD_NCD_PNC?.diseaseType
@@ -45,7 +46,7 @@
         </div>
 
         <div
-          class="col-xs-12 col-sm-6 col-md-3 box"
+          class="col-3 box"
           *ngIf="familyDisease.value.diseaseType?.diseaseType === 'Other'">
           <mat-form-field class="input-full-width">
             <mat-label>{{ currentLanguageSet?.pncData?.others }}</mat-label>
@@ -60,7 +61,7 @@
           </mat-form-field>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-3 box" [hidden]="true">
+        <div class="col-3 box" [hidden]="true">
           <mat-form-field class="input-full-width">
             <mat-label>{{
               currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
@@ -75,7 +76,7 @@
           </mat-form-field>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-3 box">
+        <div class="col-3 box">
           <mat-form-field>
             <mat-label>{{
               currentLanguageSet?.historyData?.ancHistory
@@ -99,10 +100,12 @@
           </mat-form-field>
         </div>
 
-        <div class="col-sm-6 col-md-3 box action-btn-container pull-right">
+        <div class="col-3 box action-btn-container" style="text-align: end">
           <button
             md-mini-fab
             color="warn"
+            class="mat_warn_circle"
+            style="margin-right: 5px"
             id="removeFamilyDisease"
             *ngIf="i !== 0 || (i === 0 && familyDisease.touched)"
             (click)="removeFamilyDisease(i, familyDisease)">
@@ -111,6 +114,7 @@
           <button
             md-mini-fab
             color="primary"
+            class="mat_blue_circle"
             *ngIf="isLast"
             [disabled]="checkValidity(familyDisease)"
             id="addFamilyDisease"

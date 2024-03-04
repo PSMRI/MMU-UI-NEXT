@@ -19,7 +19,7 @@
     </div>
     <div class="col-xs-12" formArrayName="pastIllness">
       <header class="description">
-        <h4>
+        <h4 style="font-size: 18px">
           <strong>{{
             currentLanguageSet?.historyData?.ancHistory
               ?.pastIllnessDataANC_OPD_NCD_PNC?.pastIllness
@@ -27,7 +27,8 @@
         </h4>
       </header>
       <div
-        class="row multi-row-select"
+        class="row multi_row_select col-12"
+        style="margin: 65px 0px 15px 0px; background-color: #f0f5f5"
         *ngFor="
           let pastIllness of getPastIllness();
           let i = index;
@@ -36,7 +37,7 @@
         "
         [ngClass]="{ odd: !isOdd }">
         <ng-container [formGroupName]="i">
-          <div class="col-sm-6 col-md-3 box">
+          <div class="col-md-3 box">
             <mat-form-field>
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
@@ -59,7 +60,7 @@
           </div>
 
           <div
-            class="col-sm-6 col-md-3 box"
+            class="col-3 box"
             *ngIf="pastIllness.value.illnessType?.illnessType === 'Other'">
             <mat-form-field class="input-full-width">
               <mat-label>{{
@@ -77,13 +78,14 @@
             </mat-form-field>
           </div>
 
-          <div class="col-sm-6 col-md-2 box">
+          <div class="col-3 box">
             <mat-form-field class="input-full-width">
               <mat-label>{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
               }}</mat-label>
               <input
                 autocomplete="off"
+                class="mat_border_style"
                 matInput
                 appDefaultNull
                 allowText="number"
@@ -98,13 +100,13 @@
             </mat-form-field>
           </div>
 
-          <div class="col-sm-4 col-md-2 box">
+          <div class="col-3 box">
             <mat-form-field>
               <mat-label>{{
                 currentLanguageSet?.DurationData?.timeperiodAgo
               }}</mat-label>
               <mat-select
-                class="select-full-width"
+                class="select-full-width mat_border_style"
                 name="timePeriodUnit"
                 formControlName="timePeriodUnit"
                 (change)="validateDuration(pastIllness)"
@@ -117,10 +119,12 @@
             </mat-form-field>
           </div>
 
-          <div class="col-sm-2 col-md-2 box action-btn-container pull-right">
+          <div class="col-3 box action-btn-container" style="text-align: end">
             <button
+              style="margin-right: 5px"
               md-mini-fab
               color="warn"
+              class="mat_warn_circle"
               *ngIf="
                 i !== 0 ||
                 (i === 0 && (pastIllness.touched || pastIllness.dirty))
@@ -131,6 +135,7 @@
             <button
               md-mini-fab
               color="primary"
+              class="mat_blue_circle"
               *ngIf="isLast"
               [disabled]="checkIllnessValidity(pastIllness)"
               (click)="addPastIllness()">
@@ -144,7 +149,7 @@
 
   <div class="col-xs-12" formArrayName="pastSurgery">
     <header class="description">
-      <h4>
+      <h4 style="font-size: 18px">
         <strong
           >{{
             currentLanguageSet?.historyData?.ancHistory
@@ -154,7 +159,8 @@
       </h4>
     </header>
     <div
-      class="row multi-row-select"
+      class="row multi_row_select col-12"
+      style="margin: 65px 0px 15px 0px; background-color: #f0f5f5"
       *ngFor="
         let pastSurgery of getPastSurgery();
         let i = index;
@@ -163,7 +169,7 @@
       "
       [ngClass]="{ odd: !isOdd }">
       <ng-container [formGroupName]="i">
-        <div class="col-sm-6 col-md-3 box">
+        <div class="col-3 box">
           <mat-form-field>
             <mat-label>{{
               currentLanguageSet?.historyData?.ancHistory
@@ -184,7 +190,7 @@
         </div>
 
         <div
-          class="col-sm-6 col-md-3 box"
+          class="col-3 box"
           *ngIf="pastSurgery.value.surgeryType?.surgeryType === 'Other'">
           <mat-form-field class="input-full-width">
             <mat-label>{{
@@ -202,7 +208,7 @@
           </mat-form-field>
         </div>
 
-        <div class="col-sm-6 col-md-2 box">
+        <div class="col-3 box">
           <mat-form-field class="input-full-width">
             <mat-label>{{
               currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
@@ -223,7 +229,7 @@
           </mat-form-field>
         </div>
 
-        <div class="col-sm-4 col-md-2 box">
+        <div class="col-3 box">
           <mat-form-field>
             <mat-label>{{
               currentLanguageSet?.DurationData?.timeperiodAgo
@@ -242,10 +248,12 @@
           </mat-form-field>
         </div>
 
-        <div class="col-sm-2 col-md-2 box action-btn-container pull-right">
+        <div class="col-3 box action-btn-container" style="text-align: end">
           <button
             md-mini-fab
             color="warn"
+            style="margin-right: 5px"
+            class="mat_warn_circle"
             id="removePastSurgery"
             *ngIf="
               i !== 0 || (i === 0 && (pastSurgery.touched || pastSurgery.dirty))
@@ -256,6 +264,7 @@
           <button
             md-mini-fab
             color="primary"
+            class="mat_blue_circle"
             *ngIf="isLast"
             [disabled]="checkSurgeryValidity(pastSurgery)"
             id="addPastSurgery"

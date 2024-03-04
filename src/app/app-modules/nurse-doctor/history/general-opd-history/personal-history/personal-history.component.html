@@ -1,7 +1,8 @@
 <ng-container [formGroup]="generalPersonalHistoryForm">
-  <div class="row m-t-10 m-b-10">
+  <div class="col-12 row">
     <div
-      class="col-xs-4 text-right previous-history pull-right"
+      class="col-4 previous-history"
+      style="text-align: center"
       *ngIf="beneficiary?.ageVal >= 13">
       <span class="font-history-label">{{
         currentLanguageSet?.historyData?.ancHistory
@@ -12,14 +13,15 @@
         mat-icon-button
         matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
         id="previousTobaccoHistory"
-        class="pull-right"
+        class="mat_icon_blue"
         color="primary"
         (click)="getPreviousTobaccoHistory()">
         <mat-icon class="md-24">history</mat-icon>
       </button>
     </div>
     <div
-      class="col-xs-4 text-right previous-history pull-right"
+      class="col-4 previous-history"
+      style="text-align: center"
       *ngIf="beneficiary?.ageVal >= 13">
       <span class="font-history-label">{{
         currentLanguageSet?.historyData?.ancHistory
@@ -30,13 +32,13 @@
         mat-icon-button
         matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
         id="previousAlcoholHistory"
-        class="pull-right"
+        class="mat_icon_blue"
         color="primary"
         (click)="getPreviousAlcoholHistory()">
         <mat-icon class="md-18">history</mat-icon>
       </button>
     </div>
-    <div class="col-xs-4 text-right previous-history pull-right">
+    <div class="col-4 previous-history" style="text-align: center">
       <span class="font-history-label">{{
         currentLanguageSet?.historyData?.ancHistory
           ?.personalHistoryANC_OPD_NCD_PNC?.previousAllergyhistory
@@ -46,7 +48,7 @@
         mat-icon-button
         matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
         id="previousAllergyHistory"
-        class="pull-right"
+        class="mat_icon_blue"
         color="primary"
         (click)="getPreviousAllergyHistory()">
         <mat-icon class="md-18">history</mat-icon>
