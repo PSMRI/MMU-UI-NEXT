@@ -135,6 +135,7 @@ import { NgChartsModule } from 'ng2-charts';
     AllergenSearchComponent,
     CalibrationComponent,
     OpenPreviousVisitDetailsComponent,
+    WebcamModule,
     NgChartsModule,
   ],
 })
@@ -155,12 +156,9 @@ export class CoreModule {
         SetLanguageComponent,
         CanDeactivateGuardService,
         // MasterdataService,
+        CameraDialogComponent,
         HttpServiceService,
         IotService,
-        {
-          provide: [WebcamImage, WebcamInitError],
-          useClass: WebcamModule,
-        },
         // {
         //   provide: Http,
         //   useFactory: HttpInterceptorFactory,

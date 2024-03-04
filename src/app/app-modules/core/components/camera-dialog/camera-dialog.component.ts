@@ -39,6 +39,7 @@ import { Subject } from 'rxjs/internal/Subject';
 import { ChartData, ChartType } from 'chart.js';
 import html2canvas from 'html2canvas';
 import { WebcamImage, WebcamInitError } from 'ngx-webcam';
+import { Observable } from 'rxjs';
 
 interface mark {
   xCord: any;
@@ -78,8 +79,12 @@ export class CameraDialogComponent implements OnInit, DoCheck {
   ctx!: CanvasRenderingContext2D;
   loaded = false;
   public current_language_set: any;
+  private trigger: Subject<any> = new Subject();
   triggerObservable: Subject<void> = new Subject<void>();
+  public webcamImage!: WebcamImage;
+  private nextWebcam: Subject<any> = new Subject();
   public barChartType: ChartType = 'bar';
+  sysImage = '';
   public barChartData: ChartData<any> = {
     datasets: [
       {
@@ -92,9 +97,8 @@ export class CameraDialogComponent implements OnInit, DoCheck {
     public dialogRef: MatDialogRef<CameraDialogComponent>,
     private element: ElementRef,
     public httpServiceService: HttpServiceService,
-    private confirmationService: ConfirmationService,
-    public webcamImage: WebcamImage,
-    public webcamInitError: WebcamInitError
+    private confirmationService: ConfirmationService
+    // public webcamInitError: WebcamInitError
   ) {
     this.options = {
       audio: false,
@@ -134,6 +138,10 @@ export class CameraDialogComponent implements OnInit, DoCheck {
     }
   }
 
+  public getSnapshot(): void {
+    this.trigger.next(void 0);
+  }
+
   ngOnInit() {
     // console.log(this.current_language_set);
     this.assignSelectedLanguage();
@@ -142,6 +150,15 @@ export class CameraDialogComponent implements OnInit, DoCheck {
     //console.log(this.availablePoints );
     if (this.availablePoints && this.availablePoints.markers)
       this.pointsToWrite = this.availablePoints.markers;
+  }
+
+  public captureImg(webcamImage: WebcamImage): void {
+    this.webcamImage = webcamImage;
+    this.sysImage = webcamImage!.imageAsDataUrl;
+    console.info('got webcam image', this.sysImage);
+  }
+  public get nextWebcamObservable(): Observable<any> {
+    return this.nextWebcam.asObservable();
   }
 
   ngDoCheck() {
@@ -217,7 +234,7 @@ export class CameraDialogComponent implements OnInit, DoCheck {
 
   handleInitError(error: WebcamInitError): void {
     // Handle webcam initialization error
-    this.webcamInitError = error;
+    // this.webcamInitError = error;
   }
 
   score: any;

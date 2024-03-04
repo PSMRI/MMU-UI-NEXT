@@ -7,12 +7,12 @@
         #workarea
         [trigger]="triggerObservable"
         [videoOptions]="options"
-        (imageCapture)="captureImage($event)"
+        (imageCapture)="captureImg($event)"
         (initError)="handleInitError($event)">
       </webcam>
-      <div *ngIf="webcamInitError">
+      <!-- <div *ngIf="webcamInitError">
         Webcam initialization failed: {{ webcamInitError.message }}
-      </div>
+      </div> -->
       <a
         (click)="recaptureImage()"
         tabindex="0"
@@ -32,7 +32,7 @@
           (click)="dialogRef.close(false)">
           {{ current_language_set?.common?.cancel }}
         </button>
-        <button mat-raised-button color="primary" (click)="captureBase64()">
+        <button mat-raised-button color="primary" (click)="getSnapshot()">
           {{ status }}
         </button>
         <button
@@ -151,14 +151,14 @@
     <h4 *ngIf="graph?.type === 'bp'">
       {{ current_language_set?.previousvisit?.bloodPressureTrends }}
     </h4>
-    <!-- <canvas
+    <canvas
       baseChart
       [datasets]="graph?.chartData"
       [labels]="graph?.chartLabels"
       [options]="graph?.lineChartOptions"
       [legend]="graph?.chartLegend"
       [data]="barChartData"
-      [type]="barChartType"></canvas> -->
+      [type]="barChartType"></canvas>
   </mat-dialog-content>
 
   <mat-dialog-actions align="center">
