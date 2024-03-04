@@ -49,3 +49,9 @@
   color: brown;
   display: none;
 }
+.button_postion{
+  text-align: -webkit-right;
+  position: fixed;
+  margin-top: 26rem;
+
+}

@@ -1,77 +1,92 @@
-<div class="container non-printable m-t-10" *ngIf="!hideBack">
+<div *ngIf="!hideBack" class="container">
   <div class="row">
+    <div class="col-12">
+      <button
+        *ngIf="enablePrescriptionButton === true"
+        mat-raised-button
+        color="primary"
+        class="pull-right"
+        style="margin-left: 10px"
+        (click)="prescribeTMMedicine()">
+        {{ currentLanguageSet?.casesheet?.PrescribeTmMedicine }}
+      </button>
+      <div>
+        <button
+          mat-raised-button
+          color="primary"
+          class="pull-left mat_blue"
+          (click)="goBack()">
+          {{ currentLanguageSet?.common?.back }}
+        </button>
+      </div>
+      <div>
+        <button
+          mat-raised-button
+          color="primary"
+          class="pull-right mat_blue"
+          (click)="downloadCasesheet()">
+          {{ currentLanguageSet?.casesheet?.print }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-12 button_postion">
+  <div post>
     <button
-      *ngIf="enablePrescriptionButton === true"
-      mat-raised-button
+      *ngIf="!hideSelectQC"
+      mat-mini-fab
+      style="margin-bottom: 5px"
+      matTooltip="{{ currentLanguageSet?.casesheet?.caseComponent }}"
+      matTooltipPosition="left"
+      matTooltipClass="iemr-tooltip"
+      class="example-fab select non-printable mat_blue_circle"
       color="primary"
-      class="pull-right"
-      style="margin-left: 10px"
-      (click)="prescribeTMMedicine()">
-      {{ currentLanguageSet?.casesheet?.PrescribeTmMedicine }}
+      (click)="selectPrintPage()">
+      <mat-icon>view_module</mat-icon>
     </button>
+  </div>
+  <div>
     <button
-      mat-raised-button
+      mat-mini-fab
+      matTooltip="{{ currentLanguageSet?.casesheet?.goTop }}"
+      matTooltipPosition="left"
+      style="margin-bottom: 5px"
+      class="example-fab upward non-printable mat_blue_circle"
       color="primary"
-      class="pull-right"
-      (click)="downloadCasesheet()">
-      {{ currentLanguageSet?.casesheet?.print }}
+      (click)="goToTop()"
+      *ngIf="!previous">
+      <mat-icon>arrow_upward</mat-icon>
     </button>
+  </div>
+  <div>
     <button
-      mat-raised-button
+      mat-mini-fab
+      matTooltip="{{ currentLanguageSet?.casesheet?.printCaseheet }}"
+      matTooltipPosition="left"
+      class="example-fab print non-printable mat_blue_circle"
       color="primary"
-      class="pull-left"
-      (click)="goBack()">
-      {{ currentLanguageSet?.common?.back }}
+      style="margin-bottom: 5px"
+      (click)="downloadCasesheet()"
+      *ngIf="!previous">
+      <mat-icon>print</mat-icon>
+    </button>
+  </div>
+  <div>
+    <button
+      mat-mini-fab
+      matTooltip="{{ currentLanguageSet?.casesheet?.workList }}"
+      matTooltipPosition="left"
+      class="example-fab back non-printable mat_blue_circle"
+      style="margin-bottom: 5px"
+      color="primary"
+      (click)="goBack()"
+      *ngIf="!hideBack">
+      <mat-icon>chevron_left</mat-icon>
     </button>
   </div>
 </div>
-
-<button
-  mat-mini-fab
-  matTooltip="{{ currentLanguageSet?.casesheet?.workList }}"
-  matTooltipPosition="left"
-  class="example-fab back non-printable"
-  color="primary"
-  (click)="goBack()"
-  *ngIf="!hideBack">
-  <mat-icon>chevron_left</mat-icon>
-</button>
-
-<button
-  mat-mini-fab
-  matTooltip="{{ currentLanguageSet?.casesheet?.goTop }}"
-  matTooltipPosition="left"
-  class="example-fab upward non-printable"
-  color="primary"
-  (click)="goToTop()"
-  *ngIf="!previous">
-  <mat-icon>arrow_upward</mat-icon>
-</button>
-
-<button
-  mat-mini-fab
-  matTooltip="{{ currentLanguageSet?.casesheet?.printCaseheet }}"
-  matTooltipPosition="left"
-  class="example-fab print non-printable"
-  color="primary"
-  (click)="downloadCasesheet()"
-  *ngIf="!previous">
-  <mat-icon>print</mat-icon>
-</button>
-
-<button
-  *ngIf="!hideSelectQC"
-  mat-mini-fab
-  matTooltip="{{ currentLanguageSet?.casesheet?.caseComponent }}"
-  matTooltipPosition="left"
-  matTooltipClass="iemr-tooltip"
-  class="example-fab select non-printable"
-  color="primary"
-  (click)="selectPrintPage()">
-  <mat-icon>view_module</mat-icon>
-</button>
-
-<div class="p-t-10 p-b-10">
+<div class="" style="margin-top: 20px">
   <app-doctor-diagnosis-case-sheet
     [printPagePreviewSelect]="printPagePreviewSelect"
     [caseSheetData]="caseSheetData"
