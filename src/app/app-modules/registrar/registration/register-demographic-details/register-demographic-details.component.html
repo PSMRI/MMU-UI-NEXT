@@ -40,8 +40,9 @@
 
       <div
         formArrayName="villages"
-        class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-20">
-        <div *ngFor="let village of demographicsVillageList; let i = index">
+        class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+        <div
+          *ngFor="let village of getDemographicsVillageList(); let i = index">
           <div [formGroupName]="i">
             <mat-form-field class="example-full-width">
               <mat-label>{{

@@ -60,8 +60,7 @@ const COMMON_API_OPEN_SYNC = `http://${SERVER_IP}:8080/commonapi-v1.0/`;
 const SCHEDULER_API = `${schedulerIP}schedulerapi-v1.1/`;
 
 const mmuUICasesheet = 'http://localhost:4200/';
-
-const biologicalScreeningDeviceAPI = `${ADMIN_API}/diagnostics/biologicalScreeningDevice`;
+const IOT_API = 'http://localhost:8085/ezdx-hub-connect-srv';
 
 export const environment = {
   production: false,
@@ -399,10 +398,11 @@ export const environment = {
   saveFile: `${MMU_API}commonInsert/saveFiles`,
   viewFileData: `${MMU_API}common/downloadFile`,
 
-  ioturl: `${biologicalScreeningDeviceAPI}`,
-  deviceStatusurl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/connection_status`,
-  deviceBluetoothurl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/service_discovery`,
-  connectdeviceBluetoothurl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub_connection`,
+  ioturl: '' + IOT_API,
+  deviceStatusurl: IOT_API + '/api/v1/bluetooth/hub/connection_status',
+  deviceBluetoothurl: IOT_API + '/api/v1/bluetooth/service_discovery',
+  deviceDisconnectUrl: `${IOT_API}/api/v1/bluetooth/hub/disconnect`,
+  connectdeviceBluetoothurl: IOT_API + '/api/v1/bluetooth/hub_connection',
 
   startWeighturl: '/api/v1/physical_tests/weight',
   startTempurl: '/api/v1/physical_tests/temperature',
@@ -429,7 +429,6 @@ export const environment = {
 
   //SH20094090,calibration integration,09-06-2021
   getCalibrationStrips: `${ADMIN_API}/fetchCalibrationStrips`,
-  deviceDisconnectUrl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/disconnect`,
 
   getLanguageList: `${COMMON_API}beneficiary/getLanguageList`,
 

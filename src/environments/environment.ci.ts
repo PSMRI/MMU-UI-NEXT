@@ -39,8 +39,7 @@ const INVENTORY_UI = '<%= INVENTORY_UI_BASE %>';
 const IDENTITY_API = '<%= IDENTITY_API_BASE %>';
 
 const mmuUICasesheet = '<%= MMU_UI_BASE %>';
-
-const biologicalScreeningDeviceAPI = `${ADMIN_API}/diagnostics/biologicalScreeningDevice`;
+const IOT_API = 'http://localhost:8085/ezdx-hub-connect-srv';
 
 export const environment = {
   production: true,
@@ -372,10 +371,11 @@ export const environment = {
   //file upload
   saveFile: `${MMU_API}commonInsert/saveFiles`,
   viewFileData: `${MMU_API}common/downloadFile`,
-  ioturl: `${biologicalScreeningDeviceAPI}`,
-  deviceStatusurl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/connection_status`,
-  deviceBluetoothurl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/service_discovery`,
-  connectdeviceBluetoothurl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub_connection`,
+  ioturl: '' + IOT_API,
+  deviceStatusurl: IOT_API + '/api/v1/bluetooth/hub/connection_status',
+  deviceBluetoothurl: IOT_API + '/api/v1/bluetooth/service_discovery',
+  deviceDisconnectUrl: `${IOT_API}/api/v1/bluetooth/hub/disconnect`,
+  connectdeviceBluetoothurl: IOT_API + '/api/v1/bluetooth/hub_connection',
 
   startWeighturl: '/api/v1/physical_tests/weight',
   startTempurl: '/api/v1/physical_tests/temperature',
@@ -404,7 +404,6 @@ export const environment = {
 
   //SH20094090,calibration integration,09-06-2021
   getCalibrationStrips: `${ADMIN_API}/fetchCalibrationStrips`,
-  deviceDisconnectUrl: `${biologicalScreeningDeviceAPI}/api/v1/bluetooth/hub/disconnect`,
   getLanguageList: `${COMMON_API}beneficiary/getLanguageList`,
 
   calculateBmiStatus: `${TM_API}common/calculateBMIStatus`,

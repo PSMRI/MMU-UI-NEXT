@@ -1,62 +1,53 @@
 <div class="container-fluid">
   <div class="row m-t-20">
-    <form [formGroup]="reportForm">
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg- box">
+    <form [formGroup]="reportForm" style="display: flex">
+      <div
+        class="col-xs-12 col-sm-6 col-md-3 col-lg- box"
+        style="width: 20%; margin: 5px">
+        <mat-label>{{ currentLanguageSet?.report }}</mat-label>
         <mat-select
           class="input-full-width"
           name="report"
           formControlName="report"
-          placeholder="{{ currentLanguageSet?.report }}"
-          (change)="checkReport()"
+          (selectionChange)="checkReport()"
           required>
           <mat-option *ngFor="let report of reportMaster" [value]="report">
             {{ report.reportName }}
           </mat-option>
         </mat-select>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box" style="margin: 5px">
         <mat-form-field [style.width]="'100%'">
-          <mat-label>{{ currentLanguageSet?.fromDate }}</mat-label>
-          <input
-            matInput
+          <mat-label>Enter Date Range</mat-label>
+          <mat-date-range-input
+            [rangePicker]="picker"
             [max]="today"
-            [matDatepicker]="picker"
-            formControlName="fromDate"
-            (change)="checkFromDate()"
-            [disabled]="!report"
-            required />
-          <mat-hint>DD/MM/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matSuffix
-            [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field [style.width]="'100%'">
-          <mat-label>{{ currentLanguageSet?.toDate }}</mat-label>
-          <input
-            matInput
-            [matDatepicker]="picker"
-            formControlName="toDate"
-            [max]="maxToDate"
             [min]="fromDate"
-            (change)="checkToDate()"
-            [disabled]="!fromDate"
-            required />
-          <mat-hint>DD/MM/YYYY</mat-hint>
+            required>
+            <input
+              matStartDate
+              formControlName="fromDate"
+              placeholder="{{ currentLanguageSet?.fromDate }}" />
+            <input
+              matEndDate
+              formControlName="toDate"
+              placeholder="{{ currentLanguageSet?.toDate }}" />
+          </mat-date-range-input>
+          <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
             matSuffix
             [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-date-range-picker #picker></mat-date-range-picker>
         </mat-form-field>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-3 col-lg- box">
+      <div
+        class="col-xs-12 col-sm-6 col-md-3 col-lg- box"
+        style="width: 20%; margin: 5px">
+        <mat-label>{{ currentLanguageSet?.van }}</mat-label>
         <mat-select
           class="input-full-width"
           name="van"
           formControlName="van"
-          placeholder="{{ currentLanguageSet?.van }}"
           [disabled]="!toDate"
           required>
           <mat-option *ngFor="let van of vanMaster" [value]="van">

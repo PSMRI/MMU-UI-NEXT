@@ -343,7 +343,7 @@
                     let isLast = last
                   ">
                   <ng-container [formGroupName]="m">
-                    <mat-card class="radio_newCard" style="height: 240px">
+                    <mat-card class="radio_newCard" style="height: 300px">
                       <section class="overlay shade_full">
                         <mat-card-title class="radio_proc_title">{{
                           procedure?.value.procedureName | titlecase
@@ -372,6 +372,28 @@
                                   ?.visitDetailsForm?.selectFile
                               }}
                             </button>
+                            <button
+                              mat-raised-button
+                              color="primary"
+                              class="pull-right mat_blue"
+                              style="
+                                margin-top: 15px;
+                                position: absolute;
+                                margin-left: 100px;
+                              "
+                              *ngIf="
+                                fileObj &&
+                                (fileObj | json) !== '{}' &&
+                                fileObj[procedure?.value.procedureID]
+                              "
+                              (click)="
+                                openToViewFile(procedure?.value.procedureID)
+                              ">
+                              {{
+                                current_language_set?.nurseData
+                                  ?.visitDetailsForm?.viewFiles
+                              }}
+                            </button>
                           </div>
                           <div>
                             <span class="span-style">
@@ -387,30 +409,14 @@
                                   )
                                 " />
                             </span>
-                            <button
-                              mat-raised-button
-                              color="primary"
-                              class="pull-right mat_blue"
-                              style="margin-top: 3px"
-                              *ngIf="
-                                fileObj &&
-                                (fileObj | json) !== '{}' &&
-                                fileObj[procedure?.value.procedureID]
-                              "
-                              (click)="
-                                openToViewFile(procedure?.value.procedureID)
-                              ">
-                              {{
-                                current_language_set?.nurseData
-                                  ?.visitDetailsForm?.viewFiles
-                              }}
-                            </button>
+
                             <div
                               class="col-xs-12 col-sm-12 col-mat-12 col-lg-12 margin-style">
                               <button
                                 mat-raised-button
                                 color="primary"
                                 class="pull-right mat_blue"
+                                style="margin-top: 60px"
                                 (click)="
                                   saveUploadDetails(
                                     procedure?.value.procedureID
