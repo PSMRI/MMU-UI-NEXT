@@ -23,7 +23,12 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { MasterdataService } from '../shared/services';
 import { ConfirmationService } from '../../core/services/confirmation.service';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { HttpServiceService } from '../../core/services/http-service.service';
 import { SetLanguageComponent } from '../../core/components/set-language.component';
 @Component({

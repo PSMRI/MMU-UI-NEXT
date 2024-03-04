@@ -29,6 +29,7 @@ import {
   FormArray,
   FormBuilder,
   Validators,
+  AbstractControl,
 } from '@angular/forms';
 import {
   Params,
@@ -127,6 +128,15 @@ export class RegisterDemographicDetailsComponent
     this.demographicsVillageList = this.demographicDetailsForm.controls[
       'villages'
     ] as FormArray;
+    console.log('village List', this.demographicsVillageList);
+  }
+
+  getDemographicsVillageList(): AbstractControl[] | null {
+    const demographicsVillageListControl =
+      this.demographicDetailsForm.get('villages');
+    return demographicsVillageListControl instanceof FormArray
+      ? demographicsVillageListControl.controls
+      : null;
   }
 
   ngOnDestroy() {
@@ -198,7 +208,7 @@ export class RegisterDemographicDetailsComponent
    }*/
 
   /**NEw Suggested village List */
-  suggestedVillageList(villageForm: FormGroup, i: any) {
+  suggestedVillageList(villageForm: AbstractControl<any, any>, i: any) {
     const village = villageForm.value.villageID;
     console.log('village' + village);
     console.log('i', i);

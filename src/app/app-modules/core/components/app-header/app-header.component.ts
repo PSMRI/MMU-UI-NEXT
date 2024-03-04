@@ -248,12 +248,12 @@ export class AppHeaderComponent implements OnInit {
       },
       {
         role: 'Radiologist',
-        link: '/common/radiologist-worklist',
+        link: '/nurse-doctor/radiologist-worklist',
         label: this.currentLanguageSet.role_selection.Radiologist,
       },
       {
         role: 'Oncologist',
-        link: '/common/oncologist-worklist',
+        link: '/nurse-doctor/oncologist-worklist',
         label: this.currentLanguageSet.role_selection.Oncologist,
       },
       {
