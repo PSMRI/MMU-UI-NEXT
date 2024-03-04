@@ -77,7 +77,9 @@
               </mat-form-field>
 
               <mat-form-field [style.width]="'100%'" style="margin: -8px">
-                <mat-label>State</mat-label>
+                <mat-label>{{
+                  currentLanguageSet?.ro?.locInfo?.state
+                }}</mat-label>
                 <mat-select
                   [style.width]="'100%'"
                   class="align-Field"
@@ -99,7 +101,9 @@
               </mat-form-field>
 
               <mat-form-field [style.width]="'100%'" style="margin: -8px">
-                <mat-label>District/Town/City</mat-label>
+                <mat-label>{{
+                  currentLanguageSet?.ro?.locInfo?.districtTownCity
+                }}</mat-label>
                 <mat-select
                   [style.width]="'100%'"
                   formControlName="districtID"
@@ -120,7 +124,9 @@
               </mat-form-field>
 
               <mat-form-field [style.width]="'100%'" style="margin: -8px">
-                <mat-label>Taluk/Tehsil</mat-label>
+                <mat-label>{{
+                  currentLanguageSet?.ro?.locInfo?.taluk
+                }}</mat-label>
                 <mat-select
                   [style.width]="'100%'"
                   formControlName="blockID"
@@ -139,7 +145,9 @@
               </mat-form-field>
 
               <mat-form-field [style.width]="'100%'" style="margin: -8px">
-                <mat-label>Street/Panchayat/Village</mat-label>
+                <mat-label>{{
+                  currentLanguageSet?.ro?.locInfo?.street
+                }}</mat-label>
                 <mat-select
                   [style.width]="'100%'"
                   formControlName="districtBranchID"

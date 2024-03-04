@@ -84,6 +84,7 @@ export class RegisterOtherDetailsComponent
     this.loadMasterDataObservable();
     this.otherGovIdList = this.otherDetailsForm.get('govID') as FormArray;
     //  console.log(this.patientRevisit,'revisit others');
+    console.log(this.otherDetailsForm, 'other details Data');
   }
 
   getGovIDControls(): AbstractControl[] | null {
