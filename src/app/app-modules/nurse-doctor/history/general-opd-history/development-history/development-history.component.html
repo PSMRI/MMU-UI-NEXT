@@ -1,7 +1,7 @@
 <!-- {{ developmentHistoryForm.value | json }}  -->
-<div class="row m-t-20" [formGroup]="developmentHistoryForm">
-  <div class="col-xs-12 text-right">
-    <span class="font-history-label m-t-10">{{
+<div class="" [formGroup]="developmentHistoryForm">
+  <div class="col-12" style="text-align: end">
+    <span class="font-history-label">{{
       currentLanguageSet?.historyData?.opdNCDPNCHistory?.development
         ?.previousDevelopmentalHistory
     }}</span>
@@ -10,92 +10,99 @@
       mat-icon-button
       matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
       id="previousDevelopmentalHistory"
-      class="pull-right"
+      class="mat_icon_blue"
       color="primary"
       (click)="getPreviousDevelopmentalHistory()">
       <mat-icon class="md-18">history</mat-icon>
     </button>
   </div>
   <div>
-    <div class="col-xs-12 col-sm-6 col-md-6 box">
-      <mat-form-field>
-        <mat-label>{{
-          currentLanguageSet?.historyData?.opdNCDPNCHistory?.development
-            ?.grossMotorMilestone
-        }}</mat-label>
-        <mat-select
-          multiple
-          class="select-full-width"
-          name="grossMotorMilestone"
-          formControlName="grossMotorMilestones">
-          <mat-option
-            *ngFor="let grossMotorMilestone of masterData?.grossMotorMilestones"
-            [value]="grossMotorMilestone.gMMilestone"
-            >{{ grossMotorMilestone.gMMilestone }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
+    <div class="col-12 row">
+      <div class="col-6 box">
+        <mat-form-field>
+          <mat-label>{{
+            currentLanguageSet?.historyData?.opdNCDPNCHistory?.development
+              ?.grossMotorMilestone
+          }}</mat-label>
+          <mat-select
+            multiple
+            class="select-full-width"
+            name="grossMotorMilestone"
+            formControlName="grossMotorMilestones">
+            <mat-option
+              *ngFor="
+                let grossMotorMilestone of masterData?.grossMotorMilestones
+              "
+              [value]="grossMotorMilestone.gMMilestone"
+              >{{ grossMotorMilestone.gMMilestone }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-6 box">
+        <mat-form-field>
+          <mat-label>{{
+            currentLanguageSet?.historyData?.opdNCDPNCHistory?.development
+              ?.fineMotorMilestone
+          }}</mat-label>
+          <mat-select
+            multiple
+            class="select-full-width"
+            name="fineMotorMilestone"
+            formControlName="fineMotorMilestones">
+            <mat-option value="Changes object from one to another hand"
+              >Changes object from one to another hand</mat-option
+            >
+            <mat-option value="Holding object with Palm"
+              >Holding object with Palm</mat-option
+            >
+            <mat-option value="Pincer's Grasp">Pincer's Grasp</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-6 box">
-      <mat-form-field>
-        <mat-label>{{
-          currentLanguageSet?.historyData?.opdNCDPNCHistory?.development
-            ?.fineMotorMilestone
-        }}</mat-label>
-        <mat-select
-          multiple
-          class="select-full-width"
-          name="fineMotorMilestone"
-          formControlName="fineMotorMilestones">
-          <mat-option value="Changes object from one to another hand"
-            >Changes object from one to another hand</mat-option
-          >
-          <mat-option value="Holding object with Palm"
-            >Holding object with Palm</mat-option
-          >
-          <mat-option value="Pincer's Grasp">Pincer's Grasp</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div class="col-12 row">
+      <div class="col-6 box">
+        <mat-form-field>
+          <mat-label>{{
+            currentLanguageSet?.historyData?.opdNCDPNCHistory?.development
+              ?.socialMilestone
+          }}</mat-label>
+          <mat-select
+            multiple
+            class="select-full-width"
+            name="socialMilestone"
+            formControlName="socialMilestones">
+            <mat-option value="Social smile">Social smile</mat-option>
+            <mat-option value="Cooing">Cooing</mat-option>
+            <mat-option value="Stranger Anxiety">Stranger Anxiety</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-6 box">
+        <mat-form-field>
+          <mat-label>{{
+            currentLanguageSet?.historyData?.opdNCDPNCHistory?.development
+              ?.languageMilestone
+          }}</mat-label>
+          <mat-select
+            multiple
+            class="select-full-width"
+            name="languageMilestone"
+            formControlName="languageMilestones">
+            <mat-option value="Monosyllables">Monosyllables</mat-option>
+            <mat-option value="Bi syllables">Bi syllables</mat-option>
+            <mat-option value="Words">Words</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-6 box">
-      <mat-form-field>
-        <mat-label>{{
-          currentLanguageSet?.historyData?.opdNCDPNCHistory?.development
-            ?.socialMilestone
-        }}</mat-label>
-        <mat-select
-          multiple
-          class="select-full-width"
-          name="socialMilestone"
-          formControlName="socialMilestones">
-          <mat-option value="Social smile">Social smile</mat-option>
-          <mat-option value="Cooing">Cooing</mat-option>
-          <mat-option value="Stranger Anxiety">Stranger Anxiety</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-6 box">
-      <mat-form-field>
-        <mat-label>{{
-          currentLanguageSet?.historyData?.opdNCDPNCHistory?.development
-            ?.languageMilestone
-        }}</mat-label>
-        <mat-select
-          multiple
-          class="select-full-width"
-          name="languageMilestone"
-          formControlName="languageMilestones">
-          <mat-option value="Monosyllables">Monosyllables</mat-option>
-          <mat-option value="Bi syllables">Bi syllables</mat-option>
-          <mat-option value="Words">Words</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-6 box">
+    <div class="col-12 row"></div>
+    <div class="col-6 box">
       <mat-form-field>
         <mat-label>{{
           currentLanguageSet?.historyData?.opdNCDPNCHistory?.development
