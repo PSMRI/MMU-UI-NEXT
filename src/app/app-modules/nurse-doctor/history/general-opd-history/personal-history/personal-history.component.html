@@ -1,8 +1,8 @@
 <ng-container [formGroup]="generalPersonalHistoryForm">
-  <div class="col-12 row">
+  <div class="col-12">
     <div
-      class="col-4 previous-history"
-      style="text-align: center"
+      class="previous-history"
+      style="text-align: end"
       *ngIf="beneficiary?.ageVal >= 13">
       <span class="font-history-label">{{
         currentLanguageSet?.historyData?.ancHistory
@@ -13,7 +13,7 @@
         mat-icon-button
         matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
         id="previousTobaccoHistory"
-        class="mat_icon_blue"
+        class="pull-right"
         color="primary"
         (click)="getPreviousTobaccoHistory()">
         <mat-icon class="md-24">history</mat-icon>
