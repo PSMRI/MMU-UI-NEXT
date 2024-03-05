@@ -181,6 +181,6 @@ ul li div {
 .description {
   padding-top: 15px;
 }
-.mat-pagenator >>> .mat-mdc-paginator {
+/* .mat-pagenator >>> .mat-mdc-paginator {
   display:unset !important;
-}
+} */

@@ -421,7 +421,7 @@ mat-mdc-form-field-label-always-float {
 .mat-mdc-table {
   --mat-table-row-item-outline-width: 1px;
   table-layout: auto;
-  white-space: pre !important;
+  white-space: unset !important;
   background-color: var(--mat-table-background-color);
 }
 

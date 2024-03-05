@@ -35,9 +35,9 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-12 m-t-10">
+    <div class="col-sm-12 m-t-10 m-b-40">
       <mat-card>
-        <section class="table-responsive" style="padding-bottom: 50px">
+        <section class="table-responsive" style="padding-bottom: 30px">
           <div class="mat-elevation-z8 responsiveTable">
             <table
               mat-table
@@ -254,45 +254,52 @@
               {{ filteredBeneficiaryList.length }}
             </div>
           </td> -->
-          <td colspan="4" style="width: 50%">
-            <ul class="description" *ngIf="dataSource.data.length > 0">
-              <li>
-                <div class="marker-p-f-c"></div>
-                <p>
-                  {{ currentLanguageSet?.alerts?.info?.pendingForConsultation }}
-                </p>
-              </li>
-              <li>
-                <div class="marker-p-f-t"></div>
-                <p>
-                  {{
-                    currentLanguageSet?.alerts?.info?.pendingforLabtestResult
-                  }}
-                </p>
-              </li>
-              <li>
-                <div class="marker-t-d"></div>
-                <p>{{ currentLanguageSet?.alerts?.info?.labtestDone }}</p>
-              </li>
-              <li>
-                <div class="marker-c-d"></div>
-                <p>{{ currentLanguageSet?.alerts?.info?.consultationDone }}</p>
-              </li>
-              <li>
-                <div class="marker-dark-green"></div>
-                <p>{{ currentLanguageSet?.common?.tmReferred }}</p>
-              </li>
-            </ul>
-          </td>
-          <td colspan="5" class="mat-pagenator">
-            <mat-paginator
-              [pageSizeOptions]="[5, 10, 20]"
-              [hidden]="dataSource.data.length === 0"
-              [pageSize]="5"
-              showFirstLastButtons
-              aria-label="Select patient in doctorWorklist">
-            </mat-paginator>
-          </td>
+          <div class="col-12 row">
+            <div class="col-6">
+              <ul class="description" *ngIf="dataSource.data.length > 0">
+                <li>
+                  <div class="marker-p-f-c"></div>
+                  <p>
+                    {{
+                      currentLanguageSet?.alerts?.info?.pendingForConsultation
+                    }}
+                  </p>
+                </li>
+                <li>
+                  <div class="marker-p-f-t"></div>
+                  <p>
+                    {{
+                      currentLanguageSet?.alerts?.info?.pendingforLabtestResult
+                    }}
+                  </p>
+                </li>
+                <li>
+                  <div class="marker-t-d"></div>
+                  <p>{{ currentLanguageSet?.alerts?.info?.labtestDone }}</p>
+                </li>
+                <li>
+                  <div class="marker-c-d"></div>
+                  <p>
+                    {{ currentLanguageSet?.alerts?.info?.consultationDone }}
+                  </p>
+                </li>
+                <li>
+                  <div class="marker-dark-green"></div>
+                  <p>{{ currentLanguageSet?.common?.tmReferred }}</p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <mat-paginator
+                style="display: unset !important"
+                [pageSizeOptions]="[5, 10, 20]"
+                [hidden]="dataSource.data.length === 0"
+                [pageSize]="5"
+                showFirstLastButtons
+                aria-label="Select patient in doctorWorklist">
+              </mat-paginator>
+            </div>
+          </div>
         </section>
       </mat-card>
     </div>
