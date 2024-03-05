@@ -482,6 +482,8 @@ export class RegisterPersonalDetailsComponent
         this.personalDetailsForm.controls['educationQualification'],
         'controls'
       );
+    } else {
+      this.personalDetailsForm.controls['educationQualification'].reset();
     }
   }
 
