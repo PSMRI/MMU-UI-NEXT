@@ -68,10 +68,10 @@ export class DiseaseconfirmationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.diseaseFormsArray = this.getData();
+    this.diseaseFormsArray = this.getDiseaseFormArray();
     console.log('disease Form Array', this.diseaseFormsArray);
 
-    while (this.getData().length) {
+    while (this.getDiseaseFormArray().length) {
       this.diseaseFormsArray.removeAt(0);
     }
     if (this.mode == 'view') {
@@ -91,9 +91,9 @@ export class DiseaseconfirmationComponent implements OnInit {
     }
   }
 
-  getData() {
-    return this.diseaseFormsGroup.get('diseaseFormsArray') as FormArray;
-  }
+  // getData() {
+  //   return this.diseaseFormsGroup.get('diseaseFormsArray') as FormArray;
+  // }
 
   // getDiseaseFormArray(): AbstractControl[] | null {
   //   const diseaseFormsArrayControl =
@@ -109,7 +109,7 @@ export class DiseaseconfirmationComponent implements OnInit {
   }
 
   addMoreDiseases(data: any) {
-    this.getData().push(
+    this.getDiseaseFormArray().push(
       new VisitDetailUtils(this.fb).createPatientDiseaseArrayForm(data)
     );
   }

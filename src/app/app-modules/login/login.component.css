@@ -116,10 +116,15 @@ mat-card-title {
     height: 35px;
 }
 
-.mdc-text-field--filled:not(.mdc-text-field--disabled) {
-    background-color: white !important;
-}
-
 .justify-content-between {
     justify-content: space-between;
+}
+
+.input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hover {
+    box-shadow: 0 0 0 20px white inset !important;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
 }
