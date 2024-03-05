@@ -112,7 +112,7 @@
                     type="button"
                     *ngIf="isLast"
                     [disabled]="checkProvisionalDiagnosisValidity(diagnosis)"
-                    class="pull-right"
+                    class="mat_blue_circle"
                     color="primary"
                     (click)="addDiagnosis()">
                     <mat-icon>add</mat-icon>
@@ -120,8 +120,8 @@
                   <button
                     mat-mini-fab
                     type="button"
-                    class="pull-left"
                     color="warn"
+                    class="mat_warn_circle"
                     *ngIf="
                       diagnosis.get('provisionalDiagnosis')?.disabled ||
                       i !== 0 ||

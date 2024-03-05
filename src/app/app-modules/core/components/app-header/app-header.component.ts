@@ -34,6 +34,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService, ConfirmationService } from '../../services';
 import { HttpServiceService } from '../../services/http-service.service';
 import { IotService } from '../../services/iot.service';
+import { IotBluetoothComponent } from '../iot-bluetooth/iot-bluetooth.component';
+import { ShowCommitAndVersionDetailsComponent } from '../show-commit-and-version-details/show-commit-and-version-details.component';
 
 @Component({
   selector: 'app-header',
@@ -313,14 +315,14 @@ export class AppHeaderComponent implements OnInit {
     }
   }
   showData(versionData: any) {
-    // let dialogRef = this.dialog.open(ShowCommitAndVersionDetailsComponent, {
-    //   data: versionData
-    // });
+    const dialogRef = this.dialog.open(ShowCommitAndVersionDetailsComponent, {
+      data: versionData,
+    });
   }
 
   openIOT() {
-    // let dialogRef = this.dialog.open(IotBluetoothComponent, {
-    //   width:"600px"
-    // });
+    const dialogRef = this.dialog.open(IotBluetoothComponent, {
+      width: '600px',
+    });
   }
 }

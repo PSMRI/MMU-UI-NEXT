@@ -24,6 +24,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { HttpServiceService } from '../../services/http-service.service';
 import { IotService } from '../../services/iot.service';
 import { SetLanguageComponent } from '../set-language.component';
+import { ConfirmationService } from '../../services';
 
 @Component({
   selector: 'app-iot-bluetooth',
@@ -35,7 +36,8 @@ export class IotBluetoothComponent implements OnInit, DoCheck {
 
   constructor(
     public service: IotService,
-    public httpServiceService: HttpServiceService
+    public httpServiceService: HttpServiceService,
+    private confirmationService: ConfirmationService
   ) {}
 
   apiAvailable: boolean = false;
@@ -168,6 +170,10 @@ export class IotBluetoothComponent implements OnInit, DoCheck {
       },
       err => {
         this.spinner = false;
+        this.confirmationService.alert(
+          'Unable to connect to bluetooth device',
+          'error'
+        );
       }
     );
   }

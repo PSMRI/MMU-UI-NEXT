@@ -52,7 +52,7 @@ export class SearchComponent implements OnInit, DoCheck {
   rotate = true;
   beneficiaryList: any;
   filteredBeneficiaryList: any = [];
-  quicksearchTerm?: string;
+  quicksearchTerm: any;
   advanceSearchTerm: any;
   blankTable = [1, 2, 3, 4, 5];
   languageComponent!: SetLanguageComponent;
@@ -363,12 +363,15 @@ export class SearchComponent implements OnInit, DoCheck {
           .advanceSearchIdentity(this.advanceSearchTerm)
           .subscribe(
             (beneficiaryList: any) => {
-              if (!beneficiaryList || beneficiaryList.length <= 0) {
+              if (
+                !beneficiaryList ||
+                (beneficiaryList.data && beneficiaryList.data.length <= 0)
+              ) {
                 this.beneficiaryList = [];
                 this.filteredBeneficiaryList = [];
                 this.dataSource.data = [];
                 this.dataSource.paginator = this.paginator;
-                this.quicksearchTerm = '';
+                this.quicksearchTerm = null;
                 this.confirmationService.alert(
                   this.currentLanguageSet.alerts.info.beneficiarynotfound,
                   'info'

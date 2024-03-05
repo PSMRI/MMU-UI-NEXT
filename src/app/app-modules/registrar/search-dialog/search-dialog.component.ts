@@ -200,9 +200,10 @@ export class SearchDialogComponent implements OnInit, DoCheck {
   }
 
   onStateChange() {
-    if (this.locations.otherLoc.stateID) {
+    const stateIDVal: any = this.newSearchForm.controls['stateID'].value;
+    if (stateIDVal) {
       this.registrarService
-        .getDistrictList(this.locations.otherLoc.stateID)
+        .getDistrictList(stateIDVal)
         .subscribe((res: any) => {
           if (res && res.statusCode === 200) {
             this.districts = res.data;

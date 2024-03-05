@@ -202,7 +202,8 @@
               [id]="'removeBtn' + i"
               *ngIf="i !== 0 || (i === 0 && complaint.touched)"
               (click)="removeCheifComplaint(i, complaint)"
-              color="warn">
+              color="warn"
+              class="mat_warn_circle">
               <span class="material-icons">close</span>
             </button>
             <button
@@ -211,7 +212,8 @@
               *ngIf="isLast"
               [disabled]="checkComplaintFormValidity(complaint)"
               (click)="addCheifComplaint()"
-              color="primary">
+              color="primary"
+              class="mat_blue_circle">
               <span class="material-icons">add</span>
             </button>
           </div>

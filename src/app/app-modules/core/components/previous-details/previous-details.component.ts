@@ -45,6 +45,7 @@ export class PreviousDetailsComponent implements OnInit, DoCheck {
   current_language_set: any;
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   filteredDataList = new MatTableDataSource<any>();
+  displayedColumns: any = ['sno'];
 
   constructor(
     public dialogRef: MatDialogRef<PreviousDetailsComponent>,
@@ -54,12 +55,25 @@ export class PreviousDetailsComponent implements OnInit, DoCheck {
 
   ngOnInit() {
     this.assignSelectedLanguage();
-    if (this.input.dataList.data instanceof Array) {
+    if (
+      this.input.dataList.data != null &&
+      this.input.dataList.data != undefined &&
+      this.input.dataList.data instanceof Array
+    ) {
       this.dataList = this.input.dataList.data;
       this.filteredDataList.data = this.dataList.slice();
     }
-    if (this.input.dataList.columns instanceof Array)
+    if (
+      this.input.dataList.columns != null &&
+      this.input.dataList.columns != undefined &&
+      this.input.dataList.columns instanceof Array
+    )
       this.columnList = this.input.dataList.columns;
+    this.input.dataList.columns.filter((item: any) => {
+      if (item.keyName) {
+        this.displayedColumns.push(item.keyName);
+      }
+    });
   }
 
   ngDoCheck() {
