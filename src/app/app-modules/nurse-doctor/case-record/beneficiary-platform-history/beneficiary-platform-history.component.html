@@ -6,15 +6,21 @@
         label="{{ service.serviceName }}">
         <div>
           <div
-            class="example-sidenav-content"
-            class="example-container m-t-10"
+            class="example-sidenav-content example-container m-t-10"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border: 1px solid;
+              height: 200px;
+            "
             *ngIf="!service.serviceLoaded"
             autosize>
             <button
               type="button"
               mat-raised-button
               color="primary"
-              class="btn-green"
+              class="mat_blue"
               (click)="getServiceHistory(service.serviceID)">
               {{ current_language_set?.common?.load }}
               {{ service.serviceName }}

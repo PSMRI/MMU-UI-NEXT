@@ -44,7 +44,7 @@ export class RegistrationUtils {
     return this.fb.group({
       benAccountID: null,
       beneficiaryID: null,
-      beneficiaryRegID: null,
+      beneficiaryRegID: 0,
       parentRegID: null,
       parentRelation: null,
       benRelationshipType: null,

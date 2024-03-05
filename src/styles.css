@@ -99,6 +99,24 @@
   line-height: 36px;
   min-width: 88px;
 }
+.mat_green {
+  background-color: #43a047 !important;
+  border-color: unset !important;
+  color: white;
+  border: unset;
+  border-radius: 3px;
+  line-height: 36px;
+  min-width: 88px;
+}
+.mat_green:disabled {
+  background-color: #e0e0e0 !important;
+  border-color: unset !important;
+  color: rgba(0, 0, 0, 0.38);
+  border: unset;
+  border-radius: 3px;
+  line-height: 36px;
+  min-width: 88px;
+}
 
 .mat_gray {
   background-color: #f0f0f0 !important;
@@ -412,7 +430,7 @@ mat-mdc-form-field-label-always-float {
 }
 
 h5 {
-  font-size: larger !important;
+  font-size: larger;
 }
 
 .mat-expansion-panel-body {
@@ -477,4 +495,11 @@ h5 {
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+input:-internal-autofill-selected {
+  appearance: menulist-button;
+  background-image: none !important;
+  background-color: red !important;
+  color: fieldtext !important;
 }
