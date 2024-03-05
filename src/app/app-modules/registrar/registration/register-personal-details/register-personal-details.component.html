@@ -345,38 +345,6 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-          <mat-form-field>
-            <mat-label>
-              {{ currentLanguageSet?.ro?.personalInfo?.incomeStatus }}
-            </mat-label>
-            <mat-select
-              style="width: 100%"
-              (selectionChange)="onIncomeChanged()"
-              formControlName="income">
-              <mat-option
-                *ngFor="let incomeStatus of masterData?.incomeMaster"
-                [value]="incomeStatus.incomeStatusID">
-                {{ incomeStatus.incomeStatus }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-          <mat-form-field style="width: 100%">
-            <mat-label>{{
-              currentLanguageSet?.ro?.personalInfo?.monthlyFamilyIncome
-            }}</mat-label>
-            <input
-              appDefaultNull
-              autocomplete="off"
-              allowText="number"
-              matInput
-              formControlName="monthlyFamilyIncome"
-              maxlength="7" />
-          </mat-form-field>
-        </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <div class="row">
             <div class="col-xs-2 col-sm-2 m-t-15" style="padding-top: 7px">
               <mat-checkbox
@@ -421,6 +389,38 @@
               minlength="3"
               maxlength="50"
               [required]="true" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field>
+            <mat-label>
+              {{ currentLanguageSet?.ro?.personalInfo?.incomeStatus }}
+            </mat-label>
+            <mat-select
+              style="width: 100%"
+              (selectionChange)="onIncomeChanged()"
+              formControlName="income">
+              <mat-option
+                *ngFor="let incomeStatus of masterData?.incomeMaster"
+                [value]="incomeStatus.incomeStatusID">
+                {{ incomeStatus.incomeStatus }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
+          <mat-form-field style="width: 100%">
+            <mat-label>{{
+              currentLanguageSet?.ro?.personalInfo?.monthlyFamilyIncome
+            }}</mat-label>
+            <input
+              appDefaultNull
+              autocomplete="off"
+              allowText="number"
+              matInput
+              formControlName="monthlyFamilyIncome"
+              maxlength="7" />
           </mat-form-field>
         </div>
       </div>
