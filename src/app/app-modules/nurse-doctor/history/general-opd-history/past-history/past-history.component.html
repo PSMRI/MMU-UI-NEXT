@@ -1,4 +1,4 @@
-<!-- {{ pastHistoryForm.value | json}} -->
+{{ pastHistoryForm.value | json }}
 <div [formGroup]="pastHistoryForm">
   <div>
     <div class="col-12" style="float: right; text-align: end">
@@ -94,6 +94,7 @@
                 formControlName="timePeriodAgo"
                 [disabled]="
                   !pastIllness.value.illnessType ||
+                  pastIllness.value.illnessType?.illnessType === 'Nil' ||
                   pastIllness.value.illnessType?.illnessType === 'None'
                 "
                 (change)="validateDuration(pastIllness)" />
