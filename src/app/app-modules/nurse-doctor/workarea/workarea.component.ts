@@ -1031,6 +1031,7 @@ export class WorkareaComponent
     if (this.checkCancerRequiredData(medicalForm)) {
       // check if the form is valid
       const imageCoordiantes = this.getImageCoordinates(medicalForm);
+      this.showProgressBar = false;
 
       this.confirmationService
         .confirm(
