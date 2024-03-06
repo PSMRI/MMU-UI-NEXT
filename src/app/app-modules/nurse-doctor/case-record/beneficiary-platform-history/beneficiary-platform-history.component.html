@@ -34,7 +34,10 @@
               service.serviceID === 2
             "
             class="m-t-20">
-            <mat-form-field id="filterbox" class="m-t-20" style="width: 100%">
+            <mat-form-field
+              id="filterbox"
+              class="m-t-20"
+              style="width: 100%; justify-content: end">
               <input
                 autocomplete="off"
                 matInput
@@ -48,6 +51,7 @@
           </div>
           <section
             class="m-t-20 overflow"
+            style="border: 1px solid"
             *ngIf="hideMMUFetch && service.serviceID === 2">
             <table
               mat-table

@@ -66,3 +66,15 @@ img {
 .example-sidenav {
   padding: 20px;
 }
+
+mat-form-field >>>.mat-mdc-text-field-wrapper {
+  width: 30% !important;
+}
+table, th, td {
+  border: 1px solid;
+  }
+
+  tr >>>.mat-mdc-row:hover {
+    color:unset !important;
+  }
+  

@@ -441,9 +441,9 @@ h5 {
 .mat-mdc-select-trigger {
   border-bottom-style: groove;
 }
-.mat-mdc-select-trigger:disabled {
+/* .mat-mdc-select-trigger:disabled {
   border-bottom-style: dotted;
-}
+} */
 
 .mdc-line-ripple::before, .mdc-line-ripple::after {
  
@@ -452,9 +452,9 @@ h5 {
 .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
   border-bottom-style: groove ;
 }
-.mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input:disabled {
+/* .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input:disabled {
   border-bottom-style: dotted ;
-}
+} */
 .mat-step-icon-selected {
   background-color: #0277bd !important;
 }
@@ -509,7 +509,28 @@ input:-internal-autofill-selected {
   background-color: red !important;
   color: fieldtext !important;
 }
+/* radio Button */
+.mat-mdc-radio-button .mdc-form-field {
+  color: #0277bd !important;
+}
+.mat-accent {
+  --mat-option-selected-state-label-text-color:#0277bd !important;
+}
 
+.mat-mdc-radio-button.mat-accent {
+  --mdc-radio-disabled-selected-icon-color: #000;
+  --mdc-radio-disabled-unselected-icon-color: #000;
+  --mdc-radio-unselected-hover-icon-color: #212121;
+  --mdc-radio-unselected-icon-color: rgba(0, 0, 0, 0.54);
+  --mdc-radio-unselected-pressed-icon-color: rgba(0, 0, 0, 0.54);
+  --mdc-radio-selected-focus-icon-color:#0277bd !important;
+  --mdc-radio-selected-hover-icon-color:#0277bd !important;
+  --mdc-radio-selected-icon-color:#0277bd !important;
+  --mdc-radio-selected-pressed-icon-color:#0277bd !important;
+  --mat-radio-ripple-color: #000;
+  --mat-radio-checked-ripple-color:#0277bd !important;
+  --mat-radio-disabled-label-color: rgba(0, 0, 0, 0.38);
+}
 ::ng-deep.bs-datepicker.bs-datepicker-head {
   background-color: #337ab7 !important;
 }
