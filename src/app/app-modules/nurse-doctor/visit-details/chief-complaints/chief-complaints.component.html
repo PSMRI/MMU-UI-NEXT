@@ -72,9 +72,8 @@
                 appDefaultNull
                 allowText="number"
                 maxlength="2"
-                name="duration"
+                [disabled]="complaint.value.chiefComplaint"
                 formControlName="duration"
-                [disabled]="!complaint?.value?.chiefComplaint"
                 (selectionChange)="validateDuration(complaint)" />
             </mat-form-field>
           </div>
@@ -122,23 +121,24 @@
           <div class="">
             <button
               type="button"
-              md-mini-fab
+              mat-mini-fab
               class=".mat_warn_circle"
               [id]="'removeBtn' + i"
               *ngIf="i !== 0 || (i === 0 && complaint.touched)"
               (click)="removeCheifComplaint(i, complaint)"
-              color="warn">
+              color="warn"
+              class="mat_warn_circle">
               <span class="material-icons">close</span>
             </button>
             <button
+              color="primary"
               class="mat_blue_circle"
               type="button"
-              md-mini-fab
+              mat-mini-fab
               [id]="'addBtn' + i"
               *ngIf="isLast"
               [disabled]="checkComplaintFormValidity(complaint)"
-              (click)="addCheifComplaint()"
-              color="primary">
+              (click)="addCheifComplaint()">
               <span class="material-icons">add</span>
             </button>
           </div>
