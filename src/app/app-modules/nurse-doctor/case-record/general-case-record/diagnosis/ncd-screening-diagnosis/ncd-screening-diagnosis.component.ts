@@ -21,7 +21,12 @@
  */
 
 import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormArray,
+  AbstractControl,
+} from '@angular/forms';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { ConfirmationService } from 'src/app/app-modules/core/services';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
@@ -99,6 +104,16 @@ export class NcdScreeningDiagnosisComponent
   ngDoCheck() {
     this.assignSelectedLanguage();
   }
+
+  getProvisionalDiagnosisList(): AbstractControl[] | null {
+    const provisionalDiagnosisListControl = this.generalDiagnosisForm.get(
+      'provisionalDiagnosisList'
+    );
+    return provisionalDiagnosisListControl instanceof FormArray
+      ? provisionalDiagnosisListControl.controls
+      : null;
+  }
+
   assignSelectedLanguage() {
     const getLanguageJson = new SetLanguageComponent(this.httpServiceService);
     getLanguageJson.setLanguage();
@@ -177,7 +192,7 @@ export class NcdScreeningDiagnosisComponent
     }
   }
 
-  deleteDiagnosis(index: any, diagnosisList?: FormArray) {
+  deleteDiagnosis(index: any, diagnosisList: AbstractControl<any, any>) {
     const diagnosisListForm = this.generalDiagnosisForm.controls[
       'provisionalDiagnosisList'
     ] as FormArray;

@@ -534,6 +534,9 @@ export class WorkareaComponent
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
           );
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientExaminationForm',
             new GeneralUtils(this.fb).createPatientExaminationForm()

@@ -10,49 +10,53 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-label>{{
-      currentLanguageSet?.nurseData?.visitDetailsForm?.reasonForVisit
-    }}</mat-label>
-    <mat-select
-      matInput
-      class="input-full-width"
-      name="visitReason"
-      formControlName="visitReason"
-      (selectionChange)="
-        reasonSelected(patientVisitDetailsForm.controls['visitReason'].value)
-      "
-      required>
-      <mat-option
-        *ngFor="let visitReasons of templateVisitReasons"
-        [value]="visitReasons.visitReason">
-        {{ visitReasons.visitReason }}
-      </mat-option>
-    </mat-select>
+    <mat-form-field class="input-full-width">
+      <mat-label>{{
+        currentLanguageSet?.nurseData?.visitDetailsForm?.reasonForVisit
+      }}</mat-label>
+      <mat-select
+        matInput
+        class="input-full-width"
+        name="visitReason"
+        formControlName="visitReason"
+        (selectionChange)="
+          reasonSelected(patientVisitDetailsForm.controls['visitReason'].value)
+        "
+        required>
+        <mat-option
+          *ngFor="let visitReasons of templateVisitReasons"
+          [value]="visitReasons.visitReason">
+          {{ visitReasons.visitReason }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 
   <div
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="patientVisitDetailsForm!.controls['visitReason']?.value">
-    <mat-label>{{
-      currentLanguageSet?.nurseData?.visitDetailsForm?.visitCategory
-    }}</mat-label>
-    <mat-select
-      class="input-full-width"
-      name="visitCategory"
-      matInput
-      formControlName="visitCategory"
-      (selectionChange)="
-        checkCategoryDependent(
-          patientVisitDetailsForm.controls['visitCategory'].value
-        )
-      "
-      required>
-      <mat-option
-        *ngFor="let VisitCategories of templateFilterVisitCategories"
-        [value]="VisitCategories.visitCategory">
-        {{ VisitCategories.visitCategory }}
-      </mat-option>
-    </mat-select>
+    <mat-form-field class="input-full-width">
+      <mat-label>{{
+        currentLanguageSet?.nurseData?.visitDetailsForm?.visitCategory
+      }}</mat-label>
+      <mat-select
+        class="input-full-width"
+        name="visitCategory"
+        matInput
+        formControlName="visitCategory"
+        (selectionChange)="
+          checkCategoryDependent(
+            patientVisitDetailsForm.controls['visitCategory'].value
+          )
+        "
+        required>
+        <mat-option
+          *ngFor="let VisitCategories of templateFilterVisitCategories"
+          [value]="VisitCategories.visitCategory">
+          {{ VisitCategories.visitCategory }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 
   <div
