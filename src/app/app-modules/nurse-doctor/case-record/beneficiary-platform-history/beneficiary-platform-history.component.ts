@@ -31,6 +31,7 @@ import { environment } from 'src/environments/environment';
 import { BeneficiaryMctsCallHistoryComponent } from '../beneficiary-mcts-call-history/beneficiary-mcts-call-history.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { CaseSheetComponent } from '../../case-sheet/case-sheet.component';
 @Component({
   selector: 'app-beneficiary-platform-history',
   templateUrl: './beneficiary-platform-history.component.html',
@@ -57,11 +58,45 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
     'date',
     'visitreasonmmu',
     'visitcategorymmu',
-    'visitdetailsmmu',
+    'visitDetails',
     'visitcodemmu',
     'medicationmmu',
     'previewmmu',
     'printpreviewmmu',
+  ];
+
+  displayedTMColumns = [
+    'visitnommu',
+    'date',
+    'visitreasonmmu',
+    'visitcategorymmu',
+    'visitcodemmu',
+    'previewmmu',
+    'printpreviewmmu',
+  ];
+
+  displayedMCTSColumns = [
+    'calltypemcts',
+    'calldatetimemcts',
+    'dataupdatemcts',
+    'callstatusmcts',
+    'callgrouptypemcts',
+    'remarks',
+    'actions',
+  ];
+
+  displayed104Columns = [
+    'id',
+    'name104',
+    'age104',
+    'ChiefComplaint104',
+    'symptoms',
+    'provisionalSelected104',
+    'recommendedaction104',
+    'actionByHao',
+    'actionByMo',
+    'actionByCoPd',
+    'date',
   ];
 
   constructor(
@@ -140,6 +175,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         this.serviceOnState = this.checkServiceLoader(services, 2);
         console.log('dataget', JSON.stringify(data, null, 4));
         this.dataSource.data = data.data;
+        this.dataSource.paginator = this.paginator;
         // this.filteredMMUHistory = data.data;
         this.getEachVisitData();
       }
@@ -157,6 +193,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         this.doctorService.getMMUCasesheetData(reqObj).subscribe((res: any) => {
           if (res.statusCode == 200 && res.data !== null) {
             this.dataSource.data[i]['benPreviousData'] = res.data;
+            this.dataSource.paginator = this.paginator;
             //this.previousVisitData.push({ 'benPreviousData': res.data});
             this.filteredMMUHistory = res.data;
             this.previousMMUHistoryPageChanged({
@@ -192,6 +229,8 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         const value: string = '' + item.VisitCategory;
         if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
           this.filteredMMUHistory.push(item);
+          this.dataSource.data.push(item);
+          this.dataSource.paginator = this.paginator;
         }
       });
     }
@@ -239,21 +278,22 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
               url + '/#/nurse-doctor/print/' + serviceType + '/' + 'previous'
             );
           } else {
-            // this.dialog.open(CaseSheetComponent, {
-            //   disableClose: true,
-            //   width: '95%',
-            //   panelClass: 'preview-casesheet',
-            //   data: {
-            //     previous: true,
-            //     serviceType: serviceType,
-            //   },
-            // });
+            this.dialog.open(CaseSheetComponent, {
+              disableClose: true,
+              width: '95%',
+              panelClass: 'preview-casesheet',
+              data: {
+                previous: true,
+                serviceType: serviceType,
+              },
+            });
           }
+        } else {
+          this.confirmationService.alert(
+            this.current_language_set.alerts.info.noCasesheet
+          );
         }
       });
-    // } else {
-    //   this.confirmationService.alert(this.current_language_set.alerts.info.noCasesheet)
-    // }
   }
 
   hideMCTSFetch: boolean = false;
@@ -273,6 +313,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         this.serviceOnState = this.checkServiceLoader(services, 6);
         this.historyOfMCTS.data = data.data;
         this.filteredMCTSHistory = data.data;
+        this.historyOfMCTS.paginator = this.MctsPaginator;
         this.previousMCTSHistoryPageChanged({
           page: this.previousMCTSHistoryActivePage,
           itemsPerPage: this.previousMCTSHistoryRowsPerPage,
@@ -290,6 +331,8 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         const value: string = '' + item.mctsOutboundCall.displayOBCallType;
         if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
           this.filteredMCTSHistory.push(item);
+          this.historyOfMCTS.data.push(item);
+          this.historyOfMCTS.paginator = this.MctsPaginator;
         }
       });
     }
@@ -330,6 +373,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         console.log('dataget', data);
         this.historyOf104.data = data.data;
         this.filtered104History = data.data;
+        this.historyOf104.paginator = this.paginator104;
         this.previous104HistoryPageChanged({
           page: this.previous104HistoryActivePage,
           itemsPerPage: this.previous104HistoryRowsPerPage,
@@ -347,6 +391,8 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         const value: string = '' + item.diseaseSummary;
         if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
           this.filtered104History.push(item);
+          this.historyOf104.data.push(item);
+          this.historyOf104.paginator = this.paginator104;
         }
       });
     }
@@ -415,6 +461,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         console.log('dataget', JSON.stringify(data, null, 4));
         this.historyOfTM.data = data.data;
         this.filteredTMHistory = data.data;
+        this.historyOfTM.paginator = this.TmPaginator;
         this.previousTMHistoryPageChanged({
           page: this.previousTMHistoryActivePage,
           itemsPerPage: this.previousTMHistoryRowsPerPage,
@@ -432,6 +479,8 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         const value: string = '' + item.VisitCategory;
         if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
           this.filteredTMHistory.push(item);
+          this.historyOfTM.data.push(item);
+          this.historyOfTM.paginator = this.TmPaginator;
         }
       });
     }
