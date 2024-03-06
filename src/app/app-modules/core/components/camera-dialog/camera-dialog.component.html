@@ -29,15 +29,24 @@
         <button
           mat-raised-button
           color="primary"
+          class="mat_blue col-2"
+          style="width: 12%; margin-right: 5px"
           (click)="dialogRef.close(false)">
           {{ current_language_set?.common?.cancel }}
         </button>
-        <button mat-raised-button color="primary" (click)="getSnapshot()">
+        <button
+          mat-raised-button
+          color="primary"
+          class="mat_blue col-2"
+          style="width: 12%; margin-right: 5px"
+          (click)="getSnapshot()">
           {{ status }}
         </button>
         <button
           mat-raised-button
           color="primary"
+          class="mat_blue col-2"
+          style="width: 12%; margin-right: 5px"
           [disabled]="!captured"
           [mat-dialog-close]="base64">
           {{ current_language_set?.common?.proceed }}
@@ -55,7 +64,11 @@
   </mat-dialog-content>
   <mat-dialog-actions align="center">
     <div class="row">
-      <button mat-raised-button color="primary" mat-dialog-close>
+      <button
+        mat-raised-button
+        color="primary"
+        class="mat_blue"
+        mat-dialog-close>
         {{ current_language_set?.coreComponents?.close }}
       </button>
     </div>
@@ -77,7 +90,11 @@
   </mat-dialog-content>
   <mat-dialog-actions align="center">
     <div class="row">
-      <button mat-raised-button color="primary" mat-dialog-close>
+      <button
+        mat-raised-button
+        color="primary"
+        class="mat_blue"
+        mat-dialog-close>
         {{ current_language_set?.coreComponents?.close }}
       </button>
     </div>
@@ -116,13 +133,20 @@
   </mat-dialog-content>
 
   <mat-dialog-actions align="center">
-    <div class="row">
-      <button mat-raised-button color="primary" mat-dialog-close>
+    <div class="col-12 row">
+      <button
+        mat-raised-button
+        color="primary"
+        class="mat_blue col-2"
+        style="width: 12%; margin-right: 5px"
+        mat-dialog-close>
         {{ current_language_set?.coreComponents?.close }}
       </button>
       <button
         mat-raised-button
         color="primary"
+        style="width: 12%; margin-right: 5px"
+        class="mat_blue col-2"
         [disabled]="!markers.length"
         (click)="clearPointers()">
         {{ current_language_set?.coreComponents?.reset }}
@@ -130,6 +154,8 @@
       <button
         mat-raised-button
         color="primary"
+        class="mat_blue col-2"
+        style="width: 12%; margin-right: 5px"
         [disabled]="!markers.length"
         [mat-dialog-close]="getMarkers()">
         {{ current_language_set?.coreComponents?.save }}
@@ -166,7 +192,11 @@
       <button mat-raised-button mat-dialog-close>
         {{ current_language_set?.coreComponents?.close }}
       </button>
-      <button mat-raised-button color="primary" (click)="downloadGraph()">
+      <button
+        mat-raised-button
+        color="primary"
+        class="mat_blue"
+        (click)="downloadGraph()">
         {{ current_language_set?.coreComponents?.download }}
       </button>
     </div>

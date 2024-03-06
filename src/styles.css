@@ -441,6 +441,9 @@ h5 {
 .mat-mdc-select-trigger {
   border-bottom-style: groove;
 }
+.mat-mdc-select-trigger:disabled {
+  border-bottom-style: dotted;
+}
 
 .mdc-line-ripple::before, .mdc-line-ripple::after {
  
@@ -448,6 +451,9 @@ h5 {
 }
 .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
   border-bottom-style: groove ;
+}
+.mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input:disabled {
+  border-bottom-style: dotted ;
 }
 .mat-step-icon-selected {
   background-color: #0277bd !important;

@@ -19,3 +19,6 @@ img {
 .custom-cell {
     height: 50px;
 }
+.cell_postion{
+    padding-top: 8px !important;
+}
