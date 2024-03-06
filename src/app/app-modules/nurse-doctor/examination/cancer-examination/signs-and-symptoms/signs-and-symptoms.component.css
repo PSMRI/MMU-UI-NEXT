@@ -13,6 +13,9 @@
 .mat-button-toggle-checked {
     background: lightblue;
 }
+.cell_postion{
+    padding-top: 8px !important;
+}
 
 .custom-cell{
     height: 50px;

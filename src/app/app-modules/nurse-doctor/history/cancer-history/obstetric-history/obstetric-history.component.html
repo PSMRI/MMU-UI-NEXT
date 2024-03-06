@@ -1,7 +1,7 @@
 <!-- {{cancerPatientObstetricHistoryForm.value | json}} -->
 <div [formGroup]="cancerPatientObstetricHistoryForm">
-  <div class="row m-t-10">
-    <div class="col-xs-12 text-right">
+  <div class="m-t-10 col-12">
+    <div class="" style="text-align: end">
       <span class="font-history-label m-t-10">{{
         currentLanguageSet?.historyData?.obstetrichistory?.obstetricshistory
       }}</span>
@@ -9,7 +9,7 @@
         mat-icon-button
         matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
         id="previousCancerPastObstetricHistory"
-        class="pull-right"
+        class="mat_icon_blue"
         color="primary"
         (click)="getPreviousCancerPastObstetricHistory()">
         <mat-icon class="md-18">history</mat-icon>

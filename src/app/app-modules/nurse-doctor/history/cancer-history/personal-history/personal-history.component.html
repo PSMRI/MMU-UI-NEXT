@@ -1,20 +1,7 @@
 <!--{{cancerPatientPerosnalHistoryForm.value | json}} -->
 <div [formGroup]="cancerPatientPerosnalHistoryForm">
-  <div class="row m-t-10">
-    <div class="col-xs-12 text-right">
-      <span class="font-history-label">{{
-        currentLanguageSet?.historyData?.personalhistory?.personaldiethistory
-      }}</span>
-      <button
-        mat-icon-button
-        matTooltip="{{
-          currentLanguageSet?.alerts?.previousHistoryDetailsAlert?.previousDiet
-        }}"
-        id="previousCancerPersonalDietHistory"
-        color="primary"
-        (click)="getPreviousCancerPersonalDietHistory()">
-        <mat-icon class="md-18">history</mat-icon>
-      </button>
+  <div class="m-t-10">
+    <div class="col-12" style="text-align: end">
       <span class="font-history-label">{{
         currentLanguageSet?.historyData?.personalhabit?.personalhabithistroy
       }}</span>
@@ -24,6 +11,7 @@
           currentLanguageSet?.alerts?.previousHistoryDetailsAlert?.previousHabit
         }}"
         color="primary"
+        class="mat_icon_blue"
         id="PreviousCancerPersonalHabitHistory"
         (click)="getPreviousCancerPersonalHabitHistory()">
         <mat-icon class="md-18">history</mat-icon>
@@ -31,465 +19,496 @@
     </div>
   </div>
 
-  <div class="row m-t-10">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field>
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.tobaccoUse
-        }}</mat-label>
-        <mat-select
-          class="input-full-width"
-          name="tobaccoUse"
-          formControlName="tobaccoUse"
-          (slectionChange)="checkTobaccoUseStatus(tobaccoUse)">
-          <mat-option
-            *ngFor="let tobaccousage of templateTobaccoUseStatus"
-            [value]="tobaccousage.habitValue">
-            {{ tobaccousage.habitValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <div
-      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
-      *ngIf="tobaccoUse && tobaccoUse !== 'Never Used'">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.startAge
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number"
-          maxlength="3"
-          name="startAge_year"
-          formControlName="startAge_year"
-          (change)="checkStartAge($event)" />
-      </mat-form-field>
-    </div>
-
-    <div
-      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
-      *ngIf="
-        tobaccoUse &&
-        tobaccoUse !== 'Never Used' &&
-        tobaccoUse !== 'Currently Using'
-      ">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.stopAge
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number"
-          maxlength="3"
-          name="endAge_year"
-          formControlName="endAge_year"
-          (change)="checkStopAge($event)" />
-      </mat-form-field>
-    </div>
-
-    <div
-      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
-      *ngIf="tobaccoUse && tobaccoUse !== 'Never Used'">
-      <mat-form-field>
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.typeofTobaccoProductsused
-        }}</mat-label>
-        <mat-select
-          class="input-full-width"
-          multiple
-          name="typeOfTobaccoProductList"
-          formControlName="typeOfTobaccoProductList"
-          (slectionChange)="tobaccoSelected()">
-          <mat-option
-            *ngFor="let typeOfTobaccoProducts of templateTobaccoProductUsed"
-            [value]="typeOfTobaccoProducts.habitValue">
-            {{ typeOfTobaccoProducts.habitValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <div
-      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
-      *ngIf="doSmokeCigarettes || doSmokeBeedi">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.cigarettes
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number"
-          maxlength="2"
-          name="quantityPerDay"
-          formControlName="quantityPerDay" />
-      </mat-form-field>
-    </div>
-
-    <div
-      class="col-xs-12 col-sm-6 col-md-3 col-lg-4 box"
-      *ngIf="doSmokeCigarettes">
-      <label class="control-label" for="drug">{{
-        currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-          ?.cigarette
-      }}</label>
-      <div class="clearfix"></div>
-      <mat-radio-group
-        name="isFilteredCigaerette"
-        formControlName="isFilteredCigaerette">
-        <mat-radio-button color="primary" class="radio-button" [value]="true"
-          >{{
+  <div class="m-t-10">
+    <div class="col-12 row">
+      <div class="col-4 box">
+        <mat-form-field>
+          <mat-label>{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.filtered
-          }}
-        </mat-radio-button>
-        <mat-radio-button color="primary" class="radio-button" [value]="false"
-          >{{
+              ?.tobaccoUse
+          }}</mat-label>
+          <mat-select
+            class="input-full-width"
+            name="tobaccoUse"
+            formControlName="tobaccoUse"
+            (slectionChange)="checkTobaccoUseStatus(tobaccoUse)">
+            <mat-option
+              *ngFor="let tobaccousage of templateTobaccoUseStatus"
+              [value]="tobaccousage.habitValue">
+              {{ tobaccousage.habitValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-4 box" *ngIf="tobaccoUse && tobaccoUse !== 'Never Used'">
+        <mat-form-field class="input-full-width">
+          <mat-label>{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-              ?.nonFiltered
+              ?.startAge
+          }}</mat-label>
+          <input
+            autocomplete="off"
+            matInput
+            appDefaultNull
+            allowText="number"
+            maxlength="3"
+            name="startAge_year"
+            formControlName="startAge_year"
+            (change)="checkStartAge($event)" />
+        </mat-form-field>
+      </div>
+
+      <div
+        class="col-4 box"
+        *ngIf="
+          tobaccoUse &&
+          tobaccoUse !== 'Never Used' &&
+          tobaccoUse !== 'Currently Using'
+        ">
+        <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.stopAge
+          }}</mat-label>
+          <input
+            autocomplete="off"
+            matInput
+            appDefaultNull
+            allowText="number"
+            maxlength="3"
+            name="endAge_year"
+            formControlName="endAge_year"
+            (change)="checkStopAge($event)" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-12 row">
+      <div class="col-4 box" *ngIf="tobaccoUse && tobaccoUse !== 'Never Used'">
+        <mat-form-field>
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.typeofTobaccoProductsused
+          }}</mat-label>
+          <mat-select
+            class="input-full-width"
+            multiple
+            name="typeOfTobaccoProductList"
+            formControlName="typeOfTobaccoProductList"
+            (slectionChange)="tobaccoSelected()">
+            <mat-option
+              *ngFor="let typeOfTobaccoProducts of templateTobaccoProductUsed"
+              [value]="typeOfTobaccoProducts.habitValue">
+              {{ typeOfTobaccoProducts.habitValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-4 box" *ngIf="doSmokeCigarettes || doSmokeBeedi">
+        <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.cigarettes
+          }}</mat-label>
+          <input
+            autocomplete="off"
+            matInput
+            appDefaultNull
+            allowText="number"
+            maxlength="2"
+            name="quantityPerDay"
+            formControlName="quantityPerDay" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-4 box" *ngIf="doSmokeCigarettes">
+        <label class="control-label" for="drug">{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.cigarette
+        }}</label>
+        <div class="clearfix"></div>
+        <mat-radio-group
+          name="isFilteredCigaerette"
+          formControlName="isFilteredCigaerette">
+          <mat-radio-button color="primary" class="radio-button" [value]="true"
+            >{{
+              currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+                ?.filtered
+            }}
+          </mat-radio-button>
+          <mat-radio-button color="primary" class="radio-button" [value]="false"
+            >{{
+              currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+                ?.nonFiltered
+            }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div class="col-12 row">
+      <div class="col-4 box">
+        <label class="control-label" for="drug">{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.exposuretoSecondHandsmoke
+        }}</label>
+        <div class="clearfix"></div>
+        <mat-radio-group
+          name="isCigaretteExposure"
+          formControlName="isCigaretteExposure">
+          <mat-radio-button
+            color="primary"
+            class="radio-button"
+            [value]="true"
+            >{{ currentLanguageSet?.common?.yes }}</mat-radio-button
+          >
+          <mat-radio-button
+            color="primary"
+            class="radio-button"
+            [value]="false"
+            >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+
+      <div class="col-4 box">
+        <label class="control-label" for="drug">
+          {{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.habitofBetelnutchewing
           }}
-        </mat-radio-button>
-      </mat-radio-group>
+        </label>
+        <div class="clearfix"></div>
+        <mat-radio-group
+          name="isBetelNutChewing"
+          formControlName="isBetelNutChewing"
+          (change)="checkBetelQuid()">
+          <mat-radio-button
+            color="primary"
+            class="radio-button"
+            [value]="true"
+            >{{ currentLanguageSet?.common?.yes }}</mat-radio-button
+          >
+          <mat-radio-button
+            color="primary"
+            class="radio-button"
+            [value]="false"
+            >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+
+      <div class="col-4 box" *ngIf="isBetelNutChewing">
+        <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.durationofbetelquidinmouth
+          }}</mat-label>
+          <input
+            autocomplete="off"
+            matInput
+            appDefaultNull
+            [min]="1"
+            allowText="number"
+            maxlength="2"
+            name="durationOfBetelQuid"
+            formControlName="durationOfBetelQuid"
+            (keypress)="minimumvaluenonZeroBetelQuid($event)"
+            (change)="minimumvaluenonZeroBetelQuid($event)"
+            (focus)="minimumvaluenonZeroBetelQuid($event)" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-12 row">
+      <div class="col-4 box">
+        <mat-form-field>
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.alcoholuse
+          }}</mat-label>
+          <mat-select
+            class="input-full-width"
+            name="alcoholUse"
+            formControlName="alcoholUse"
+            (selectionChange)="checkUsageOfAlcohol()">
+            <mat-option
+              *ngFor="let alcoholUsage of templateAlcoholUseStatus"
+              [value]="alcoholUsage.habitValue">
+              {{ alcoholUsage.habitValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-4 box" *ngIf="alcoholUse && alcoholUse !== 'Never Used'">
+        <label class="control-label" for="drug">{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+            ?.alcoholconsumed
+        }}</label>
+        <div class="clearfix"></div>
+        <mat-radio-group
+          name="ssAlcoholUsed"
+          formControlName="ssAlcoholUsed"
+          (change)="checkLastAlcoholUsage()">
+          <mat-radio-button
+            color="primary"
+            class="radio-button"
+            [value]="true"
+            >{{ currentLanguageSet?.common?.yes }}</mat-radio-button
+          >
+          <mat-radio-button
+            color="primary"
+            class="radio-button"
+            [value]="false"
+            >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+
+      <div
+        class="col-4 box"
+        *ngIf="alcoholUse && alcoholUse !== 'Never Used' && ssAlcoholUsed">
+        <mat-form-field>
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.frequency
+          }}</mat-label>
+          <mat-select
+            class="input-full-width"
+            name="frequencyOfAlcoholUsed"
+            formControlName="frequencyOfAlcoholUsed">
+            <mat-option
+              *ngFor="let frequencyOfAlcoholIntake of templateFrequecyOfAlcohol"
+              [value]="frequencyOfAlcoholIntake.habitValue">
+              {{ frequencyOfAlcoholIntake.habitValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <label class="control-label" for="drug">{{
-        currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-          ?.exposuretoSecondHandsmoke
-      }}</label>
-      <div class="clearfix"></div>
-      <mat-radio-group
-        name="isCigaretteExposure"
-        formControlName="isCigaretteExposure">
-        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
-          currentLanguageSet?.common?.yes
-        }}</mat-radio-button>
-        <mat-radio-button
+    <div class="m-t-10">
+      <div class="col-12" style="text-align: end">
+        <span class="font-history-label">{{
+          currentLanguageSet?.historyData?.personalhistory?.personaldiethistory
+        }}</span>
+        <button
+          mat-icon-button
+          matTooltip="{{
+            currentLanguageSet?.alerts?.previousHistoryDetailsAlert
+              ?.previousDiet
+          }}"
+          id="previousCancerPersonalDietHistory"
           color="primary"
-          class="radio-button"
-          [value]="false"
-          >{{ currentLanguageSet?.common?.no }}</mat-radio-button
-        >
-      </mat-radio-group>
+          class="mat_icon_blue"
+          (click)="getPreviousCancerPersonalDietHistory()">
+          <mat-icon class="md-18">history</mat-icon>
+        </button>
+      </div>
     </div>
+    <div class="col-12 row">
+      <div class="col-4 box">
+        <mat-form-field>
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.dietType
+          }}</mat-label>
+          <mat-select
+            class="input-full-width"
+            name="dietType"
+            formControlName="dietType">
+            <mat-option
+              *ngFor="let diet of templateDietTypes"
+              [value]="diet.habitValue">
+              {{ diet.habitValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-xs-4 box">
+        <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.weeklyintakeofOutsidemeal
+          }}</mat-label>
+          <input
+            autocomplete="off"
+            matInput
+            appDefaultNull
+            allowText="number "
+            maxlength="2 "
+            name="intakeOfOutsidePreparedMeal"
+            formControlName="intakeOfOutsidePreparedMeal" />
+        </mat-form-field>
+      </div>
 
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <label class="control-label" for="drug">
-        {{
+      <div class="col-4 box">
+        <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.fruitconsumption
+          }}</mat-label>
+          <input
+            autocomplete="off"
+            matInput
+            appDefaultNull
+            allowText="number "
+            (keypress)="preventFruitConsumption($event)"
+            (change)="checkFruitConsumption()"
+            maxlength="1"
+            name="fruitConsumptionDays"
+            formControlName="fruitConsumptionDays" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-12 row">
+      <div
+        class="col-4 box"
+        *ngIf="fruitConsumptionDays && fruitConsumptionDays !== '0'">
+        <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.quantityconsumed
+          }}</mat-label>
+          <input
+            autocomplete="off"
+            matInput
+            appDefaultNull
+            allowText="number "
+            (change)="fruitConsumptionPerDayCheck($event)"
+            maxlength="2"
+            name="fruitQuantityPerDay"
+            formControlName="fruitQuantityPerDay" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-4 box">
+        <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.vegetableconsumption
+          }}</mat-label>
+          <input
+            autocomplete="off"
+            matInput
+            appDefaultNull
+            allowText="number "
+            (keypress)="preventVegetableConsumption($event)"
+            (change)="checkVegetableConsumption()"
+            maxlength="1 "
+            name="vegetableConsumptionDays"
+            formControlName="vegetableConsumptionDays" />
+        </mat-form-field>
+      </div>
+
+      <div
+        class="col-4 box"
+        *ngIf="vegetableConsumptionDays && vegetableConsumptionDays !== '0'">
+        <mat-form-field class="input-full-width">
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.quantityconsumed
+          }}</mat-label>
+          <input
+            autocomplete="off"
+            matInput
+            appDefaultNull
+            allowText="number "
+            (change)="vegetableConsumptionPerDayCheck($event)"
+            maxlength="2 "
+            name="vegetableQuantityPerDay"
+            formControlName="vegetableQuantityPerDay" />
+        </mat-form-field>
+      </div>
+
+      <div class="col-4 box mat_label">
+        <mat-form-field>
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.typeofoilconsumed
+          }}</mat-label>
+          <mat-select
+            class="input-full-width"
+            multiple
+            (selectionChange)="oilSelected()"
+            name="typeOfOilConsumedList"
+            formControlName="typeOfOilConsumedList">
+            <mat-option
+              *ngFor="let oil of templateOilConsumed"
+              [value]="oil.habitValue">
+              {{ oil.habitValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-12 row">
+      <div class="col-4 box">
+        <mat-form-field>
+          <mat-label>{{
+            currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
+              ?.physicalActivityType
+          }}</mat-label>
+          <mat-select
+            class="input-full-width"
+            name="physicalActivityType"
+            formControlName="physicalActivityType">
+            <mat-option
+              *ngFor="let activity of templatePhysicalActivityType"
+              [value]="activity.habitValue">
+              {{ activity.habitValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-4 box">
+        <label class="control-label" for="drug">{{
           currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.habitofBetelnutchewing
-        }}
-      </label>
-      <div class="clearfix"></div>
-      <mat-radio-group
-        name="isBetelNutChewing"
-        formControlName="isBetelNutChewing"
-        (change)="checkBetelQuid()">
-        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
-          currentLanguageSet?.common?.yes
-        }}</mat-radio-button>
-        <mat-radio-button
-          color="primary"
-          class="radio-button"
-          [value]="false"
-          >{{ currentLanguageSet?.common?.no }}</mat-radio-button
-        >
-      </mat-radio-group>
-    </div>
+            ?.historyofexposuretoradiation
+        }}</label>
+        <div class="clearfix"></div>
+        <mat-radio-group
+          name="ssRadiationExposure"
+          formControlName="ssRadiationExposure">
+          <mat-radio-button
+            color="primary"
+            class="radio-button"
+            [value]="true"
+            >{{ currentLanguageSet?.common?.yes }}</mat-radio-button
+          >
+          <mat-radio-button
+            color="primary"
+            class="radio-button"
+            [value]="false"
+            >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
 
-    <div
-      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
-      *ngIf="isBetelNutChewing">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.durationofbetelquidinmouth
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          [min]="1"
-          allowText="number"
-          maxlength="2"
-          name="durationOfBetelQuid"
-          formControlName="durationOfBetelQuid"
-          (keypress)="minimumvaluenonZeroBetelQuid($event)"
-          (change)="minimumvaluenonZeroBetelQuid($event)"
-          (focus)="minimumvaluenonZeroBetelQuid($event)" />
-      </mat-form-field>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field>
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.alcoholuse
-        }}</mat-label>
-        <mat-select
-          class="input-full-width"
-          name="alcoholUse"
-          formControlName="alcoholUse"
-          (selectionChange)="checkUsageOfAlcohol()">
-          <mat-option
-            *ngFor="let alcoholUsage of templateAlcoholUseStatus"
-            [value]="alcoholUsage.habitValue">
-            {{ alcoholUsage.habitValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <div
-      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
-      *ngIf="alcoholUse && alcoholUse !== 'Never Used'">
-      <label class="control-label" for="drug">{{
-        currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-          ?.alcoholconsumed
-      }}</label>
-      <div class="clearfix"></div>
-      <mat-radio-group
-        name="ssAlcoholUsed"
-        formControlName="ssAlcoholUsed"
-        (change)="checkLastAlcoholUsage()">
-        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
-          currentLanguageSet?.common?.yes
-        }}</mat-radio-button>
-        <mat-radio-button
-          color="primary"
-          class="radio-button"
-          [value]="false"
-          >{{ currentLanguageSet?.common?.no }}</mat-radio-button
-        >
-      </mat-radio-group>
-    </div>
-
-    <div
-      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
-      *ngIf="alcoholUse && alcoholUse !== 'Never Used' && ssAlcoholUsed">
-      <mat-form-field>
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.frequency
-        }}</mat-label>
-        <mat-select
-          class="input-full-width"
-          name="frequencyOfAlcoholUsed"
-          formControlName="frequencyOfAlcoholUsed">
-          <mat-option
-            *ngFor="let frequencyOfAlcoholIntake of templateFrequecyOfAlcohol"
-            [value]="frequencyOfAlcoholIntake.habitValue">
-            {{ frequencyOfAlcoholIntake.habitValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field>
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.dietType
-        }}</mat-label>
-        <mat-select
-          class="input-full-width"
-          name="dietType"
-          formControlName="dietType">
-          <mat-option
-            *ngFor="let diet of templateDietTypes"
-            [value]="diet.habitValue">
-            {{ diet.habitValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.weeklyintakeofOutsidemeal
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number "
-          maxlength="2 "
-          name="intakeOfOutsidePreparedMeal"
-          formControlName="intakeOfOutsidePreparedMeal" />
-      </mat-form-field>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.fruitconsumption
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number "
-          (keypress)="preventFruitConsumption($event)"
-          (change)="checkFruitConsumption()"
-          maxlength="1"
-          name="fruitConsumptionDays"
-          formControlName="fruitConsumptionDays" />
-      </mat-form-field>
-    </div>
-
-    <div
-      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
-      *ngIf="fruitConsumptionDays && fruitConsumptionDays !== '0'">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.quantityconsumed
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number "
-          (change)="fruitConsumptionPerDayCheck($event)"
-          maxlength="2"
-          name="fruitQuantityPerDay"
-          formControlName="fruitQuantityPerDay" />
-      </mat-form-field>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.vegetableconsumption
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number "
-          (keypress)="preventVegetableConsumption($event)"
-          (change)="checkVegetableConsumption()"
-          maxlength="1 "
-          name="vegetableConsumptionDays"
-          formControlName="vegetableConsumptionDays" />
-      </mat-form-field>
-    </div>
-
-    <div
-      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
-      *ngIf="vegetableConsumptionDays && vegetableConsumptionDays !== '0'">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.quantityconsumed
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number "
-          (change)="vegetableConsumptionPerDayCheck($event)"
-          maxlength="2 "
-          name="vegetableQuantityPerDay"
-          formControlName="vegetableQuantityPerDay" />
-      </mat-form-field>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field>
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.typeofoilconsumed
-        }}</mat-label>
-        <mat-select
-          class="input-full-width"
-          multiple
-          (selectionChange)="oilSelected()"
-          name="typeOfOilConsumedList"
-          formControlName="typeOfOilConsumedList">
-          <mat-option
-            *ngFor="let oil of templateOilConsumed"
-            [value]="oil.habitValue">
-            {{ oil.habitValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field>
-        <mat-label>{{
-          currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-            ?.physicalActivityType
-        }}</mat-label>
-        <mat-select
-          class="input-full-width"
-          name="physicalActivityType"
-          formControlName="physicalActivityType">
-          <mat-option
-            *ngFor="let activity of templatePhysicalActivityType"
-            [value]="activity.habitValue">
-            {{ activity.habitValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <label class="control-label" for="drug">{{
-        currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
-          ?.historyofexposuretoradiation
-      }}</label>
-      <div class="clearfix"></div>
-      <mat-radio-group
-        name="ssRadiationExposure"
-        formControlName="ssRadiationExposure">
-        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
-          currentLanguageSet?.common?.yes
-        }}</mat-radio-button>
-        <mat-radio-button
-          color="primary"
-          class="radio-button"
-          [value]="false"
-          >{{ currentLanguageSet?.common?.no }}</mat-radio-button
-        >
-      </mat-radio-group>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <label class="control-label" for="drug">{{
-        currentLanguageSet?.historyData?.personalhistory
-          ?.historyofanythyroiddisorder
-      }}</label>
-      <div class="clearfix"></div>
-      <mat-radio-group
-        name="isThyroidDisorder"
-        formControlName="isThyroidDisorder">
-        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
-          currentLanguageSet?.common?.yes
-        }}</mat-radio-button>
-        <mat-radio-button
-          color="primary"
-          class="radio-button"
-          [value]="false"
-          >{{ currentLanguageSet?.common?.no }}</mat-radio-button
-        >
-      </mat-radio-group>
+      <div class="col-4 box">
+        <label class="control-label" for="drug">{{
+          currentLanguageSet?.historyData?.personalhistory
+            ?.historyofanythyroiddisorder
+        }}</label>
+        <div class="clearfix"></div>
+        <mat-radio-group
+          name="isThyroidDisorder"
+          formControlName="isThyroidDisorder">
+          <mat-radio-button
+            color="primary"
+            class="radio-button"
+            [value]="true"
+            >{{ currentLanguageSet?.common?.yes }}</mat-radio-button
+          >
+          <mat-radio-button
+            color="primary"
+            class="radio-button"
+            [value]="false"
+            >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
     </div>
   </div>
 </div>
