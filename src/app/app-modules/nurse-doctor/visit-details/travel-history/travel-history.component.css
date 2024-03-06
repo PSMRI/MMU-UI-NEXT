@@ -15,3 +15,12 @@
 .card{
   width:70%;
 }
+.cell_postion{
+  padding-top: 8px;
+}
+/* mat-form-field >>>.mat-mdc-text-field-wrapper {
+  width: 160% !important;
+} */
+mat-form-field >>>.mat-mdc-select-trigger {
+  width: 154% !important;
+}
