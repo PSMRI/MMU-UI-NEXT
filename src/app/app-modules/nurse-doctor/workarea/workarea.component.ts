@@ -347,12 +347,6 @@ export class WorkareaComponent
             'patientHistoryForm',
             new CancerUtils(this.fb).createNurseCancerHistoryForm()
           );
-          this.patientHistoryForm = this.patientMedicalForm.get(
-            'patientHistoryForm'
-          ) as FormGroup;
-          this.patientVitalsForm = this.patientMedicalForm.get(
-            'patientVitalsForm'
-          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientVitalsForm',
             new CancerUtils(this.fb).createNurseCancerPatientVitalsForm()
@@ -541,13 +535,13 @@ export class WorkareaComponent
           this.patientHistoryForm = this.patientMedicalForm.get(
             'patientHistoryForm'
           ) as FormGroup;
-          this.patientVitalsForm = this.patientMedicalForm.get(
-            'patientVitalsForm'
-          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientVitalsForm',
             new GeneralUtils(this.fb).createGeneralVitalDetailsForm()
           );
+          this.patientVitalsForm = this.patientMedicalForm.get(
+            'patientVitalsForm'
+          ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientExaminationForm',
             new GeneralUtils(this.fb).createPatientExaminationForm()
@@ -555,10 +549,6 @@ export class WorkareaComponent
           this.patientExaminationForm = this.patientMedicalForm.get(
             'patientExaminationForm'
           ) as FormGroup;
-          this.patientVitalsForm = this.patientMedicalForm.get(
-            'patientVitalsForm'
-          ) as FormGroup;
-
           this.getCurrentVitals();
 
           this.showPNC = true;
@@ -615,9 +605,6 @@ export class WorkareaComponent
           );
           this.patientHistoryForm = this.patientMedicalForm.get(
             'patientHistoryForm'
-          ) as FormGroup;
-          this.patientVitalsForm = this.patientMedicalForm.get(
-            'patientVitalsForm'
           ) as FormGroup;
           this.patientMedicalForm.addControl(
             'patientVitalsForm',
