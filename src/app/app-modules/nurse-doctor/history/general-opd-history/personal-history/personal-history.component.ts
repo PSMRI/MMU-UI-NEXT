@@ -209,7 +209,7 @@ export class GeneralPersonalHistoryComponent
   }
 
   getAllergyList(): AbstractControl[] | null {
-    const allergyControl = this.generalPersonalHistoryForm.get('alcoholList');
+    const allergyControl = this.generalPersonalHistoryForm.get('allergicList');
     return allergyControl instanceof FormArray ? allergyControl.controls : null;
   }
 
@@ -961,9 +961,11 @@ export class GeneralPersonalHistoryComponent
     i: any,
     allergyForm: AbstractControl<any, any>
   ): void {
-    const searchTerm = term;
-    // let searchTerm = <FormArray>this.generalPersonalHistoryForm.controls['snomedTerm'];allergicList
-    // let searchTerm = this.generalPersonalHistoryForm.controls['snomedTerm'];
+    // const searchTerm = term;
+    // let searchTerm = <FormArray>this.generalPersonalHistoryForm.controls['snomedTerm'];
+    // allergicList
+    const formValues = this.generalPersonalHistoryForm.value;
+    const searchTerm = formValues?.allergicList[i]?.snomedTerm;
     console.log('searchTerm', this.generalPersonalHistoryForm);
     if (
       searchTerm != null &&
@@ -989,9 +991,13 @@ export class GeneralPersonalHistoryComponent
             // this.generalPersonalHistoryForm.controls['snomedTerm'].setValue(result.component);
             // this.generalPersonalHistoryForm.controls['snomedCode'].setValue(result.componentNo);
             this.selectedSnomedTerm = result.component;
-            allergyForm.patchValue({ snomedTerm: result.component });
-            allergyForm.patchValue({ snomedCode: result.componentNo });
-            allergyForm.patchValue({ allergyName: result.component });
+            const allergyForm = this.generalPersonalHistoryForm.controls[
+              'allergicList'
+            ] as FormArray;
+
+            allergyForm.at(i).patchValue({ snomedTerm: result.component });
+            allergyForm.at(i).patchValue({ snomedCode: result.componentNo });
+            allergyForm.at(i).patchValue({ allergyName: result.component });
             this.countForSearch = i;
           }
           // this.familyHistoryForm.controls['testLoincCode'].setValue(result.d);

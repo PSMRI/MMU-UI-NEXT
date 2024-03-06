@@ -96,7 +96,7 @@ export class AllergenSearchComponent implements OnInit, DoCheck {
             if (res.statusCode === 200) {
               this.showProgressBar = false;
               if (res.data && res.data.sctMaster.length > 0) {
-                this.showProgressBar = true;
+                // this.showProgressBar = true;
                 this.components.data = res.data.sctMaster;
                 this.components.paginator = this.paginator;
               } else {

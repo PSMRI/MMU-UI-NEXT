@@ -73,11 +73,11 @@
       <div
         class="pull-center"
         style="margin-top: 5px"
-        [hidden]="components.data.length > 0">
+        *ngIf="components.data.length === 0">
         <strong>{{ current_language_set?.noRecordsFound }}</strong>
       </div>
       <mat-paginator
-        [hidden]="components.data.length > 0"
+        [hidden]="components.data.length === 0"
         [pageSizeOptions]="[5, 10, 20]"
         [pageSize]="5"
         showFirstLastButtons>
