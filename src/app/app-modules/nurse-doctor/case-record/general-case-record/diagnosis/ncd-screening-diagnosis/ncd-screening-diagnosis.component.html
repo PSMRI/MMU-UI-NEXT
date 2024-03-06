@@ -1,5 +1,4 @@
-<!-- {{ generalDiagnosisForm.value | json}} -->
-<!-- <div class="m-t-10" [formGroup]="generalDiagnosisForm">
+<div class="m-t-10" [formGroup]="generalDiagnosisForm">
   <div class="row">
     <div class="col-xs-12 col-sm-6">
       <header class="mat-expansion-panel-header m-t-5">
@@ -14,9 +13,7 @@
         <div
           class="col-xs-12 col-sm-12"
           *ngFor="
-            let diagnosis of generalDiagnosisForm.controls[
-              'provisionalDiagnosisList'
-            ]['controls'];
+            let diagnosis of getProvisionalDiagnosisList();
             let i = index;
             let isLast = last
           ">
@@ -33,15 +30,16 @@
                   maxlength="100"
                   minlength="3"
                   [previousSelected]="
-                    generalDiagnosisForm?.value?.provisionalDiagnosisList
-                  " />
+                    generalDiagnosisForm.value.provisionalDiagnosisList
+                  "
+                  required />
                 <mat-icon
                   class="search-btn"
                   matSuffix
                   appOpenModal
                   [diagnosisListForm]="diagnosis"
                   [previousSelected]="
-                    generalDiagnosisForm?.value?.provisionalDiagnosisList
+                    generalDiagnosisForm.value.provisionalDiagnosisList
                   "
                   >search</mat-icon
                 >
@@ -53,27 +51,26 @@
                 type="button"
                 *ngIf="isLast"
                 [disabled]="checkProvisionalDiagnosisValidity(diagnosis)"
-                class="pull-right"
                 color="primary"
+                class="mat_blue_circle"
                 (click)="addDiagnosis()">
                 <mat-icon>add</mat-icon>
               </button>
               <button
                 mat-mini-fab
                 type="button"
-                class="pull-left"
                 color="warn"
+                class="mat_warn_circle"
                 *ngIf="
-                  diagnosis.controls['provisionalDiagnosis'].disabled ||
-                  i != 0 ||
-                  (i == 0 &&
-                    generalDiagnosisForm.controls['provisionalDiagnosisList']
-                      .controls[i].controls.provisionalDiagnosis.value !==
-                      null &&
-                    generalDiagnosisForm.controls['provisionalDiagnosisList']
-                      .controls[i].controls.provisionalDiagnosis.value !== '')
+                  diagnosis.get('provisionalDiagnosis')?.disabled ||
+                  i !== 0 ||
+                  (i === 0 &&
+                    generalDiagnosisForm.get('provisionalDiagnosisList')?.value
+                      .provisionalDiagnosis !== null &&
+                    generalDiagnosisForm.get('provisionalDiagnosisList')?.value
+                      .provisionalDiagnosis !== '')
                 "
-                (click)="deleteDiagnosis(i, provisionalDiagnosisList)">
+                (click)="deleteDiagnosis(i, diagnosis)">
                 <mat-icon>close</mat-icon>
               </button>
             </div>
@@ -82,4 +79,4 @@
       </ng-container>
     </div>
   </div>
-</div> -->
+</div>

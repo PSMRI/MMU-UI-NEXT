@@ -2,6 +2,13 @@
   <mat-dialog-content>
     <div class="row">
       <webcam
+        *ngIf="!captured"
+        [width]="options.width"
+        [height]="options.height"
+        #workarea
+        [trigger]="triggerObservable"
+        (imageCapture)="captureImg($event)"></webcam>
+      <!-- <webcam
         [width]="options.width"
         [height]="options.height"
         #workarea
@@ -9,18 +16,18 @@
         [videoOptions]="options"
         (imageCapture)="captureImg($event)"
         (initError)="handleInitError($event)">
-      </webcam>
+      </webcam> -->
       <!-- <div *ngIf="webcamInitError">
         Webcam initialization failed: {{ webcamInitError.message }}
       </div> -->
-      <a
-        (click)="recaptureImage()"
+      <!-- <a
+        (click)="captureImg($event)"
         tabindex="0"
-        (keydown)="handleKeyDownRecaptureImg($event)"
         *ngIf="captured"
         >Retry</a
-      >
-      <img id="photo" [src]="base64" alt="base64" *ngIf="captured" />
+      > -->
+      <img [src]="webcamImage?.imageAsDataUrl" alt="sysImage" height="400px" />
+      <!-- <img id="photo" [src]="base64" alt="base64" *ngIf="captured" /> -->
     </div>
   </mat-dialog-content>
   <mat-dialog-actions align="center">
@@ -48,7 +55,7 @@
           class="mat_blue col-2"
           style="width: 12%; margin-right: 5px"
           [disabled]="!captured"
-          [mat-dialog-close]="base64">
+          [mat-dialog-close]="sysImage">
           {{ current_language_set?.common?.proceed }}
         </button>
       </div>
@@ -59,7 +66,8 @@
 <div class="container-fluid dialog" *ngIf="imageCode">
   <mat-dialog-content>
     <div class="row">
-      <img id="photo" [src]="imageCode" alt="imgCode" />
+      <img [src]="webcamImage?.imageAsDataUrl" alt="sysImage" height="400px" />
+      <!-- <img id="photo" [src]="imageCode" alt="imgCode" /> -->
     </div>
   </mat-dialog-content>
   <mat-dialog-actions align="center">

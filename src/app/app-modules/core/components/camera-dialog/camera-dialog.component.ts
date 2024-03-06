@@ -79,8 +79,7 @@ export class CameraDialogComponent implements OnInit, DoCheck {
   ctx!: CanvasRenderingContext2D;
   loaded = false;
   public current_language_set: any;
-  private trigger: Subject<any> = new Subject();
-  triggerObservable: Subject<void> = new Subject<void>();
+  private trigger: Subject<void> = new Subject<void>();
   public webcamImage!: WebcamImage;
   private nextWebcam: Subject<any> = new Subject();
   public barChartType: ChartType = 'bar';
@@ -121,27 +120,6 @@ export class CameraDialogComponent implements OnInit, DoCheck {
     console.log(err);
   }
 
-  captureBase64() {
-    if (!this.captured) {
-      this.status = this.current_language_set.retry;
-      return this.webcam
-        .getBase64()
-        .then((base: any) => {
-          this.captured = new Date();
-          this.base64 = base;
-          setTimeout(() => this.webcam.resizeVideo(), 0);
-        })
-        .catch((e: any) => console.error(e));
-    } else {
-      this.captured = false;
-      this.status = this.current_language_set.capture;
-    }
-  }
-
-  public getSnapshot(): void {
-    this.trigger.next(void 0);
-  }
-
   ngOnInit() {
     // console.log(this.current_language_set);
     this.assignSelectedLanguage();
@@ -153,9 +131,16 @@ export class CameraDialogComponent implements OnInit, DoCheck {
   }
 
   public captureImg(webcamImage: WebcamImage): void {
-    this.webcamImage = webcamImage;
-    this.sysImage = webcamImage!.imageAsDataUrl;
-    console.info('got webcam image', this.sysImage);
+    if (webcamImage) {
+      this.webcamImage = webcamImage;
+      this.sysImage = webcamImage!.imageAsDataUrl;
+      this.captured = true;
+      this.status = this.current_language_set.capture;
+      console.info('got webcam image', this.sysImage);
+    } else {
+      this.captured = false;
+      this.status = this.current_language_set.capture;
+    }
   }
   public get nextWebcamObservable(): Observable<any> {
     return this.nextWebcam.asObservable();
@@ -194,6 +179,16 @@ export class CameraDialogComponent implements OnInit, DoCheck {
     });
   }
 
+  public getSnapshot(): void {
+    this.trigger.next();
+    console.info('image type with base64 ', this.webcamImage);
+    // get the base64 data from  this.webcamImage.imageAsDataUrl
+  }
+
+  public get triggerObservable(): Observable<void> {
+    return this.trigger.asObservable();
+  }
+
   loadingCanvas() {
     this.canvas = this.myCanvas.nativeElement;
     this.ctx = this.canvas.getContext('2d');
@@ -214,12 +209,6 @@ export class CameraDialogComponent implements OnInit, DoCheck {
     this.score = 1;
   }
 
-  captureImage(webcamImage: WebcamImage): void {
-    // Handle the captured image data
-    this.webcamImage = webcamImage;
-    this.base64 = webcamImage.imageAsDataUrl;
-    this.captured = true;
-  }
   handleKeyDownRecaptureImg(event: KeyboardEvent): void {
     if (event.key == 'Enter' || event.key == 'Spacebar' || event.key == ' ') {
       this.recaptureImage();
@@ -229,7 +218,7 @@ export class CameraDialogComponent implements OnInit, DoCheck {
   recaptureImage(): void {
     // Trigger new image capture
     this.captured = false;
-    this.triggerObservable.next();
+    this.trigger.next();
   }
 
   handleInitError(error: WebcamInitError): void {
