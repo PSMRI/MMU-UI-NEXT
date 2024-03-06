@@ -59,7 +59,7 @@ const TM_API = `${tmIP}tmapi-v1.1/`;
 const COMMON_API_OPEN_SYNC = `http://${SERVER_IP}:8080/commonapi-v1.0/`;
 const SCHEDULER_API = `${schedulerIP}schedulerapi-v1.1/`;
 
-const mmuUICasesheet = 'http://localhost:4200/';
+const mmuUICasesheet = 'https://amritwprdev.piramalswasthya.org/';
 const IOT_API = 'http://localhost:8085/ezdx-hub-connect-srv';
 
 export const environment = {

@@ -31,7 +31,7 @@
             *ngIf="
               dataSource.data.length > 0 &&
               hideMMUFetch &&
-              service.serviceID === '2'
+              service.serviceID === 2
             "
             class="m-t-20">
             <mat-form-field id="filterbox" class="m-t-20" style="width: 100%">
@@ -48,7 +48,7 @@
           </div>
           <section
             class="m-t-20 overflow"
-            *ngIf="hideMMUFetch && service.serviceID === '2'">
+            *ngIf="hideMMUFetch && service.serviceID === 2">
             <table
               mat-table
               [dataSource]="dataSource"
@@ -159,7 +159,7 @@
                           <ng-container
                             *ngIf="
                               element.benPreviousData.nurseData.vitals
-                                .benAnthropometryDetail &&
+                                ?.benAnthropometryDetail &&
                               element.benPreviousData.nurseData.vitals
                                 .benPhysicalVitalDetail
                             ">
@@ -331,7 +331,7 @@
                   <!-- eslint-disable-next-line @angular-eslint/template/click-events-have-key-events -->
                   <span
                     class="material-icons cursorPointer"
-                    (click)="getVisitDetails('MMU', element, 'any')"
+                    (click)="getVisitDetails('MMU', element, false)"
                     tabindex="{0}"
                     >visibility</span
                   >
@@ -366,12 +366,13 @@
               <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
             </table>
             <div
+              *ngIf="dataSource.data.length === 0"
               class="pull-center"
-              style="margin-top: 5px"
-              [hidden]="dataSource.data.length > 0">
+              style="margin-top: 5px">
               <strong>{{ current_language_set?.noRecordsFound }}</strong>
             </div>
             <mat-paginator
+              [hidden]="dataSource.data.length === 0"
               [pageSizeOptions]="[5, 10, 20]"
               [pageSize]="5"
               showFirstLastButtons
@@ -383,7 +384,7 @@
             *ngIf="
               historyOfTM.data.length > 0 &&
               hideTMFetch &&
-              service.serviceID === '4'
+              service.serviceID === 4
             "
             class="m-t-20">
             <mat-form-field id="filterbox" class="pull-right">
@@ -400,7 +401,7 @@
           </div>
           <section
             class="m-t-20 overflow"
-            *ngIf="hideTMFetch && service.serviceID === '4'">
+            *ngIf="hideTMFetch && service.serviceID === 4">
             <table
               mat-table
               [dataSource]="historyOfTM"
@@ -563,13 +564,15 @@
                   >
                 </td>
               </ng-container>
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+              <tr mat-header-row *matHeaderRowDef="displayedTMColumns"></tr>
+              <tr
+                mat-row
+                *matRowDef="let row; columns: displayedTMColumns"></tr>
             </table>
             <div
               class="pull-center"
               style="margin-top: 5px"
-              *ngIf="historyOfTM.data.length > 0">
+              *ngIf="historyOfTM.data.length === 0">
               <strong>{{ current_language_set?.noRecordsFound }}</strong>
             </div>
             <mat-paginator
@@ -585,7 +588,7 @@
           *ngIf="
             historyOfMCTS.data.length > 0 &&
             hideMCTSFetch &&
-            service.serviceID === '6'
+            service.serviceID === 6
           "
           class="m-t-20">
           <mat-form-field id="filterbox" class="pull-right">
@@ -602,7 +605,7 @@
         </div>
         <section
           class="m-t-20 overflow"
-          *ngIf="hideMCTSFetch && service.serviceID === '6'">
+          *ngIf="hideMCTSFetch && service.serviceID === 6">
           <table
             mat-table
             [dataSource]="historyOfMCTS"
@@ -717,17 +720,19 @@
               </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            <tr mat-header-row *matHeaderRowDef="displayedMCTSColumns"></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedMCTSColumns"></tr>
           </table>
           <div
             class="pull-center"
             style="margin-top: 5px"
-            *ngIf="historyOfMCTS.data.length > 0">
+            *ngIf="historyOfMCTS.data.length === 0">
             <strong>{{ current_language_set?.noRecordsFound }}</strong>
           </div>
           <mat-paginator
-            [hidden]="historyOfMCTS.data.length > 0"
+            [hidden]="historyOfMCTS.data.length === 0"
             [pageSizeOptions]="[5, 10, 20]"
             [pageSize]="5"
             showFirstLastButtons
@@ -738,7 +743,7 @@
           *ngIf="
             historyOf104.data.length > 0 &&
             hide104Fetch &&
-            service.serviceID === '3'
+            service.serviceID === 3
           "
           class="m-t-20">
           <mat-form-field id="filterbox" class="pull-right">
@@ -755,7 +760,7 @@
         </div>
         <section
           class="m-t-20 overflow"
-          *ngIf="hide104Fetch && service.serviceID === '3'">
+          *ngIf="hide104Fetch && service.serviceID === 3">
           <table
             mat-table
             [dataSource]="historyOf104"
@@ -920,17 +925,17 @@
               </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            <tr mat-header-row *matHeaderRowDef="displayed104Columns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayed104Columns"></tr>
           </table>
           <div
             class="pull-center"
             style="margin-top: 5px"
-            *ngIf="historyOf104.data.length > 0">
+            *ngIf="historyOf104.data.length === 0">
             <strong>{{ current_language_set?.noRecordsFound }}</strong>
           </div>
           <mat-paginator
-            [hidden]="historyOf104.data.length > 0"
+            [hidden]="historyOf104.data.length === 0"
             [pageSizeOptions]="[5, 10, 20]"
             [pageSize]="5"
             showFirstLastButtons
