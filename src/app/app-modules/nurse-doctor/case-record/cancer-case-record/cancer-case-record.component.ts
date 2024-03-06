@@ -158,16 +158,16 @@ export class CancerCaseRecordComponent
   female: any;
   current_language_set: any;
 
-  displayedColumns: any = [
-    'sno',
-    'beneficiaryID',
-    'beneficiaryName',
-    'gender',
-    'age',
-    'visitCategory',
-    'district',
-    'visitDate',
-    'image',
+  displayedColumns = [
+    'visitnommu',
+    'date',
+    'visitreasonmmu',
+    'visitcategorymmu',
+    'visitdetailsmmu',
+    'visitcodemmu',
+    'medicationmmu',
+    'previewmmu',
+    'printpreviewmmu',
   ];
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   dataSource = new MatTableDataSource<any>();

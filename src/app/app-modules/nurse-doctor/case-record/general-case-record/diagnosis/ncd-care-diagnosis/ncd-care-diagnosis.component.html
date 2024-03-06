@@ -11,6 +11,7 @@
           name="ncdScreeningConditionArray"
           *ngIf="enableNCDCondition"
           multiple
+          placeholder="{{ current_language_set?.casesheet?.ncdCondition }} *"
           (selectionChange)="changeNcdScreeningCondition($event, $event)"
           [(ngModel)]="temp"
           [ngModelOptions]="{ standalone: true }">
@@ -28,6 +29,7 @@
         <textarea
           matInput
           allowText="textAreaValidator"
+          placeholder="{{ current_language_set?.nCDConditionOther }}"
           matTextareaAutosize
           defaultNull
           name="ncdScreeningConditionOther"
@@ -42,6 +44,7 @@
         <mat-select
           class="input-full-width"
           name="ncdCareType"
+          placeholder="{{ current_language_set?.casesheet?.typeOfNcd }}"
           formControlName="ncdCareType">
           <mat-option
             *ngFor="let ncdCareType of ncdCareTypes"
@@ -59,6 +62,7 @@
         <textarea
           matInput
           allowText="textAreaValidator"
+          placeholder="{{ current_language_set?.casesheet?.ncdComplication }}"
           matTextareaAutosize
           defaultNull
           name="ncdComplication"

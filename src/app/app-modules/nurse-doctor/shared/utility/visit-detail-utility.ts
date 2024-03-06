@@ -80,7 +80,7 @@ export class VisitDetailUtils {
     });
   }
 
-  createPatientChiefComplaintsForm(disableFlag: any): FormGroup {
+  createPatientChiefComplaintsForm(disableFlag: boolean = false): FormGroup {
     const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       beneficiaryRegID: null,
@@ -130,8 +130,11 @@ export class VisitDetailUtils {
       benVisitID: null,
       providerServiceMapID: null,
       conceptID: null,
-      symptom: { value: null, disabled: disableFlag },
-      contactStatus: { value: null, disabled: disableFlag },
+      symptom: [{ value: null, disabled: disableFlag }, Validators.required],
+      contactStatus: [
+        { value: null, disabled: disableFlag },
+        Validators.required,
+      ],
       // contactStatus:{value : null , disabled  :disableFlag},
       travelStatus: { value: null, disabled: disableFlag },
       //travelType : {value : null , disabled  :disableFlag},

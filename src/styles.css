@@ -441,6 +441,9 @@ h5 {
 .mat-mdc-select-trigger {
   border-bottom-style: groove;
 }
+.mat-mdc-select-trigger:disabled {
+  border-bottom-style: dotted;
+}
 
 .mdc-line-ripple::before, .mdc-line-ripple::after {
  
@@ -448,6 +451,9 @@ h5 {
 }
 .mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
   border-bottom-style: groove ;
+}
+.mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input:disabled {
+  border-bottom-style: dotted ;
 }
 .mat-step-icon-selected {
   background-color: #0277bd !important;
@@ -502,4 +508,37 @@ input:-internal-autofill-selected {
   background-image: none !important;
   background-color: red !important;
   color: fieldtext !important;
+}
+
+::ng-deep.bs-datepicker.bs-datepicker-head {
+  background-color: #337ab7 !important;
+}
+
+::ng-deep.bs-datepicker.selected {
+  background-color: #337ab7 !important;
+}
+
+::ng-deep.bs-datepicker.bs-datepicker-body{
+    padding: 10px;
+    border-radius: 0 0 3px 3px;
+    min-height: 232px;
+    min-width: 278px;
+    border: 1px solid #e9edf0;
+}
+
+::ng-deep.bs-datepicker {
+  display: flex;
+  -webkit-box-align: stretch;
+  align-items: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-flow: row wrap;
+  background: #fff;
+  box-shadow: 0 0 10px 0 #aaa;
+  position: relative;
+  z-index: 1;
+}
+
+::ng-deep.bs-datepicker.bs-datepicker-container {
+  padding: 0 !important;
 }
