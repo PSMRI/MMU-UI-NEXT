@@ -530,7 +530,7 @@ input:-internal-autofill-selected {
   --mat-radio-ripple-color: #000;
   --mat-radio-checked-ripple-color:#0277bd !important;
   --mat-radio-disabled-label-color: rgba(0, 0, 0, 0.38);
-
+}
 ::ng-deep.bs-datepicker.bs-datepicker-head {
   background-color: #337ab7 !important;
 }
