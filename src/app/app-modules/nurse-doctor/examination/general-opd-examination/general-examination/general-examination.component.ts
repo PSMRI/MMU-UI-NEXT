@@ -32,7 +32,7 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
 })
 export class GeneralExaminationComponent implements OnInit, DoCheck, OnChanges {
   @Input()
-  generalExaminationForm!: FormGroup;
+  generalExaminationDataForm!: FormGroup;
 
   selectConsciousness = [
     {
@@ -231,54 +231,55 @@ export class GeneralExaminationComponent implements OnInit, DoCheck, OnChanges {
   }
 
   checkWithDangerSign() {
-    this.generalExaminationForm.patchValue({ typeOfDangerSigns: null });
+    this.generalExaminationDataForm.patchValue({ typeOfDangerSigns: null });
   }
 
   checkWithLymphadenopathy() {
-    this.generalExaminationForm.patchValue({ lymphnodesInvolved: null });
-    this.generalExaminationForm.patchValue({ typeOfLymphadenopathy: null });
+    this.generalExaminationDataForm.patchValue({ lymphnodesInvolved: null });
+    this.generalExaminationDataForm.patchValue({ typeOfLymphadenopathy: null });
   }
   checkWithEdema() {
-    this.generalExaminationForm.patchValue({ extentOfEdema: null });
-    this.generalExaminationForm.patchValue({ edemaType: null });
+    this.generalExaminationDataForm.patchValue({ extentOfEdema: null });
+    this.generalExaminationDataForm.patchValue({ edemaType: null });
   }
   get dangerSigns() {
-    return this.generalExaminationForm.controls['dangerSigns'].value;
+    return this.generalExaminationDataForm.controls['dangerSigns'].value;
   }
 
   get edema() {
-    return this.generalExaminationForm.controls['edema'].value;
+    return this.generalExaminationDataForm.controls['edema'].value;
   }
 
   get lymphadenopathy() {
-    return this.generalExaminationForm.controls['lymphadenopathy'].value;
+    return this.generalExaminationDataForm.controls['lymphadenopathy'].value;
   }
 
   get typeOfDangerSigns() {
-    return this.generalExaminationForm.controls['typeOfDangerSigns'].value;
+    return this.generalExaminationDataForm.controls['typeOfDangerSigns'].value;
   }
 
   get extentOfEdema() {
-    return this.generalExaminationForm.controls['extentOfEdema'].value;
+    return this.generalExaminationDataForm.controls['extentOfEdema'].value;
   }
 
   get lymphnodesInvolved() {
-    return this.generalExaminationForm.controls['lymphnodesInvolved'].value;
+    return this.generalExaminationDataForm.controls['lymphnodesInvolved'].value;
   }
 
   get typeOfLymphadenopathy() {
-    return this.generalExaminationForm.controls['typeOfLymphadenopathy'].value;
+    return this.generalExaminationDataForm.controls['typeOfLymphadenopathy']
+      .value;
   }
 
   get edemaType() {
-    return this.generalExaminationForm.controls['edemaType'].value;
+    return this.generalExaminationDataForm.controls['edemaType'].value;
   }
 
   get quickening() {
-    return this.generalExaminationForm.controls['quickening'].value;
+    return this.generalExaminationDataForm.controls['quickening'].value;
   }
   get foetalmovements() {
-    return this.generalExaminationForm.controls['foetalMovements'].value;
+    return this.generalExaminationDataForm.controls['foetalMovements'].value;
   }
 
   //BU40088124 12/10/2021 Integrating Multilingual Functionality --Start--

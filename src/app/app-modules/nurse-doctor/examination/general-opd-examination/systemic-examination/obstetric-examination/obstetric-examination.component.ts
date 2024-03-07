@@ -32,7 +32,7 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
 })
 export class ObstetricExaminationComponent implements OnInit, DoCheck {
   @Input()
-  obstetricExaminationForANCForm!: FormGroup;
+  obstetricExaminationForANCDataForm!: FormGroup;
 
   selectFundalHeight = [
     {
@@ -174,19 +174,19 @@ export class ObstetricExaminationComponent implements OnInit, DoCheck {
 
   resetFetalHeartRate(event: any) {
     if (event.value == 'Not Audible')
-      this.obstetricExaminationForANCForm.patchValue({
+      this.obstetricExaminationForANCDataForm.patchValue({
         fetalHeartRate_BeatsPerMinute: null,
       });
   }
 
   get fetalHeartSounds() {
-    return this.obstetricExaminationForANCForm.controls['fetalHeartSounds']
+    return this.obstetricExaminationForANCDataForm.controls['fetalHeartSounds']
       .value;
   }
 
   get SFH() {
     console.log('sfh');
-    return this.obstetricExaminationForANCForm.controls['sfh'].value;
+    return this.obstetricExaminationForANCDataForm.controls['sfh'].value;
   }
 
   /** -- Neeraj 26 dec, build error was there, so added this line  */

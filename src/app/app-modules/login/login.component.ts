@@ -29,7 +29,7 @@ import {
   ConfirmationService,
 } from 'src/app/app-modules/core/services';
 import { FormBuilder } from '@angular/forms';
-import { DataSyncLoginComponent } from '../data-sync-login/data-sync-login.component';
+import { DataSyncLoginComponent } from '../core/components/data-sync-login/data-sync-login.component';
 
 @Component({
   selector: 'app-login-cmp',

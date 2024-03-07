@@ -4,13 +4,15 @@
       *ngIf="showCancer"
       [pregnancyStatus]="pregnancyStatus"
       [mode]="vitalsMode"
-      [patientVitalsForm]="patientVitalsForm"></app-nurse-cancer-patient-vitals>
+      [patientVitalsForm]="
+        patientVitalsDataForm
+      "></app-nurse-cancer-patient-vitals>
     <app-nurse-general-patient-vitals
       *ngIf="showGeneralOPD"
       [mode]="vitalsMode"
       [visitCategory]="visitCategory"
       [patientVitalsForm]="
-        patientVitalsForm
+        patientVitalsDataForm
       "></app-nurse-general-patient-vitals>
   </div>
 </div>

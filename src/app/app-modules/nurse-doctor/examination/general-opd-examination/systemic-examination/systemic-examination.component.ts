@@ -37,7 +37,7 @@ export class SystemicExaminationComponent
   generalUtils = new GeneralUtils(this.fb);
 
   @Input()
-  systemicExaminationForm!: FormGroup;
+  systemicExaminationDataForm!: FormGroup;
 
   @Input()
   visitCategory!: string;
@@ -66,7 +66,7 @@ export class SystemicExaminationComponent
     this.fetchLanguageResponse();
 
     if (this.visitCategory == 'ANC') {
-      this.systemicExaminationForm.addControl(
+      this.systemicExaminationDataForm.addControl(
         'obstetricExaminationForANCForm',
         this.generalUtils.createObstetricExaminationForANCForm()
       );
@@ -77,25 +77,25 @@ export class SystemicExaminationComponent
     ) {
       this.displayGeneral = true;
     }
-    this.gastroIntestinalSystemForm = this.systemicExaminationForm.get(
+    this.gastroIntestinalSystemForm = this.systemicExaminationDataForm.get(
       'gastroIntestinalSystemForm'
     ) as FormGroup;
-    this.cardioVascularSystemForm = this.systemicExaminationForm.get(
+    this.cardioVascularSystemForm = this.systemicExaminationDataForm.get(
       'cardioVascularSystemForm'
     ) as FormGroup;
-    this.respiratorySystemForm = this.systemicExaminationForm.get(
+    this.respiratorySystemForm = this.systemicExaminationDataForm.get(
       'respiratorySystemForm'
     ) as FormGroup;
-    this.centralNervousSystemForm = this.systemicExaminationForm.get(
+    this.centralNervousSystemForm = this.systemicExaminationDataForm.get(
       'centralNervousSystemForm'
     ) as FormGroup;
-    this.musculoSkeletalSystemForm = this.systemicExaminationForm.get(
+    this.musculoSkeletalSystemForm = this.systemicExaminationDataForm.get(
       'musculoSkeletalSystemForm'
     ) as FormGroup;
-    this.genitoUrinarySystemForm = this.systemicExaminationForm.get(
+    this.genitoUrinarySystemForm = this.systemicExaminationDataForm.get(
       'genitoUrinarySystemForm'
     ) as FormGroup;
-    this.obstetricExaminationForANCForm = this.systemicExaminationForm.get(
+    this.obstetricExaminationForANCForm = this.systemicExaminationDataForm.get(
       'obstetricExaminationForANCForm'
     ) as FormGroup;
   }
@@ -103,12 +103,12 @@ export class SystemicExaminationComponent
   ngOnChanges() {
     this.displayANC = this.visitCategory == 'ANC' ? true : false;
     if (this.displayANC) {
-      this.systemicExaminationForm.addControl(
+      this.systemicExaminationDataForm.addControl(
         'obstetricExaminationForANCForm',
         this.generalUtils.createObstetricExaminationForANCForm()
       );
     } else if (!this.displayANC) {
-      this.systemicExaminationForm.removeControl(
+      this.systemicExaminationDataForm.removeControl(
         'obstetricExaminationForANCForm'
       );
       if (this.visitCategory == 'General OPD' || this.visitCategory == 'PNC') {

@@ -1,4 +1,4 @@
-<!-- {{ patientHistoryForm.value | json}} -->
+<!-- {{ nurseGeneralHistoryForm.value | json}} -->
 <mat-accordion>
   <div *ngIf="visitCategory !== 'NCD screening'">
     <mat-expansion-panel expanded="true">
@@ -226,7 +226,7 @@
       <app-physical-activity-history
         [mode]="mode"
         [visitCategory]="visitCategory"
-        [physicalActivityHistory]="
+        [physicalActivityHistoryForm]="
           physicalActivityHistory
         "></app-physical-activity-history>
     </mat-expansion-panel>

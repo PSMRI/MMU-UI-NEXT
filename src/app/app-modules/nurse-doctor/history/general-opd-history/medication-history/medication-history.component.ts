@@ -162,10 +162,10 @@ export class MedicationHistoryComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   addMedicationHistory() {
-    const medicationHistoryList = <FormArray>(
-      this.medicationHistoryForm.controls['medicationHistoryList']
+    const medicationHistoryDataList = <FormArray>(
+      this.medicationHistoryForm?.controls['medicationHistoryList']
     );
-    medicationHistoryList.push(this.initMedicationHistory());
+    medicationHistoryDataList?.push(this.initMedicationHistory());
   }
 
   removeMedicationHistory(
@@ -176,19 +176,22 @@ export class MedicationHistoryComponent implements OnInit, OnDestroy, DoCheck {
       .confirm(`warn`, this.currentLanguageSet.alerts.info.warn)
       .subscribe(result => {
         if (result) {
-          const medicationHistoryList = <FormArray>(
+          const medicationHistoryListValue = <FormArray>(
             this.medicationHistoryForm.controls['medicationHistoryList']
           );
           this.medicationHistoryForm.markAsDirty();
           if (this.medicationHistoryForm.parent)
             this.medicationHistoryForm.parent.markAsDirty();
-          if (medicationHistoryList.length == 1 && !!medicationHistoryForm) {
-            medicationHistoryList.controls[i].patchValue({
+          if (
+            medicationHistoryListValue.length == 1 &&
+            !!medicationHistoryForm
+          ) {
+            medicationHistoryListValue.controls[i].patchValue({
               currentMedication: null,
               timePeriodAgo: null,
               timePeriodUnit: null,
             });
-          } else medicationHistoryList.removeAt(i);
+          } else medicationHistoryListValue.removeAt(i);
           this.medicationHistoryForm.updateValueAndValidity();
           console.log(this.medicationHistoryForm.dirty);
         }

@@ -21,7 +21,7 @@ import { ServicePointComponent } from './app-modules/service-point/service-point
 import { SetSecurityQuestionsComponent } from './app-modules/set-security-questions/set-security-questions.component';
 import { SetPasswordComponent } from './app-modules/set-password/set-password.component';
 import { TmLogoutComponent } from './app-modules/tm-logout/tm-logout.component';
-import { DataSyncLoginComponent } from './app-modules/data-sync-login/data-sync-login.component';
+import { DataSyncLoginComponent } from './app-modules/core/components/data-sync-login/data-sync-login.component';
 import { ServicePointResolve } from './app-modules/service-point/service-point-resolve.service';
 import { ServicePointService } from './app-modules/service-point/service-point.service';
 import { ResetPasswordComponent } from './app-modules/reset-password/reset-password.component';

@@ -46,7 +46,7 @@ import { SetLanguageComponent } from '../../core/components/set-language.compone
 })
 export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
   @Input()
-  patientPNCForm!: FormGroup;
+  patientPNCDataForm!: FormGroup;
 
   @Input()
   mode!: string;
@@ -103,7 +103,7 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
       this.mode != null &&
       this.mode.toLowerCase() == 'update'
     ) {
-      this.updatePatientPNC(this.patientPNCForm);
+      this.updatePatientPNC(this.patientPNCDataForm);
     }
   }
 
@@ -176,11 +176,11 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
         tempPNCData.dDate = new Date(tempPNCData.dateOfDelivery);
 
         const patchPNCdata = Object.assign({}, tempPNCData);
-        this.patientPNCForm.patchValue(tempPNCData);
+        this.patientPNCDataForm.patchValue(tempPNCData);
       });
   }
 
-  updatePatientPNC(patientPNCForm: FormGroup) {
+  updatePatientPNC(patientPNCDataForm: FormGroup) {
     const temp = {
       beneficiaryRegID: localStorage.getItem('beneficiaryRegID'),
       benVisitID: localStorage.getItem('visitID'),
@@ -189,11 +189,11 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
       visitCode: localStorage.getItem('visitCode'),
     };
 
-    this.doctorService.updatePNCDetails(patientPNCForm, temp).subscribe(
+    this.doctorService.updatePNCDetails(patientPNCDataForm, temp).subscribe(
       (res: any) => {
         if (res.statusCode == 200 && res.data != null) {
           this.confirmationService.alert(res.data.response, 'success');
-          this.patientPNCForm.markAsPristine();
+          this.patientPNCDataForm.markAsPristine();
         } else {
           this.confirmationService.alert(res.errorMessage, 'error');
         }
@@ -240,11 +240,11 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
   }
 
   get birthWeightOfNewborn() {
-    return this.patientPNCForm.controls['birthWeightOfNewborn'].value;
+    return this.patientPNCDataForm.controls['birthWeightOfNewborn'].value;
   }
 
   get deliveryPlace() {
-    return this.patientPNCForm.controls['deliveryPlace'].value;
+    return this.patientPNCDataForm.controls['deliveryPlace'].value;
   }
 
   resetOtherPlaceOfDelivery() {
@@ -267,12 +267,12 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
     } else {
       this.selectDeliveryTypes = this.masterData.deliveryTypes;
     }
-    this.patientPNCForm.patchValue({
+    this.patientPNCDataForm.patchValue({
       otherDeliveryPlace: null,
       deliveryType: null,
     });
-    // this.patientPNCForm.controls['deliveryType'].markAsUntouched();
-    // this.patientPNCForm.controls['deliveryType'].markAsPristine();
+    // this.patientPNCDataForm.controls['deliveryType'].markAsUntouched();
+    // this.patientPNCDataForm.controls['deliveryType'].markAsPristine();
   }
 
   masterData: any;
@@ -300,26 +300,26 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
   }
 
   resetOtherDeliveryComplication() {
-    this.patientPNCForm.patchValue({ otherDeliveryComplication: null });
+    this.patientPNCDataForm.patchValue({ otherDeliveryComplication: null });
   }
 
   get deliveryComplication() {
-    return this.patientPNCForm.controls['deliveryComplication'].value;
+    return this.patientPNCDataForm.controls['deliveryComplication'].value;
   }
 
   get otherDeliveryComplication() {
-    return this.patientPNCForm.controls['otherDeliveryComplication'].value;
+    return this.patientPNCDataForm.controls['otherDeliveryComplication'].value;
   }
 
   resetOtherPostNatalComplication() {
-    this.patientPNCForm.patchValue({ otherPostNatalComplication: null });
+    this.patientPNCDataForm.patchValue({ otherPostNatalComplication: null });
   }
 
   get postNatalComplication() {
-    return this.patientPNCForm.controls['postNatalComplication'].value;
+    return this.patientPNCDataForm.controls['postNatalComplication'].value;
   }
 
   get otherPostNatalComplication() {
-    return this.patientPNCForm.controls['otherPostNatalComplication'].value;
+    return this.patientPNCDataForm.controls['otherPostNatalComplication'].value;
   }
 }

@@ -32,7 +32,7 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
 })
 export class CardioVascularSystemComponent implements OnInit, DoCheck {
   @Input()
-  cardioVascularSystemForm!: FormGroup;
+  cardioVascularSystemDataForm!: FormGroup;
   languageComponent!: SetLanguageComponent;
   currentLanguageSet: any;
 

@@ -1,4 +1,4 @@
-<ng-container [formGroup]="physicalActivityHistory">
+<ng-container [formGroup]="physicalActivityHistoryForm">
   <div class="col-12" style="text-align: end">
     <span class="font-history-label">{{
       currentLanguageSet?.historyData?.ncdPhysicalActivityHistory
@@ -40,7 +40,9 @@
         style="width: 100%"
         name="physicalActivitQuestions"
         formControlName="activityType"
-        (selectionChange)="calculateIDRSScore($event, physicalActivityHistory)"
+        (selectionChange)="
+          calculateIDRSScore($event, physicalActivityHistoryForm)
+        "
         [required]="age >= 30">
         <mat-option
           *ngFor="let questions of physicalActivityQuestions"

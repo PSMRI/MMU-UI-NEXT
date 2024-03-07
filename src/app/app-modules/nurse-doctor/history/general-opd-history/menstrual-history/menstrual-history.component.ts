@@ -227,7 +227,7 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   get menstrualCycleStatus() {
-    return this.menstrualHistoryForm.controls['menstrualCycleStatus'].value;
+    return this.menstrualHistoryForm?.controls['menstrualCycleStatus'].value;
   }
 
   get lMPDate() {
