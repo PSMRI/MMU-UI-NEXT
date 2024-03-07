@@ -34,7 +34,7 @@ import { BeneficiaryDetailsService } from '../../../core/services/beneficiary-de
 import { NurseService, DoctorService } from '../../shared/services';
 import { TestInVitalsService } from '../../shared/services/test-in-vitals.service';
 import { AudioRecordingService } from '../../shared/services/audio-recording.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IotcomponentComponent } from 'src/app/app-modules/core/components/iotcomponent/iotcomponent.component';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
@@ -91,7 +91,7 @@ export class GeneralPatientVitalsComponent
   // Audio - SWAASA
   isRecording: boolean = false;
   recordedTime: any;
-  blobUrl: any;
+  blobUrl!: SafeHtml | null;
   teste: any;
   enableResult: boolean = false;
   enableSymptoms: boolean = false;
@@ -147,9 +147,8 @@ export class GeneralPatientVitalsComponent
     this.audioRecordingService.getRecordedBlob().subscribe(data => {
       this.teste = data;
       this.coughBlobFile = data.blob;
-      this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(
-        URL.createObjectURL(data.blob)
-      );
+      const html = URL.createObjectURL(data.blob);
+      this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(html);
     });
   }
 

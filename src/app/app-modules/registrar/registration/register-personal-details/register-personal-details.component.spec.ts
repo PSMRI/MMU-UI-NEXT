@@ -412,7 +412,7 @@ describe('RegisterPersonalDetailsComponent', () => {
   });
 
   it('should enable marriage details if Beneficiary Marriage status is neither Unmarried or Nor Not Applicable ', () => {
-    const randomNumber = Math.floor(Math.random() * (6 - 2 + 1)) + 2;
+    const randomNumber = Math.floor(25 * (6 - 2 + 1)) + 2;
     component.ngOnInit();
     const form = component.personalDetailsForm;
     form.patchValue({ age: 15, maritalStatus: randomNumber });
