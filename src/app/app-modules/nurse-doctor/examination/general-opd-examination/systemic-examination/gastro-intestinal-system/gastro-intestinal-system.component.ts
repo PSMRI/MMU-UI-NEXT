@@ -32,7 +32,7 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
 })
 export class GastroIntestinalSystemComponent implements OnInit, DoCheck {
   @Input()
-  gastroIntestinalSystemForm!: FormGroup;
+  gastroIntestinalSystemDataForm!: FormGroup;
 
   selectAbdomenTexture = [
     {
@@ -91,18 +91,18 @@ export class GastroIntestinalSystemComponent implements OnInit, DoCheck {
   }
 
   checkWithTenderness() {
-    this.gastroIntestinalSystemForm.patchValue({
+    this.gastroIntestinalSystemDataForm.patchValue({
       palpation_LocationOfTenderness: null,
     });
   }
 
   get palpation_Tenderness() {
-    return this.gastroIntestinalSystemForm.controls['palpation_Tenderness']
+    return this.gastroIntestinalSystemDataForm.controls['palpation_Tenderness']
       .value;
   }
 
   get palpation_LocationOfTenderness() {
-    return this.gastroIntestinalSystemForm.controls[
+    return this.gastroIntestinalSystemDataForm.controls[
       'palpation_LocationOfTenderness'
     ].value;
   }

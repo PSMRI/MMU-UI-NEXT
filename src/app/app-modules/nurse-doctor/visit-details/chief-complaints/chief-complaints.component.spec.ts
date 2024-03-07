@@ -103,14 +103,6 @@ describe('ChiefComplaintsComponent', () => {
     }
   ));
 
-  // it('should call getNurseMasterData on Initialisation', inject([MasterdataService], (masterdataService) => {
-  //     masterdataService.nurseMasterDataSource.next(data.generalOPDNurseMasterdata.data);
-  //     spyOn(component, 'getNurseMasterData');
-  //     component.ngOnInit();
-  //     expect(component.getNurseMasterData).toHaveBeenCalled();
-  //     expect(component.selectChiefComplaint).toEqual(data.generalOPDNurseMasterdata.data.chiefComplaintMaster);
-  // }));
-
   it('should clear ChiefComplaintsForm when total complaints is one and remove button is clicked', () => {
     const complaint = component.patientChiefComplaintsForm.controls[
       'complaints'
@@ -190,7 +182,7 @@ describe('ChiefComplaintsComponent', () => {
     inject(
       [DoctorService, MasterdataService],
       (doctorService, masterdataService) => {
-        component.mode = new String('view');
+        component.mode = String('view');
         spyOn(component, 'getChiefComplaints').and.callThrough();
         spyOn(doctorService, 'getVisitComplaintDetails').and.returnValue(
           Observable.of(data.generalOPDVisitDetails)
@@ -211,7 +203,7 @@ describe('ChiefComplaintsComponent', () => {
         spyOn(doctorService, 'getVisitComplaintDetails').and.returnValue(
           Observable.of(data.generalOPDVisitDetails)
         );
-        component.mode = new String('view');
+        component.mode = String('view');
         masterdataService.nurseMasterDataSource.next(
           data.generalOPDNurseMasterdata.data
         );

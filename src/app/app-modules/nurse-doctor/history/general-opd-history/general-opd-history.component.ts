@@ -44,7 +44,7 @@ export class GeneralOpdHistoryComponent
   implements OnInit, DoCheck, OnChanges, OnDestroy
 {
   @Input()
-  patientHistoryForm!: FormGroup;
+  nurseGeneralHistoryForm!: FormGroup;
 
   @Input()
   mode: any;
@@ -85,41 +85,43 @@ export class GeneralOpdHistoryComponent
   ) {}
 
   ngOnInit() {
-    this.pastHistory = this.patientHistoryForm.get('pastHistory') as FormGroup;
-    this.comorbidityHistory = this.patientHistoryForm.get(
+    this.pastHistory = this.nurseGeneralHistoryForm.get(
+      'pastHistory'
+    ) as FormGroup;
+    this.comorbidityHistory = this.nurseGeneralHistoryForm.get(
       'comorbidityHistory'
     ) as FormGroup;
-    this.medicationHistory = this.patientHistoryForm.get(
+    this.medicationHistory = this.nurseGeneralHistoryForm.get(
       'medicationHistory'
     ) as FormGroup;
-    this.personalHistory = this.patientHistoryForm.get(
+    this.personalHistory = this.nurseGeneralHistoryForm.get(
       'personalHistory'
     ) as FormGroup;
-    this.familyHistory = this.patientHistoryForm.get(
+    this.familyHistory = this.nurseGeneralHistoryForm.get(
       'familyHistory'
     ) as FormGroup;
-    this.menstrualHistory = this.patientHistoryForm.get(
+    this.menstrualHistory = this.nurseGeneralHistoryForm.get(
       'menstrualHistory'
     ) as FormGroup;
-    this.perinatalHistory = this.patientHistoryForm.get(
+    this.perinatalHistory = this.nurseGeneralHistoryForm.get(
       'perinatalHistory'
     ) as FormGroup;
-    this.pastObstericHistory = this.patientHistoryForm.get(
+    this.pastObstericHistory = this.nurseGeneralHistoryForm.get(
       'pastObstericHistory'
     ) as FormGroup;
-    this.immunizationHistory = this.patientHistoryForm.get(
+    this.immunizationHistory = this.nurseGeneralHistoryForm.get(
       'immunizationHistory'
     ) as FormGroup;
-    this.otherVaccines = this.patientHistoryForm.get(
+    this.otherVaccines = this.nurseGeneralHistoryForm.get(
       'otherVaccines'
     ) as FormGroup;
-    this.feedingHistory = this.patientHistoryForm.get(
+    this.feedingHistory = this.nurseGeneralHistoryForm.get(
       'feedingHistory'
     ) as FormGroup;
-    this.developmentHistory = this.patientHistoryForm.get(
+    this.developmentHistory = this.nurseGeneralHistoryForm.get(
       'developmentHistory'
     ) as FormGroup;
-    this.physicalActivityHistory = this.patientHistoryForm.get(
+    this.physicalActivityHistory = this.nurseGeneralHistoryForm.get(
       'physicalActivityHistory'
     ) as FormGroup;
     this.assignSelectedLanguage();
@@ -141,9 +143,9 @@ export class GeneralOpdHistoryComponent
     if (changes.mode && this.mode == 'update') {
       const visitCategory = localStorage.getItem('visitCategory');
       if (visitCategory == 'NCD screening') {
-        this.updatePatientNCDScreeningHistory(this.patientHistoryForm);
+        this.updatePatientNCDScreeningHistory(this.nurseGeneralHistoryForm);
       } else {
-        this.updatePatientGeneralHistory(this.patientHistoryForm);
+        this.updatePatientGeneralHistory(this.nurseGeneralHistoryForm);
       }
     }
 
@@ -198,7 +200,7 @@ export class GeneralOpdHistoryComponent
               this.getHRPDetails();
             }
             this.confirmationService.alert(res.data.response, 'success');
-            this.patientHistoryForm.markAsPristine();
+            this.nurseGeneralHistoryForm.markAsPristine();
           } else {
             this.confirmationService.alert(res.errorMessage, 'error');
           }
@@ -270,7 +272,7 @@ export class GeneralOpdHistoryComponent
         (res: any) => {
           if (res.statusCode == 200 && res.data != null) {
             this.confirmationService.alert(res.data.response, 'success');
-            this.patientHistoryForm.markAsPristine();
+            this.nurseGeneralHistoryForm.markAsPristine();
           } else {
             this.confirmationService.alert(res.errorMessage, 'error');
           }

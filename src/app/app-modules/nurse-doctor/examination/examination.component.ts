@@ -35,7 +35,7 @@ export class ExaminationComponent implements OnInit, DoCheck, OnChanges {
   visitCategory!: string;
 
   @Input()
-  patientExaminationForm!: FormGroup;
+  patientExaminationDataForm!: FormGroup;
 
   @Input()
   examinationMode!: string;

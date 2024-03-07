@@ -109,7 +109,7 @@ export class PastObstericHistoryComponent
         let i = 0;
         i <
         (<FormArray>(
-          this.pastObstericHistoryForm.controls['pastObstericHistoryList']
+          this.pastObstericHistoryForm?.controls['pastObstericHistoryList']
         )).length;
         i++
       ) {

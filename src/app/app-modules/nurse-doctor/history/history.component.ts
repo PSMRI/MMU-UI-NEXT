@@ -32,7 +32,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HistoryComponent implements OnInit, OnChanges {
   @Input()
-  patientHistoryForm!: FormGroup;
+  patientHistoryDataForm!: FormGroup;
 
   @Input()
   visitCategory!: string;

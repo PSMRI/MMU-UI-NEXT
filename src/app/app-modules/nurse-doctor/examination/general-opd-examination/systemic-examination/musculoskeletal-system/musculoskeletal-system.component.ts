@@ -35,7 +35,7 @@ export class MusculoskeletalSystemComponent
   implements OnInit, OnDestroy, DoCheck
 {
   @Input()
-  musculoSkeletalSystemForm!: FormGroup;
+  musculoSkeletalSystemDataForm!: FormGroup;
 
   selectTypeOfJoint: any = [];
 

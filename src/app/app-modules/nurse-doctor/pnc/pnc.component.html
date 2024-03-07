@@ -2,8 +2,8 @@
   <mat-expansion-panel-header>
     <h5>{{ currentLanguageSet?.pncData?.pnc }}</h5>
   </mat-expansion-panel-header>
-  <div [formGroup]="patientPNCForm" class="row m-t-20">
-    <!--{{patientPNCForm.value | json}}-->
+  <div [formGroup]="patientPNCDataForm" class="row m-t-20">
+    <!--{{patientPNCDataForm.value | json}}-->
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
       <mat-form-field>
         <mat-label>{{
@@ -46,8 +46,8 @@
           class="select-full-width"
           name="typeOfDelivery"
           formControlName="deliveryType"
-          [disabled]="!patientPNCForm.value.deliveryPlace"
-          [required]="patientPNCForm.value.deliveryPlace">
+          [disabled]="!patientPNCDataForm.value.deliveryPlace"
+          [required]="patientPNCDataForm.value.deliveryPlace">
           <mat-option *ngFor="let type of selectDeliveryTypes" [value]="type">
             {{ type.deliveryType }}
           </mat-option>

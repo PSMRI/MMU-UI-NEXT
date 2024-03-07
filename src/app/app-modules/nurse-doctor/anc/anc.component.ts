@@ -42,7 +42,7 @@ import { HttpServiceService } from '../../core/services/http-service.service';
 })
 export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
   @Input()
-  patientANCForm!: FormGroup;
+  patientANCDataForm!: FormGroup;
 
   @Input()
   mode!: string;
@@ -62,18 +62,18 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.patientANCDetailsForm = this.patientANCForm.get(
+    this.patientANCDetailsForm = this.patientANCDataForm.get(
       'patientANCDetailsForm'
     ) as FormGroup;
-    (<FormGroup>this.patientANCForm.controls['patientANCDetailsForm']).controls[
-      'primiGravida'
-    ].valueChanges.subscribe(gravidaData => {
+    (<FormGroup>(
+      this.patientANCDataForm.controls['patientANCDetailsForm']
+    )).controls['primiGravida'].valueChanges.subscribe(gravidaData => {
       this.gravidaStatus = gravidaData;
     });
-    this.obstetricFormulaForm = this.patientANCForm.get(
+    this.obstetricFormulaForm = this.patientANCDataForm.get(
       'obstetricFormulaForm'
     ) as FormGroup;
-    this.patientANCImmunizationForm = this.patientANCForm.get(
+    this.patientANCImmunizationForm = this.patientANCDataForm.get(
       'patientANCImmunizationForm'
     ) as FormGroup;
   }
@@ -101,7 +101,7 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
       this.mode !== null &&
       this.mode.toLowerCase() === 'update'
     ) {
-      this.updatePatientANC(this.patientANCForm);
+      this.updatePatientANC(this.patientANCDataForm);
     }
   }
 
@@ -111,7 +111,7 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
   }
 
   updateANCDetailsSubs: any;
-  updatePatientANC(patientANCForm: any) {
+  updatePatientANC(patientANCDataForm: any) {
     const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     const vanID = JSON.parse(serviceLineDetails).vanID;
     const parkingPlaceID = JSON.parse(serviceLineDetails).parkingPlaceID;
@@ -130,13 +130,13 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
     };
 
     this.updateANCDetailsSubs = this.doctorService
-      .updateANCDetails(patientANCForm, temp)
+      .updateANCDetails(patientANCDataForm, temp)
       .subscribe(
         (res: any) => {
           if (res.statusCode === 200 && res.data != null) {
             this.getHRPDetails();
             this.confirmationService.alert(res.data.response, 'success');
-            this.patientANCForm.markAsPristine();
+            this.patientANCDataForm.markAsPristine();
           } else {
             this.confirmationService.alert(res.errorMessage, 'error');
           }
@@ -166,16 +166,16 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
                 lmpDate: new Date(temp.lmpDate),
               });
               (<FormGroup>(
-                this.patientANCForm.controls['patientANCDetailsForm']
+                this.patientANCDataForm.controls['patientANCDetailsForm']
               )).patchValue(ancDetails);
               this.gravidaStatus = ancDetails.primiGravida;
               (<FormGroup>(
-                this.patientANCForm.controls['obstetricFormulaForm']
+                this.patientANCDataForm.controls['obstetricFormulaForm']
               )).patchValue(ancDetails);
 
               if (temp.bloodGroup && temp.bloodGroup != "Don't Know")
                 (<FormGroup>(
-                  this.patientANCForm.controls['obstetricFormulaForm']
+                  this.patientANCDataForm.controls['obstetricFormulaForm']
                 )).controls['bloodGroup'].disable();
             }
 
@@ -187,7 +187,7 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
                 dateReceivedForTT_3: new Date(temp2.dateReceivedForTT_3),
               });
               (<FormGroup>(
-                this.patientANCForm.controls['patientANCImmunizationForm']
+                this.patientANCDataForm.controls['patientANCImmunizationForm']
               )).patchValue(ancImmunizationDetails);
             }
           } else {

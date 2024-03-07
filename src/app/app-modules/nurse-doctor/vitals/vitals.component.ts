@@ -32,7 +32,7 @@ import { HttpServiceService } from '../../core/services/http-service.service';
 export class VitalsComponent implements OnInit, OnChanges, DoCheck {
   // tslint:disable-next-line:no-input-rename
   @Input()
-  patientVitalsForm!: FormGroup;
+  patientVitalsDataForm!: FormGroup;
 
   // tslint:disable-next-line:no-input-rename
   @Input()
