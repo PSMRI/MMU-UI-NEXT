@@ -91,7 +91,7 @@ export class GeneralPatientVitalsComponent
   // Audio - SWAASA
   isRecording: boolean = false;
   recordedTime: any;
-  blobUrl!: SafeHtml | null;
+  blobUrl: any;
   teste: any;
   enableResult: boolean = false;
   enableSymptoms: boolean = false;
@@ -147,8 +147,7 @@ export class GeneralPatientVitalsComponent
     this.audioRecordingService.getRecordedBlob().subscribe(data => {
       this.teste = data;
       this.coughBlobFile = data.blob;
-      const h = URL.createObjectURL(data.blob);
-      this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(h);
+      this.blobUrl = URL.createObjectURL(data.blob);
     });
   }
 
