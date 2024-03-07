@@ -171,6 +171,7 @@
 
   <mat-card
     class="row m-t-10"
+    style="margin-bottom: 15px"
     *ngIf="
       (tobaccoUseStatus === 'Yes' || tobaccoUseStatus === 'Discontinued') &&
       beneficiary?.ageVal >= 13
@@ -187,7 +188,8 @@
     </mat-card-header>
     <mat-card-content formArrayName="tobaccoList">
       <div
-        class="row multi-row-select"
+        class="row multi-row-select col-12"
+        style="background-color: #f0f5f5; margin: 8px 0px 0px 0px"
         *ngFor="
           let tobacco of getTobaccoList();
           let i = index;
@@ -196,8 +198,8 @@
         "
         [ngClass]="{ odd: !isOdd }">
         <ng-container [formGroupName]="i">
-          <div class="col-xs-12 col-sm-6 col-md-3 box">
-            <mat-form-field>
+          <div class="col-4 box">
+            <mat-form-field class="mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
                   ?.personalHistoryANC_OPD_NCD_PNC?.tobaccoData
@@ -217,9 +219,9 @@
           </div>
 
           <div
-            class="col-xs-12 col-sm-6 col-md-2 box"
+            class="col-4 box"
             *ngIf="tobacco.value.tobaccoUseType?.habitValue === 'Other'">
-            <mat-form-field class="input-full-width">
+            <mat-form-field class="input-full-width mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                   ?.others
@@ -234,8 +236,8 @@
             </mat-form-field>
           </div>
 
-          <div class="col-xs-12 col-sm-6 col-md-2 box">
-            <mat-form-field class="input-full-width">
+          <div class="col-4 box">
+            <mat-form-field class="input-full-width mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
                   ?.personalHistoryANC_OPD_NCD_PNC?.tobaccoData?.number
@@ -272,8 +274,8 @@
             </mat-radio-group>
           </div>
 
-          <div class="col-xs-12 col-sm-6 col-md-2 box">
-            <mat-form-field class="input-full-width">
+          <div class="col-4 box">
+            <mat-form-field class="input-full-width mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
               }}</mat-label>
@@ -289,8 +291,8 @@
             </mat-form-field>
           </div>
 
-          <div class="col-xs-10 col-sm-4 col-md-3 box">
-            <mat-form-field>
+          <div class="col-4 box">
+            <mat-form-field class="mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.DurationData?.durationUnit
               }}</mat-label>
@@ -308,10 +310,13 @@
           </div>
 
           <div
-            class="col-sm-2 col-md-2 box action-btn-container pull-right padding-0-left-right-al">
+            class="col-4 box action-btn-container padding-0-left-right-al"
+            style="text-align: center; margin-top: 5px">
             <button
               md-mini-fab
               color="warn"
+              class="mat_warn_circle"
+              style="margin-right: 3px"
               *ngIf="i !== 0 || (i === 0 && tobacco.touched)"
               (click)="removeTobacco(i, tobacco)">
               <mat-icon class="md-18">close</mat-icon>
@@ -320,6 +325,7 @@
               md-mini-fab
               color="primary"
               *ngIf="isLast"
+              class="mat_blue_circle"
               [disabled]="checkTobaccoValidity(tobacco)"
               (click)="addTobacco()">
               <mat-icon class="md-18">add</mat-icon>
@@ -332,7 +338,8 @@
 
   <mat-card
     class="row m-t-10"
-    *ngIf="alcoholIntakeStatus === 'Yes' && beneficiary?.ageVal >= 13">
+    *ngIf="alcoholIntakeStatus === 'Yes' && beneficiary?.ageVal >= 13"
+    style="margin-bottom: 15px">
     <mat-card-header>
       <mat-card-title>
         <h4>
@@ -346,6 +353,7 @@
     <mat-card-content formArrayName="alcoholList">
       <div
         class="row multi-row-select"
+        style="background-color: #f0f5f5; margin: 8px 0px 0px 0px"
         *ngFor="
           let alcohol of getAlcoholList();
           let i = index;
@@ -354,27 +362,29 @@
         "
         [ngClass]="{ odd: !isOdd }">
         <ng-container [formGroupName]="i">
-          <div class="col-xs-12 col-sm-6 col-md-2 box padding-0-right">
-            <mat-label>{{
-              currentLanguageSet?.historyData?.ancHistory
-                ?.personalHistoryANC_OPD_NCD_PNC?.alcoholData?.typeofAlcohol
-            }}</mat-label>
-            <mat-select
-              class="select-full-width"
-              formControlName="typeOfAlcohol"
-              (selectionChange)="filterAlcoholList($event, i)">
-              <mat-option
-                *ngFor="let alcohol of alcoholSelectList[i]"
-                [value]="alcohol"
-                >{{ alcohol.habitValue }}
-              </mat-option>
-            </mat-select>
+          <div class="col-4 box padding-0-right">
+            <mat-form-field class="mat_form_field">
+              <mat-label>{{
+                currentLanguageSet?.historyData?.ancHistory
+                  ?.personalHistoryANC_OPD_NCD_PNC?.alcoholData?.typeofAlcohol
+              }}</mat-label>
+              <mat-select
+                class="select-full-width"
+                formControlName="typeOfAlcohol"
+                (selectionChange)="filterAlcoholList($event, i)">
+                <mat-option
+                  *ngFor="let alcohol of alcoholSelectList[i]"
+                  [value]="alcohol"
+                  >{{ alcohol.habitValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
 
           <div
-            class="col-xs-12 col-sm-6 col-md-2 box"
+            class="col-4 box"
             *ngIf="alcohol.value.typeOfAlcohol === 'Other'">
-            <mat-form-field class="input-full-width">
+            <mat-form-field class="input-full-width mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                   ?.others
@@ -389,8 +399,8 @@
             </mat-form-field>
           </div>
 
-          <div class="col-xs-12 col-sm-6 col-md-4 box padding-0-right">
-            <mat-form-field>
+          <div class="col-4 box padding-0-right">
+            <mat-form-field class="mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
                   ?.personalHistoryANC_OPD_NCD_PNC?.alcoholData?.freqofAlcohol
@@ -409,8 +419,8 @@
             </mat-form-field>
           </div>
 
-          <div class="col-xs-12 col-sm-6 col-md-4 box">
-            <mat-form-field>
+          <div class="col-4 box">
+            <mat-form-field class="mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
                   ?.personalHistoryANC_OPD_NCD_PNC?.alcoholData
@@ -429,8 +439,8 @@
             </mat-form-field>
           </div>
 
-          <div class="col-xs-12 col-sm-6 col-md-1 box padding-0-left-right">
-            <mat-form-field class="input-full-width">
+          <div class="col-4 box padding-0-left-right">
+            <mat-form-field class="input-full-width mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
               }}</mat-label>
@@ -446,8 +456,8 @@
             </mat-form-field>
           </div>
 
-          <div class="col-xs-10 col-sm-4 col-md-3 box">
-            <mat-form-field>
+          <div class="col-4 box">
+            <mat-form-field class="mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.DurationData?.durationUnit
               }}</mat-label>
@@ -465,10 +475,13 @@
           </div>
 
           <div
-            class="col-sm-2 col-md-2 box action-btn-container pull-right padding-0-left-right-al">
+            class="col-sm-2 col-md-2 box action-btn-container padding-0-left-right-al"
+            style="text-align: center">
             <button
               md-mini-fab
               color="warn"
+              class="mat_warn_circle"
+              style="margin-right: 3px"
               *ngIf="i !== 0 || (i === 0 && alcohol.touched)"
               (click)="removeAlcohol(i, alcohol)">
               <mat-icon class="md-18">close</mat-icon>
@@ -476,6 +489,7 @@
             <button
               md-mini-fab
               color="primary"
+              class="mat_blue_circle"
               *ngIf="isLast"
               [disabled]="checkAlcoholValidity(alcohol)"
               (click)="addAlcohol()">
@@ -487,7 +501,10 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card class="row m-t-10" *ngIf="allergyStatus === 'Yes'">
+  <mat-card
+    class="row m-t-10"
+    *ngIf="allergyStatus === 'Yes'"
+    tyle="margin-bottom: 15px;">
     <mat-card-header>
       <mat-card-title>
         <h4>
@@ -500,7 +517,8 @@
     </mat-card-header>
     <mat-card-content formArrayName="allergicList">
       <div
-        class="row multi-row-select"
+        class="row multi-row-select col-12"
+        style="background-color: #f0f5f5; margin: 8px 0px 0px 0px"
         *ngFor="
           let allergy of getAllergyList();
           let i = index;
@@ -509,8 +527,8 @@
         "
         [ngClass]="{ odd: !isOdd }">
         <ng-container [formGroupName]="i">
-          <div class="col-xs-12 col-sm-6 col-md-3 box">
-            <mat-form-field>
+          <div class="col-4 box">
+            <mat-form-field class="mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
                   ?.personalHistoryANC_OPD_NCD_PNC?.allergicStatus?.allergyType
@@ -527,8 +545,8 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-3 box">
-            <mat-form-field class="input-full-width">
+          <div class="col-4 row box">
+            <mat-form-field class="input-full-width mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
                   ?.personalHistoryANC_OPD_NCD_PNC?.allergicStatus?.allergenName
@@ -542,21 +560,21 @@
                 formControlName="snomedTerm"
                 (change)="removeSnomedCode(allergy, i)"
                 (keyup.enter)="searchComponents(allergy, i, allergy)" />
-              <button>
-                <mat-icon
-                  class="search-btn cursorPointer"
-                  matSuffix
-                  (click)="searchComponents(allergy, i, allergy)"
-                  [class.toolbar-icon-disabled]="componentFlag"
-                  >search</mat-icon
-                >
-              </button>
+              <!-- <button>
+                    <mat-icon
+                      class="search-btn cursorPointer"
+                      matSuffix
+                      (click)="searchComponents(allergy, i, allergy)"
+                      [class.toolbar-icon-disabled]="componentFlag"
+                      >search</mat-icon
+                    >
+                  </button> -->
             </mat-form-field>
           </div>
 
           <div class="clearfix"></div>
-          <div class="col-xs-12 col-sm-6 col-md-3 box" [hidden]="true">
-            <mat-form-field class="input-full-width">
+          <div class="col-4 box" [hidden]="true">
+            <mat-form-field class="input-full-width mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
                   ?.sctCode
@@ -570,8 +588,8 @@
             </mat-form-field>
           </div>
 
-          <div class="col-xs-12 col-sm-6 col-md-3 box">
-            <mat-form-field>
+          <div class="col-4 box">
+            <mat-form-field class="mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
                   ?.personalHistoryANC_OPD_NCD_PNC?.allergicStatus
@@ -594,10 +612,8 @@
             </mat-form-field>
           </div>
 
-          <div
-            class="col-xs-10 col-sm-4 col-md-2 box"
-            *ngIf="allergy.value.enableOtherAllergy">
-            <mat-form-field class="input-full-width">
+          <div class="col-4 box" *ngIf="allergy.value.enableOtherAllergy">
+            <mat-form-field class="input-full-width mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                   ?.others
@@ -613,11 +629,13 @@
           </div>
 
           <div
-            style="margin-left: 35%"
-            class="col-sm-2 col-md-2 box action-btn-container pull-right padding-0-left-right-al">
+            class="col-4 box action-btn-container padding-0-left-right-al"
+            style="text-align: center">
             <button
               md-mini-fab
               color="warn"
+              class="mat_warn_circle"
+              style="margin-right: 3px"
               *ngIf="i !== 0 || (i === 0 && allergy.touched)"
               (click)="removeAllergy(i, allergy)">
               <mat-icon class="md-18">close</mat-icon>
@@ -625,6 +643,7 @@
             <button
               md-mini-fab
               color="primary"
+              class="mat_blue_circle"
               *ngIf="
                 isLast &&
                 generalPersonalHistoryForm.get('allergicList')?.value?.length <
