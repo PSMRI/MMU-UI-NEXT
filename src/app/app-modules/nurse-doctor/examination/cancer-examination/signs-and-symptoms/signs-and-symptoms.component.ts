@@ -28,7 +28,12 @@ import {
   ViewChild,
   OnDestroy,
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormBuilder,
+  FormGroup,
+} from '@angular/forms';
 import { BeneficiaryDetailsService } from '../../../../core/services/beneficiary-details.service';
 import { CancerUtils } from '../../../shared/utility';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
@@ -58,6 +63,7 @@ export class SignsAndSymptomsComponent implements OnInit, DoCheck, OnDestroy {
     'mobility_right',
     'right',
   ];
+
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
   dataSource = new MatTableDataSource<any>();
 
@@ -77,6 +83,14 @@ export class SignsAndSymptomsComponent implements OnInit, DoCheck, OnDestroy {
 
   ngOnDestroy() {
     if (this.beneficiaryDetailsSubs) this.beneficiaryDetailsSubs.unsubscribe();
+  }
+
+  getLymphNodes(): AbstractControl[] | null {
+    console.log('getLymnNodes', this.signsForm);
+    const lymphNodesControl = this.signsForm.get('lymphNodes');
+    return lymphNodesControl instanceof FormArray
+      ? lymphNodesControl.controls
+      : null;
   }
 
   beneficiaryDetailsSubs: any;
@@ -121,6 +135,13 @@ export class SignsAndSymptomsComponent implements OnInit, DoCheck, OnDestroy {
         lymphNodes: new CancerUtils(this.fb).lymphNodesArray.map(item => item),
       });
     }
+    const lymphNodesControl = this.signsForm.get('lymphNodes');
+    let LymphNodesdata: any = [];
+    LymphNodesdata =
+      lymphNodesControl instanceof FormArray
+        ? lymphNodesControl.controls
+        : null;
+    this.dataSource.data = LymphNodesdata;
   }
 
   get observation() {

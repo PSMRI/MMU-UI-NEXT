@@ -402,7 +402,7 @@
           }}
         </th>
         <td mat-cell *matCellDef="let element; let i = index">
-          {{ element.get('lymphNodeName').value }}
+          {{ element.value.lymphNodeName }}
         </td>
       </ng-container>
 
@@ -449,17 +449,4 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
   </div>
-  <div
-    class="pull-center"
-    style="margin-top: 5px"
-    [hidden]="dataSource.data.length > 0">
-    <strong>{{ currentLanguageSet?.noRecordsFound }}</strong>
-  </div>
-  <mat-paginator
-    [hidden]="dataSource.data.length === 0"
-    [pageSizeOptions]="[5, 10, 20]"
-    [pageSize]="5"
-    showFirstLastButtons
-    aria-label="Select patient in nurseWorklist">
-  </mat-paginator>
 </div>
