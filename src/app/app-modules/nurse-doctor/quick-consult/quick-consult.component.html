@@ -23,6 +23,7 @@
           <div class="row m-t-10" *ngIf="dataSource.data.length >= 1">
             <div class="col-xs-12">
               <table
+                class="table table-bordered"
                 mat-table
                 [dataSource]="dataSource"
                 aria-describedby="qcChiefComplaints">
@@ -67,6 +68,10 @@
                     {{ element.description }}
                   </td>
                 </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: displayedColumns"></tr>
               </table>
             </div>
           </div>
@@ -158,6 +163,7 @@
                   type="button"
                   mat-mini-fab
                   color="warn"
+                  class="mat_warn_circle"
                   (click)="deleteChiefComplaint(i, chiefComplaint)">
                   <span class="material-icons">close</span>
                 </button>
@@ -169,6 +175,7 @@
                   type="button"
                   mat-mini-fab
                   color="primary"
+                  class="mat_blue_circle"
                   (click)="addChiefComplaint()">
                   <span class="material-icons">add</span>
                 </button>
@@ -502,7 +509,7 @@
               currentLanguageSet?.common?.SelectTestname
             }}</mat-label>
             <mat-select
-              class="input-full-width"
+              class="input-full-width-select"
               multiple
               name="test"
               formControlName="test"
@@ -521,7 +528,7 @@
               currentLanguageSet?.labTechnicianData?.radiologyimaging
             }}</mat-label>
             <mat-select
-              class="input-full-width"
+              class="input-full-width-select"
               multiple
               name="radiology"
               formControlName="radiology">
@@ -570,7 +577,8 @@
                     let diagnosis of getProvisionalDiagnosisList();
                     let i = index;
                     let isLast = last
-                  ">
+                  "
+                  style="display: flex">
                   <ng-container [formGroupName]="i">
                     <div class="col-xs-12 col-sm-9 col-md-9 m-t-10">
                       <mat-form-field class="input-full-width">
@@ -601,7 +609,9 @@
                         >
                       </mat-form-field>
                     </div>
-                    <div class="col-xs-12 col-sm-3 col-md-3 m-t-10">
+                    <div
+                      class="col-xs-12 col-sm-3 col-md-3 m-t-10"
+                      style="margin-left: 15px">
                       <button
                         mat-mini-fab
                         type="button"
@@ -611,7 +621,8 @@
                         "
                         color="primary"
                         class="mat_blue_circle"
-                        (click)="addDiagnosis()">
+                        (click)="addDiagnosis()"
+                        style="margin-right: 10px">
                         <mat-icon>add</mat-icon>
                       </button>
                       <button
@@ -684,7 +695,7 @@
             <div class="col-md-3">
               <mat-label>{{ currentLanguageSet?.casesheet?.form }}</mat-label>
               <mat-select
-                class="input-full-width"
+                class="input-full-width-select"
                 name="form"
                 [(ngModel)]="tempform"
                 (selectionChange)="getFormValueChanged()"
@@ -731,7 +742,7 @@
                 currentLanguageSet?.Prescription?.dosage
               }}</mat-label>
               <mat-select
-                class="input-full-width"
+                class="input-full-width-select"
                 name="dose"
                 [(ngModel)]="currentPrescription.dose"
                 [disabled]="!currentPrescription.drugID"
@@ -748,7 +759,7 @@
                 currentLanguageSet?.Prescription?.frequency
               }}</mat-label>
               <mat-select
-                class="input-full-width"
+                class="input-full-width-select"
                 name="frequency"
                 [(ngModel)]="currentPrescription.frequency"
                 [disabled]="!currentPrescription.drugID"
@@ -767,7 +778,7 @@
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
               }}</mat-label>
               <mat-select
-                class="input-full-width"
+                class="input-full-width-select"
                 name="duration"
                 [(ngModel)]="currentPrescription.duration"
                 [disabled]="!currentPrescription.drugID"
@@ -784,7 +795,7 @@
                 currentLanguageSet?.Prescription?.unit
               }}</mat-label>
               <mat-select
-                class="input-full-width"
+                class="input-full-width-select"
                 name="unit"
                 [(ngModel)]="currentPrescription.unit"
                 [disabled]="!currentPrescription.drugID"
@@ -807,7 +818,7 @@
                 currentLanguageSet?.Prescription?.quantity
               }}</mat-label>
               <mat-select
-                class="input-full-width"
+                class="input-full-width-select"
                 name="quantity"
                 [(ngModel)]="currentPrescription.qtyPrescribed"
                 [disabled]="!currentPrescription.drugID"
@@ -821,18 +832,18 @@
             </div>
             <div
               [ngClass]="{
-                'col-md-6':
+                'col-md-4':
                   !currentPrescription.formID ||
                   (currentPrescription.formID &&
                     currentPrescription.formID <= '2'),
-                'col-md-4':
+                'col-md-3':
                   currentPrescription.formID && currentPrescription.formID > '2'
               }">
               <mat-label>{{
                 currentLanguageSet?.Prescription?.Route
               }}</mat-label>
               <mat-select
-                class="input-full-width"
+                class="input-full-width-select"
                 name="route"
                 [(ngModel)]="currentPrescription.route"
                 [disabled]="!currentPrescription.drugID">
@@ -869,6 +880,7 @@
                 [disabled]="prescriptionForm.invalid"
                 mat-raised-button
                 color="primary"
+                class="mat_blue"
                 type="button"
                 (click)="submitForUpload()">
                 {{ currentLanguageSet?.common?.add }}
@@ -981,7 +993,8 @@
                           mat-mini-fab
                           id="deleteMedicine"
                           (click)="deleteMedicine(j, drug.value.id)"
-                          color="warn">
+                          color="warn"
+                          class="mat_warn_circle">
                           <span class="material-icons">close</span>
                         </button>
                       </div>
