@@ -55,32 +55,6 @@
           </td>
         </ng-container>
 
-        <!-- <thead>
-          <tr class="column">
-            <th id="sno">SNo</th>
-            <th *ngFor="let column of columnList" id="columnName">{{ column.columnName }}</th>
-          </tr>
-        </thead>
-        <tbody *ngIf="filteredDataList.data?.length==0">
-          <tr>
-            <td [attr.colspan]="columnList.length">
-              <h4 class='norecord'>{{current_language_set?.common?.noRecordFound}}</h4>
-            </td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr *ngFor="let data of filteredDataList.data;let i=index;">
-            <td>{{ filteredDataList.data.indexOf(data)+1 }}</td>
-            <td *ngFor="let column of columnList">{{ data[column.keyName] }}</td>
-          </tr>
-        </tbody> -->
-        <!-- <tfoot>
-          <tr>
-            <td [attr.colspan]="columnList.length">
-              <md2-pagination></md2-pagination>
-            </td>
-          </tr>
-        </tfoot> -->
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>

@@ -89,12 +89,7 @@ export class OpenPreviousVisitDetailsComponent implements OnInit {
         this.doctorService.getMMUCasesheetData(reqObj).subscribe((res: any) => {
           if (res.statusCode == 200 && res.data !== null) {
             this.previousVisitData[i]['benPreviousData'] = res.data;
-            //this.previousVisitData.push({ 'benPreviousData': res.data});
             this.filteredHistory = res.data;
-            // this.previousHistoryPageChanged({
-            //   page: this.previousHistoryActivePage,
-            //   itemsPerPage: this.previousHistoryRowsPerPage
-            // });
           }
         });
       }

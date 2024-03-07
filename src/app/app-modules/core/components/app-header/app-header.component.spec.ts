@@ -24,7 +24,6 @@ import {
   async,
   ComponentFixture,
   tick,
-  inject,
   fakeAsync,
   TestBed,
 } from '@angular/core/testing';
@@ -35,23 +34,15 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/empty';
 import 'rxjs/add/observable/throw';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MaterialModule } from '../../../core/material.module';
 
-class RouterStub {
-  navigate(something) {}
-}
 class MockActivatedRoute {
   snapshot = {
     params: [null],
   };
-}
-class authServiceMock {
-  logoutUser() {}
 }
 
 describe('AppHeaderComponent', () => {
@@ -171,7 +162,7 @@ describe('AppHeaderComponent', () => {
   });
 
   it('should not clear session storage asresponse is not correct', () => {
-    const spy = spyOn(authService, 'logoutUser').and.returnValue(
+    spyOn(authService, 'logoutUser').and.returnValue(
       Observable.of({ statusCode: 401 })
     );
     component.ngOnInit();
@@ -181,7 +172,7 @@ describe('AppHeaderComponent', () => {
   });
 
   it('should  clear local storage as response is  correct', () => {
-    const spy = spyOn(authService, 'logoutUser').and.returnValue(
+    spyOn(authService, 'logoutUser').and.returnValue(
       Observable.of({ statusCode: 200 })
     );
     component.ngOnInit();
@@ -191,7 +182,7 @@ describe('AppHeaderComponent', () => {
   });
 
   it('should  clear local storage as response is  correct', () => {
-    const spy = spyOn(authService, 'logoutUser').and.returnValue(
+    spyOn(authService, 'logoutUser').and.returnValue(
       Observable.of({ statusCode: 200 })
     );
     component.ngOnInit();
@@ -201,7 +192,7 @@ describe('AppHeaderComponent', () => {
   });
 
   it('should call to navigate to other component', () => {
-    const spy = spyOn(authService, 'logoutUser').and.returnValue(
+    spyOn(authService, 'logoutUser').and.returnValue(
       Observable.of({ statusCode: 200 })
     );
     const spier = spyOn(router, 'navigate');
@@ -211,7 +202,7 @@ describe('AppHeaderComponent', () => {
   });
 
   it('should call to navigate to login component', () => {
-    const spy = spyOn(authService, 'logoutUser').and.returnValue(
+    spyOn(authService, 'logoutUser').and.returnValue(
       Observable.of({ statusCode: 200 })
     );
     const spier = spyOn(router, 'navigate');

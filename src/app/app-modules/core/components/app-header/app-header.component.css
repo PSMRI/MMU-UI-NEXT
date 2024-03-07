@@ -73,14 +73,6 @@ li a {
     padding: 6px 8px;
 }
 
-/* li.logout a span.logoutIcon {
-    height: 21px;
-    width: 24px;
-    display: inline-block;
-    vertical-align: middle;
-    background: url(../../../../../assets/images/logoutIcon.png) no-repeat;
-} */
-
 li.telemed a img {
     height: 24px;
     width: 24px;
@@ -108,12 +100,6 @@ button.mat-button {
 
 mat-menu {
     width: 100%;
-}
-
-@media (max-width: 500px) {
-    .container-fluid .navbar-collapse, .container-fluid .navbar-header {
-       
-    }
 }
 
 @media (max-width: 760px) {
