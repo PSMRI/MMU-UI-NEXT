@@ -42,7 +42,7 @@
           </div>
         </div>
 
-        <div class="row text-right">
+        <div class="col-12" style="text-align: end">
           <mat-label class="font-history-label m-t-10">{{
             currentLanguageSet?.idrs?.previousDiabetesHistory
           }}</mat-label>
@@ -51,7 +51,7 @@
             mat-icon-button
             matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
             id="previousDiabetesHistory"
-            class="pull-right"
+            class="mat_icon_blue"
             color="primary"
             (click)="getPreviousDiabetesHistory()">
             <mat-icon class="md-18">history</mat-icon>
