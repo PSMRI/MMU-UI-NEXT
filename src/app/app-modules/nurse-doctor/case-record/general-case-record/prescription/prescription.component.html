@@ -204,7 +204,9 @@
     </div>
   </section>
 
-  <section class="row no-row" style="margin-top: 10px !important">
+  <section
+    class="row no-row"
+    style="margin-top: 10px !important; padding-bottom: 30px">
     <div class="col-md-10 box">
       <mat-form-field class="input-full-width">
         <textarea
@@ -226,6 +228,7 @@
         id="add-button"
         [disabled]="prescriptionForm.invalid"
         mat-raised-button
+        class="mat_green"
         color="primary"
         type="button"
         (click)="submitForUpload()">
@@ -254,7 +257,7 @@
             </legend>
             <div class="row">
               <div class="col-md-2">
-                <mat-form-field class="input-full-width">
+                <mat-form-field class="input-full-width input-full-width-one">
                   <mat-label>{{
                     current_language_set?.Prescription?.form
                   }}</mat-label>
@@ -266,7 +269,7 @@
                 </mat-form-field>
               </div>
               <div class="col-md-2">
-                <mat-form-field class="input-full-width">
+                <mat-form-field class="input-full-width input-full-width-one">
                   <mat-label>{{
                     current_language_set?.casesheet?.dose
                   }}</mat-label>
@@ -279,7 +282,7 @@
                 </mat-form-field>
               </div>
               <div class="col-md-2">
-                <mat-form-field class="input-full-width">
+                <mat-form-field class="input-full-width input-full-width-one">
                   <mat-label>{{
                     current_language_set?.Prescription?.frequency
                   }}</mat-label>
@@ -292,7 +295,7 @@
                 </mat-form-field>
               </div>
               <div class="col-md-2">
-                <mat-form-field class="input-full-width">
+                <mat-form-field class="input-full-width input-full-width-one">
                   <mat-label>{{
                     current_language_set?.nurseData?.chiefComplaintsDetails
                       ?.duration
@@ -306,7 +309,7 @@
                 </mat-form-field>
               </div>
               <div class="col-md-1">
-                <mat-form-field class="input-full-width">
+                <mat-form-field class="input-full-width input-full-width-one">
                   <mat-label>{{
                     current_language_set?.Prescription?.quantity
                   }}</mat-label>
@@ -319,7 +322,7 @@
                 </mat-form-field>
               </div>
               <div class="col-md-3">
-                <mat-form-field class="input-full-width">
+                <mat-form-field class="input-full-width input-full-width-one">
                   <mat-label>{{
                     current_language_set?.Prescription?.instructions
                   }}</mat-label>
@@ -334,6 +337,7 @@
               <div class="col-md-12 centered-button">
                 <button
                   mat-mini-fab
+                  style="margin-right: 3px"
                   id="editMedicine"
                   (click)="editMedicine(j, drug.value.id)"
                   color="primary"
