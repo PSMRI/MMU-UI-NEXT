@@ -1008,8 +1008,8 @@ export class GeneralPersonalHistoryComponent
           this.enableAlert = false;
         } else {
           this.enableAlert = true;
-          this.snomedTerm == null;
-          this.snomedCode == null;
+          this.snomedTerm = null;
+          this.snomedCode = null;
         }
       });
     }

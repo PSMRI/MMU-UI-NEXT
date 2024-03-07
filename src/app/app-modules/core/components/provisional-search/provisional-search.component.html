@@ -4,7 +4,7 @@
     mat-icon-button
     matDialogClose
     matTooltip="{{ current_language_set?.common?.close }}"
-    class="pull-right exit width-20px">
+    class="pull-right mat_icon_white">
     <mat-icon>close</mat-icon>
   </button>
 </div>
@@ -26,7 +26,7 @@
     </div>
     <div class="col-xs-12 col-sm-8">
       <button
-        class="search-btn"
+        class="mat_green"
         [disabled]="!inputSearch.valid"
         mat-raised-button
         color="accent"
@@ -106,7 +106,7 @@
       <div class="col-xs-12">
         <button
           mat-raised-button
-          class="pull-right"
+          class="pull-right mat_blue"
           (click)="submitDiagnosisList()"
           [disabled]="selectedDiagnosisList.length === 0"
           color="primary">

@@ -591,7 +591,7 @@
         <strong>Random Glucose Test</strong>
       </div>
     </div>
-    <div class="row">
+    <div class="row" style="display: flex">
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
         <mat-form-field class="input-full-width">
           <mat-label>{{ currentLanguageSet?.rbsTestResult }}</mat-label>
@@ -616,24 +616,24 @@
           </button>
         </mat-form-field>
       </div>
-      <div>
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
-          <mat-form-field class="input-full-width">
-            <mat-label>{{ currentLanguageSet?.rbsTestRemarks }}</mat-label>
-            <input
-              autocomplete="off"
-              allowText="textAreaValidator"
-              matInput
-              appDefaultNull
-              [ngClass]=""
-              name="rbsTestRemarks"
-              id="rbsTestRemarks"
-              formControlName="rbsTestRemarks"
-              maxlength="300"
-              [disabled]="rbsResultChange()" />
-          </mat-form-field>
-        </div>
+      <!-- <div> -->
+      <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
+        <mat-form-field class="input-full-width">
+          <mat-label>{{ currentLanguageSet?.rbsTestRemarks }}</mat-label>
+          <input
+            autocomplete="off"
+            allowText="textAreaValidator"
+            matInput
+            appDefaultNull
+            [ngClass]=""
+            name="rbsTestRemarks"
+            id="rbsTestRemarks"
+            formControlName="rbsTestRemarks"
+            maxlength="300"
+            [disabled]="rbsResultChange()" />
+        </mat-form-field>
       </div>
+      <!-- </div> -->
     </div>
   </mat-expansion-panel>
 </div>

@@ -229,8 +229,8 @@ input {
   border-style: none !important;
 }
 
-a:focus,
-aF {
+a:focus
+ {
   color: red !important;
   text-decoration: underline;
 }
