@@ -174,7 +174,7 @@ export class TravelHistoryComponent
             this.patientCovidForm.patchValue({ travelStatus: 'false' });
           }
 
-          if (value.data.covidDetails.travelList.length >= 0) {
+          if (value.data.covidDetails.travelList.length > 0) {
             this.istravelStatus = true;
           }
 

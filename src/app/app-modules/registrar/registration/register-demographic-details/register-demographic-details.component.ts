@@ -834,11 +834,7 @@ export class RegisterDemographicDetailsComponent
   }
 
   chooseLocations() {
-    if (!this.patientRevisit) {
-      return [{ id: 3, name: 'State' }];
-    } else {
-      return [{ id: 3, name: 'State' }];
-    }
+    return [{ id: 3, name: 'State' }];
   }
 
   /**

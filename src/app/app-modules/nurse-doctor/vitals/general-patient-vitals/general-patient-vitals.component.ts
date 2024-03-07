@@ -28,19 +28,19 @@ import {
   OnDestroy,
   DoCheck,
 } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
 import { BeneficiaryDetailsService } from '../../../core/services/beneficiary-details.service';
 import { NurseService, DoctorService } from '../../shared/services';
 import { TestInVitalsService } from '../../shared/services/test-in-vitals.service';
 import { AudioRecordingService } from '../../shared/services/audio-recording.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { IotcomponentComponent } from 'src/app/app-modules/core/components/iotcomponent/iotcomponent.component';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 import { environment } from 'src/environments/environment';
 import { IdrsscoreService } from '../../shared/services/idrsscore.service';
 import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-nurse-general-patient-vitals',
@@ -147,9 +147,7 @@ export class GeneralPatientVitalsComponent
     this.audioRecordingService.getRecordedBlob().subscribe(data => {
       this.teste = data;
       this.coughBlobFile = data.blob;
-      this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(
-        URL.createObjectURL(data.blob)
-      );
+      this.blobUrl = URL.createObjectURL(data.blob);
     });
   }
 
