@@ -221,18 +221,18 @@
           </tr>
 
           <tr *ngIf="beneficiaryDetails && beneficiaryDetails.ageVal >= 18">
-            <th style="text-decoration: underline">
+            <th id="lungAssessment" style="text-decoration: underline">
               <em>Lung Assessment:</em>
             </th>
           </tr>
           <tr *ngIf="beneficiaryDetails && beneficiaryDetails.ageVal >= 18">
-            <th>Severity:</th>
+            <th id="severity">Severity:</th>
             <td>
               {{
                 severity !== null && severity !== undefined ? severity : 'NA'
               }}
             </td>
-            <th>Cough Severity Score:</th>
+            <th id="coughSeverityScore">Cough Severity Score:</th>
             <td>
               {{
                 cough_severity_score !== null &&
@@ -243,7 +243,7 @@
             </td>
           </tr>
           <tr *ngIf="beneficiaryDetails && beneficiaryDetails.ageVal >= 18">
-            <th>Cough Pattern:</th>
+            <th id="coughPattern">Cough Pattern:</th>
             <td>
               {{
                 cough_pattern !== null && cough_pattern !== undefined
@@ -251,7 +251,7 @@
                   : 'NA'
               }}
             </td>
-            <th>Record Time:</th>
+            <th id="recordTime">Record Time:</th>
             <td>
               {{
                 record_duration !== null && record_duration !== undefined

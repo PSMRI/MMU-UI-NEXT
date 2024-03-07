@@ -203,11 +203,6 @@ class RegistrarServiceMock {
 }
 
 class cameraServiceMock {}
-class confirmationServiceMock {
-  alert() {}
-
-  confirm(String: any) {}
-}
 
 describe('RegisterComponent', () => {
   let component: RegistrationComponent;
