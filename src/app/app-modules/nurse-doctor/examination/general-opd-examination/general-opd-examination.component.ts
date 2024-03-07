@@ -64,6 +64,15 @@ export class GeneralOpdExaminationComponent
 
   ngOnInit() {
     this.fetchLanguageResponse();
+    this.loadFormData();
+  }
+
+  ngOnDestroy() {
+    if (this.ancExaminationDataSubscription)
+      this.ancExaminationDataSubscription.unsubscribe();
+  }
+
+  loadFormData() {
     this.generalExaminationForm = this.patientExaminationForm.get(
       'generalExaminationForm'
     ) as FormGroup;
@@ -75,12 +84,8 @@ export class GeneralOpdExaminationComponent
     ) as FormGroup;
   }
 
-  ngOnDestroy() {
-    if (this.ancExaminationDataSubscription)
-      this.ancExaminationDataSubscription.unsubscribe();
-  }
-
   ngOnChanges() {
+    this.loadFormData();
     if (this.mode == 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');

@@ -85,6 +85,23 @@ export class GeneralOpdHistoryComponent
   ) {}
 
   ngOnInit() {
+    this.loadFormData();
+    this.assignSelectedLanguage();
+    this.getBeneficiaryDetails();
+    // this.enableIdrsHistoryForm();
+    console.log('showHistory', this.showHistory);
+  }
+
+  ngDoCheck() {
+    this.assignSelectedLanguage();
+  }
+  assignSelectedLanguage() {
+    const getLanguageJson = new SetLanguageComponent(this.httpServiceService);
+    getLanguageJson.setLanguage();
+    this.currentLanguageSet = getLanguageJson.currentLanguageObject;
+  }
+
+  loadFormData() {
     this.pastHistory = this.nurseGeneralHistoryForm.get(
       'pastHistory'
     ) as FormGroup;
@@ -124,22 +141,10 @@ export class GeneralOpdHistoryComponent
     this.physicalActivityHistory = this.nurseGeneralHistoryForm.get(
       'physicalActivityHistory'
     ) as FormGroup;
-    this.assignSelectedLanguage();
-    this.getBeneficiaryDetails();
-    // this.enableIdrsHistoryForm();
-    console.log('showHistory', this.showHistory);
-  }
-
-  ngDoCheck() {
-    this.assignSelectedLanguage();
-  }
-  assignSelectedLanguage() {
-    const getLanguageJson = new SetLanguageComponent(this.httpServiceService);
-    getLanguageJson.setLanguage();
-    this.currentLanguageSet = getLanguageJson.currentLanguageObject;
   }
 
   ngOnChanges(changes: any) {
+    this.loadFormData();
     if (changes.mode && this.mode == 'update') {
       const visitCategory = localStorage.getItem('visitCategory');
       if (visitCategory == 'NCD screening') {
