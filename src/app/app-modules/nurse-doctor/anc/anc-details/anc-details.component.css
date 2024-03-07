@@ -1,0 +1,22 @@
+.box {
+  height: 60px;
+}
+
+.input-full-width {
+  width: 100%;
+}
+
+.radio-btn {
+  margin-left: 20px;
+}
+
+.control-label {
+  font-weight: normal;
+}
+
+.mat-form-field {
+  line-height: unset;
+}
+mat-datepicker-toggle >>>.mat-mdc-form-field-icon-suffix, [dir=rtl] .mat-mdc-form-field-icon-prefix {
+    padding: 0px 0 0 34px;
+}

@@ -1,0 +1,87 @@
+<section class="container-fluid" *ngIf="dataSource.data">
+  <section class="row testReport title_background">
+    <h3 mat-dialog-title>
+      <span class="pull-left">{{ current_language_set?.common?.labTest }}</span>
+      <span class="pull-right">
+        <button
+          mat-icon-button
+          class="closeBtn"
+          mat-dialog-close
+          (click)="matDialogRef.close(false)">
+          <span class="material-icons">close</span>
+        </button>
+      </span>
+    </h3>
+  </section>
+  <div>
+    <table
+      class="table table-bordered"
+      mat-table
+      [dataSource]="dataSource"
+      aria-describedby="viewTestResults">
+      <ng-container matColumnDef="procedureName">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          <h4>
+            <!-- <strong>{{ testReport?.procedureName }}</strong> -->
+          </h4>
+        </th>
+      </ng-container>
+
+      <ng-container matColumnDef="componentName">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          {{ current_language_set?.labTechnicianData?.componentName }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.componentName }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="testresult">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          {{ current_language_set?.Reports?.testresult }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.testResultValue }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="unit">
+        <th
+          mat-header-cell
+          style="border-bottom: none"
+          *matHeaderCellDef
+          mat-sort-header>
+          {{ current_language_set?.Prescription?.unit }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          {{ element?.testResultUnit }}
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <div>
+      <button
+        mat-raised-button
+        color="warn"
+        class="pull-right m-b-10"
+        type="button"
+        mat-dialog-close
+        (click)="matDialogRef.close(false)">
+        {{ current_language_set?.common?.close }}
+      </button>
+    </div>
+  </div>
+</section>

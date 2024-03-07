@@ -1,0 +1,203 @@
+<app-beneficiary-platform-history></app-beneficiary-platform-history>
+
+<div class="row m-t-20">
+  <div class="col-xs-12 col-sm-12 col-md-6">
+    <h4>{{ current_language_set?.previousvisit?.currentvitals }}</h4>
+    <table
+      class="table table-bordered table-responsive currentVitals-table"
+      aria-describedby="currentVitals">
+      <tr>
+        <td>
+          {{
+            current_language_set?.vitalsDetails
+              ?.AnthropometryDataANC_OPD_NCD_PNC?.weight
+          }}: <span>{{ currentVitals?.weight_Kg }}</span>
+        </td>
+        <td>
+          {{
+            current_language_set?.vitalsDetails
+              ?.AnthropometryDataANC_OPD_NCD_PNC?.height
+          }}: <span>{{ currentVitals?.height_cm }}</span>
+        </td>
+        <td>
+          {{
+            current_language_set?.vitalsDetails
+              ?.AnthropometryDataANC_OPD_NCD_PNC?.BMI
+          }}(Kg/m<sup>2</sup>):
+          <span
+            [ngClass]="{
+              abnormal: calculateBMI() < 18.5 || calculateBMI() > 24.9
+            }"
+            >{{ calculateBMI() }}</span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>
+          {{
+            current_language_set?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
+              ?.temperature
+          }}:
+          <span
+            [ngClass]="{
+              abnormal:
+                +currentVitals?.temperature < 96 ||
+                +currentVitals?.temperature > 100
+            }"
+            >{{ currentVitals?.temperature }}</span
+          >
+        </td>
+        <td>
+          {{ current_language_set?.common?.hR }}:
+          <span
+            [ngClass]="{
+              abnormal:
+                +currentVitals?.pulseRate < 49 ||
+                +currentVitals?.pulseRate > 101
+            }"
+            >{{ currentVitals?.pulseRate }}</span
+          >
+        </td>
+        <td>
+          {{ current_language_set?.common?.rR }}:
+          <span
+            [ngClass]="{
+              abnormal:
+                +currentVitals?.respiratoryRate < 11 ||
+                +currentVitals?.respiratoryRate > 19
+            }"
+            >{{ currentVitals?.respiratoryRate }}</span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>
+          {{ current_language_set?.sPOTwoWithUnit }}:
+          <span
+            [ngClass]="{
+              abnormal: currentVitals?.sPO2 < 1 || currentVitals?.sPO2 > 100
+            }"
+            >{{ currentVitals?.sPO2 }}</span
+          >
+        </td>
+      </tr>
+      <tr>
+        <th colspan="3" id="bloodpressuremmhg">
+          {{ current_language_set?.previousvisit?.bloodpressuremmhg }}
+        </th>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <div class="firstHalf">
+            {{ current_language_set?.previousvisit?.systolic }}:
+            <span
+              [ngClass]="{
+                abnormal:
+                  +currentVitals?.systolicBP_1stReading > 80 ||
+                  +currentVitals?.systolicBP_1stReading > 100
+              }"
+              >{{ currentVitals?.systolicBP_1stReading }}</span
+            >
+          </div>
+          <div class="secondHalf">
+            {{ current_language_set?.previousvisit?.diastolic }}:
+            <span
+              [ngClass]="{
+                abnormal:
+                  +currentVitals?.diastolicBP_1stReading > 120 ||
+                  +currentVitals?.diastolicBP_1stReading > 140
+              }"
+              >{{ currentVitals?.diastolicBP_1stReading }}</span
+            >
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 p-t-10">
+    <div
+      style="
+        margin: 10px;
+        display: block;
+        max-height: 150px;
+        vertical-align: bottom;
+      "
+      *ngIf="weightChartData.length && weightChartLabels.length">
+      <h5>{{ current_language_set?.previousvisit?.bodyweighttrends }}</h5>
+
+      <canvas
+        baseChart
+        [datasets]="weightChartData"
+        [labels]="weightChartLabels"
+        [options]="lineChartOptions"
+        [legend]="weightChartLegend"
+        [type]="'line'"
+        (chartClick)="chartClicked('bw')"></canvas>
+    </div>
+    <div class="no_records" *ngIf="!weightChartData.length">
+      <h4>
+        {{ current_language_set?.previousvisit?.nopreviousweightrecordsfound }}
+      </h4>
+    </div>
+  </div>
+</div>
+
+<div class="row m-t-30">
+  <div class="col-md-6 p-t-10">
+    <div
+      style="
+        margin: 10px;
+        display: block;
+        max-height: 150px;
+        vertical-align: bottom;
+      "
+      *ngIf="bpChartData.length && bpChartLabels.length">
+      <h5>{{ current_language_set?.previousvisit?.bloodPressureTrends }}</h5>
+      <canvas
+        baseChart
+        [datasets]="bpChartData"
+        [labels]="bpChartLabels"
+        [options]="lineChartOptions"
+        [legend]="bpChartLegend"
+        [type]="'line'"
+        (chartClick)="chartClicked('bp')"></canvas>
+    </div>
+    <div class="no_records" *ngIf="!bpChartData.length">
+      <h4>
+        {{
+          current_language_set?.previousvisit?.previousbloodpressurerecordsfound
+        }}
+      </h4>
+    </div>
+  </div>
+
+  <div class="col-md-6 p-t-10">
+    <div
+      style="
+        margin: 10px;
+        display: block;
+        max-height: 150px;
+        vertical-align: bottom;
+      "
+      *ngIf="bgChartData.length && bgChartLabels.length">
+      <h5>{{ current_language_set?.previousvisit?.bloodGlucoseTrends }}</h5>
+
+      <canvas
+        baseChart
+        [datasets]="bgChartData"
+        [labels]="bgChartLabels"
+        [options]="lineChartOptions"
+        [legend]="bgChartLegend"
+        [type]="'line'"
+        (chartClick)="chartClicked('bg')"></canvas>
+    </div>
+    <div class="no_records" *ngIf="!bgChartData.length">
+      <h4>
+        {{
+          current_language_set?.previousvisit?.previousbloodglucoserecordsfound
+        }}
+      </h4>
+    </div>
+  </div>
+</div>
+<div class="row p-t-30"></div>

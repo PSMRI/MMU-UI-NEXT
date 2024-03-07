@@ -1,0 +1,642 @@
+<ng-container [formGroup]="generalPersonalHistoryForm">
+  <div class="col-12 row">
+    <div
+      class="previous-history col-4"
+      style="text-align: center"
+      *ngIf="beneficiary?.ageVal >= 13">
+      <span class="font-history-label">{{
+        currentLanguageSet?.historyData?.ancHistory
+          ?.personalHistoryANC_OPD_NCD_PNC?.previousTobaccohistory
+      }}</span>
+      <button
+        type="button"
+        mat-icon-button
+        matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
+        id="previousTobaccoHistory"
+        class="mat_icon_blue"
+        color="primary"
+        (click)="getPreviousTobaccoHistory()">
+        <mat-icon class="md-24">history</mat-icon>
+      </button>
+    </div>
+    <div
+      class="col-4 previous-history"
+      style="text-align: center"
+      *ngIf="beneficiary?.ageVal >= 13">
+      <span class="font-history-label">{{
+        currentLanguageSet?.historyData?.ancHistory
+          ?.personalHistoryANC_OPD_NCD_PNC?.previousAlcoholhistory
+      }}</span>
+      <button
+        type="button"
+        mat-icon-button
+        matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
+        id="previousAlcoholHistory"
+        class="mat_icon_blue"
+        color="primary"
+        (click)="getPreviousAlcoholHistory()">
+        <mat-icon class="md-18">history</mat-icon>
+      </button>
+    </div>
+    <div class="col-4 previous-history" style="text-align: center">
+      <span class="font-history-label">{{
+        currentLanguageSet?.historyData?.ancHistory
+          ?.personalHistoryANC_OPD_NCD_PNC?.previousAllergyhistory
+      }}</span>
+      <button
+        type="button"
+        mat-icon-button
+        matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
+        id="previousAllergyHistory"
+        class="mat_icon_blue"
+        color="primary"
+        (click)="getPreviousAllergyHistory()">
+        <mat-icon class="md-18">history</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="row m-t-10">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <label class="control-label" for="dietaryType">{{
+        currentLanguageSet?.historyData?.ancHistory
+          ?.personalHistoryANC_OPD_NCD_PNC?.dietaryType
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group formControlName="dietaryType">
+        <mat-radio-button color="primary" value="Vegetarian">{{
+          currentLanguageSet?.historyData?.ancHistory
+            ?.personalHistoryANC_OPD_NCD_PNC?.vegetarian
+        }}</mat-radio-button>
+        <mat-radio-button
+          color="primary"
+          class="radio-button"
+          value="Non-Vegetarian"
+          >{{
+            currentLanguageSet?.historyData?.ancHistory
+              ?.personalHistoryANC_OPD_NCD_PNC?.nonVegetarian
+          }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <label class="control-label" for="physicalActivityType">{{
+        currentLanguageSet?.historyData?.ancHistory
+          ?.personalHistoryANC_OPD_NCD_PNC?.physicalActivityType
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group formControlName="physicalActivityType">
+        <mat-radio-button color="primary" value="Sedentary">{{
+          currentLanguageSet?.historyData?.ancHistory
+            ?.personalHistoryANC_OPD_NCD_PNC?.sedentary
+        }}</mat-radio-button>
+        <mat-radio-button color="primary" class="radio-button" value="Active">{{
+          currentLanguageSet?.historyData?.ancHistory
+            ?.personalHistoryANC_OPD_NCD_PNC?.active
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+      *ngIf="beneficiary?.ageVal >= 18">
+      <label class="control-label" for="riskySexualPracticesStatus">{{
+        currentLanguageSet?.historyData?.ancHistory
+          ?.personalHistoryANC_OPD_NCD_PNC?.riskySexualPracticesStatus
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group formControlName="riskySexualPracticesStatus">
+        <mat-radio-button color="primary" [value]="true">Yes</mat-radio-button>
+        <mat-radio-button color="primary" class="radio-button" [value]="false"
+          >No</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+      *ngIf="beneficiary?.ageVal >= 13">
+      <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.ancHistory
+            ?.personalHistoryANC_OPD_NCD_PNC?.tobaccoData?.tobaccoUseStatus
+        }}</mat-label>
+        <mat-select
+          class="select-full-width"
+          formControlName="tobaccoUseStatus"
+          (selectionChange)="checkTobaccoStatus()">
+          <mat-option value="Yes">Yes</mat-option>
+          <mat-option value="No">No</mat-option>
+          <mat-option value="Discontinued">Discontinued</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+      *ngIf="beneficiary?.ageVal >= 13">
+      <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.ancHistory
+            ?.personalHistoryANC_OPD_NCD_PNC?.alcoholData?.alcoholUseStatus
+        }}</mat-label>
+        <mat-select
+          class="select-full-width"
+          formControlName="alcoholIntakeStatus"
+          (selectionChange)="checkAlcoholStatus()">
+          <mat-option value="Yes">Yes</mat-option>
+          <mat-option value="No">No</mat-option>
+          <mat-option value="Discontinued">Discontinued</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field>
+        <mat-label>{{
+          currentLanguageSet?.historyData?.ancHistory
+            ?.personalHistoryANC_OPD_NCD_PNC?.allergicStatus?.allergicStatus
+        }}</mat-label>
+        <mat-select
+          class="select-full-width"
+          formControlName="allergyStatus"
+          (selectionChange)="checkAllergicStatus()">
+          <mat-option value="Yes">Yes</mat-option>
+          <mat-option value="No">No</mat-option>
+          <mat-option value="Discontinued">Don't Know</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-card
+    class="row m-t-10"
+    *ngIf="
+      (tobaccoUseStatus === 'Yes' || tobaccoUseStatus === 'Discontinued') &&
+      beneficiary?.ageVal >= 13
+    ">
+    <mat-card-header>
+      <mat-card-title>
+        <h4>
+          <strong>{{
+            currentLanguageSet?.historyData?.ancHistory
+              ?.personalHistoryANC_OPD_NCD_PNC?.tobaccoData?.tobacco
+          }}</strong>
+        </h4>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content formArrayName="tobaccoList">
+      <div
+        class="row multi-row-select"
+        *ngFor="
+          let tobacco of getTobaccoList();
+          let i = index;
+          let isLast = last;
+          let isOdd = odd
+        "
+        [ngClass]="{ odd: !isOdd }">
+        <ng-container [formGroupName]="i">
+          <div class="col-xs-12 col-sm-6 col-md-3 box">
+            <mat-form-field>
+              <mat-label>{{
+                currentLanguageSet?.historyData?.ancHistory
+                  ?.personalHistoryANC_OPD_NCD_PNC?.tobaccoData
+                  ?.typeofTobaccoUse
+              }}</mat-label>
+              <mat-select
+                class="select-full-width"
+                formControlName="tobaccoUseType"
+                (selectionChange)="filterTobaccoList($event.value, i)">
+                <mat-option
+                  *ngFor="let tobacco of tobaccoSelectList[i]"
+                  [value]="tobacco">
+                  {{ tobacco.habitValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-xs-12 col-sm-6 col-md-2 box"
+            *ngIf="tobacco.value.tobaccoUseType?.habitValue === 'Other'">
+            <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
+                  ?.others
+              }}</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                appDefaultNull
+                maxlength="50"
+                allowText="alphabet"
+                formControlName="otherTobaccoUseType" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-2 box">
+            <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.historyData?.ancHistory
+                  ?.personalHistoryANC_OPD_NCD_PNC?.tobaccoData?.number
+              }}</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                appDefaultNull
+                maxlength="2"
+                allowText="number"
+                formControlName="number"
+                [disabled]="!tobacco.value.tobaccoUseType"
+                (blur)="perDayChange()" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-2 box">
+            <mat-radio-group
+              formControlName="perDay"
+              (selectionChange)="perDayChange()"
+              [disabled]="!tobacco.value.number">
+              <mat-radio-button
+                color="primary"
+                class="radio-button"
+                [value]="true">
+                per day</mat-radio-button
+              >
+              <mat-radio-button
+                color="primary"
+                class="radio-button"
+                [value]="false">
+                per week</mat-radio-button
+              >
+            </mat-radio-group>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-2 box">
+            <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
+              }}</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                appDefaultNull
+                maxlength="2"
+                allowText="number"
+                formControlName="duration"
+                (selectionChange)="validateDuration(tobacco)"
+                [disabled]="!tobacco.value.number" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-10 col-sm-4 col-md-3 box">
+            <mat-form-field>
+              <mat-label>{{
+                currentLanguageSet?.DurationData?.durationUnit
+              }}</mat-label>
+              <mat-select
+                class="select-full-width"
+                formControlName="durationUnit"
+                (selectionChange)="validateDuration(tobacco)"
+                [disabled]="!tobacco.value.duration">
+                <mat-option value="Days">Day(s)</mat-option>
+                <mat-option value="Weeks">Week(s)</mat-option>
+                <mat-option value="Months">Month(s)</mat-option>
+                <mat-option value="Years">Year(s)</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-sm-2 col-md-2 box action-btn-container pull-right padding-0-left-right-al">
+            <button
+              md-mini-fab
+              color="warn"
+              *ngIf="i !== 0 || (i === 0 && tobacco.touched)"
+              (click)="removeTobacco(i, tobacco)">
+              <mat-icon class="md-18">close</mat-icon>
+            </button>
+            <button
+              md-mini-fab
+              color="primary"
+              *ngIf="isLast"
+              [disabled]="checkTobaccoValidity(tobacco)"
+              (click)="addTobacco()">
+              <mat-icon class="md-18">add</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card
+    class="row m-t-10"
+    *ngIf="alcoholIntakeStatus === 'Yes' && beneficiary?.ageVal >= 13">
+    <mat-card-header>
+      <mat-card-title>
+        <h4>
+          <strong>{{
+            currentLanguageSet?.historyData?.ancHistory
+              ?.personalHistoryANC_OPD_NCD_PNC?.alcoholData?.alcohol
+          }}</strong>
+        </h4>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content formArrayName="alcoholList">
+      <div
+        class="row multi-row-select"
+        *ngFor="
+          let alcohol of getAlcoholList();
+          let i = index;
+          let isLast = last;
+          let isOdd = odd
+        "
+        [ngClass]="{ odd: !isOdd }">
+        <ng-container [formGroupName]="i">
+          <div class="col-xs-12 col-sm-6 col-md-2 box padding-0-right">
+            <mat-label>{{
+              currentLanguageSet?.historyData?.ancHistory
+                ?.personalHistoryANC_OPD_NCD_PNC?.alcoholData?.typeofAlcohol
+            }}</mat-label>
+            <mat-select
+              class="select-full-width"
+              formControlName="typeOfAlcohol"
+              (selectionChange)="filterAlcoholList($event, i)">
+              <mat-option
+                *ngFor="let alcohol of alcoholSelectList[i]"
+                [value]="alcohol"
+                >{{ alcohol.habitValue }}
+              </mat-option>
+            </mat-select>
+          </div>
+
+          <div
+            class="col-xs-12 col-sm-6 col-md-2 box"
+            *ngIf="alcohol.value.typeOfAlcohol === 'Other'">
+            <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
+                  ?.others
+              }}</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                appDefaultNull
+                maxlength="50"
+                allowText="alphabet"
+                formControlName="otherAlcoholType" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-4 box padding-0-right">
+            <mat-form-field>
+              <mat-label>{{
+                currentLanguageSet?.historyData?.ancHistory
+                  ?.personalHistoryANC_OPD_NCD_PNC?.alcoholData?.freqofAlcohol
+              }}</mat-label>
+              <mat-select
+                id="frequencyIntake"
+                class="select-full-width"
+                formControlName="alcoholIntakeFrequency"
+                [disabled]="!alcohol.value.typeOfAlcohol">
+                <mat-option
+                  *ngFor="let frequency of masterData?.frequencyOfAlcoholIntake"
+                  [value]="frequency.habitValue">
+                  {{ frequency.habitValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-4 box">
+            <mat-form-field>
+              <mat-label>{{
+                currentLanguageSet?.historyData?.ancHistory
+                  ?.personalHistoryANC_OPD_NCD_PNC?.alcoholData
+                  ?.qtyofAlcoholintake
+              }}</mat-label>
+              <mat-select
+                class="select-full-width"
+                formControlName="avgAlcoholConsumption"
+                [disabled]="!alcohol.value.alcoholIntakeFrequency">
+                <mat-option
+                  *ngFor="let quantity of masterData?.quantityOfAlcoholIntake"
+                  [value]="quantity">
+                  {{ quantity.habitValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-1 box padding-0-left-right">
+            <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
+              }}</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                appDefaultNull
+                maxlength="2"
+                allowText="number"
+                formControlName="duration"
+                (selectionChange)="validateDuration(alcohol)"
+                [disabled]="!alcohol.value.avgAlcoholConsumption" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-10 col-sm-4 col-md-3 box">
+            <mat-form-field>
+              <mat-label>{{
+                currentLanguageSet?.DurationData?.durationUnit
+              }}</mat-label>
+              <mat-select
+                class="select-full-width"
+                formControlName="durationUnit"
+                (selectionChange)="validateDuration(alcohol)"
+                [disabled]="!alcohol.value.duration">
+                <mat-option value="Days">Day(s)</mat-option>
+                <mat-option value="Weeks">Week(s)</mat-option>
+                <mat-option value="Months">Month(s)</mat-option>
+                <mat-option value="Years">Year(s)</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-sm-2 col-md-2 box action-btn-container pull-right padding-0-left-right-al">
+            <button
+              md-mini-fab
+              color="warn"
+              *ngIf="i !== 0 || (i === 0 && alcohol.touched)"
+              (click)="removeAlcohol(i, alcohol)">
+              <mat-icon class="md-18">close</mat-icon>
+            </button>
+            <button
+              md-mini-fab
+              color="primary"
+              *ngIf="isLast"
+              [disabled]="checkAlcoholValidity(alcohol)"
+              (click)="addAlcohol()">
+              <mat-icon class="md-18">add</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="row m-t-10" *ngIf="allergyStatus === 'Yes'">
+    <mat-card-header>
+      <mat-card-title>
+        <h4>
+          <strong>{{
+            currentLanguageSet?.historyData?.ancHistory
+              ?.personalHistoryANC_OPD_NCD_PNC?.allergicStatus?.allergy
+          }}</strong>
+        </h4>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content formArrayName="allergicList">
+      <div
+        class="row multi-row-select"
+        *ngFor="
+          let allergy of getAllergyList();
+          let i = index;
+          let isLast = last;
+          let isOdd = odd
+        "
+        [ngClass]="{ odd: !isOdd }">
+        <ng-container [formGroupName]="i">
+          <div class="col-xs-12 col-sm-6 col-md-3 box">
+            <mat-form-field>
+              <mat-label>{{
+                currentLanguageSet?.historyData?.ancHistory
+                  ?.personalHistoryANC_OPD_NCD_PNC?.allergicStatus?.allergyType
+              }}</mat-label>
+              <mat-select
+                class="select-full-width"
+                formControlName="allergyType"
+                (selectionChange)="filterAlleryList($event, i)">
+                <mat-option
+                  *ngFor="let allergy of allerySelectList[i]"
+                  [value]="allergy"
+                  >{{ allergy.allergyType }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3 box">
+            <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.historyData?.ancHistory
+                  ?.personalHistoryANC_OPD_NCD_PNC?.allergicStatus?.allergenName
+              }}</mat-label>
+              <input
+                autocomplete="off"
+                allowText="inputFieldValidator"
+                matInput
+                appDefaultNull
+                maxlength="200"
+                formControlName="snomedTerm"
+                (change)="removeSnomedCode(allergy, i)"
+                (keyup.enter)="searchComponents(allergy, i, allergy)" />
+              <button>
+                <mat-icon
+                  class="search-btn cursorPointer"
+                  matSuffix
+                  (click)="searchComponents(allergy, i, allergy)"
+                  [class.toolbar-icon-disabled]="componentFlag"
+                  >search</mat-icon
+                >
+              </button>
+            </mat-form-field>
+          </div>
+
+          <div class="clearfix"></div>
+          <div class="col-xs-12 col-sm-6 col-md-3 box" [hidden]="true">
+            <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
+                  ?.sctCode
+              }}</mat-label>
+              <input
+                maxlength="100"
+                matInput
+                [style.width]="'100%'"
+                formControlName="snomedCode"
+                readonly />
+            </mat-form-field>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-md-3 box">
+            <mat-form-field>
+              <mat-label>{{
+                currentLanguageSet?.historyData?.ancHistory
+                  ?.personalHistoryANC_OPD_NCD_PNC?.allergicStatus
+                  ?.typeofReaction
+              }}</mat-label>
+              <mat-select
+                class="select-full-width"
+                multiple
+                formControlName="typeOfAllergicReactions"
+                (selectionChange)="canEnableOtherAllergy(allergy)"
+                [disabled]="!allergy.value.snomedTerm">
+                <mat-option
+                  *ngFor="
+                    let allergicReaction of masterData?.AllergicReactionTypes
+                  "
+                  [value]="allergicReaction">
+                  {{ allergicReaction.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div
+            class="col-xs-10 col-sm-4 col-md-2 box"
+            *ngIf="allergy.value.enableOtherAllergy">
+            <mat-form-field class="input-full-width">
+              <mat-label>{{
+                currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
+                  ?.others
+              }}</mat-label>
+              <input
+                autocomplete="off"
+                matInput
+                appDefaultNull
+                maxlength="50"
+                allowText="alphaspace"
+                formControlName="otherAllergicReaction" />
+            </mat-form-field>
+          </div>
+
+          <div
+            style="margin-left: 35%"
+            class="col-sm-2 col-md-2 box action-btn-container pull-right padding-0-left-right-al">
+            <button
+              md-mini-fab
+              color="warn"
+              *ngIf="i !== 0 || (i === 0 && allergy.touched)"
+              (click)="removeAllergy(i, allergy)">
+              <mat-icon class="md-18">close</mat-icon>
+            </button>
+            <button
+              md-mini-fab
+              color="primary"
+              *ngIf="
+                isLast &&
+                generalPersonalHistoryForm.get('allergicList')?.value?.length <
+                  allergyMasterData.length
+              "
+              [disabled]="checkAllergyValidity(allergy)"
+              (click)="addAllergy()">
+              <mat-icon class="md-18">add</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

@@ -1,0 +1,66 @@
+<mat-accordion [formGroup]="cancerForm">
+  <mat-expansion-panel expanded="true">
+    <mat-expansion-panel-header>
+      <h5>
+        {{
+          currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+            ?.symptoms?.symptoms
+        }}
+      </h5>
+    </mat-expansion-panel-header>
+    <app-doctor-signs-and-symptoms
+      [signsForm]="signsForm"></app-doctor-signs-and-symptoms>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <h5>{{ currentLanguageSet?.casesheet?.oralExamination }}</h5>
+    </mat-expansion-panel-header>
+    <app-cancer-oral-examination
+      [oralExaminationForm]="oralExaminationForm"></app-cancer-oral-examination>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel *ngIf="showBreastExamination || female">
+    <mat-expansion-panel-header>
+      <h5>
+        {{
+          currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+            ?.breast?.breastExamination
+        }}
+      </h5>
+    </mat-expansion-panel-header>
+    <app-doctor-breast-examination
+      [breastExaminationForm]="breastExaminationForm"
+      id="breastExamination"></app-doctor-breast-examination>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <h5>
+        {{
+          currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+            ?.abdominal?.abdominalExamination
+        }}
+      </h5>
+    </mat-expansion-panel-header>
+    <app-doctor-abdominal-examination
+      [abdominalExaminationForm]="
+        abdominalExaminationForm
+      "></app-doctor-abdominal-examination>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel *ngIf="female">
+    <mat-expansion-panel-header>
+      <h5>
+        {{
+          currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+            ?.gynecological?.gynecologicalExamination
+        }}
+      </h5>
+    </mat-expansion-panel-header>
+    <app-doctor-gynecological-examination
+      [gynecologicalExaminationForm]="
+        gynecologicalExaminationForm
+      "></app-doctor-gynecological-examination>
+  </mat-expansion-panel>
+</mat-accordion>

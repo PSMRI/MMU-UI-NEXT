@@ -1,0 +1,118 @@
+<div class="title">
+  <h4>{{ placeHolderSearch }} {{ current_language_set?.selection }}</h4>
+  <button
+    mat-icon-button
+    matDialogClose
+    matTooltip="{{ current_language_set?.common?.close }}"
+    class="pull-right exit width-20px">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div class="container-fluid">
+  <div class="row no-gutters">
+    <div class="col-xs-12 col-sm-4">
+      <mat-form-field class="input-full-width">
+        <mat-label>{{ placeHolderSearch }}</mat-label>
+        <input
+          autocomplete="off"
+          #inputSearch="ngModel"
+          minlength="3"
+          maxlength="100"
+          matInput
+          [(ngModel)]="input.searchTerm"
+          (keyup.enter)="search(input.searchTerm, 0)"
+          (ngModelChange)="resetData()" />
+      </mat-form-field>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+      <button
+        class="search-btn"
+        [disabled]="!inputSearch.valid"
+        mat-raised-button
+        color="accent"
+        type="button"
+        (click)="search(input.searchTerm, 0)">
+        {{ current_language_set?.common?.search }}
+      </button>
+    </div>
+  </div>
+  <div class="overlay" *ngIf="showProgressBar">
+    <div class="overlay-content">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+
+  <mat-dialog-content>
+    <div class="table-responsive" style="overflow-x: hidden">
+      <table
+        mat-table
+        aria-describedby="provisionalDiagnosis"
+        class="table table-striped"
+        [dataSource]="diagnosis">
+        <ng-container matColumnDef="ConceptID">
+          <th
+            mat-header-cell
+            style="border-bottom: none"
+            *matHeaderCellDef
+            mat-sort-header>
+            {{ current_language_set?.common?.ConceptID }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element?.conceptID }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="term">
+          <th
+            mat-header-cell
+            style="border-bottom: none"
+            *matHeaderCellDef
+            mat-sort-header>
+            {{ current_language_set?.common?.term }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element?.term }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="empty">
+          <th
+            mat-header-cell
+            style="border-bottom: none"
+            *matHeaderCellDef
+            mat-sort-header></th>
+          <td mat-cell *matCellDef="let element" class="text-center">
+            <mat-checkbox
+              (change)="selectDiagnosis($event, element)"
+              [checked]="element.selected || selectedDiagnosis(element)"
+              [disabled]="disableSelection(element)"></mat-checkbox>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <div
+      class="pull-center"
+      style="margin-top: 5px"
+      [hidden]="diagnosis.data.length > 0">
+      <strong>{{ current_language_set?.noRecordsFound }}</strong>
+    </div>
+    <mat-paginator
+      [hidden]="diagnosis.data.length > 0"
+      [pageSizeOptions]="[5, 10, 20]"
+      [pageSize]="5"
+      showFirstLastButtons>
+    </mat-paginator>
+    <div class="row m-b-20">
+      <div class="col-xs-12">
+        <button
+          mat-raised-button
+          class="pull-right"
+          (click)="submitDiagnosisList()"
+          [disabled]="selectedDiagnosisList.length === 0"
+          color="primary">
+          {{ current_language_set?.common?.submit }}
+        </button>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

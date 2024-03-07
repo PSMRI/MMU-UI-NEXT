@@ -1,0 +1,34 @@
+<mat-accordion [formGroup]="patientANCForm">
+  <mat-expansion-panel expanded="true">
+    <mat-expansion-panel-header>
+      <h5>{{ current_language_set?.ancData?.ancDetails }}</h5>
+    </mat-expansion-panel-header>
+    <app-nurse-anc-details
+      [patientANCDetailsForm]="patientANCDetailsForm"></app-nurse-anc-details>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <h5>
+        {{ current_language_set?.ancData?.obstetricDeatils?.obstetricFormula }}
+      </h5>
+    </mat-expansion-panel-header>
+    <app-nurse-obstetric-formula
+      [gravidaStatus]="gravidaStatus"
+      [mode]="mode"
+      [obstetricFormulaForm]="
+        obstetricFormulaForm
+      "></app-nurse-obstetric-formula>
+  </mat-expansion-panel>
+  <mat-expansion-panel
+    *ngIf="gravidaStatus !== null && gravidaStatus !== undefined">
+    <mat-expansion-panel-header>
+      <h5>{{ current_language_set?.ancData?.ancImmune?.ancImmunization }}</h5>
+    </mat-expansion-panel-header>
+    <app-nurse-anc-immunization
+      [gravidaStatus]="gravidaStatus"
+      [mode]="mode"
+      [patientANCImmunizationForm]="
+        patientANCImmunizationForm
+      "></app-nurse-anc-immunization>
+  </mat-expansion-panel>
+</mat-accordion>

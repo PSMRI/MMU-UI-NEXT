@@ -1,0 +1,84 @@
+<!-- {{ generalDoctorInvestigationForm.value | json}} -->
+<div *ngIf="visit === 'NCD screening'">
+  <mat-label
+    *ngIf="
+      diabetesSelected > 0 &&
+      RBSTestDoneInVitals === false &&
+      !rbsSelectedInInvestigation
+    "
+    style="color: red">
+    * {{ current_language_set?.pleaseSelectRBSTest }}</mat-label
+  ><br />
+  <mat-label
+    *ngIf="VisualAcuityMandatory && !VisualAcuityTestDone"
+    style="color: red">
+    * {{ current_language_set?.pleaseSelectVisualAcuityTest }}</mat-label
+  >
+</div>
+<div *ngIf="visit === 'ANC'">
+  <mat-label
+    *ngIf="
+      (!RBSTestDoneInVitals && !rbsSelectedInInvestigation) ||
+      !hemoglobbinSelected
+    "
+    style="color: red">
+    * {{ current_language_set?.pleaseSelectRBSTestAndHaemoglobinTest }}
+  </mat-label>
+</div>
+
+<div class="row m-t-20" [formGroup]="generalDoctorInvestigationForm">
+  <div class="col-xs-12 col-sm-6">
+    <mat-form-field>
+      <mat-label>{{
+        current_language_set?.labTechnicianData?.testName
+      }}</mat-label>
+      <mat-select
+        class="input-full-width"
+        multiple
+        name="labTest"
+        formControlName="labTest"
+        (change)="checkTestName($event)">
+        <mat-option
+          *ngFor="let nonRadiology of nonRadiologyMaster"
+          [value]="nonRadiology"
+          [disabled]="canDisable(nonRadiology)">
+          {{ nonRadiology.procedureName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <mat-form-field>
+      <mat-label>{{
+        current_language_set?.labTechnicianData?.radiologyimaging
+      }}</mat-label>
+      <mat-select
+        class="input-full-width"
+        multiple
+        name="radiologyTest"
+        formControlName="radiologyTest">
+        <mat-option
+          *ngFor="let radiology of radiologyMaster"
+          [value]="radiology"
+          [disabled]="canDisable(radiology)">
+          {{ radiology.procedureName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-xs-12 m-t-20">
+    <mat-form-field class="input-full-width">
+      <mat-label>{{
+        current_language_set?.Investigationdetails?.externalinvestigations
+      }}</mat-label>
+      <textarea
+        matInput
+        allowText="textAreaValidator"
+        defaultNull
+        name="externalInvestigation"
+        formControlName="externalInvestigations"
+        maxlength="300">
+      </textarea>
+    </mat-form-field>
+  </div>
+</div>

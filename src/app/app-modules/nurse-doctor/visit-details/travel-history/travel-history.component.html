@@ -1,0 +1,478 @@
+<div [formGroup]="patientCovidForm">
+  <div class="row">
+    <div class="container">
+      <div class="col-12 row">
+        <div class="col-6 cell_postion">
+          <mat-label>
+            {{ currentLanguageSet?.travel?.haveyouTravelledlast14days }}
+          </mat-label>
+        </div>
+        <div class="col-6">
+          <mat-radio-group
+            class="test"
+            [style.width]="'50%'"
+            formControlName="travelStatus"
+            name="travelStatus"
+            placeholder="Travelled last 14 days"
+            (change)="travelStatuschange(travelStatus)"
+            id="travelStatus"
+            required="{{ travelReqiured }}">
+            <mat-radio-button value="true">{{
+              currentLanguageSet?.common?.yes
+            }}</mat-radio-button>
+            <mat-radio-button value="false">{{
+              currentLanguageSet?.common?.no
+            }}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div *ngIf="istravelStatus">
+        <div>
+          <br />
+          <h5>{{ currentLanguageSet?.travel?.travelType }}</h5>
+          <div *ngIf="readTravel === false">
+            <div *ngFor="let travel of travelTypeList">
+              <input
+                type="checkbox"
+                style="width: 20px; height: 20px"
+                (change)="onChange(travel, $event)"
+                id="travelType" />
+              <span>{{ travel }}</span>
+            </div>
+          </div>
+          <div *ngIf="readTravel === true">
+            <input
+              type="checkbox"
+              style="width: 20px; height: 20px"
+              id="travelType"
+              [checked]="domtravel"
+              [disabled]="readTravel" />
+            {{ currentLanguageSet?.travel?.domestic }}
+            <br />
+            <input
+              type="checkbox"
+              style="width: 20px; height: 20px"
+              id="travelType"
+              [checked]="intertravel"
+              [disabled]="readTravel" />
+            {{ currentLanguageSet?.travel?.international }}
+          </div>
+          <br />
+          <br />
+          <!--Grid row-->
+          <div class="row">
+            <!--Grid column-->
+            <div class="col-md-6 mb-4" *ngIf="istravelModeDomestic">
+              <!-- Card -->
+              <div class="card gradient-card">
+                <!-- Content -->
+
+                <div
+                  class="text-white d-flex h-100 mask blue-gradient-rgba"
+                  style="justify-content: center">
+                  <div class="first-content align-self-left p-3">
+                    <h4 style="text-align: center; color: black; size: 40px">
+                      <br />
+                      <strong>{{
+                        currentLanguageSet?.travel?.domestic
+                      }}</strong>
+                    </h4>
+                    <br />
+                    <div style="text-align: center">
+                      <mat-form-field>
+                        <mat-label>{{
+                          currentLanguageSet?.travel?.modeofTravel
+                        }}</mat-label>
+                        <mat-select
+                          [style.width]="'70%'"
+                          class="test"
+                          name="modeOfTravelDomestic"
+                          formControlName="modeOfTravelDomestic"
+                          placeholder="{{
+                            currentLanguageSet?.travel?.modeofTravel
+                          }}"
+                          id="modeOfTravelDomestic"
+                          (selectionChange)="
+                            traveldomesticStatuschange(modeOfTravelDomestic)
+                          ">
+                          <mat-option
+                            *ngFor="let type of domestictype"
+                            value="{{ type }}"
+                            >{{ type }}</mat-option
+                          >
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                    <div style="text-align: center; color: black; size: 30px">
+                      <h5>
+                        {{ currentLanguageSet?.travel?.locationTravelledFrom }}
+                      </h5>
+                    </div>
+                    <div style="text-align: center">
+                      <mat-form-field>
+                        <mat-label>{{
+                          currentLanguageSet?.travel?.state
+                        }}</mat-label>
+                        <mat-select
+                          [style.width]="'70%'"
+                          name="fromStateDom"
+                          id="fromStateDom"
+                          placeholder="{{ currentLanguageSet?.travel?.state }}"
+                          formControlName="fromStateDom"
+                          (selectionChange)="GetDistrictsFromDom(fromStateDom)">
+                          <mat-option
+                            *ngFor="let state of states"
+                            [value]="state.stateID">
+                            {{ state.stateName }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div style="text-align: center">
+                      <mat-form-field>
+                        <mat-label>{{
+                          currentLanguageSet?.travel?.district
+                        }}</mat-label>
+                        <mat-select
+                          [style.width]="'70%'"
+                          id="fromDistrictDom"
+                          name="fromDistrictDom"
+                          placeholder="{{
+                            currentLanguageSet?.travel?.district
+                          }}"
+                          formControlName="fromDistrictDom"
+                          (selectionChange)="
+                            GetSubDistrictFromDom(fromDistrictDom)
+                          ">
+                          <mat-option
+                            *ngFor="let district of districtsFromDom"
+                            [value]="district.districtID">
+                            {{ district.districtName }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div style="text-align: center">
+                      <mat-form-field>
+                        <mat-label>{{
+                          currentLanguageSet?.travel?.subDistrict
+                        }}</mat-label>
+                        <mat-select
+                          [style.width]="'70%'"
+                          id="fromSubDistrictDom"
+                          formControlName="fromSubDistrictDom"
+                          placeholder="{{
+                            currentLanguageSet?.travel?.subDistrict
+                          }}"
+                          name="fromSubDistrictDom"
+                          (selectionChange)="getVillage(fromSubDistrictDom)">
+                          <mat-option
+                            *ngFor="let item of subDistrictsFromDom"
+                            [value]="item.blockID"
+                            >{{ item.blockName }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div style="text-align: center; color: black; size: 30px">
+                      <h5>
+                        {{ currentLanguageSet?.travel?.locationTravelledTo }}
+                      </h5>
+                    </div>
+                    <div style="text-align: center">
+                      <mat-form-field>
+                        <mat-label>{{
+                          currentLanguageSet?.travel?.state
+                        }}</mat-label>
+                        <mat-select
+                          [style.width]="'70%'"
+                          name="toStateDom"
+                          formControlName="toStateDom"
+                          placeholder="{{ currentLanguageSet?.travel?.state }}"
+                          id="toStateDom"
+                          (selectionChange)="GetDistrictsToDom(toStateDom)">
+                          <mat-option
+                            *ngFor="let state of states"
+                            [value]="state.stateID">
+                            {{ state.stateName }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div style="text-align: center">
+                      <mat-form-field>
+                        <mat-label>{{
+                          currentLanguageSet?.travel?.district
+                        }}</mat-label>
+                        <mat-select
+                          [style.width]="'70%'"
+                          name="toDistrictDom"
+                          formControlName="toDistrictDom"
+                          placeholder="{{
+                            currentLanguageSet?.travel?.district
+                          }}"
+                          id="toDistrictDom"
+                          (selectionChange)="
+                            getSubDistrictToDom(toDistrictDom)
+                          ">
+                          <mat-option
+                            *ngFor="let district of districtsToDom"
+                            [value]="district.districtID">
+                            {{ district.districtName }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div style="text-align: center">
+                      <mat-form-field>
+                        <mat-label>{{
+                          currentLanguageSet?.travel?.subDistrict
+                        }}</mat-label>
+                        <mat-select
+                          [style.width]="'70%'"
+                          name="toSubDistrictDom"
+                          placeholder="{{
+                            currentLanguageSet?.travel?.subDistrict
+                          }}"
+                          id="toSubDistrictDom"
+                          formControlName="toSubDistrictDom"
+                          (selectionChange)="
+                            getVillageTosubDistrictDom(toSubDistrictDom)
+                          ">
+                          <mat-option
+                            *ngFor="let item of subDistrictsToDom"
+                            [value]="item.blockID"
+                            >{{ item.blockName }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div
+                      class="second-content align-self-center mx-auto text-center">
+                      <span class="far fa-money-bill-alt fa-3x"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <br />
+                <!-- Data -->
+                <div class="third-content ml-auto mr-4 mb-2">
+                  <p class="text-uppercase text-muted"></p>
+                </div>
+              </div>
+            </div>
+
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-4" *ngIf="istravelModeInternatinal">
+              <!-- Card -->
+              <div class="card gradient-card">
+                <!-- Content -->
+
+                <div
+                  class="text-white d-flex h-100 mask purple-gradient-rgba"
+                  style="justify-content: center">
+                  <div class="first-content align-self-left p-3">
+                    <h4 style="text-align: center; color: black; size: 30px">
+                      <br />
+                      <strong>{{
+                        currentLanguageSet?.travel?.international
+                      }}</strong>
+                    </h4>
+                    <br />
+                    <div style="text-align: center">
+                      <mat-form-field>
+                        <mat-label>{{
+                          currentLanguageSet?.travel?.modeofTravel
+                        }}</mat-label>
+                        <mat-select
+                          [style.width]="'70%'"
+                          class="test"
+                          id="modeOfTravelInter"
+                          formControlName="modeOfTravelInter"
+                          placeholder="{{
+                            currentLanguageSet?.travel?.modeofTravel
+                          }}"
+                          name="modeOfTravelInter"
+                          (selectionChange)="
+                            travelinternationalStatuschange(modeOfTravelInter)
+                          ">
+                          <mat-option
+                            *ngFor="let type of internationaltype"
+                            value="{{ type }}"
+                            >{{ type }}</mat-option
+                          >
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div style="text-align: center; color: black; size: 30px">
+                      <h5>
+                        {{ currentLanguageSet?.travel?.locationTravelledFrom }}
+                      </h5>
+                    </div>
+
+                    <div style="text-align: center">
+                      <mat-form-field>
+                        <mat-label>{{
+                          currentLanguageSet?.travel?.country
+                        }}</mat-label>
+                        <mat-select
+                          [style.width]="'70%'"
+                          id="fromCountryInter"
+                          placeholder="{{
+                            currentLanguageSet?.travel?.country
+                          }}"
+                          formControlName="fromCountryInter"
+                          name="fromCountryInter"
+                          (selectionChange)="
+                            getCitiesFromInter(fromCountryInter)
+                          ">
+                          <mat-option
+                            *ngFor="let country of countries"
+                            [value]="country.countryID">
+                            {{ country.countryName }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div style="text-align: center">
+                      <mat-form-field>
+                        <mat-label>{{
+                          currentLanguageSet?.travel?.city
+                        }}</mat-label>
+                        <mat-select
+                          [style.width]="'70%'"
+                          placeholder="{{ currentLanguageSet?.travel?.city }}"
+                          formControlName="fromCityInter"
+                          id="fromCityInter"
+                          name="fromCityInter"
+                          (selectionChange)="CitiesFromInter(fromCityInter)">
+                          <mat-option
+                            *ngFor="let city of citiesFromInter"
+                            [value]="city.cityID">
+                            {{ city.cityName }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div style="text-align: center; color: black; size: 40px">
+                      <h5>
+                        {{ currentLanguageSet?.travel?.locationTravelledTo }}
+                      </h5>
+                    </div>
+
+                    <div style="text-align: center">
+                      <mat-form-field>
+                        <mat-label>{{
+                          currentLanguageSet?.travel?.country
+                        }}</mat-label>
+                        <mat-select
+                          [style.width]="'70%'"
+                          placeholder="{{
+                            currentLanguageSet?.travel?.country
+                          }}"
+                          formControlName="toCountryInter"
+                          name="toCountryInter"
+                          id="toCountryInter"
+                          (selectionChange)="getCitiesToInter(toCountryInter)">
+                          <mat-option
+                            *ngFor="let country of countries"
+                            [value]="country.countryID">
+                            {{ country.countryName }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div style="text-align: center">
+                      <mat-form-field>
+                        <mat-label>{{
+                          currentLanguageSet?.travel?.city
+                        }}</mat-label>
+                        <mat-select
+                          [style.width]="'70%'"
+                          placeholder="{{ currentLanguageSet?.travel?.city }}"
+                          name="toCityInter"
+                          id="toCityInter"
+                          formControlName="toCityInter"
+                          (selectionChange)="CitiesToInter(toCityInter)">
+                          <mat-option
+                            *ngFor="let city of citiesToInter"
+                            [value]="city.cityID">
+                            {{ city.cityName }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div
+                      class="second-content align-self-center mx-auto text-center">
+                      <span class="fas fa-chart-line fa-3x"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <br />
+
+                <!-- Data -->
+                <div class="third-content ml-auto mr-4 mb-2">
+                  <p class="text-uppercase text-muted"></p>
+                  <!-- <h4 class="font-weight-bold float-right"></h4> -->
+                </div>
+
+                <!-- Content -->
+              </div>
+              <!-- Card -->
+            </div>
+            <!--Grid column-->
+          </div>
+        </div>
+        <br />
+      </div>
+
+      <br />
+      <h4>{{ currentLanguageSet?.travel?.outcome }}</h4>
+
+      <div>
+        <h5>{{ currentLanguageSet?.travel?.suspectedCOVID }}</h5>
+        <mat-form-field>
+          <input
+            matInput
+            class="test"
+            name="suspectedStatusUI"
+            id="suspectedStatusUI"
+            formControlName="suspectedStatusUI"
+            value="{{ suspectedCovid }}"
+            readonly />
+        </mat-form-field>
+        <br />
+        <br />
+
+        <mat-form-field [style.width]="'50%'">
+          <h4>{{ currentLanguageSet?.travel?.recommendation }} :</h4>
+          <br />
+
+          <textarea
+            matInput
+            rows="6"
+            value="{{ recommendationText }}"
+            id="recommendation"
+            formControlName="recommendation"
+            readonly></textarea>
+        </mat-form-field>
+      </div>
+      <!--Grid column-->
+    </div>
+  </div>
+</div>

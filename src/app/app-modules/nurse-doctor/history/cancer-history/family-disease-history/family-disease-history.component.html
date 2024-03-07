@@ -1,0 +1,135 @@
+<div [formGroup]="cancerPatientFamilyMedicalHistoryForm">
+  <div class="m-t-10">
+    <div class="col-12" style="text-align: right">
+      <span class="font-history-label m-t-10">{{
+        currentLanguageSet?.alerts?.info?.familyDisease
+      }}</span>
+      <button
+        mat-icon-button
+        matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
+        class="mat_icon_blue"
+        color="primary"
+        id="previousCancerFamilyHistory"
+        (click)="getPreviousCancerFamilyHistory()">
+        <mat-icon class="md-18">history</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="m-t-10 col-12" formArrayName="diseases">
+    <div
+      class="multi_row_select"
+      style="margin: 15px 0px 15px 0px; background-color: #f0f5f5"
+      *ngFor="
+        let disease of getDiseases();
+        let i = index;
+        let isLast = last;
+        let isOdd = odd
+      "
+      [ngClass]="{ odd: !isOdd }">
+      <div [formGroupName]="i" class="col-12 row">
+        <div class="col-3 box">
+          <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.historyData?.cancerScreeningHistory
+                ?.familyMedical?.diseaseType
+            }}</mat-label>
+            <mat-select
+              class="input-full-width"
+              name="cancerDiseaseType"
+              formControlName="cancerDiseaseType"
+              (selectionChange)="
+                filterFamilyMember(disease.value?.cancerDiseaseType, i, disease)
+              ">
+              <mat-option
+                *ngFor="let cancerDisease of temp[i]?.diseaseType"
+                [value]="cancerDisease">
+                {{ cancerDisease.cancerDiseaseType }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-3 box"
+          *ngIf="
+            disease.value?.cancerDiseaseType?.cancerDiseaseType ===
+            'Any other Cancer'
+          ">
+          <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.historyData?.cancerScreeningHistory
+                ?.familyMedical?.otherCancerDetails
+            }}</mat-label>
+            <input
+              autocomplete="off"
+              matInput
+              appDefaultNull
+              name="otherDiseaseType"
+              formControlName="otherDiseaseType"
+              allowText="alphaspace"
+              maxlength="25" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-3 box" [hidden]="true">
+          <mat-form-field class="input-full-width">
+            <mat-label>{{
+              currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
+                ?.sctCode
+            }}</mat-label>
+            <input
+              maxlength="100"
+              matInput
+              [style.width]="'100%'"
+              formControlName="snomedCode"
+              readonly />
+          </mat-form-field>
+        </div>
+
+        <div class="col-3 box">
+          <mat-form-field>
+            <mat-label>{{
+              currentLanguageSet?.historyData?.cancerScreeningHistory
+                ?.familyMedical?.familyMembers
+            }}</mat-label>
+            <mat-select
+              class="input-full-width"
+              multiple
+              name="familyMemberList"
+              formControlName="familyMemberList"
+              #memberSelect>
+              <mat-option
+                *ngFor="let familyMembers of temp[i]?.familyMembers"
+                [value]="familyMembers.benRelationshipType">
+                {{ familyMembers.benRelationshipType }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-3 box action-btn-container" style="text-align: end">
+          <button
+            md-mini-fab
+            id="removeDisease"
+            style="margin-right: 5px"
+            class="mat_warn_circle"
+            *ngIf="i !== 0 || (i === 0 && !disease.untouched)"
+            (click)="removeDisease(i, disease)"
+            color="warn">
+            <span class="material-icons">close</span>
+          </button>
+          <button
+            md-mini-fab
+            *ngIf="isLast"
+            id="addFamilyDisease"
+            (click)="addFamilyDisease()"
+            color="primary"
+            class="mat_blue_circle"
+            [disabled]="checkValidity(disease)">
+            <span class="material-icons">add</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

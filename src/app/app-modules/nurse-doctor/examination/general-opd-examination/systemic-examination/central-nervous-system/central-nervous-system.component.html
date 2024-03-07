@@ -1,0 +1,139 @@
+<!-- {{centralNervousSystemForm.value | json}} -->
+<div class="row m-t-20" [formGroup]="centralNervousSystemForm">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <mat-label>{{
+      currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+        ?.centralANC_OPD_PNC?.handedness
+    }}</mat-label>
+    <mat-select
+      class="select-full-width"
+      name="handedness"
+      formControlName="handedness">
+      <mat-option
+        *ngFor="let handedness of selectHandedness"
+        [value]="handedness.name">
+        {{ handedness.name }}
+      </mat-option>
+    </mat-select>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <mat-form-field class="input-full-width" class="textarea-full-width">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.cranial
+      }}</mat-label>
+      <textarea
+        matInput
+        allowText="textAreaValidator"
+        defaultNull
+        matTextareaAutosize
+        name="cranialNervesExamination"
+        formControlName="cranialNervesExamination"
+        maxlength="300"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <mat-form-field class="input-full-width" class="textarea-full-width">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.motorsystem
+      }}</mat-label>
+      <textarea
+        matInput
+        allowText="textAreaValidator"
+        defaultNull
+        matTextareaAutosize
+        name="motorSystem"
+        formControlName="motorSystem"
+        maxlength="300"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <mat-form-field class="input-full-width" class="textarea-full-width">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.sensorysystem
+      }}</mat-label>
+      <textarea
+        matInput
+        allowText="textAreaValidator"
+        defaultNull
+        matTextareaAutosize
+        name="sensorySystem"
+        formControlName="sensorySystem"
+        maxlength="300"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <mat-form-field class="input-full-width" class="textarea-full-width">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.autonomicsystem
+      }}</mat-label>
+      <textarea
+        matInput
+        allowText="textAreaValidator"
+        defaultNull
+        matTextareaAutosize
+        name="autonomicSystem"
+        formControlName="autonomicSystem"
+        maxlength="300"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <mat-form-field class="input-full-width" class="textarea-full-width">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.cerebellarsigns
+      }}</mat-label>
+      <textarea
+        matInput
+        allowText="textAreaValidator"
+        defaultNull
+        matTextareaAutosize
+        name="cerebellarSigns"
+        formControlName="cerebellarSigns"
+        maxlength="300"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+    <label class="control-label" for="centralNervousSystem">{{
+      currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+        ?.centralANC_OPD_PNC?.signsofMeningealIrritation
+    }}</label>
+    <div class="clearfix"></div>
+    <mat-radio-group
+      name="signsOfMeningealIrritation"
+      formControlName="signsOfMeningealIrritation">
+      <mat-radio-button color="primary" value="Present">{{
+        currentLanguageSet?.common?.present
+      }}</mat-radio-button>
+      <mat-radio-button color="primary" value="Absent">{{
+        currentLanguageSet?.common?.absent
+      }}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <mat-form-field class="input-full-width" class="textarea-full-width">
+      <mat-label>{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.skull
+      }}</mat-label>
+      <textarea
+        matInput
+        allowText="textAreaValidator"
+        defaultNull
+        matTextareaAutosize
+        name="skull"
+        formControlName="skull"
+        maxlength="300"></textarea>
+    </mat-form-field>
+  </div>
+</div>
