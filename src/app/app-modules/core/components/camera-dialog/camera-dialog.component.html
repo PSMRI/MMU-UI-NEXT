@@ -8,26 +8,12 @@
         #workarea
         [trigger]="triggerObservable"
         (imageCapture)="captureImg($event)"></webcam>
-      <!-- <webcam
-        [width]="options.width"
-        [height]="options.height"
-        #workarea
-        [trigger]="triggerObservable"
-        [videoOptions]="options"
-        (imageCapture)="captureImg($event)"
-        (initError)="handleInitError($event)">
-      </webcam> -->
-      <!-- <div *ngIf="webcamInitError">
-        Webcam initialization failed: {{ webcamInitError.message }}
-      </div> -->
-      <!-- <a
-        (click)="captureImg($event)"
-        tabindex="0"
-        *ngIf="captured"
-        >Retry</a
-      > -->
-      <img [src]="webcamImage?.imageAsDataUrl" alt="sysImage" height="400px" />
-      <!-- <img id="photo" [src]="base64" alt="base64" *ngIf="captured" /> -->
+
+      <img
+        *ngIf="webcamImage"
+        [src]="webcamImage.imageAsDataUrl"
+        alt="sysImage"
+        height="400px" />
     </div>
   </mat-dialog-content>
   <mat-dialog-actions align="center">
@@ -66,8 +52,11 @@
 <div class="container-fluid dialog" *ngIf="imageCode">
   <mat-dialog-content>
     <div class="row">
-      <img [src]="webcamImage?.imageAsDataUrl" alt="sysImage" height="400px" />
-      <!-- <img id="photo" [src]="imageCode" alt="imgCode" /> -->
+      <img
+        *ngIf="webcamImage"
+        [src]="webcamImage.imageAsDataUrl"
+        alt="sysImage"
+        height="400px" />
     </div>
   </mat-dialog-content>
   <mat-dialog-actions align="center">

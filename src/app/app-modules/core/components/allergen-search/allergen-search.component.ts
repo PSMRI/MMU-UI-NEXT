@@ -86,7 +86,6 @@ export class AllergenSearchComponent implements OnInit, DoCheck {
   }
   showProgressBar: boolean = false;
   search(term: string, pageNo: any): void {
-    // this.selectedComponent=null;
     if (term.length > 2) {
       this.showProgressBar = true;
       this.masterdataService
@@ -96,7 +95,6 @@ export class AllergenSearchComponent implements OnInit, DoCheck {
             if (res.statusCode === 200) {
               this.showProgressBar = false;
               if (res.data && res.data.sctMaster.length > 0) {
-                // this.showProgressBar = true;
                 this.components.data = res.data.sctMaster;
                 this.components.paginator = this.paginator;
               } else {
@@ -118,14 +116,5 @@ export class AllergenSearchComponent implements OnInit, DoCheck {
   resetData() {
     this.components.data = [];
     this.components.paginator = this.paginator;
-    // this.pageCount = null;
-    // this.pager = {
-    //   totalItems: 0,
-    //   currentPage: 0,
-    //   totalPages: 0,
-    //   startPage: 0,
-    //   endPage: 0,
-    //   pages: 0
-    // };
   }
 }
