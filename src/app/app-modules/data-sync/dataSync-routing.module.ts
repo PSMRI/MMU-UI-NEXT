@@ -25,7 +25,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WorkareaComponent } from './workarea/workarea.component';
 import { CanDeactivateGuardService } from '../../app-modules/core/services/can-deactivate-guard.service';
-import { DataSyncLoginComponent } from '../data-sync-login/data-sync-login.component';
+import { DataSyncLoginComponent } from '../core/components/data-sync-login/data-sync-login.component';
 
 const routes: Routes = [
   {

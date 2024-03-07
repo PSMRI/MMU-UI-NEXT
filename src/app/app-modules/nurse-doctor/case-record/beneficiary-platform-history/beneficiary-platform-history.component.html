@@ -34,10 +34,7 @@
               service.serviceID === 2
             "
             class="m-t-20">
-            <mat-form-field
-              id="filterbox"
-              class="m-t-20"
-              style="width: 100%; justify-content: end">
+            <mat-form-field id="filterbox" class="m-t-20" style="width: 100%">
               <input
                 autocomplete="off"
                 matInput
@@ -372,7 +369,7 @@
             <div
               *ngIf="dataSource.data.length === 0"
               class="pull-center"
-              style="margin-top: 5px">
+              style="margin-top: 35px; text-align: center">
               <strong>{{ current_language_set?.noRecordsFound }}</strong>
             </div>
             <mat-paginator

@@ -438,7 +438,7 @@ export class GeneralUtils {
     });
   }
 
-  createMenstrualHistoryForm(disableFlag = true) {
+  createMenstrualHistoryForm(disableFlag: boolean = true) {
     const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     return this.fb.group({
       menstrualCycleStatus: null,

@@ -32,7 +32,7 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
 })
 export class GenitoUrinarySystemComponent implements OnInit, DoCheck {
   @Input()
-  genitoUrinarySystemForm!: FormGroup;
+  genitoUrinarySystemDataForm!: FormGroup;
   languageComponent!: SetLanguageComponent;
 
   currentLanguageSet: any;

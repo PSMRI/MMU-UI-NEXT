@@ -5,11 +5,11 @@
       [mode]="examinationMode"
       [visitCategory]="visitCategory"
       [patientExaminationForm]="
-        patientExaminationForm
+        patientExaminationDataForm
       "></app-nurse-general-opd-examination>
     <app-cancer-examination
       *ngIf="showCancer"
       [mode]="examinationMode"
-      [cancerForm]="patientExaminationForm"></app-cancer-examination>
+      [cancerForm]="patientExaminationDataForm"></app-cancer-examination>
   </div>
 </div>

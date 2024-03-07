@@ -20,16 +20,8 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import {
-  Component,
-  OnInit,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-  DoCheck,
-} from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
+import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { DoctorService } from '../../shared/services';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
@@ -85,8 +77,7 @@ export class AdherenceComponent implements OnInit, DoCheck, OnChanges {
         if (
           value != null &&
           value.statusCode == 200 &&
-          value.data != null &&
-          value.data.BenAdherence != null
+          value?.data?.BenAdherence != null
         )
           this.patientAdherenceForm.patchValue(value.data.BenAdherence);
       });

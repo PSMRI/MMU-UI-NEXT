@@ -43,7 +43,7 @@ import { PreviousDetailsComponent } from 'src/app/app-modules/core/components/pr
 })
 export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
   @Input()
-  physicalActivityHistory!: FormGroup;
+  physicalActivityHistoryForm!: FormGroup;
 
   @Input()
   mode!: string;
@@ -132,14 +132,16 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
           history.data.FamilyHistory
         ) {
           this.physicalActivityHistoryData =
-            history.data.PhysicalActivityHistory;
+            history.data.physicalActivityHistoryForm;
           if (this.physicalActivityHistoryData != undefined)
             this.handlePysicalActivityHistoryData();
         }
       });
   }
   handlePysicalActivityHistoryData() {
-    this.physicalActivityHistory.patchValue(this.physicalActivityHistoryData);
+    this.physicalActivityHistoryForm.patchValue(
+      this.physicalActivityHistoryData
+    );
     const selectedQuestion = this.physicalActivityQuestions.filter(
       (item: any) => {
         return (
@@ -167,12 +169,12 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
     console.log('questionId', selectedQuestion);
     const questionID = selectedQuestion[0].pAID;
     const IDRSScoreForPhysicalActivity = selectedQuestion[0].score;
-    this.physicalActivityHistory.patchValue({ pAID: questionID });
-    this.physicalActivityHistory.patchValue({
+    this.physicalActivityHistoryForm.patchValue({ pAID: questionID });
+    this.physicalActivityHistoryForm.patchValue({
       score: IDRSScoreForPhysicalActivity,
     });
 
-    // this.physicalActivityHistory.patchValue(selectedQuestion);
+    // this.physicalActivityHistoryForm.patchValue(selectedQuestion);
 
     this.idrsScoreService.setIRDSscorePhysicalActivity(
       IDRSScoreForPhysicalActivity

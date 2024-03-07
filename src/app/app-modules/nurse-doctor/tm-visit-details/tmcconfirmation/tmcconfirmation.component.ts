@@ -37,7 +37,7 @@ import { ConfirmationService } from 'src/app/app-modules/core/services';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
-import { DataSyncLoginComponent } from 'src/app/app-modules/data-sync-login/data-sync-login.component';
+import { DataSyncLoginComponent } from 'src/app/app-modules/core/components/data-sync-login/data-sync-login.component';
 
 @Component({
   selector: 'app-tmcconfirmation',

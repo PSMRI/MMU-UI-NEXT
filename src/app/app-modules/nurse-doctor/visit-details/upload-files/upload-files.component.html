@@ -42,11 +42,13 @@
             [ngClass]="{ chipEdit: file.isUploaded }"
             >{{ file.fileName }}
             <button
-              class="mat_blue"
+              class="mat_icon_white"
               matChipRemove
               *ngIf="!file.isUploaded"
               (click)="remove(file)">
-              <mat-icon>cancel</mat-icon>
+              <mat-icon style="margin-top: 100px; margin-left: -40px"
+                >cancel</mat-icon
+              >
             </button>
           </mat-chip-option>
         </mat-chip-listbox>

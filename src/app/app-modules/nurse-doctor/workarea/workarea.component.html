@@ -58,7 +58,7 @@
             }}</ng-template>
             <app-nurse-anc
               [mode]="ancMode"
-              [patientANCForm]="patientANCForm"></app-nurse-anc>
+              [patientANCDataForm]="patientANCForm"></app-nurse-anc>
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
                 <button class="mat_blue" type="button" matStepperNext>
@@ -88,7 +88,7 @@
             }}</ng-template>
             <app-nurse-pnc
               [mode]="pncMode"
-              [patientPNCForm]="patientPNCForm"></app-nurse-pnc>
+              [patientPNCDataForm]="patientPNCForm"></app-nurse-pnc>
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
                 <button class="mat_blue" type="button" matStepperNext>
@@ -126,7 +126,7 @@
               [visitCategory]="visitCategory"
               [pregnancyStatus]="pregnancyStatus"
               [primeGravidaStatus]="primeGravidaStatus"
-              [patientHistoryForm]="patientHistoryForm"></app-nurse-history>
+              [patientHistoryDataForm]="patientHistoryForm"></app-nurse-history>
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
                 <button class="mat_blue" type="button" matStepperNext>
@@ -165,7 +165,7 @@
               [vitalsMode]="vitalsMode"
               [pregnancyStatus]="pregnancyStatus"
               [visitCategory]="visitCategory"
-              [patientVitalsForm]="patientVitalsForm"></app-nurse-vitals>
+              [patientVitalsDataForm]="patientVitalsForm"></app-nurse-vitals>
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
                 <button
@@ -215,7 +215,7 @@
             <app-nurse-examination
               [examinationMode]="examinationMode"
               [visitCategory]="visitCategory"
-              [patientExaminationForm]="
+              [patientExaminationDataForm]="
                 patientExaminationForm
               "></app-nurse-examination>
             <div class="row m-t-20">
@@ -396,7 +396,7 @@
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
                 <button
-                  *ngIf="doctorFlag === 1"
+                  *ngIf="doctorFlag === '1'"
                   mat-raised-button
                   color="primary"
                   class="mat_blue"
@@ -406,7 +406,7 @@
                   {{ currentLanguageSet?.common?.submit }}
                 </button>
                 <button
-                  *ngIf="doctorFlag !== 1"
+                  *ngIf="doctorFlag !== '1'"
                   mat-raised-button
                   color="primary"
                   class="mat_blue"

@@ -45,12 +45,8 @@ export class CovidVaccinationStatusComponent implements OnInit, DoCheck {
   enableVaccineTypeAndDoseTakenFlag: boolean = false;
   doseTypeList: any = [];
   vaccineTypeList: any = [];
-  // enableDoseOne: boolean=false;
-  // enableBoosterDose: boolean=false;
-  // enableDoseTwo: boolean=false;
   today: Date = new Date();
   enableSaveButton: boolean = true;
-  // enableSaveButtonForDoseTaken: boolean=true;
 
   constructor(
     private httpService: HttpServiceService,
@@ -140,7 +136,6 @@ export class CovidVaccinationStatusComponent implements OnInit, DoCheck {
         'Not Applicable for Vaccination'
       );
       this.enableVaccinationStatusFields = false;
-      // this.enableSaveButton=false;
       this.doctorService.enableCovidVaccinationButton = true;
     } else {
       this.covidVaccineStatusForm.controls['isApplicableForVaccine'].setValue(
@@ -153,7 +148,6 @@ export class CovidVaccinationStatusComponent implements OnInit, DoCheck {
   enableVaccineTypeAndDoseTaken() {
     this.covidVaccineStatusForm.controls['vaccineTypes'].setValue(null);
     this.covidVaccineStatusForm.controls['doseTaken'].setValue(null);
-    // this.resetFlags();
     if (this.covidVaccineStatusForm.controls['vaccineStatus'].value === 'YES') {
       this.enableVaccineTypeAndDoseTakenFlag = true;
       this.enableSaveButton = true;

@@ -32,7 +32,7 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
 })
 export class RespiratorySystemComponent implements OnInit, DoCheck {
   @Input()
-  respiratorySystemForm!: FormGroup;
+  respiratorySystemDataForm!: FormGroup;
 
   selectTrachea = [
     {
