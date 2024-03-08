@@ -142,42 +142,6 @@ export class CalibrationComponent implements OnInit, DoCheck {
   close() {
     this.dialogRef.close(null);
   }
-  // getPager(page: any) {
-  //   // Total page count
-  //   let totalPages = this.pageCount;
-  //   // ensure current page isn't out of range
-  //   if (page > totalPages) {
-  //     page = totalPages - 1;
-  //   }
-  //   let startPage: number, endPage: number;
-  //   if (totalPages <= 5) {
-  //     // less than 5 total pages so show all
-  //     startPage = 0;
-  //     endPage = totalPages - 1;
-  //   } else {
-  //     // more than 5 total pages so calculate start and end pages
-  //     if (page <= 2) {
-  //       startPage = 0;
-  //       endPage = 4;
-  //     } else if (page + 2 >= totalPages) {
-  //       startPage = totalPages - 5;
-  //       endPage = totalPages - 1;
-  //     } else {
-  //       startPage = page - 2;
-  //       endPage = page + 2;
-  //     }
-  //   }
-  //   // create an array of pages to ng-repeat in the pager control
-  //   let pages = Array.from(Array((endPage + 1) - startPage).keys()).map(i => startPage + i);
-  //   // return object with all pager properties required by the view
-  //   return {
-  //     currentPage: page,
-  //     totalPages: totalPages,
-  //     startPage: startPage,
-  //     endPage: endPage,
-  //     pages: pages
-  //   };
-  // }
 
   resetData() {
     this.components.data = [];
@@ -204,21 +168,4 @@ export class CalibrationComponent implements OnInit, DoCheck {
       });
     }
   }
-
-  // checkPager(pager: any, page: any) {
-  //   if (page == 0 && pager.currentPage !== 0) {
-  //     this.setPage(page);
-  //   } else if (pager.currentPage < page) {
-  //     this.setPage(page);
-  //   }
-  // }
-  // setPage(page: number) {
-  //   if (page <= this.pageCount - 1 && page >= 0) {
-  //    // this.search(this.input.searchTerm, page);
-  //     this.masterData(this.input.providerServiceMapID,page)
-  //     // get pager object
-  //     this.pager = this.getPager(page);
-  //   }
-
-  // }
 }

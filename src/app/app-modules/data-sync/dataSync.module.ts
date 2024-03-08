@@ -45,7 +45,6 @@ import { MasterDownloadComponent } from './master-download/master-download.compo
     DashboardComponent,
     MasterDownloadComponent,
   ],
-  // entryComponents: [MasterDownloadComponent],
   exports: [],
   providers: [DataSyncService, MasterDownloadComponent],
 })

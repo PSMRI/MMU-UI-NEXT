@@ -66,7 +66,6 @@ export class GeneralCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
     private doctorService: DoctorService,
     private route: ActivatedRoute,
     private nurseService: NurseService,
-    private router: Router,
     private confirmationService: ConfirmationService
   ) {}
 
@@ -92,8 +91,6 @@ export class GeneralCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
         benVisitID: localStorage.getItem('caseSheetVisitID'),
         beneficiaryRegID: localStorage.getItem('caseSheetBeneficiaryRegID'),
         visitCode: localStorage.getItem('caseSheetVisitCode'),
-        // "Auth":localStorage.getItem('serverKey')
-        // "isCaseSheetdownloaded": localStorage.getItem('isCaseSheetdownloaded') == "true" ? true : false
       };
       this.getTMReferredCasesheetData(caseSheetRequest);
     } else {

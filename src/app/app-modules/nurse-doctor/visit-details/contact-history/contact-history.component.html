@@ -4,13 +4,15 @@
       {{ currentLanguageSet?.covid?.cOVID19ContactHistory }}
     </h5>
     <br />
-    <mat-label class="hbx">{{
+    <mat-label class="mat-label-text" class="hbx">{{
       currentLanguageSet?.covid?.historyOfContactWithAPersonwho
     }}</mat-label>
     <br />
     <br />
     <span *ngIf="!contactFlag">
-      <mat-label>{{ currentLanguageSet?.covid?.historyOfContact }}</mat-label>
+      <mat-label class="mat-label-text">{{
+        currentLanguageSet?.covid?.historyOfContact
+      }}</mat-label>
       <mat-select
         class="input-full-width vox"
         [multiple]="true"

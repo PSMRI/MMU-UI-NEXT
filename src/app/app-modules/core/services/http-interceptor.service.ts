@@ -27,7 +27,6 @@ export class HttpInterceptorService implements HttpInterceptor {
     private router: Router,
     private confirmationService: ConfirmationService,
     private http: HttpClient
-    // private setLanguageService: SetLanguageService
   ) {}
 
   intercept(

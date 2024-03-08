@@ -8,8 +8,10 @@
           class="row m-t-20"
           style="text-align: center"
           *ngFor="let service of servicesList">
-          <mat-label>Welcome</mat-label>
-          <mat-label class="nameList">&nbsp;{{ this.fullName }}</mat-label>
+          <mat-label class="mat-label-text">Welcome</mat-label>
+          <mat-label class="mat-label-text" class="nameList"
+            >&nbsp;{{ this.fullName }}</mat-label
+          >
           <div class="note">Click on service to proceed</div>
           <!-- eslint-disable-next-line  @angular-eslint/template/click-events-have-key-events -->
           <div

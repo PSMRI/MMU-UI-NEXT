@@ -1,6 +1,6 @@
 <div class="row m-t-20" [formGroup]="patientCovidForm">
   <div class="col-xs-12 col-sm-8 col-md-6 col-lg-5 box" *ngIf="!sympFlag">
-    <mat-label>{{
+    <mat-label class="mat-label-text">{{
       currentLanguageSet?.ExaminationData?.cancerScreeningExamination?.symptoms
         ?.symptoms
     }}</mat-label>
@@ -20,7 +20,7 @@
 
   <div class="col-xs-12 col-sm-8 col-md-6 col-lg-5 box" *ngIf="sympFlag">
     <mat-form-field class="input-full-width">
-      <mat-label>{{
+      <mat-label class="mat-label-text">{{
         currentLanguageSet?.ExaminationData?.cancerScreeningExamination
           ?.symptoms?.symptoms
       }}</mat-label>

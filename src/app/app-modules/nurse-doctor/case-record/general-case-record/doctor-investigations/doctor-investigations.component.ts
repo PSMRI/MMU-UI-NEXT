@@ -21,7 +21,6 @@
  */
 
 import { Component, OnInit, Input, DoCheck, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import {
@@ -85,7 +84,6 @@ export class DoctorInvestigationsComponent
   RBSTestScoreInVitals!: number;
 
   constructor(
-    private fb: FormBuilder,
     private doctorService: DoctorService,
     private masterdataService: MasterdataService,
     private idrsScoreService: IdrsscoreService,
@@ -100,8 +98,6 @@ export class DoctorInvestigationsComponent
     this.idrsScoreService.clearSystolicBp();
     this.idrsScoreService.clearDiastolicBp();
     this.rbsSelectedInInvestigation = false;
-    //this.idrsScoreService.clearSystolicBpForFlag();
-    //this.idrsScoreService.clearDiastolicBpForFlag();
     this.idrsScoreService.clearHypertensionSelected();
     this.idrsScoreService.clearConfirmedDiabeticSelected();
     this.nurseService.clearRbsInVitals();
@@ -137,13 +133,11 @@ export class DoctorInvestigationsComponent
     this.rbsTestResultSubscription =
       this.nurseService.rbsTestResultCurrent$.subscribe(response => {
         if (response !== undefined && response !== null) {
-          // this.RBSTestScore = response;
           this.RBSTestScoreInVitals = response;
           this.RBSTestDoneInVitals = true;
           this.checkRBSScore();
           this.rbsTestResultCurrent = response;
         } else {
-          // this.RBSTestScore = response;
           this.RBSTestScoreInVitals = response;
           this.RBSTestDoneInVitals = false;
           this.rbsTestResultCurrent = null;
@@ -351,8 +345,6 @@ export class DoctorInvestigationsComponent
         this.RBSTestScore = element.componentList[0].testResultValue;
       }
     });
-
-    // if (this.RBSTestScore > 200 || this.systolicBpValue >= 140 || this.diastolicBpValue >= 90) {
     this.checkRBSScore();
   }
   checkRBSScore() {

@@ -80,7 +80,6 @@ import { MyPasswordDirective } from './directives/password/myPassword.directive'
     NgChartsModule,
     WebcamModule,
     MatTableModule,
-    // PaginationModule.forRoot()
   ],
   declarations: [
     CommonDialogComponent,
@@ -120,7 +119,6 @@ import { MyPasswordDirective } from './directives/password/myPassword.directive'
     SpinnerComponent,
     BeneficiaryDetailsComponent,
     PreviousDetailsComponent,
-    // PaginationModule,
     MyEmailDirective,
     MyMobileNumberDirective,
     OpenModalDirective,
@@ -146,7 +144,6 @@ export class CoreModule {
       providers: [
         ConfirmationService,
         CameraService,
-        // TextareaDialog,
         AuthGuard,
         AuthService,
         SpinnerService,
@@ -155,15 +152,9 @@ export class CoreModule {
         InventoryService,
         SetLanguageComponent,
         CanDeactivateGuardService,
-        // MasterdataService,
         CameraDialogComponent,
         HttpServiceService,
         IotService,
-        // {
-        //   provide: Http,
-        //   useFactory: HttpInterceptorFactory,
-        //   deps: [XHRBackend, RequestOptions, Router, SpinnerService, ConfirmationService]
-        // }
       ],
     };
   }

@@ -21,7 +21,6 @@
  */
 
 import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { DoctorService } from '../../shared/services';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -102,7 +101,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   constructor(
     private doctorService: DoctorService,
     private confirmationService: ConfirmationService,
-    private router: Router,
     private dialog: MatDialog,
     private httpServiceService: HttpServiceService
   ) {}
@@ -176,7 +174,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
         console.log('dataget', JSON.stringify(data, null, 4));
         this.dataSource.data = data.data;
         this.dataSource.paginator = this.paginator;
-        // this.filteredMMUHistory = data.data;
         this.getEachVisitData();
       }
     });
@@ -194,7 +191,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
           if (res.statusCode == 200 && res.data !== null) {
             this.dataSource.data[i]['benPreviousData'] = res.data;
             this.dataSource.paginator = this.paginator;
-            //this.previousVisitData.push({ 'benPreviousData': res.data});
             this.filteredMMUHistory = res.data;
             this.previousMMUHistoryPageChanged({
               page: this.previousMMUHistoryActivePage,
@@ -208,8 +204,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   }
   checkServiceLoader(services: any, serviceID: any) {
     services.forEach((service: any) => {
-      // service.serviceName = service.serviceName;
-      // service.serviceID = service.serviceID;
       if (serviceID == service.serviceID) {
         service.serviceLoaded = true;
       } else {

@@ -93,15 +93,12 @@ export class CameraDialogComponent implements OnInit, DoCheck {
 
   constructor(
     public dialogRef: MatDialogRef<CameraDialogComponent>,
-    private element: ElementRef,
     public httpServiceService: HttpServiceService,
     private confirmationService: ConfirmationService
-    // public webcamInitError: WebcamInitError
   ) {
     this.options = {
       audio: false,
       video: true,
-      //fallback: true,//force flash
       width: 500,
       height: 390,
       fallbackMode: 'callback',
@@ -175,7 +172,6 @@ export class CameraDialogComponent implements OnInit, DoCheck {
   public getSnapshot(): void {
     this.trigger.next();
     console.info('image type with base64 ', this.webcamImage);
-    // get the base64 data from  this.webcamImage.imageAsDataUrl
   }
 
   public get triggerObservable(): Observable<void> {
@@ -186,7 +182,6 @@ export class CameraDialogComponent implements OnInit, DoCheck {
     this.canvas = this.myCanvas.nativeElement;
     this.ctx = this.canvas.getContext('2d');
     const img = this.myImg.nativeElement;
-    // console.log(img, 'img')
     this.ctx.drawImage(
       img,
       0,
@@ -234,10 +229,6 @@ export class CameraDialogComponent implements OnInit, DoCheck {
         );
       }, 0);
     }
-    // } else {
-    //     this.ctx.strokeRect(event.offsetX-10, event.offsetY-10, 30, 20);
-    //     this.ctx.fillText(this.score, event.offsetX-5, event.offsetY+6);
-    // }
   }
 
   clearPointers() {

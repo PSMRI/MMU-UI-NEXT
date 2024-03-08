@@ -27,11 +27,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import {
-  NurseService,
-  DoctorService,
-  MasterdataService,
-} from '../../../shared/services';
+import { DoctorService } from '../../../shared/services';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 import { MatPaginator } from '@angular/material/paginator';
@@ -108,10 +104,6 @@ export class PreviousSignificiantFindingsComponent
             this.dataSource.data = this.previousSignificiantFindingsList;
             this.dataSource.paginator = this.paginator;
           }
-          // this.pageChanged({
-          //   page: this.activePage,
-          //   itemsPerPage: this.rowsPerPage,
-          // });
         }
       });
   }
@@ -134,10 +126,5 @@ export class PreviousSignificiantFindingsComponent
         }
       });
     }
-    // this.activePage = 1;
-    // this.pageChanged({
-    //   page: 1,
-    //   itemsPerPage: this.rowsPerPage,
-    // });
   }
 }

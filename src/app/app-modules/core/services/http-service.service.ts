@@ -26,19 +26,9 @@ export class HttpServiceService {
 
   fetchLanguageSet() {
     console.log('Here i come');
-
     return this.http.get(environment.getLanguageList);
-    //.map((res: any) => res.json().data);
   }
-  // languageAvailable(url: string): Observable<boolean> {
-  //   return this._http.get(url).subscribe();
-  // }
   getLanguage(url: string) {
-    // if (this.languageAvailable(url) == true) {
-    //   return this._http.get(url);
-    // } else {
-    //   console.log("error here");
-    // }
     return this._http.get(url);
   }
   getCurrentLanguage(response: any) {

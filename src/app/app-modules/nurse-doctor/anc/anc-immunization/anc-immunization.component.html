@@ -3,7 +3,7 @@
     <div
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="enableTTStatus_1_2 || enableTTStatus_1_2_b">
-      <mat-label>{{
+      <mat-label class="mat-label-text">{{
         current_language_set?.ancData?.ancImmune?.tt1Status
       }}</mat-label>
       <mat-select
@@ -22,7 +22,7 @@
       class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
       *ngIf="tT_1Status === 'Received'">
       <mat-form-field class="fieldAlignment fontStyle">
-        <mat-label class="fontStyle">{{
+        <mat-label class="mat-label-text" class="fontStyle">{{
           current_language_set?.ancData?.ancImmune?.dateReceived
         }}</mat-label>
         <input
@@ -78,7 +78,7 @@
         (enableTTStatus_1_2 && tT_1Status !== null) ||
         (enableTTStatus_1_2_b && tT_1Status !== null)
       ">
-      <mat-label>{{
+      <mat-label class="mat-label-text">{{
         current_language_set?.ancData?.ancImmune?.tt2Status
       }}</mat-label>
       <mat-select
@@ -100,7 +100,7 @@
         (tT_2Status === 'Received' && enableTTStatus_1_2_b)
       ">
       <mat-form-field class="fieldAlignment fontStyle">
-        <mat-label class="fontStyle">{{
+        <mat-label class="mat-label-text" class="fontStyle">{{
           current_language_set?.ancData?.ancImmune?.dateReceived
         }}</mat-label>
         <input
@@ -159,7 +159,7 @@
         (enableTTStatus_1_2_b && tT_1Status !== null && tT_2Status !== null) ||
         (enableTTStatus_1_2 && tT_1Status === 'NA' && tT_2Status !== null)
       ">
-      <mat-label>{{
+      <mat-label class="mat-label-text">{{
         current_language_set?.ancData?.ancImmune?.ttBoosterStatus
       }}</mat-label>
       <mat-select
@@ -184,7 +184,7 @@
           tT_2Status !== null)
       ">
       <mat-form-field class="fieldAlignment fontStyle">
-        <mat-label class="fontStyle">{{
+        <mat-label class="mat-label-text" class="fontStyle">{{
           current_language_set?.ancData?.ancImmune?.dateReceived
         }}</mat-label>
         <input

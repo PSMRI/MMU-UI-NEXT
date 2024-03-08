@@ -31,7 +31,7 @@
       <ng-container [formGroupName]="i">
         <div class="col-3 box">
           <mat-form-field>
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
                 ?.nameofVaccine
             }}</mat-label>
@@ -54,7 +54,7 @@
           *ngIf="vaccine.value.vaccineName?.vaccineName !== 'Other'"
           [hidden]="true">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
                 ?.vaccineSctCode
             }}</mat-label>
@@ -66,7 +66,7 @@
           class="col-3 box"
           *ngIf="vaccine.value.vaccineName?.vaccineName === 'Other'">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                 ?.others
             }}</mat-label>
@@ -88,7 +88,7 @@
             vaccine.value.vaccineName !== ''
           ">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
                 ?.ageatReceived
             }}</mat-label>
@@ -112,7 +112,7 @@
             vaccine.value.actualReceivingAge > 0
           ">
           <mat-form-field>
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
                 ?.facilityName
             }}</mat-label>

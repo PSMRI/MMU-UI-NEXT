@@ -53,7 +53,6 @@ const routes: Routes = [
   {
     path: 'set-password',
     component: SetPasswordComponent,
-    // canActivate: [AuthGuard],
   },
   {
     path: 'reset-password',
@@ -110,11 +109,6 @@ const routes: Routes = [
         module => module.DataSYNCModule
       ),
   },
-  //   // {
-  //   //   path: '**',
-  //   //   redirectTo: 'login',
-  //   //   pathMatch: 'full'
-  //   // }
 ];
 
 @NgModule({

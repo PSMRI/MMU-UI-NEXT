@@ -77,7 +77,6 @@ export class OpenModalDirective implements OnInit, DoCheck {
     if (searchTerm.length > 2) {
       const dialogRef = this.dialog.open(ProvisionalSearchComponent, {
         width: '800px',
-        //panelClass: 'fit-screen',
         hasBackdrop: false,
         data: {
           searchTerm: searchTerm,

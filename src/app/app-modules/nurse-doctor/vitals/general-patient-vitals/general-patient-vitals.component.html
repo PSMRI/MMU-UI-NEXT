@@ -13,7 +13,7 @@
       <div class="row m-t-10">
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.vitalsDetails
                 ?.AnthropometryDataANC_OPD_NCD_PNC?.height
             }}</mat-label>
@@ -35,7 +35,7 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.vitalsDetails
                 ?.AnthropometryDataANC_OPD_NCD_PNC?.weight
             }}</mat-label>
@@ -65,7 +65,7 @@
           class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
           *ngIf="totalMonths > 60">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.vitalsDetails
                 ?.AnthropometryDataANC_OPD_NCD_PNC?.BMI
             }}</mat-label>
@@ -212,7 +212,7 @@
             class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
             style="margin-left: 10px">
             <mat-form-field class="input-full-width">
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
                   ?.waistCircumference
               }}</mat-label>
@@ -241,7 +241,7 @@
             class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
             *ngIf="visitCategory !== 'NCD screening'">
             <mat-form-field class="input-full-width">
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.vitalsDetails
                   ?.AnthropometryDataANC_OPD_NCD_PNC?.hipCircumference
               }}</mat-label>
@@ -264,7 +264,7 @@
             class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
             *ngIf="visitCategory !== 'NCD screening'">
             <mat-form-field class="input-full-width">
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.vitalsDetails
                   ?.AnthropometryDataANC_OPD_NCD_PNC?.waisttoHipRatio
               }}</mat-label>
@@ -362,7 +362,7 @@
             style="margin-left: 10px"
             *ngIf="benAge <= 2 && visitCategory !== 'NCD screening'">
             <mat-form-field class="input-full-width">
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.vitalsDetails
                   ?.AnthropometryDataANC_OPD_NCD_PNC?.headCircumference
               }}</mat-label>
@@ -388,7 +388,7 @@
             class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
             *ngIf="benAge <= 6 && visitCategory !== 'NCD screening'">
             <mat-form-field class="input-full-width">
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.vitalsDetails
                   ?.AnthropometryDataANC_OPD_NCD_PNC?.midUpperArmCircumference
               }}</mat-label>
@@ -466,7 +466,7 @@
       <div class="row m-t-20">
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
                 ?.temperature
             }}</mat-label>
@@ -494,7 +494,7 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
                 ?.pulseRate
             }}</mat-label>
@@ -524,7 +524,9 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
-            <mat-label>{{ currentLanguageSet?.sPOTwoWithUnit }}</mat-label>
+            <mat-label class="mat-label-text">{{
+              currentLanguageSet?.sPOTwoWithUnit
+            }}</mat-label>
             <input
               autocomplete="off"
               matInput
@@ -547,7 +549,7 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
                 ?.systolicBP
             }}</mat-label>
@@ -584,7 +586,7 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
                 ?.diastolicBP
             }}</mat-label>
@@ -623,7 +625,7 @@
           class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
           *ngIf="visitCategory !== 'NCD screening'">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
                 ?.respiratoryRate
             }}</mat-label>
@@ -654,7 +656,7 @@
           <div class="row col-xs-12 col-sm-12 m-t-10">
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
               <mat-form-field class="input-full-width">
-                <mat-label>{{
+                <mat-label class="mat-label-text">{{
                   currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.fasting
                 }}</mat-label>
@@ -684,7 +686,7 @@
 
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
               <mat-form-field class="input-full-width">
-                <mat-label>{{
+                <mat-label class="mat-label-text">{{
                   currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.random
                 }}</mat-label>
@@ -711,7 +713,7 @@
 
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
               <mat-form-field class="input-full-width">
-                <mat-label>{{
+                <mat-label class="mat-label-text">{{
                   currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.postPrandial
                 }}</mat-label>
@@ -755,7 +757,9 @@
           </div>
           <div class="col-xs-10 col-sm-10">
             <mat-form-field class="input-full-width">
-              <mat-label>{{ currentLanguageSet?.rbsTestResult }}</mat-label>
+              <mat-label class="mat-label-text">{{
+                currentLanguageSet?.rbsTestResult
+              }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
@@ -784,7 +788,9 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
           <mat-form-field class="input-full-width">
-            <mat-label>{{ currentLanguageSet?.rbsTestRemarks }}</mat-label>
+            <mat-label class="mat-label-text">{{
+              currentLanguageSet?.rbsTestRemarks
+            }}</mat-label>
             <input
               autocomplete="off"
               allowText="textAreaValidator"
@@ -910,11 +916,6 @@
                     Shortness Of Breath
                   </mat-checkbox>
                 </div>
-                <!-- <div class="col-xs-12 m-t-15">
-                      <button mat-raised-button class="pull-right" (click)="startAssessment()" color="primary">
-                        {{currentLanguageSet?.common?.submit}}
-                      </button>
-                    </div> -->
               </div>
 
               <div *ngIf="enableResult">
@@ -964,7 +965,6 @@
           </div>
         </div>
       </div>
-      <!-- </div> -->
     </mat-expansion-panel>
   </mat-accordion>
 </section>

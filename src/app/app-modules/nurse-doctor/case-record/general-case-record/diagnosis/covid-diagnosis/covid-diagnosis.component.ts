@@ -21,25 +21,11 @@
  */
 
 import { Component, OnInit, Input, DoCheck, OnChanges } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
-import {
-  FormBuilder,
-  FormGroup,
-  FormControl,
-  FormArray,
-  NgForm,
-} from '@angular/forms';
-
-import {
-  MasterdataService,
-  NurseService,
-  DoctorService,
-} from '../../../../shared/services';
+import { DoctorService } from '../../../../shared/services';
 
 import { GeneralUtils } from '../../../../shared/utility';
-
-import { ConfirmationService } from '../../../../../core/services/confirmation.service';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 @Component({
@@ -63,26 +49,12 @@ export class CovidDiagnosisComponent implements OnInit, DoCheck, OnChanges {
 
   constructor(
     private fb: FormBuilder,
-
-    private nurseService: NurseService,
     private doctorService: DoctorService,
-    private masterdataService: MasterdataService,
-    private confirmationService: ConfirmationService,
     private httpServiceService: HttpServiceService
   ) {}
 
   ngOnInit() {
     this.designation = localStorage.getItem('designation');
-    // if(this.generalDiagnosisForm.controls['specialistDiagnosis'] !=undefined)
-    // this.generalDiagnosisForm.controls['specialistDiagnosis'].disable();
-    //    this.specialist = false;
-    // if (this.designation == "TC Specialist") {
-    //   this.generalDiagnosisForm.controls['specialistDiagnosis'].enable();
-    //   this.specialist = true;
-    // } else {
-    //   this.generalDiagnosisForm.controls['specialistDiagnosis'].disable();
-    //   this.specialist = false;
-    // }
     if (this.designation == 'TC Specialist') {
       this.generalDiagnosisForm.controls['doctorDiagnosis'].disable();
       this.specialist = true;
@@ -128,16 +100,11 @@ export class CovidDiagnosisComponent implements OnInit, DoCheck, OnChanges {
       });
   }
   patchDiagnosisDetails(diagnosis: any) {
-    //
-
-    // diagnosis.doctorDiagnosis = this.doctorDiagnosis;
-    // referFormData.revisitDate = referForm.controls["doctorDiagnosis"].value;
     console.log('diagnosis', diagnosis.doctorDiagnonsis);
 
     this.generalDiagnosisForm.patchValue({
       doctorDiagnosis: diagnosis.doctorDiagnonsis,
     });
-    // this.generalDiagnosisForm.patchValue({'prescriptionID' : diagnosis.prescriptionID });
     this.generalDiagnosisForm.patchValue(diagnosis);
   }
 }

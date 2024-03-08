@@ -54,7 +54,6 @@ export class LabUtils {
       calibrationStartAPI: null,
       calibrationStatusAPI: null,
       calibrationEndAPI: null,
-      //   gender: null,
       compListDetails: this.fb.array([]),
     });
   }

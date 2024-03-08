@@ -71,9 +71,6 @@ export class CancerDoctorDiagnosisCaseSheetComponent
     }
   }
 
-  // ngDoCheck() {
-  //   this.assignSelectedLanguage();
-  // }
   assignSelectedLanguage() {
     const getLanguageJson = new SetLanguageComponent(this.httpServiceService);
     getLanguageJson.setLanguage();

@@ -65,17 +65,12 @@ export class AppHeaderComponent implements OnInit {
     { role: 'DataSync', link: '/datasync', label: 'Data Sync' },
     { role: 'Reports', link: '/reports', label: 'Reports' },
   ];
-  // @Input('isDarkTheme')
-  // isDarkTheme: Boolean;
   language_file_path: any = './assets/';
   app_language: any = 'English';
   currentLanguageSet: any;
   languageArray: any;
   @Input()
   showRoles = false;
-
-  // @Output()
-  // dark: EventEmitter <Boolean> = new EventEmitter<Boolean>();
 
   servicePoint!: any;
   userName!: any;

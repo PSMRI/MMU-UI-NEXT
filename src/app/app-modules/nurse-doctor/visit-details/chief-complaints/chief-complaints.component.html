@@ -16,7 +16,7 @@
         <div class="col-12 row">
           <div class="col-4 input-full-width">
             <mat-form-field class="input-full-width">
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails
                   ?.chiefComplaints
               }}</mat-label>
@@ -48,7 +48,7 @@
           </div>
           <div class="input-full-width" [hidden]="true">
             <mat-form-field class="input-full-width">
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.SCTID
               }}</mat-label>
               <input
@@ -67,7 +67,7 @@
               complaint?.value?.chiefComplaint !== ''
             ">
             <mat-form-field class="input-full-width">
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
               }}</mat-label>
               <input
@@ -87,7 +87,7 @@
               complaint?.value?.duration !== null &&
               complaint?.value?.duration !== ''
             ">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.nurseData?.chiefComplaintsDetails
                 ?.unitOfDuration
             }}</mat-label>
@@ -112,7 +112,7 @@
               complaint?.value?.chiefComplaint !== ''
             ">
             <mat-form-field class="textarea-full-width">
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails
                   ?.description
               }}</mat-label>

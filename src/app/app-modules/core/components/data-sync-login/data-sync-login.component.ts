@@ -140,13 +140,6 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
     return salt + iv + ciphertext;
   }
 
-  // checkCurrentUser(){
-  //   if(this.userName != localStorage.getItem('username')){
-  //     this.confirmationService.alert('Username you entered not matched the current user')
-  //     this.userName = null;
-  //   }
-  // }
-
   /*ADID: KA40094929 Karyamsetty Helen Grace 
    added a concurrent login changes
   */

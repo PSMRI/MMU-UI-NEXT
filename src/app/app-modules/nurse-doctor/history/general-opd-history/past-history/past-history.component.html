@@ -38,7 +38,7 @@
         <ng-container [formGroupName]="i">
           <div class="col-md-3 box">
             <mat-form-field>
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.historyData?.ancHistory
                   ?.pastIllnessDataANC_OPD_NCD_PNC?.illness
               }}</mat-label>
@@ -62,7 +62,7 @@
             class="col-3 box"
             *ngIf="pastIllness.value.illnessType?.illnessType === 'Other'">
             <mat-form-field class="input-full-width">
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                   ?.others
               }}</mat-label>
@@ -86,7 +86,7 @@
               pastIllness.value.illnessType?.illnessType === 'None'
             ">
             <mat-form-field class="input-full-width">
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
               }}</mat-label>
               <input
@@ -109,7 +109,7 @@
               pastIllness?.value?.timePeriodAgo !== ''
             ">
             <mat-form-field>
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.DurationData?.timeperiodAgo
               }}</mat-label>
               <mat-select
@@ -177,7 +177,7 @@
       <ng-container [formGroupName]="i">
         <div class="col-3 box">
           <mat-form-field>
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.historyData?.ancHistory
                 ?.pastHOSurgeryANC_OPD_NCD_PNC?.hoSurgery
             }}</mat-label>
@@ -199,7 +199,7 @@
           class="col-3 box"
           *ngIf="pastSurgery.value.surgeryType?.surgeryType === 'Other'">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                 ?.others
             }}</mat-label>
@@ -222,7 +222,7 @@
             pastSurgery.value.surgeryType?.surgeryType === 'None'
           ">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
             }}</mat-label>
             <input
@@ -244,7 +244,7 @@
             pastSurgery?.value?.timePeriodAgo !== ''
           ">
           <mat-form-field>
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.DurationData?.timeperiodAgo
             }}</mat-label>
             <mat-select

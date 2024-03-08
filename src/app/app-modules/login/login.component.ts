@@ -171,7 +171,6 @@ export class LoginComponent implements OnInit {
                     } else {
                       sessionStorage.clear();
                       this.router.navigate(['/login']);
-                      // this.confirmationService.alert(res.errorMessage, 'error');
                     }
                   });
               } else {
@@ -240,7 +239,6 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('userName', loginDataResponse.userName);
     localStorage.setItem('username', userName);
     localStorage.setItem('fullName', loginDataResponse.fullName);
-    // this.saveServiceID(loginDataResponse);
     const services: any = [];
     loginDataResponse.previlegeObj.map((item: any) => {
       if (
@@ -292,45 +290,5 @@ export class LoginComponent implements OnInit {
         masterDowloadFirstTime: true,
       },
     });
-
-    // this.loginDialogRef.afterClosed()
-    //   .subscribe(flag => {
-    //     if (flag) {
-    //       this.dialog.open(MasterDownloadComponent, {
-    //         hasBackdrop: true,
-    //         disableClose: true,
-    //         panelClass: 'fit-screen',
-    //         backdropClass: 'backdrop',
-    //         position: { top: "20px" },
-    //       }).afterClosed().subscribe(() => {
-    //         sessionStorage.clear();
-    //         localStorage.clear();
-    //       });
-    //     }
-    //   })
   }
-
-  //  saveServiceID(obj) {
-  //   // console.log(obj,'objhere')
-  //   const privilegeObject = obj.previlegeObj;
-  //   const mmuObject = privilegeObject.filter(item => item.serviceName == 'MMU');
-  //   const tmObject = privilegeObject.filter(item => item.serviceName == 'TM');
-  //   // console.log(mmuObject,'cdv' ,tmObject)
-  //   let mmuServiceID;
-  //   let tmServiceID;
-  //   if (mmuObject.length) { mmuServiceID = this.getServiceID(mmuObject[0].roles[0]); }
-  //   if (tmObject.length) { tmServiceID = this.getServiceID(tmObject[0].roles[0]); }
-  //   console.log(mmuServiceID, tmServiceID)
-  //   localStorage.setItem('serviceIDs', JSON.stringify({
-  //     mmuServiceID,
-  //     tmServiceID
-  //   }))
-  // }
-  // getServiceID(role) {
-  //   const serviceRoleMapping = role.serviceRoleScreenMappings[0];
-  //   if (serviceRoleMapping) {
-  //     return serviceRoleMapping.providerServiceMapping.serviceID;
-  //   }
-
-  // }
 }

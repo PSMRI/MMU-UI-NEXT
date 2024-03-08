@@ -1,7 +1,6 @@
-<!-- {{obstetricExaminationForANCDataForm.value | json}} -->
 <div class="row m-t-20" [formGroup]="obstetricExaminationForANCDataForm">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-label>{{
+    <mat-label class="mat-label-text">{{
       currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
         ?.obstetric?.fundalHeight
     }}</mat-label>
@@ -18,7 +17,7 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-label>{{
+    <mat-label class="mat-label-text">{{
       currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
         ?.obstetric?.fHandPOAStatus
     }}</mat-label>
@@ -35,7 +34,7 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-label>{{
+    <mat-label class="mat-label-text">{{
       currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
         ?.obstetric?.interpretationFHandPOA
     }}</mat-label>
@@ -92,7 +91,7 @@
   <div
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="fetalHeartSounds === 'Audible'">
-    <mat-label>{{
+    <mat-label class="mat-label-text">{{
       currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
         ?.obstetric?.fetalHeartRate
     }}</mat-label>
@@ -109,7 +108,7 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-label>{{
+    <mat-label class="mat-label-text">{{
       currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
         ?.obstetric?.fetalposition
     }}</mat-label>
@@ -126,7 +125,7 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-label>{{
+    <mat-label class="mat-label-text">{{
       currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
         ?.obstetric?.fetalPresentation
     }}</mat-label>
@@ -144,7 +143,7 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-label>{{
+    <mat-label class="mat-label-text">{{
       currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
         ?.obstetric?.abdominalScars
     }}</mat-label>
@@ -163,7 +162,9 @@
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
     <mat-form-field class="select-full-width">
-      <mat-label>{{ currentLanguageSet?.sfhCms }}</mat-label>
+      <mat-label class="mat-label-text">{{
+        currentLanguageSet?.sfhCms
+      }}</mat-label>
       <textarea
         matInput
         matTextareaAutosize

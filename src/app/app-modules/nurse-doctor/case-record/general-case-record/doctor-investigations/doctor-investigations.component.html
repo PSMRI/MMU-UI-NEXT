@@ -1,6 +1,6 @@
-<!-- {{ generalDoctorInvestigationForm.value | json}} -->
 <div *ngIf="visit === 'NCD screening'">
   <mat-label
+    class="mat-label-text"
     *ngIf="
       diabetesSelected > 0 &&
       RBSTestDoneInVitals === false &&
@@ -10,6 +10,7 @@
     * {{ current_language_set?.pleaseSelectRBSTest }}</mat-label
   ><br />
   <mat-label
+    class="mat-label-text"
     *ngIf="VisualAcuityMandatory && !VisualAcuityTestDone"
     style="color: red">
     * {{ current_language_set?.pleaseSelectVisualAcuityTest }}</mat-label
@@ -17,6 +18,7 @@
 </div>
 <div *ngIf="visit === 'ANC'">
   <mat-label
+    class="mat-label-text"
     *ngIf="
       (!RBSTestDoneInVitals && !rbsSelectedInInvestigation) ||
       !hemoglobbinSelected
@@ -29,7 +31,7 @@
 <div class="row m-t-20" [formGroup]="generalDoctorInvestigationForm">
   <div class="col-xs-12 col-sm-6">
     <mat-form-field>
-      <mat-label>{{
+      <mat-label class="mat-label-text">{{
         current_language_set?.labTechnicianData?.testName
       }}</mat-label>
       <mat-select
@@ -49,7 +51,7 @@
   </div>
   <div class="col-xs-12 col-sm-6">
     <mat-form-field>
-      <mat-label>{{
+      <mat-label class="mat-label-text">{{
         current_language_set?.labTechnicianData?.radiologyimaging
       }}</mat-label>
       <mat-select
@@ -68,7 +70,7 @@
   </div>
   <div class="col-xs-12 m-t-20">
     <mat-form-field class="input-full-width">
-      <mat-label>{{
+      <mat-label class="mat-label-text">{{
         current_language_set?.Investigationdetails?.externalinvestigations
       }}</mat-label>
       <textarea

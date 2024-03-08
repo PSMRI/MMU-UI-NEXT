@@ -20,17 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import {
-  Component,
-  OnInit,
-  ChangeDetectorRef,
-  AfterViewInit,
-  ElementRef,
-  ViewChild,
-  Input,
-  OnDestroy,
-  DoCheck,
-} from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, DoCheck } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
@@ -118,9 +108,7 @@ export class CancerCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
       this.getCaseSheetData(caseSheetRequest);
     }
   }
-  // ngDoCheck() {
-  //   this.assignSelectedLanguage();
-  // }
+
   assignSelectedLanguage() {
     const getLanguageJson = new SetLanguageComponent(this.httpServiceService);
     getLanguageJson.setLanguage();
@@ -128,8 +116,6 @@ export class CancerCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
   }
   ngOnDestroy() {
     if (this.caseSheetSubs) this.caseSheetSubs.unsubscribe();
-
-    // localStorage.removeItem('currentRole');
   }
 
   oncologistRemarks: any;

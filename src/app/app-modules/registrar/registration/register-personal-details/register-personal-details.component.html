@@ -37,7 +37,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field style="width: 100%">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.ro?.personalInfo?.firstName
             }}</mat-label>
             <input
@@ -72,7 +72,7 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field style="width: 100%">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.ro?.personalInfo?.lastName
             }}</mat-label>
             <input
@@ -96,7 +96,7 @@
             </div>
             <div class="col-xs-10 col-sm-10 m-l-10-">
               <mat-form-field style="width: 100%">
-                <mat-label
+                <mat-label class="mat-label-text"
                   >{{
                     currentLanguageSet?.ro?.personalInfo?.contactNo
                   }}.</mat-label
@@ -139,7 +139,7 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field>
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.ro?.personalInfo?.gender
             }}</mat-label>
             <mat-select
@@ -158,7 +158,7 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field style="width: 100%">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.ro?.personalInfo?.age
             }}</mat-label>
             <input
@@ -174,7 +174,7 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field>
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.ro?.personalInfo?.ageUnit
             }}</mat-label>
             <mat-select
@@ -192,7 +192,7 @@
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field [style.width]="'96%'">
             <mat-icon matSuffix>event</mat-icon>
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.ro?.personalInfo?.dob
             }}</mat-label>
             <input
@@ -215,16 +215,11 @@
           </mat-form-field>
         </div>
 
-        <!-- <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
-        <mat-form-field [style.width]="'96%'">
-          <mat-icon matSuffix>event</mat-icon>
-        </mat-form-field>
-      </div> -->
         <div
           class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box"
           *ngIf="enableMaritalStatus">
           <mat-form-field>
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.ro?.personalInfo?.maritalStatus
             }}</mat-label>
             <mat-select
@@ -245,7 +240,7 @@
           class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box"
           *ngIf="enableMaritalStatus && enableMarriageDetails">
           <mat-form-field style="width: 100%">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.ro?.personalInfo?.spouseName
             }}</mat-label>
             <input
@@ -271,7 +266,7 @@
           *ngIf="enableMaritalStatus && enableMarriageDetails"
           class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field style="width: 100%">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.ro?.personalInfo?.ageAtMarriage
             }}</mat-label>
             <input
@@ -303,7 +298,7 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field>
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.ro?.personalInfo?.literacyStatus
             }}</mat-label>
             <mat-select
@@ -323,7 +318,7 @@
           *ngIf="personalDetailsForm.value.literacyStatus === 'Literate'"
           class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field>
-            <mat-label>
+            <mat-label class="mat-label-text">
               {{
                 currentLanguageSet?.ro?.personalInfo?.educationalQualification
               }}
@@ -355,7 +350,7 @@
             </div>
             <div class="col-xs-10 col-sm-10 m-l-10-">
               <mat-form-field>
-                <mat-label>{{
+                <mat-label class="mat-label-text">{{
                   currentLanguageSet?.ro?.personalInfo?.occupation
                 }}</mat-label>
                 <mat-select
@@ -378,7 +373,7 @@
           *ngIf="personalDetailsForm.value.occupation === '7'"
           class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field style="width: 100%">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.ro?.personalInfo?.otherOccupation
             }}</mat-label>
             <input
@@ -394,7 +389,7 @@
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field>
-            <mat-label>
+            <mat-label class="mat-label-text">
               {{ currentLanguageSet?.ro?.personalInfo?.incomeStatus }}
             </mat-label>
             <mat-select
@@ -411,7 +406,7 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box">
           <mat-form-field style="width: 100%">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.ro?.personalInfo?.monthlyFamilyIncome
             }}</mat-label>
             <input

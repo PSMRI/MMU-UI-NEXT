@@ -24,17 +24,14 @@ import {
   Component,
   OnInit,
   Input,
-  OnChanges,
   ViewChild,
   OnDestroy,
-  ChangeDetectorRef,
   ViewEncapsulation,
   DoCheck,
 } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
-  FormControl,
   FormArray,
   NgForm,
   AbstractControl,
@@ -192,8 +189,6 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
       if (item.itemFormName === this.currentPrescription.formName)
         this.currentPrescription.formID = item.itemFormID;
     });
-    // this.currentPrescription['formID'] = this.tempform.itemFormID;
-    // this.currentPrescription['formName'] = this.tempform.itemFormName;
     this.filterDrugMaster();
     this.filterDoseMaster();
   }
@@ -328,53 +323,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
     }
   }
 
-  // clearCurrentDetails() {
-  //   this.currentPrescription = {
-  //     id: null,
-  //     drugID: null,
-  //     drugName: null,
-  //     drugStrength: null,
-  //     drugUnit: null,
-  //     quantity: null,
-  //     formID: null,
-  //     qtyPrescribed: null,
-  //     formName: null,
-  //     route: null,
-  //     dose: null,
-  //     frequency: null,
-  //     duration: null,
-  //     unit: null,
-  //     instructions: null,
-  //     isEDL:false,
-  //     sctCode: null,
-  //     sctTerm: null
-  //   };
-  //   this.tempDrugName = null;
-  //   this.prescriptionForm.form.markAsUntouched();
-  //   this.isStockAvalable = "";
-
-  // }
   clearCurrentDetails() {
-    // this.currentPrescription = {
-    //   id: null,
-    //   drugID: null,
-    //   drugName: null,
-    //   drugStrength: null,
-    //   drugUnit: null,
-    //   quantity: null,
-    //   formID: null,
-    //   qtyPrescribed: null,
-    //   formName: null,
-    //   route: null,
-    //   dose: null,
-    //   frequency: null,
-    //   duration: null,
-    //   unit: null,
-    //   instructions: null,
-    //   isEDL:false,
-    //   sctCode: null,
-    //   sctTerm: null
-    // };
     this.tempDrugName = '';
     this.currentPrescription.dose = '';
     this.currentPrescription.frequency = '';
@@ -407,26 +356,6 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
     this.addMedicine();
     this.tempform = null;
     this.clearCurrentaddDetails();
-    // this.clearCurrentDetails();
-    // this.currentPrescription = {
-    //   id: null,
-    //   drugID: null,
-    //   drugName: null,
-    //   drugStrength: null,
-    //   drugUnit: null,
-    //   quantity: null,
-    //   formID: null,
-    //   route: null,
-    //   formName: null,
-    //   dose: null,
-    //   frequency: null,
-    //   duration: null,
-    //   unit: null,
-    //   instructions: null,
-    // }
-    // this.tempform = null;
-    // this.tempDrugName = null;
-    // this.prescriptionForm.form.markAsUntouched();
   }
 
   addMedicine() {
@@ -559,7 +488,6 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
       ) {
         return drug;
       }
-      // return drug.itemName.toLowerCase().equals(this.tempDrugName.itemName.toLowerCase());
     });
     console.log('PARTH*****' + itemMedicine[0]);
     this.setMedicineObject(itemMedicine[0]);

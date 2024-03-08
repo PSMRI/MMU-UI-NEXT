@@ -20,9 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input, OnDestroy, DoCheck } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { ViewTestReportComponent } from './view-test-report/view-test-report.component';
 import { ConfirmationService } from '../../../../core/services/confirmation.service';
 import { DoctorService } from '../../../shared/services';
@@ -46,7 +44,6 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
     private doctorService: DoctorService,
     private dialog: MatDialog,
     private labService: LabService,
-    private confirmationService: ConfirmationService,
     private idrsScoreService: IdrsscoreService,
     private httpServiceService: HttpServiceService,
     private testInVitalsService: TestInVitalsService
@@ -68,7 +65,6 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
     this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
     this.visitID = localStorage.getItem('visitID');
     this.visitCategory = localStorage.getItem('visitCategory');
-    // this.getTestResults(this.beneficiaryRegID, this.visitID, this.visitCategory);
 
     this.testInVitalsService.vitalRBSTestResult$.subscribe(response => {
       console.log('vital subscription response: ', response);
@@ -148,8 +144,6 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
         )
           this.labResults.splice(index, 1);
       });
-
-      //  this.labResults.push(vitalsRBSResponse);
       this.labResults = [vitalsRBSResponse].concat(this.labResults);
       this.filteredLabResults = this.labResults;
 
@@ -205,7 +199,6 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
           }
 
           if (this.vitalsRBSResp) {
-            // this.labResults.push(this.vitalsRBSResp);
             this.labResults = [this.vitalsRBSResp].concat(this.labResults);
           }
 
@@ -264,7 +257,6 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
         width: '40%',
         data: {
           filesDetails: fileIDs,
-          // width: 0.8 * window.innerWidth + "px",
           panelClass: 'dialog-width',
           disableClose: false,
         },
@@ -276,7 +268,6 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
           const blob = new Blob([res], { type: res.type });
           console.log(blob, 'blob');
           const url = window.URL.createObjectURL(blob);
-          // window.open(url);
           const a = document.createElement('a');
           a.href = url;
           a.download = result.fileName;

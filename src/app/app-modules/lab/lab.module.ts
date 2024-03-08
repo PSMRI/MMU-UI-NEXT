@@ -57,7 +57,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDatepickerModule,
     MatTooltipModule,
   ],
-  // entryComponents: [ViewFileComponent],
   declarations: [
     WorkareaComponent,
     WorklistComponent,

@@ -152,9 +152,6 @@ export class IotcomponentComponent implements OnInit, DoCheck {
                 this.start();
               } else this.dialogRef.close();
             });
-          //else{
-          //   this.closeOperation(JSON.parse(res["_body"]));
-          // }
         } else if (res.status === 206) {
           this.stripShowMsg = false;
           this.statusCalibration = true;
@@ -212,7 +209,6 @@ export class IotcomponentComponent implements OnInit, DoCheck {
   }
 
   getstatus() {
-    // this.statuscall =  setTimeout(() => {
     this.service.statusAPI(this.startAPI + '/status').subscribe(
       (res: any) => {
         console.log('dfasdas', res);

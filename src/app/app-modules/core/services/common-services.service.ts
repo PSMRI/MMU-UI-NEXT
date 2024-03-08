@@ -27,8 +27,6 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class CommonService {
-  //headers = new Headers( { 'Content-Type': 'application/json' } );
-
   commonServices = new Subject<any>();
   commonServices$ = this.commonServices.asObservable();
 
@@ -37,17 +35,11 @@ export class CommonService {
 
   constructor(private http: HttpClient) {}
 
-  // getStates( countryId: number ) {
-  //    return this.http.get(this.getStatesURL+countryId, this.options).map(res => res.json().data);
-  // }
-
   getStates(countryId: number) {
     return this.http.get(this.getStatesURL);
-    // .map(res => res.json().data);
   }
 
   getDistricts(stateId: number) {
     return this.http.get(this.getDistrictsURL + stateId);
-    //    .map(res => res.json().data);
   }
 }

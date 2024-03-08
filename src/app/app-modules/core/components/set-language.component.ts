@@ -33,10 +33,6 @@ export class SetLanguageComponent {
   currentLanguageObject: any;
   constructor(private httpServices: HttpServiceService) {}
 
-  // ngDoCheck() {
-  //   this.setLanguage();
-  // }
-
   setLanguage() {
     const languageSubscription = this.httpServices.currentLangugae$.subscribe(
       (languageResponse: any) => {

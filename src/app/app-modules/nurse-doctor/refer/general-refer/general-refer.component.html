@@ -1,4 +1,3 @@
-<!-- {{ referForm.value | json }} -->
 <mat-expansion-panel [formGroup]="referForm" expanded="true">
   <mat-expansion-panel-header>
     <h5>{{ currentLanguageSet?.Referdetails?.revisitAndRefer }}</h5>
@@ -6,6 +5,7 @@
   <div class="m-t-20">
     <div *ngIf="visitCategory === 'NCD screening'">
       <mat-label
+        class="mat-label-text"
         *ngIf="showMsg > 0 && !healthCareReferred && instituteFlag === true"
         style="color: red">
         *
@@ -14,7 +14,10 @@
             ?.pleaseReferthePatientToHigherHealthCareCenter
         }}</mat-label
       ><br />
-      <mat-label *ngIf="tmcSuggested > 0" style="color: red">
+      <mat-label
+        class="mat-label-text"
+        *ngIf="tmcSuggested > 0"
+        style="color: red">
         *
         {{
           currentLanguageSet?.Referdetails?.teleConsultationIsSuggested
@@ -24,7 +27,7 @@
 
     <div *ngIf="visitCategory === 'NCD screening'">
       <div class="col-12" style="text-align: end">
-        <mat-label class="font-history-label">{{
+        <mat-label class="mat-label-text" class="font-history-label">{{
           currentLanguageSet?.Referdetails?.previousReferralHistory
         }}</mat-label>
         <button
@@ -46,7 +49,7 @@
       </div>
       <div class="col-sm-6 col-md-3 box">
         <mat-form-field [style.width]="'100%'">
-          <mat-label>{{
+          <mat-label class="mat-label-text">{{
             currentLanguageSet?.Referdetails?.referredtoinstitute
           }}</mat-label>
           <mat-select
@@ -69,7 +72,7 @@
       </div>
       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <mat-form-field [style.width]="'100%'">
-          <mat-label>{{
+          <mat-label class="mat-label-text">{{
             currentLanguageSet?.Referdetails?.additionalservices
           }}</mat-label>
           <mat-select
@@ -137,7 +140,7 @@
         class="col-xs-6 col-sm-6 col-md-6 col-lg-6"
         style="padding-left: 0px; width: 280px">
         <mat-form-field [style.width]="'100%'">
-          <mat-label>{{
+          <mat-label class="mat-label-text">{{
             currentLanguageSet?.Referdetails?.revisitDate
           }}</mat-label>
           <input

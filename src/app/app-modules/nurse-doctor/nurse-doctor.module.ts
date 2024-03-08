@@ -152,7 +152,6 @@ import { DoctorInvestigationsComponent } from './case-record/general-case-record
 @NgModule({
   imports: [
     CommonModule,
-    // ChartsModule,
     NurseDoctorRoutingModule,
     CoreModule,
     ReactiveFormsModule,

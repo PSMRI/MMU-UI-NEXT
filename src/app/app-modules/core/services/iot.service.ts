@@ -44,10 +44,7 @@ export class IotService {
   startAPI(input: any) {
     return this.http.post(this.baseurl + input, null);
   }
-  // startCalibrationAPI(input: any) {
-  //   return this.http
-  //     .post(this.baseurl, input)
-  // }
+
   statusAPI(input: any) {
     return this.http.get(this.baseurl + input);
   }
@@ -62,10 +59,7 @@ export class IotService {
     };
     return this.http.put(this.baseurl + input, { headers: headerDict });
   }
-  // endCalibrationAPI(input: any) {
-  //   return this.http
-  //     .put(this.baseurl , input);
-  // }
+
   getDeviceStatus() {
     return this.http.get(this.deviceStatusurl);
   }

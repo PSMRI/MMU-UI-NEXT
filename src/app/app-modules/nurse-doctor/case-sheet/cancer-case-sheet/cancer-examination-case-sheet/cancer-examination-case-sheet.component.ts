@@ -108,9 +108,7 @@ export class CancerExaminationCaseSheetComponent
     const len = String(10).length - String(this).length + 1;
     return len > 0 ? new Array(len).join('0') + this : this;
   }
-  // ngDoCheck() {
-  //   this.assignSelectedLanguage();
-  // }
+
   assignSelectedLanguage() {
     const getLanguageJson = new SetLanguageComponent(this.httpServiceService);
     getLanguageJson.setLanguage();

@@ -30,7 +30,7 @@
       <ng-container [formGroupName]="i">
         <div class="col-3">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.historyData?.ancHistory
                 ?.medicationANC_OPD_NCD_PNC?.currentMedication
             }}</mat-label>
@@ -52,7 +52,7 @@
             medicationHistory?.value?.currentMedication !== ''
           ">
           <mat-form-field class="input-full-width">
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
             }}</mat-label>
             <input
@@ -74,7 +74,7 @@
             medicationHistory.value.timePeriodAgo !== ''
           ">
           <mat-form-field>
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.DurationData?.durationUnit
             }}</mat-label>
             <mat-select

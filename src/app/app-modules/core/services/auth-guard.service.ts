@@ -20,18 +20,9 @@ export class AuthGuard implements CanActivate {
     return this.auth.validateSessionKey().pipe(
       tap((res: any) => {
         if (!(res && res.statusCode == 200 && res.data)) {
-          //alert(this.current_language_set.alerts.info.notAuthorized + componentName);
           this.router.navigate(['/login']);
         }
       })
     );
   }
-
-  // canActivateChild() {
-  //   if (sessionStorage.getItem('isAuthenticated'))
-  //     return true;
-  //   else {
-  //     this.router.navigate(['/login']);
-  //   }
-  // }
 }

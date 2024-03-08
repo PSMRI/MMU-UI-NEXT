@@ -1,9 +1,8 @@
-<!-- {{ generalDiagnosisForm.value | json }} -->
 <div class="m-t-10" [formGroup]="generalDiagnosisForm">
   <div class="row">
     <div class="col-xs-12 col-xs-6 box">
       <mat-form-field>
-        <mat-label
+        <mat-label class="mat-label-text"
           >{{ current_language_set?.casesheet?.ncdCondition }} *</mat-label
         >
         <mat-select
@@ -25,7 +24,9 @@
     </div>
     <div class="col-xs-12" *ngIf="isNcdScreeningConditionOther">
       <mat-form-field class="input-full-width">
-        <mat-label>{{ current_language_set?.nCDConditionOther }}</mat-label>
+        <mat-label class="mat-label-text">{{
+          current_language_set?.nCDConditionOther
+        }}</mat-label>
         <textarea
           matInput
           allowText="textAreaValidator"
@@ -40,7 +41,9 @@
     </div>
     <div class="col-xs-12 col-xs-6 box">
       <mat-form-field>
-        <mat-label>{{ current_language_set?.casesheet?.typeOfNcd }}</mat-label>
+        <mat-label class="mat-label-text">{{
+          current_language_set?.casesheet?.typeOfNcd
+        }}</mat-label>
         <mat-select
           class="input-full-width"
           name="ncdCareType"
@@ -56,7 +59,7 @@
     </div>
     <div class="col-xs-12" style="display: none">
       <mat-form-field class="input-full-width">
-        <mat-label>{{
+        <mat-label class="mat-label-text">{{
           current_language_set?.casesheet?.ncdComplication
         }}</mat-label>
         <textarea

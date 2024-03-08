@@ -51,9 +51,7 @@ export class CancerHistoryCaseSheetComponent
   ngOnInit() {
     this.fetchLanguageResponse();
   }
-  // ngDoCheck() {
-  //   this.assignSelectedLanguage();
-  // }
+
   assignSelectedLanguage() {
     const getLanguageJson = new SetLanguageComponent(this.httpServiceService);
     getLanguageJson.setLanguage();

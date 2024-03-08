@@ -20,8 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, Input, OnChanges, DoCheck } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -29,11 +28,7 @@ import {
   AbstractControl,
 } from '@angular/forms';
 import { ConfirmationService } from '../../../../../core/services/confirmation.service';
-import {
-  MasterdataService,
-  NurseService,
-  DoctorService,
-} from '../../../../shared/services';
+import { DoctorService } from '../../../../shared/services';
 import { GeneralUtils } from '../../../../shared/utility/general-utility';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
@@ -53,9 +48,7 @@ export class GeneralOpdDiagnosisComponent implements OnChanges, DoCheck {
   current_language_set: any;
   constructor(
     private fb: FormBuilder,
-    private nurseService: NurseService,
     private doctorService: DoctorService,
-    private masterdataService: MasterdataService,
     private confirmationService: ConfirmationService,
     private httpServiceService: HttpServiceService
   ) {}
@@ -67,9 +60,6 @@ export class GeneralOpdDiagnosisComponent implements OnChanges, DoCheck {
       const visitCategory = localStorage.getItem('visitCategory');
       this.getDiagnosisDetails(beneficiaryRegID, visitID, visitCategory);
     }
-    // if(this.generalDiagnosisForm.controls['specialistDiagnosis'] !=undefined)
-    // this.generalDiagnosisForm.controls['specialistDiagnosis'].disable();
-    //   this.specialist = false;
   }
   ngDoCheck() {
     this.assignSelectedLanguage();

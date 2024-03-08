@@ -59,18 +59,11 @@ export class BeneficiaryDetailsService {
     return this.http.post(environment.getBeneficiaryImage, {
       beneficiaryRegID: beneficiaryRegID,
     });
-    // .map((res: any) => res.json().data);
   }
 
   reset() {
     this.beneficiaryDetails.next(null);
   }
-
-  // getCheck() {
-  //   return this.http.get('http://localhost:3000/profile')
-  //   .map(res => res.json());
-  // }
-
   setHRPPositive() {
     this.HRPPositive = 1;
     this.HRPPositiveFlag.next(1);

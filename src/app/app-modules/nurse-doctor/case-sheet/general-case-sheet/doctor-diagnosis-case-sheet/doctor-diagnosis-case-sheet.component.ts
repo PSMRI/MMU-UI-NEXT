@@ -153,7 +153,6 @@ export class DoctorDiagnosisCaseSheetComponent
                 },
               ],
             };
-            // this.MMUcaseRecords.LabReport.push(mmuVitalsRBSValue);
             this.MMUcaseRecords.LabReport = [mmuVitalsRBSValue].concat(
               this.MMUcaseRecords.LabReport
             );
@@ -257,7 +256,6 @@ export class DoctorDiagnosisCaseSheetComponent
             },
           ],
         };
-        // this.caseRecords.LabReport.push(vitalsRBSValue);
         this.caseRecords.LabReport = [vitalsRBSValue].concat(
           this.caseRecords.LabReport
         );
