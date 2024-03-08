@@ -4,7 +4,6 @@ h5 {
 
 .mat-expansion-panel-header {
     background: rgba(37, 55, 70, 0.2);
-    /* background: #4fcfaf; */
 }
 
 .input-full-width {
@@ -30,12 +29,12 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
 }
-mat-form-field >>> .mat-mdc-text-field-wrapper {
+mat-form-field  .mat-mdc-text-field-wrapper {
     width: 100% !important;
 }
-mat-form-field >>> .mdc-text-field__input {
+mat-form-field  .mdc-text-field__input {
     width: 52.6% !important;
 }
-mat-select >>>.mat-mdc-select-trigger {
+mat-select .mat-mdc-select-trigger {
     width: 105% !important;
 }

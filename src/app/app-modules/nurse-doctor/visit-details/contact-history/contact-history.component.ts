@@ -58,8 +58,6 @@ export class ContactHistoryComponent
   feverCoughBreath_flag!: boolean;
   confirmedCaseCOVID_flag!: boolean;
   contactArray: any;
-  // contactData = ["Is a confirmed case of COVID-19 2020","Is having symptoms of Fever, Cough or breathing difficulty","Has a history of travel to places reporting local transmission","None of the above"]
-  // contactList = ["Is a confirmed case of COVID-19 2020","Is having symptoms of Fever, Cough or breathing difficulty","Has a history of travel to places reporting local transmission","None of the above"]
   contactList: any;
   contactData: any;
   cont: any;

@@ -14,7 +14,7 @@ mat-card {
   min-height: 400px;
 }
 
-:host /deep/ .pagination {
+::ng-deep.pagination {
   margin: 0;
 }
 
@@ -181,6 +181,3 @@ ul li div {
 .description {
   padding-top: 15px;
 }
-/* .mat-pagenator >>> .mat-mdc-paginator {
-  display:unset !important;
-} */

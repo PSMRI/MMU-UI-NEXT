@@ -25,28 +25,16 @@ import { Component, OnInit, Input, OnDestroy, DoCheck } from '@angular/core';
 import { RegistrarService } from '../../shared/services/registrar.service';
 import {
   FormGroup,
-  FormControl,
   FormArray,
   FormBuilder,
-  Validators,
   AbstractControl,
 } from '@angular/forms';
-import {
-  Params,
-  RouterModule,
-  Routes,
-  Router,
-  ActivatedRoute,
-} from '@angular/router';
+import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 import { RegisterEditLocationComponent } from '../register-edit-location/register-edit-location.component';
-import {
-  MatAutocomplete,
-  MatAutocompleteTrigger,
-  _MatAutocompleteBase,
-} from '@angular/material/autocomplete';
+import { _MatAutocompleteBase } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-register-demographic-details',
@@ -239,7 +227,6 @@ export class RegisterDemographicDetailsComponent
         this.disableDistrict = false;
         this.disableSubDistrict = false;
       }
-      // this.checkVillage( this.suggestedvillageList[i],village)
     } else if (typeof village == 'object' && village) {
       if (
         this.subFilteredVillageMaster != undefined &&
@@ -297,7 +284,6 @@ export class RegisterDemographicDetailsComponent
       this.disableState = true;
       this.disableDistrict = true;
       this.disableSubDistrict = true;
-      //(<FormGroup>this.villgeBranch.at(0)).controls['villageID'].disable();
       this.loadEditDefaults();
     } else if (!this.patientRevisit) {
       this.disableState = true;
@@ -641,17 +627,12 @@ export class RegisterDemographicDetailsComponent
       this.demographicsMaster.servicePointName
     ) {
       this.loadLocalMasterForDemographic();
-      // this.districtList = this.demographicsMaster.otherLoc.districtList;
-      // this.villageList = this.demographicsMaster.villageList;
-      //this.districtList = [];
       this.subDistrictList = [];
-      // this.subFilteredVillageMaster[0] = this.demographicsMaster.villageList.slice();
       console.log(this.subFilteredVillageMaster);
 
       this.emptyVillage();
       this.emptyDistrict();
       this.emptySubDistrict();
-      // this.onDistrictChange();
       this.stateChangeOnLoad();
       this.disableDistrict = false;
     } else if (
@@ -693,14 +674,6 @@ export class RegisterDemographicDetailsComponent
       stateID: this.locationData.stateID,
       stateName: this.locationData.stateName,
     });
-
-    //  this.registrarService.stateIdFamily = this.locationData.stateID;
-    //   this.statesList = this.demographicsMaster.stateMaster;
-    //   console.log(this.demographicsMaster)
-    //   this.demographicDetailsForm.patchValue({
-    //     stateID: this.demographicsMaster.otherLoc.stateID,
-    //     stateName: this.demographicsMaster.otherLoc.stateName
-    //   })
   }
 
   /**
@@ -739,37 +712,14 @@ export class RegisterDemographicDetailsComponent
         blockName: this.demographicsMaster.otherLoc.blockName,
       },
     ];
-    // this.subDistrictList = [{
-    //   blockID: this.demographicsMaster.otherLoc.blockID,
-    //   blockName: this.demographicsMaster.otherLoc.blockName
-    // }]
-    // this.demographicDetailsForm.patchValue({
-    //   blockID: this.demographicsMaster.otherLoc.blockID,
-    //   blockName: this.demographicsMaster.otherLoc.blockName
-    // })
   }
-  /**
-   * Load Village  for New Patient
-   */
-  /*loadVillage() {
-    this.villageList = this.demographicsMaster.villageMaster;
-    this.demographicDetailsForm.patchValue({
-      villageID: null,
-      villageName: null
-    })
-  }*/
+
   loadVillage() {
     this.villageList = this.demographicsMaster.villageMaster;
     this.demographicDetailsForm.patchValue({
       villageID: null,
       villageName: null,
     });
-    // this.villageList = this.demographicsMaster.villageList;
-
-    // this.demographicDetailsForm.patchValue({
-    //   villageID: this.demographicsMaster.villageList.districtBranchID,
-    //   villageName: this.demographicsMaster.villageList.villageName
-    // })
   }
 
   /**
@@ -845,7 +795,6 @@ export class RegisterDemographicDetailsComponent
 
     if (event.checked === true) {
       this.demographicsEditEnabled = true;
-      // this.demographicsEditText = 'Restore Default';
       this.confirmationService
         .choice('Edit Location', locationChoice)
         .subscribe(res => {
@@ -975,7 +924,6 @@ export class RegisterDemographicDetailsComponent
         if (res && res.statusCode === 200) {
           this.subDistrictList = res.data;
           this.emptySubDistrict();
-          // this.emptyVillage();
           this.demographicDetailsForm.patchValue({
             blockID: this.locationData.blockID,
             blockName: this.locationData.blockName,
@@ -1015,10 +963,6 @@ export class RegisterDemographicDetailsComponent
         }
       });
   }
-
-  /*onVillageChange() {
-    this.updateVillageName();
-  }*/
 
   onSubDistrictChange() {
     this.updateSubDistrictName();
@@ -1186,22 +1130,15 @@ export class RegisterDemographicDetailsComponent
             stateID: state.stateID,
             stateName: state.stateName,
           });
-          // this.registrarService.stateIdFamily = state.stateID;
         }
       });
     }
   }
 
-  /*****
-   * // ENDS - Update State, District, SubDistrict and Village Name
-   */
-
   /*New code to populate district and taluk -using villageID*/
 
   onChangeVillage(event: any) {
     console.log('VillageID' + event);
-
-    //this.registrarService.getDistrictTalukList(this.demographicDetailsForm.value.villageID)
     this.registrarService
       .getDistrictTalukList(event.districtBranchID)
       .subscribe((res: any) => {
@@ -1220,9 +1157,6 @@ export class RegisterDemographicDetailsComponent
           });
 
           this.updateVillageName();
-
-          // this.demographicDetailsForm.controls.districtName.disable();
-          // this.demographicDetailsForm.controls.blockName.disable();
         } else {
           this.confirmationService.alert(
             this.currentLanguageSet.alerts.info.issuesInFetchingDemographics,
@@ -1231,26 +1165,18 @@ export class RegisterDemographicDetailsComponent
         }
       });
   }
-  /*get villageID() {
-   return this.demographicDetailsForm.controls['villageID'].value
-  }
-  get stateID() {
-    return this.demographicDetailsForm.controls['stateID'].value
-   }*/
+
   /**
    * New -- Confirm User whether they want to edit the demographics
    */
   confirmEditDemographicsNew(event: any) {
     if (event.checked === true) {
       this.demographicsEditEnabled = true;
-      // console.log("Hello"+this.demographicsMaster);
       this.dialogRef = this.dialog.open(RegisterEditLocationComponent);
 
       this.dialogRef.afterClosed().subscribe(result => {
         if (result !== undefined && result !== null) {
           console.log(result.data);
-          // this.demographicDetailsForm.controls.villageID.reset();
-          // this.subFilteredVillageMaster[0]= result.data.villageList;
           this.villageList = result.data.villageList;
           this.suggestedvillageList[0] = result.data.selectedVillage;
           console.log('SuggestedList' + this.suggestedvillageList[0]);
@@ -1288,14 +1214,6 @@ export class RegisterDemographicDetailsComponent
           this.disableDistrict = true;
           this.disableSubDistrict = true;
           (<FormGroup>this.villgeBranch.at(0)).controls['villageID'].disable();
-          // this.disableVillage=true;
-
-          // this.disabled = true;
-          //this.demographicDetailsForm.disable();
-
-          // this.flag=true;
-          //this.disableVillage=true;
-          //  this.demographicDetailsForm.controls.villageID.disable();
           this.demographicsEditText =
             this.currentLanguageSet.common.restoreDefault;
         } else {
@@ -1305,7 +1223,6 @@ export class RegisterDemographicDetailsComponent
 
           this.disableDistrict = true;
           this.disableSubDistrict = true;
-          // this.disableVillage=true;
           if (!this.patientRevisit) {
             (<FormGroup>this.villgeBranch.at(0)).controls['villageID'].enable();
           }

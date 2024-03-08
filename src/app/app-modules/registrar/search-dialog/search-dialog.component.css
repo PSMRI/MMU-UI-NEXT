@@ -19,10 +19,6 @@
     border-bottom: 1px solid lightgray;
 }
 
-/* #searchDialog {
-    z-index: 998 !important;
-} */
-
 .margin {
     margin: 15px;
 }
@@ -43,7 +39,6 @@
 }
 
 .close-btn {
-    /* color: white !important; */
     float: right;
     border: none;
 }

@@ -381,49 +381,6 @@ export class RegisterOtherDetailsComponent
     });
   }
 
-  /*   loadGovIDs(identityData) {
-      let govIdIndex = 0;
-      const govid = <FormArray>this.otherDetailsForm.controls['govID'];
-      identityData.forEach((element, i) => {
-        if (element.govtIdentityType && element.govtIdentityType.isGovtID === true) {
-          if (i !== 0) {
-            this.addID(1, govIdIndex); // 1 = govt id
-            govIdIndex++;
-          }
-          govid.at(govIdIndex).patchValue({
-            type: element.govtIdentityTypeID,
-            idValue: element.govtIdentityNo
-          })
-          this.filtergovIDs(element.govtIdentityTypeID, govIdIndex)
-
-        }
-      });
-
-    }
-    loadotherGovIDs(identityData) {
-      let othergovIdIndex = 0;
-      const othergovid = <FormArray>this.otherDetailsForm.controls['otherGovID'];
-      console.log(othergovid, 'othergovIDDdd');
-      identityData.forEach((element, j) => {
-        if (element.govtIdentityType && element.govtIdentityType.isGovtID === true){
-
-        } else
-        if (element.govtIdentityType.isGovtID == false)  {
-          // if (j !== 0) {
-            // }
-            othergovid.at(othergovIdIndex).patchValue({
-              type: element.govtIdentityTypeID,
-              idValue: element.govtIdentityNo
-            })
-            console.log('called called');
-            this.filterOtherGovIDs(element.govtIdentityTypeID, othergovIdIndex)
-            this.addID(0, othergovIdIndex); // 0 = other govt id
-            othergovIdIndex++;
-
-        }
-      });
-    } */
-
   /**
    *
    * Filter GovIDs for List

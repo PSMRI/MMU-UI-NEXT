@@ -151,31 +151,4 @@ export class RegistrationUtils {
       createdBy: null,
     });
   }
-
-  /**
-   * Demographic Edit Details Form ** Part of Registration Form
-   **/
-  /*createDemographicEditDetailsForm() {
-  return this.fb.group({
-   
-    villageID: null,
-    villageName: null,
-    blockID: null,
-    blockName: null,
-    districtID: null,
-    districtName: null,
-    stateID: [null, Validators.required],
-    stateName: null,
-    
-    villages: this.fb.array([
-      this.onitVillage()
-    ]),
-  })
-}
-onitVillage(): FormGroup {
-  return this.fb.group({
-    villageID: '',
-   
-  });
-}*/
 }

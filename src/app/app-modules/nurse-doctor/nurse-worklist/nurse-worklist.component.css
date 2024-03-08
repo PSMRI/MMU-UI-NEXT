@@ -25,7 +25,7 @@ md-input-container {
   }
 }
 
-:host /deep/ .pagination {
+::ng-deep.pagination {
   margin: 0;
 }
 

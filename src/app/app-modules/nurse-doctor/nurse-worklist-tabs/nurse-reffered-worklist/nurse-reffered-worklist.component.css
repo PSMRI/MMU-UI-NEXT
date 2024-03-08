@@ -2,7 +2,7 @@
     text-align: center;
   }
   
-:host /deep/ .pagination {
+  ::ng-deep.pagination {
     margin: 0;
   }
 

@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-:host /deep/ .pagination {
+::ng-deep.pagination {
   margin: 0;
 }
 

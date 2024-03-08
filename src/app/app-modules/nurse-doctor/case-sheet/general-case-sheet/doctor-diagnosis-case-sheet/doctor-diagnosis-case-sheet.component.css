@@ -82,20 +82,14 @@ legend {
 .btn-group button {
     background-color: #ff5252; /* Green background */
     margin:5px;
-    /* border: 1px solid green; */
     color: white; /* White text */
-    /* padding: 10px 24px;  */
-    /* cursor: pointer;  */
     float: left; /* Float the buttons side by side */
   }
 
   .btn-group1 button {
     background-color: #10df3d; /* Green background */
     margin:5px;
-    /* border: 1px solid green; */
     color: white; /* White text */
-    /* padding: 10px 24px;  */
-    /* cursor: pointer;  */
     float: left; /* Float the buttons side by side */
   }
   

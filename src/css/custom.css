@@ -1,64 +1,3 @@
-/* @font-face {
-    font-family: Roboto-Regular;
-    src: url(../fonts/Roboto/Roboto-Regular.ttf);
-}
-
-@font-face {
-    font-family: Roboto-Medium;
-    src: url(../fonts/Roboto/Roboto-Medium.ttf);
-}
-
-@font-face {
-    font-family: Roboto-Black;
-    src: url(../fonts/Roboto/Roboto-Black.ttf);
-}
-
-@font-face {
-    font-family: Roboto-Light;
-    src: url(../fonts/Roboto/Roboto-Light.ttf);
-}
-
-@font-face {
-    font-family: Roboto-Thin;
-    src: url(../fonts/Roboto/Roboto-Thin.ttf);
-}
-
-@font-face {
-    font-family: Roboto-Bold;
-    src: url(../fonts/Roboto/Roboto-Bold.ttf);
-}
-
-.font-Light {
-    font-family: Roboto-Light !important;
-}
-
-.font-regular {
-    font-family: Roboto-Regular !important;
-}
-
-.font-Thin {
-    font-family: Roboto-Thin !important;
-}
-
-.font-bold {
-    font-family: Roboto-Bold !important;
-}
-
-.font-Medium {
-    font-family: Roboto-Medium !important;
-}
-
-.font-Black {
-    font-family: Roboto-Black !important;
-}
-
-body {
-    background: #f2f2f0 !important;
-    /*background: white !important;
-    font-family: Roboto-Regular, "Helvetica Neue", sans-serif !important;
-    height: 100%;
-} */
-
 @font-face {
   font-family: SF-UI-Display-Regular;
   src: url(../fonts/SF-UI-Display/SF-UI-Display-Regular.otf);
@@ -110,7 +49,6 @@ body {
 }
 
 body {
-  /*background:#fafafa;*/
   background: #f2f2f0 !important;
   font-family: SF-UI-Display-Regular;
   height: 100%;
@@ -255,8 +193,6 @@ a:focus
 
 .bs-wizard>.bs-wizard-step>.bs-wizard-dot {
   position: absolute;
-  /*  width: 22px;
-  height: 22px;*/
   width: 18px;
   height: 18px;
   display: block;
@@ -268,17 +204,6 @@ a:focus
   margin-left: -15px;
   border-radius: 50%;
 }
-
-/*.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {
-  content: ' ';
-  width: 12px;
-  height: 12px;
-  background: #fbbd19;
-  border-radius: 50px;
-  position: absolute;
-  top: 8px;
-  left: 8px;
-}*/
 
 .bs-wizard>.bs-wizard-step>.progress {
   position: relative;
@@ -337,7 +262,6 @@ a:focus
 }
 
 .progress-margin {
-  /*  margin-top:41px !important;*/
   z-index: -2;
   margin-top: 9px !important;
 }
@@ -392,27 +316,6 @@ a:focus
 .fav-color {
   color: #dc6060 !important;
 }
-
-/*.f-c-2{
-color:#0d476e !important;
-}
-.f-c-3{
-color:#4d8bb4 !important;
-}
-.f-c-3{
-color:#4d8bb4 !important;
-}
-
-.f-c-a9{
-color: #a9a9a9
-}
-.f-c-l-g{
-color:#aeaeae;
-}
-.f-c-l-g-1{
-color:#545454;
-}
-*/
 
 .f-s-10 {
   font-size: 10px;
@@ -1174,14 +1077,6 @@ em {
   height: 25px;
 }
 
-/*.drop-arrow {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    background: transparent url("../images/selectIcon.png") no-repeat right center;
-}*/
-
 .form-group-custome::after,
 .form-group-custome::before {
   background: none !important;
@@ -1260,7 +1155,6 @@ em {
 }
 
 .cu-panel-heading {
-  /* background:#ec6820 !important;*/
   color: #000 !important;
 }
 
@@ -1526,7 +1420,6 @@ em {
   float: left;
   color: #fff !important;
   font-family: SF-UI-Display-Regular;
-  /* margin:3px;    color: #ecf0f1;*/
 }
 
 .radioBtn {
@@ -1539,7 +1432,6 @@ em {
   color: #fff;
   font-family: SF-UI-Display-Regular;
   border: 1px solid #069;
-  /* margin:3px;    color: #ecf0f1;*/
 }
 
 .btn>* {
@@ -1634,13 +1526,10 @@ em {
 
 .badge-corner {
   position: relative;
-  /* top:-20px;
-    right: 15px;*/
   left: 58px;
   width: 0;
   height: 0;
   border-top: 30px solid #008c44;
-  /* border-top-color: rgba(0, 0, 0, 0.3);*/
   border-left: 40px solid transparent;
   padding: 0;
   background-color: transparent;
@@ -1729,16 +1618,10 @@ em {
   content: "\f105";
 }
 
-/*.sidebar-toggle:after {
-
-  content: "\f104";
-}*/
-
 .circleOuterDiv {
   width: 180px;
   height: 160px;
   float: left;
-  /*  border:1px solid #dcdcdb;*/
   margin: 10px;
 }
 
@@ -1791,10 +1674,8 @@ em {
   display: block;
   overflow: hidden;
   transition: background-color .3s;
-  /*float:left;*/
   color: #000 !important;
   font-family: SF-UI-Display-Regular;
-  /* margin:3px;    color: #ecf0f1;*/
   cursor: pointer;
   text-align: center;
 }
@@ -1945,7 +1826,6 @@ input:-webkit-autofill:hover {
 .mat-select-trigger {
   display: flex;
   align-items: center;
-  /* height: 30px;*/
   min-width: 112px;
   cursor: pointer;
   position: relative;
@@ -1953,12 +1833,6 @@ input:-webkit-autofill:hover {
   font-size: 15px;
   height: 25px !important;
 }
-
-/*.mat-input-underline.mat-disabled , [aria-disabled=true] .mat-select-underline{
-    background-image:none !important;
-    background-color: rgba(0,0,0,.12) !important;
-
-}*/
 
 [disabled] .mat-input-placeholder,
 [aria-disabled=true] .mat-select-placeholder,
@@ -1985,20 +1859,6 @@ input:-webkit-autofill:hover {
 .mat-select-placeholder.mat-floating-placeholder {
   transform: scale(.75) translateY(7px) !important;
 }
-
-/* custom css for input and select allign by neeraj*/
-
-/*.parent mat-disabled{
-      color: #d9d9d9 !important;
-}*/
-
-/*.mat-select-trigger{
-      font-weight: 700!important;
-}*/
-
-/*.disabledField{
-    color: #d9d9d9 !important;
-}*/
 
 @media (max-width: 500px) {
   .padding-0-left-right {
@@ -2361,7 +2221,6 @@ input:-webkit-autofill:hover {
 .mat-input-element,
 .mat-input-placeholder-wrapper,
 .md2-autocomplete-placeholder {
-  /*font-family: SF-UI-Display-Regular !important;*/
   font-size: 15px !important;
   font-weight: 700 !important;
 }

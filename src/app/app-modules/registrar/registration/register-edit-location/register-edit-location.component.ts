@@ -41,7 +41,6 @@ export class RegisterEditLocationComponent implements OnInit, DoCheck {
   demographicsMaster: any;
   editDetails: any;
 
-  /* @Input('demographicEditDetailsForm')*/
   demographicEditDetailsForm!: FormGroup;
   currentLanguageSet: any;
 

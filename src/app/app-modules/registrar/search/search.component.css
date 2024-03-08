@@ -19,7 +19,7 @@
     padding: 15px;
   }
 
-  :host /deep/  .pagination {
+  ::ng-deep.pagination {
     margin: 0;
   }
 
@@ -41,14 +41,6 @@
   .buttonGrp button {
     margin-left: 5px;
   }
-
-  /* .mat-button,
-  .mat-icon-button,
-  .mat-raised-button {
-      width: 30%;
-      margin: 0 1px 0 1px;
-      padding: 1px;
-  } */
 
   .searchBox {
     background: #fff;

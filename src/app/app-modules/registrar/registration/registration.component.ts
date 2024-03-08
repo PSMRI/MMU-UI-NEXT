@@ -26,29 +26,15 @@ import {
   OnInit,
   ChangeDetectorRef,
   ViewChild,
-  ElementRef,
   AfterViewChecked,
   OnDestroy,
   DoCheck,
 } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  FormArray,
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
-import {
-  Params,
-  RouterModule,
-  Routes,
-  Router,
-  ActivatedRoute,
-} from '@angular/router';
+import { FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RegisterOtherDetailsComponent } from './register-other-details/register-other-details.component';
 import { RegisterPersonalDetailsComponent } from './register-personal-details/register-personal-details.component';
 import { ConfirmationService } from '../../core/services/confirmation.service';
-import { CameraService } from '../../core/services/camera.service';
 import { RegistrarService } from '../shared/services/registrar.service';
 import { RegistrationUtils } from '../shared/utility/registration-utility';
 import { CanComponentDeactivate } from '../../core/services/can-deactivate-guard.service';
@@ -107,7 +93,6 @@ export class RegistrationComponent
     private registrarService: RegistrarService,
     private fb: FormBuilder,
     private httpServiceService: HttpServiceService,
-    private cameraService: CameraService,
     private router: Router,
     private route: ActivatedRoute,
     private changeDetectorRef: ChangeDetectorRef,
@@ -170,17 +155,7 @@ export class RegistrationComponent
     } else if (this.route.snapshot.params['beneficiaryID'] === undefined) {
       this.patientRevisit = false;
     }
-    // Call This Method To Check for Text to be displayed on Post Form Button
-    // this.decidePostButtonText();
   }
-
-  /**
-   *
-   * Decide Post Button Text, Submit or Update
-   */
-  // decidePostButtonText() {
-  //   this.postButtonText = this.patientRevisit ? 'Update' : 'Submit';
-  // }
 
   /**
    *
@@ -213,7 +188,6 @@ export class RegistrationComponent
    * Loading Data of Beneficiary as Observable
    */
   callBeneficiaryDataObservable(benID: any) {
-    // this.registrarService.getPatientDataAsObservable(benRegID);
     this.revisitDataSubscription =
       this.registrarService.beneficiaryEditDetails$.subscribe(res => {
         if (res != null && benID == res.beneficiaryID) {
@@ -249,7 +223,6 @@ export class RegistrationComponent
     this.govIDReset();
     this.otherDetails.resetForm();
     this.demographicDetails.setDemographicDefaults();
-    // this.personalDetails.setPhoneSelectionEnabledByDefault();
     this.personalDetails.enableMaritalStatus = false;
     this.personalDetails.enableMarriageDetails = false;
     this.personalDetails.isMobileNoRequired = true;
@@ -261,7 +234,6 @@ export class RegistrationComponent
   }
 
   confirmFormReset(reset: any) {
-    // let resetflag = reset;
     if (this.beneficiaryRegistrationForm.dirty) {
       if (reset == true) {
         this.confirmationService
@@ -318,9 +290,6 @@ export class RegistrationComponent
         otherGovID.removeAt(i);
       }
     }
-    // govID.pop
-    // otherDetailsForm.setControl('govID', new FormArray([this.utils.initGovID()]));
-    // otherDetailsForm.setControl('otherGovID', new FormArray([this.utils.initGovID()]));
   }
 
   /**
@@ -497,7 +466,6 @@ export class RegistrationComponent
       required.push(this.currentLanguageSet.govID);
     }
     if (required.length) {
-      // demographicsForm.enable();
       this.confirmationService.notify(
         this.currentLanguageSet.alerts.info.mandatoryFields,
         required
@@ -758,10 +726,8 @@ export class RegistrationComponent
       changeInAssociations: true,
       is1097: false,
       createdBy: localStorage.getItem('userName'),
-      // 'createdDate': '2018-04-27T14:37:15.000Z',
       changeInBankDetails: true,
       beneficiaryIdentities: iEMRids,
-      // 'marriageDate': '2017-04-27T14:38:26.000Z',
       ageAtMarriage: personalForm.ageAtMarriage || undefined,
       literacyStatus: personalForm.literacyStatus || undefined,
       motherName: othersForm.motherName || undefined,

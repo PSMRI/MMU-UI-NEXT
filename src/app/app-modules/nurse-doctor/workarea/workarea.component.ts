@@ -24,8 +24,6 @@ import {
   Component,
   OnInit,
   ViewChild,
-  AfterViewChecked,
-  Input,
   ChangeDetectorRef,
   DoCheck,
   OnDestroy,
@@ -223,7 +221,6 @@ export class WorkareaComponent
     this.getBeneficiaryDetails();
     this.getVisitReasonAndCategory();
     this.getVisitType();
-    // this.getPregnancyStatus();
     this.ncdTemperature = false;
     this.enableProvisionalDiag = false;
     this.nurseService.clearMessage();
@@ -275,19 +272,6 @@ export class WorkareaComponent
       this.nurseService.fileData = null;
     }
   }
-
-  // setCancerDefaultforMCSU(){
-  //   if(localStorage.getItem('vanType') && localStorage.getItem('vanType') == 'MMU'){
-  //     let f: FormGroup = (<FormGroup>this.patientMedicalForm.controls['patientVisitForm']);
-  //     (<FormGroup>f.controls['patientVisitDetailsForm']).patchValue({
-  //       visitReason : 'Screening',
-  //       visitCategory :'Cancer Screening'
-  //     })
-  //            this.visitCategory = 'Cancer Screening';
-  //            this.getNurseMasterData('Cancer Screening');
-  //            this.handleVisitType('Cancer Screening');
-  //   }
-  // }
 
   getVisitType() {
     if (this.specialistFlag === '100') {
@@ -806,8 +790,6 @@ export class WorkareaComponent
     this.showPNC = false;
     this.showCaseRecord = false;
     this.showRefer = false;
-
-    // this.changeDetectorRef.detectChanges();
   }
 
   submitPatientMedicalDetailsForm(medicalForm: any) {
@@ -1426,11 +1408,6 @@ export class WorkareaComponent
         diagForm1.controls['provisionalDiagnosisList']
       );
       const diagForm3 = <FormGroup>diagForm2.controls[0];
-      // if (diagForm3.controls["provisionalDiagnosis"].errors) {
-      //   required.push(
-      //     this.currentLanguageSet.DiagnosisDetails.provisionaldiagnosis
-      //   );
-      // }
 
       if (!diagForm3.controls['provisionalDiagnosis'].errors) {
         diagForm2.value.filter((item: any) => {
@@ -1590,28 +1567,6 @@ export class WorkareaComponent
       }
     }
     console.log('referForm', referForm);
-    //   if(this.attendantType=="doctor"){
-    //     // if(referForm.controls["refrredToAdditionalServiceList"].value != null || referForm.controls["referredToInstituteName"].value != null){
-    //     //   if(referForm.controls["refrredToAdditionalServiceList"].value.length > 0 || referForm.controls["referredToInstituteName"].value != null ){
-    //     //     if(referForm.controls["referralReason"].errors){
-    //     //       required.push("Referral reason");
-    //     //     }
-    //     //   }
-    //     // }
-    //     if(referForm.controls["refrredToAdditionalServiceList"].value != null ){
-    //       if(referForm.controls["refrredToAdditionalServiceList"].value.length > 0 ){
-    //         if(referForm.controls["referralReason"].errors){
-    //           required.push("Referral reason");
-    //         }
-    //       }
-    //       }
-    //     else if(referForm.controls["referredToInstituteName"].value != null){
-    //       if(referForm.controls["referralReason"].errors){
-    //         required.push("Referral reason");
-    //       }
-    //     }
-
-    // }
     if (this.attendantType == 'doctor') {
       const referForm = <FormGroup>medicalForm.controls['patientReferForm'];
       if (
@@ -1738,15 +1693,6 @@ export class WorkareaComponent
         );
       }
     }
-    // if(this.attendantType=="doctor"){
-    //   if(referForm.controls["refrredToAdditionalServiceList"].value != null || referForm.controls["referredToInstituteID"].value != null){
-    //     if(referForm.controls["refrredToAdditionalServiceList"].value.length > 0 || referForm.controls["referredToInstituteID"].value != null){
-    //       if(referForm.controls["referralReason"].errors){
-    //         required.push("Referral reason");
-    //       }
-    //     }
-    //   }
-    // }
 
     if (this.attendantType == 'doctor') {
       if (referForm.controls['refrredToAdditionalServiceList'].value != null) {
@@ -1875,9 +1821,6 @@ export class WorkareaComponent
         'physicalActivityHistory'
       ]
     );
-    // let familyHistoryData = <FormGroup>familyHistoryMandatory.controls['familyHistory'];
-    // let familyHistoryArray = <FormArray>familyHistoryData.controls['familyDiseaseList'];
-    // let familyHistoryFormControl = <FormGroup>familyHistoryArray.controls[0];
     if (
       this.attendantType == 'nurse' &&
       this.diabetesSelected === 1 &&
@@ -1914,7 +1857,6 @@ export class WorkareaComponent
         .familyDiseaseList.value;
     let familyDiseasesLength = familyDiseasesList.length;
     for (let element = 0; element < familyDiseasesList.length; element++) {
-      //familyMember = 0;
       if (
         familyDiseasesList[element].diseaseType != null &&
         familyDiseasesList[element].deleted === false
@@ -1932,9 +1874,6 @@ export class WorkareaComponent
     if (familyMember != familyDiseasesLength) {
       required.push(this.currentLanguageSet.familyMemberInFamilyHistory);
     }
-
-    // console.log("required", ncdIDRSScreeningForm.controls['requiredList']);
-    // console.log("required", ncdIDRSScreeningForm.controls['requiredList'].value);
     if (ncdIDRSScreeningForm.controls['requiredList'].value != null) {
       const ar = ncdIDRSScreeningForm.controls['requiredList'].value;
       for (let i = 0; i < ar.length; i++) {
@@ -2138,28 +2077,7 @@ export class WorkareaComponent
       return true;
     }
   }
-  // checkIDRSRequiredData(medicalForm) {
-  //   //let NCDScreeningForm = <FormGroup>medicalForm.controls['NCDScreeningForm'];
-  //   let NCDScreeningForm = <FormGroup>medicalForm.controls['idrsScreeningForm'];
-  //   const required = [];
 
-  //   // if (NCDScreeningForm.controls['height_cm'].errors) {
-  //   //   required.push('Height');
-  //   // }
-  //   // if (NCDScreeningForm.controls['weight_Kg'].errors) {
-  //   //   required.push('Weight');
-  //   // }
-  //   // if (NCDScreeningForm.controls['isScreeningComplete'].errors) {
-  //   //   required.push('Screening Complete');
-  //   // }
-
-  //   if (required.length) {
-  //     this.confirmationService.notify('Below fields are required', required);
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
   /**
    * Submit NURSE GENERAL QUICK CONSULT
    */
@@ -2359,17 +2277,6 @@ export class WorkareaComponent
     const patientQuickConsultDetails = JSON.parse(
       JSON.stringify(patientQuickConsultForm.value)
     );
-
-    // let prescribedDrugs = patientQuickConsultDetails.prescribedDrugs;
-    // if (prescribedDrugs) {
-    //   prescribedDrugs = prescribedDrugs.filter((value, i) => {
-    //     if (value.drug == null && value.specialInstruction == null && value.dose == null && value.frequency == null &&
-    //       value.drugForm == null && value.drugDuration == null) {
-    //       return false;
-    //     }
-    //     return true;
-    //   })
-    // }
     let prescribedDrugs =
       patientQuickConsultDetails.prescription.prescribedDrugs;
     prescribedDrugs = prescribedDrugs.filter((item: any) => !!item.createdBy);
@@ -2560,22 +2467,6 @@ export class WorkareaComponent
           }
         );
     }
-    // if (this.checkIDRSRequiredData(medicalForm)) {
-
-    //   this.nurseService.postNCDScreeningForm(medicalForm)
-    //     .subscribe(res => {
-    //       if (res.statusCode == 200 && res.data != null) {
-    //         this.patientMedicalForm.reset();
-    //         this.removeBeneficiaryDataForNurseVisit();
-    //         this.confirmationService.alert(res.data.response, 'success');
-    //         this.router.navigate(['/nurse-doctor/nurse-worklist']);
-    //       } else {
-    //         this.confirmationService.alert(res.errorMessage, 'error');
-    //       }
-    //     }, err => {
-    //       this.confirmationService.alert(err, 'error');
-    //     })
-    // }
   }
 
   submitNCDCareDiagnosisForm() {
@@ -2859,7 +2750,6 @@ export class WorkareaComponent
         count++;
       }
     });
-    // console.log("array",arrayt);
     if (this.beneficiaryAge < 30) {
       count++;
     }
@@ -2869,39 +2759,12 @@ export class WorkareaComponent
         this.currentLanguageSet.pleaseSelectDiabetesMellitusInFamilyHistory
       );
     }
-    // let isDiabetesMellitusSelected =  localStorage.getItem("diabetesMellitusSelected");
-    // console.log("local",isDiabetesMellitusSelected);
-
-    // if(isDiabetesMellitusSelected == null || isDiabetesMellitusSelected != "Diabetes Mellitus" ){
-    //   required.push("Please select Diabetes Mellitus in family history");
-    // }
-    // const referForm = <FormGroup>historyForm.controls["patientReferForm"];
-    // if (this.attendantType == "doctor") {
-    //   if (referForm.controls["refrredToAdditionalServiceList"].value != null) {
-    //     if (referForm.controls["refrredToAdditionalServiceList"].value.length > 0) {
-    //       if (referForm.controls["referralReason"].errors) {
-    //         required.push("Referral reason");
-    //       }
-    //     } else if (referForm.controls["referredToInstituteName"].value != null) {
-    //       if (referForm.controls["referralReason"].errors) {
-    //         required.push("Referral reason");
-    //       }
-    //     }
-    //   } else if (referForm.controls["referredToInstituteName"].value != null) {
-
-    //     if (referForm.controls["referralReason"].errors) {
-    //       required.push("Referral reason");
-    //     }
-
-    //   }
-    // }
     let familyMember = 0;
     const familyDiseasesList =
       historyForm.controls.patientHistoryForm.controls.familyHistory.controls
         .familyDiseaseList.value;
     let familyDiseasesLength = familyDiseasesList.length;
     for (let element = 0; element < familyDiseasesList.length; element++) {
-      //familyMember = 0;
       if (
         familyDiseasesList[element].diseaseType != null &&
         familyDiseasesList[element].deleted === false
@@ -3382,10 +3245,6 @@ export class WorkareaComponent
           ' ' +
           this.currentLanguageSet.alerts.info.changes
       );
-
-    // if (changedForm) {
-    //   changedForm.markAsPristine();
-    // }
   }
 
   sideNavModeChange(sidenav: any) {
@@ -3430,8 +3289,6 @@ export class WorkareaComponent
       this.currentLanguageSet !== undefined &&
       this.currentLanguageSet !== null
     ) {
-      // &&
-      // this.schedulerButton !== "View " + this.serviceType + " Schedule")
       this.setValues();
     }
   }

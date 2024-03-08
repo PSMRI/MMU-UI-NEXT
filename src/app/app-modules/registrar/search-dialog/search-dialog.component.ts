@@ -141,10 +141,7 @@ export class SearchDialogComponent implements OnInit, DoCheck {
           console.log(this.masterData, 'masterDataall');
           this.getStatesData();
           this.govtIDData();
-        } /* else {
-          this.confirmationService.alert("Not able to get required Information, try again later.", 'warn');
-          this.matDialogRef.close(false);
-        } */
+        }
       });
   }
 
@@ -243,21 +240,6 @@ export class SearchDialogComponent implements OnInit, DoCheck {
         districtID: formValues.districtID,
       },
     };
-    // console.log(this.dataObj, 'daatObj')
-    /*     this.dataObj.beneficiaryID = formValues.beneficiaryID;
-    this.dataObj.firstName = formValues.firstName;
-    this.dataObj.lastName = formValues.lastName;
-    this.dataObj.phoneNo = formValues.contactNo;
-    this.dataObj.aadharNo = formValues.aadharNo;
-    this.dataObj.govtIdentityNo = formValues.governmentID;
-    this.dataObj.stateID = null;
-  if(formValues.stateID!=undefined){
-      this.dataObj.stateID = formValues.stateID;
-    }
-    this.dataObj.districtID = null;
-    if(formValues.districtID!=undefined){
-      this.dataObj.districtID = formValues.districtID;
-    } */
     //Passing form data to component and closing the dialog
     this.matDialogRef.close(this.dataObj);
   }

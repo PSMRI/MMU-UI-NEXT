@@ -23,10 +23,8 @@
 import {
   Component,
   OnInit,
-  EventEmitter,
   Input,
   OnChanges,
-  Output,
   DoCheck,
   OnDestroy,
 } from '@angular/core';
@@ -38,10 +36,6 @@ import {
 } from '../../shared/services';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
-
-//import { LocationService } from 'app/services/common/location.service';
-//import { ConfirmationDialogsService } from 'app/services/dialog/confirmation.service';
-//import { SearchService } from 'app/services/searchBeneficiaryService/search.service';
 
 @Component({
   selector: 'app-travel-history',
@@ -55,13 +49,6 @@ export class TravelHistoryComponent
   patientCovidForm!: FormGroup;
   @Input()
   mode!: string;
-  //   travelTypes = [{
-  //     name: 'Domestic',
-  //     value: false
-  // },{
-  //   name: 'Intternational',
-  //     value: false
-  // }];
   arr = [];
   travelTypeList: string[] = ['Domestic', 'International'];
   domestictype: any = [];
@@ -101,10 +88,6 @@ export class TravelHistoryComponent
   languageComponent!: SetLanguageComponent;
   currentLanguageSet: any;
 
-  // constructor( private _locationService: LocationService,
-  //     public alertMessage: ConfirmationDialogsService,
-  //     public searchBenData: SearchService
-  //     ){}
   constructor(
     private masterdataService: MasterdataService,
     private nurseService: NurseService,
@@ -290,14 +273,10 @@ export class TravelHistoryComponent
   onFilterClick(symp: any) {
     console.log('Symptom Travel' + symp);
     this.getrecommendedtext();
-    /* let travelstat=localStorage.getItem("travelstat");
-      this.travelStatuschange(travelstat) ;*/
   }
   contactFilterClick(cont: any) {
     console.log('Contact Travel' + cont);
     this.getrecommendedtext();
-    /* let travelstat=localStorage.getItem("travelstat");
-      this.travelStatuschange(travelstat) ;*/
   }
   travelStatuschange(boolean_flag: any) {
     localStorage.setItem('travelstat', boolean_flag);
@@ -323,8 +302,6 @@ export class TravelHistoryComponent
       this.interReset();
       this.getrecommendedtext();
     }
-
-    //this.populate();
   }
   getrecommendedtext() {
     this.arr = [];
@@ -363,22 +340,7 @@ export class TravelHistoryComponent
         )
           return item.recommendation;
       });
-
-      //console.log("Recommended Array"+this.arr[0].recommendation)
-
-      //this.patientCovidForm.patchValue({ recommendation : "Hospital isolation"});
-      //this.patientCovidForm.patchValue({ recommendation : arr[0].recommendation });
     } else if (
-      /*else if(this.question1=="yes" && this.answer1==="true" && this.answer2==="false")
-    {
-    this.patientCovidForm.patchValue({ suspectedStatus :  "YES"});
-   this.patientCovidForm.patchValue({ recommendation : "Hospital isolation"});
-    }
-    else if(this.question1=="no" && this.answer1==="true" && this.answer2==="true")
-    {
-      this.patientCovidForm.patchValue({ suspectedStatus :  "YES"});
-     this.patientCovidForm.patchValue({ recommendation : "Hospital isolation"});
-      }*/
       (this.question1 == 'no' &&
         this.answer1 === 'false' &&
         this.answer2 === 'true') ||
@@ -399,11 +361,6 @@ export class TravelHistoryComponent
         );
       });
     } else if (
-      /*else if(this.question1=="yes" && this.answer1==="false" && this.answer2==="true")
-      {
-        this.patientCovidForm.patchValue({ suspectedStatus :  "YES"});
-       this.patientCovidForm.patchValue({ recommendation : "Facility quarrantine 24 hrs"});
-        }*/
       this.question1 == 'yes' &&
       this.answer1 === 'false' &&
       this.answer2 === 'false'
@@ -454,7 +411,6 @@ export class TravelHistoryComponent
     } else {
       this.arr = [];
       this.patientCovidForm.patchValue({ suspectedStatusUI: null });
-      //  this.patientCovidForm.patchValue({ recommendation : null});
       this.recommendationText = null;
       const i = 0;
       while (i < recomFormArray.length) recomFormArray.removeAt(i);
@@ -467,24 +423,9 @@ export class TravelHistoryComponent
         ({ recommendation }) => recommendation
       );
       recomFormArray.push(new FormControl(selectedRecom));
-      //  this.recommendationTemporarayList.push(selectedRecom);
       const travelarr = selectedRecom.join('\n');
       this.recommendationText = travelarr;
-      //this.patientCovidForm.patchValue({ recommendation : travelarr});
     }
-
-    //this.answer1=this.patientCovidForm.controls['symptom'].value;
-    // console.log("ans="+this.answer1);
-    // console.log("ans="+this.answer2);
-    // console.log("ques="+this.answer1);
-    /* if(this.answer1==true)
-     {
-       this.recommendationText="symptom is positive";
-     }
-     else if(this.answer1==false)
-     {
-       this.recommendationText="symptom is negative";
-     }*/
   }
   traveldomesticStatuschange(modeOfTravelDomestic: any) {
     this.patientCovidForm.patchValue({
@@ -498,11 +439,6 @@ export class TravelHistoryComponent
   citiesAPI: any;
   getCitiesFromInter(countryID: any) {
     this.patientCovidForm.patchValue({ fromCountryInter: countryID });
-    // this._locationService.getCity(countryID).subscribe(response => this.getAllCitySuccessHandelerFromInter(response),
-
-    // 		(err) => {
-    // 			this.alertMessage.alert("Error in fetching states", 'error');
-    // 		});
     this.citiesAPI = this.nurseService
       .getCityName(countryID)
       .subscribe((response: any) => {
@@ -512,7 +448,6 @@ export class TravelHistoryComponent
           this.citiesFromInter = response.data;
         }
       });
-    // this.citiesFromInter = ["Delhi", "Mumbai", "Bangalore"];
   }
   getAllCitySuccessHandelerFromInter(response: any) {
     this.citiesFromInter = response;
@@ -529,12 +464,6 @@ export class TravelHistoryComponent
           this.citiesToInter = response.data;
         }
       });
-    // this._locationService.getCity(countryID).subscribe(response => this.getAllCitySuccessHandelerToInter(response),
-
-    // 		(err) => {
-    // 			this.alertMessage.alert("Error in fetching states", 'error');
-    // 		});
-    // this.citiesToInter = ["Kochi", "Patna", "Pune"];
   }
   getAllCitySuccessHandelerToInter(response: any) {
     this.citiesToInter = response;
@@ -542,13 +471,6 @@ export class TravelHistoryComponent
   CitiesToInter(toCityInter: any) {
     this.patientCovidForm.patchValue({ toCityInter: toCityInter });
   }
-  // initiallyState() {
-  //   // this._locationService.getStates(1).subscribe(response => this.getAllStatesSuccessHandeler(response),
-  //   // 	(err) => {
-  //   // 		this.alertMessage.alert("Error in fetching states", 'error');
-  //   // 	});
-  //   this.states = ["Delhi", "Mumbai", "Bangalore"];
-  // }
   getAllStatesSuccessHandeler(response: any) {
     this.states = response;
   }
@@ -564,11 +486,6 @@ export class TravelHistoryComponent
           this.districtsFromDom = response.data;
         }
       });
-    // if(this.mode == 'view'){
-    //   if(this.districtsFromDom.some(value => value.))
-    // }
-    // this.districtsFromDom = ["Hyderabad", "Kochi"];
-    //let res = this._locationService.getDistricts(value).subscribe(response => this.SetDistrictsFromDom(response));
   }
   districtAPITo: any;
   GetDistrictsToDom(stateID: any) {
@@ -582,9 +499,6 @@ export class TravelHistoryComponent
           this.districtsToDom = response.data;
         }
       });
-
-    // this.districtsToDom = ["Hyderabad", "Kochi"];
-    //let res = this._locationService.getDistricts(value).subscribe(response => this.SetDistrictsTomDom(response));
   }
   SetDistrictsFromDom(response: any) {
     this.districtsFromDom = response;
@@ -602,9 +516,6 @@ export class TravelHistoryComponent
           this.subDistrictsFromDom = response.data;
         }
       });
-    // this.subDistrictsFromDom = ["Vanasthallipuram", "Nalagonda"];
-    //this.village = undefined;
-    //this.searchBenData.getSubDistricts(districtID).subscribe(response => this.getSubDistrictSuccessHandelerFromDom(response));
   }
   subDistrictAPITo: any;
   getSubDistrictToDom(districtID: any) {
@@ -616,45 +527,32 @@ export class TravelHistoryComponent
           this.subDistrictsToDom = response.data;
         }
       });
-    // this.subDistrictsToDom = ["Vanasthallipuram", "Nalagonda"];
-    ///this.village = undefined;
-    //this.searchBenData.getSubDistricts(districtID).subscribe(response => this.getSubDistrictSuccessHandelerToDom(response));
   }
 
   getSubDistrictSuccessHandelerFromDom(response: any) {
     this.subDistrictsFromDom = response;
-    //	console.log("********SUBDISTRICT", this.subDistricts);
   }
   getSubDistrictSuccessHandelerToDom(response: any) {
     this.subDistrictsToDom = response;
-    //	console.log("********SUBDISTRICT", this.subDistricts);
   }
 
   getVillage(subDistrictID: any) {
     this.patientCovidForm.patchValue({ fromSubDistrictDom: subDistrictID });
-    //this.searchBenData.getVillages(subDistrictID).subscribe(response => this.getVillageSuccessHandeler(response));
   }
   getVillageTosubDistrictDom(subDistrictID: any) {
     this.patientCovidForm.patchValue({ toSubDistrictDom: subDistrictID });
-    //this.searchBenData.getVillages(subDistrictID).subscribe(response => this.getVillageSuccessHandeler(response));
   }
   travelinternationalStatuschange(modeOfTravelInter: any) {
     this.patientCovidForm.patchValue({ modeOfTravelInter: modeOfTravelInter });
   }
   getVillageSuccessHandeler(response: any) {
     this.villages = response;
-    //	console.log("********VILLAGES", this.villages);
   }
 
   get travelStatus() {
     return this.patientCovidForm.controls['travelStatus'].value;
   }
-  // get domestic() {
-  //   return this.patientCovidForm.controls["domestic"].value;
-  // }
-  // get international() {
-  //   return this.patientCovidForm.controls["international"].value;
-  // }
+
   onChange(travel: string, isChecked: any) {
     const travelFormArray = <FormArray>(
       this.patientCovidForm.controls['travelList']
@@ -696,18 +594,6 @@ export class TravelHistoryComponent
     this.patientCovidForm.patchValue({ toCountryInter: null });
     this.patientCovidForm.patchValue({ toCityInter: null });
   }
-
-  /* get domestic() {
-    return this.patientCovidForm.controls['domestic'].value;
-  }
-  get international() {
-    return this.patientCovidForm.controls['international'].value;
-  }*/
-
-  /*get travelType()
-  {
-    return this.patientCovidForm.controls['travelType'].value;
-  }*/
   get modeOfTravelDomestic() {
     return this.patientCovidForm.controls['modeOfTravelDomestic'].value;
   }
@@ -723,9 +609,6 @@ export class TravelHistoryComponent
   get fromSubDistrictDom() {
     return this.patientCovidForm.controls['fromSubDistrictDom'].value;
   }
-  // get toStateDom() {
-  //   return this.patientCovidForm.controls['toStateDom'].value;
-  // }
 
   get toDistrictDom() {
     return this.patientCovidForm.controls['toDistrictDom'].value;
@@ -754,9 +637,6 @@ export class TravelHistoryComponent
   get recommendation() {
     return this.patientCovidForm.controls['recommendation'].value;
   }
-  // get toCityInter() {
-  //   return this.patientCovidForm.controls['toCityInter'].value;
-  // }
 
   //AN40085822 13/10/2021 Integrating Multilingual Functionality --Start--
   ngDoCheck() {
