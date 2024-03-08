@@ -395,6 +395,12 @@ mat-mdc-form-field-label-always-float {
   border: 1px solid #ddd;
 }
 
+.table-responsive-report {
+  overflow-y: hidden;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  border: 1px solid #ddd;
+}
+
 .mat-tab-group {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }

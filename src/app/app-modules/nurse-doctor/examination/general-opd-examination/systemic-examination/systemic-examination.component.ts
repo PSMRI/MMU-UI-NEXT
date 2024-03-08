@@ -77,6 +77,10 @@ export class SystemicExaminationComponent
     ) {
       this.displayGeneral = true;
     }
+    this.loadFormData();
+  }
+
+  loadFormData() {
     this.gastroIntestinalSystemForm = this.systemicExaminationDataForm.get(
       'gastroIntestinalSystemForm'
     ) as FormGroup;
@@ -99,7 +103,6 @@ export class SystemicExaminationComponent
       'obstetricExaminationForANCForm'
     ) as FormGroup;
   }
-
   ngOnChanges() {
     this.displayANC = this.visitCategory == 'ANC' ? true : false;
     if (this.displayANC) {
@@ -115,6 +118,7 @@ export class SystemicExaminationComponent
         this.displayGeneral = true;
       }
     }
+    this.loadFormData();
   }
 
   //BU40088124 12/10/2021 Integrating Multilingual Functionality --Start--

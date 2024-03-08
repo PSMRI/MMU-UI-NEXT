@@ -8,7 +8,7 @@
           placeholder="{{ current_language_set?.labTechnicianData?.testName }}"
           #filterTerm
           (keyup)="filterProcedures(filterTerm.value)" />
-        <mat-icon mdSuffix>search</mat-icon>
+        <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
     </div>
 
@@ -16,7 +16,7 @@
 
     <section class="m-t-20">
       <table
-        class="table table-responsive table-bordered"
+        class="table table-responsive-report table-bordered"
         aria-describedby="labTechnician">
         <thead>
           <tr>
@@ -299,7 +299,7 @@
               }}"
               #filterTerm
               (keyup)="filterArchivedProcedures(filterTerm.value)" />
-            <mat-icon mdSuffix>search</mat-icon>
+            <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
         </div>
       </div>
