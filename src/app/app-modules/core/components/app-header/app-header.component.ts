@@ -96,9 +96,8 @@ export class AppHeaderComponent implements OnInit {
 
   ngOnInit() {
     this.service.disconnectValue$.subscribe(response => {
-      response === undefined
-        ? this.isConnected == false
-        : this.isConnected == response;
+      if (response === undefined) this.isConnected == false;
+      else this.isConnected == response;
     });
     this.getUIVersionAndCommitDetails();
     this.servicePoint = localStorage.getItem('servicePointName');
