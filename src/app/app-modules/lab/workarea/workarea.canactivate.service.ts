@@ -45,7 +45,6 @@ export class WorkareaCanActivate implements CanActivate {
         localStorage.getItem('nurseFlag')
       )
     ) {
-      // this.router.navigate(['/common/doctor-worklist']);
       return false;
     } else {
       return true;

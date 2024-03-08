@@ -41,11 +41,11 @@ jobs:
             npm install ng2-smart-table@1.2.1
             npm install node-sass --force
             npm install --force
-            npm run ng build --prod --aot && grunt
+            ng build --configuration production
             
             
     - name: Upload WAR file as artifact
       uses: actions/upload-artifact@v2 
       with:
         name: MMU-UI
-        path: target/
+        path: dist/mmu-ui-next/mmu-ui-next.war

@@ -1,13 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  CanActivate,
-  CanActivateChild,
-  Router,
-  ActivatedRoute,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { CanActivate, Router, ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs';
 import { HttpServiceService } from '../../core/services/http-service.service';
 import { AuthService } from './auth.service';
@@ -28,7 +20,6 @@ export class AuthGuard implements CanActivate {
     return this.auth.validateSessionKey().pipe(
       tap((res: any) => {
         if (!(res && res.statusCode == 200 && res.data)) {
-          const componentName = route.component ? route.component.name : '';
           //alert(this.current_language_set.alerts.info.notAuthorized + componentName);
           this.router.navigate(['/login']);
         }

@@ -20,7 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Inject, Injector, DoCheck } from '@angular/core';
+import { Component, OnInit, Injector, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 
 import * as CryptoJS from 'crypto-js';
@@ -214,24 +214,10 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
                                     userLoggedIn.data.previlegeObj.forEach(
                                       (item: any) => {
                                         if (
-                                          item.roles[0]
-                                            .serviceRoleScreenMappings[0] !==
-                                            undefined &&
-                                          item.roles[0]
-                                            .serviceRoleScreenMappings[0] !==
-                                            null &&
-                                          item.roles[0]
-                                            .serviceRoleScreenMappings[0]
-                                            .providerServiceMapping.serviceID !=
-                                            undefined &&
-                                          item.roles[0]
-                                            .serviceRoleScreenMappings[0]
-                                            .providerServiceMapping.serviceID !=
-                                            null &&
-                                          item.roles[0]
-                                            .serviceRoleScreenMappings[0]
-                                            .providerServiceMapping.serviceID !=
-                                            '2'
+                                          item?.roles[0]
+                                            ?.serviceRoleScreenMappings[0]
+                                            ?.providerServiceMapping
+                                            ?.serviceID != '2'
                                         ) {
                                           localStorage.removeItem('serverKey');
                                           this.confirmationService.alert(
@@ -273,10 +259,7 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
                           }
                         });
                     } else {
-                      //sessionStorage.clear();
                       this.showProgressBar = false;
-                      //this.router.navigate(["/dataSyncLogin"]);
-                      // this.confirmationService.alert(res.errorMessage, 'error');
                     }
                   });
               } else {
@@ -308,13 +291,12 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
   //added get datasync data on login to a new method
   getDataSyncMMU(res: any) {
     if (
-      (this.data && this.data.masterDowloadFirstTime) ||
-      (this.data && this.data.provideAuthorizationToViewTmCS)
+      this.data?.masterDowloadFirstTime ||
+      this.data?.provideAuthorizationToViewTmCS
     ) {
       const mmuService = res.data.previlegeObj.filter((item: any) => {
         return item.serviceName == 'MMU';
       });
-      // sessionStorage.setItem("key", res.data.key);
       localStorage.setItem(
         'dataSyncProviderServiceMapID',
         mmuService[0].providerServiceMapID

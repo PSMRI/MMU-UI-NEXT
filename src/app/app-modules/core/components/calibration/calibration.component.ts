@@ -39,7 +39,6 @@ import { MatTableDataSource } from '@angular/material/table';
 export class CalibrationComponent implements OnInit, DoCheck {
   searchTerm: any;
   pageNo: number = 0;
-  // components = [];
   message: string = '';
   pageCount: any;
   selectedComponentsList = [];
@@ -98,10 +97,6 @@ export class CalibrationComponent implements OnInit, DoCheck {
               this.dataList = res.data.calibrationData;
               this.components.paginator = this.paginator;
               console.log('component', this.components.data);
-              //   if (pageNo == 0) {
-              //     this.pageCount = res.data.pageCount;
-              //   }
-              //   this.pager = this.getPager(pageNo);
             } else {
               this.message = this.current_language_set.common.noRecordFound;
               this.components.data = [];
@@ -187,15 +182,6 @@ export class CalibrationComponent implements OnInit, DoCheck {
   resetData() {
     this.components.data = [];
     this.components.paginator = this.paginator;
-    // this.pageCount = null;
-    // this.pager = {
-    //   totalItems: 0,
-    //   currentPage: 0,
-    //   totalPages: 0,
-    //   startPage: 0,
-    //   endPage: 0,
-    //   pages: 0
-    // };
   }
 
   filterPreviousData(searchTerm: any) {

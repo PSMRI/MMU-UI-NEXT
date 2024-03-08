@@ -20,12 +20,12 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appMyPassword]',
 })
-export class myPasswordDirective {
+export class MyPasswordDirective {
   constructor(element: ElementRef) {}
 
   private passwordValidator(password: any) {

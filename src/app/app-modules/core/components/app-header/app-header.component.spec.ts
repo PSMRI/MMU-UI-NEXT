@@ -152,7 +152,7 @@ describe('AppHeaderComponent', () => {
   }));
 
   it('should not clear local storage asresponse is not correct', () => {
-    const spy = spyOn(authService, 'logoutUser').and.returnValue(
+    spyOn(authService, 'logoutUser').and.returnValue(
       Observable.of({ statusCode: 401 })
     );
     component.ngOnInit();
