@@ -24,7 +24,6 @@ import { Component, OnInit, Input, DoCheck, OnDestroy } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
-  FormControl,
   FormArray,
   AbstractControl,
 } from '@angular/forms';
@@ -61,40 +60,6 @@ export class OtherVaccinesComponent implements OnInit, DoCheck, OnDestroy {
   otherVaccineData: any;
 
   vaccineMasterData = [];
-  // vaccineMasterData = [
-  //   {
-  //     vaccineID: 1,
-  //     vaccineName: "PCV"
-  //   },
-  //   {
-  //     vaccineID: 2,
-  //     vaccineName: "MMR"
-  //   },
-  //   {
-  //     vaccineID: 3,
-  //     vaccineName: "Hepatitis-A Vaccine"
-  //   },
-  //   {
-  //     vaccineID: 4,
-  //     vaccineName: "Varicella Vaccine"
-  //   },
-  //   {
-  //     vaccineID: 5,
-  //     vaccineName: "Typhoid Vaccine"
-  //   },
-  //   {
-  //     vaccineID: 6,
-  //     vaccineName: "Meningococcal Vaccine"
-  //   },
-  //   {
-  //     vaccineID: 6,
-  //     vaccineName: "Other"
-  //   },
-  //   {
-  //     vaccineID: 7,
-  //     vaccineName: "Nil"
-  //   }
-  // ];
   previousSelectedVaccineList: any = [];
   vaccineSelectList: any = [];
   count = 0;
@@ -248,7 +213,6 @@ export class OtherVaccinesComponent implements OnInit, DoCheck, OnDestroy {
     const previousValue = this.previousSelectedVaccineList[i];
     const snomedCTCode = vaccine.sctCode;
     const snomedCTTerm = vaccine.sctTerm;
-    //console.log("count:", snomedCTCode);
     if (vaccineForm && vaccine.vaccineName != 'Other') {
       vaccineForm.patchValue({ otherVaccineName: null });
       if (vaccine.sctCode != null) {

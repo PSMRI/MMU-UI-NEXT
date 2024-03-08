@@ -1,4 +1,3 @@
-<!-- {{patientChiefComplaintsForm.value | json}} -->
 <div
   class="row m-t-20"
   *ngIf="!benChiefComplaints"
@@ -61,7 +60,12 @@
                 formControlName="conceptID" />
             </mat-form-field>
           </div>
-          <div class="col-4 input-full-width">
+          <div
+            class="col-4 input-full-width"
+            *ngIf="
+              complaint?.value?.chiefComplaint !== null &&
+              complaint?.value?.chiefComplaint !== ''
+            ">
             <mat-form-field class="input-full-width">
               <mat-label>{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
@@ -72,13 +76,17 @@
                 appDefaultNull
                 allowText="number"
                 maxlength="2"
-                [disabled]="complaint.value.chiefComplaint"
                 formControlName="duration"
                 (selectionChange)="validateDuration(complaint)" />
             </mat-form-field>
           </div>
 
-          <div class="col-4 box input-full-width">
+          <div
+            class="col-4 box input-full-width"
+            *ngIf="
+              complaint?.value?.duration !== null &&
+              complaint?.value?.duration !== ''
+            ">
             <mat-label>{{
               currentLanguageSet?.nurseData?.chiefComplaintsDetails
                 ?.unitOfDuration
@@ -87,7 +95,6 @@
               class="input-full-width"
               name="unitOfDuration"
               formControlName="unitOfDuration"
-              [disabled]="!complaint?.value?.duration"
               (selectionChange)="validateDuration(complaint)">
               <mat-option value="Hours">Hour(s)</mat-option>
               <mat-option value="Days">Day(s)</mat-option>
@@ -98,7 +105,12 @@
           </div>
         </div>
         <div class="col-12 row">
-          <div class="input-full-width">
+          <div
+            class="input-full-width"
+            *ngIf="
+              complaint?.value?.chiefComplaint !== null &&
+              complaint?.value?.chiefComplaint !== ''
+            ">
             <mat-form-field class="textarea-full-width">
               <mat-label>{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails
@@ -113,8 +125,7 @@
                 minRows="6"
                 name="description"
                 formControlName="description"
-                maxlength="300"
-                [disabled]="!complaint?.value?.chiefComplaint"></textarea>
+                maxlength="300"></textarea>
             </mat-form-field>
           </div>
 

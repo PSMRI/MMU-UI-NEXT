@@ -25,7 +25,6 @@ import {
   FormBuilder,
   FormArray,
   FormGroup,
-  FormControl,
   AbstractControl,
 } from '@angular/forms';
 
@@ -184,8 +183,6 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
         if (item.diseaseType == 'None' && temp.length > 0) return false;
         else if (arr.length == 0) return true;
         else return false;
-        // let flag = arr.length == 0 ? true : false;
-        // return flag;
       });
       this.diseaseSelectList.push(result.slice());
     }

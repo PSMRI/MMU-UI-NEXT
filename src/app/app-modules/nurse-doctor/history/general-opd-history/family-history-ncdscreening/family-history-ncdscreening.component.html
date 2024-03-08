@@ -1,4 +1,3 @@
-<!-- {{ familyHistoryForm.value | json }} -->
 <div class="" [formGroup]="familyHistoryForm">
   <div class="col-xs-12" formArrayName="familyDiseaseList">
     <div class="col-12" style="text-align: end">
@@ -97,7 +96,13 @@
             </mat-form-field>
           </div>
 
-          <div class="col-3 box">
+          <div
+            class="col-3 box"
+            *ngIf="
+              (familyDisease?.value?.diseaseType !== null &&
+                familyDisease?.value?.diseaseType !== '') ||
+              familyDisease.value.diseaseType?.diseaseType === 'None'
+            ">
             <mat-form-field>
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
@@ -108,10 +113,6 @@
                 multiple
                 name="familyMembers"
                 formControlName="familyMembers"
-                [disabled]="
-                  !familyDisease.value.diseaseType ||
-                  familyDisease.value.diseaseType?.diseaseType === 'None'
-                "
                 (selectionChange)="filterFamilyMembers($event, familyDisease)">
                 <mat-option
                   *ngFor="let member of familyMemeberMasterData"

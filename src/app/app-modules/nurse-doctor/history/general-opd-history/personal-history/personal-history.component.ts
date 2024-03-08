@@ -25,7 +25,6 @@ import {
   FormBuilder,
   FormArray,
   FormGroup,
-  FormControl,
   AbstractControl,
 } from '@angular/forms';
 
@@ -961,9 +960,6 @@ export class GeneralPersonalHistoryComponent
     i: any,
     allergyForm: AbstractControl<any, any>
   ): void {
-    // const searchTerm = term;
-    // let searchTerm = <FormArray>this.generalPersonalHistoryForm.controls['snomedTerm'];
-    // allergicList
     const formValues = this.generalPersonalHistoryForm.value;
     const searchTerm = formValues?.allergicList[i]?.snomedTerm;
     console.log('searchTerm', this.generalPersonalHistoryForm);
@@ -983,13 +979,6 @@ export class GeneralPersonalHistoryComponent
             this.generalPersonalHistoryForm.value.allergicList != undefined &&
             this.generalPersonalHistoryForm.value.allergicList.length > 0
           ) {
-            // console.log("check",this.generalPersonalHistoryForm.value.allergicList.at(i).snomedTerm);
-            // this.generalPersonalHistoryForm.value.allergicList[0].snomedTerm.patchValue(result.component);
-
-            // this.generalPersonalHistoryForm.value.allergicList[0].patchValue({
-            //   snomedTerm: result.component})
-            // this.generalPersonalHistoryForm.controls['snomedTerm'].setValue(result.component);
-            // this.generalPersonalHistoryForm.controls['snomedCode'].setValue(result.componentNo);
             this.selectedSnomedTerm = result.component;
             const allergyForm = this.generalPersonalHistoryForm.controls[
               'allergicList'
@@ -1000,10 +989,7 @@ export class GeneralPersonalHistoryComponent
             allergyForm.at(i).patchValue({ allergyName: result.component });
             this.countForSearch = i;
           }
-          // this.familyHistoryForm.controls['testLoincCode'].setValue(result.d);
           this.componentFlag = true;
-          //  this.generalPersonalHistoryForm.controls['snomedTerm'].disable();
-          //  this.generalPersonalHistoryForm.controls['snomedCode'].disable();
 
           this.enableAlert = false;
         } else {
@@ -1058,11 +1044,5 @@ export class GeneralPersonalHistoryComponent
         this.countForSearch = index;
       }
     }
-    // if(this.countForSearch == 0){
-    //   this.confirmationService.alert("Please select a valid snomed code");
-    //   allergyForm.patchValue({ snomedTerm: null });
-    //   this.countForSearch = 0;
-
-    // }
   }
 }

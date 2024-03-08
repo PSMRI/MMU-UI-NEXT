@@ -28,7 +28,7 @@ import {
   OnDestroy,
   DoCheck,
 } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
 import { DoctorService, NurseService } from '../../shared/services';
 
@@ -129,7 +129,6 @@ export class CancerPatientVitalsComponent
       this.nurseService.setRbsInCurrentVitals(
         this.patientVitalsForm.controls['rbsTestResult'].value
       );
-      //this.patientVitalsForm.controls['rbsTestResult'].disable();
     } else {
       this.nurseService.setRbsInCurrentVitals(null);
     }
@@ -249,7 +248,6 @@ export class CancerPatientVitalsComponent
       data: { startAPI: this.startPulseTest },
     });
     dialogRef.afterClosed().subscribe(result => {
-      // console.log("sPO2", result, result['sPO2']);
       if (result != null) {
         this.patientVitalsForm.patchValue({
           sPO2: result['spo2'],
@@ -579,7 +577,6 @@ export class CancerPatientVitalsComponent
       this.confirmationService.alert(
         this.currentLanguageSet.alerts.info.recheckValue
       );
-      // this.patientVitalsForm.controls['hemoglobin'].reset();
     }
   }
 
@@ -715,7 +712,6 @@ export class CancerPatientVitalsComponent
     dialogRef.afterClosed().subscribe(result => {
       console.log('he;;p', result, result['result']);
       if (result != null) {
-        //result['result']
         this.patientVitalsForm.patchValue({
           weight_Kg: result['result'],
         });
@@ -872,7 +868,6 @@ export class CancerPatientVitalsComponent
       data: { startAPI: this.startBloodGlucose },
     });
     dialogRef.afterClosed().subscribe(result => {
-      // console.log("blood_glucose",result['sys'],result['dia']);
       if (result != null) {
         this.patientVitalsForm.patchValue({
           bloodGlucose_2HrPostPrandial: result['result'],

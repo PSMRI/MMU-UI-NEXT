@@ -1,4 +1,3 @@
-<!-- {{obstetricFormulaForm.value | json}} -->
 <div [formGroup]="obstetricFormulaForm" class="row m-t-20">
   <div
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
@@ -22,90 +21,105 @@
     </mat-form-field>
   </div>
   <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="
       gravidaStatus !== null && gravidaStatus !== undefined && !gravidaStatus
     ">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          current_language_set?.ancData?.obstetricDeatils?.termDeliveries
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number"
-          maxlength="1"
-          name="termDeliveries_T"
-          formControlName="termDeliveries_T"
-          (input)="calculateGravida('termDeliveries_T')" />
-      </mat-form-field>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          current_language_set?.ancData?.obstetricDeatils?.pretermDeliveries
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number"
-          maxlength="1"
-          name="pretermDeliveries_P"
-          formControlName="pretermDeliveries_P"
-          (input)="calculateGravida('pretermDeliveries_P')" />
-      </mat-form-field>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          current_language_set?.ancData?.obstetricDeatils?.abortions
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number"
-          maxlength="1"
-          name="abortions_A"
-          formControlName="abortions_A"
-          (input)="calculateGravida('abortions_A')" />
-      </mat-form-field>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{ current_language_set?.stillBirth }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number"
-          maxlength="1"
-          name="stillBirth"
-          formControlName="stillBirth"
-          (input)="calculateGravida('stillBirth')" />
-      </mat-form-field>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field class="input-full-width">
-        <mat-label>{{
-          current_language_set?.ancData?.obstetricDeatils?.livingChildren
-        }}</mat-label>
-        <input
-          autocomplete="off"
-          matInput
-          appDefaultNull
-          allowText="number"
-          maxlength="2"
-          allowMax="18"
-          name="livebirths_L"
-          formControlName="livebirths_L"
-          (input)="checkLivingChildren(livebirths_L)" />
-      </mat-form-field>
-    </div>
+    <mat-form-field class="input-full-width">
+      <mat-label>{{
+        current_language_set?.ancData?.obstetricDeatils?.termDeliveries
+      }}</mat-label>
+      <input
+        autocomplete="off"
+        matInput
+        appDefaultNull
+        allowText="number"
+        maxlength="1"
+        name="termDeliveries_T"
+        formControlName="termDeliveries_T"
+        (input)="calculateGravida('termDeliveries_T')" />
+    </mat-form-field>
   </div>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    *ngIf="
+      gravidaStatus !== null && gravidaStatus !== undefined && !gravidaStatus
+    ">
+    <mat-form-field class="input-full-width">
+      <mat-label>{{
+        current_language_set?.ancData?.obstetricDeatils?.pretermDeliveries
+      }}</mat-label>
+      <input
+        autocomplete="off"
+        matInput
+        appDefaultNull
+        allowText="number"
+        maxlength="1"
+        name="pretermDeliveries_P"
+        formControlName="pretermDeliveries_P"
+        (input)="calculateGravida('pretermDeliveries_P')" />
+    </mat-form-field>
+  </div>
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    *ngIf="
+      gravidaStatus !== null && gravidaStatus !== undefined && !gravidaStatus
+    ">
+    <mat-form-field class="input-full-width">
+      <mat-label>{{
+        current_language_set?.ancData?.obstetricDeatils?.abortions
+      }}</mat-label>
+      <input
+        autocomplete="off"
+        matInput
+        appDefaultNull
+        allowText="number"
+        maxlength="1"
+        name="abortions_A"
+        formControlName="abortions_A"
+        (input)="calculateGravida('abortions_A')" />
+    </mat-form-field>
+  </div>
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    *ngIf="
+      gravidaStatus !== null && gravidaStatus !== undefined && !gravidaStatus
+    ">
+    <mat-form-field class="input-full-width">
+      <mat-label>{{ current_language_set?.stillBirth }}</mat-label>
+      <input
+        autocomplete="off"
+        matInput
+        appDefaultNull
+        allowText="number"
+        maxlength="1"
+        name="stillBirth"
+        formControlName="stillBirth"
+        (input)="calculateGravida('stillBirth')" />
+    </mat-form-field>
+  </div>
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    *ngIf="
+      gravidaStatus !== null && gravidaStatus !== undefined && !gravidaStatus
+    ">
+    <mat-form-field class="input-full-width">
+      <mat-label>{{
+        current_language_set?.ancData?.obstetricDeatils?.livingChildren
+      }}</mat-label>
+      <input
+        autocomplete="off"
+        matInput
+        appDefaultNull
+        allowText="number"
+        maxlength="2"
+        allowMax="18"
+        name="livebirths_L"
+        formControlName="livebirths_L"
+        (input)="checkLivingChildren(livebirths_L)" />
+    </mat-form-field>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box" style="margin: 15px">
     <mat-label>{{
       current_language_set?.ancData?.obstetricDeatils?.bloodGroupType
     }}</mat-label>

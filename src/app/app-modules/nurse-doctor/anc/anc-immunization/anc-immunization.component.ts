@@ -28,7 +28,7 @@ import {
   DoCheck,
   OnDestroy,
 } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { BeneficiaryDetailsService } from '../../../core/services/beneficiary-details.service';
 import { SetLanguageComponent } from '../../../core/components/set-language.component';
@@ -61,7 +61,6 @@ export class AncImmunizationComponent
   current_language_set: any;
 
   constructor(
-    private fb: FormBuilder,
     private beneficiaryDetailsService: BeneficiaryDetailsService,
     private httpServiceService: HttpServiceService
   ) {}

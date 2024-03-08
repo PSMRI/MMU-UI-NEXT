@@ -1,4 +1,3 @@
-<!-- {{ pastHistoryForm.value | json}} -->
 <div [formGroup]="pastHistoryForm">
   <div>
     <div class="col-12" style="float: right; text-align: end">
@@ -78,7 +77,14 @@
             </mat-form-field>
           </div>
 
-          <div class="col-3 box">
+          <div
+            class="col-3 box"
+            *ngIf="
+              (pastIllness?.value?.illnessType !== null &&
+                pastIllness?.value?.illnessType !== '') ||
+              pastIllness.value.illnessType?.illnessType === 'Nil' ||
+              pastIllness.value.illnessType?.illnessType === 'None'
+            ">
             <mat-form-field class="input-full-width">
               <mat-label>{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
@@ -92,16 +98,16 @@
                 maxlength="2"
                 name="timePeriodAgo"
                 formControlName="timePeriodAgo"
-                [disabled]="
-                  !pastIllness.value.illnessType ||
-                  pastIllness.value.illnessType?.illnessType === 'Nil' ||
-                  pastIllness.value.illnessType?.illnessType === 'None'
-                "
                 (change)="validateDuration(pastIllness)" />
             </mat-form-field>
           </div>
 
-          <div class="col-3 box">
+          <div
+            class="col-3 box"
+            *ngIf="
+              pastIllness?.value?.timePeriodAgo !== null &&
+              pastIllness?.value?.timePeriodAgo !== ''
+            ">
             <mat-form-field>
               <mat-label>{{
                 currentLanguageSet?.DurationData?.timeperiodAgo
@@ -110,8 +116,7 @@
                 class="select-full-width mat_border_style"
                 name="timePeriodUnit"
                 formControlName="timePeriodUnit"
-                (change)="validateDuration(pastIllness)"
-                [disabled]="!pastIllness.value.timePeriodAgo">
+                (change)="validateDuration(pastIllness)">
                 <mat-option value="Days">Day(s)</mat-option>
                 <mat-option value="Weeks">Week(s)</mat-option>
                 <mat-option value="Months">Month(s)</mat-option>
@@ -209,7 +214,13 @@
           </mat-form-field>
         </div>
 
-        <div class="col-3 box">
+        <div
+          class="col-3 box"
+          *ngIf="
+            (pastSurgery?.value?.surgeryType !== null &&
+              pastSurgery?.value?.surgeryType !== '') ||
+            pastSurgery.value.surgeryType?.surgeryType === 'None'
+          ">
           <mat-form-field class="input-full-width">
             <mat-label>{{
               currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
@@ -222,15 +233,16 @@
               maxlength="2"
               name="timePeriodAgo"
               formControlName="timePeriodAgo"
-              [disabled]="
-                !pastSurgery.value.surgeryType ||
-                pastSurgery.value.surgeryType?.surgeryType === 'None'
-              "
               (change)="validateDuration(pastSurgery)" />
           </mat-form-field>
         </div>
 
-        <div class="col-3 box">
+        <div
+          class="col-3 box"
+          *ngIf="
+            pastSurgery?.value?.timePeriodAgo !== null &&
+            pastSurgery?.value?.timePeriodAgo !== ''
+          ">
           <mat-form-field>
             <mat-label>{{
               currentLanguageSet?.DurationData?.timeperiodAgo
@@ -239,7 +251,6 @@
               class="select-full-width"
               formControlName="timePeriodUnit"
               name="timePeriodUnit"
-              [disabled]="!pastSurgery.value.timePeriodAgo"
               (change)="validateDuration(pastSurgery)">
               <mat-option value="Days">Day(s)</mat-option>
               <mat-option value="Weeks">Week(s)</mat-option>

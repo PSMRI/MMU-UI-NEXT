@@ -20,8 +20,8 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { ConfirmationService } from '../../core/services/confirmation.service';
 import { DoctorService } from '../shared/services';
@@ -59,12 +59,7 @@ export class VisitDetailsComponent implements OnInit, DoCheck {
   patientFileUploadDetailsForm!: FormGroup;
   patientDiseaseForm!: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private confirmationService: ConfirmationService,
-    private doctorService: DoctorService,
-    private httpServiceService: HttpServiceService
-  ) {}
+  constructor(private httpServiceService: HttpServiceService) {}
 
   ngOnInit() {
     this.assignSelectedLanguage();
