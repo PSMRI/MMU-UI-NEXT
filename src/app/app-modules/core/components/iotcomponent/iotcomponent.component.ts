@@ -75,12 +75,7 @@ export class IotcomponentComponent implements OnInit, DoCheck {
     this.procedure = this.input['procedure'];
     const providerServiceMapID = localStorage.getItem('providerServiceID');
     //SH20094090,calibration integration,09-06-2021
-    if (
-      this.procedure != undefined &&
-      this.procedure.value != undefined &&
-      this.procedure.value.calibrationStartAPI != undefined &&
-      this.procedure.value.calibrationStartAPI != null
-    ) {
+    if (this.procedure?.value?.calibrationStartAPI != null) {
       const dialogRef = this.dialog.open(CalibrationComponent, {
         width: '600px',
         disableClose: true,
@@ -117,7 +112,6 @@ export class IotcomponentComponent implements OnInit, DoCheck {
             this.progressMsg = res['_body']['message'];
             this.startedCalibration = true;
             this.stripShowMsg = true;
-            // this.getCalibStatus();
           } else {
             this.errorMsg = res['message'];
           }
@@ -146,14 +140,8 @@ export class IotcomponentComponent implements OnInit, DoCheck {
         if (res.status === 202 || res.status === 200) {
           this.stripShowMsg = false;
           this.statusCalibration = true;
-          // this.getstatus();
-          // this.datasave=res["_body"];
           this.progressMsg = res['_body']['message'];
           clearTimeout(this.statuscall);
-          //this.calibStop();
-          // if(this.output==undefined){
-          //   this.dialogRef.close(JSON.parse(res["_body"]) )
-          // }
           this.confirmationService
             .confirmCalibration(
               'success',
@@ -198,7 +186,6 @@ export class IotcomponentComponent implements OnInit, DoCheck {
     this.stripShowMsg = false;
     this.statusCalibration = false;
     this.stoppedCalibration = false;
-    // var x="api/v1/physical_tests/weight";
     this.progressMsg = undefined;
     try {
       this.service.startAPI(this.startAPI).subscribe(
@@ -230,8 +217,6 @@ export class IotcomponentComponent implements OnInit, DoCheck {
       (res: any) => {
         console.log('dfasdas', res);
         if (res.status === 200) {
-          // this.getstatus();
-          // this.datasave=res["_body"];
           clearTimeout(this.statuscall);
 
           if (this.output === undefined) {

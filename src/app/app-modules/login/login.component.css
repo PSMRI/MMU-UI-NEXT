@@ -42,7 +42,6 @@ mat-card-title {
 }
   
 .full-width {
-    /* width: 100%; */
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -69,8 +68,6 @@ mat-card-title {
 .googleBtn {
     background-color: #F44336;
     color: white;
-    /*background-color: white;
-      color: #F44336;*/
 }
   
 .fbBtn {

@@ -30,7 +30,6 @@ import { WorkareaComponent } from './workarea/workarea.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { DataSyncService } from './shared/service/data-sync.service';
-// import { DataSyncLoginComponent } from './data-sync-login/data-sync-login.component';
 import { MasterDownloadComponent } from './master-download/master-download.component';
 
 @NgModule({

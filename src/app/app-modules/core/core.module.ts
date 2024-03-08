@@ -20,7 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { NgModule, ErrorHandler, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -43,7 +43,7 @@ import { HttpServiceService } from './services/http-service.service';
 import { InventoryService } from './services/inventory.service';
 import { IotService } from './services/iot.service';
 import { CameraDialogComponent } from './components/camera-dialog/camera-dialog.component';
-import { WebcamImage, WebcamInitError, WebcamModule } from 'ngx-webcam';
+import { WebcamModule } from 'ngx-webcam';
 import { CanDeactivateGuardService } from './services/can-deactivate-guard.service';
 import { BeneficiaryDetailsComponent } from './components/beneficiary-details/beneficiary-details.component';
 import { ViewRadiologyUploadedFilesComponent } from './components/view-radiology-uploaded-files/view-radiology-uploaded-files.component';
@@ -59,15 +59,15 @@ import { OpenModalDirective } from './directives/open-modal.directive';
 import { AllergenSearchComponent } from './components/allergen-search/allergen-search.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { StringValidatorDirective } from './directives/stringValidator.directive';
-import { myPasswordDirective } from './directives/password/myPassword.directive';
 import { NumberValidatorDirective } from './directives/numberValidator.directive';
-import { myNameDirective } from './directives/name/myName.directive';
-import { myMobileNumberDirective } from './directives/MobileNumber/myMobileNumber.directive';
-import { myEmailDirective } from './directives/email/myEmail.directive';
 import { OpenPreviousVisitDetailsComponent } from './components/open-previous-visit-details/open-previous-visit-details.component';
 import { ShowCommitAndVersionDetailsComponent } from './components/show-commit-and-version-details/show-commit-and-version-details.component';
 import { IotBluetoothComponent } from './components/iot-bluetooth/iot-bluetooth.component';
 import { NgChartsModule } from 'ng2-charts';
+import { MyEmailDirective } from './directives/email/myEmail.directive';
+import { MyMobileNumberDirective } from './directives/MobileNumber/myMobileNumber.directive';
+import { MyNameDirective } from './directives/name/myName.directive';
+import { MyPasswordDirective } from './directives/password/myPassword.directive';
 
 @NgModule({
   imports: [
@@ -94,12 +94,12 @@ import { NgChartsModule } from 'ng2-charts';
     PreviousDetailsComponent,
     ShowCommitAndVersionDetailsComponent,
     CalibrationComponent,
-    myEmailDirective,
-    myMobileNumberDirective,
+    MyEmailDirective,
+    MyMobileNumberDirective,
     OpenModalDirective,
     ConfirmatoryDiagnosisDirective,
-    myNameDirective,
-    myPasswordDirective,
+    MyNameDirective,
+    MyPasswordDirective,
     StringValidatorDirective,
     NullDefaultValueDirective,
     NumberValidatorDirective,
@@ -121,12 +121,12 @@ import { NgChartsModule } from 'ng2-charts';
     BeneficiaryDetailsComponent,
     PreviousDetailsComponent,
     // PaginationModule,
-    myEmailDirective,
-    myMobileNumberDirective,
+    MyEmailDirective,
+    MyMobileNumberDirective,
     OpenModalDirective,
     ConfirmatoryDiagnosisDirective,
-    myNameDirective,
-    myPasswordDirective,
+    MyNameDirective,
+    MyPasswordDirective,
     DisableFormControlDirective,
     StringValidatorDirective,
     NumberValidatorDirective,
