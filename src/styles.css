@@ -519,6 +519,11 @@ input:-internal-autofill-selected {
 }
 ::ng-deep.bs-datepicker.bs-datepicker-head {
   background-color: #337ab7 !important;
+  min-width: 270px !important;
+  height: 50px !important;
+  padding: 10px !important;
+  border-radius: 3px 3px 0 0 !important;
+  text-align: justify !important;
 }
 
 ::ng-deep.bs-datepicker.selected {
@@ -526,24 +531,24 @@ input:-internal-autofill-selected {
 }
 
 ::ng-deep.bs-datepicker.bs-datepicker-body{
-    padding: 10px;
-    border-radius: 0 0 3px 3px;
-    min-height: 232px;
-    min-width: 278px;
-    border: 1px solid #e9edf0;
+    padding: 10px !important;
+    border-radius: 0 0 3px 3px !important;
+    min-height: 232px !important;
+    min-width: 278px !important;
+    border: 1px solid #e9edf0 !important;
 }
 
 ::ng-deep.bs-datepicker {
-  display: flex;
-  -webkit-box-align: stretch;
-  align-items: stretch;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  flex-flow: row wrap;
-  background: #fff;
-  box-shadow: 0 0 10px 0 #aaa;
-  position: relative;
-  z-index: 1;
+  display: flex !important;
+  -webkit-box-align: stretch !important;
+  align-items: stretch !important;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+  flex-flow: row wrap !important;
+  background: #fff !important;
+  box-shadow: 0 0 10px 0 #aaa !important;
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 ::ng-deep.bs-datepicker.bs-datepicker-container {
