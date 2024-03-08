@@ -1,4 +1,3 @@
-<!-- {{ perinatalHistoryForm.value | json }} -->
 <div class="" [formGroup]="perinatalHistoryForm">
   <div class="col-12" style="text-align: end">
     <span class="font-history-label">{{
@@ -53,7 +52,12 @@
         </mat-form-field>
       </div>
 
-      <div class="col-4 box">
+      <div
+        class="col-4 box"
+        *ngIf="
+          perinatalHistoryForm?.value?.placeOfDelivery !== null &&
+          perinatalHistoryForm?.value?.placeOfDelivery !== ''
+        ">
         <mat-form-field>
           <mat-label>{{
             currentLanguageSet?.pncData?.typeofDelivery
@@ -64,7 +68,6 @@
             formControlName="typeOfDelivery">
             <mat-option
               *ngFor="let deliveryType of selectDeliveryTypes"
-              [disabled]="!perinatalHistoryForm.value.placeOfDelivery"
               [value]="deliveryType"
               >{{ deliveryType.deliveryType }}</mat-option
             >

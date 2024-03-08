@@ -20,15 +20,8 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  Optional,
-  EventEmitter,
-} from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService, ConfirmationService } from '../../services';
@@ -103,15 +96,13 @@ export class AppHeaderComponent implements OnInit {
 
   ngOnInit() {
     this.service.disconnectValue$.subscribe(response => {
-      response === undefined
-        ? (this.isConnected = false)
-        : (this.isConnected = response);
+      if (response === undefined) this.isConnected == false;
+      else this.isConnected == response;
     });
     this.getUIVersionAndCommitDetails();
     this.servicePoint = localStorage.getItem('servicePointName');
     this.userName = localStorage.getItem('userName');
-    this.isAuthenticated =
-      sessionStorage.getItem('isAuthenticated') == 'true' ? true : false;
+    this.isAuthenticated = sessionStorage.getItem('isAuthenticated') === 'true';
     if (this.showRoles) {
       const role: any = localStorage.getItem('role');
       this.roles = JSON.parse(role);
@@ -315,13 +306,13 @@ export class AppHeaderComponent implements OnInit {
     }
   }
   showData(versionData: any) {
-    const dialogRef = this.dialog.open(ShowCommitAndVersionDetailsComponent, {
+    this.dialog.open(ShowCommitAndVersionDetailsComponent, {
       data: versionData,
     });
   }
 
   openIOT() {
-    const dialogRef = this.dialog.open(IotBluetoothComponent, {
+    this.dialog.open(IotBluetoothComponent, {
       width: '600px',
     });
   }

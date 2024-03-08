@@ -30,19 +30,15 @@ import { HttpServiceService } from '../../core/services/http-service.service';
   styleUrls: ['./vitals.component.css'],
 })
 export class VitalsComponent implements OnInit, OnChanges, DoCheck {
-  // tslint:disable-next-line:no-input-rename
   @Input()
   patientVitalsDataForm!: FormGroup;
 
-  // tslint:disable-next-line:no-input-rename
   @Input()
   visitCategory!: string;
 
-  // tslint:disable-next-line:no-input-rename
   @Input()
   vitalsMode!: string;
 
-  // tslint:disable-next-line:no-input-rename
   @Input()
   pregnancyStatus!: string;
 

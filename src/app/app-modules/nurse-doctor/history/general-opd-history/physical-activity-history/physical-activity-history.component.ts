@@ -73,7 +73,6 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
     this.assignSelectedLanguage();
     this.getMasterData();
     this.getBeneficiaryDetails();
-    // this.idrsScoreService.clearMessage();
   }
 
   ngDoCheck() {
@@ -85,19 +84,8 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
     this.currentLanguageSet = getLanguageJson.currentLanguageObject;
   }
 
-  // getMasterData(){
-  //   this.masterData = this.dummy;
-  //   this.physicalActivityQuestions = this.masterData.physicalActivitQuestions
-  //   console.log("questions", this.physicalActivityQuestions);
-
-  // }
-
   nurseMasterDataSubscription: any;
   getMasterData() {
-    // this.masterData = this.dummy;
-    // this.diseaseMasterData = this.masterData.data.DiseaseTypes;
-    // this.familyMemeberMasterData = this.masterData.data.familyMemberTypes;
-    // this.addFamilyDisease();
     this.nurseMasterDataSubscription =
       this.masterdataService.nurseMasterData$.subscribe(masterData => {
         if (masterData) {
@@ -153,7 +141,6 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
       this.idrsScoreService.setIRDSscorePhysicalActivity(
         selectedQuestion[0].score
       );
-      // this.idrsScoreService.setIDRSScoreFlag();
     }
   }
   calculateIDRSScore(event: any, formGrpup: any) {
@@ -173,8 +160,6 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
     this.physicalActivityHistoryForm.patchValue({
       score: IDRSScoreForPhysicalActivity,
     });
-
-    // this.physicalActivityHistoryForm.patchValue(selectedQuestion);
 
     this.idrsScoreService.setIRDSscorePhysicalActivity(
       IDRSScoreForPhysicalActivity

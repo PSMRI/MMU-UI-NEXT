@@ -21,25 +21,11 @@
  */
 
 import { DataManipulation } from './LabSubmissionDataManipulation';
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  OnDestroy,
-  DoCheck,
-} from '@angular/core';
+import { Component, OnInit, ViewChild, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  FormArray,
-  FormGroup,
-  FormBuilder,
-  Validators,
-  FormControl,
-  AbstractControl,
-} from '@angular/forms';
+import { FormArray, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ConfirmationService } from '../../core/services/confirmation.service';
 import { LabService, MasterDataService } from '../shared/services';
-import { CameraService } from '../../core/services/camera.service';
 import { BeneficiaryDetailsService } from '../../core/services/beneficiary-details.service';
 import { LabUtils } from './../shared/utility/lab-utility';
 import { CanComponentDeactivate } from '../../core/services/can-deactivate-guard.service';
@@ -341,7 +327,6 @@ export class WorkareaComponent
     const component = (<FormArray>procedure.controls['compListDetails']).at(
       componentIndex
     );
-    // firstComponent.patchValue({abnormal: true});
     if (component.valueChanges && component.value.inputValue) {
       if (
         component.value.inputValue < component.value.range_normal_min ||
@@ -447,25 +432,19 @@ export class WorkareaComponent
    * External Tests loading out of response
    */
   loadExternalTests(externaltests: any) {
-    if (externaltests && externaltests.tests) {
+    if (externaltests?.tests) {
       this.externalForm = this.utils.createExternalTestForm();
       this.externalForm.patchValue({
         tests: externaltests.tests,
       });
     }
   }
-  ///////////////////////////////////////////EXTERNAL TESTS RELATED CODE ABOVE/////////////////////
 
-  /**
-   * Loading Error COMMON
-   */
   errorLoading(errorMessage: any) {
     this.confirmationService.alert(errorMessage);
     this.router.navigate(['/lab/worklist']);
   }
-  ///////////////////////////////////////////ARCHIVE RELATED CODE BELOW/////////////////////
-  // radiologyFile: any = [];
-  // laboratoryData: any = [];
+
   laboratoryData = new MatTableDataSource<any>();
   radiologyFile = new MatTableDataSource<any>();
   @ViewChild(MatPaginator) paginator: MatPaginator | null = null;
@@ -473,7 +452,7 @@ export class WorkareaComponent
   filteredLaboratoryData: any = [];
 
   loadArchive(archive: any) {
-    if (archive && archive.length) {
+    if (archive?.length) {
       this.archiveList = archive;
 
       this.filteredArchiveList = this.archiveList;
@@ -508,7 +487,6 @@ export class WorkareaComponent
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
               this.laboratoryData.data.push(item);
               this.laboratoryData.paginator = this.paginator;
-              // this.filteredLaboratoryData.push(item);
               break;
             }
           }
@@ -978,7 +956,6 @@ export class WorkareaComponent
    */
 
   sideNavModeChange(sidenav: any) {
-    const deviceHeight = window.screen.height;
     const deviceWidth = window.screen.width;
 
     if (deviceWidth < 700) sidenav.mode = 'over';
@@ -1012,7 +989,6 @@ export class WorkareaComponent
           const blob = new Blob([res], { type: res.type });
           console.log(blob, 'blob');
           const url = window.URL.createObjectURL(blob);
-          // window.open(url);
           const a = document.createElement('a');
           a.href = url;
           a.download = result.fileName;

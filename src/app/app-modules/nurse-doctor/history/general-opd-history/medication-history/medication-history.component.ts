@@ -22,7 +22,6 @@
 
 import { Component, OnInit, Input, OnDestroy, DoCheck } from '@angular/core';
 import {
-  FormControl,
   FormGroup,
   FormBuilder,
   FormArray,

@@ -25,11 +25,10 @@ import {
   OnInit,
   Input,
   OnChanges,
-  Output,
   DoCheck,
   OnDestroy,
 } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { DoctorService } from '../shared/services';
 import { ConfirmationService } from '../../core/services/confirmation.service';
 import { SetLanguageComponent } from '../../core/components/set-language.component';
@@ -54,7 +53,6 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
   patientANCImmunizationForm!: FormGroup;
 
   constructor(
-    private fb: FormBuilder,
     private doctorService: DoctorService,
     private confirmationService: ConfirmationService,
     public beneficiaryDetailsService: BeneficiaryDetailsService,

@@ -21,7 +21,7 @@
  */
 
 import { Component, OnInit, Input, DoCheck, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 import { PreviousDetailsComponent } from '../../../../core/components/previous-details/previous-details.component';
 import {
@@ -56,7 +56,6 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
   currentLanguageSet: any;
 
   constructor(
-    private fb: FormBuilder,
     private dialog: MatDialog,
     private nurseService: NurseService,
     private doctorService: DoctorService,
@@ -141,7 +140,6 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
             this.masterData.menstrualCycleStatus.filter((item: any) => {
               return item.name == temp.menstrualCycleStatus;
             })[0];
-          // this.menstrualHistoryForm.controls['menstrualCycleStatus'].setValue(status[0]);
           temp.cycleLength = this.masterData.menstrualCycleLengths.filter(
             (item: any) => {
               return item.menstrualCycleRange == temp.cycleLength;
@@ -153,9 +151,6 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
                 return item.menstrualCycleRange == temp.bloodFlowDuration;
               }
             )[0];
-          // temp.problemName = this.masterData.menstrualProblem.filter(item => {
-          //   return item.name == temp.problemName;
-          // })[0];
           const tempMenstrualProblem: any = [];
           if (
             temp.menstrualProblemList &&

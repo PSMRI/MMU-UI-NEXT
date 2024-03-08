@@ -24,9 +24,6 @@ import {
   Component,
   OnInit,
   Input,
-  ViewChildren,
-  QueryList,
-  ElementRef,
   SimpleChanges,
   DoCheck,
   OnChanges,
@@ -35,11 +32,9 @@ import {
 import {
   FormBuilder,
   FormGroup,
-  FormControl,
   FormArray,
   AbstractControl,
 } from '@angular/forms';
-
 import {
   MasterdataService,
   NurseService,
@@ -275,11 +270,6 @@ export class PastObstericHistoryComponent
             return temp[i].deliveryPlace == item.deliveryPlace;
           }
         )[0];
-
-        // temp[i].deliveryComplicationType = this.masterData.deliveryComplicationTypes.filter(item => {
-        //   return temp[i].deliveryComplicationType == item.complicationValue
-        // })[0];
-
         const temp2: any = [];
         this.masterData.deliveryComplicationTypes.forEach((item: any) => {
           temp[i].deliveryComplicationList.forEach((p: any) => {
@@ -290,11 +280,6 @@ export class PastObstericHistoryComponent
         });
 
         temp[i].deliveryComplicationList = temp2.slice();
-
-        // temp[i].postpartumComplicationType = this.masterData.postpartumComplicationTypes.filter(item => {
-        //   return temp[i].postpartumComplicationType == item.complicationValue
-        // })[0];
-
         const temp3: any = [];
         this.masterData.postpartumComplicationTypes.forEach((item: any) => {
           temp[i].postpartumComplicationList.forEach((p: any) => {
@@ -313,11 +298,6 @@ export class PastObstericHistoryComponent
             return temp[i].pregOutcome == item.pregOutcome;
           }
         )[0];
-
-        // temp[i].postNatalComplication = this.masterData.postNatalComplications.filter(item => {
-        //   return temp[i].postNatalComplication == item.complicationValue
-        // })[0];
-
         temp[i].newBornComplication =
           this.masterData.newBornComplications.filter((item: any) => {
             return temp[i].newBornComplication == item.complicationValue;
@@ -532,8 +512,6 @@ export class PastObstericHistoryComponent
         ' ' + this.currentLanguageSet.cannotBeZero
       );
     }
-    // if (this.visitCategory == 'ANC' && totalNoOfPreg == 0)
-    //   this.confirmationService.alert("Total number of past pregnancy for ANC(MultiGravida) can not be zero(0)");
   }
 
   resetOtherPregnancyComplication(
@@ -688,12 +666,6 @@ export class PastObstericHistoryComponent
     if (!flag)
       pastObstericHistoryForm.patchValue({ otherPostpartumCompType: null });
   }
-
-  // resetOtherPostNatalComplication(pastObstericHistoryForm) {
-  //   if (pastObstericHistoryForm.value.postNatalComplication.complicationValue == 'Other')
-  //     pastObstericHistoryForm.patchValue({ otherPostNatalComplication: null });
-  // }
-
   resetOtherNewBornComplications(pastObstericHistoryForm: any) {
     if (
       pastObstericHistoryForm.value.newBornComplication.complicationValue ==

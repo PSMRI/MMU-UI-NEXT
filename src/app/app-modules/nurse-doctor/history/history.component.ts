@@ -21,7 +21,7 @@
  */
 
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { DoctorService } from '../shared/services/doctor.service';
 import { ActivatedRoute } from '@angular/router';
 

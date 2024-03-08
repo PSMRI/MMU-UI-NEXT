@@ -32,14 +32,11 @@ import {
   FormArray,
   FormGroup,
   FormBuilder,
-  FormControl,
   AbstractControl,
 } from '@angular/forms';
 import { PreviousDetailsComponent } from '../../../../core/components/previous-details/previous-details.component';
-
 import { BeneficiaryDetailsService } from '../../../../core/services/beneficiary-details.service';
 import { ConfirmationService } from '../../../../core/services/confirmation.service';
-
 import {
   MasterdataService,
   NurseService,

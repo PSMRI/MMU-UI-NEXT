@@ -20,12 +20,12 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appMyName]',
 })
-export class myNameDirective {
+export class MyNameDirective {
   constructor(element: ElementRef) {}
 
   @HostListener('keypress', ['$event']) onKeyPress(ev: any) {

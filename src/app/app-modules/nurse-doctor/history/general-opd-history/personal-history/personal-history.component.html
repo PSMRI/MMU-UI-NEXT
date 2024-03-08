@@ -236,7 +236,12 @@
             </mat-form-field>
           </div>
 
-          <div class="col-4 box">
+          <div
+            class="col-4 box"
+            *ngIf="
+              tobacco?.value?.tobaccoUseType !== null &&
+              tobacco?.value?.tobaccoUseType !== ''
+            ">
             <mat-form-field
               class="input-full-width mat_form_field mat_form_field_length">
               <mat-label>{{
@@ -250,16 +255,18 @@
                 maxlength="2"
                 allowText="number"
                 formControlName="number"
-                [disabled]="!tobacco.value.tobaccoUseType"
                 (blur)="perDayChange()" />
             </mat-form-field>
           </div>
 
-          <div class="col-xs-12 col-sm-6 col-md-2 box">
+          <div
+            class="col-xs-12 col-sm-6 col-md-2 box"
+            *ngIf="
+              tobacco?.value?.number !== null && tobacco?.value?.number !== ''
+            ">
             <mat-radio-group
               formControlName="perDay"
-              (selectionChange)="perDayChange()"
-              [disabled]="!tobacco.value.number">
+              (selectionChange)="perDayChange()">
               <mat-radio-button
                 color="primary"
                 class="radio-button"
@@ -275,7 +282,11 @@
             </mat-radio-group>
           </div>
 
-          <div class="col-4 box">
+          <div
+            class="col-4 box"
+            *ngIf="
+              tobacco?.value?.number !== null && tobacco?.value?.number !== ''
+            ">
             <mat-form-field
               class="input-full-width mat_form_field mat_form_field_length">
               <mat-label>{{
@@ -288,12 +299,16 @@
                 maxlength="2"
                 allowText="number"
                 formControlName="duration"
-                (selectionChange)="validateDuration(tobacco)"
-                [disabled]="!tobacco.value.number" />
+                (selectionChange)="validateDuration(tobacco)" />
             </mat-form-field>
           </div>
 
-          <div class="col-4 box">
+          <div
+            class="col-4 box"
+            *ngIf="
+              tobacco?.value?.duration !== null &&
+              tobacco?.value?.duration !== ''
+            ">
             <mat-form-field class="mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.DurationData?.durationUnit
@@ -301,8 +316,7 @@
               <mat-select
                 class="select-full-width"
                 formControlName="durationUnit"
-                (selectionChange)="validateDuration(tobacco)"
-                [disabled]="!tobacco.value.duration">
+                (selectionChange)="validateDuration(tobacco)">
                 <mat-option value="Days">Day(s)</mat-option>
                 <mat-option value="Weeks">Week(s)</mat-option>
                 <mat-option value="Months">Month(s)</mat-option>
@@ -402,7 +416,12 @@
             </mat-form-field>
           </div>
 
-          <div class="col-4 box padding-0-right">
+          <div
+            class="col-4 box padding-0-right"
+            *ngIf="
+              alcohol?.value?.typeOfAlcohol !== null &&
+              alcohol?.value?.typeOfAlcohol !== ''
+            ">
             <mat-form-field class="mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
@@ -411,8 +430,7 @@
               <mat-select
                 id="frequencyIntake"
                 class="select-full-width"
-                formControlName="alcoholIntakeFrequency"
-                [disabled]="!alcohol.value.typeOfAlcohol">
+                formControlName="alcoholIntakeFrequency">
                 <mat-option
                   *ngFor="let frequency of masterData?.frequencyOfAlcoholIntake"
                   [value]="frequency.habitValue">
@@ -422,7 +440,12 @@
             </mat-form-field>
           </div>
 
-          <div class="col-4 box">
+          <div
+            class="col-4 box"
+            *ngIf="
+              alcohol?.value?.alcoholIntakeFrequency !== null &&
+              alcohol?.value?.alcoholIntakeFrequency !== ''
+            ">
             <mat-form-field class="mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
@@ -431,8 +454,7 @@
               }}</mat-label>
               <mat-select
                 class="select-full-width"
-                formControlName="avgAlcoholConsumption"
-                [disabled]="!alcohol.value.alcoholIntakeFrequency">
+                formControlName="avgAlcoholConsumption">
                 <mat-option
                   *ngFor="let quantity of masterData?.quantityOfAlcoholIntake"
                   [value]="quantity">
@@ -442,7 +464,12 @@
             </mat-form-field>
           </div>
 
-          <div class="col-4 box padding-0-left-right">
+          <div
+            class="col-4 box padding-0-left-right"
+            *ngIf="
+              alcohol?.value?.avgAlcoholConsumption !== null &&
+              alcohol?.value?.avgAlcoholConsumption !== ''
+            ">
             <mat-form-field
               class="input-full-width mat_form_field mat_form_field_length">
               <mat-label>{{
@@ -455,12 +482,16 @@
                 maxlength="2"
                 allowText="number"
                 formControlName="duration"
-                (selectionChange)="validateDuration(alcohol)"
-                [disabled]="!alcohol.value.avgAlcoholConsumption" />
+                (selectionChange)="validateDuration(alcohol)" />
             </mat-form-field>
           </div>
 
-          <div class="col-4 box">
+          <div
+            class="col-4 box"
+            *ngIf="
+              alcohol?.value?.duration !== null &&
+              alcohol?.value?.duration !== ''
+            ">
             <mat-form-field class="mat_form_field mat_form_field_length">
               <mat-label>{{
                 currentLanguageSet?.DurationData?.durationUnit
@@ -468,8 +499,7 @@
               <mat-select
                 class="select-full-width"
                 formControlName="durationUnit"
-                (selectionChange)="validateDuration(alcohol)"
-                [disabled]="!alcohol.value.duration">
+                (selectionChange)="validateDuration(alcohol)">
                 <mat-option value="Days">Day(s)</mat-option>
                 <mat-option value="Weeks">Week(s)</mat-option>
                 <mat-option value="Months">Month(s)</mat-option>
@@ -565,15 +595,15 @@
                 formControlName="snomedTerm"
                 (change)="removeSnomedCode(allergy, i)"
                 (keyup.enter)="searchComponents(allergy, i, allergy)" />
-              <!-- <button>
-                    <mat-icon
-                      class="search-btn cursorPointer"
-                      matSuffix
-                      (click)="searchComponents(allergy, i, allergy)"
-                      [class.toolbar-icon-disabled]="componentFlag"
-                      >search</mat-icon
-                    >
-                  </button> -->
+              <button>
+                <mat-icon
+                  class="search-btn cursorPointer"
+                  matSuffix
+                  (click)="searchComponents(allergy, i, allergy)"
+                  [class.toolbar-icon-disabled]="componentFlag"
+                  >search</mat-icon
+                >
+              </button>
             </mat-form-field>
           </div>
 
@@ -593,7 +623,12 @@
             </mat-form-field>
           </div>
 
-          <div class="col-4 box">
+          <div
+            class="col-4 box"
+            *ngIf="
+              allergy?.value?.snomedTerm !== null &&
+              allergy?.value?.snomedTerm !== ''
+            ">
             <mat-form-field class="mat_form_field">
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
@@ -604,8 +639,7 @@
                 class="select-full-width"
                 multiple
                 formControlName="typeOfAllergicReactions"
-                (selectionChange)="canEnableOtherAllergy(allergy)"
-                [disabled]="!allergy.value.snomedTerm">
+                (selectionChange)="canEnableOtherAllergy(allergy)">
                 <mat-option
                   *ngFor="
                     let allergicReaction of masterData?.AllergicReactionTypes

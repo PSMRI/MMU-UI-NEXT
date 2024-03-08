@@ -23,9 +23,6 @@
 import {
   Component,
   OnInit,
-  ViewChild,
-  AfterViewChecked,
-  Input,
   ChangeDetectorRef,
   OnDestroy,
   DoCheck,
@@ -35,7 +32,7 @@ import { ConfirmationService } from '../../core/services/confirmation.service';
 import { DataSyncService } from './../shared/service/data-sync.service';
 import { DataSyncUtils } from '../shared/utility/data-sync-utility';
 import { CanComponentDeactivate } from '../../core/services/can-deactivate-guard.service';
-import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpServiceService } from '../../core/services/http-service.service';
 import { SetLanguageComponent } from '../../core/components/set-language.component';
 
@@ -99,9 +96,6 @@ export class WorkareaComponent
 
   createSyncActivity(data: any) {
     data.forEach((element: any) => {
-      // element.syncTableGroupName = element.syncTableGroupName;
-      // element.syncTableGroupID = element.syncTableGroupID;
-      // element.processed = element.processed;
       element.benDetailSynced = false;
       element.visitSynced = false;
     });
@@ -182,8 +176,6 @@ export class WorkareaComponent
   modifySYNCEDGroup(syncTableGroups: any, syncTableGroup: any) {
     console.log('syncTableGroup', syncTableGroup);
     syncTableGroups.forEach((element: any) => {
-      // element.syncTableGroupName = element.syncTableGroupName;
-      // element.syncTableGroupID = element.syncTableGroupID;
       if (element.syncTableGroupID == syncTableGroup.syncTableGroupID) {
         element.processed = 'D';
       }

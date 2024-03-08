@@ -3,11 +3,11 @@
     <img
       *ngIf="!beneficiary?.benImage"
       src="assets/images/default-avatar.gif"
-      alt="Default Patient Image" />
+      alt="DefaultPatient" />
     <img
       *ngIf="beneficiary?.benImage"
       [src]="beneficiary?.benImage"
-      alt="Patient Image" />
+      alt="Patient" />
     <table class="table profileData" aria-describedby="benDetails">
       <tr style="font-size: 14px; color: #000000">
         <th id="beneficiaryName">

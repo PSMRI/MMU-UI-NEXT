@@ -129,12 +129,7 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
           this.dataSource.data.forEach((sectionCount: any, index: number) => {
             sectionCount.sno = index + 1;
           });
-          // this.pageChanged({
-          //   page: this.activePage,
-          //   itemsPerPage: this.rowsPerPage
-          // });
           this.filterTerm = null;
-          // this.currentPage=1;
         } else {
           this.confirmationService.alert(data.errorMessage, 'error');
           this.dataSource.data = [];
@@ -221,12 +216,6 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
         }
       });
     }
-    // this.activePage = 1;
-    // this.pageChanged({
-    //   page: 1,
-    //   itemsPerPage: this.rowsPerPage
-    // });
-    // this.currentPage=1;
   }
 
   patientImageView(benregID: any) {
@@ -239,8 +228,7 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
       this.beneficiaryDetailsService
         .getBeneficiaryImage(benregID)
         .subscribe((data: any) => {
-          if (data && data.benImage)
-            this.cameraService.viewImage(data.benImage);
+          if (data?.benImage) this.cameraService.viewImage(data.benImage);
           else
             this.confirmationService.alert(
               this.current_language_set.alerts.info.imageNotFound
@@ -250,7 +238,6 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   loadLabExaminationPage(beneficiary: any) {
-    // if (beneficiary.visitFlowStatusFlag == 'N') {
     console.log('beneficiary', JSON.stringify(beneficiary, null, 4));
 
     this.confirmationService
@@ -281,9 +268,7 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
             );
           } else {
             const storedValue = localStorage.getItem('specialist_flag');
-            const specialistFlag =
-              storedValue !== null ? JSON.parse(storedValue) : null;
-            // localStorage.setItem('specialist_flag',JSON.stringify({ value : null}));
+            storedValue !== null ? JSON.parse(storedValue) : null;
           }
           console.log(localStorage.getItem('visitCode'), 'visitCodebeforedave');
           this.router.navigate(['/lab/patient/', beneficiary.beneficiaryRegID]);

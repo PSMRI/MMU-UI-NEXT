@@ -102,7 +102,6 @@ export class IotBluetoothComponent implements OnInit, DoCheck {
       },
       err => {
         if (typeof err['_body'] != 'object') {
-          // this.errMsg=JSON.parse(err['_body'])['message'];
           this.errMsg = undefined;
           this.deviceConnected = false;
           this.apiAvailable = true;
@@ -162,11 +161,6 @@ export class IotBluetoothComponent implements OnInit, DoCheck {
         } else {
           this.errMsg = res['message'];
         }
-        // let body=JSON.parse(res["_body"]);
-        // if(body['deviceConnected']){
-        //   this.deviceConnected=false;
-        // }
-        //this.configureDevice(body);
       },
       err => {
         this.spinner = false;

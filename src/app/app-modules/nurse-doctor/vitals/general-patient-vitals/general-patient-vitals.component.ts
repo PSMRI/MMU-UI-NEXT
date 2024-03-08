@@ -123,7 +123,6 @@ export class GeneralPatientVitalsComponent
 
   constructor(
     private dialog: MatDialog,
-    private fb: FormBuilder,
     private confirmationService: ConfirmationService,
     private httpServiceService: HttpServiceService,
     private doctorService: DoctorService,
@@ -200,7 +199,6 @@ export class GeneralPatientVitalsComponent
   }
 
   ngOnChanges() {
-    // this.nurseService.rbsTestResultFromDoctorFetch=null;
     console.log('mode here', this.vitalsMode);
     console.log('mode here', this.mode);
     const visitCategory1 = localStorage.getItem('visitCategory');
@@ -418,7 +416,6 @@ export class GeneralPatientVitalsComponent
           this.nurseService.rbsTestResultFromDoctorFetch = null;
           if (temp.rbsTestResult != null) {
             this.nurseService.rbsTestResultFromDoctorFetch = temp.rbsTestResult;
-            // this.idrsscore.rbsTestResultsInVitals(vitalsData.benPhysicalVitalDetail.rbsTestResult);
             this.rbsResultChange();
           }
           if (
@@ -686,7 +683,6 @@ export class GeneralPatientVitalsComponent
     }
     if (systolicBP != null) this.idrsscore.setSystolicBp(systolicBP);
     else this.idrsscore.setSystolicBp(0);
-    //this.idrsscore.setSystolicBpForFlag(systolicBP);
   }
 
   checkSystolicGreater(systolic: any, diastolic: any) {
@@ -715,7 +711,6 @@ export class GeneralPatientVitalsComponent
     }
     if (diastolicBP != null) this.idrsscore.setDiastolicBp(diastolicBP);
     else this.idrsscore.setDiastolicBp(0);
-    // this.idrsscore.setSystolicBpForFlag(diastolicBP);
   }
 
   checkBloodSugarFasting(bloodSugarFasting: any) {
@@ -828,7 +823,6 @@ export class GeneralPatientVitalsComponent
     dialogRef.afterClosed().subscribe(result => {
       console.log('he;;p', result, result['result']);
       if (result != null) {
-        //result['result']
         this.patientVitalsForm.patchValue({
           weight_Kg: result['result'],
         });
@@ -874,7 +868,6 @@ export class GeneralPatientVitalsComponent
       this.nurseService.setRbsInCurrentVitals(
         this.patientVitalsForm.controls['rbsTestResult'].value
       );
-      //this.patientVitalsForm.controls['rbsTestResult'].disable();
     } else {
       this.nurseService.setRbsInCurrentVitals(null);
     }
@@ -936,7 +929,6 @@ export class GeneralPatientVitalsComponent
       data: { startAPI: this.startPulseTest },
     });
     dialogRef.afterClosed().subscribe(result => {
-      // console.log("sPO2", result, result['sPO2']);
       if (result != null) {
         this.patientVitalsForm.patchValue({
           sPO2: result['spo2'],
@@ -1064,7 +1056,6 @@ export class GeneralPatientVitalsComponent
         this.IDRSWaistScore = 20;
       }
     }
-    // localStorage.setItem("waistIDRSScore", this.IDRSWaistScore.toStr);
     this.idrsscore.setIDRSScoreWaist(this.IDRSWaistScore);
   }
 
@@ -1155,9 +1146,6 @@ export class GeneralPatientVitalsComponent
   }
 
   startAssessment() {
-    const todayDate = new Date();
-    // formData.append('File', file, file.name); // file.name was mandatory for us (otherwise again an error occured)
-    // this.enableResult = true;
     const symptoms = {
       frequent_cough: this.frequentCough ? 1 : 0,
       sputum: this.sputum ? 1 : 0,
@@ -1171,7 +1159,6 @@ export class GeneralPatientVitalsComponent
       gender: this.benGenderType,
       age: this.benAge,
       patientId: localStorage.getItem('beneficiaryRegID'),
-      // timestamp: moment(todayDate).format('YYYY-MM-DD HH:mm:ss'),
       assessmentId: null,
       providerServiceMapID: localStorage.getItem('providerServiceID'),
       createdBy: localStorage.getItem('userName'),

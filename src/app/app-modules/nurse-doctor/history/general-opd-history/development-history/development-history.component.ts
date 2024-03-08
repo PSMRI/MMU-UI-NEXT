@@ -21,8 +21,7 @@
  */
 
 import { Component, OnInit, Input, DoCheck, OnDestroy } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-
+import { FormBuilder, FormGroup } from '@angular/forms';
 import {
   MasterdataService,
   NurseService,
@@ -53,7 +52,6 @@ export class DevelopmentHistoryComponent implements OnInit, DoCheck, OnDestroy {
   currentLanguageSet: any;
 
   constructor(
-    private fb: FormBuilder,
     private masterdataService: MasterdataService,
     private nurseService: NurseService,
     private doctorService: DoctorService,

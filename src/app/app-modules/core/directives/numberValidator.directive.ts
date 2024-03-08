@@ -20,15 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import {
-  Directive,
-  ElementRef,
-  Attribute,
-  HostListener,
-  Input,
-} from '@angular/core';
-import { AbstractControl } from '@angular/forms';
-
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 @Directive({
   selector:
     '[app-allowMax][formControlName],[allowMax][formControl],[allowMax][ngModel],[allowMax]',

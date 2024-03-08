@@ -66,7 +66,7 @@ export class BeneficiaryDetailsComponent implements OnInit, DoCheck, OnDestroy {
       this.beneficiaryDetailsService
         .getBeneficiaryImage(param['beneficiaryRegID'])
         .subscribe((data: any) => {
-          if (data && data.benImage) {
+          if (data?.benImage) {
             this.beneficiary.benImage = data.benImage;
           }
         });

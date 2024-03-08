@@ -21,25 +21,19 @@
  */
 
 import { Directive, forwardRef, HostListener } from '@angular/core';
-import {
-  NG_VALIDATORS,
-  Validator,
-  Validators,
-  ValidatorFn,
-  AbstractControl,
-} from '@angular/forms';
+import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
 
 @Directive({
   selector: '[appValidateEmail]',
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => myEmailDirective),
+      useExisting: forwardRef(() => MyEmailDirective),
       multi: true,
     },
   ],
 })
-export class myEmailDirective implements Validator {
+export class MyEmailDirective implements Validator {
   pattern =
     /^[0-9a-zA-Z_.]+@[a-zA-Z_]+?\.\b(org|com|in|co.in|ORG|COM|IN|CO.IN)\b$/;
 

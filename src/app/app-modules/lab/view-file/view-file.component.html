@@ -13,7 +13,6 @@
   class="container-fluid"
   style="margin-bottom: 10px"
   *ngIf="fileObj && fileObj.length > 0">
-  <!-- <mat-chip-list *ngIf="fileObj && fileObj.length > 0"> -->
   <mat-chip
     *ngFor="let file of fileObj"
     [ngClass]="{ chipEdit: file.isUploaded }"
@@ -22,5 +21,4 @@
       >cancel</mat-icon
     >
   </mat-chip>
-  <!-- </mat-chip-list> -->
 </div>

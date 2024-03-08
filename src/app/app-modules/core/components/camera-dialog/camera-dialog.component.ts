@@ -27,7 +27,6 @@ import {
   EventEmitter,
   ElementRef,
   ViewChild,
-  HostListener,
   DoCheck,
 } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -41,7 +40,7 @@ import html2canvas from 'html2canvas';
 import { WebcamImage, WebcamInitError } from 'ngx-webcam';
 import { Observable } from 'rxjs';
 
-interface mark {
+interface Mark {
   xCord: any;
   yCord: any;
   description: any;
@@ -75,7 +74,7 @@ export class CameraDialogComponent implements OnInit, DoCheck {
   options: any;
   canvas: any;
   pointsToWrite: Array<any> = [];
-  markers: mark[] = [];
+  markers: Mark[] = [];
   ctx!: CanvasRenderingContext2D;
   loaded = false;
   public current_language_set: any;
@@ -121,19 +120,17 @@ export class CameraDialogComponent implements OnInit, DoCheck {
   }
 
   ngOnInit() {
-    // console.log(this.current_language_set);
     this.assignSelectedLanguage();
     this.loaded = false;
     this.status = this.current_language_set.capture;
-    //console.log(this.availablePoints );
-    if (this.availablePoints && this.availablePoints.markers)
+    if (this.availablePoints?.markers)
       this.pointsToWrite = this.availablePoints.markers;
   }
 
   public captureImg(webcamImage: WebcamImage): void {
     if (webcamImage) {
       this.webcamImage = webcamImage;
-      this.sysImage = webcamImage!.imageAsDataUrl;
+      this.sysImage = webcamImage?.imageAsDataUrl;
       this.captured = true;
       this.status = this.current_language_set.capture;
       console.info('got webcam image', this.sysImage);
@@ -166,14 +163,10 @@ export class CameraDialogComponent implements OnInit, DoCheck {
       if (this.annotate) this.loadingCanvas();
       this.loaded = true;
     }
-    // this.checkValues.forEach((value)=> {
-    //   this.pointMark(value);
-    // })
     if (this.pointsToWrite) this.loadMarks();
   }
 
   loadMarks() {
-    //console.log(this.availablePoints, 'points');
     this.pointsToWrite.forEach(num => {
       this.pointMark(num);
     });
@@ -251,7 +244,6 @@ export class CameraDialogComponent implements OnInit, DoCheck {
     this.markers.splice(0);
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.loadingCanvas();
-    // console.log(this.markers);
   }
 
   saveDescription(event: any) {

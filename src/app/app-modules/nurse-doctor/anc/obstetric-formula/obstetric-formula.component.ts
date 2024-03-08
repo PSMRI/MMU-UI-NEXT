@@ -28,7 +28,7 @@ import {
   OnChanges,
   DoCheck,
 } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MasterdataService } from '../../shared/services';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
 
@@ -55,7 +55,6 @@ export class ObstetricFormulaComponent implements OnInit, DoCheck, OnChanges {
   current_language_set: any;
 
   constructor(
-    private fb: FormBuilder,
     private masterdataService: MasterdataService,
     private beneficiaryDetailsService: BeneficiaryDetailsService,
     private confirmationService: ConfirmationService,
@@ -153,7 +152,6 @@ export class ObstetricFormulaComponent implements OnInit, DoCheck, OnChanges {
       this.confirmationService.alert(
         this.current_language_set.alerts.info.recheckValue
       );
-      // this.obstetricFormulaForm.controls['livebirths_L'].reset();
     }
   }
 
@@ -162,7 +160,6 @@ export class ObstetricFormulaComponent implements OnInit, DoCheck, OnChanges {
       this.confirmationService.alert(
         this.current_language_set.alerts.info.valueRange
       );
-      // this.obstetricFormulaForm.controls['abortions_A'].reset();
     }
   }
 

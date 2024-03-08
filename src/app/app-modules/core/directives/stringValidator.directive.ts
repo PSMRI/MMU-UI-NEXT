@@ -20,15 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import {
-  Directive,
-  ElementRef,
-  Attribute,
-  HostListener,
-  Input,
-} from '@angular/core';
-import { AbstractControl, ValidatorFn } from '@angular/forms';
-
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 @Directive({
   selector:
     '[app-allowText][formControlName],[allowText][formControl],[allowText][ngModel],[allowText]',
@@ -44,7 +36,6 @@ export class StringValidatorDirective {
   alphanumerichyphen = /^[a-zA-Z0-9-/ ]+$/;
   numerichyphen = /^[0-9- ]+$/;
   number = /^[0-9]+$/;
-  // decimal = /^[0-9.]+$/;
   decimal = /^\d+(\.\d{0,2})?$/;
   numberslash = /^[0-9/]+$/;
   address = /^[a-zA-Z0-9-./,# ]+$/;

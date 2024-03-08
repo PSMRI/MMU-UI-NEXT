@@ -88,7 +88,6 @@ export class GeneralOpdHistoryComponent
     this.loadFormData();
     this.assignSelectedLanguage();
     this.getBeneficiaryDetails();
-    // this.enableIdrsHistoryForm();
     console.log('showHistory', this.showHistory);
   }
 
@@ -161,22 +160,12 @@ export class GeneralOpdHistoryComponent
     if (changes.primiGravida) {
       this.canShowObstetricHistory();
     }
-    // this.enableIdrsHistoryForm();
   }
 
   ngOnDestroy() {
     if (this.beneficiaryDetailsSubscription)
       this.beneficiaryDetailsSubscription.unsubscribe();
   }
-
-  // this method is used to show personal history for IDRS
-  // enableIdrsHistoryForm(){
-  //   if(this.visitCategory == "NCD screening"){
-  //     this.showHistory = true;
-  //   } else {
-  //     this.showHistory = false;
-  //   }
-  // }
 
   updatePatientGeneralHistory(generalOPDHistory: any) {
     const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');

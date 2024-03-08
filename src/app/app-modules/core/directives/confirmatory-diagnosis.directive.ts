@@ -23,7 +23,6 @@
 import {
   Directive,
   HostListener,
-  Inject,
   Input,
   ElementRef,
   OnInit,
@@ -32,7 +31,6 @@ import {
 import {
   FormArray,
   FormBuilder,
-  Validators,
   FormGroup,
   AbstractControl,
 } from '@angular/forms';

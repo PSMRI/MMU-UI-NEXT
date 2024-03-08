@@ -22,7 +22,6 @@
 
 import { Component, OnInit, Input, DoCheck, OnDestroy } from '@angular/core';
 import {
-  FormControl,
   FormGroup,
   FormBuilder,
   FormArray,
@@ -213,8 +212,6 @@ export class ComorbidityConcurrentConditionsComponent
             );
           else return false;
         });
-        // let flag = arr.length == 0 ? true : false;
-        // return flag;
         if (item.comorbidCondition == 'None' && temp.length > 0) return false;
         else if (arr.length == 0) return true;
         else return false;
@@ -251,7 +248,6 @@ export class ComorbidityConcurrentConditionsComponent
               timePeriodUnit: null,
               isForHistory: null,
             });
-            // comorbidityConcurrentConditionsForm.reset();
           } else {
             const removedValue = this.previousSelectedComorbidity[i];
 

@@ -1,4 +1,3 @@
-<!-- {{ immunizationHistoryForm.value | json }} -->
 <div class="row m-t-20" [formGroup]="immunizationHistoryForm">
   <table
     class="table table-bordered"
@@ -17,7 +16,6 @@
               ?.Vaccines
           }}
         </th>
-        <!-- <th class="col-xs-2" id="sctCode">{{currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine?.sctCode}}</th> -->
         <th class="col-xs-2" id="Status">
           {{
             currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization
@@ -58,7 +56,6 @@
               ">
               <ng-container [formGroupName]="j">
                 <td>{{ vaccines.value.vaccine }}</td>
-                <!-- <td>{{ vaccines.value.sctCode }}</td> -->
                 <td>
                   <mat-checkbox
                     color="primary"

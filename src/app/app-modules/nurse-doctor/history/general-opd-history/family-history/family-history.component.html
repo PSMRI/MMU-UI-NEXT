@@ -76,7 +76,13 @@
           </mat-form-field>
         </div>
 
-        <div class="col-3 box">
+        <div
+          class="col-3 box"
+          *ngIf="
+            (familyDisease?.value?.diseaseType !== null &&
+              familyDisease?.value?.diseaseType !== '') ||
+            familyDisease?.value?.diseaseType?.diseaseType === 'None'
+          ">
           <mat-form-field class="input-full-width">
             <mat-label>{{
               currentLanguageSet?.historyData?.ancHistory
@@ -86,11 +92,7 @@
               class="select-full-width"
               multiple
               name="familyMembers"
-              formControlName="familyMembers"
-              [disabled]="
-                !familyDisease.value.diseaseType ||
-                familyDisease.value.diseaseType?.diseaseType === 'None'
-              ">
+              formControlName="familyMembers">
               <mat-option
                 *ngFor="let member of familyMemeberMasterData"
                 [value]="member.benRelationshipType">

@@ -26,8 +26,6 @@ import { WorklistComponent } from './worklist/worklist.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { WorkareaComponent } from './workarea/workarea.component';
 import { CanDeactivateGuardService } from '../core/services/can-deactivate-guard.service';
-import { WorkareaCanActivate } from './workarea/workarea.canactivate.service';
-
 const routes: Routes = [
   {
     path: '',

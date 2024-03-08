@@ -63,21 +63,10 @@ md-card {
     display: inline-block;
 }
 
-/*md-panel-title {
-    font-size: 1.7rem;
-    font-variant: small-caps;
-}*/
-
 .mat-card-title {
     font-size: 18px;
     font-weight: 200 !important;
 }
-
-/* 
-.col-lg-3{
-    border: 1px solid black;
-} */
-
 .select-container {
     height: 55px;
 }
@@ -242,19 +231,6 @@ md-expansion-panel {
     color: whitesmoke;
     border-radius: 10%;
 }
-
-/* .inner_table>tr {
-    border: 1px solid #ddd;
-}
-
-.inner_table>tr:first-child() {
-    border-top: none;
-}
-
-.inner_table>tr:last-child() {
-    border-bottom: none;
-} */
-/* Added comments to avoid Unexpected empty source - sonarqube error*/
 .tabs_css >>> .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
     color:unset !important;
 }
