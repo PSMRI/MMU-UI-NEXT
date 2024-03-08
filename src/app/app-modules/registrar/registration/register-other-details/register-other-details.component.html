@@ -157,7 +157,7 @@
       <span class="clearfix"></span>
       <div></div>
       <!-- NEW ID DETAILS for BENEFICIARY -->
-      <section class="col-12">
+      <section class="row col-12">
         <section class="col-6 row mtop20" formArrayName="govID">
           <!-- Gov IDs-->
           <section
@@ -268,10 +268,7 @@
             </ng-container>
           </section>
         </section>
-        <section
-          class="col-6 row mtop20"
-          style="width: 70%"
-          formArrayName="otherGovID">
+        <section class="col-6 row mtop20" formArrayName="otherGovID">
           <!-- Other Gov IDs-->
           <section
             *ngFor="
@@ -320,6 +317,7 @@
                   maxlength="20" />
               </mat-form-field>
               <button
+                style="text-align: center"
                 md-mini-fab
                 color="warn"
                 class="mat_warn_circle"
@@ -338,7 +336,7 @@
               <span *ngIf="i < otherGovLength - 1">
                 <button
                   md-mini-fab
-                  style="margin-left: 3px"
+                  style="margin-left: 3px; text-align: center"
                   color="primary"
                   class="mat_blue_circle"
                   *ngIf="isLast"

@@ -237,7 +237,8 @@
           </div>
 
           <div class="col-4 box">
-            <mat-form-field class="input-full-width mat_form_field">
+            <mat-form-field
+              class="input-full-width mat_form_field mat_form_field_length">
               <mat-label>{{
                 currentLanguageSet?.historyData?.ancHistory
                   ?.personalHistoryANC_OPD_NCD_PNC?.tobaccoData?.number
@@ -275,7 +276,8 @@
           </div>
 
           <div class="col-4 box">
-            <mat-form-field class="input-full-width mat_form_field">
+            <mat-form-field
+              class="input-full-width mat_form_field mat_form_field_length">
               <mat-label>{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
               }}</mat-label>
@@ -384,7 +386,8 @@
           <div
             class="col-4 box"
             *ngIf="alcohol.value.typeOfAlcohol === 'Other'">
-            <mat-form-field class="input-full-width mat_form_field">
+            <mat-form-field
+              class="input-full-width mat_form_field mat_form_field_length">
               <mat-label>{{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                   ?.others
@@ -440,7 +443,8 @@
           </div>
 
           <div class="col-4 box padding-0-left-right">
-            <mat-form-field class="input-full-width mat_form_field">
+            <mat-form-field
+              class="input-full-width mat_form_field mat_form_field_length">
               <mat-label>{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
               }}</mat-label>
@@ -457,7 +461,7 @@
           </div>
 
           <div class="col-4 box">
-            <mat-form-field class="mat_form_field">
+            <mat-form-field class="mat_form_field mat_form_field_length">
               <mat-label>{{
                 currentLanguageSet?.DurationData?.durationUnit
               }}</mat-label>
@@ -503,6 +507,7 @@
 
   <mat-card
     class="row m-t-10"
+    style="margin-bottom: 15px"
     *ngIf="allergyStatus === 'Yes'"
     tyle="margin-bottom: 15px;">
     <mat-card-header>

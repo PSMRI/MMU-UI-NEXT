@@ -20,24 +20,30 @@
             </h5>
           </div>
         </div>
-        <div class="row m-t-10">
-          <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 box">
-            <h5>
+        <div class="col-12 row m-t-10">
+          <div class="col-2 box">
+            <h5 style="margin-top: 15px">
               <strong>{{ currentLanguageSet?.idrs?.confirmedFor }} :</strong>
             </h5>
           </div>
-          <div class="btn-group" *ngFor="let i of confirmDiseaseArray">
+          <div
+            class="btn-group col-10 row"
+            style="width: fit-content; margin-right: 10px"
+            *ngFor="let i of confirmDiseaseArray">
             <button mat-raised-button disabled>{{ i }}</button>
           </div>
         </div>
 
-        <div class="row m-t-10">
-          <div class="col-xs-4 col-sm-2 col-md-2 col-lg-2 box">
-            <h5>
+        <div class="col-12 row m-t-10">
+          <div class="col-2 box">
+            <h5 style="margin-top: 15px">
               <strong>{{ currentLanguageSet?.idrs?.suspectedFor }} :</strong>
             </h5>
           </div>
-          <div class="btn-group1" *ngFor="let i of suspect">
+          <div
+            class="btn-group1 col-10 row"
+            style="width: fit-content; margin-right: 10px"
+            *ngFor="let i of suspect">
             <button mat-raised-button disabled>{{ i }}</button>
           </div>
         </div>
