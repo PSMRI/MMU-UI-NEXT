@@ -1,0 +1,87 @@
+<div class="title">
+  <h4>{{ current_language_set?.coreComponents?.selectCallibrationStrip }}</h4>
+  <button
+    mat-icon-button
+    matTooltip="{{ current_language_set?.common?.close }}"
+    class="pull-right exit width-20px"
+    (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div class="container-fluid">
+  <mat-dialog-content>
+    <mat-form-field>
+      <mat-label class="mat-label-text">{{
+        current_language_set?.coreComponents?.inTableSearchStripCode
+      }}</mat-label>
+      <input
+        autocomplete="off"
+        matInput
+        #filterTerm
+        (keyup)="filterPreviousData(filterTerm.value)" />
+      <mat-icon mdSuffix>search</mat-icon>
+    </mat-form-field>
+    <div class="table-responsive">
+      <table
+        mat-table
+        class="table table-striped"
+        [dataSource]="components"
+        aria-describedby="CallibrationStripTbl">
+        <ng-container matColumnDef="sno">
+          <th
+            mat-header-cell
+            style="border-bottom: none"
+            *matHeaderCellDef
+            mat-sort-header>
+            {{ current_language_set?.coreComponents?.sno }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.sno }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="SCode">
+          <th
+            mat-header-cell
+            style="border-bottom: none"
+            *matHeaderCellDef
+            mat-sort-header>
+            {{ current_language_set?.coreComponents?.stripCode }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element?.stripCode }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="ExpiryDate">
+          <th
+            mat-header-cell
+            style="border-bottom: none"
+            *matHeaderCellDef
+            mat-sort-header>
+            {{ current_language_set?.coreComponents?.expiryDate }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{
+              element.expiryDate !== undefined && element.expiryDate !== null
+                ? (element.expiryDate | date: 'dd-MM-yyyy')
+                : 'NA'
+            }}
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <div
+      class="pull-center"
+      style="margin-top: 5px"
+      [hidden]="components.data.length > 0">
+      <strong>{{ current_language_set?.noRecordsFound }}</strong>
+    </div>
+    <mat-paginator
+      [hidden]="components.data.length > 0"
+      [pageSizeOptions]="[5, 10, 20]"
+      [pageSize]="5"
+      showFirstLastButtons>
+    </mat-paginator>
+  </mat-dialog-content>
+</div>

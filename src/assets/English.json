@@ -1707,7 +1707,9 @@
     "doseTwoDate": "Dose 2 Date",
     "boosterDoseDate": "Booster Dose Date",
     "covidVaccinationDetailsSaved":"Covid vaccination details saved successfully",
-    "benPreviousVisitDetails": "Beneficiary previous visit details"
+    "benPreviousVisitDetails": "Beneficiary previous visit details",
+    "travelledLastDays": "Travelled last 14 days",
+    "noRecordsFound": "No Records Found"
   }
   
 }

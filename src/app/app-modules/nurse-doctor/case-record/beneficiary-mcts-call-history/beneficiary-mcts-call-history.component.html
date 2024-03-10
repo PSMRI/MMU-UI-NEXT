@@ -1,0 +1,69 @@
+<div class="row title">
+  <h4>{{ current_language_set?.common?.mctcalldetails }}</h4>
+  <button class="pull-right exit" [matDialogClose]="false" mat-icon-button>
+    <mat-icon class="md-24">close</mat-icon>
+  </button>
+</div>
+<section class="row message modal_Scroll">
+  <mat-dialog-content>
+    <div *ngIf="callDetails?.length > 0" class="m-t-20">
+      <mat-form-field id="filterbox" class="pull-right">
+        <mat-label class="mat-label-text">{{
+          current_language_set?.common?.question
+        }}</mat-label>
+        <input
+          autocomplete="off"
+          matInput
+          #filterCall
+          (keyup)="filterCallHistory(filterCall.value)" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <table
+      class="table table-responsive table-bordered"
+      aria-describedby="questionarie">
+      <thead>
+        <tr>
+          <th style="width: 70%" id="question">
+            {{ current_language_set?.common?.question }}
+          </th>
+          <th style="width: 30%" id="answer">
+            {{ current_language_set?.common?.answer }}
+          </th>
+        </tr>
+      </thead>
+      <tbody *ngIf="callDetails?.length === 0">
+        <tr>
+          <td colspan="2">
+            <h4 class="norecord">
+              {{ current_language_set?.common?.noCallDetailsFound }}
+            </h4>
+          </td>
+        </tr>
+      </tbody>
+      <tbody *ngIf="callDetails.length > 0"></tbody>
+      <tfoot>
+        <tr *ngIf="callDetails.length > 0">
+          <td colspan="1">
+            <div class="totalCount">
+              {{ current_language_set?.common?.totalCount }} :
+              {{ callDetails.length }}
+            </div>
+          </td>
+          <td colspan="1">
+            <pagination-controls
+              class="pull-right"
+              (pageChanged)="callDetailsPageChanged($event)"
+              *ngIf="filteredCallDetails.length"
+              [maxSize]="callDetailsRowsPerPage"
+              previousText="&lsaquo;"
+              nextText="&rsaquo;"
+              firstText="&laquo;"
+              lastText="&raquo;"></pagination-controls>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </mat-dialog-content>
+</section>

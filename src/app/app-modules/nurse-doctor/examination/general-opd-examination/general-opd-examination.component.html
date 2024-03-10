@@ -1,0 +1,47 @@
+<mat-accordion>
+  <mat-expansion-panel expanded="true">
+    <mat-expansion-panel-header>
+      <h5>
+        {{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination
+            ?.genExamination?.generalExamination
+        }}
+      </h5>
+    </mat-expansion-panel-header>
+    <app-nurse-general-examination
+      [generalExaminationDataForm]="
+        generalExaminationForm
+      "></app-nurse-general-examination>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <h5>
+        {{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.headToToe
+            ?.headexamination
+        }}
+      </h5>
+    </mat-expansion-panel-header>
+    <app-nurse-head-to-toe-examination
+      [headToToeExaminationDataForm]="
+        headToToeExaminationForm
+      "></app-nurse-head-to-toe-examination>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel *ngIf="visitCategory !== 'NCD Care'">
+    <mat-expansion-panel-header>
+      <h5>
+        {{
+          currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+            ?.systemicExamination
+        }}
+      </h5>
+    </mat-expansion-panel-header>
+    <app-nurse-systemic-examination
+      [visitCategory]="visitCategory"
+      [systemicExaminationDataForm]="
+        systemicExaminationForm
+      "></app-nurse-systemic-examination>
+  </mat-expansion-panel>
+</mat-accordion>

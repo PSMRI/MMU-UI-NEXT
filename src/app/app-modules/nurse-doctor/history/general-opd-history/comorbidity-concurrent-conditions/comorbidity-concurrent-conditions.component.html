@@ -1,0 +1,163 @@
+<div [formGroup]="comorbidityConcurrentConditionsForm">
+  <div class="col-xs-12" formArrayName="comorbidityConcurrentConditionsList">
+    <div class="col-12" style="text-align: end">
+      <span class="font-history-label">{{
+        currentLanguageSet?.historyData?.ancHistory?.combordityANC_OPD_NCD_PNC
+          ?.PreviousDetails
+      }}</span>
+      <button
+        type="button"
+        mat-icon-button
+        matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
+        id="previousANCComorbidityHistory"
+        class="mat_icon_blue"
+        color="primary"
+        (click)="getPreviousComorbidityHistory()">
+        <mat-icon class="md-18">history</mat-icon>
+      </button>
+    </div>
+    <div
+      class="col-12 row multi_row_select"
+      style="margin: 15px 0px 15px 0px; background-color: #f0f5f5"
+      *ngFor="
+        let comorbidityConcurrentConditions of getcomorbidityConcurrentConditions();
+        let i = index;
+        let isLast = last;
+        let isOdd = odd
+      "
+      [ngClass]="{ odd: !isOdd }">
+      <ng-container [formGroupName]="i">
+        <div class="col-3 box">
+          <mat-form-field>
+            <mat-label class="mat-label-text">{{
+              currentLanguageSet?.historyData?.ancHistory
+                ?.combordityANC_OPD_NCD_PNC?.comorbidConditions
+            }}</mat-label>
+            <mat-select
+              class="select-full-width"
+              formControlName="comorbidConditions"
+              name="comorbidConditions"
+              (selectionChange)="
+                filterComorbidityConcurrentConditionsType(
+                  $event.value,
+                  i,
+                  comorbidityConcurrentConditions
+                )
+              "
+              required="{{ ComorbidStatus }}">
+              <mat-option
+                *ngFor="let comorbidCondition of comorbiditySelectList[i]"
+                [value]="comorbidCondition"
+                >{{ comorbidCondition.comorbidCondition }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-3 box"
+          *ngIf="
+            comorbidityConcurrentConditions.value.comorbidConditions
+              ?.comorbidCondition === 'Other'
+          ">
+          <mat-form-field class="input-full-width">
+            <mat-label class="mat-label-text">{{
+              currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
+                ?.others
+            }}</mat-label>
+            <input
+              autocomplete="off"
+              matInput
+              appDefaultNull
+              maxlength="50"
+              allowText="alphaspace"
+              name="otherComorbidCondition"
+              formControlName="otherComorbidCondition" />
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-3 box"
+          *ngIf="
+            (comorbidityConcurrentConditions?.value?.comorbidConditions !==
+              null &&
+              comorbidityConcurrentConditions?.value?.comorbidConditions !==
+                '') ||
+            comorbidityConcurrentConditions.value.comorbidConditions
+              ?.comorbidCondition === 'None'
+          ">
+          <mat-form-field class="input-full-width">
+            <mat-label class="mat-label-text">{{
+              currentLanguageSet?.DurationData?.duration
+            }}</mat-label>
+            <input
+              autocomplete="off"
+              matInput
+              appDefaultNull
+              maxlength="2"
+              allowText="number"
+              name="timePeriodAgo"
+              formControlName="timePeriodAgo"
+              (change)="validateDuration(comorbidityConcurrentConditions)" />
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-3 box"
+          *ngIf="
+            (comorbidityConcurrentConditions?.value?.timePeriodAgo !== null &&
+              comorbidityConcurrentConditions?.value?.timePeriodAgo !== '') ||
+            comorbidityConcurrentConditions.value.comorbidConditions
+              ?.comorbidCondition === 'None'
+          ">
+          <mat-form-field>
+            <mat-label class="mat-label-text">{{
+              currentLanguageSet?.DurationData?.durationUnit
+            }}</mat-label>
+            <mat-select
+              class="select-full-width"
+              name="timePeriodUnit"
+              formControlName="timePeriodUnit"
+              (selectionChange)="
+                validateDuration(comorbidityConcurrentConditions)
+              ">
+              <mat-option value="Days">Day(s)</mat-option>
+              <mat-option value="Weeks">Week(s)</mat-option>
+              <mat-option value="Months">Month(s)</mat-option>
+              <mat-option value="Years">Year(s)</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-3 box action-btn-container" style="text-align: end">
+          <button
+            md-mini-fab
+            color="warn"
+            class="mat_warn_circle"
+            id="removeComorbidityConcurrentConditions"
+            *ngIf="
+              i !== 0 || (i === 0 && comorbidityConcurrentConditions.touched)
+            "
+            (click)="
+              removeComorbidityConcurrentConditions(
+                i,
+                comorbidityConcurrentConditions
+              )
+            ">
+            <mat-icon class="md-18">close</mat-icon>
+          </button>
+          <button
+            md-mini-fab
+            color="primary"
+            class="mat_blue_circle"
+            *ngIf="isLast"
+            [disabled]="checkValidity(comorbidityConcurrentConditions)"
+            id="addComorbidityConcurrentConditions"
+            (click)="addComorbidityConcurrentConditions()">
+            <mat-icon class="md-18">add</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

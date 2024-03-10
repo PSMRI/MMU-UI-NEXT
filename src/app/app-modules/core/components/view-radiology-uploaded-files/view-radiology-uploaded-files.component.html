@@ -1,0 +1,28 @@
+<div class="title">
+  <h4>{{ current_language_set?.coreComponents?.filesClickToDownload }}</h4>
+  <button
+    mat-icon-button
+    matDialogClose
+    matTooltip="{{ current_language_set?.common?.close }}"
+    class="pull-right exit width-20px">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-table class="mat-elevation-z8" aria-describedby="viewRadiologyFiles">
+  <!-- Define columns -->
+  <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
+  </ng-container>
+  <ng-container matColumnDef="fileName">
+    <th mat-header-cell *matHeaderCellDef>File Name</th>
+    <td mat-cell *matCellDef="let fileID" (click)="openFileContent(fileID)">
+      {{ fileID.fileName }}
+    </td>
+  </ng-container>
+
+  <!-- Set header row -->
+  <mat-header-row *matHeaderRowDef="['index', 'fileName']"></mat-header-row>
+  <!-- Set data rows -->
+  <mat-row *matRowDef="let row; columns: ['index', 'fileName']"></mat-row>
+</mat-table>

@@ -1,64 +1,3 @@
-/* @font-face {
-    font-family: Roboto-Regular;
-    src: url(../fonts/Roboto/Roboto-Regular.ttf);
-}
-
-@font-face {
-    font-family: Roboto-Medium;
-    src: url(../fonts/Roboto/Roboto-Medium.ttf);
-}
-
-@font-face {
-    font-family: Roboto-Black;
-    src: url(../fonts/Roboto/Roboto-Black.ttf);
-}
-
-@font-face {
-    font-family: Roboto-Light;
-    src: url(../fonts/Roboto/Roboto-Light.ttf);
-}
-
-@font-face {
-    font-family: Roboto-Thin;
-    src: url(../fonts/Roboto/Roboto-Thin.ttf);
-}
-
-@font-face {
-    font-family: Roboto-Bold;
-    src: url(../fonts/Roboto/Roboto-Bold.ttf);
-}
-
-.font-Light {
-    font-family: Roboto-Light !important;
-}
-
-.font-regular {
-    font-family: Roboto-Regular !important;
-}
-
-.font-Thin {
-    font-family: Roboto-Thin !important;
-}
-
-.font-bold {
-    font-family: Roboto-Bold !important;
-}
-
-.font-Medium {
-    font-family: Roboto-Medium !important;
-}
-
-.font-Black {
-    font-family: Roboto-Black !important;
-}
-
-body {
-    background: #f2f2f0 !important;
-    /*background: white !important;
-    font-family: Roboto-Regular, "Helvetica Neue", sans-serif !important;
-    height: 100%;
-} */
-
 @font-face {
   font-family: SF-UI-Display-Regular;
   src: url(../fonts/SF-UI-Display/SF-UI-Display-Regular.otf);
@@ -110,9 +49,8 @@ body {
 }
 
 body {
-  /*background:#fafafa;*/
   background: #f2f2f0 !important;
-  font-family: SF-UI-Display-Regular !important;
+  font-family: SF-UI-Display-Regular;
   height: 100%;
 }
 
@@ -134,7 +72,12 @@ input {
   color: #999 !important;
 }
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
   display: none !important;
 }
 
@@ -224,7 +167,8 @@ input {
   border-style: none !important;
 }
 
-a:focus, aF {
+a:focus
+ {
   color: red !important;
   text-decoration: underline;
 }
@@ -249,8 +193,6 @@ a:focus, aF {
 
 .bs-wizard>.bs-wizard-step>.bs-wizard-dot {
   position: absolute;
-  /*  width: 22px;
-  height: 22px;*/
   width: 18px;
   height: 18px;
   display: block;
@@ -262,17 +204,6 @@ a:focus, aF {
   margin-left: -15px;
   border-radius: 50%;
 }
-
-/*.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {
-  content: ' ';
-  width: 12px;
-  height: 12px;
-  background: #fbbd19;
-  border-radius: 50px;
-  position: absolute;
-  top: 8px;
-  left: 8px;
-}*/
 
 .bs-wizard>.bs-wizard-step>.progress {
   position: relative;
@@ -331,7 +262,6 @@ a:focus, aF {
 }
 
 .progress-margin {
-  /*  margin-top:41px !important;*/
   z-index: -2;
   margin-top: 9px !important;
 }
@@ -386,27 +316,6 @@ a:focus, aF {
 .fav-color {
   color: #dc6060 !important;
 }
-
-/*.f-c-2{
-color:#0d476e !important;
-}
-.f-c-3{
-color:#4d8bb4 !important;
-}
-.f-c-3{
-color:#4d8bb4 !important;
-}
-
-.f-c-a9{
-color: #a9a9a9
-}
-.f-c-l-g{
-color:#aeaeae;
-}
-.f-c-l-g-1{
-color:#545454;
-}
-*/
 
 .f-s-10 {
   font-size: 10px;
@@ -1033,6 +942,7 @@ em {
   width: 100%;
   background: #40454d;
   background: #404a5b;
+  left: 0px;
 }
 
 .multiSelect {
@@ -1167,15 +1077,8 @@ em {
   height: 25px;
 }
 
-/*.drop-arrow {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    background: transparent url("../images/selectIcon.png") no-repeat right center;
-}*/
-
-.form-group-custome::after, .form-group-custome::before {
+.form-group-custome::after,
+.form-group-custome::before {
   background: none !important;
 }
 
@@ -1205,7 +1108,8 @@ em {
   margin-bottom: 100px;
 }
 
-.accordion-toggle, .plus-accordion-toggle {
+.accordion-toggle,
+.plus-accordion-toggle {
   display: block;
   cursor: pointer;
 }
@@ -1251,7 +1155,6 @@ em {
 }
 
 .cu-panel-heading {
-  /* background:#ec6820 !important;*/
   color: #000 !important;
 }
 
@@ -1276,7 +1179,9 @@ em {
   border-bottom: 2px solid #DDD;
 }
 
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
   border-width: 0;
   color: #fff !important;
 }
@@ -1286,7 +1191,8 @@ em {
   color: #fff;
 }
 
-.nav-tabs>li.active>a, .nav-tabs>li>a:hover {
+.nav-tabs>li.active>a,
+.nav-tabs>li>a:hover {
   border: none;
   color: #fff !important;
   background: transparent;
@@ -1304,7 +1210,8 @@ em {
   transform: scale(0);
 }
 
-.nav-tabs>li.active>a::after, .nav-tabs>li:hover>a::after {
+.nav-tabs>li.active>a::after,
+.nav-tabs>li:hover>a::after {
   transform: scale(1);
 }
 
@@ -1374,7 +1281,9 @@ em {
   padding: 5px;
 }
 
-.btn-default-custome:hover, .btn-default-custome:active, .btn-default-custome:focus {
+.btn-default-custome:hover,
+.btn-default-custome:active,
+.btn-default-custome:focus {
   background: none !important;
   color: #F89b58 !important;
   box-shadow: none;
@@ -1395,7 +1304,8 @@ em {
   padding: 3px 10px;
 }
 
-.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+.animate-show.ng-hide-add,
+.animate-show.ng-hide-remove {
   display: inline-block !important;
 }
 
@@ -1469,6 +1379,7 @@ em {
 .height-220 {
   height: 220px !important;
 }
+
 .height-180 {
   height: 180px !important;
 }
@@ -1509,7 +1420,6 @@ em {
   float: left;
   color: #fff !important;
   font-family: SF-UI-Display-Regular;
-  /* margin:3px;    color: #ecf0f1;*/
 }
 
 .radioBtn {
@@ -1522,7 +1432,6 @@ em {
   color: #fff;
   font-family: SF-UI-Display-Regular;
   border: 1px solid #069;
-  /* margin:3px;    color: #ecf0f1;*/
 }
 
 .btn>* {
@@ -1556,7 +1465,8 @@ em {
   transition: width .2s ease-out, padding-top .2s ease-out;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover,
+.btn:focus {
   color: #fff !important;
   outline: 0 !important;
   background: #545454 !important;
@@ -1586,7 +1496,8 @@ em {
   background: none !important;
 }
 
-.cu-nav div, .cu-nav li a {
+.cu-nav div,
+.cu-nav li a {
   height: 50px;
 }
 
@@ -1615,13 +1526,10 @@ em {
 
 .badge-corner {
   position: relative;
-  /* top:-20px;
-    right: 15px;*/
   left: 58px;
   width: 0;
   height: 0;
   border-top: 30px solid #008c44;
-  /* border-top-color: rgba(0, 0, 0, 0.3);*/
   border-left: 40px solid transparent;
   padding: 0;
   background-color: transparent;
@@ -1710,16 +1618,10 @@ em {
   content: "\f105";
 }
 
-/*.sidebar-toggle:after {
-
-  content: "\f104";
-}*/
-
 .circleOuterDiv {
   width: 180px;
   height: 160px;
   float: left;
-  /*  border:1px solid #dcdcdb;*/
   margin: 10px;
 }
 
@@ -1772,10 +1674,8 @@ em {
   display: block;
   overflow: hidden;
   transition: background-color .3s;
-  /*float:left;*/
   color: #000 !important;
   font-family: SF-UI-Display-Regular;
-  /* margin:3px;    color: #ecf0f1;*/
   cursor: pointer;
   text-align: center;
 }
@@ -1807,8 +1707,10 @@ em {
   transition: width .2s ease-out, padding-top .2s ease-out;
 }
 
-input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hover {
-  -webkit-box-shadow: 0 0 0 20px white inset;
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover {
+  -webkit-box-shadow: 0 0 0 20px whitesmoke inset;
   border-bottom: 2px solid #e6e6e6;
   bottom: 1px;
 }
@@ -1832,7 +1734,9 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hov
   padding-top: 7px;
 }
 
-.animation-nav>li.active>a, .animation-nav>li.active>a:focus, .animation-nav>li.active>a:hover {
+.animation-nav>li.active>a,
+.animation-nav>li.active>a:focus,
+.animation-nav>li.active>a:hover {
   border-width: 0;
   color: #fff !important;
 }
@@ -1842,7 +1746,8 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hov
   color: #000;
 }
 
-.animation-nav>li.active>a, .animation-nav>li>a:hover {
+.animation-nav>li.active>a,
+.animation-nav>li>a:hover {
   border: none;
   color: #F57920 !important;
   background: transparent;
@@ -1861,7 +1766,8 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hov
   color: #fff;
 }
 
-.animation-nav>li.active>a::after, .animation-nav>li:hover>a::after {
+.animation-nav>li.active>a::after,
+.animation-nav>li:hover>a::after {
   transform: scale(1);
 }
 
@@ -1920,7 +1826,6 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hov
 .mat-select-trigger {
   display: flex;
   align-items: center;
-  /* height: 30px;*/
   min-width: 112px;
   cursor: pointer;
   position: relative;
@@ -1929,21 +1834,20 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hov
   height: 25px !important;
 }
 
-/*.mat-input-underline.mat-disabled , [aria-disabled=true] .mat-select-underline{
-    background-image:none !important;
-    background-color: rgba(0,0,0,.12) !important;
-
-}*/
-
-[disabled] .mat-input-placeholder, [aria-disabled=true] .mat-select-placeholder, .mat-input-placeholde {
+[disabled] .mat-input-placeholder,
+[aria-disabled=true] .mat-select-placeholder,
+.mat-input-placeholde {
   color: #d9d9d9 !important;
 }
 
-.mat-input-placeholder, .mat-select-placeholder, .md2-datepicker-placeholder {
+.mat-input-placeholder,
+.mat-select-placeholder,
+.md2-datepicker-placeholder {
   color: #999999;
 }
 
-.mat-input-infix, .mat-tab-label {
+.mat-input-infix,
+.mat-tab-label {
   font-weight: 600 !important;
   font-family: SF-UI-Display-Regular, "Helvetica Neue", sans-serif;
   font-size: 15px !important;
@@ -1956,48 +1860,42 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hov
   transform: scale(.75) translateY(7px) !important;
 }
 
-/* custom css for input and select allign by neeraj*/
-
-/*.parent mat-disabled{
-      color: #d9d9d9 !important;
-}*/
-
-/*.mat-select-trigger{
-      font-weight: 700!important;
-}*/
-
-/*.disabledField{
-    color: #d9d9d9 !important;
-}*/
-
 @media (max-width: 500px) {
   .padding-0-left-right {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+
   .padding-0-right {
     padding-right: 0 !important;
   }
+
   .mat-horizontal-content-container {
     padding: 0 !important;
   }
+
   .example-scrolling-content .row {
     padding: 3px !important;
   }
+
   .step-btn {
     margin-bottom: 100px;
   }
+
   #refresh {
     width: 100%;
   }
+
   #submitButton {
     margin: 2px;
     width: 100%;
   }
+
   #resetButton {
     margin: 2px;
     width: 100%;
   }
+
   #moveToSearch {
     width: 100%;
     margin: 2px;
@@ -2008,21 +1906,27 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hov
   .cu-nav-top li {
     background: #fff;
   }
+
   .cu-nav-top li a {
     color: #000 !important;
   }
+
   .p-l-sm-2 {
     padding-left: 2px !important;
   }
+
   .p-r-sm-2 {
     padding-right: 2px !important;
   }
+
   #settings {
     width: 79%;
   }
+
   .width-lg-97 {
     width: 100% !important;
   }
+
   .m-t-lg-25 {
     margin-top: 0px;
   }
@@ -2033,63 +1937,83 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hov
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+
   .padding-0-right {
     padding-right: 0 !important;
   }
+
   .cu-nav-top li {
     background: none;
   }
+
   .cu-nav-top li a {
     color: #fff !important;
   }
+
   .m-t-lg-10 {
     margin-top: 0px;
   }
+
   .m-t-lg-20 {
     margin-top: 0px;
   }
+
   .m-t-lg-25 {
     margin-top: 25px;
   }
+
   .m-t-lg-30 {
     margin-top: 0px;
   }
+
   .m-t-lg-35 {
     margin-top: 0px;
   }
+
   .m-t-lg-40 {
     margin-top: 0px;
   }
+
   .m-l-lg-20 {
     margin-left: 5px;
   }
+
   .m-l-lg-40 {
     margin-left: 0px;
   }
+
   .p-t-lg-2 {
     padding-top: 2px !important;
   }
+
   .p-r-lg-1 {
     padding-right: 0px !important;
   }
+
   .p-l-lg-1 {
     padding-left: 0px !important;
   }
+
   .p-l-sm-2 {
     padding-left: 2px !important;
   }
+
   .p-r-sm-2 {
     padding-right: 2px !important;
   }
+
   .f-s-lg-18 {
     font-size: 15px;
   }
+
   .cu-sm-22-3 {
     width: 22.3%;
   }
+
   #settings {
     width: 87%;
   }
+
   .width-lg-97 {
     width: 97% !important;
   }
@@ -2099,48 +2023,63 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hov
   .p-l-lg-0 {
     padding-left: 0px;
   }
+
   .m-t-lg-10 {
     margin-top: 10px;
   }
+
   .m-t-lg-20 {
     margin-top: 20px;
   }
+
   .m-t-lg-25 {
     margin-top: 25px;
   }
+
   .m-t-lg-30 {
     margin-top: 30px;
   }
+
   .m-t-lg-35 {
     margin-top: 35px;
   }
+
   .m-t-lg-40 {
     margin-top: 40px;
   }
+
   .m-l-lg-20 {
     margin-left: 20px;
   }
+
   .m-l-lg-40 {
     margin-left: 40px;
   }
+
   .p-t-lg-2 {
     padding-top: 2px !important;
   }
+
   .p-r-lg-1 {
     padding-right: 1px !important;
   }
+
   .p-r-lg-2 {
     padding-right: 2px !important;
   }
+
   .p-l-lg-1 {
     padding-left: 1px !important;
   }
+
   .p-l-lg-2 {
     padding-left: 2px !important;
   }
+
   .f-s-lg-18 {
     font-size: 18px;
   }
+
   .width-lg-97 {
     width: 97% !important;
   }
@@ -2150,51 +2089,67 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hov
   .p-l-lg-0 {
     padding-left: 0px;
   }
+
   .m-t-lg-10 {
     margin-top: 10px;
   }
+
   .m-t-lg-20 {
     margin-top: 20px;
   }
+
   .m-t-lg-25 {
     margin-top: 25px;
   }
+
   .m-t-lg-30 {
     margin-top: 30px;
   }
+
   .m-t-lg-35 {
     margin-top: 35px;
   }
+
   .m-t-lg-40 {
     margin-top: 40px;
   }
+
   .m-l-lg-20 {
     margin-left: 20px;
   }
+
   .m-l-lg-40 {
     margin-left: 40px;
   }
+
   .p-t-lg-2 {
     padding-top: 2px !important;
   }
+
   .p-r-lg-1 {
     padding-right: 1px !important;
   }
+
   .p-r-lg-2 {
     padding-right: 2px !important;
   }
+
   .p-l-lg-1 {
     padding-left: 1px !important;
   }
+
   .p-l-lg-2 {
     padding-left: 2px !important;
   }
+
   .f-s-lg-18 {
     font-size: 18px;
   }
+
   #settings {
     width: 91.10%;
   }
+
   .width-lg-97 {
     width: 97% !important;
   }
@@ -2255,12 +2210,17 @@ input:-webkit-autofill, input:-webkit-autofill:focus, input:-webkit-autofill:hov
 
 .font-history-label {
   color: #ff9900 !important;
+  font-size: medium;
 }
 
 /* New css added by neeraj to make textbot and dropdown font similar on 02-04-2018 */
 
-.md2-datepicker-value, .mat-select-placeholder, .mat-select-value-text, .mat-input-element, .mat-input-placeholder-wrapper, .md2-autocomplete-placeholder {
-  /*font-family: SF-UI-Display-Regular !important;*/
+.md2-datepicker-value,
+.mat-select-placeholder,
+.mat-select-value-text,
+.mat-input-element,
+.mat-input-placeholder-wrapper,
+.md2-autocomplete-placeholder {
   font-size: 15px !important;
   font-weight: 700 !important;
 }

@@ -1,0 +1,13 @@
+.input-full-width {
+    width: 100%;
+}
+.card{
+  width:70%;
+}
+.cell_postion{
+  padding-top: 8px;
+}
+
+mat-form-field >>>.mat-mdc-select-trigger {
+  width: 154% !important;
+}

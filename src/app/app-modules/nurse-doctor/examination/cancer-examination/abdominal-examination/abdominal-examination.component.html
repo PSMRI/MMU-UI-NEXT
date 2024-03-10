@@ -1,0 +1,282 @@
+<div class="row m-t-10" [formGroup]="abdominalExaminationForm">
+  <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+    <div class="col-12 row">
+      <div class="col-6 custom-cell cell_postion">
+        <span>{{
+          currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+            ?.abdominal?.abdominalInspection
+        }}</span>
+      </div>
+
+      <div class="col-6 custom-cell">
+        <mat-radio-group
+          name="abdominalInspection_Normal"
+          formControlName="abdominalInspection_Normal">
+          <mat-radio-button
+            color="primary"
+            class="form-radio-btn"
+            [value]="true"
+            >{{ currentLanguageSet?.common?.normal }}</mat-radio-button
+          >
+          <mat-radio-button
+            color="primary"
+            class="form-radio-btn"
+            [value]="false"
+            >{{ currentLanguageSet?.common?.abnormal }}</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="clo-12 row">
+      <div class="col-6 custom-cell cell_postion">
+        <span>{{
+          currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+            ?.abdominal?.liver
+        }}</span>
+      </div>
+
+      <div class="col-6 custom-cell">
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.common?.select
+        }}</mat-label>
+        <mat-select
+          name="liver"
+          floatPlaceholder="never"
+          formControlName="liver">
+          <mat-option value="Not palpable"> Not palpable </mat-option>
+          <mat-option value="Palpable and smooth">
+            Palpable and smooth
+          </mat-option>
+          <mat-option value="Palpable and nodular"
+            >Palpable and nodular
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+
+    <div class="col-12 row">
+      <div class="col-6 custom-cell cell_postion">
+        <span>
+          {{
+            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+              ?.abdominal?.ascites
+          }}
+        </span>
+      </div>
+
+      <div class="col-6 custom-cell">
+        <mat-radio-group
+          name="ascites_Present"
+          formControlName="ascites_Present">
+          <mat-radio-button
+            color="primary"
+            class="form-radio-btn"
+            [value]="true"
+            >{{ currentLanguageSet?.common?.present }}</mat-radio-button
+          >
+          <mat-radio-button
+            color="primary"
+            class="form-radio-btn"
+            [value]="false"
+            >{{ currentLanguageSet?.common?.absent }}</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="col-12 row">
+      <div class="col-6 custom-cell cell_postion">
+        <span>
+          {{
+            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+              ?.abdominal?.anyOtherMass
+          }}
+        </span>
+      </div>
+
+      <div class="col-6 custom-cell">
+        <mat-radio-group
+          name="anyOtherMass_Present"
+          formControlName="anyOtherMass_Present">
+          <mat-radio-button
+            color="primary"
+            class="form-radio-btn"
+            [value]="true"
+            >{{ currentLanguageSet?.common?.present }}</mat-radio-button
+          >
+          <mat-radio-button
+            color="primary"
+            class="form-radio-btn"
+            [value]="false"
+            >{{ currentLanguageSet?.common?.absent }}</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="col-12 row">
+      <div class="col-6 custom-cell cell_postion">
+        <span>{{
+          currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+            ?.symptoms?.lymphnodes
+        }}</span>
+      </div>
+
+      <div class="col-6 custom-cell">
+        <mat-radio-group
+          name="lymphNodes_Enlarged"
+          formControlName="lymphNodes_Enlarged"
+          (change)="checkWithLymphNodes()">
+          <mat-radio-button
+            color="primary"
+            class="form-radio-btn"
+            [value]="true"
+            >{{ currentLanguageSet?.common?.enlarged }}</mat-radio-button
+          >
+          <mat-radio-button
+            color="primary"
+            class="form-radio-btn"
+            [value]="false"
+            >{{ currentLanguageSet?.common?.notEnlarged }}</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+    <div class="image-placeholder">
+      <small>{{ currentLanguageSet?.common?.kindlyMark }}</small>
+      <br />
+      <!-- eslint-disable-next-line  @angular-eslint/template/click-events-have-key-events -->
+      <a (click)="annotateImage()" tabindex="{0}" id="annotateAbdominalImg"
+        ><img
+          #abdominalImage
+          src="assets/images/abdominalExamination.png"
+          alt="Abdominal Examination"
+      /></a>
+    </div>
+  </div>
+
+  <div
+    class="col-xs-12"
+    *ngIf="lymphNodes_Enlarged && lymphNodes_Enlarged.value">
+    <table
+      class="table"
+      id="lymphNodesTable"
+      aria-describedby="abdominalExamination">
+      <th id=""></th>
+      <!--Added to resolve sonarqube error-->
+      <tr>
+        <td>
+          {{
+            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+              ?.abdominal?.leftPalpable
+          }}
+        </td>
+        <td>
+          {{
+            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+              ?.abdominal?.lymphnode
+          }}
+        </td>
+        <td>
+          {{
+            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+              ?.abdominal?.rightPalpable
+          }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-button-toggle-group
+            name="lymphNode_Inguinal_Left"
+            formControlName="lymphNode_Inguinal_Left">
+            <mat-button-toggle [value]="true"> + </mat-button-toggle>
+            <mat-button-toggle [value]="false"> - </mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+        <td>
+          {{
+            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+              ?.abdominal?.inguinal
+          }}
+        </td>
+        <td>
+          <mat-button-toggle-group
+            name="lymphNode_Inguinal_Right"
+            formControlName="lymphNode_Inguinal_Right">
+            <mat-button-toggle [value]="true"> + </mat-button-toggle>
+            <mat-button-toggle [value]="false"> - </mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-button-toggle-group
+            name="lymphNode_ExternalIliac_Left"
+            formControlName="lymphNode_ExternalIliac_Left">
+            <mat-button-toggle [value]="true"> + </mat-button-toggle>
+            <mat-button-toggle [value]="false"> - </mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+        <td>
+          {{
+            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+              ?.abdominal?.externalIliac
+          }}
+        </td>
+        <td>
+          <mat-button-toggle-group
+            name="lymphNode_ExternalIliac_Right"
+            formControlName="lymphNode_ExternalIliac_Right">
+            <mat-button-toggle [value]="true"> + </mat-button-toggle>
+            <mat-button-toggle [value]="false"> - </mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-button-toggle-group
+            name="lymphNode_ParaAortic_Left"
+            formControlName="lymphNode_ParaAortic_Left">
+            <mat-button-toggle [value]="true"> + </mat-button-toggle>
+            <mat-button-toggle [value]="false"> - </mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+        <td>
+          {{
+            currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+              ?.abdominal?.paraAortic
+          }}
+        </td>
+        <td>
+          <mat-button-toggle-group
+            name="lymphNode_ParaAortic_Right"
+            formControlName="lymphNode_ParaAortic_Right">
+            <mat-button-toggle [value]="true"> + </mat-button-toggle>
+            <mat-button-toggle [value]="false"> - </mat-button-toggle>
+          </mat-button-toggle-group>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="col-xs-12">
+    <mat-form-field class="form-textarea">
+      <mat-label class="mat-label-text">{{
+        currentLanguageSet?.ExaminationData?.cancerScreeningExamination
+          ?.abdominal?.observation
+      }}</mat-label>
+      <textarea
+        matInput
+        allowText="textAreaValidator"
+        defaultNull
+        matTextareaAutosize
+        maxlength="500"
+        name="observation"
+        formControlName="observation"></textarea>
+    </mat-form-field>
+  </div>
+</div>

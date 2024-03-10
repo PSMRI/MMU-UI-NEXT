@@ -1,0 +1,121 @@
+<div class="row" [formGroup]="feedingHistoryForm">
+  <div class="col-12" style="text-align: end">
+    <span class="font-history-label">{{
+      currentLanguageSet?.historyData?.Feedinghistorydetails
+        ?.previousfeedinghistory
+    }}</span>
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
+      id="previousFeedingHistory"
+      class="mat_icon_blue"
+      color="primary"
+      (click)="getPreviousFeedingHistory()">
+      <mat-icon class="md-18">history</mat-icon>
+    </button>
+  </div>
+  <div>
+    <div class="box col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <mat-form-field>
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
+            ?.typeofFeeds
+        }}</mat-label>
+        <mat-select
+          class="select-full-width"
+          name="typeOfFeedsDuringFirst6Months"
+          formControlName="typeOfFeed">
+          <mat-option
+            *ngFor="let feedsAge of masterData?.feedTypes"
+            [value]="feedsAge.value"
+            >{{ feedsAge.value }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="box col-xs-12 col-sm-6 col-md-6 col-lg-6" *ngIf="age > 6">
+      <mat-form-field>
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
+            ?.ageatweaning
+        }}</mat-label>
+        <mat-select
+          class="select-full-width"
+          name="ageAtWeaningFeedIntroduced"
+          formControlName="compFeedStartAge"
+          (selectionChange)="resetNoOfCompFeedPerDay()">
+          <mat-option
+            *ngFor="let feedType of masterData?.compFeedAges"
+            [value]="feedType.value"
+            >{{ feedType.value }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div
+      class="box col-xs-12 col-sm-6 col-md-6 col-lg-6"
+      *ngIf="compFeedStartAge">
+      <mat-form-field>
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
+            ?.numberofComplimentaryfoodservings
+        }}</mat-label>
+        <mat-select
+          class="select-full-width"
+          name="complimentaryFoodNumber"
+          formControlName="noOfCompFeedPerDay">
+          <mat-option
+            *ngFor="let feedsNumber of masterData?.compFeedServings"
+            [value]="feedsNumber.value"
+            >{{ feedsNumber.value }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="box col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <label class="control-label" for="foodIntoleranceStatus">{{
+        currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
+          ?.foodIntoleranceStatus
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group
+        name="foodIntoleranceStatus"
+        formControlName="foodIntoleranceStatus"
+        (change)="resetTypeofFoodIntolerance()">
+        <mat-radio-button color="primary" [value]="true">{{
+          currentLanguageSet?.common?.yes
+        }}</mat-radio-button>
+        <mat-radio-button color="primary" [value]="false" class="radio-btn">{{
+          currentLanguageSet?.common?.no
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div
+      class="box col-xs-12 col-sm-6 col-md-6 col-lg-6"
+      *ngIf="foodIntoleranceStatus">
+      <mat-form-field class="input-full-width">
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.historyData?.opdNCDPNCHistory?.feeding
+            ?.typeofFoodIntolerance
+        }}</mat-label>
+        <input
+          autocomplete="off"
+          matInput
+          appDefaultNull
+          maxlength="50"
+          allowText="alphaspace"
+          formControlName="typeofFoodIntolerance"
+          name="foodIntoleranceType" />
+      </mat-form-field>
+    </div>
+  </div>
+</div>

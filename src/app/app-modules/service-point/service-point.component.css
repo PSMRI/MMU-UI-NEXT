@@ -1,0 +1,42 @@
+.radio-btn {
+  margin-left: 8px;
+}
+
+.align-Field {
+  margin-top: -10px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.matCardService {
+  width: 500px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.mat-option {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  line-height: 48px;
+  height: 48px;
+  padding: 0 16px;
+  text-align: left;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+}
+
+mat-card-actions {
+  display: block;
+  float: right;
+}
+

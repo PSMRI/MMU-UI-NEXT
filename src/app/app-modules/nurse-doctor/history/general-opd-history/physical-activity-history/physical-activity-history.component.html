@@ -1,0 +1,57 @@
+<ng-container [formGroup]="physicalActivityHistoryForm">
+  <div class="col-12" style="text-align: end">
+    <span class="font-history-label">{{
+      currentLanguageSet?.historyData?.ncdPhysicalActivityHistory
+        ?.previousPhysicalActivityHistory
+    }}</span>
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
+      id="previousANCFamilyHistory"
+      class="mat_icon_blue hbx"
+      color="primary"
+      (click)="getPreviousPhysicalActivityHistory()">
+      <mat-icon class="md-18">history</mat-icon>
+    </button>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box hbx">
+      <label class="control-label" for="physicalActivityType">{{
+        currentLanguageSet?.historyData?.ncdPhysicalActivityHistory
+          ?.physicalActivityType
+      }}</label>
+      <div class="clearfix"></div>
+      <mat-radio-group formControlName="physicalActivityType">
+        <mat-radio-button color="primary" value="Sedentary">{{
+          currentLanguageSet?.historyData?.ncdPhysicalActivityHistory?.sedentary
+        }}</mat-radio-button>
+        <mat-radio-button color="primary" class="radio-button" value="Active">{{
+          currentLanguageSet?.historyData?.ncdPhysicalActivityHistory?.active
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="box col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <mat-form-field style="width: 600px">
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.historyData?.ncdPhysicalActivityHistory
+            ?.physcialActivityQuestions
+        }}</mat-label>
+        <mat-select
+          style="width: 100%"
+          name="physicalActivitQuestions"
+          formControlName="activityType"
+          (selectionChange)="
+            calculateIDRSScore($event, physicalActivityHistoryForm)
+          "
+          [required]="age >= 30">
+          <mat-option
+            *ngFor="let questions of physicalActivityQuestions"
+            [value]="questions.activityType">
+            {{ questions.activityType }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</ng-container>

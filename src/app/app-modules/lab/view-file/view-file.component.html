@@ -1,0 +1,24 @@
+<div class="title">
+  <h4>{{ current_language_set?.files }}</h4>
+  <button
+    mat-icon-button
+    matDialogClose
+    matTooltip="{{ current_language_set?.common?.close }}"
+    (click)="closeDialog()"
+    class="pull-right exit mat_icon_white">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div
+  class="container-fluid"
+  style="margin-bottom: 10px"
+  *ngIf="fileObj && fileObj.length > 0">
+  <mat-chip
+    *ngFor="let file of fileObj"
+    [ngClass]="{ chipEdit: file.isUploaded }"
+    >{{ file.fileName }}
+    <mat-icon matChipRemove *ngIf="!file.isUploaded" (click)="remove(file)"
+      >cancel</mat-icon
+    >
+  </mat-chip>
+</div>

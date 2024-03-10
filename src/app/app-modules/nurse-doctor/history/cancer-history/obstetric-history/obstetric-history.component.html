@@ -1,0 +1,340 @@
+<!-- {{cancerPatientObstetricHistoryForm.value | json}} -->
+<div [formGroup]="cancerPatientObstetricHistoryForm">
+  <div class="m-t-10 col-12">
+    <div class="" style="text-align: end">
+      <span class="font-history-label m-t-10">{{
+        currentLanguageSet?.historyData?.obstetrichistory?.obstetricshistory
+      }}</span>
+      <button
+        mat-icon-button
+        matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
+        id="previousCancerPastObstetricHistory"
+        class="mat_icon_blue"
+        color="primary"
+        (click)="getPreviousCancerPastObstetricHistory()">
+        <mat-icon class="md-18">history</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="row m-t-10">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field>
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.nurseData?.visitDetailsForm?.pregnancyStatus
+        }}</mat-label>
+        <mat-select
+          class="input-full-width"
+          name="pregnancyStatus"
+          formControlName="pregnancyStatus"
+          [disabled]="true"
+          (selectionChange)="checkWithPregnancy()">
+          <mat-option
+            *ngFor="let pregnancyStatusValue of templatePregnancyStatus"
+            [value]="pregnancyStatusValue">
+            {{ pregnancyStatusValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+      *ngIf="pregnancyStatus === 'Don\'t Know'">
+      <mat-label class="mat-label-text" class="control-label" for="drug">{{
+        currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+          ?.urinepregnancytest
+      }}</mat-label>
+      <div class="clearfix"></div>
+      <mat-radio-group name="isUrinePregTest" formControlName="isUrinePregTest">
+        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
+          currentLanguageSet?.common?.positive
+        }}</mat-radio-button>
+        <mat-radio-button
+          color="primary"
+          class="radio-button"
+          [value]="false"
+          >{{ currentLanguageSet?.common?.negative }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field>
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.nooftimespregnant
+        }}</mat-label>
+        <mat-select
+          class="input-full-width"
+          name="pregnant_No"
+          formControlName="pregnant_No"
+          (selectionChange)="checkWithPregnantTimes()">
+          <mat-option
+            *ngFor="let timesPregnant of templateTimesPregnant"
+            [value]="timesPregnant">
+            {{ timesPregnant }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+      *ngIf="pregnant_No && pregnant_No !== '0'">
+      <mat-form-field class="input-full-width">
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.nooflivingchildren
+        }}</mat-label>
+        <input
+          autocomplete="off"
+          matInput
+          appDefaultNull
+          allowText="number"
+          maxlength="2"
+          name="noOfLivingChild"
+          formControlName="noOfLivingChild"
+          (change)="checkNoOfChildren(noOfLivingChild)" />
+      </mat-form-field>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+      *ngIf="pregnant_No && pregnant_No !== '0'">
+      <mat-label class="mat-label-text" class="control-label" for="drug">{{
+        currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+          ?.abortions
+      }}</mat-label>
+      <div class="clearfix"></div>
+      <mat-radio-group name="isAbortion" formControlName="isAbortion">
+        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
+          currentLanguageSet?.common?.yes
+        }}</mat-radio-button>
+        <mat-radio-button
+          color="primary"
+          class="radio-button"
+          [value]="false"
+          >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-label class="mat-label-text" class="control-label" for="drug">{{
+        currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+          ?.oralContraceptiveUsed
+      }}</mat-label>
+      <div class="clearfix"></div>
+      <mat-radio-group
+        name="isOralContraceptiveUsed"
+        formControlName="isOralContraceptiveUsed">
+        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
+          currentLanguageSet?.common?.yes
+        }}</mat-radio-button>
+        <mat-radio-button
+          color="primary"
+          class="radio-button"
+          [value]="false"
+          >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-label class="mat-label-text" class="control-label" for="drug">{{
+        currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+          ?.harmonereplacementTherapy
+      }}</mat-label>
+      <div class="clearfix"></div>
+      <mat-radio-group
+        name="isHormoneReplacementTherapy"
+        formControlName="isHormoneReplacementTherapy">
+        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
+          currentLanguageSet?.common?.yes
+        }}</mat-radio-button>
+        <mat-radio-button
+          color="primary"
+          class="radio-button"
+          [value]="false"
+          >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field class="input-full-width">
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.ageatmenarche
+        }}</mat-label>
+        <input
+          autocomplete="off"
+          matInput
+          appDefaultNull
+          allowText="number"
+          maxlength="2"
+          name="menarche_Age"
+          formControlName="menarche_Age"
+          (change)="checkMenarcheAge($event)" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-label class="mat-label-text" class="control-label" for="drug">{{
+        currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+          ?.regularityofMenstrualCycle
+      }}</mat-label>
+      <div class="clearfix"></div>
+      <mat-radio-group
+        name="isMenstrualCycleRegular"
+        formControlName="isMenstrualCycleRegular">
+        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
+          currentLanguageSet?.common?.regular
+        }}</mat-radio-button>
+        <mat-radio-button
+          color="primary"
+          class="radio-button"
+          [value]="false"
+          >{{ currentLanguageSet?.common?.irregular }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field class="input-full-width">
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.lengthofMenstrualCycle
+        }}</mat-label>
+        <input
+          autocomplete="off"
+          matInput
+          appDefaultNull
+          allowText="number"
+          name="menstrualCycleLength"
+          maxlength="2"
+          formControlName="menstrualCycleLength"
+          (change)="checkLengthMenstrualCycle($event)" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field class="input-full-width">
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.menstrualFlowduration
+        }}</mat-label>
+        <input
+          autocomplete="off"
+          matInput
+          appDefaultNull
+          allowText="number"
+          maxlength="2"
+          name="menstrualFlowDuration"
+          formControlName="menstrualFlowDuration"
+          (change)="checkMenstrualFlowDuration($event)" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field>
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.typeofFlow
+        }}</mat-label>
+        <mat-select
+          class="input-full-width"
+          name="menstrualFlowType"
+          formControlName="menstrualFlowType">
+          <mat-option
+            *ngFor="let typeOfFlow of templateTypeOfFlow"
+            [value]="typeOfFlow">
+            {{ typeOfFlow }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-label class="mat-label-text" class="control-label" for="drug">{{
+        currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+          ?.dysmenorrhea
+      }}</mat-label>
+      <div class="clearfix"></div>
+      <mat-radio-group name="isDysmenorrhea" formControlName="isDysmenorrhea">
+        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
+          currentLanguageSet?.common?.yes
+        }}</mat-radio-button>
+        <mat-radio-button
+          color="primary"
+          class="radio-button"
+          [value]="false"
+          >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-label class="mat-label-text" class="control-label" for="drug">{{
+        currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+          ?.interMenstrualBleeding
+      }}</mat-label>
+      <div class="clearfix"></div>
+      <mat-radio-group
+        name="isInterMenstrualBleeding"
+        formControlName="isInterMenstrualBleeding">
+        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
+          currentLanguageSet?.common?.yes
+        }}</mat-radio-button>
+        <mat-radio-button
+          color="primary"
+          class="radio-button"
+          [value]="false"
+          >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+      <mat-form-field class="input-full-width">
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+            ?.ageAtmenopause
+        }}</mat-label>
+        <input
+          autocomplete="off"
+          matInput
+          appDefaultNull
+          allowText="number"
+          maxlength="2"
+          name="menopauseAge"
+          formControlName="menopauseAge"
+          (change)="checkMenopauseAge($event)" />
+      </mat-form-field>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+      *ngIf="menopauseAge && menopauseAge <= patientAge && menopauseAge !== 0">
+      <mat-label class="mat-label-text" class="control-label" for="drug">{{
+        currentLanguageSet?.historyData?.cancerScreeningHistory?.obstetric
+          ?.postMenopausalBleeding
+      }}</mat-label>
+      <div class="clearfix"></div>
+      <mat-radio-group
+        name="isPostMenopauseBleeding"
+        formControlName="isPostMenopauseBleeding">
+        <mat-radio-button color="primary" class="radio-button" [value]="true">{{
+          currentLanguageSet?.common?.yes
+        }}</mat-radio-button>
+        <mat-radio-button
+          color="primary"
+          class="radio-button"
+          [value]="false"
+          >{{ currentLanguageSet?.common?.no }}</mat-radio-button
+        >
+      </mat-radio-group>
+    </div>
+  </div>
+</div>

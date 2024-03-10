@@ -1,0 +1,78 @@
+<div>
+  <div class="title info">
+    <h4>{{ input.title }}</h4>
+    <button
+      class="mat_icon_white"
+      style="text-align: end"
+      (click)="closeDialog()"
+      mat-icon-button>
+      <mat-icon class="md-24">close</mat-icon>
+    </button>
+  </div>
+
+  <section class="message">
+    <mat-form-field>
+      <mat-label class="mat-label-text">{{
+        current_language_set?.common?.inTableSearch
+      }}</mat-label>
+      <input
+        autocomplete="off"
+        matInput
+        #filterTerm
+        (keyup)="filterPreviousData(filterTerm.value)" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <section class="table-responsive vw100">
+      <table
+        mat-table
+        aria-describedby="title"
+        [dataSource]="filteredDataList"
+        class="table table-striped">
+        <ng-container matColumnDef="sno">
+          <th
+            mat-header-cell
+            style="border-bottom: none"
+            *matHeaderCellDef
+            mat-sort-header>
+            SNo
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ filteredDataList.data.indexOf(element) + 1 }}
+          </td>
+        </ng-container>
+
+        <!-- Separate ng-container for *ngFor directive -->
+        <ng-container
+          *ngFor="let column of columnList; let i = index"
+          [matColumnDef]="column.keyName">
+          <th
+            mat-header-cell
+            style="border-bottom: none"
+            *matHeaderCellDef
+            mat-sort-header>
+            {{ column.columnName }}
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element[column.keyName] }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <div
+        class="pull-center"
+        style="margin-top: 5px"
+        [hidden]="filteredDataList.data.length > 0">
+        <strong>{{ current_language_set?.noRecordsFound }}</strong>
+      </div>
+      <mat-paginator
+        [hidden]="filteredDataList.data.length > 0"
+        [pageSizeOptions]="[5, 10, 20]"
+        [pageSize]="5"
+        showFirstLastButtons
+        aria-label="previous medical history">
+      </mat-paginator>
+    </section>
+  </section>
+</div>

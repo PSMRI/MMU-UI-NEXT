@@ -1,0 +1,319 @@
+/*
+ * AMRIT – Accessible Medical Records via Integrated Technology
+ * Integrated EHR (Electronic Health Records) Solution
+ *
+ * Copyright (C) "Piramal Swasthya Management and Research Institute"
+ *
+ * This file is part of AMRIT.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see https://www.gnu.org/licenses/.
+ */
+
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { MasterdataService } from '../shared/services';
+import { ConfirmationService } from '../../core/services/confirmation.service';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { HttpServiceService } from '../../core/services/http-service.service';
+import { SetLanguageComponent } from '../../core/components/set-language.component';
+@Component({
+  selector: 'app-reports',
+  templateUrl: './reports.component.html',
+  styleUrls: ['./reports.component.css'],
+})
+export class ReportsComponent implements OnInit, DoCheck {
+  reportForm!: FormGroup;
+  currentLanguageSet: any;
+  constructor(
+    private masterdataService: MasterdataService,
+    private confirmationService: ConfirmationService,
+    private formBuilder: FormBuilder,
+    private httpServices: HttpServiceService
+  ) {}
+  today!: Date;
+  ngOnInit() {
+    this.assignSelectedLanguage();
+    this.today = new Date();
+    this.reportForm = this.createReportForm();
+    this.getReportsMaster();
+    this.getVanMaster();
+  }
+  /*
+   * JA354063 - Multilingual Changes added on 13/10/21
+   */
+  ngDoCheck() {
+    this.assignSelectedLanguage();
+  }
+  assignSelectedLanguage() {
+    const getLanguageJson = new SetLanguageComponent(this.httpServices);
+    getLanguageJson.setLanguage();
+    this.currentLanguageSet = getLanguageJson.currentLanguageObject;
+  }
+  // Ends
+  createReportForm() {
+    return this.formBuilder.group({
+      report: null,
+      fromDate: null,
+      toDate: null,
+      van: null,
+    });
+  }
+
+  reportMaster: any = [];
+  getReportsMaster() {
+    this.masterdataService.getReportsMaster().subscribe(
+      (res: any) => {
+        console.log('res', res);
+        if (res && res.statusCode == 200) {
+          if (res.data && res.data.length > 0) {
+            this.reportMaster = res.data;
+          } else {
+            this.confirmationService.alert(
+              this.currentLanguageSet.noReportsWereMappedforthisService
+            );
+          }
+        } else {
+          this.confirmationService.alert(res.errorMessage, 'error');
+        }
+      },
+      err => {
+        this.confirmationService.alert(err, 'error');
+      }
+    );
+  }
+
+  get report() {
+    return this.reportForm.controls['report'].value;
+  }
+
+  checkReport() {
+    console.log(this.report);
+    this.reportForm.patchValue({
+      fromDate: null,
+      toDate: null,
+      van: null,
+    });
+  }
+
+  get fromDate() {
+    return this.reportForm.controls['fromDate'].value;
+  }
+  checkFromDate() {
+    console.log(this.fromDate);
+    this.reportForm.patchValue({
+      toDate: null,
+      van: null,
+    });
+    const toMax = new Date(this.fromDate);
+    toMax.setMonth(this.fromDate.getMonth() + 1);
+    console.log(toMax, this.today);
+    if (toMax > this.today) {
+      console.log(this.today);
+      this.maxToDate = new Date(this.today);
+    } else {
+      console.log('toMax', toMax);
+      this.maxToDate = new Date(toMax);
+    }
+
+    console.log(this.maxToDate);
+  }
+
+  get toDate() {
+    return this.reportForm.controls['toDate'].value;
+  }
+
+  maxToDate!: Date;
+  checkToDate() {
+    this.reportForm.patchValue({
+      van: null,
+    });
+  }
+  vanMaster: any = [];
+  getVanMaster() {
+    this.masterdataService.getVanMaster().subscribe(
+      (res: any) => {
+        if (res && res.statusCode == 200) {
+          if (res.data && res.data.length > 0) {
+            this.vanMaster = res.data;
+          } else {
+            this.confirmationService.alert(
+              this.currentLanguageSet.noVansWereMappedforthisprovider
+            );
+          }
+        } else {
+          this.confirmationService.alert(res.errorMessage, 'error');
+        }
+      },
+      err => {
+        this.confirmationService.alert(err, 'error');
+      }
+    );
+  }
+  get van() {
+    return this.reportForm.controls['van'].value;
+  }
+  reportData = [];
+  getReportData() {
+    const reportRequst = {
+      fromDate: this.fromDate,
+      toDate: this.toDate,
+      providerServiceMapID: localStorage.getItem('providerServiceID'),
+      reportID: this.report.reportID,
+      vanID: this.van.vanID,
+    };
+    console.log('reportRequst', reportRequst);
+    this.masterdataService.getReportData(reportRequst).subscribe(
+      (res: any) => {
+        if (res && res.statusCode == 200) {
+          if (res.data && res.data.length > 0) {
+            this.reportData = res.data;
+            this.createCriteria();
+          } else {
+            this.confirmationService.alert(
+              this.currentLanguageSet.noDataAvailabletoGenerateReport
+            );
+          }
+        } else {
+          this.confirmationService.alert(res.errorMessage, 'error');
+        }
+      },
+      err => {
+        this.confirmationService.alert(err, 'error');
+      }
+    );
+  }
+
+  createCriteria() {
+    const criteria: any = [];
+    criteria.push({ Filter_Name: 'Start_Date', value: this.fromDate });
+    criteria.push({ Filter_Name: 'End_Date', value: this.toDate });
+    criteria.push({ Filter_Name: 'Vehicle', value: this.van.vehicalNo });
+    criteria.push({ Filter_Name: 'Report', value: this.report.reportName });
+    this.exportExcel(criteria);
+  }
+  exportExcel(criteria: any) {
+    if (this.reportData) {
+      const reportManipulatedData = this.manipulateNullReportData(
+        this.reportData
+      );
+      if (reportManipulatedData && reportManipulatedData.length > 0) {
+        const head = Object.keys(reportManipulatedData[0]);
+        console.log(' head', head);
+        const wb_name = this.report.reportName;
+        // Need to revert this back! -- 23/2/2024
+        // const criteria_worksheet: XLSX.WorkSheet =
+        //   XLSX.utils.json_to_sheet(criteria);
+        // const report_worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(
+        //   reportManipulatedData,
+        //   { header: head }
+        // );
+        // let reportSheetData = this.manipulateSheetCellsAndColumns(
+        //   head,
+        //   report_worksheet
+        // );
+        // this.generateWorkBook(reportSheetData, criteria_worksheet, wb_name);
+      }
+    }
+  }
+
+  manipulateNullReportData(reportData: any) {
+    const tempReport = reportData.filter((report: any) => {
+      for (const key in report) {
+        if (report[key] == null) {
+          report[key] = '';
+        }
+      }
+      return report;
+    });
+    return tempReport;
+  }
+
+  manipulateSheetCellsAndColumns(head: any, report_worksheet: any) {
+    let i = 65; // starting from 65 since it is the ASCII code of 'A'.
+    let count = 0;
+    while (i < head.length + 65) {
+      let j;
+      if (count > 0) {
+        j = i - 26 * count;
+      } else {
+        j = i;
+      }
+      const cellPosition = String.fromCharCode(j);
+      let finalCellName: any;
+      if (count == 0) {
+        finalCellName = cellPosition + '1';
+        console.log(finalCellName);
+      } else {
+        const newcellPosition = String.fromCharCode(64 + count);
+        finalCellName = newcellPosition + cellPosition + '1';
+        console.log(finalCellName);
+      }
+      const newName = this.modifyHeader(head, i);
+      delete report_worksheet[finalCellName].w;
+      report_worksheet[finalCellName].v = newName;
+      i++;
+      if (i == 91 + count * 26) {
+        // i = 65;
+        count++;
+      }
+    }
+
+    return report_worksheet;
+  }
+
+  modifyHeader(headers: any, i: any) {
+    let modifiedHeader: string;
+    modifiedHeader = headers[i - 65]
+      .toString()
+      .replace(/([A-Z])/g, ' $1')
+      .trim();
+    modifiedHeader =
+      modifiedHeader.charAt(0).toUpperCase() + modifiedHeader.substr(1);
+    return modifiedHeader.replace(/I D/g, 'ID');
+  }
+
+  generateWorkBook(
+    report_worksheet: any,
+    criteria_worksheet: any,
+    wb_name: any
+  ) {
+    // const workbook: XLSX.WorkBook = {
+    //   Sheets: { Report: report_worksheet, Criteria: criteria_worksheet },
+    //   SheetNames: ["Criteria", "Report"],
+    // };
+    // const excelBuffer: any = XLSX.write(workbook, {
+    //   bookType: "xlsx",
+    //   type: "array",
+    // });
+    // let blob = new Blob([excelBuffer], {
+    //   type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    // });
+    // if (navigator.msSaveBlob) {
+    //   navigator.msSaveBlob(blob, wb_name);
+    // } else {
+    //   var link = document.createElement("a");
+    //   link.href = URL.createObjectURL(blob);
+    //   link.setAttribute("visibility", "hidden");
+    //   link.download = wb_name.replace(/ /g, "_") + ".xlsx";
+    //   document.body.appendChild(link);
+    //   link.click();
+    //   document.body.removeChild(link);
+    // }
+    this.reportForm.reset();
+  }
+}

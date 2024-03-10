@@ -1,0 +1,116 @@
+<div class="" [formGroup]="medicationHistoryForm">
+  <div class="col-xs-12" formArrayName="medicationHistoryList">
+    <div class="col-12" style="text-align: end">
+      <span class="font-history-label">{{
+        currentLanguageSet?.historyData?.ancHistory?.medicationANC_OPD_NCD_PNC
+          ?.PreviousHistory
+      }}</span>
+      <button
+        type="button"
+        mat-icon-button
+        matTooltip="{{ currentLanguageSet?.DurationData?.previousDetails }}"
+        id="previousANCMedicationHistory"
+        class="mat_icon_blue"
+        color="primary"
+        (click)="getPreviousMedicationHistory()">
+        <mat-icon class="md-18">history</mat-icon>
+      </button>
+    </div>
+
+    <div
+      class="col-12 row multi_row_select"
+      style="margin: 15px 0px 15px 0px; background-color: #f0f5f5"
+      *ngFor="
+        let medicationHistory of getMedicationHistory();
+        let i = index;
+        let isLast = last;
+        let isOdd = odd
+      "
+      [ngClass]="{ odd: !isOdd }">
+      <ng-container [formGroupName]="i">
+        <div class="col-3">
+          <mat-form-field class="input-full-width">
+            <mat-label class="mat-label-text">{{
+              currentLanguageSet?.historyData?.ancHistory
+                ?.medicationANC_OPD_NCD_PNC?.currentMedication
+            }}</mat-label>
+            <input
+              autocomplete="off"
+              matInput
+              appDefaultNull
+              allowText="inputFieldValidator"
+              maxlength="50"
+              formControlName="currentMedication"
+              name="currentMedication" />
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-3"
+          *ngIf="
+            medicationHistory?.value?.currentMedication !== null &&
+            medicationHistory?.value?.currentMedication !== ''
+          ">
+          <mat-form-field class="input-full-width">
+            <mat-label class="mat-label-text">{{
+              currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
+            }}</mat-label>
+            <input
+              autocomplete="off"
+              matInput
+              appDefaultNull
+              allowText="number"
+              maxlength="2"
+              formControlName="timePeriodAgo"
+              name="timePeriodAgo"
+              (change)="validateDuration(medicationHistory)" />
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-3"
+          *ngIf="
+            medicationHistory.value.timePeriodAgo !== null &&
+            medicationHistory.value.timePeriodAgo !== ''
+          ">
+          <mat-form-field>
+            <mat-label class="mat-label-text">{{
+              currentLanguageSet?.DurationData?.durationUnit
+            }}</mat-label>
+            <mat-select
+              class="select-full-width"
+              formControlName="timePeriodUnit"
+              name="timePeriodAgoUnit"
+              (selectionChange)="validateDuration(medicationHistory)">
+              <mat-option value="Days">Day(s)</mat-option>
+              <mat-option value="Weeks">Week(s)</mat-option>
+              <mat-option value="Months">Month(s)</mat-option>
+              <mat-option value="Years">Year(s)</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-sm-3 box action-btn-container" style="text-align: end">
+          <button
+            md-mini-fab
+            color="warn"
+            class="mat_warn_circle"
+            style="margin-right: 5px"
+            *ngIf="i !== 0 || (i === 0 && medicationHistory.touched)"
+            (click)="removeMedicationHistory(i, medicationHistory)">
+            <mat-icon class="md-18">close</mat-icon>
+          </button>
+          <button
+            md-mini-fab
+            color="primary"
+            class="mat_blue_circle"
+            *ngIf="isLast"
+            [disabled]="checkValidity(medicationHistory)"
+            (click)="addMedicationHistory()">
+            <mat-icon class="md-18">add</mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
