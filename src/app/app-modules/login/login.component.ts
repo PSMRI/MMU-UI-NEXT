@@ -135,12 +135,7 @@ export class LoginComponent implements OnInit {
                               )
                               .subscribe((userLoggedIn: any) => {
                                 if (userLoggedIn.statusCode === 200) {
-                                  if (
-                                    userLoggedIn.data.previlegeObj &&
-                                    userLoggedIn.data.previlegeObj[0] &&
-                                    userLoggedIn.data.previlegeObj != null &&
-                                    userLoggedIn.data.previlegeObj != undefined
-                                  ) {
+                                  if (userLoggedIn?.data?.previlegeObj[0]) {
                                     localStorage.setItem(
                                       'loginDataResponse',
                                       JSON.stringify(userLoggedIn.data)

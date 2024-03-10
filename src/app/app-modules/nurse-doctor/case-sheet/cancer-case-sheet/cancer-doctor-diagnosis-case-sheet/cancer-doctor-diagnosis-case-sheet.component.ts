@@ -118,16 +118,10 @@ export class CancerDoctorDiagnosisCaseSheetComponent
           ].join(':');
       }
 
-      if (
-        this.caseSheetData.nurseData &&
-        this.caseSheetData.nurseData.currentVitals
-      )
+      if (this.caseSheetData?.nurseData?.currentVitals)
         this.currentVitals = this.caseSheetData.nurseData.currentVitals;
 
-      if (
-        this.caseSheetData.doctorData != undefined &&
-        this.caseSheetData.doctorData.diagnosis
-      )
+      if (this.caseSheetData?.doctorData?.diagnosis)
         this.caseSheetDiagnosisData = this.caseSheetData.doctorData.diagnosis;
 
       this.getVaccinationTypeAndDoseMaster();
@@ -182,12 +176,7 @@ export class CancerDoctorDiagnosisCaseSheetComponent
             if (res.data.covidVSID) {
               this.covidVaccineDetails = res.data;
 
-              if (
-                res.data.doseTypeID !== undefined &&
-                res.data.doseTypeID !== null &&
-                res.data.covidVaccineTypeID !== undefined &&
-                res.data.covidVaccineTypeID !== null
-              ) {
+              if (res?.data?.doseTypeID && res?.data?.covidVaccineTypeID) {
                 this.covidVaccineDetails.doseTypeID = doseTypeList.filter(
                   (item: any) => {
                     return item.covidDoseTypeID === res.data.doseTypeID;

@@ -109,30 +109,25 @@ export class WorkareaComponent
       if (syncTableGroup.syncTableGroupID == 1) {
         this.syncUploadData(syncTableGroup);
       } else if (syncTableGroup.syncTableGroupID == 2) {
-        if (
-          syncTableGroup.benDetailSynced == false &&
-          syncTableGroup.visitSynced == false
-        ) {
+        if (!syncTableGroup.benDetailSynced && !syncTableGroup.visitSynced) {
           this.confirmationService.alert('SYNC Beneficiary Details first');
         } else {
           this.syncUploadData(syncTableGroup);
         }
+      } else if (
+        !syncTableGroup.benDetailSynced &&
+        !syncTableGroup.visitSynced
+      ) {
+        this.confirmationService.alert(
+          'SYNC Beneficiary Details and Beneficiary Visit first'
+        );
+      } else if (
+        syncTableGroup.benDetailSynced &&
+        !syncTableGroup.visitSynced
+      ) {
+        this.confirmationService.alert('SYNC Beneficiary Visit first');
       } else {
-        if (
-          syncTableGroup.benDetailSynced == false &&
-          syncTableGroup.visitSynced == false
-        ) {
-          this.confirmationService.alert(
-            'SYNC Beneficiary Details and Beneficiary Visit first'
-          );
-        } else if (
-          syncTableGroup.benDetailSynced == true &&
-          syncTableGroup.visitSynced == false
-        ) {
-          this.confirmationService.alert('SYNC Beneficiary Visit first');
-        } else {
-          this.syncUploadData(syncTableGroup);
-        }
+        this.syncUploadData(syncTableGroup);
       }
     } else {
       this.confirmationService.alert('Data already synced');

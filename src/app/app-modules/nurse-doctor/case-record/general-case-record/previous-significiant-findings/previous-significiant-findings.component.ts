@@ -92,11 +92,7 @@ export class PreviousSignificiantFindingsComponent
       .subscribe((data: any) => {
         console.log('previousSignificantFindingsSubs', data);
         if (data.statusCode == 200) {
-          if (
-            data.data != null &&
-            data.data != undefined &&
-            data.data.findings
-          ) {
+          if (data?.data?.findings) {
             this.previousSignificiantFindingsList = data.data.findings;
             this.filteredPreviousSignificiantFindingsList =
               this.previousSignificiantFindingsList;

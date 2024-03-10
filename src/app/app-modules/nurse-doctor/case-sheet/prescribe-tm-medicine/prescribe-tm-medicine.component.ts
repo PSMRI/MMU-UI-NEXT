@@ -355,11 +355,10 @@ export class PrescribeTmMedicineComponent implements OnInit, DoCheck {
     );
     medicine.insert(
       0,
-      this.generalUtils.initMedicineWithData(
-        Object.assign({}, this.currentPrescription, {
-          createdBy: this.createdBy,
-        })
-      )
+      this.generalUtils.initMedicineWithData({
+        ...this.currentPrescription,
+        createdBy: this.createdBy,
+      })
     );
     console.log(medicine.value, 'frrr');
   }

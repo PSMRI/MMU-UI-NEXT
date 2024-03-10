@@ -69,7 +69,7 @@ export class NcdScreeningDiagnosisComponent
     console.log('caseRecordMode', this.caseRecordMode);
     console.log('doctorDiagnosis', this.doctorDiagnosis);
     this.nurseService.enableProvisionalDiag$.subscribe(response => {
-      if (response == true) {
+      if (response) {
         this.enableProvisionalDiag = true;
       } else {
         this.enableProvisionalDiag = false;
@@ -114,7 +114,7 @@ export class NcdScreeningDiagnosisComponent
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.diagnosis) {
+        if (res?.statusCode == 200 && res?.data?.diagnosis) {
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
       });
@@ -157,7 +157,9 @@ export class NcdScreeningDiagnosisComponent
     if (diagnosisListForm.length < 30) {
       diagnosisListForm.push(this.utils.initProvisionalDiagnosisList());
     } else {
-      this.current_language_set.alerts.info.maxDiagnosis;
+      this.confirmationService.alert(
+        this.current_language_set.alerts.info.maxDiagnosis
+      );
     }
   }
 
@@ -181,13 +183,11 @@ export class NcdScreeningDiagnosisComponent
             }
           }
         });
+    } else if (diagnosisListForm.length > 1) {
+      diagnosisListForm.removeAt(index);
     } else {
-      if (diagnosisListForm.length > 1) {
-        diagnosisListForm.removeAt(index);
-      } else {
-        diagnosisListForm.removeAt(index);
-        diagnosisListForm.push(this.utils.initProvisionalDiagnosisList());
-      }
+      diagnosisListForm.removeAt(index);
+      diagnosisListForm.push(this.utils.initProvisionalDiagnosisList());
     }
   }
 

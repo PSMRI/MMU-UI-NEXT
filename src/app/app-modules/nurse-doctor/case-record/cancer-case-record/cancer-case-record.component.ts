@@ -26,7 +26,6 @@ import {
   Input,
   ViewChild,
   DoCheck,
-  OnChanges,
   AfterViewInit,
   OnDestroy,
 } from '@angular/core';
@@ -184,7 +183,6 @@ export class CancerCaseRecordComponent
   ) {}
 
   ngOnInit() {
-    // this.getPreviousVisitDetails();
     this.getBeneficiaryDetails();
   }
   ngDoCheck() {
@@ -210,14 +208,10 @@ export class CancerCaseRecordComponent
     this.beneficiaryDetailsSubscription =
       this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(
         beneficiary => {
-          if (
-            beneficiary != null &&
-            beneficiary.genderName != null &&
-            beneficiary.genderName.toLowerCase() == 'female'
-          ) {
+          if (beneficiary?.genderName?.toLowerCase() == 'female') {
             this.female = true;
           }
-          if (beneficiary != null && beneficiary.genderName != null) {
+          if (beneficiary?.genderName) {
             this.getGraphData(beneficiary);
             if (this.caseRecordMode == 'view') {
               const beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
@@ -320,7 +314,7 @@ export class CancerCaseRecordComponent
     const diastolic: any = [];
 
     console.log(bpList, 'bpList');
-    if (bpList && bpList.length) {
+    if (bpList?.length) {
       bpList = bpList.reverse();
       const k = Object.assign([], bpList);
       k.sort(function (a: any, b: any) {
@@ -353,8 +347,7 @@ export class CancerCaseRecordComponent
       return +new Date(b.date) - +new Date(a.date);
     });
     console.log(k, 'dated');
-    if (k && k.length) {
-      // weightList = weightList.reverse();
+    if (k?.length) {
       k.forEach((element: any) => {
         if (element.date && element.weight) {
           data.push(element.weight);
@@ -377,8 +370,7 @@ export class CancerCaseRecordComponent
       return +new Date(b.date) - +new Date(a.date);
     });
     console.log(k, 'dated');
-    if (k && k.length) {
-      // k = k.reverse();
+    if (k?.length) {
       k.forEach((element: any) => {
         if (
           element.date &&
@@ -406,7 +398,7 @@ export class CancerCaseRecordComponent
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.diagnosis) {
+        if (res?.statusCode == 200 && res?.data?.diagnosis) {
           console.log('res.data for cancer', res.data);
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
@@ -416,27 +408,6 @@ export class CancerCaseRecordComponent
   patchDiagnosisDetails(diagnosis: any) {
     this.diagnosisForm.patchValue(diagnosis);
   }
-
-  // getPreviousVisitDetails() {
-  //   let benRegID = localStorage.getItem('beneficiaryRegID');
-  //   this.doctorService.getPreviousVisitDetails(benRegID)
-  //     .subscribe((data) => {
-  //       if (data && data.benVisitDetails && data.benVisitDetails.length > 0)
-  //         this.visitDetails = data.benVisitDetails.slice(0, 5);
-  //     });
-  // }
-
-  // get provisionalDiagnosisPrimaryDoctor() {
-  //   return this.diagnosisForm.get('provisionalDiagnosisPrimaryDoctor');
-  // }
-
-  // get provisionalDiagnosisOncologist() {
-  //   return this.diagnosisForm.get('provisionalDiagnosisOncologist');
-  // }
-
-  // get remarks() {
-  //   return this.diagnosisForm.get('remarks');
-  // }
 
   calculateBMI() {
     if (this.currentVitals != null)
@@ -450,11 +421,7 @@ export class CancerCaseRecordComponent
 
   normalWaist = true;
   checkNormalWaist(patientWaist: any) {
-    if (
-      this.female &&
-      this.pregnancyStatus != null &&
-      this.pregnancyStatus.toLowerCase() != 'yes'
-    )
+    if (this.female && this.pregnancyStatus?.toLowerCase() != 'yes')
       this.normalWaist = patientWaist < 80 ? true : false;
     else this.normalWaist = patientWaist < 90 ? true : false;
   }
@@ -463,10 +430,6 @@ export class CancerCaseRecordComponent
   getCaseSheetPrintData(visitDetail: any) {
     const visitDateAndTime: Date = visitDetail.createdDate;
     this.visitDateTime = new Date(visitDateAndTime).toISOString();
-
-    // if (visitDetail.visitCategory == 'Cancer Screening') {
-    //   window.open(environment.printCancerCase_sheet_url + '/#/common/casesheet/' + visitDetail.beneficiaryRegID + '/' + visitDetail.benVisitID + '/' + this.visitDateTime);
-    // } else {
     localStorage.setItem('caseSheetBenFlowID', 'null');
     localStorage.setItem('caseSheetVisitCategory', visitDetail.VisitCategory);
     localStorage.setItem(
@@ -475,7 +438,6 @@ export class CancerCaseRecordComponent
     );
     localStorage.setItem('caseSheetVisitID', visitDetail.benVisitID);
     this.router.navigate(['/nurse-doctor/print']);
-    // }
   }
 
   previousMMUHistoryRowsPerPage = 5;

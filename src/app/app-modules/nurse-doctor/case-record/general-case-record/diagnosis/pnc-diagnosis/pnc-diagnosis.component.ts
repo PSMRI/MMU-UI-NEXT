@@ -31,7 +31,6 @@ import {
 import {
   FormBuilder,
   FormGroup,
-  FormControl,
   FormArray,
   AbstractControl,
 } from '@angular/forms';
@@ -139,7 +138,7 @@ export class PncDiagnosisComponent
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.diagnosis) {
+        if (res?.statusCode == 200 && res?.data?.diagnosis) {
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
       });
@@ -187,13 +186,11 @@ export class PncDiagnosisComponent
             this.generalDiagnosisForm.markAsDirty();
           }
         });
+    } else if (provisionalDiagnosisArrayList.length > 1) {
+      provisionalDiagnosisArrayList.removeAt(index);
     } else {
-      if (provisionalDiagnosisArrayList.length > 1) {
-        provisionalDiagnosisArrayList.removeAt(index);
-      } else {
-        provisionalDiagnosisForm.reset();
-        provisionalDiagnosisForm.controls['provisionalDiagnosis'].enable();
-      }
+      provisionalDiagnosisForm.reset();
+      provisionalDiagnosisForm.controls['provisionalDiagnosis'].enable();
     }
   }
 
@@ -294,13 +291,11 @@ export class PncDiagnosisComponent
             this.generalDiagnosisForm.markAsDirty();
           }
         });
+    } else if (confirmatoryDiagnosisFormArrayList.length > 1) {
+      confirmatoryDiagnosisFormArrayList.removeAt(index);
     } else {
-      if (confirmatoryDiagnosisFormArrayList.length > 1) {
-        confirmatoryDiagnosisFormArrayList.removeAt(index);
-      } else {
-        confirmatoryDiagnosisForm.reset();
-        confirmatoryDiagnosisForm.controls['confirmatoryDiagnosis'].enable();
-      }
+      confirmatoryDiagnosisForm.reset();
+      confirmatoryDiagnosisForm.controls['confirmatoryDiagnosis'].enable();
     }
   }
   checkProvisionalDiagnosisValidity(provisionalDiagnosis: any) {

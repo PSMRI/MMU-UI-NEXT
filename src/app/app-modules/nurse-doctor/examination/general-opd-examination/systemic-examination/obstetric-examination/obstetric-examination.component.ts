@@ -189,9 +189,6 @@ export class ObstetricExaminationComponent implements OnInit, DoCheck {
     return this.obstetricExaminationForANCDataForm.controls['sfh'].value;
   }
 
-  /** -- Neeraj 26 dec, build error was there, so added this line  */
-  getPreviousPastHistory() {}
-
   //BU40088124 12/10/2021 Integrating Multilingual Functionality --Start--
   ngDoCheck() {
     this.fetchLanguageResponse();

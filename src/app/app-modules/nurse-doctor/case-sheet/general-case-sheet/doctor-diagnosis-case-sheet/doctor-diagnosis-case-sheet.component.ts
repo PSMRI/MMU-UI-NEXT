@@ -212,11 +212,7 @@ export class DoctorDiagnosisCaseSheetComponent
 
       if (this.visitCategory != 'General OPD (QC)') {
         this.caseRecords = this.caseSheetData.doctorData;
-        if (
-          this.caseRecords &&
-          this.caseRecords.diagnosis &&
-          this.caseRecords.diagnosis.ncdScreeningCondition
-        ) {
+        if (this.caseRecords?.diagnosis?.ncdScreeningCondition) {
           this.ncdScreeningCondition =
             this.caseRecords.diagnosis.ncdScreeningCondition.replaceAll(
               '||',
@@ -360,17 +356,17 @@ export class DoctorDiagnosisCaseSheetComponent
   }
 
   downloadSign() {
-    if (this.beneficiaryDetails && this.beneficiaryDetails.tCSpecialistUserID) {
+    if (this.beneficiaryDetails?.tCSpecialistUserID) {
       const tCSpecialistUserID = this.beneficiaryDetails.tCSpecialistUserID;
-      // this.doctorService.downloadSign(tCSpecialistUserID).subscribe(
-      //   (response: any) => {
-      //     const blob = new Blob([response], { type: response.type });
-      //     this.showSign(blob);
-      //   },
-      //   (err: any) => {
-      //     console.log('error');
-      //   }
-      // );
+      this.doctorService.downloadSign(tCSpecialistUserID).subscribe(
+        (response: any) => {
+          const blob = new Blob([response], { type: response.type });
+          this.showSign(blob);
+        },
+        (err: any) => {
+          console.log('error');
+        }
+      );
     } else {
       console.log('No tCSpecialistUserID found');
     }
@@ -394,8 +390,8 @@ export class DoctorDiagnosisCaseSheetComponent
     this.doctorService
       .getHRPDetails(beneficiaryRegID, visitCode)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
-          if (res.data.isHRP == true) {
+        if (res?.statusCode == 200 && res?.data) {
+          if (res.data.isHRP) {
             this.showHRP = 'true';
           } else {
             this.showHRP = 'false';
@@ -417,10 +413,7 @@ export class DoctorDiagnosisCaseSheetComponent
   // -----End------
 
   getVaccinationTypeAndDoseMaster() {
-    if (
-      this.beneficiaryDetails !== undefined &&
-      this.beneficiaryDetails !== null
-    ) {
+    if (this.beneficiaryDetails) {
       if (this.beneficiaryDetails.ageVal >= 12) {
         this.masterdataService.getVaccinationTypeAndDoseMaster().subscribe(
           (res: any) => {
@@ -453,12 +446,7 @@ export class DoctorDiagnosisCaseSheetComponent
             if (res.data.covidVSID) {
               this.covidVaccineDetails = res.data;
 
-              if (
-                res.data.doseTypeID !== undefined &&
-                res.data.doseTypeID !== null &&
-                res.data.covidVaccineTypeID !== undefined &&
-                res.data.covidVaccineTypeID !== null
-              ) {
+              if (res?.data?.doseTypeID && res?.data?.covidVaccineTypeID) {
                 this.covidVaccineDetails.doseTypeID = doseTypeList.filter(
                   (item: any) => {
                     return item.covidDoseTypeID === res.data.doseTypeID;

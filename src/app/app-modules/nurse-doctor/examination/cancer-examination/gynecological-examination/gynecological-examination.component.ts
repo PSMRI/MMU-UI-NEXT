@@ -26,8 +26,6 @@ import {
   Input,
   ViewChild,
   ElementRef,
-  EventEmitter,
-  Output,
   DoCheck,
 } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -56,7 +54,6 @@ export class GynecologicalExaminationComponent implements OnInit, DoCheck {
   ) {}
 
   ngOnInit() {
-    // this.httpServiceService.currentLangugae$.subscribe(response =>this.currentLanguageSet = response);
     this.assignSelectedLanguage();
   }
 

@@ -22,7 +22,6 @@
 
 import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { ViewTestReportComponent } from './view-test-report/view-test-report.component';
-import { ConfirmationService } from '../../../../core/services/confirmation.service';
 import { DoctorService } from '../../../shared/services';
 import { MatDialog } from '@angular/material/dialog';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
@@ -347,7 +346,7 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
 
   showArchivedRadiologyTestResult(radiologyReport: any) {
     console.log('reports', radiologyReport);
-    const ViewTestReport = this.dialog.open(ViewTestReportComponent, {
+    this.dialog.open(ViewTestReportComponent, {
       data: radiologyReport,
       width: 0.8 * window.innerWidth + 'px',
       panelClass: 'dialog-width',

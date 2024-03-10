@@ -74,11 +74,7 @@ export class ExaminationCaseSheetComponent
   }
 
   ngOnChanges() {
-    if (
-      this.caseSheetData &&
-      this.caseSheetData.nurseData &&
-      this.caseSheetData.nurseData.examination
-    ) {
+    if (this.caseSheetData?.nurseData?.examination) {
       const examination = this.caseSheetData.nurseData.examination;
 
       if (examination.generalExamination)
@@ -112,15 +108,10 @@ export class ExaminationCaseSheetComponent
         this.gastroIntestinalExamination =
           examination.gastrointestinalExamination;
     }
-    // let t = new Date();
-    // this.date = t.getDate() + "/" + (t.getMonth() + 1) + "/" + t.getFullYear();
     if (this.caseSheetData && this.caseSheetData.doctorData) {
       this.referDetails = this.caseSheetData.doctorData.Refer;
       console.log('refer', this.referDetails);
-      if (
-        this.referDetails &&
-        this.referDetails.refrredToAdditionalServiceList
-      ) {
+      if (this.referDetails?.refrredToAdditionalServiceList) {
         console.log(
           'institute',
           this.referDetails.refrredToAdditionalServiceList

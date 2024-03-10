@@ -20,16 +20,13 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {
   MasterdataService,
   NurseService,
   DoctorService,
 } from '../../../shared/services';
-import { GeneralOpdDiagnosisComponent } from './general-opd-diagnosis/general-opd-diagnosis.component';
-import { AncDiagnosisComponent } from './anc-diagnosis/anc-diagnosis.component';
 @Component({
   selector: 'app-diagnosis',
   templateUrl: './diagnosis.component.html',

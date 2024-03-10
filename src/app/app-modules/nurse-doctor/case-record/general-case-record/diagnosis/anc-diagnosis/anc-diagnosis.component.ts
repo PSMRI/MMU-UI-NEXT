@@ -21,7 +21,6 @@
  */
 
 import { Component, OnInit, Input, DoCheck, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import {
@@ -121,7 +120,7 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.diagnosis) {
+        if (res?.statusCode == 200 && res?.data?.diagnosis) {
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
       });
@@ -136,10 +135,7 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
   patchComplicationOfCurrentPregnancyList(diagnosis: any) {
     const tempComplicationList: any = [];
     diagnosis.complicationOfCurrentPregnancyList.map((complaintType: any) => {
-      if (
-        this.masterData != undefined &&
-        this.masterData.pregComplicationTypes != undefined
-      ) {
+      if (this.masterData?.pregComplicationTypes) {
         const tempComplication = this.masterData.pregComplicationTypes.filter(
           (masterComplication: any) => {
             return (
@@ -205,12 +201,10 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
           otherCurrPregComplication: null,
         });
       }
-    } else {
-      if (flag) {
-        this.generalDiagnosisForm.patchValue({
-          otherCurrPregComplication: checkNull.otherCurrPregComplication,
-        });
-      }
+    } else if (flag) {
+      this.generalDiagnosisForm.patchValue({
+        otherCurrPregComplication: checkNull.otherCurrPregComplication,
+      });
     }
   }
   displayPositive(complicationList: any) {
@@ -232,8 +226,8 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
     this.HRPSubscription = this.doctorService
       .getHRPDetails(beneficiaryRegID, visitCode)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
-          if (res.data.isHRP == true) {
+        if (res?.statusCode == 200 && res?.data) {
+          if (res?.data?.isHRP) {
             this.showHRP = 'true';
           } else {
             this.showHRP = 'false';

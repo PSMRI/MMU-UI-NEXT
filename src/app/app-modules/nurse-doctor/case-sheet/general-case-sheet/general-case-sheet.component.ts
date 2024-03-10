@@ -23,7 +23,7 @@
 import { Component, OnInit, Input, OnDestroy, DoCheck } from '@angular/core';
 import { DoctorService } from '../../shared/services/doctor.service';
 import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PrescribeTmMedicineComponent } from '../prescribe-tm-medicine/prescribe-tm-medicine.component';
 import { NurseService } from '../../shared/services';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
@@ -158,7 +158,7 @@ export class GeneralCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   getCasesheetData(caseSheetRequest: any) {
-    if (this.visitCategory == 'General OPD (QC)' || this.previous == true) {
+    if (this.visitCategory == 'General OPD (QC)' || this.previous) {
       this.hideSelectQC = true;
     }
     if (this.serviceType == 'TM') {

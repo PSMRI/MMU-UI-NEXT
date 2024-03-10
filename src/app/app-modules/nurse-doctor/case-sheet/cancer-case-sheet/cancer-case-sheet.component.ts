@@ -167,10 +167,7 @@ export class CancerCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
 
   getOncologistRemarks() {
     let value = undefined;
-    if (
-      this.caseSheetDiagnosisData &&
-      this.caseSheetDiagnosisData.provisionalDiagnosisOncologist
-    ) {
+    if (this.caseSheetDiagnosisData?.provisionalDiagnosisOncologist) {
       value = this.caseSheetDiagnosisData.provisionalDiagnosisOncologist;
     }
 
@@ -202,7 +199,7 @@ export class CancerCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
         if (res.statusCode == 500 || res.statusCode == 5000) {
           this.confirmationService.alert(res.errorMessage, 'error');
         } else if (res.statusCode == 200) {
-          if (this.caseSheetData && this.caseSheetData.doctorData) {
+          if (this.caseSheetData?.doctorData) {
             this.caseSheetData = {
               ...this.caseSheetData,
               doctorData: {

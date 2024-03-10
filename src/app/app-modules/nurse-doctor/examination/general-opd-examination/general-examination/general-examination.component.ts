@@ -213,17 +213,9 @@ export class GeneralExaminationComponent implements OnInit, DoCheck, OnChanges {
     this.fetchLanguageResponse();
   }
   ngOnChanges() {
-    //    this.visitCategory = localStorage.getItem("visiCategoryANC");
-    //  if (this.visitCategory == 'ANC') {
-    //     this.hideForANCAndQC = true;
-
-    //   } else {
-    //     this.hideForANCAndQC = false;
-    //   }
     this.visitCategory = localStorage.getItem('visiCategoryANC');
     const visitCategory2 = localStorage.getItem('visitCategory');
     if (this.visitCategory == 'ANC' || visitCategory2 == 'ANC') {
-      // if (this.visitCategory == 'ANC') {
       this.hideForANCAndQC = true;
     } else {
       this.hideForANCAndQC = false;

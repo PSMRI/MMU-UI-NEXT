@@ -26,8 +26,6 @@ import {
   Input,
   ViewChild,
   ElementRef,
-  EventEmitter,
-  Output,
   DoCheck,
   OnDestroy,
 } from '@angular/core';
@@ -76,12 +74,8 @@ export class BreastExaminationComponent implements OnInit, DoCheck, OnDestroy {
     this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(
       beneficiaryDetails => {
         if (
-          (beneficiaryDetails &&
-            beneficiaryDetails.genderName &&
-            beneficiaryDetails.genderName.toLocaleLowerCase() == 'female') ||
-          (beneficiaryDetails &&
-            beneficiaryDetails.genderName &&
-            beneficiaryDetails.genderName.toLocaleLowerCase() == 'transgender')
+          beneficiaryDetails?.genderName?.toLocaleLowerCase() == 'female' ||
+          beneficiaryDetails?.genderName?.toLocaleLowerCase() == 'transgender'
         )
           this.female = true;
       }

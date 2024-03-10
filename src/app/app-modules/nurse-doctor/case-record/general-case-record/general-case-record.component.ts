@@ -20,11 +20,8 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input, DoCheck } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Form, FormBuilder, FormGroup } from '@angular/forms';
-
-import { MasterdataService } from '../../shared/services';
+import { Component, Input, DoCheck } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 @Component({

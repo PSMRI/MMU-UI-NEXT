@@ -130,11 +130,11 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
     const services: any = [];
     serviceOnState.forEach((service: any) => {
       if (service.serviceID != 1 && service.serviceID != 5) {
-        service = Object.assign({
+        service = {
           serviceID: service.serviceID,
           serviceName: service.serviceName,
           serviceLoaded: false,
-        });
+        };
         services.push(service);
       }
     });
@@ -206,8 +206,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
     services.forEach((service: any) => {
       if (serviceID == service.serviceID) {
         service.serviceLoaded = true;
-      } else {
-        // service.serviceLoaded = service.serviceLoaded;
       }
     });
     console.log(services, 'servicechane');
@@ -249,7 +247,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   }
 
   getVisitDetails(serviceType: any, visit: any, print: any) {
-    // if (visit.VisitCategory != 'NCD screening') {
     this.confirmationService
       .confirm('info', this.current_language_set.alerts.info.viewCasesheet)
       .subscribe(res => {
@@ -293,7 +290,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   hideMCTSFetch: boolean = false;
   previousMCTSHistoryRowsPerPage = 5;
   previousMCTSHistoryActivePage = 1;
-  // historyOfMCTS = [];
   filteredMCTSHistory: any = [];
   getMCTSHistory() {
     this.doctorService.getMCTSHistory().subscribe((data: any) => {
@@ -353,7 +349,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   hide104Fetch: boolean = false;
   previous104HistoryRowsPerPage = 5;
   previous104HistoryActivePage = 1;
-  // historyOf104 = [];
   filtered104History: any = [];
   get104History() {
     this.doctorService.get104History().subscribe((data: any) => {
@@ -413,7 +408,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   callData: any;
   getPatientMCTSCallHistory(call: any) {
     const callDetailID = { callDetailID: call.callDetailID };
-    // let callDetailID={ "callDetailID": "19099" }
     this.doctorService
       .getPatientMCTSCallHistory(callDetailID)
       .subscribe((data: any) => {

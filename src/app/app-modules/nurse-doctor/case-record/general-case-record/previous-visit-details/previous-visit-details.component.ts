@@ -20,15 +20,13 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { DoctorService } from '../../../shared/services';
 import { ConfirmationService } from '../../../../core/services/confirmation.service';
 import { CameraService } from '../../../../core/services/camera.service';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-previous-visit-details',
   templateUrl: './previous-visit-details.component.html',
@@ -132,14 +130,12 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
 
   constructor(
     private doctorService: DoctorService,
-    private confirmationService: ConfirmationService,
     private cameraService: CameraService,
     private router: Router,
     private httpServiceService: HttpServiceService
   ) {}
 
   ngOnInit() {
-    // this.getPreviousVisitDetails();
     this.loadGraphData();
   }
 
@@ -160,7 +156,7 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
       .getCaseRecordAndReferDetails(benRegID, visitID, visitCategory)
       .subscribe((data: any) => {
         console.log(data, 'data here', data.GraphData, 'graphdata');
-        if (data && data.data && data.data.GraphData) {
+        if (data?.data?.GraphData) {
           this.plotGraphs(data.data.GraphData);
         }
       });
@@ -177,7 +173,7 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
     const diastolic: any = [];
 
     console.log(bpList, 'bpList');
-    if (bpList && bpList.length) {
+    if (bpList?.length) {
       bpList = bpList.reverse();
       const k = Object.assign([], bpList);
       k.sort(function (a: any, b: any) {
@@ -210,8 +206,7 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
       return +new Date(b.date) - +new Date(a.date);
     });
     console.log(k, 'dated');
-    if (k && k.length) {
-      // weightList = weightList.reverse();
+    if (k?.length) {
       k.forEach((element: any) => {
         if (element.date && element.weight) {
           data.push(element.weight);
@@ -234,8 +229,7 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
       return +new Date(b.date) - +new Date(a.date);
     });
     console.log(k, 'dated');
-    if (k && k.length) {
-      // k = k.reverse();
+    if (k?.length) {
       k.forEach((element: any) => {
         if (
           element.date &&
@@ -258,16 +252,6 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
     }
   }
 
-  // getPreviousVisitDetails() {
-  //   const benRegID = localStorage.getItem('beneficiaryRegID');
-  //   this.doctorService.getPreviousVisitDetails(benRegID)
-  //     .subscribe((data) => {
-  //       if (data && data.benVisitDetails && data.benVisitDetails.length > 0)
-  //         this.previousVisitDetails = data.benVisitDetails.slice(0, 5);
-  //       console.log("previous visit Details", this.previousVisitDetails);
-  //     });
-  // }
-
   calculateBMI() {
     if (this.currentVitals)
       return +(
@@ -282,11 +266,6 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
   getCaseSheetPrintData(visitDetail: any) {
     const visitDateAndTime: Date = visitDetail.createdDate;
     this.visitDateTime = new Date(visitDateAndTime).toISOString();
-
-    // if (visitDetail.visitCategory == 'Cancer Screening') {
-    //   window.open(environment.printCancerCase_sheet_url + '/#/common/casesheet/' + visitDetail.beneficiaryRegID + '/' + visitDetail.benVisitID + '/' + this.visitDateTime);
-    // } else {
-    //   console.log('visitDetail', visitDetail);
 
     localStorage.setItem('caseSheetBenFlowID', '');
     localStorage.setItem('caseSheetVisitCategory', visitDetail.visitCategory);

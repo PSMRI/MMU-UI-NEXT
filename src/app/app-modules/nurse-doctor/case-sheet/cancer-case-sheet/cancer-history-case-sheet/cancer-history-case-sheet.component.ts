@@ -62,35 +62,22 @@ export class CancerHistoryCaseSheetComponent
       if (this.caseSheetData.BeneficiaryData)
         this.beneficiaryDetails = this.caseSheetData.BeneficiaryData;
 
-      if (
-        this.caseSheetData.nurseData &&
-        this.caseSheetData.nurseData.familyDiseaseHistory
-      )
+      if (this.caseSheetData?.nurseData?.familyDiseaseHistory)
         this.familyDiseaseHistory =
-          this.caseSheetData.nurseData.familyDiseaseHistory;
+          this.caseSheetData?.nurseData.familyDiseaseHistory;
 
-      if (
-        this.caseSheetData.nurseData &&
-        this.caseSheetData.nurseData.benPersonalDietHistory
-      )
-        this.patientPersonalHistory = Object.assign(
-          {},
-          this.caseSheetData.nurseData.benPersonalDietHistory
-        );
+      if (this.caseSheetData.nurseData?.benPersonalDietHistory)
+        this.patientPersonalHistory = {
+          ...this.caseSheetData.nurseData.benPersonalDietHistory,
+        };
 
-      if (
-        this.caseSheetData.nurseData &&
-        this.caseSheetData.nurseData.patientPersonalHistory
-      )
+      if (this.caseSheetData?.nurseData?.patientPersonalHistory)
         this.patientPersonalHistory = Object.assign(
           this.patientPersonalHistory,
           this.caseSheetData.nurseData.patientPersonalHistory
         );
 
-      if (
-        this.caseSheetData.nurseData &&
-        this.caseSheetData.nurseData.patientObstetricHistory
-      )
+      if (this.caseSheetData?.nurseData?.patientObstetricHistory)
         this.patientObstetricHistory =
           this.caseSheetData.nurseData.patientObstetricHistory;
     }

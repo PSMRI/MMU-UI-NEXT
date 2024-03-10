@@ -72,9 +72,6 @@ export class SignsAndSymptomsComponent implements OnInit, DoCheck, OnDestroy {
     private httpServiceService: HttpServiceService,
     private beneficiaryDetailsService: BeneficiaryDetailsService
   ) {}
-  // ngDoCheck(): void {
-  //   throw new Error('Method not implemented.');
-  // }
 
   ngOnInit() {
     this.getBeneficiaryDetails();
@@ -99,20 +96,15 @@ export class SignsAndSymptomsComponent implements OnInit, DoCheck, OnDestroy {
       this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(
         beneficiaryDetails => {
           if (
-            beneficiaryDetails &&
-            beneficiaryDetails.genderName &&
-            (beneficiaryDetails.genderName.toLocaleLowerCase() == 'female' ||
-              beneficiaryDetails.genderName.toLocaleLowerCase() ==
-                'transgender')
+            beneficiaryDetails?.genderName?.toLowerCase() == 'female' ||
+            beneficiaryDetails.genderName?.toLowerCase() == 'transgender'
           )
             this.female = true;
           else this.female = false;
 
           if (
-            beneficiaryDetails &&
-            beneficiaryDetails.genderName &&
-            beneficiaryDetails.genderName.toLocaleLowerCase() == 'female' &&
-            beneficiaryDetails.ageVal >= 18
+            beneficiaryDetails?.genderName?.toLowerCase() == 'female' &&
+            beneficiaryDetails?.ageVal >= 18
           )
             this.female18 = true;
           else this.female18 = false;
@@ -130,7 +122,7 @@ export class SignsAndSymptomsComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   checkLymph(lymphNode_Enlarged: any) {
-    if (lymphNode_Enlarged == false) {
+    if (!lymphNode_Enlarged) {
       this.signsForm.patchValue({
         lymphNodes: new CancerUtils(this.fb).lymphNodesArray.map(item => item),
       });

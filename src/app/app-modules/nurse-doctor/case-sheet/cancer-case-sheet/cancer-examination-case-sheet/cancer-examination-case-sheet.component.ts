@@ -79,16 +79,10 @@ export class CancerExaminationCaseSheetComponent
     }
     const t = new Date();
     this.date = t.getDate() + '/' + (t.getMonth() + 1) + '/' + t.getFullYear();
-    if (
-      this.caseSheetData &&
-      this.caseSheetData.doctorData != undefined &&
-      this.caseSheetData.doctorData.diagnosis != undefined
-    ) {
+    if (this.caseSheetData?.doctorData?.diagnosis) {
       this.diagnosisdetails = this.caseSheetData.doctorData.diagnosis;
       if (
-        this.caseSheetData.doctorData != undefined &&
-        this.caseSheetData.doctorData.diagnosis != undefined &&
-        this.caseSheetData.doctorData.diagnosis.revisitDate != undefined &&
+        this.caseSheetData?.doctorData?.diagnosis?.revisitDate &&
         !moment(
           this.caseSheetData.doctorData.diagnosis.revisitDate,
           'DD/MM/YYYY',

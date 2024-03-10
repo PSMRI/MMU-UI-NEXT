@@ -212,7 +212,7 @@ export class DoctorWorklistComponent implements OnInit, OnDestroy, DoCheck {
     this.beneficiaryDetailsService
       .getBeneficiaryImage(benregID)
       .subscribe((data: any) => {
-        if (data && data.benImage) this.cameraService.viewImage(data.benImage);
+        if (data?.benImage) this.cameraService.viewImage(data.benImage);
         else
           this.confirmationService.alert(
             this.currentLanguageSet.alerts.info.imageNotFound
@@ -334,12 +334,7 @@ export class DoctorWorklistComponent implements OnInit, OnDestroy, DoCheck {
   //BU40088124 12/10/2021 Integrating Multilingual Functionality --Start--
   ngDoCheck() {
     this.fetchLanguageResponse();
-    if (
-      this.currentLanguageSet !== undefined &&
-      this.currentLanguageSet !== null &&
-      this.beneficiaryMetaData !== undefined &&
-      this.beneficiaryMetaData !== null
-    ) {
+    if (this.currentLanguageSet && this.beneficiaryMetaData) {
       this.beneficiaryMetaData.map((item: any) => {
         const temp = this.getVisitStatus(item);
         item.statusMessage = temp.statusMessage;

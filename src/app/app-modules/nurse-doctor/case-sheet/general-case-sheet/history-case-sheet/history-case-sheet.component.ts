@@ -102,15 +102,12 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
     this.doctorService
       .getMMUCasesheetData(caseSheetRequest)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
+        if (res?.statusCode == 200 && res?.data) {
           this.mmuCaseSheetData = res.data;
 
           if (this.mmuCaseSheetData && this.mmuCaseSheetData.doctorData) {
             this.MMUReferDetails = this.mmuCaseSheetData.doctorData.Refer;
-            if (
-              this.MMUReferDetails &&
-              this.MMUReferDetails.refrredToAdditionalServiceList
-            ) {
+            if (this.MMUReferDetails?.refrredToAdditionalServiceList) {
               console.log(
                 'institute',
                 this.MMUReferDetails.refrredToAdditionalServiceList
@@ -145,7 +142,7 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
             'referDetailsForRefer',
             JSON.stringify(this.MMUReferDetails, null, 4)
           );
-          if (this.mmuCaseSheetData && this.mmuCaseSheetData.doctorData) {
+          if (this.mmuCaseSheetData?.doctorData) {
             this.MMUReferDetails = this.mmuCaseSheetData.doctorData.Refer;
             if (
               this.MMUReferDetails &&
@@ -174,16 +171,10 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
         if (this.caseSheetData.nurseData.anc)
           this.ANCDetailsAndFormula =
             this.caseSheetData.nurseData.anc.ANCCareDetail;
-        if (
-          this.caseSheetData.nurseData.history.PastHistory &&
-          this.caseSheetData.nurseData.history.PastHistory.pastIllness
-        )
+        if (this.caseSheetData.nurseData.history.PastHistory?.pastIllness)
           this.pastIllnessList =
             this.caseSheetData.nurseData.history.PastHistory.pastIllness;
-        if (
-          this.caseSheetData.nurseData.history.PastHistory &&
-          this.caseSheetData.nurseData.history.PastHistory.pastSurgery
-        )
+        if (this.caseSheetData.nurseData.history.PastHistory?.pastSurgery)
           this.pastSurgeryList =
             this.caseSheetData.nurseData.history.PastHistory.pastSurgery;
         if (this.caseSheetData.nurseData.history.FamilyHistory)
@@ -193,23 +184,20 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
           this.previousPhysicalList =
             this.caseSheetData.nurseData.history.PhysicalActivityHistory;
         if (
-          this.caseSheetData.nurseData.history.childOptionalVaccineHistory &&
           this.caseSheetData.nurseData.history.childOptionalVaccineHistory
-            .childOptionalVaccineList
+            ?.childOptionalVaccineList
         )
           this.childOptionalVaccineList =
             this.caseSheetData.nurseData.history.childOptionalVaccineHistory.childOptionalVaccineList;
         if (
-          this.caseSheetData.nurseData.history.ComorbidityConditions &&
           this.caseSheetData.nurseData.history.ComorbidityConditions
-            .comorbidityConcurrentConditionsList
+            ?.comorbidityConcurrentConditionsList
         )
           this.comorbidConditionList =
             this.caseSheetData.nurseData.history.ComorbidityConditions.comorbidityConcurrentConditionsList;
         if (
-          this.caseSheetData.nurseData.history.MedicationHistory &&
           this.caseSheetData.nurseData.history.MedicationHistory
-            .medicationHistoryList
+            ?.medicationHistoryList
         )
           this.medicationHistoryList =
             this.caseSheetData.nurseData.history.MedicationHistory.medicationHistoryList;
@@ -240,8 +228,6 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
         );
       }
     }
-    // let t = new Date();
-    // this.date = t.getDate() + "/" + (t.getMonth() + 1) + "/" + t.getFullYear();
     if (this.caseSheetData && this.caseSheetData.doctorData) {
       this.referDetails = this.caseSheetData.doctorData.Refer;
       if (
@@ -269,12 +255,11 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
         }
       }
     }
-    // console.log("referDetails" , this.referDetails);
     console.log(
       'referDetailsForRefer',
       JSON.stringify(this.referDetails, null, 4)
     );
-    if (this.caseSheetData && this.caseSheetData.doctorData) {
+    if (this.caseSheetData?.doctorData) {
       this.referDetails = this.caseSheetData.doctorData.Refer;
       if (this.referDetails && this.caseSheetData.doctorData.Refer) {
         this.caseSheetData.referDetails = this.caseSheetData.doctorData.Refer;
@@ -282,13 +267,11 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
           'referDetailsForRefer',
           JSON.stringify(this.referDetails, null, 4)
         );
-        // this.caseSheetData.referDetails.revisitDate = this.datepipe.transform(this.caseSheetData.referDetails.revisitDate, 'dd/MM/yyyy')
       }
     }
     if (
-      this.caseSheetData &&
-      this.caseSheetData.doctorData.Refer &&
-      this.referDetails.revisitDate &&
+      this.caseSheetData?.doctorData?.Refer &&
+      this.referDetails?.revisitDate &&
       !moment(this.referDetails.revisitDate, 'DD/MM/YYYY', true).isValid()
     ) {
       const sDate = new Date(this.referDetails.revisitDate);
@@ -304,11 +287,6 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
     const len = String(10).length - String(this).length + 1;
     return len > 0 ? new Array(len).join('0') + this : this;
   }
-
-  // padLeft() {
-  //   let len = (String(10).length - String(this).length) + 1;
-  //   return len > 0 ? new Array(len).join('0') + this : this;
-  // }
 
   // AV40085804 13/10/2021 Integrating Multilingual Functionality -----Start-----
   ngDoCheck() {

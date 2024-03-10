@@ -46,11 +46,7 @@ export class AncCaseSheetComponent implements OnInit, OnChanges, DoCheck {
   }
 
   ngOnChanges() {
-    if (
-      this.caseSheetData &&
-      this.caseSheetData.nurseData &&
-      this.caseSheetData.nurseData.anc
-    ) {
+    if (this.caseSheetData?.nurseData?.anc) {
       this.aNCDetailsAndFormula =
         this.caseSheetData.nurseData.anc.ANCCareDetail;
       this.aNCImmunization =

@@ -21,7 +21,7 @@
  */
 
 import { Component, OnInit, Input, DoCheck, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 import {
   MasterdataService,
@@ -185,12 +185,7 @@ export class DoctorInvestigationsComponent
     this.investigationSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (
-          res &&
-          res.statusCode == 200 &&
-          res.data &&
-          res.data.investigation
-        ) {
+        if (res?.statusCode == 200 && res?.data?.investigation) {
           console.log(res, 'investigations');
           this.patchInvestigationDetails(
             res.data.investigation,
@@ -244,7 +239,7 @@ export class DoctorInvestigationsComponent
       });
     }
 
-    if (diagnosis && diagnosis.externalInvestigation) {
+    if (diagnosis?.externalInvestigation) {
       externalInvestigation = diagnosis.externalInvestigation;
     }
 
@@ -259,7 +254,7 @@ export class DoctorInvestigationsComponent
   getNurseMasterData() {
     this.nurseMasterDataSubscription =
       this.masterdataService.nurseMasterData$.subscribe(masterData => {
-        if (masterData && masterData.procedures) {
+        if (masterData?.procedures) {
           this.nonRadiologyMaster = masterData.procedures.filter(
             (item: any) => {
               return item.procedureType == 'Laboratory';
