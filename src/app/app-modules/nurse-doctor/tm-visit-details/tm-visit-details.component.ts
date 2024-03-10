@@ -56,7 +56,6 @@ export class TmVisitDetailsComponent implements OnInit, DoCheck, OnDestroy {
 
   ngOnInit() {
     this.assignSelectedLanguage();
-    // this.getVisitCategory();
     this.visitCategory = localStorage.getItem('visitCategory');
     this.getVisitDetails();
     this.getPregnancyStatus();
@@ -90,7 +89,6 @@ export class TmVisitDetailsComponent implements OnInit, DoCheck, OnDestroy {
     const currentURL = this.router.url;
     if (currentURL == '/nurse-doctor/print/MMU/current') {
       localStorage.setItem('selectTMC', 'true');
-      // this.patientVisitForm.controls["tmcConfirmationForm"].patchValue({tmcConfirmed:true});
     } else {
       localStorage.removeItem('specialist_flag');
       localStorage.removeItem('beneficiaryData');
@@ -99,16 +97,6 @@ export class TmVisitDetailsComponent implements OnInit, DoCheck, OnDestroy {
       this.doctorService.prescribedDrugData = null;
     }
   }
-
-  // getVisitCategory() {
-  //   (<FormGroup>this.patientVisitForm.controls['patientVisitDetailsForm']).controls['visitCategory'].valueChanges
-  //     .subscribe(categoryValue => {
-  //       if (categoryValue) {
-  //         this.visitCategory = categoryValue;
-  //         // this.conditionCheck();
-  //       }
-  //     });
-  // }
 
   getVisitDetails() {
     const beneficiaryDataDetails: any = localStorage.getItem('beneficiaryData');

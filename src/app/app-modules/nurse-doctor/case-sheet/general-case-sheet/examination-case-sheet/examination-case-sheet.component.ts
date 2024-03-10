@@ -145,14 +145,7 @@ export class ExaminationCaseSheetComponent
         'referDetailsForReferexamination',
         JSON.stringify(this.caseSheetData, null, 4)
       );
-      // if (this.caseSheetData.doctorData.Refer) {
-      //   this.referDetails.revisitDate = this.datepipe.transform(this.referDetails.revisitDate, 'dd/MM/yyyy')
-      // }
     }
-    // padLeft() {
-    //   let len = (String(10).length - String(this).length) + 1;
-    //   return len > 0 ? new Array(len).join('0') + this : this;
-    // }
   }
 
   // AV40085804 13/10/2021 Integrating Multilingual Functionality -----Start-----

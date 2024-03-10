@@ -56,16 +56,6 @@
 }
 
 
-/* Position the content inside the overlay */
-
-
-/*.overlay-content {
-    position: relative;
-    top: 42%;  25% from the top 
-    left: 46%;
-    width: 100%;  100% width 
-}*/
-
 .overlay:root {
   padding: 0px;
 }

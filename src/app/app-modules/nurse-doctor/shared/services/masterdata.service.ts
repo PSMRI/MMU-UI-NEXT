@@ -128,27 +128,24 @@ export class MasterdataService {
     const gender = localStorage.getItem('beneficiaryGender');
     console.log('facility', facilityID);
 
-    return (
-      this.http
-        .get(
-          this.doctorMasterDataUrl +
-            visitID +
-            '/' +
-            providerServiceID +
-            '/' +
-            gender +
-            '/' +
-            facilityID +
-            '/' +
-            vanID
-        )
-        //return this.http.get(this.doctorMasterDataUrl+visitID+"/"+providerServiceID)
-        .subscribe((res: any) => {
-          console.log('res.data', res.data);
+    return this.http
+      .get(
+        this.doctorMasterDataUrl +
+          visitID +
+          '/' +
+          providerServiceID +
+          '/' +
+          gender +
+          '/' +
+          facilityID +
+          '/' +
+          vanID
+      )
+      .subscribe((res: any) => {
+        console.log('res.data', res.data);
 
-          this.doctorMasterDataSource.next(res.data);
-        })
-    );
+        this.doctorMasterDataSource.next(res.data);
+      });
   }
 
   getDoctorMasterDataForNurse(visitID: string, providerServiceID: any) {

@@ -33,7 +33,6 @@ export class RegistrationUtils {
       personalDetailsForm: this.createPersonalDetailsForm(),
       demographicDetailsForm: this.createDemographicDetailsForm(),
       otherDetailsForm: this.createOtherDetailsForm(),
-      // demographicEditDetailsForm:this.createDemographicEditDetailsForm(),
     });
   }
 

@@ -67,7 +67,6 @@ import { SearchDialogComponent } from './search-dialog/search-dialog.component';
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
   ],
-  // entryComponents: [SearchDialogComponent,RegisterEditLocationComponent],
   providers: [RegistrarService],
   declarations: [
     DashboardComponent,

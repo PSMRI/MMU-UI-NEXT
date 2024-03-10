@@ -37,18 +37,14 @@ export class WorkareaCanActivate implements CanActivate {
     if (visitCategory) {
       if (
         !(
-          (
-            localStorage.getItem('visitCode') &&
-            localStorage.getItem('beneficiaryGender') &&
-            localStorage.getItem('benFlowID') &&
-            localStorage.getItem('visitCategory') &&
-            localStorage.getItem('beneficiaryRegID') &&
-            localStorage.getItem('visitID') &&
-            localStorage.getItem('beneficiaryID') &&
-            localStorage.getItem('nurseFlag')
-          )
-          // && localStorage.getItem('doctorFlag') &&
-          // localStorage.getItem('pharmacist_flag')
+          localStorage.getItem('visitCode') &&
+          localStorage.getItem('beneficiaryGender') &&
+          localStorage.getItem('benFlowID') &&
+          localStorage.getItem('visitCategory') &&
+          localStorage.getItem('beneficiaryRegID') &&
+          localStorage.getItem('visitID') &&
+          localStorage.getItem('beneficiaryID') &&
+          localStorage.getItem('nurseFlag')
         )
       ) {
         return false;

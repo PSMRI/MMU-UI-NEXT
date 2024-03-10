@@ -93,7 +93,6 @@ export class SearchDialogComponent implements OnInit, DoCheck {
 
     // Call For MAster Data which will be loaded in Sub Components
     this.callMasterDataObservable();
-    // this.getStates();
     this.getStatesData(); //to be called from masterobservable method layter
     this.today = new Date();
   }
@@ -171,7 +170,6 @@ export class SearchDialogComponent implements OnInit, DoCheck {
       govID.push(element);
     });
     this.govtIDs = govID;
-    //  this.govtIDs = Object.assign({}, this.masterData.govIdEntityMaster, this.masterData.otherGovIdEntityMaster);
     console.log(this.govtIDs, 'idsss');
   }
 
@@ -228,7 +226,6 @@ export class SearchDialogComponent implements OnInit, DoCheck {
   beneficiaryList: any = [];
   dataObj: any;
   getSearchResult(formValues: any) {
-    // console.log(formValues,'formValues')
     this.dataObj = {
       firstName: formValues.firstName,
       lastName: formValues.lastName,

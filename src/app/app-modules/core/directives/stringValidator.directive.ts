@@ -35,7 +35,7 @@ export class StringValidatorDirective {
   alphanumericspace = /^[a-zA-Z0-9 ]+$/;
   alphanumerichyphen = /^[a-zA-Z0-9-/ ]+$/;
   numerichyphen = /^[0-9- ]+$/;
-  number = /^[0-9]+$/;
+  number = /^\d+$/;
   decimal = /^\d+(\.\d{0,2})?$/;
   numberslash = /^[0-9/]+$/;
   address = /^[a-zA-Z0-9-./,# ]+$/;
@@ -156,11 +156,9 @@ export class StringValidatorDirective {
 
     if (maxlength > 0 && val.length > maxlength) {
       event.target.value = lastVal;
-    } else {
-      if (pasted) {
-        if (!this.isValidString(val)) {
-          event.target.value = lastVal;
-        }
+    } else if (pasted) {
+      if (!this.isValidString(val)) {
+        event.target.value = lastVal;
       } else if (!removed) {
         if (!this.isValidChar(inserted)) {
           event.target.value = lastVal;

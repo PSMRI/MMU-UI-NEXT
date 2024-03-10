@@ -72,12 +72,7 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
     sessionStorage.removeItem('tmCaseSheet');
     this.removeBeneficiaryDataForNurseVisit();
     this.loadWorklist();
-    // this.beneficiaryDetailsService.reset();
-    // this.masterdataService.reset();
   }
-  /*
-   * JA354063 - Multilingual Changes added on 13/10/21
-   */
   ngDoCheck() {
     this.assignSelectedLanguage();
   }
@@ -86,7 +81,6 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
     getLanguageJson.setLanguage();
     this.currentLanguageSet = getLanguageJson.currentLanguageObject;
   }
-  // Ends
   beneficiaryList: any;
   filteredBeneficiaryList: any = [];
   activePage = 1;
@@ -158,12 +152,6 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
         }
       });
     }
-    // this.activePage = 1;
-    // this.pageChanged({
-    //   page: 1,
-    //   itemsPerPage: this.rowsPerPage
-    // });
-    // this.currentPage=1;
   }
   pageChanged(event: any): void {
     const startItem = (event.page - 1) * event.itemsPerPage;
@@ -183,10 +171,6 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
             (visitCategory: any) =>
               visitCategory.VisitCategory === 'NCD screening'
           );
-          // this.pageChanged({
-          //   page: this.activePage,
-          //   itemsPerPage: this.rowsPerPage
-          // });
           this.dataSource.data = [];
           this.dataSource.data = benlist;
           this.dataSource.paginator = this.paginator;

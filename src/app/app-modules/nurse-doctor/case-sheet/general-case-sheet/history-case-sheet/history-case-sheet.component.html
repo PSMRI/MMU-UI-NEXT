@@ -151,18 +151,6 @@
                   ?.familyMedical?.familyMembers
               }}
             </th>
-            <!-- <th style="width: 15%" id="sCode">
-              {{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization
-                  ?.sctCode
-              }}
-            </th> -->
-            <!-- <th style="width: 15%" id="sterm">
-              {{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization
-                  ?.sctTerm
-              }}
-            </th> -->
           </tr>
         </thead>
         <tbody
@@ -185,8 +173,6 @@
             <td>{{ i + 1 }}</td>
             <td>{{ familyDisease.diseaseType }}</td>
             <td>{{ familyDisease.familyMembers }}</td>
-            <!-- <td>{{ familyDisease.snomedCode }}</td> -->
-            <!-- <td>{{ familyDisease.snomedTerm }}</td> -->
           </tr>
         </tbody>
       </table>
@@ -273,18 +259,6 @@
                   ?.otherVaccineName
               }}
             </th>
-            <!-- <th id="sctCode">
-              {{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization
-                  ?.sctCode
-              }}
-            </th>
-            <th id="sctTerm">
-              {{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization
-                  ?.sctTerm
-              }}
-            </th> -->
             <th id="ageatReceived">
               {{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
@@ -318,8 +292,6 @@
             <td>{{ i + 1 }}</td>
             <td>{{ childOptionalVaccine.vaccineName }}</td>
             <td>{{ childOptionalVaccine.otherVaccineName }}</td>
-            <!-- <td>{{ childOptionalVaccine.sctCode }}</td>
-            <td>{{ childOptionalVaccine.sctTerm }}</td> -->
             <td>{{ childOptionalVaccine.actualReceivingAge }}</td>
             <td>{{ childOptionalVaccine.receivedFacilityName }}</td>
           </tr>
@@ -801,18 +773,6 @@
                   ?.Vaccines
               }}
             </th>
-            <!-- <th id="sctCode">
-              {{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization
-                  ?.sctCode
-              }}
-            </th>
-            <th id="sctTerm">
-              {{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization
-                  ?.sctTerm
-              }}
-            </th> -->
             <th id="Status">
               {{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization
@@ -844,8 +804,6 @@
             </tr>
             <tr *ngFor="let vaccine of immunization?.vaccines">
               <td>{{ vaccine.vaccine }}</td>
-              <!-- <td>{{ vaccine.sctCode }}</td> -->
-              <!-- <td>{{ vaccine.sctTerm }}</td> -->
               <td>
                 <mat-checkbox
                   [checked]="vaccine.status"
@@ -955,18 +913,6 @@
                   ?.personalHistoryANC_OPD_NCD_PNC?.allergicStatus?.allergenName
               }}
             </th>
-            <!-- <th style="width: 15%" id="sCode">
-              {{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization
-                  ?.sctCode
-              }}
-            </th>
-            <th style="width: 15%" id="sTerm">
-              {{
-                currentLanguageSet?.historyData?.opdNCDPNCHistory?.immunization
-                  ?.sctTerm
-              }}
-            </th> -->
             <th style="width: 35%" id="typeOfReaction">
               {{
                 currentLanguageSet?.historyData?.ancHistory
@@ -992,8 +938,6 @@
             <td>{{ i + 1 }}</td>
             <td>{{ allergy.allergyType }}</td>
             <td>{{ allergy.snomedTerm }}</td>
-            <!-- <td>{{ allergy.snomedCode }}</td> -->
-            <!-- <td>{{ allergy.snomedTerm }}</td> -->
             <td>{{ allergy.allergicReactionType }}</td>
           </tr>
         </tbody>

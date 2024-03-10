@@ -78,9 +78,6 @@ export class PatientVisitDetailsComponent
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getVisitDetails(visitID, benRegID);
     }
-    // if (this.patientVisitDetailsForm) {
-    //   this.setCancerDefaultforMCSU();
-    // }
   }
 
   ngOnDestroy() {
@@ -93,15 +90,6 @@ export class PatientVisitDetailsComponent
     if (this.beneficiaryDetailsSubscription)
       this.beneficiaryDetailsSubscription.unsubscribe();
   }
-
-  // setCancerDefaultforMCSU() {
-  //   if (localStorage.getItem('vanType') && localStorage.getItem('vanType') == 'MCSU') {
-  //     this.patientVisitDetailsForm.patchValue({
-  //       visitReason: 'Screening',
-  //       visitCategory: 'Cancer Screening'
-  //     })
-  //   }
-  // }
 
   visitCategorySubscription: any;
   getVisitReasonAndCategory() {
@@ -153,39 +141,33 @@ export class PatientVisitDetailsComponent
             visitCategory == 'General OPD (QC)'
           ) {
             const visitDetails = value.data.benVisitDetails;
-            // visitDetails.visitCode = visitDetails.visitCode;
             this.doctorService.fileIDs = value.data.benVisitDetails.files;
             this.patientVisitDetailsForm.patchValue(visitDetails);
           }
           if (visitCategory == 'ANC') {
             const visitDetails = value.data.ANCNurseVisitDetail;
-            // visitDetails.visitCode = visitDetails.visitCode;
             this.doctorService.fileIDs = value.data.ANCNurseVisitDetail.files;
             this.patientVisitDetailsForm.patchValue(visitDetails);
           }
           if (visitCategory == 'General OPD') {
             const visitDetails = value.data.GOPDNurseVisitDetail;
-            // visitDetails.visitCode = visitDetails.visitCode;
             this.doctorService.fileIDs = value.data.GOPDNurseVisitDetail.files;
             this.patientVisitDetailsForm.patchValue(visitDetails);
           }
           if (visitCategory == 'NCD screening') {
             const visitDetails = value.data.NCDScreeningNurseVisitDetail;
-            // visitDetails.visitCode = visitDetails.visitCode;
             this.doctorService.fileIDs =
               value.data.NCDScreeningNurseVisitDetail.files;
             this.patientVisitDetailsForm.patchValue(visitDetails);
           }
           if (visitCategory == 'NCD care') {
             const visitDetails = value.data.NCDCareNurseVisitDetail;
-            // visitDetails.visitCode = visitDetails.visitCode;
             this.doctorService.fileIDs =
               value.data.NCDCareNurseVisitDetail.files;
             this.patientVisitDetailsForm.patchValue(visitDetails);
           }
           if (visitCategory == 'PNC') {
             const visitDetails = value.data.PNCNurseVisitDetail;
-            // visitDetails.visitCode = visitDetails.visitCode;
             this.doctorService.fileIDs = value.data.PNCNurseVisitDetail.files;
             this.patientVisitDetailsForm.patchValue(visitDetails);
           }

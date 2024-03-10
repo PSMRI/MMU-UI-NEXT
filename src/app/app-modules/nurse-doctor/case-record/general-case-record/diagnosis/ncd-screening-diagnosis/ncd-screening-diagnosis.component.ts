@@ -68,24 +68,6 @@ export class NcdScreeningDiagnosisComponent
   ngOnInit() {
     console.log('caseRecordMode', this.caseRecordMode);
     console.log('doctorDiagnosis', this.doctorDiagnosis);
-    // if(this.generalDiagnosisForm.controls['specialistDiagnosis'] !=undefined)
-    // this.generalDiagnosisForm.controls['specialistDiagnosis'].disable();
-    // this.specialist = false;
-    // this.designation = localStorage.getItem("designation");
-    // if (this.designation == "TC Specialist") {
-    //   this.generalDiagnosisForm.controls['specialistDiagnosis'].enable();
-    //   this.specialist = true;
-    // } else {
-    //   this.generalDiagnosisForm.controls['specialistDiagnosis'].disable();
-    //   this.specialist = false;
-    // }
-    // if (this.designation == "TC Specialist") {
-    //   this.generalDiagnosisForm.controls['doctorDiagnosis'].disable();
-    //   this.specialist = true;
-    // } else {
-    //   this.generalDiagnosisForm.controls['doctorDiagnosis'].enable();
-    //   this.specialist = false;
-    // }
     this.nurseService.enableProvisionalDiag$.subscribe(response => {
       if (response == true) {
         this.enableProvisionalDiag = true;
@@ -137,19 +119,6 @@ export class NcdScreeningDiagnosisComponent
         }
       });
   }
-
-  // patchDiagnosisDetails(diagnosis) {
-  //   //
-
-  //   // diagnosis.doctorDiagnosis = this.doctorDiagnosis;
-  //   // referFormData.revisitDate = referForm.controls["doctorDiagnosis"].value;
-  //   console.log("diagnosis",diagnosis.doctorDiagnonsis);
-
-  //   this.generalDiagnosisForm.patchValue({'doctorDiagnosis' : diagnosis.doctorDiagnonsis});
-  //   // this.generalDiagnosisForm.patchValue({'prescriptionID' : diagnosis.prescriptionID });
-  //   this.generalDiagnosisForm.patchValue(diagnosis);
-
-  // }
 
   patchDiagnosisDetails(diagnosis: any) {
     this.generalDiagnosisForm.patchValue(diagnosis);
