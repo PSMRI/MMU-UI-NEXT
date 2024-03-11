@@ -413,7 +413,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
     this.prescriptionSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.prescription) {
+        if (res && res.statusCode == 200 && res?.data?.prescription) {
           const prescription = res.data.prescription;
           this.patchPrescriptionDetails(prescription);
         }
@@ -511,15 +511,14 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
 
   setMedicineObject(option: any) {
     if (
-      option &&
-      option.id &&
-      option.itemName &&
-      option.itemID &&
-      option.quantityInHand &&
-      option.sctCode &&
-      option.strength &&
-      option.unitOfMeasurement &&
-      option.isEDL
+      option?.id &&
+      option?.itemName &&
+      option?.itemID &&
+      option?.quantityInHand &&
+      option?.sctCode &&
+      option?.strength &&
+      option?.unitOfMeasurement &&
+      option?.isEDL
     ) {
       this.currentPrescription['id'] = option.id;
       this.currentPrescription['drugName'] = option.itemName;

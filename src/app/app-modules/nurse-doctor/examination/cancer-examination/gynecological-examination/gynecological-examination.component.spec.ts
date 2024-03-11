@@ -23,22 +23,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  FormGroup,
-  FormArray,
-} from '@angular/forms';
-import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MaterialModule } from '../../../../core/material.module';
 
 import { CameraService } from '../../../../core/services/camera.service';
 import { CameraServiceStub } from '../../../../core/mocks/camera-service-stub';
 
 import { CancerUtils } from '../../../shared/utility';
-
-import * as data from '../../../shared/mocks/mock-data';
-import { Observable } from 'rxjs/Rx';
 
 import { GynecologicalExaminationComponent } from './gynecological-examination.component';
 

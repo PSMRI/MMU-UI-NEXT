@@ -20,21 +20,11 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import {
-  async,
-  inject,
-  ComponentFixture,
-  TestBed,
-} from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  FormGroup,
-  FormArray,
-} from '@angular/forms';
-import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { MaterialModule } from '../../../../core/material.module';
 
 import { CameraService } from '../../../../core/services/camera.service';
@@ -42,12 +32,7 @@ import { BeneficiaryDetailsService } from '../../../../core/services/beneficiary
 
 import { CameraServiceStub } from '../../../../core/mocks/camera-service-stub';
 import { BeneficiaryDetailsServiceStub } from '../../../../core/mocks/beneficiary-details-service-stub';
-
 import { CancerUtils } from '../../../shared/utility';
-
-import * as data from '../../../shared/mocks/mock-data';
-import { Observable } from 'rxjs/Rx';
-
 import { BreastExaminationComponent } from './breast-examination.component';
 
 describe('BreastExaminationComponent', () => {

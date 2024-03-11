@@ -26,14 +26,11 @@ import {
   Input,
   ViewChild,
   DoCheck,
-  OnChanges,
   AfterViewInit,
   OnDestroy,
 } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ConfirmationService } from '../../../core/services/confirmation.service';
-
+import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 import { BeneficiaryDetailsService } from '../../../core/services/beneficiary-details.service';
 import { DoctorService } from '../../shared/services';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
@@ -174,17 +171,13 @@ export class CancerCaseRecordComponent
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
     private beneficiaryDetailsService: BeneficiaryDetailsService,
     private cameraService: CameraService,
-    private confirmationService: ConfirmationService,
     private doctorService: DoctorService,
     private httpServiceService: HttpServiceService
   ) {}
 
   ngOnInit() {
-    // this.getPreviousVisitDetails();
     this.getBeneficiaryDetails();
   }
   ngDoCheck() {
@@ -210,14 +203,10 @@ export class CancerCaseRecordComponent
     this.beneficiaryDetailsSubscription =
       this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(
         beneficiary => {
-          if (
-            beneficiary != null &&
-            beneficiary.genderName != null &&
-            beneficiary.genderName.toLowerCase() == 'female'
-          ) {
+          if (beneficiary?.genderName?.toLowerCase() == 'female') {
             this.female = true;
           }
-          if (beneficiary != null && beneficiary.genderName != null) {
+          if (beneficiary?.genderName != null) {
             this.getGraphData(beneficiary);
             if (this.caseRecordMode == 'view') {
               const beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
@@ -353,8 +342,7 @@ export class CancerCaseRecordComponent
       return +new Date(b.date) - +new Date(a.date);
     });
     console.log(k, 'dated');
-    if (k && k.length) {
-      // weightList = weightList.reverse();
+    if (k?.length) {
       k.forEach((element: any) => {
         if (element.date && element.weight) {
           data.push(element.weight);
@@ -377,8 +365,7 @@ export class CancerCaseRecordComponent
       return +new Date(b.date) - +new Date(a.date);
     });
     console.log(k, 'dated');
-    if (k && k.length) {
-      // k = k.reverse();
+    if (k?.length) {
       k.forEach((element: any) => {
         if (
           element.date &&
@@ -417,27 +404,6 @@ export class CancerCaseRecordComponent
     this.diagnosisForm.patchValue(diagnosis);
   }
 
-  // getPreviousVisitDetails() {
-  //   let benRegID = localStorage.getItem('beneficiaryRegID');
-  //   this.doctorService.getPreviousVisitDetails(benRegID)
-  //     .subscribe((data) => {
-  //       if (data && data.benVisitDetails && data.benVisitDetails.length > 0)
-  //         this.visitDetails = data.benVisitDetails.slice(0, 5);
-  //     });
-  // }
-
-  // get provisionalDiagnosisPrimaryDoctor() {
-  //   return this.diagnosisForm.get('provisionalDiagnosisPrimaryDoctor');
-  // }
-
-  // get provisionalDiagnosisOncologist() {
-  //   return this.diagnosisForm.get('provisionalDiagnosisOncologist');
-  // }
-
-  // get remarks() {
-  //   return this.diagnosisForm.get('remarks');
-  // }
-
   calculateBMI() {
     if (this.currentVitals != null)
       return +(
@@ -463,10 +429,6 @@ export class CancerCaseRecordComponent
   getCaseSheetPrintData(visitDetail: any) {
     const visitDateAndTime: Date = visitDetail.createdDate;
     this.visitDateTime = new Date(visitDateAndTime).toISOString();
-
-    // if (visitDetail.visitCategory == 'Cancer Screening') {
-    //   window.open(environment.printCancerCase_sheet_url + '/#/common/casesheet/' + visitDetail.beneficiaryRegID + '/' + visitDetail.benVisitID + '/' + this.visitDateTime);
-    // } else {
     localStorage.setItem('caseSheetBenFlowID', 'null');
     localStorage.setItem('caseSheetVisitCategory', visitDetail.VisitCategory);
     localStorage.setItem(
@@ -475,7 +437,6 @@ export class CancerCaseRecordComponent
     );
     localStorage.setItem('caseSheetVisitID', visitDetail.benVisitID);
     this.router.navigate(['/nurse-doctor/print']);
-    // }
   }
 
   previousMMUHistoryRowsPerPage = 5;

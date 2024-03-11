@@ -207,7 +207,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
       if (serviceID == service.serviceID) {
         service.serviceLoaded = true;
       } else {
-        // service.serviceLoaded = service.serviceLoaded;
+        // result will be displayed here
       }
     });
     console.log(services, 'servicechane');
@@ -249,7 +249,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   }
 
   getVisitDetails(serviceType: any, visit: any, print: any) {
-    // if (visit.VisitCategory != 'NCD screening') {
     this.confirmationService
       .confirm('info', this.current_language_set.alerts.info.viewCasesheet)
       .subscribe(res => {
@@ -293,7 +292,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   hideMCTSFetch: boolean = false;
   previousMCTSHistoryRowsPerPage = 5;
   previousMCTSHistoryActivePage = 1;
-  // historyOfMCTS = [];
   filteredMCTSHistory: any = [];
   getMCTSHistory() {
     this.doctorService.getMCTSHistory().subscribe((data: any) => {
@@ -353,7 +351,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   hide104Fetch: boolean = false;
   previous104HistoryRowsPerPage = 5;
   previous104HistoryActivePage = 1;
-  // historyOf104 = [];
   filtered104History: any = [];
   get104History() {
     this.doctorService.get104History().subscribe((data: any) => {
@@ -413,7 +410,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   callData: any;
   getPatientMCTSCallHistory(call: any) {
     const callDetailID = { callDetailID: call.callDetailID };
-    // let callDetailID={ "callDetailID": "19099" }
     this.doctorService
       .getPatientMCTSCallHistory(callDetailID)
       .subscribe((data: any) => {

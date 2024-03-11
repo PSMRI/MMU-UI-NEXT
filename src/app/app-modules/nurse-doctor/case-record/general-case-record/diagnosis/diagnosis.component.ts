@@ -20,16 +20,8 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import {
-  MasterdataService,
-  NurseService,
-  DoctorService,
-} from '../../../shared/services';
-import { GeneralOpdDiagnosisComponent } from './general-opd-diagnosis/general-opd-diagnosis.component';
-import { AncDiagnosisComponent } from './anc-diagnosis/anc-diagnosis.component';
+import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-diagnosis',
   templateUrl: './diagnosis.component.html',
@@ -45,10 +37,5 @@ export class DiagnosisComponent {
 
   @Input()
   caseRecordMode!: string;
-  constructor(
-    private fb: FormBuilder,
-    private nurseService: NurseService,
-    private doctorService: DoctorService,
-    private masterdataService: MasterdataService
-  ) {}
+  constructor() {}
 }

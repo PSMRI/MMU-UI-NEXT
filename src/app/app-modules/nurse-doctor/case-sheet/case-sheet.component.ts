@@ -20,15 +20,8 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import {
-  Component,
-  OnInit,
-  Input,
-  Inject,
-  Injector,
-  DoCheck,
-} from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Injector, DoCheck } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { SetLanguageComponent } from '../../core/components/set-language.component';
 import { HttpServiceService } from '../../core/services/http-service.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';

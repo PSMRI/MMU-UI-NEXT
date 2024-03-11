@@ -45,11 +45,7 @@ export class PncCaseSheetComponent implements OnInit, OnChanges, DoCheck {
   }
 
   ngOnChanges() {
-    if (
-      this.caseSheetData &&
-      this.caseSheetData.nurseData &&
-      this.caseSheetData.nurseData.pnc
-    )
+    if (this.caseSheetData?.nurseData?.pnc)
       this.pNCCaseSheetData = this.caseSheetData.nurseData.pnc.PNCCareDetail;
   }
 

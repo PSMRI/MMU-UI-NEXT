@@ -20,12 +20,9 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import { Router } from '@angular/router';
 import { DoctorService } from '../../../shared/services';
-import { ConfirmationService } from '../../../../core/services/confirmation.service';
 import { CameraService } from '../../../../core/services/camera.service';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
@@ -132,14 +129,12 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
 
   constructor(
     private doctorService: DoctorService,
-    private confirmationService: ConfirmationService,
     private cameraService: CameraService,
     private router: Router,
     private httpServiceService: HttpServiceService
   ) {}
 
   ngOnInit() {
-    // this.getPreviousVisitDetails();
     this.loadGraphData();
   }
 
@@ -160,7 +155,7 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
       .getCaseRecordAndReferDetails(benRegID, visitID, visitCategory)
       .subscribe((data: any) => {
         console.log(data, 'data here', data.GraphData, 'graphdata');
-        if (data && data.data && data.data.GraphData) {
+        if (data?.data?.GraphData) {
           this.plotGraphs(data.data.GraphData);
         }
       });
@@ -177,7 +172,7 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
     const diastolic: any = [];
 
     console.log(bpList, 'bpList');
-    if (bpList && bpList.length) {
+    if (bpList?.length) {
       bpList = bpList.reverse();
       const k = Object.assign([], bpList);
       k.sort(function (a: any, b: any) {
@@ -210,8 +205,7 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
       return +new Date(b.date) - +new Date(a.date);
     });
     console.log(k, 'dated');
-    if (k && k.length) {
-      // weightList = weightList.reverse();
+    if (k?.length) {
       k.forEach((element: any) => {
         if (element.date && element.weight) {
           data.push(element.weight);
@@ -234,8 +228,7 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
       return +new Date(b.date) - +new Date(a.date);
     });
     console.log(k, 'dated');
-    if (k && k.length) {
-      // k = k.reverse();
+    if (k?.length) {
       k.forEach((element: any) => {
         if (
           element.date &&

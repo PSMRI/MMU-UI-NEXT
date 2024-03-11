@@ -21,7 +21,7 @@
  */
 
 import { Component, OnInit, Input, DoCheck, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { BeneficiaryDetailsService } from '../../../core/services/beneficiary-details.service';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
 import { SetLanguageComponent } from '../../../core/components/set-language.component';
@@ -79,9 +79,7 @@ export class AncDetailsComponent implements OnInit, DoCheck, OnDestroy {
       );
   }
 
-  checkGravidaStatus(primiGravida: any) {
-    // this.patientANCDetailsForm.get('primiGravida');
-  }
+  checkGravidaStatus(primiGravida: any) {}
 
   checkupLMP(lmpDate: any) {
     const today = new Date();

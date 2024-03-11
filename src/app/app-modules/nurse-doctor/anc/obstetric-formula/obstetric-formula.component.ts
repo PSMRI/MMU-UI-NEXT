@@ -28,7 +28,7 @@ import {
   OnChanges,
   DoCheck,
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { MasterdataService } from '../../shared/services';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
 
@@ -103,7 +103,7 @@ export class ObstetricFormulaComponent implements OnInit, DoCheck, OnChanges {
       this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(
         beneficiaryDetails => {
           if (!this.mode) {
-            if (beneficiaryDetails && beneficiaryDetails.bloodGroup) {
+            if (beneficiaryDetails?.bloodGroup) {
               if (beneficiaryDetails.bloodGroup != "Don't Know")
                 this.disableBloodGroup = true;
 

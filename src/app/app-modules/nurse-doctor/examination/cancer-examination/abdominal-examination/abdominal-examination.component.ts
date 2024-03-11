@@ -26,8 +26,6 @@ import {
   ViewChild,
   ElementRef,
   Input,
-  Output,
-  EventEmitter,
   DoCheck,
 } from '@angular/core';
 import { CameraService } from '../../../../core/services/camera.service';

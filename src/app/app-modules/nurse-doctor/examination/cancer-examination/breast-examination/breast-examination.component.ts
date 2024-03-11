@@ -26,12 +26,10 @@ import {
   Input,
   ViewChild,
   ElementRef,
-  EventEmitter,
-  Output,
   DoCheck,
   OnDestroy,
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { CameraService } from '../../../../core/services/camera.service';
 import { BeneficiaryDetailsService } from '../../../../core/services/beneficiary-details.service';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
@@ -56,7 +54,6 @@ export class BreastExaminationComponent implements OnInit, DoCheck, OnDestroy {
   currentLanguageSet: any;
 
   constructor(
-    private fb: FormBuilder,
     private httpServiceService: HttpServiceService,
     private beneficiaryDetailsService: BeneficiaryDetailsService,
     private cameraService: CameraService
@@ -76,12 +73,8 @@ export class BreastExaminationComponent implements OnInit, DoCheck, OnDestroy {
     this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(
       beneficiaryDetails => {
         if (
-          (beneficiaryDetails &&
-            beneficiaryDetails.genderName &&
-            beneficiaryDetails.genderName.toLocaleLowerCase() == 'female') ||
-          (beneficiaryDetails &&
-            beneficiaryDetails.genderName &&
-            beneficiaryDetails.genderName.toLocaleLowerCase() == 'transgender')
+          beneficiaryDetails?.genderName?.toLocaleLowerCase() == 'female' ||
+          beneficiaryDetails?.genderName?.toLocaleLowerCase() == 'transgender'
         )
           this.female = true;
       }

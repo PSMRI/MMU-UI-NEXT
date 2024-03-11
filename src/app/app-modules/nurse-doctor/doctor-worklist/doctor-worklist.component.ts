@@ -212,7 +212,7 @@ export class DoctorWorklistComponent implements OnInit, OnDestroy, DoCheck {
     this.beneficiaryDetailsService
       .getBeneficiaryImage(benregID)
       .subscribe((data: any) => {
-        if (data && data.benImage) this.cameraService.viewImage(data.benImage);
+        if (data?.benImage) this.cameraService.viewImage(data.benImage);
         else
           this.confirmationService.alert(
             this.currentLanguageSet.alerts.info.imageNotFound

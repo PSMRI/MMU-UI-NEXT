@@ -23,7 +23,6 @@
 import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
-import { DoctorService } from '../../../shared/services';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 
 @Component({
@@ -61,7 +60,6 @@ export class ExaminationCaseSheetComponent
   currentLanguageSet: any;
 
   constructor(
-    private doctorService: DoctorService,
     private httpServiceService: HttpServiceService,
     public datepipe: DatePipe
   ) {}
@@ -74,11 +72,7 @@ export class ExaminationCaseSheetComponent
   }
 
   ngOnChanges() {
-    if (
-      this.caseSheetData &&
-      this.caseSheetData.nurseData &&
-      this.caseSheetData.nurseData.examination
-    ) {
+    if (this.caseSheetData?.nurseData?.examination) {
       const examination = this.caseSheetData.nurseData.examination;
 
       if (examination.generalExamination)
@@ -112,15 +106,10 @@ export class ExaminationCaseSheetComponent
         this.gastroIntestinalExamination =
           examination.gastrointestinalExamination;
     }
-    // let t = new Date();
-    // this.date = t.getDate() + "/" + (t.getMonth() + 1) + "/" + t.getFullYear();
-    if (this.caseSheetData && this.caseSheetData.doctorData) {
+    if (this.caseSheetData?.doctorData) {
       this.referDetails = this.caseSheetData.doctorData.Refer;
       console.log('refer', this.referDetails);
-      if (
-        this.referDetails &&
-        this.referDetails.refrredToAdditionalServiceList
-      ) {
+      if (this.referDetails?.refrredToAdditionalServiceList) {
         console.log(
           'institute',
           this.referDetails.refrredToAdditionalServiceList
@@ -145,14 +134,7 @@ export class ExaminationCaseSheetComponent
         'referDetailsForReferexamination',
         JSON.stringify(this.caseSheetData, null, 4)
       );
-      // if (this.caseSheetData.doctorData.Refer) {
-      //   this.referDetails.revisitDate = this.datepipe.transform(this.referDetails.revisitDate, 'dd/MM/yyyy')
-      // }
     }
-    // padLeft() {
-    //   let len = (String(10).length - String(this).length) + 1;
-    //   return len > 0 ? new Array(len).join('0') + this : this;
-    // }
   }
 
   // AV40085804 13/10/2021 Integrating Multilingual Functionality -----Start-----

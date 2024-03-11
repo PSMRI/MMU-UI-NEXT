@@ -24,8 +24,6 @@ import {
   Component,
   OnInit,
   Input,
-  OnChanges,
-  ChangeDetectorRef,
   ViewChild,
   DoCheck,
   OnDestroy,
@@ -33,7 +31,6 @@ import {
 import {
   FormBuilder,
   FormGroup,
-  FormControl,
   FormArray,
   AbstractControl,
 } from '@angular/forms';
@@ -93,7 +90,6 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
   dataSource = new MatTableDataSource<any>();
 
   constructor(
-    private changeDetectorRef: ChangeDetectorRef,
     private fb: FormBuilder,
     private masterdataService: MasterdataService,
     private beneficiaryDetailsService: BeneficiaryDetailsService,
@@ -137,7 +133,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     this.findingSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.findings) {
+        if (res && res.statusCode == 200 && res?.data?.findings) {
           const findings = res.data.findings;
           this.complaintList = findings.complaints.slice();
           this.dataSource.data = [];
@@ -239,7 +235,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
       return item.chiefComplaint == chiefComplaintValue.chiefComplaint;
     });
 
-    if (this.selectedChiefComplaintList && this.selectedChiefComplaintList[i]) {
+    if (this.selectedChiefComplaintList?.[i]) {
       this.chiefComplaintTemporarayList.map((item: any, t: any) => {
         if (t != i) {
           item.push(this.selectedChiefComplaintList[i]);
@@ -412,7 +408,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   displayChiefComplaint(complaint: any) {
-    return complaint && complaint.chiefComplaint;
+    return complaint?.chiefComplaint;
   }
 
   suggestChiefComplaintList(complaintForm: AbstractControl<any, any>, i: any) {

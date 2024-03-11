@@ -212,11 +212,7 @@ export class DoctorDiagnosisCaseSheetComponent
 
       if (this.visitCategory != 'General OPD (QC)') {
         this.caseRecords = this.caseSheetData.doctorData;
-        if (
-          this.caseRecords &&
-          this.caseRecords.diagnosis &&
-          this.caseRecords.diagnosis.ncdScreeningCondition
-        ) {
+        if (this.caseRecords?.diagnosis?.ncdScreeningCondition) {
           this.ncdScreeningCondition =
             this.caseRecords.diagnosis.ncdScreeningCondition.replaceAll(
               '||',

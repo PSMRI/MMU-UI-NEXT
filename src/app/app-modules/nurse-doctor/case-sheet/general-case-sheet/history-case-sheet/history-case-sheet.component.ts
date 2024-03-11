@@ -105,12 +105,9 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
         if (res && res.statusCode == 200 && res.data) {
           this.mmuCaseSheetData = res.data;
 
-          if (this.mmuCaseSheetData && this.mmuCaseSheetData.doctorData) {
+          if (this.mmuCaseSheetData?.doctorData) {
             this.MMUReferDetails = this.mmuCaseSheetData.doctorData.Refer;
-            if (
-              this.MMUReferDetails &&
-              this.MMUReferDetails.refrredToAdditionalServiceList
-            ) {
+            if (this.MMUReferDetails?.refrredToAdditionalServiceList) {
               console.log(
                 'institute',
                 this.MMUReferDetails.refrredToAdditionalServiceList
@@ -145,7 +142,7 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
             'referDetailsForRefer',
             JSON.stringify(this.MMUReferDetails, null, 4)
           );
-          if (this.mmuCaseSheetData && this.mmuCaseSheetData.doctorData) {
+          if (this.mmuCaseSheetData?.doctorData) {
             this.MMUReferDetails = this.mmuCaseSheetData.doctorData.Refer;
             if (
               this.MMUReferDetails &&
@@ -164,26 +161,17 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
   }
 
   ngOnChanges() {
-    if (this.caseSheetData && this.caseSheetData.BeneficiaryData) {
+    if (this.caseSheetData?.BeneficiaryData) {
       this.beneficiary = this.caseSheetData.BeneficiaryData;
-      if (
-        this.caseSheetData.nurseData &&
-        this.caseSheetData.nurseData.history
-      ) {
+      if (this.caseSheetData?.nurseData?.history) {
         this.generalhistory = this.caseSheetData.nurseData.history;
         if (this.caseSheetData.nurseData.anc)
           this.ANCDetailsAndFormula =
             this.caseSheetData.nurseData.anc.ANCCareDetail;
-        if (
-          this.caseSheetData.nurseData.history.PastHistory &&
-          this.caseSheetData.nurseData.history.PastHistory.pastIllness
-        )
+        if (this.caseSheetData?.nurseData?.history?.PastHistory?.pastIllness)
           this.pastIllnessList =
             this.caseSheetData.nurseData.history.PastHistory.pastIllness;
-        if (
-          this.caseSheetData.nurseData.history.PastHistory &&
-          this.caseSheetData.nurseData.history.PastHistory.pastSurgery
-        )
+        if (this.caseSheetData?.nurseData?.history?.PastHistory?.pastSurgery)
           this.pastSurgeryList =
             this.caseSheetData.nurseData.history.PastHistory.pastSurgery;
         if (this.caseSheetData.nurseData.history.FamilyHistory)
@@ -193,23 +181,20 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
           this.previousPhysicalList =
             this.caseSheetData.nurseData.history.PhysicalActivityHistory;
         if (
-          this.caseSheetData.nurseData.history.childOptionalVaccineHistory &&
-          this.caseSheetData.nurseData.history.childOptionalVaccineHistory
-            .childOptionalVaccineList
+          this.caseSheetData?.nurseData?.history?.childOptionalVaccineHistory
+            ?.childOptionalVaccineList
         )
           this.childOptionalVaccineList =
             this.caseSheetData.nurseData.history.childOptionalVaccineHistory.childOptionalVaccineList;
         if (
-          this.caseSheetData.nurseData.history.ComorbidityConditions &&
-          this.caseSheetData.nurseData.history.ComorbidityConditions
-            .comorbidityConcurrentConditionsList
+          this.caseSheetData?.nurseData?.history?.ComorbidityConditions
+            ?.comorbidityConcurrentConditionsList
         )
           this.comorbidConditionList =
             this.caseSheetData.nurseData.history.ComorbidityConditions.comorbidityConcurrentConditionsList;
         if (
-          this.caseSheetData.nurseData.history.MedicationHistory &&
-          this.caseSheetData.nurseData.history.MedicationHistory
-            .medicationHistoryList
+          this.caseSheetData?.nurseData?.history?.MedicationHistory
+            ?.medicationHistoryList
         )
           this.medicationHistoryList =
             this.caseSheetData.nurseData.history.MedicationHistory.medicationHistoryList;
@@ -240,14 +225,9 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
         );
       }
     }
-    // let t = new Date();
-    // this.date = t.getDate() + "/" + (t.getMonth() + 1) + "/" + t.getFullYear();
-    if (this.caseSheetData && this.caseSheetData.doctorData) {
+    if (this.caseSheetData?.doctorData) {
       this.referDetails = this.caseSheetData.doctorData.Refer;
-      if (
-        this.referDetails &&
-        this.referDetails.refrredToAdditionalServiceList
-      ) {
+      if (this.referDetails?.refrredToAdditionalServiceList) {
         console.log(
           'institute',
           this.referDetails.refrredToAdditionalServiceList
@@ -269,12 +249,11 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
         }
       }
     }
-    // console.log("referDetails" , this.referDetails);
     console.log(
       'referDetailsForRefer',
       JSON.stringify(this.referDetails, null, 4)
     );
-    if (this.caseSheetData && this.caseSheetData.doctorData) {
+    if (this.caseSheetData?.doctorData) {
       this.referDetails = this.caseSheetData.doctorData.Refer;
       if (this.referDetails && this.caseSheetData.doctorData.Refer) {
         this.caseSheetData.referDetails = this.caseSheetData.doctorData.Refer;
@@ -282,12 +261,10 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
           'referDetailsForRefer',
           JSON.stringify(this.referDetails, null, 4)
         );
-        // this.caseSheetData.referDetails.revisitDate = this.datepipe.transform(this.caseSheetData.referDetails.revisitDate, 'dd/MM/yyyy')
       }
     }
     if (
-      this.caseSheetData &&
-      this.caseSheetData.doctorData.Refer &&
+      this.caseSheetData?.doctorData?.Refer &&
       this.referDetails.revisitDate &&
       !moment(this.referDetails.revisitDate, 'DD/MM/YYYY', true).isValid()
     ) {

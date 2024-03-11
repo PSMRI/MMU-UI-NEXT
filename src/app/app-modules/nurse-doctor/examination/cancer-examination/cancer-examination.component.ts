@@ -71,7 +71,7 @@ export class CancerExaminationComponent
     this.getBeneficiaryDetails();
     this.fetchLanguageResponse();
 
-    if (this.cancerForm && this.cancerForm.get('signsForm')) {
+    if (this.cancerForm?.get('signsForm')) {
       this.cancerForm.get('signsForm')!.valueChanges.subscribe(value => {
         if (value.breastEnlargement) this.showBreastExamination = true;
         else this.showBreastExamination = false;
@@ -326,13 +326,8 @@ export class CancerExaminationComponent
       this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(
         beneficiaryDetails => {
           if (
-            (beneficiaryDetails &&
-              beneficiaryDetails.genderName &&
-              beneficiaryDetails.genderName.toLowerCase() == 'female') ||
-            (beneficiaryDetails &&
-              beneficiaryDetails.genderName &&
-              beneficiaryDetails.genderName.toLocaleLowerCase() ==
-                'transgender')
+            beneficiaryDetails?.genderName?.toLowerCase() == 'female' ||
+            beneficiaryDetails?.genderName?.toLocaleLowerCase() == 'transgender'
           )
             this.female = true;
         }

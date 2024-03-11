@@ -68,24 +68,6 @@ export class NcdScreeningDiagnosisComponent
   ngOnInit() {
     console.log('caseRecordMode', this.caseRecordMode);
     console.log('doctorDiagnosis', this.doctorDiagnosis);
-    // if(this.generalDiagnosisForm.controls['specialistDiagnosis'] !=undefined)
-    // this.generalDiagnosisForm.controls['specialistDiagnosis'].disable();
-    // this.specialist = false;
-    // this.designation = localStorage.getItem("designation");
-    // if (this.designation == "TC Specialist") {
-    //   this.generalDiagnosisForm.controls['specialistDiagnosis'].enable();
-    //   this.specialist = true;
-    // } else {
-    //   this.generalDiagnosisForm.controls['specialistDiagnosis'].disable();
-    //   this.specialist = false;
-    // }
-    // if (this.designation == "TC Specialist") {
-    //   this.generalDiagnosisForm.controls['doctorDiagnosis'].disable();
-    //   this.specialist = true;
-    // } else {
-    //   this.generalDiagnosisForm.controls['doctorDiagnosis'].enable();
-    //   this.specialist = false;
-    // }
     this.nurseService.enableProvisionalDiag$.subscribe(response => {
       if (response == true) {
         this.enableProvisionalDiag = true;
@@ -132,7 +114,7 @@ export class NcdScreeningDiagnosisComponent
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.diagnosis) {
+        if (res && res.statusCode == 200 && res?.data?.diagnosis) {
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
       });

@@ -21,14 +21,8 @@
  */
 
 import { Component, OnInit, Input, DoCheck, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
-import {
-  MasterdataService,
-  NurseService,
-  DoctorService,
-} from '../../../../shared/services';
+import { FormGroup } from '@angular/forms';
+import { MasterdataService, DoctorService } from '../../../../shared/services';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { BeneficiaryDetailsService } from 'src/app/app-modules/core/services';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
@@ -60,8 +54,6 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
   current_language_set: any;
 
   constructor(
-    private fb: FormBuilder,
-    private nurseService: NurseService,
     private doctorService: DoctorService,
     private masterdataService: MasterdataService,
     public beneficiaryDetailsService: BeneficiaryDetailsService,
@@ -121,7 +113,7 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.diagnosis) {
+        if (res && res.statusCode == 200 && res?.data?.diagnosis) {
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
       });
@@ -136,10 +128,7 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
   patchComplicationOfCurrentPregnancyList(diagnosis: any) {
     const tempComplicationList: any = [];
     diagnosis.complicationOfCurrentPregnancyList.map((complaintType: any) => {
-      if (
-        this.masterData != undefined &&
-        this.masterData.pregComplicationTypes != undefined
-      ) {
+      if (this.masterData?.pregComplicationTypes != undefined) {
         const tempComplication = this.masterData.pregComplicationTypes.filter(
           (masterComplication: any) => {
             return (
