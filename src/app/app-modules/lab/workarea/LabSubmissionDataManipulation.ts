@@ -78,31 +78,29 @@ export class DataManipulation {
             stripsNotAvailable: element.stripsNotavailable,
           });
         }
-      } else {
-        if (
-          element.testComponentName.includes('ECG') &&
-          element.testComponentID &&
-          element.compOptSelected &&
-          element.compOptSelected === 'Abnormal'
-        ) {
-          comps.push({
-            testComponentID: element.testComponentID,
-            testResultValue: element.inputValue || element.compOptSelected,
-            testResultUnit: element.measurementUnit || undefined,
-            remarks: element.remarks || undefined,
-            ecgAbnormalities: element.ecgAbnormalities,
-          });
-        } else if (
-          (element.testComponentID && element.inputValue) ||
-          (element.testComponentID && element.compOptSelected)
-        ) {
-          comps.push({
-            testComponentID: element.testComponentID,
-            testResultValue: element.inputValue || element.compOptSelected,
-            testResultUnit: element.measurementUnit || undefined,
-            remarks: element.remarks || undefined,
-          });
-        }
+      } else if (
+        element.testComponentName.includes('ECG') &&
+        element.testComponentID &&
+        element.compOptSelected &&
+        element.compOptSelected === 'Abnormal'
+      ) {
+        comps.push({
+          testComponentID: element.testComponentID,
+          testResultValue: element.inputValue || element.compOptSelected,
+          testResultUnit: element.measurementUnit || undefined,
+          remarks: element.remarks || undefined,
+          ecgAbnormalities: element.ecgAbnormalities,
+        });
+      } else if (
+        (element.testComponentID && element.inputValue) ||
+        (element.testComponentID && element.compOptSelected)
+      ) {
+        comps.push({
+          testComponentID: element.testComponentID,
+          testResultValue: element.inputValue || element.compOptSelected,
+          testResultUnit: element.measurementUnit || undefined,
+          remarks: element.remarks || undefined,
+        });
       }
     });
     return comps;

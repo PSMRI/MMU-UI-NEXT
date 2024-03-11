@@ -80,7 +80,6 @@ export class ResetPasswordComponent {
 
         this.splitQuestionAndQuestionID();
       } else {
-        // this.router.navigate(["/"]);
         this.logout();
         this.confirmationService.alert(
           'Questions are not set for this user',
@@ -88,7 +87,6 @@ export class ResetPasswordComponent {
         );
       }
     } else {
-      // this.router.navigate(["/"]);
       this.logout();
       this.confirmationService.alert('User not found', 'error');
     }

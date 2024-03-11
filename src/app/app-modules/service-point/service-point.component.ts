@@ -20,19 +20,14 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RegistrarService } from 'src/app/app-modules/registrar/shared/services/registrar.service';
 import { SetLanguageComponent } from '../core/components/set-language.component';
 import { ConfirmationService } from '../core/services';
 import { HttpServiceService } from '../core/services/http-service.service';
 import { ServicePointService } from './service-point.service';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-service-point',
@@ -40,8 +35,6 @@ import {
   styleUrls: ['./service-point.component.css'],
 })
 export class ServicePointComponent implements OnInit, DoCheck {
-  // @ViewChild('f') form: any;
-
   designation: any;
   vanServicepointDetails: any;
   servicePointsList: any = [];
@@ -67,25 +60,13 @@ export class ServicePointComponent implements OnInit, DoCheck {
 
   userId: any;
   serviceProviderId: any;
-
-  // servicePointName: any;
-  // servicePointID: any;
-  // sessionID: any;
-  // vanID: any;
   isDisabled = true;
   currentLanguageSet: any;
   statesList: any = [];
   districtList: any = [];
   subDistrictList: any = [];
-  // stateID: any;
-  // state: any;
   demographicsMaster: any;
-  // districtID: any;
-  // blockID: any;
   villageList: any = [];
-  // districtBranchID: any;
-  // blockName: any;
-  // villageName: any;
 
   constructor(
     private router: Router,
@@ -118,7 +99,6 @@ export class ServicePointComponent implements OnInit, DoCheck {
     this.serviceProviderId = localStorage.getItem('providerServiceID');
     this.userId = localStorage.getItem('userID');
     this.getServicePoint();
-    // this.resetLocalStorage();
   }
 
   resetLocalStorage() {
@@ -195,16 +175,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
     });
     this.servicePointsList = [];
   }
-
-  // get vanID() {
-  //   return this.servicePointForm.get('vanID');
-  // }
-
   filterServicePointsList() {
-    //   console.log("vanId:", event)
-    //   if(this.vanID){
-    //   this.vanID.setValue(event.target.value)
-    // }
     this.saveVanType();
     const serviceLineDetails: any = this.vansList.filter((van: any) => {
       return this.servicePointForm.controls.vanID.value == van.vanID;
@@ -342,8 +313,6 @@ export class ServicePointComponent implements OnInit, DoCheck {
       this.districtList = [];
       this.subDistrictList = [];
       this.villageList = [];
-      // if(this.form.controls.servicePointName.value !== null )
-      // this.confirmationService.alert("Please select a valid service point", "info");
     }
   }
 
@@ -351,7 +320,6 @@ export class ServicePointComponent implements OnInit, DoCheck {
     if (data) {
       if (data.stateMaster && data.stateMaster.length >= 1) {
         localStorage.setItem('location', JSON.stringify(data));
-        // this.goToWorkList();
         this.statesList = data.stateMaster;
         this.servicePointForm.controls.stateID.patchValue(
           data.otherLoc.stateID

@@ -130,11 +130,11 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
     const services: any = [];
     serviceOnState.forEach((service: any) => {
       if (service.serviceID != 1 && service.serviceID != 5) {
-        service = Object.assign({
+        service = {
           serviceID: service.serviceID,
           serviceName: service.serviceName,
           serviceLoaded: false,
-        });
+        };
         services.push(service);
       }
     });
@@ -206,8 +206,6 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
     services.forEach((service: any) => {
       if (serviceID == service.serviceID) {
         service.serviceLoaded = true;
-      } else {
-        // result will be displayed here
       }
     });
     console.log(services, 'servicechane');

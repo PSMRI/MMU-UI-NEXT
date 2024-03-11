@@ -111,7 +111,7 @@ export class NcdCareDiagnosisComponent implements OnInit, DoCheck {
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.diagnosis) {
+        if (res?.statusCode == 200 && res?.data?.diagnosis) {
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
       });

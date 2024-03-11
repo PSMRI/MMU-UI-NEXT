@@ -102,7 +102,7 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
     this.doctorService
       .getMMUCasesheetData(caseSheetRequest)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
+        if (res?.statusCode == 200 && res?.data) {
           this.mmuCaseSheetData = res.data;
 
           if (this.mmuCaseSheetData?.doctorData) {
@@ -265,7 +265,7 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
     }
     if (
       this.caseSheetData?.doctorData?.Refer &&
-      this.referDetails.revisitDate &&
+      this.referDetails?.revisitDate &&
       !moment(this.referDetails.revisitDate, 'DD/MM/YYYY', true).isValid()
     ) {
       const sDate = new Date(this.referDetails.revisitDate);
@@ -281,11 +281,6 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
     const len = String(10).length - String(this).length + 1;
     return len > 0 ? new Array(len).join('0') + this : this;
   }
-
-  // padLeft() {
-  //   let len = (String(10).length - String(this).length) + 1;
-  //   return len > 0 ? new Array(len).join('0') + this : this;
-  // }
 
   // AV40085804 13/10/2021 Integrating Multilingual Functionality -----Start-----
   ngDoCheck() {

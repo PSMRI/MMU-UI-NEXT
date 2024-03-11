@@ -79,8 +79,6 @@ export class AncDetailsComponent implements OnInit, DoCheck, OnDestroy {
       );
   }
 
-  checkGravidaStatus(primiGravida: any) {}
-
   checkupLMP(lmpDate: any) {
     const today = new Date();
     const checkdate = new Date();

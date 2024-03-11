@@ -122,10 +122,6 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
           this.dataSource.data.forEach((sectionCount: any, index: number) => {
             sectionCount.sno = index + 1;
           });
-          // this.pageChanged({
-          //   page: this.activePage,
-          //   itemsPerPage: this.rowsPerPage,
-          // });
           this.filterTerm = null;
           console.log(
             'this.filteredBeneficiaryList',
@@ -206,11 +202,6 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
         }
       });
     }
-    // this.activePage = 1;
-    // this.pageChanged({
-    //   page: 1,
-    //   itemsPerPage: this.rowsPerPage,
-    // });
   }
 
   patientImageView(benregID: any) {

@@ -133,7 +133,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     this.findingSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res?.data?.findings) {
+        if (res?.statusCode == 200 && res?.data?.findings) {
           const findings = res.data.findings;
           this.complaintList = findings.complaints.slice();
           this.dataSource.data = [];
@@ -247,7 +247,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     if (arr.length > 0) {
       this.chiefComplaintTemporarayList.map((item: any, t: any) => {
         const index = item.indexOf(arr[0]);
-        if (index != -1 && t != i) item = item.splice(index, 1);
+        if (index != -1 && t != i) item.splice(index, 1);
       });
       this.selectedChiefComplaintList[i] = arr[0];
     }

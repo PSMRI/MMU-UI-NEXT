@@ -21,11 +21,11 @@
  */
 
 import { Component, OnInit, Input, DoCheck } from '@angular/core';
-import { Router } from '@angular/router';
 import { DoctorService } from '../../../shared/services';
 import { CameraService } from '../../../../core/services/camera.service';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-previous-visit-details',
   templateUrl: './previous-visit-details.component.html',
@@ -251,16 +251,6 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
     }
   }
 
-  // getPreviousVisitDetails() {
-  //   const benRegID = localStorage.getItem('beneficiaryRegID');
-  //   this.doctorService.getPreviousVisitDetails(benRegID)
-  //     .subscribe((data) => {
-  //       if (data && data.benVisitDetails && data.benVisitDetails.length > 0)
-  //         this.previousVisitDetails = data.benVisitDetails.slice(0, 5);
-  //       console.log("previous visit Details", this.previousVisitDetails);
-  //     });
-  // }
-
   calculateBMI() {
     if (this.currentVitals)
       return +(
@@ -275,11 +265,6 @@ export class PreviousVisitDetailsComponent implements OnInit, DoCheck {
   getCaseSheetPrintData(visitDetail: any) {
     const visitDateAndTime: Date = visitDetail.createdDate;
     this.visitDateTime = new Date(visitDateAndTime).toISOString();
-
-    // if (visitDetail.visitCategory == 'Cancer Screening') {
-    //   window.open(environment.printCancerCase_sheet_url + '/#/common/casesheet/' + visitDetail.beneficiaryRegID + '/' + visitDetail.benVisitID + '/' + this.visitDateTime);
-    // } else {
-    //   console.log('visitDetail', visitDetail);
 
     localStorage.setItem('caseSheetBenFlowID', '');
     localStorage.setItem('caseSheetVisitCategory', visitDetail.visitCategory);

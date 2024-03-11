@@ -158,7 +158,7 @@ export class GeneralCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   getCasesheetData(caseSheetRequest: any) {
-    if (this.visitCategory == 'General OPD (QC)' || this.previous == true) {
+    if (this.visitCategory == 'General OPD (QC)' || this.previous) {
       this.hideSelectQC = true;
     }
     if (this.serviceType == 'TM') {

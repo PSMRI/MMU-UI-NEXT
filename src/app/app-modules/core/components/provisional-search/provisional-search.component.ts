@@ -96,12 +96,10 @@ export class ProvisionalSearchComponent implements OnInit, DoCheck {
         1;
       if (currentSelection.length > 0) {
         return false;
+      } else if (selectedDiagnosislength < 30) {
+        return false;
       } else {
-        if (selectedDiagnosislength < 30) {
-          return false;
-        } else {
-          return true;
-        }
+        return true;
       }
     }
   }

@@ -88,18 +88,10 @@ export class IdrsscoreService {
   systolicBpValue = new BehaviorSubject(this.systolicBp);
   systolicBpValue$ = this.systolicBpValue.asObservable();
 
-  // systolicBpFlag:any;
-  // systolicBpValueForFlag = new BehaviorSubject(this.systolicBpFlag);
-  // systolicBpValueForFlag$ = this.systolicBpValue.asObservable();
-
   diastolicBp: any = null;
 
   diastolicBpValue = new BehaviorSubject(this.diastolicBp);
   diastolicBpValue$ = this.diastolicBpValue.asObservable();
-
-  // diastolicBpFlag:any;
-  // diastolicBpValueForFlag = new BehaviorSubject(this.diastolicBpFlag);
-  // diastolicBpValueForFlag$ = this.diastolicBpValue.asObservable();
 
   rBSPresent: any = false;
 

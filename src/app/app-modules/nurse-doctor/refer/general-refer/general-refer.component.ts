@@ -34,6 +34,7 @@ import { ConfirmationService } from 'src/app/app-modules/core/services';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { MatDialog } from '@angular/material/dialog';
+import { PreviousDetailsComponent } from 'src/app/app-modules/core/components/previous-details/previous-details.component';
 
 @Component({
   selector: 'app-general-refer',
@@ -291,9 +292,11 @@ export class GeneralReferComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   viewPreviousData(data: any) {
-    // Need to revert this change(after this component PreviousDetailsComponent)
-    // this.dialog.open(PreviousDetailsComponent, {
-    //   data: { dataList: data, title:  this.currentLanguageSet.previousReferralHistoryDetails},
-    // });
+    this.dialog.open(PreviousDetailsComponent, {
+      data: {
+        dataList: data,
+        title: this.currentLanguageSet.previousReferralHistoryDetails,
+      },
+    });
   }
 }

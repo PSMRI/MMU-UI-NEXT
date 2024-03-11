@@ -334,12 +334,7 @@ export class DoctorWorklistComponent implements OnInit, OnDestroy, DoCheck {
   //BU40088124 12/10/2021 Integrating Multilingual Functionality --Start--
   ngDoCheck() {
     this.fetchLanguageResponse();
-    if (
-      this.currentLanguageSet !== undefined &&
-      this.currentLanguageSet !== null &&
-      this.beneficiaryMetaData !== undefined &&
-      this.beneficiaryMetaData !== null
-    ) {
+    if (this.currentLanguageSet && this.beneficiaryMetaData) {
       this.beneficiaryMetaData.map((item: any) => {
         const temp = this.getVisitStatus(item);
         item.statusMessage = temp.statusMessage;

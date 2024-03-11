@@ -176,11 +176,7 @@ export class CancerDoctorDiagnosisCaseSheetComponent
             if (res.data.covidVSID) {
               this.covidVaccineDetails = res.data;
 
-              if (
-                res.data.doseTypeID !== undefined &&
-                res.data.doseTypeID !== null &&
-                res?.data?.covidVaccineTypeID
-              ) {
+              if (res?.data?.doseTypeID && res?.data?.covidVaccineTypeID) {
                 this.covidVaccineDetails.doseTypeID = doseTypeList.filter(
                   (item: any) => {
                     return item.covidDoseTypeID === res.data.doseTypeID;

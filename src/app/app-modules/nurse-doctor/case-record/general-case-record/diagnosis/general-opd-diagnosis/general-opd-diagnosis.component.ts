@@ -74,7 +74,7 @@ export class GeneralOpdDiagnosisComponent implements OnChanges, DoCheck {
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res?.data?.diagnosis) {
+        if (res?.statusCode == 200 && res?.data?.diagnosis) {
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
       });
@@ -119,7 +119,6 @@ export class GeneralOpdDiagnosisComponent implements OnChanges, DoCheck {
     const diagnosisListFormArray = <FormArray>(
       this.generalDiagnosisForm.controls['provisionalDiagnosisList']
     );
-    const diagnosisListFormArrayValue = diagnosisListFormArray.value;
     if (diagnosisListFormArray.length < 30) {
       diagnosisListFormArray.push(this.utils.initProvisionalDiagnosisList());
     } else {
@@ -149,13 +148,11 @@ export class GeneralOpdDiagnosisComponent implements OnChanges, DoCheck {
             }
           }
         });
+    } else if (diagnosisListForm.length > 1) {
+      diagnosisListForm.removeAt(index);
     } else {
-      if (diagnosisListForm.length > 1) {
-        diagnosisListForm.removeAt(index);
-      } else {
-        diagnosisListForm.removeAt(index);
-        diagnosisListForm.push(this.utils.initProvisionalDiagnosisList());
-      }
+      diagnosisListForm.removeAt(index);
+      diagnosisListForm.push(this.utils.initProvisionalDiagnosisList());
     }
   }
 

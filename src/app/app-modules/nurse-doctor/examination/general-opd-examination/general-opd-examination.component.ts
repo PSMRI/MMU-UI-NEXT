@@ -28,7 +28,7 @@ import {
   OnDestroy,
   OnChanges,
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
 import { DoctorService } from '../../shared/services';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
@@ -204,23 +204,23 @@ export class GeneralOpdExaminationComponent
           const temp = examinationData.data;
 
           if (this.visitCategory == 'ANC') {
-            const ancFormData = Object.assign({
+            const ancFormData = {
               generalExaminationForm: temp.generalExamination,
               headToToeExaminationForm: temp.headToToeExamination,
-              systemicExaminationForm: Object.assign({
+              systemicExaminationForm: {
                 cardioVascularSystemForm: temp.cardiovascularExamination,
                 respiratorySystemForm: temp.respiratoryExamination,
                 centralNervousSystemForm: temp.centralNervousExamination,
                 musculoSkeletalSystemForm: temp.musculoskeletalExamination,
                 genitoUrinarySystemForm: temp.genitourinaryExamination,
                 obstetricExaminationForANCForm: temp.obstetricExamination,
-              }),
-            });
+              },
+            };
             this.patientExaminationForm.patchValue(ancFormData);
           }
 
           if (this.visitCategory == 'PNC') {
-            const ancFormData = Object.assign({
+            const ancFormData = {
               generalExaminationForm: temp.generalExamination,
               headToToeExaminationForm: temp.headToToeExamination,
               systemicExaminationForm: Object.assign({
@@ -231,12 +231,12 @@ export class GeneralOpdExaminationComponent
                 musculoSkeletalSystemForm: temp.musculoskeletalExamination,
                 genitoUrinarySystemForm: temp.genitourinaryExamination,
               }),
-            });
+            };
             this.patientExaminationForm.patchValue(ancFormData);
           }
 
           if (this.visitCategory == 'General OPD') {
-            const ancFormData = Object.assign({
+            const ancFormData = {
               generalExaminationForm: temp.generalExamination,
               headToToeExaminationForm: temp.headToToeExamination,
               systemicExaminationForm: Object.assign({
@@ -248,7 +248,7 @@ export class GeneralOpdExaminationComponent
                 genitoUrinarySystemForm: temp.genitourinaryExamination,
                 obstetricExaminationForANCForm: temp.obstetricExamination,
               }),
-            });
+            };
             this.patientExaminationForm.patchValue(ancFormData);
           }
         }

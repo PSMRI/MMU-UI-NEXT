@@ -204,15 +204,13 @@ export class AncImmunizationComponent
     if (tT_3Status === 'Received') {
       if (this.tT_2Status === 'Received' && this.dateReceivedForTT_2 != null) {
         this.tT_3Date = this.dateReceivedForTT_2;
+      } else if (
+        this.tT_1Status === 'Received' &&
+        this.dateReceivedForTT_1 != null
+      ) {
+        this.tT_3Date = this.dateReceivedForTT_1;
       } else {
-        if (
-          this.tT_1Status === 'Received' &&
-          this.dateReceivedForTT_1 != null
-        ) {
-          this.tT_3Date = this.dateReceivedForTT_1;
-        } else {
-          this.tT_3Date = this.dob;
-        }
+        this.tT_3Date = this.dob;
       }
     }
   }

@@ -364,11 +364,10 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
     );
     medicine.insert(
       0,
-      this.generalUtils.initMedicineWithData(
-        Object.assign({}, this.currentPrescription, {
-          createdBy: this.createdBy,
-        })
-      )
+      this.generalUtils.initMedicineWithData({
+        ...this.currentPrescription,
+        createdBy: this.createdBy,
+      })
     );
     console.log(medicine.value, 'frrr');
   }
@@ -413,7 +412,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
     this.prescriptionSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res?.data?.prescription) {
+        if (res?.statusCode == 200 && res?.data?.prescription) {
           const prescription = res.data.prescription;
           this.patchPrescriptionDetails(prescription);
         }
@@ -531,9 +530,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
       this.currentPrescription['isEDL'] = option.isEDL;
     }
 
-    const typeOfDrug = option.isEDL
-      ? ''
-      : this.current_language_set.nonEDLMedicine;
+    option.isEDL ? '' : this.current_language_set.nonEDLMedicine;
     if (option.quantityInHand == 0) {
       this.isStockAvalable = 'warn';
     } else {

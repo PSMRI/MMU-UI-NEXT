@@ -147,7 +147,6 @@ export class SetPasswordComponent implements OnInit {
 
   successCallback(response: any) {
     this.confirmationService.alert('Password changed successfully', 'success');
-    // this.router.navigate(['/']);
     this.logout();
   }
   logout() {

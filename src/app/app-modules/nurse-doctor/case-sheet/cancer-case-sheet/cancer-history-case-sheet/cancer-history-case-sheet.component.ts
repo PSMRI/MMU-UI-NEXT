@@ -64,7 +64,7 @@ export class CancerHistoryCaseSheetComponent
 
       if (this.caseSheetData?.nurseData?.familyDiseaseHistory)
         this.familyDiseaseHistory =
-          this.caseSheetData.nurseData.familyDiseaseHistory;
+          this.caseSheetData?.nurseData.familyDiseaseHistory;
 
       if (this.caseSheetData?.nurseData?.benPersonalDietHistory)
         this.patientPersonalHistory = Object.assign(

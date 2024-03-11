@@ -568,22 +568,20 @@ export class WorkareaComponent
             this.current_language_set.invalidFileExtensionSupportedFileFormats,
             'error'
           );
-        } else {
-          if (this.fileList[0].size / 1000 / 1000 > this.maxFileSize) {
-            console.log('File Size' + this.fileList[0].size / 1000 / 1000);
-            this.confirmationService.alert(
-              this.current_language_set.fileSizeShouldNotExceed +
-                ' ' +
-                this.maxFileSize +
-                ' ' +
-                this.current_language_set.mb,
-              'error'
-            );
-          } else if (this.file) {
-            const myReader: FileReader = new FileReader();
-            myReader.onloadend = this.onLoadFileCallback.bind(this);
-            myReader.readAsDataURL(this.file);
-          }
+        } else if (this.fileList[0].size / 1000 / 1000 > this.maxFileSize) {
+          console.log('File Size' + this.fileList[0].size / 1000 / 1000);
+          this.confirmationService.alert(
+            this.current_language_set.fileSizeShouldNotExceed +
+              ' ' +
+              this.maxFileSize +
+              ' ' +
+              this.current_language_set.mb,
+            'error'
+          );
+        } else if (this.file) {
+          const myReader: FileReader = new FileReader();
+          myReader.onloadend = this.onLoadFileCallback.bind(this);
+          myReader.readAsDataURL(this.file);
         }
       } else
         this.confirmationService.alert(
@@ -682,7 +680,7 @@ export class WorkareaComponent
   savedFileData: any;
   saveUploadDetails(procedureID: any) {
     if (this.fileObj != undefined) {
-      if (this.savedFileData && this.savedFileData[procedureID] != undefined) {
+      if (this.savedFileData?.procedureID) {
         if (
           this.fileObj[procedureID].length >
           this.savedFileData[procedureID].length
@@ -719,19 +717,13 @@ export class WorkareaComponent
             'info'
           );
         }
+      } else if (this.fileObj?.procedureID?.length > 0) {
+        this.saveFileData(procedureID, this.fileObj[procedureID]);
       } else {
-        if (
-          this.fileObj &&
-          this.fileObj[procedureID] &&
-          this.fileObj[procedureID].length > 0
-        ) {
-          this.saveFileData(procedureID, this.fileObj[procedureID]);
-        } else {
-          this.confirmationService.alert(
-            this.current_language_set.alerts.info.selectNewFile,
-            'info'
-          );
-        }
+        this.confirmationService.alert(
+          this.current_language_set.alerts.info.selectNewFile,
+          'info'
+        );
       }
     } else {
       this.confirmationService.alert(
@@ -859,9 +851,9 @@ export class WorkareaComponent
       .subscribe(
         res => {
           if (res) {
-            const techForm: any = this.dataLoad.technicalDataRestruct(
-              Object.assign({}, this.technicianForm.value)
-            );
+            const techForm: any = this.dataLoad.technicalDataRestruct({
+              ...this.technicianForm.value,
+            });
             techForm['labCompleted'] = labCompleted;
             techForm['createdBy'] = localStorage.getItem('userName');
             techForm['doctorFlag'] = localStorage.getItem('doctorFlag');

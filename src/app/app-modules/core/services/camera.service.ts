@@ -54,7 +54,6 @@ export class CameraService {
     currentLanguage: any,
     titleAlign = 'center'
   ): Observable<any> {
-    const config = new MatDialogConfig();
     const dialogRef = this.dialog.open(CameraDialogComponent, {
       width: '80%',
     });
@@ -67,7 +66,6 @@ export class CameraService {
   }
 
   public ViewGraph(graph: any): void {
-    const config = new MatDialogConfig();
     const dialogRef = this.dialog.open(CameraDialogComponent, {
       width: '80%',
     });

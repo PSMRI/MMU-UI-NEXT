@@ -91,18 +91,6 @@ export class DiseaseconfirmationComponent implements OnInit {
     }
   }
 
-  // getData() {
-  //   return this.diseaseFormsGroup.get('diseaseFormsArray') as FormArray;
-  // }
-
-  // getDiseaseFormArray(): AbstractControl[] | null {
-  //   const diseaseFormsArrayControl =
-  //     this.diseaseFormsGroup.get('diseaseFormsArray');
-  //   return diseaseFormsArrayControl instanceof FormArray
-  //     ? diseaseFormsArrayControl.value
-  //     : null;
-  // }
-
   getDiseasesData(): any {
     return this.diseaseFormsGroup.get('diseaseFormsArray') as FormArray;
   }
@@ -194,8 +182,6 @@ export class DiseaseconfirmationComponent implements OnInit {
           };
           this.nurseService.getPreviousVisitData(obj).subscribe((res: any) => {
             if (res.statusCode == 200 && res.data != null) {
-              //console.log("visit", res);
-              //if (res.data.suspectedDisease != null) {
               this.suspect = [];
               if (
                 res.data.confirmedDisease != undefined &&
@@ -279,28 +265,9 @@ export class DiseaseconfirmationComponent implements OnInit {
                         }
                       });
                     });
-                    // this.questionArray.forEach(res => {
-                    //   let temp2 = this.diseaseArray.filter(item => item.disease == res.disease);
-                    //   let diseaseindex = this.diseaseArray.indexOf(temp2[0]);
-                    //   this.diseaseArray.splice(diseaseindex, 1);
-                    // });
-                    // this.questionArray = this.questionArray.concat(this.diseaseArray);
-                    //this.questionArray.push(this.diseases);
                     for (const d of this.diseaseArray) {
                       this.addMoreDiseases(d);
                     }
-                    // this.questionArray.forEach((res, index) => {
-                    //   if (res.selected == true) {
-                    //     let diseaseformArraygroup = (<FormGroup>this.diseaseFormsGroup.controls["diseaseFormsArray"]).controls[index];
-                    //     (<FormGroup>diseaseformArraygroup).controls["selected"].disable();
-                    //   }
-                    // });
-                    //}
-                    // else {
-                    //   for (let d of this.diseaseArray) {
-                    //     this.addMoreDiseases(d);
-                    //   }
-                    // }
                   }
                   this.diseaseArray.forEach((res: any, index: any) => {
                     if (res.selected == true && res.current == false) {
@@ -319,29 +286,7 @@ export class DiseaseconfirmationComponent implements OnInit {
                   console.log('diseasearray', ar);
                   this.idrsScoreService.setDiseasesSelected(ar);
                 });
-
-              // this.questionArray.forEach(res => {
-              //   let temp2 = this.diseaseArray.filter(item => item.disease == res.disease);
-              //   let diseaseindex = this.diseaseArray.indexOf(temp2[0]);
-              //   this.diseaseArray.splice(diseaseindex, 1);
-              // });
-              // this.questionArray = (this.questionArray.concat(this.diseaseArray));
-
-              //}
-              // else {
-              //   this.diseaseArray.forEach((form, index) => {
-              //     this.addMoreDiseases(form);
-              //   });
-              // }
-              //this.addToChronicDiseases(res);
             }
-            //         let ar = [];
-            // this.diseaseArray.forEach(value => {
-            //   if (value.selected)
-            //     ar.push(value.disease);
-            // });
-            // console.log("diseasearray", ar);
-            // this.idrsScoreService.setDiseasesSelected(ar);
           });
         }
       });
@@ -421,7 +366,6 @@ export class DiseaseconfirmationComponent implements OnInit {
           if (this.questions && this.questions.length > 0) {
             for (let i = 0; i < this.questions.length; i++) {
               if (i != 0) {
-                // console.log(this.questions.DiseaseQuestionType !== this.questions[i - 1].DiseaseQuestionType);
                 if (
                   this.questions[i].DiseaseQuestionType !==
                   this.questions[i - 1].DiseaseQuestionType
@@ -446,8 +390,6 @@ export class DiseaseconfirmationComponent implements OnInit {
               .getPreviousVisitData(obj)
               .subscribe((res: any) => {
                 if (res.statusCode == 200 && res.data != null) {
-                  //console.log("visit", res);
-                  //if (res.data.suspectedDisease != null) {
                   this.suspect = [];
                   if (
                     res.data.confirmedDisease != undefined &&
@@ -472,12 +414,6 @@ export class DiseaseconfirmationComponent implements OnInit {
                     });
                   });
 
-                  // this.questionArray.forEach(res => {
-                  //   let temp2 = this.diseaseArray.filter(item => item.disease == res.disease);
-                  //   let diseaseindex = this.diseaseArray.indexOf(temp2[0]);
-                  //   this.diseaseArray.splice(diseaseindex, 1);
-                  // });
-                  // this.questionArray = (this.questionArray.concat(this.diseaseArray));
                   this.diseaseArray.forEach((form: any, index: any) => {
                     this.addMoreDiseases(form);
                   });
@@ -491,13 +427,6 @@ export class DiseaseconfirmationComponent implements OnInit {
                       ].disable();
                     }
                   });
-                  //}
-                  // else {
-                  //   this.diseaseArray.forEach((form, index) => {
-                  //     this.addMoreDiseases(form);
-                  //   });
-                  // }
-                  //  this.addToChronicDiseases(res);
                 }
                 const ar: any = [];
                 this.diseaseArray.forEach((value: any) => {

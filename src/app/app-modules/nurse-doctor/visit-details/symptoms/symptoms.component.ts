@@ -120,7 +120,6 @@ export class SymptomsComponent
           console.log('coviddata', value.data.covidDetails.symptom);
           this.sympFlag = true;
           this.covidSymptoms = value.data.covidDetails.symptom;
-          // this.patientCovidForm.patchValue({'symptom' : this.covidSymptoms});
           this.patientCovidForm.patchValue({
             symptom: value.data.covidDetails.symptom,
           });
@@ -150,7 +149,6 @@ export class SymptomsComponent
         }
       }
       this.answer1 = localStorage.getItem('symptom');
-      //this.outputToParent.emit( this.answer1);
       this.masterdataService.filter(this.answer1);
     } else {
       this.symptomsList = this.symptomsArray;
@@ -183,11 +181,6 @@ export class SymptomsComponent
           console.log(masterData.covidSymptomsMaster);
           console.log(this.symptomsList[0]);
           console.log(this.symptomsList[0]['symptoms']);
-          // if (this.mode) {
-          //   let visitID = localStorage.getItem("visitID");
-          //   let benRegID = localStorage.getItem("beneficiaryRegID");
-          //   this.patchDataToFields(benRegID, visitID);
-          // }
         }
       });
   }

@@ -200,7 +200,6 @@ export class TmcconfirmationComponent implements OnInit, DoCheck, OnDestroy {
     } else {
       this.idrsScoreService.setTMCSubmit(false);
       this.showRadio = false;
-      //this.tmcConfirmationFormsGroup.patchValue({ refrredToAdditionalServiceList: null });
       this.tmcConfirmationFormsGroup.controls[
         'refrredToAdditionalServiceList'
       ].setValidators(Validators.required);
@@ -243,18 +242,13 @@ export class TmcconfirmationComponent implements OnInit, DoCheck, OnDestroy {
         .getDoctorMasterDataForNurse(visitID, serviceProviderID)
         .subscribe((res: any) => {
           if (res.statusCode == 200 && res.data != null) {
-            //this.additionalServices = res.data.additionalServices;
             this.higherHealthcareCenter = res.data.higherHealthCare;
             this.getReferDetails();
           }
         });
     }
   }
-  // public additionalservices(selected: any): void {
-  //   if (selected != null && selected.length > 0) {
-  //     this.selectValueService = selected.length;
-  //   }
-  // }
+
   public higherhealthcarecenter(selected: any): void {
     console.log('form', this.tmcConfirmationFormsGroup);
     if (selected != null && selected.institutionName) {
@@ -284,8 +278,6 @@ export class TmcconfirmationComponent implements OnInit, DoCheck, OnDestroy {
         benVisitID: localStorage.getItem('caseSheetVisitID'),
         beneficiaryRegID: localStorage.getItem('caseSheetBeneficiaryRegID'),
         visitCode: localStorage.getItem('caseSheetVisitCode'),
-        // "Auth": localStorage.getItem('serverKey')
-        // "isCaseSheetdownloaded": localStorage.getItem('isCaseSheetdownloaded') == "true" ? true : false
       };
       this.getTMReferredCasesheetData(caseSheetRequest);
     }
@@ -309,7 +301,6 @@ export class TmcconfirmationComponent implements OnInit, DoCheck, OnDestroy {
               res.data.nurseData.idrs.IDRSDetail.confirmedDisease
             );
 
-            // this.checkHypertensionAndDiabetics("test,Hypertension");
             this.confirmationService
               .confirm('info', this.currentLanguageSet.alerts.info.consulation)
               .subscribe(res => {

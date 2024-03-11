@@ -40,17 +40,31 @@
             </div>
           </mat-step>
 
-          <!-- <mat-step selected *ngIf="showTMVisitDetails" label="Visit Details">
-            <ng-template matStepLabel>{{currentLanguageSet?.nurseData?.visitDetails}}</ng-template>
-            <app-tm-visit-details [mode]="visitMode" [patientVisitForm]='patientMedicalForm.controls.patientVisitForm'></app-tm-visit-details>
+          <mat-step selected *ngIf="showTMVisitDetails" label="Visit Details">
+            <ng-template matStepLabel>{{
+              currentLanguageSet?.nurseData?.visitDetails
+            }}</ng-template>
+            <app-tm-visit-details
+              [mode]="visitMode"
+              [patientVisitForm]="patientVisitForm"></app-tm-visit-details>
             <div class="row m-t-20">
               <div class="col-sm-12 step-btn m-b-40">
-                <button mat-raised-button color='primary' type="button" (click)='submitTMPatientVisitForm(patientMedicalForm)' [disabled]="tmcDisable">{{currentLanguageSet?.common?.submit}}</button>
-                <mat-hint class ="textcolor" *ngIf="tmcDisable">
-                  {{currentLanguageSet?.common?.pleaseviewTMcasesheet}}</mat-hint>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  type="button"
+                  (click)="submitTMPatientVisitForm(patientMedicalForm)"
+                  [disabled]="tmcDisable">
+                  {{ currentLanguageSet?.common?.submit }}
+                </button>
+                <mat-hint class="textcolor" *ngIf="tmcDisable">
+                  {{
+                    currentLanguageSet?.common?.pleaseviewTMcasesheet
+                  }}</mat-hint
+                >
               </div>
             </div>
-          </mat-step> -->
+          </mat-step>
 
           <mat-step *ngIf="showAnc" label="ANC">
             <ng-template matStepLabel>{{

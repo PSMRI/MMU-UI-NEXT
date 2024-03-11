@@ -183,17 +183,6 @@ export class RegisterDemographicDetailsComponent
       else return 1;
     });
   }
-  /* filteraVillage() {
-     console.log('here');
-     this.tempVillageName=this.demographicDetailsForm.value.villageID;
-     if (this.tempVillageName) {
-       this.subFilteredVillageMaster = this.villageList.filter(village => {
-         return village.villageName.toLowerCase().startsWith(this.tempVillageName.toLowerCase());
-       })
-     } else {
-       this.subFilteredVillageMaster = this.villageList;
-     }
-   }*/
 
   /**NEw Suggested village List */
   suggestedVillageList(villageForm: AbstractControl<any, any>, i: any) {
@@ -254,16 +243,6 @@ export class RegisterDemographicDetailsComponent
 
     if (this.suggestedvillageList[i].length == 0) villageForm.reset();
   }
-  /*checkVillage(suggestedList,village)
-  {
-    let len=suggestedList.length;
-  
-    if(villageName.match(village)==null)
-    {
-      this.emptyDistrict();
-      this.emptySubDistrict();
-    }
-  }*/
   /**
    * Load Basic Master Data Observable
    */
@@ -487,10 +466,6 @@ export class RegisterDemographicDetailsComponent
           null,
       },
     });
-    /* this.villageList = [{
-       districtBranchID: this.revisitData.i_bendemographics && this.revisitData.i_bendemographics.m_districtbranchmapping && this.revisitData.i_bendemographics.m_districtbranchmapping.districtBranchID || null,
-       villageName: this.revisitData.i_bendemographics && this.revisitData.i_bendemographics.m_districtbranchmapping && this.revisitData.i_bendemographics.m_districtbranchmapping.villageName || null
-     }];*/
     this.demographicDetailsForm.patchValue({
       villageID:
         (this.revisitData.i_bendemographics &&
@@ -656,7 +631,6 @@ export class RegisterDemographicDetailsComponent
   loadLocalMasterForDemographic() {
     if (!this.patientRevisit) {
       this.loadState();
-      this.loadDistrict();
       this.loadSubDistrict();
       this.loadVillage();
       this.loadZone();
@@ -674,32 +648,6 @@ export class RegisterDemographicDetailsComponent
       stateID: this.locationData.stateID,
       stateName: this.locationData.stateName,
     });
-  }
-
-  /**
-   * Load Districts  for New Patient
-   */
-  loadDistrict() {
-    //     if(this.demographicsMaster.otherLoc.districtList !== undefined && this.demographicsMaster.otherLoc.districtList !== null)
-    //     {
-    //     this.districtList = [{
-    //       districtID: this.demographicsMaster.otherLoc.districtList[0].districtID,
-    //       districtName: this.demographicsMaster.otherLoc.districtList[0].districtName
-    //     }]
-    //     console.log("this.demographicsMaster.otherLoc.districtID", this.demographicsMaster.otherLoc.districtList[0].districtID);
-    //     this.demographicDetailsForm.patchValue({
-    //       districtID: this.demographicsMaster.otherLoc.districtList[0].districtID,
-    //       districtName: this.demographicsMaster.otherLoc.districtList[0].districtName
-    //     })
-    //   }
-    //   else
-    //   {
-    //     this.districtList=[];
-    //   this.demographicDetailsForm.patchValue({
-    //     districtID: null,
-    //     districtName: null
-    //   })
-    // }
   }
 
   /**

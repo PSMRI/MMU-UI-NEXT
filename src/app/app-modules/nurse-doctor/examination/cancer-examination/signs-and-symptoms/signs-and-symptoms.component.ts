@@ -103,8 +103,8 @@ export class SignsAndSymptomsComponent implements OnInit, DoCheck, OnDestroy {
           else this.female = false;
 
           if (
-            beneficiaryDetails?.genderName?.toLocaleLowerCase() == 'female' &&
-            beneficiaryDetails.ageVal >= 18
+            beneficiaryDetails?.genderName?.toLowerCase() == 'female' &&
+            beneficiaryDetails?.ageVal >= 18
           )
             this.female18 = true;
           else this.female18 = false;
@@ -120,7 +120,7 @@ export class SignsAndSymptomsComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   checkLymph(lymphNode_Enlarged: any) {
-    if (lymphNode_Enlarged == false) {
+    if (!lymphNode_Enlarged) {
       this.signsForm.patchValue({
         lymphNodes: new CancerUtils(this.fb).lymphNodesArray.map(item => item),
       });

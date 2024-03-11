@@ -159,10 +159,11 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
           ) {
             const temp = ancCareData.data.ANCCareDetail;
             if (temp) {
-              const ancDetails = Object.assign({}, temp, {
+              const ancDetails = {
+                ...temp,
                 expDelDt: new Date(temp.expDelDt),
                 lmpDate: new Date(temp.lmpDate),
-              });
+              };
               (<FormGroup>(
                 this.patientANCDataForm.controls['patientANCDetailsForm']
               )).patchValue(ancDetails);
@@ -179,11 +180,12 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
 
             const temp2 = ancCareData.data.ANCWomenVaccineDetails;
             if (temp2) {
-              const ancImmunizationDetails = Object.assign({}, temp2, {
+              const ancImmunizationDetails = {
+                ...temp2,
                 dateReceivedForTT_1: new Date(temp2.dateReceivedForTT_1),
                 dateReceivedForTT_2: new Date(temp2.dateReceivedForTT_2),
                 dateReceivedForTT_3: new Date(temp2.dateReceivedForTT_3),
-              });
+              };
               (<FormGroup>(
                 this.patientANCDataForm.controls['patientANCImmunizationForm']
               )).patchValue(ancImmunizationDetails);

@@ -23,10 +23,10 @@
         <th
           mat-header-cell
           style="border-bottom: none"
-          *matHeaderCellDef
+          *matHeaderCellDef="let element"
           mat-sort-header>
           <h4>
-            <!-- <strong>{{ testReport?.procedureName }}</strong> -->
+            <strong>{{ element?.procedureName }}</strong>
           </h4>
         </th>
       </ng-container>

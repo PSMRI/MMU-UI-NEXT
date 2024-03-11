@@ -98,8 +98,6 @@ export class QuickConsultUtils {
       genderName: { value: null, disabled: true },
       genderID: { value: null, disabled: true },
       benVisitID: null,
-      // benChiefComplaint: [null, Validators.required  ],
-      // description: [null, Validators.required],
       chiefComplaintList: this.fb.array([this.initChiefComplaint()]),
       height_cm: { value: null, disabled: true },
       weight_Kg: { value: null, disabled: true },

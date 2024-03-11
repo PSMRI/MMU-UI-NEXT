@@ -36,10 +36,8 @@ h5{
 
 .description h5 {
     display: inline-block;
-    float: left;
 }
 
 .description button {
     display: inline-block;
-    float: right;
 }

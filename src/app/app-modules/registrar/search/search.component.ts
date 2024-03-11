@@ -140,13 +140,6 @@ export class SearchComponent implements OnInit, DoCheck {
               this.filteredBeneficiaryList = this.beneficiaryList;
               this.dataSource.data = this.beneficiaryList;
               this.dataSource.paginator = this.paginator;
-              // this.dataSource.data.forEach((sectionCount: any, index: number) => {
-              //   sectionCount.sno = index + 1;
-              // });
-              // this.pageChanged({
-              //   page: this.activePage,
-              //   itemsPerPage: this.rowsPerPage,
-              // });
             }
             console.log('hi', JSON.stringify(beneficiaryList, null, 4));
           },
@@ -244,11 +237,6 @@ export class SearchComponent implements OnInit, DoCheck {
         }
       });
     }
-    // this.activePage = 1;
-    // this.pageChanged({
-    //   page: 1,
-    //   itemsPerPage: this.rowsPerPage,
-    // });
   }
 
   patientRevisited(benObject: any) {
@@ -310,9 +298,6 @@ export class SearchComponent implements OnInit, DoCheck {
 
   sendToNurseWindow(userResponse: boolean, benObject: any) {
     if (userResponse) {
-      // let regIdObject = { beneficiaryRegID: "" };
-      // regIdObject.beneficiaryRegID = benregID;
-
       this.registrarService.identityPatientRevisit(benObject).subscribe(
         (result: any) => {
           if (result.data)
@@ -386,11 +371,6 @@ export class SearchComponent implements OnInit, DoCheck {
                     sectionCount.sno = index + 1;
                   }
                 );
-                // this.activePage = 1;
-                // this.pageChanged({
-                //   page: this.activePage,
-                //   itemsPerPage: this.rowsPerPage,
-                // });
               }
               console.log(JSON.stringify(beneficiaryList, null, 4));
             },

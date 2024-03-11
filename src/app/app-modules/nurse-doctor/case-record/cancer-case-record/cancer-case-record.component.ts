@@ -206,7 +206,7 @@ export class CancerCaseRecordComponent
           if (beneficiary?.genderName?.toLowerCase() == 'female') {
             this.female = true;
           }
-          if (beneficiary?.genderName != null) {
+          if (beneficiary?.genderName) {
             this.getGraphData(beneficiary);
             if (this.caseRecordMode == 'view') {
               const beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
@@ -309,7 +309,7 @@ export class CancerCaseRecordComponent
     const diastolic: any = [];
 
     console.log(bpList, 'bpList');
-    if (bpList && bpList.length) {
+    if (bpList?.length) {
       bpList = bpList.reverse();
       const k = Object.assign([], bpList);
       k.sort(function (a: any, b: any) {
@@ -393,7 +393,7 @@ export class CancerCaseRecordComponent
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.diagnosis) {
+        if (res?.statusCode == 200 && res?.data?.diagnosis) {
           console.log('res.data for cancer', res.data);
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
@@ -416,11 +416,7 @@ export class CancerCaseRecordComponent
 
   normalWaist = true;
   checkNormalWaist(patientWaist: any) {
-    if (
-      this.female &&
-      this.pregnancyStatus != null &&
-      this.pregnancyStatus.toLowerCase() != 'yes'
-    )
+    if (this.female && this.pregnancyStatus?.toLowerCase() != 'yes')
       this.normalWaist = patientWaist < 80 ? true : false;
     else this.normalWaist = patientWaist < 90 ? true : false;
   }
