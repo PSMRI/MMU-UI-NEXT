@@ -100,14 +100,6 @@ export class RegisterOtherDetailsComponent
   assignPattern() {
     this.patterns = [
       {
-        govtIdentityTypeID: 1,
-        allow: 'number',
-        error: this.currentLanguageSet.common.enterDigitAadharNumber,
-        maxLength: 12,
-        pattern: /^\d{4}\d{4}\d{4}$/,
-        identityType: 'Aadhar',
-      },
-      {
         govtIdentityTypeID: 2,
         allow: 'alphanumeric',
         error: this.currentLanguageSet.common.enterCharacterVoterID,

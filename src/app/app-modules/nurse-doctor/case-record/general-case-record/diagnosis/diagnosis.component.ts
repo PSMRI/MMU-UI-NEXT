@@ -21,12 +21,7 @@
  */
 
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import {
-  MasterdataService,
-  NurseService,
-  DoctorService,
-} from '../../../shared/services';
+import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-diagnosis',
   templateUrl: './diagnosis.component.html',
@@ -42,10 +37,5 @@ export class DiagnosisComponent {
 
   @Input()
   caseRecordMode!: string;
-  constructor(
-    private fb: FormBuilder,
-    private nurseService: NurseService,
-    private doctorService: DoctorService,
-    private masterdataService: MasterdataService
-  ) {}
+  constructor() {}
 }

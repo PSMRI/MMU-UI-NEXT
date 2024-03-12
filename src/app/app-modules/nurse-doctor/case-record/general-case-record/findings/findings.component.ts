@@ -24,7 +24,6 @@ import {
   Component,
   OnInit,
   Input,
-  ChangeDetectorRef,
   ViewChild,
   DoCheck,
   OnDestroy,

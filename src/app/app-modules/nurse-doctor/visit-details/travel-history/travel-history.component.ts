@@ -113,7 +113,7 @@ export class TravelHistoryComponent
     this.getCountryNames();
   }
   ngOnChanges() {
-    if (this.mode == 'view') {
+    if (this.mode.toLowerCase() == 'view') {
       this.readTravel = true;
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');

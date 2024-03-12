@@ -66,8 +66,11 @@
       <div
         *ngIf="dataSource.data.length === 0"
         class="pull-center"
-        style="margin-top: 5px">
-        <strong>{{ current_language_set?.noRecordsFound }}</strong>
+        style="margin-top: 5px; text-align: center">
+        <strong>{{
+          current_language_set?.Significantfindingsdetails
+            ?.noprevioussignificantrecord
+        }}</strong>
       </div>
       <mat-paginator
         [hidden]="dataSource.data.length === 0"

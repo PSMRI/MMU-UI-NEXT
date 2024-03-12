@@ -20,13 +20,8 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, DoCheck, Input, OnDestroy, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormArray,
-  FormBuilder,
-  FormGroup,
-} from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import {
   DoctorService,
@@ -56,7 +51,7 @@ export class DiseaseconfirmationComponent implements OnInit {
   revisit: any;
   diseaseArray: any = [];
   attendantType: any;
-  isDoctor: any;
+  isDoctor: boolean = true;
   currentLanguageSet: any;
   constructor(
     private fb: FormBuilder,
@@ -279,6 +274,16 @@ export class DiseaseconfirmationComponent implements OnInit {
                       ].disable();
                     }
                   });
+                  if (this.attendantType == 'doctor') {
+                    const diseasesArray: any = (
+                      this.diseaseFormsGroup.get(
+                        'diseaseFormsArray'
+                      ) as FormArray
+                    ).controls;
+                    diseasesArray.forEach((item: any) => {
+                      item.get('selected').disable();
+                    });
+                  }
                   const ar: any = [];
                   this.diseaseArray.forEach((value: any) => {
                     if (value.selected) ar.push(value.disease);

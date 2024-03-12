@@ -132,7 +132,7 @@
                     word-break: normal;
                     vertical-align: middle;
                   ">
-                  {{ element?.VisitReason }}
+                  {{ element?.VisitCategory }}
                 </td>
               </ng-container>
 
@@ -152,7 +152,6 @@
                     word-break: normal;
                     vertical-align: middle;
                   ">
-                  {{ element?.VisitReason }}
                   <ng-container *ngIf="element.benPreviousData">
                     <tr>
                       <ng-container *ngIf="element.benPreviousData.nurseData">
@@ -286,7 +285,6 @@
                     word-break: normal;
                     vertical-align: middle;
                   ">
-                  {{ element?.visitCode }}
                   <ng-container *ngIf="element.benPreviousData">
                     <tr>
                       <ng-container *ngIf="element.benPreviousData.doctorData">
@@ -572,7 +570,7 @@
             </table>
             <div
               class="pull-center"
-              style="margin-top: 5px"
+              style="margin-top: 5px; text-align: center"
               *ngIf="historyOfTM.data.length === 0">
               <strong>{{ current_language_set?.noRecordsFound }}</strong>
             </div>
@@ -728,7 +726,7 @@
           </table>
           <div
             class="pull-center"
-            style="margin-top: 5px"
+            style="margin-top: 5px; text-align: center"
             *ngIf="historyOfMCTS.data.length === 0">
             <strong>{{ current_language_set?.noRecordsFound }}</strong>
           </div>
@@ -931,7 +929,7 @@
           </table>
           <div
             class="pull-center"
-            style="margin-top: 5px"
+            style="margin-top: 5px; text-align: center"
             *ngIf="historyOf104.data.length === 0">
             <strong>{{ current_language_set?.noRecordsFound }}</strong>
           </div>

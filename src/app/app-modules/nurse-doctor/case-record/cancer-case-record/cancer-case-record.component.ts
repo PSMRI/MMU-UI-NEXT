@@ -29,10 +29,8 @@ import {
   AfterViewInit,
   OnDestroy,
 } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { ConfirmationService } from '../../../core/services/confirmation.service';
-
+import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 import { BeneficiaryDetailsService } from '../../../core/services/beneficiary-details.service';
 import { DoctorService } from '../../shared/services';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
@@ -173,11 +171,8 @@ export class CancerCaseRecordComponent
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
     private beneficiaryDetailsService: BeneficiaryDetailsService,
     private cameraService: CameraService,
-    private confirmationService: ConfirmationService,
     private doctorService: DoctorService,
     private httpServiceService: HttpServiceService
   ) {}

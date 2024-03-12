@@ -591,15 +591,12 @@
                 formControlName="snomedTerm"
                 (change)="removeSnomedCode(allergy, i)"
                 (keyup.enter)="searchComponents(allergy, i, allergy)" />
-              <button>
-                <mat-icon
-                  class="search-btn cursorPointer"
-                  matSuffix
-                  (click)="searchComponents(allergy, i, allergy)"
-                  [class.toolbar-icon-disabled]="componentFlag"
-                  >search</mat-icon
-                >
-              </button>
+              <mat-icon
+                matSuffix
+                (click)="searchComponents(allergy, i, allergy)"
+                [class.toolbar-icon-disabled]="componentFlag"
+                >search</mat-icon
+              >
             </mat-form-field>
           </div>
 

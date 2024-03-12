@@ -22,7 +22,6 @@
 
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-case-record',
@@ -51,7 +50,7 @@ export class CaseRecordComponent implements OnInit {
   showGeneralOPD: boolean = false;
   showCancer: boolean = false;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor() {}
 
   ngOnInit() {
     if (this.visitCategory) {

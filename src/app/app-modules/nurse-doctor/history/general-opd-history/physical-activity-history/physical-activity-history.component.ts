@@ -120,7 +120,7 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
           history.data.FamilyHistory
         ) {
           this.physicalActivityHistoryData =
-            history.data.physicalActivityHistoryForm;
+            history.data.PhysicalActivityHistory;
           if (this.physicalActivityHistoryData != undefined)
             this.handlePysicalActivityHistoryData();
         }

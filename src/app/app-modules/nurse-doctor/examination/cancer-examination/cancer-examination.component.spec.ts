@@ -124,7 +124,7 @@ describe('CancerExaminationComponent', () => {
 
   it('should get Cancer Examination Details when mode is view', () => {
     spyOn(component, 'fetchCancerExaminationDetails');
-    component.mode = new String('view');
+    component.mode = String('view');
     component.ngOnChanges();
     expect(component.fetchCancerExaminationDetails).toHaveBeenCalled();
   });
@@ -136,7 +136,7 @@ describe('CancerExaminationComponent', () => {
         Observable.of(data.cancerExaminationDetails)
       );
 
-      component.mode = new String('view');
+      component.mode = String('view');
       component.ngOnChanges();
 
       expect(component.fetchCancerExaminationDetails).toHaveBeenCalled();
@@ -151,7 +151,7 @@ describe('CancerExaminationComponent', () => {
         Observable.of(data.cancerExaminationDetails)
       );
 
-      component.mode = new String('view');
+      component.mode = String('view');
       component.ngOnChanges();
 
       expect(component.fetchCancerExaminationDetails).toHaveBeenCalled();
@@ -167,7 +167,7 @@ describe('CancerExaminationComponent', () => {
 
   it('should upadte Cancer Examination Details when mode is update', () => {
     spyOn(component, 'upadteCancerExaminationDetails');
-    component.mode = new String('update');
+    component.mode = String('update');
     component.ngOnChanges();
     expect(component.upadteCancerExaminationDetails).toHaveBeenCalled();
   });
@@ -179,7 +179,7 @@ describe('CancerExaminationComponent', () => {
         Observable.of(data.updateCancerExaminationSuccessResponse)
       );
 
-      component.mode = new String('update');
+      component.mode = String('update');
       component.ngOnChanges();
       expect(component.upadteCancerExaminationDetails).toHaveBeenCalled();
     })

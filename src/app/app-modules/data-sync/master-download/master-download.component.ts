@@ -51,7 +51,7 @@ export class MasterDownloadComponent implements OnInit {
   vanID: any;
   vehicalNo: any;
 
-  showVanDetails!: boolean;
+  showVanDetails: boolean = false;
 
   getVanDetails() {
     this.dataSyncService.getVanDetailsForMasterDownload().subscribe(

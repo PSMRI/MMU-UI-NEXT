@@ -51,3 +51,8 @@
     width: 51% !important;
     
 }
+
+.mat-mdc-form-field-icon-prefix>.mat-icon, .mat-mdc-form-field-icon-suffix>.mat-icon {
+    padding: 0px;
+    box-sizing: unset;
+}

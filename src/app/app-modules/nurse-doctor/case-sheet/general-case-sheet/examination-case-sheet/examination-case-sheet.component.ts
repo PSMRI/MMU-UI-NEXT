@@ -23,7 +23,6 @@
 import { Component, OnInit, Input, OnChanges, DoCheck } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
-import { DoctorService } from '../../../shared/services';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 
 @Component({
@@ -61,7 +60,6 @@ export class ExaminationCaseSheetComponent
   currentLanguageSet: any;
 
   constructor(
-    private doctorService: DoctorService,
     private httpServiceService: HttpServiceService,
     public datepipe: DatePipe
   ) {}
@@ -108,7 +106,7 @@ export class ExaminationCaseSheetComponent
         this.gastroIntestinalExamination =
           examination.gastrointestinalExamination;
     }
-    if (this.caseSheetData && this.caseSheetData.doctorData) {
+    if (this.caseSheetData?.doctorData) {
       this.referDetails = this.caseSheetData.doctorData.Refer;
       console.log('refer', this.referDetails);
       if (this.referDetails?.refrredToAdditionalServiceList) {

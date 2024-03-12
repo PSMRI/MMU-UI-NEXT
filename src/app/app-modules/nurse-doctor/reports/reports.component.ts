@@ -23,14 +23,18 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { MasterdataService } from '../shared/services';
 import { ConfirmationService } from '../../core/services/confirmation.service';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpServiceService } from '../../core/services/http-service.service';
 import { SetLanguageComponent } from '../../core/components/set-language.component';
+// import * as ExcelJS from 'exceljs';
+// import { saveAs } from 'file-saver';
+
+declare global {
+  interface Navigator {
+    msSaveBlob?: (blob: any, defaultName?: string) => boolean;
+  }
+}
+
 @Component({
   selector: 'app-reports',
   templateUrl: './reports.component.html',
@@ -46,6 +50,8 @@ export class ReportsComponent implements OnInit, DoCheck {
     private httpServices: HttpServiceService
   ) {}
   today!: Date;
+  criteriaHead: any;
+
   ngOnInit() {
     this.assignSelectedLanguage();
     this.today = new Date();
@@ -204,32 +210,91 @@ export class ReportsComponent implements OnInit, DoCheck {
     criteria.push({ Filter_Name: 'End_Date', value: this.toDate });
     criteria.push({ Filter_Name: 'Vehicle', value: this.van.vehicalNo });
     criteria.push({ Filter_Name: 'Report', value: this.report.reportName });
-    this.exportExcel(criteria);
+    // this.exportExcel(criteria);
   }
-  exportExcel(criteria: any) {
-    if (this.reportData) {
-      const reportManipulatedData = this.manipulateNullReportData(
-        this.reportData
-      );
-      if (reportManipulatedData && reportManipulatedData.length > 0) {
-        const head = Object.keys(reportManipulatedData[0]);
-        console.log(' head', head);
-        const wb_name = this.report.reportName;
-        // Need to revert this back! -- 23/2/2024
-        // const criteria_worksheet: XLSX.WorkSheet =
-        //   XLSX.utils.json_to_sheet(criteria);
-        // const report_worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(
-        //   reportManipulatedData,
-        //   { header: head }
-        // );
-        // let reportSheetData = this.manipulateSheetCellsAndColumns(
-        //   head,
-        //   report_worksheet
-        // );
-        // this.generateWorkBook(reportSheetData, criteria_worksheet, wb_name);
-      }
-    }
-  }
+  // exportExcel(criteria: any) {
+  //   if (criteria.length > 0) {
+  //     const criteriaArray = criteria.filter(function (obj: any) {
+  //       for (const key in obj) {
+  //         if (obj[key] == null) {
+  //           obj[key] = '';
+  //         }
+  //       }
+  //       return obj;
+  //     });
+  //     if (criteriaArray.length != 0) {
+  //       this.criteriaHead = Object.keys(criteriaArray[0]);
+  //       console.log('this.criteriaHead', this.criteriaHead);
+  //     }
+  //   }
+  //   if (this.reportData.length > 0) {
+  //     const array = this.reportData.filter(function (obj: any) {
+  //       for (const key in obj) {
+  //         if (obj[key] == null) {
+  //           obj[key] = '';
+  //         }
+  //       }
+  //       return obj;
+  //     });
+  //   if (array.length != 0) {
+  //     const head = Object.keys(array[0]);
+  //     console.log('head', head);
+  //       const wb_name = this.report.reportName;
+  //       const workbook = new ExcelJS.Workbook();
+  //       const criteria_worksheet = workbook.addWorksheet("Criteria");
+  //       const report_worksheet =  workbook.addWorksheet("Report");
+
+  //       report_worksheet.addRow(head);
+  //       criteria_worksheet.addRow(this.criteriaHead);
+
+  //       // Add data
+  //         criteria.forEach((row: { [x: string]: any; }) => {
+  //           const rowData: any[] = [];
+  //           this.criteriaHead.forEach((header: string | number) => {
+  //             // console.log("header1", header);
+  //             rowData.push(row[header]);
+  //           });
+  //           criteria_worksheet.addRow(rowData);
+  //         });
+  //         this.reportData.forEach((row: { [x: string]: any; }) => {
+  //           const rowData: any[] = [];
+  //           head.forEach(header => {
+  //             // console.log("header2", header);
+  //             rowData.push(row[header]);
+  //           });
+  //           report_worksheet.addRow(rowData);
+  //         });
+
+  //         // Write to file
+  //         workbook.xlsx.writeBuffer().then(buffer => {
+  //           const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  //           saveAs(blob, wb_name + '.xlsx');
+  //           if (navigator.msSaveBlob) {
+  //             navigator.msSaveBlob(blob, wb_name);
+  //           }
+  //           else {
+  //             var link = document.createElement("a");
+  //             link.href = URL.createObjectURL(blob);
+  //             link.setAttribute('visibility', 'hidden');
+  //             link.download = wb_name.replace(/ /g, "_") + ".xlsx";
+  //             document.body.appendChild(link);
+  //             link.click();
+  //             document.body.removeChild(link);
+  //           }
+  //         });
+  //     // }
+  //     this.confirmationService.alert(
+  //       "Report Downloaded",
+  //       'success',
+  //     );
+  //   } else {
+  //     this.confirmationService.alert(
+  //       "No Record Found",
+  //     );
+  //   }
+  //   }
+  //   this.reportForm.reset();
+  // }
 
   manipulateNullReportData(reportData: any) {
     const tempReport = reportData.filter((report: any) => {
@@ -285,35 +350,5 @@ export class ReportsComponent implements OnInit, DoCheck {
     modifiedHeader =
       modifiedHeader.charAt(0).toUpperCase() + modifiedHeader.substr(1);
     return modifiedHeader.replace(/I D/g, 'ID');
-  }
-
-  generateWorkBook(
-    report_worksheet: any,
-    criteria_worksheet: any,
-    wb_name: any
-  ) {
-    // const workbook: XLSX.WorkBook = {
-    //   Sheets: { Report: report_worksheet, Criteria: criteria_worksheet },
-    //   SheetNames: ["Criteria", "Report"],
-    // };
-    // const excelBuffer: any = XLSX.write(workbook, {
-    //   bookType: "xlsx",
-    //   type: "array",
-    // });
-    // let blob = new Blob([excelBuffer], {
-    //   type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    // });
-    // if (navigator.msSaveBlob) {
-    //   navigator.msSaveBlob(blob, wb_name);
-    // } else {
-    //   var link = document.createElement("a");
-    //   link.href = URL.createObjectURL(blob);
-    //   link.setAttribute("visibility", "hidden");
-    //   link.download = wb_name.replace(/ /g, "_") + ".xlsx";
-    //   document.body.appendChild(link);
-    //   link.click();
-    //   document.body.removeChild(link);
-    // }
-    this.reportForm.reset();
   }
 }

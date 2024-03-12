@@ -32,9 +32,7 @@ import { BeneficiaryDetailsService } from '../../../../core/services/beneficiary
 
 import { CameraServiceStub } from '../../../../core/mocks/camera-service-stub';
 import { BeneficiaryDetailsServiceStub } from '../../../../core/mocks/beneficiary-details-service-stub';
-
 import { CancerUtils } from '../../../shared/utility';
-
 import { BreastExaminationComponent } from './breast-examination.component';
 
 describe('BreastExaminationComponent', () => {

@@ -1,8 +1,11 @@
 <div class="row title" *ngIf="previous">
   <h4>{{ currentLanguageSet?.nurseData?.visitDetails }}</h4>
-  <button class="pull-right exit" [matDialogClose]="false" mat-icon-button>
-    <mat-icon class="mat-24">close</mat-icon>
-  </button>
+  <mat-icon
+    class="pull-right exit md-24"
+    style="float: right"
+    [matDialogClose]="false"
+    >close</mat-icon
+  >
 </div>
 <div [ngClass]="{ 'scrolling-content': previous }">
   <app-cancer-case-sheet

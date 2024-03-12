@@ -28,7 +28,7 @@ import {
   ElementRef,
   DoCheck,
 } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { CameraService } from '../../../../core/services/camera.service';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
@@ -48,7 +48,6 @@ export class GynecologicalExaminationComponent implements OnInit, DoCheck {
   imagePoints: any;
   currentLanguageSet: any;
   constructor(
-    private fb: FormBuilder,
     private cameraService: CameraService,
     public httpServiceService: HttpServiceService
   ) {}

@@ -161,10 +161,13 @@ export class FamilyHistoryNcdscreeningComponent
   }
 
   handleFamilyHistoryData() {
-    this.familyHistoryForm.patchValue(this.familyHistoryData);
     const formArray = this.familyHistoryForm.controls[
       'familyDiseaseList'
     ] as FormArray;
+
+    this.familyHistoryForm.patchValue({
+      familyDiseaseList: this.familyHistoryData.familyDiseaseList,
+    });
     const temp = this.familyHistoryData.familyDiseaseList.slice();
 
     for (let i = 0; i < temp.length; i++) {
@@ -276,7 +279,7 @@ export class FamilyHistoryNcdscreeningComponent
     i: any,
     familyDiseaseForm?: AbstractControl<any, any>
   ) {
-    const disease: any = event.value;
+    const disease: any = event;
     const familyDiseaseList = <FormArray>(
       this.familyHistoryForm.controls['familyDiseaseList']
     );

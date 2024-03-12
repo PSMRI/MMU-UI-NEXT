@@ -38,9 +38,6 @@ import { DataSyncService } from '../../../data-sync/shared/service/data-sync.ser
   providers: [DataSyncService],
 })
 export class DataSyncLoginComponent implements OnInit, DoCheck {
-  userName: any;
-  password: any;
-
   dynamictype = 'password';
   dialogRef: any;
   data: any;
@@ -145,11 +142,22 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
   */
   dataSyncLogin() {
     this.showProgressBar = true;
-    const encriptPassword = this.encrypt(this.Key_IV, this.password);
+    const userName: any = this.loginForm.controls['userName'].value;
+    const encriptPassword = this.encrypt(
+      this.Key_IV,
+      this.loginForm.controls['password'].value
+    );
 
-    if (this.userName && this.password) {
+    if (
+      this.loginForm.controls['userName'].value &&
+      this.loginForm.controls['password'].value
+    ) {
       this.dataSyncService
-        .dataSyncLogin(this.userName, encriptPassword, false)
+        .dataSyncLogin(
+          this.loginForm.controls['userName'].value,
+          encriptPassword,
+          false
+        )
         .subscribe(
           (res: any) => {
             if (res.statusCode === 200) {
@@ -188,15 +196,11 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
                   .subscribe(confirmResponse => {
                     if (confirmResponse) {
                       this.dataSyncService
-                        .userlogoutPreviousSession(this.userName)
+                        .userlogoutPreviousSession(userName)
                         .subscribe((userlogoutPreviousSession: any) => {
                           if (userlogoutPreviousSession.statusCode === 200) {
                             this.dataSyncService
-                              .dataSyncLogin(
-                                this.userName,
-                                encriptPassword,
-                                true
-                              )
+                              .dataSyncLogin(userName, encriptPassword, true)
                               .subscribe((userLoggedIn: any) => {
                                 if (userLoggedIn.statusCode === 200) {
                                   if (

@@ -30,6 +30,7 @@ import {
 } from 'src/app/app-modules/core/services';
 import { FormBuilder } from '@angular/forms';
 import { DataSyncLoginComponent } from '../core/components/data-sync-login/data-sync-login.component';
+import { MasterDownloadComponent } from '../data-sync/master-download/master-download.component';
 
 @Component({
   selector: 'app-login-cmp',
@@ -284,6 +285,23 @@ export class LoginComponent implements OnInit {
       data: {
         masterDowloadFirstTime: true,
       },
+    });
+    this.loginDialogRef.afterClosed().subscribe(flag => {
+      if (flag) {
+        this.dialog
+          .open(MasterDownloadComponent, {
+            hasBackdrop: true,
+            disableClose: true,
+            panelClass: 'fit-screen',
+            backdropClass: 'backdrop',
+            position: { top: '20px' },
+          })
+          .afterClosed()
+          .subscribe(() => {
+            sessionStorage.clear();
+            localStorage.clear();
+          });
+      }
     });
   }
 }

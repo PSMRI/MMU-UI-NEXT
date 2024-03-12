@@ -21,13 +21,8 @@
  */
 
 import { Component, OnInit, Input, DoCheck, OnDestroy } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-
-import {
-  MasterdataService,
-  NurseService,
-  DoctorService,
-} from '../../../../shared/services';
+import { FormGroup } from '@angular/forms';
+import { MasterdataService, DoctorService } from '../../../../shared/services';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { BeneficiaryDetailsService } from 'src/app/app-modules/core/services';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
@@ -59,8 +54,6 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
   current_language_set: any;
 
   constructor(
-    private fb: FormBuilder,
-    private nurseService: NurseService,
     private doctorService: DoctorService,
     private masterdataService: MasterdataService,
     public beneficiaryDetailsService: BeneficiaryDetailsService,
