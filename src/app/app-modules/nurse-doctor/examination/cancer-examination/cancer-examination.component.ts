@@ -327,7 +327,7 @@ export class CancerExaminationComponent
         beneficiaryDetails => {
           if (
             beneficiaryDetails?.genderName?.toLowerCase() == 'female' ||
-            beneficiaryDetails?.genderName?.toLocaleLowerCase() == 'transgender'
+            beneficiaryDetails?.genderName?.toLowerCase() == 'transgender'
           )
             this.female = true;
         }
