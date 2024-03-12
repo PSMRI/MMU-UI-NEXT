@@ -1709,8 +1709,7 @@
     "covidVaccinationDetailsSaved":"Covid vaccination details saved successfully",
     "benPreviousVisitDetails": "Beneficiary previous visit details",
     "travelledLastDays": "Travelled last 14 days",
-    "noRecordsFound": "No Records Found",
-    "noPreviousRecordsFound": "No Previous Significant Findings"
+    "noRecordsFound": "No Records Found"
   }
   
 }

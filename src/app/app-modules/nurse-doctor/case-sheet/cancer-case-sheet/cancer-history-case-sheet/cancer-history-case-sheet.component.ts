@@ -66,11 +66,10 @@ export class CancerHistoryCaseSheetComponent
         this.familyDiseaseHistory =
           this.caseSheetData?.nurseData.familyDiseaseHistory;
 
-      if (this.caseSheetData?.nurseData?.benPersonalDietHistory)
-        this.patientPersonalHistory = Object.assign(
-          {},
-          this.caseSheetData.nurseData.benPersonalDietHistory
-        );
+      if (this.caseSheetData.nurseData?.benPersonalDietHistory)
+        this.patientPersonalHistory = {
+          ...this.caseSheetData.nurseData.benPersonalDietHistory,
+        };
 
       if (this.caseSheetData?.nurseData?.patientPersonalHistory)
         this.patientPersonalHistory = Object.assign(
