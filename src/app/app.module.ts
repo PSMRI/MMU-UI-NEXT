@@ -34,6 +34,7 @@ import { NurseDoctorModule } from './app-modules/nurse-doctor/nurse-doctor.modul
 import { RegistrarModule } from './app-modules/registrar/registrar.module';
 import { AudioRecordingService } from './app-modules/nurse-doctor/shared/services/audio-recording.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { DataSYNCModule } from './app-modules/data-sync/dataSync.module';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     BrowserModule,
     NurseDoctorModule,
+    DataSYNCModule,
     RegistrarModule,
     FormsModule,
     MatIconModule,

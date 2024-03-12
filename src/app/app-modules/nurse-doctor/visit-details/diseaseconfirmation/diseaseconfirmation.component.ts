@@ -56,7 +56,7 @@ export class DiseaseconfirmationComponent implements OnInit {
   revisit: any;
   diseaseArray: any = [];
   attendantType: any;
-  isDoctor: any;
+  isDoctor: boolean = true;
   currentLanguageSet: any;
   constructor(
     private fb: FormBuilder,
@@ -279,6 +279,16 @@ export class DiseaseconfirmationComponent implements OnInit {
                       ].disable();
                     }
                   });
+                  if (this.attendantType == 'doctor') {
+                    const diseasesArray: any = (
+                      this.diseaseFormsGroup.get(
+                        'diseaseFormsArray'
+                      ) as FormArray
+                    ).controls;
+                    diseasesArray.forEach((item: any) => {
+                      item.get('selected').disable();
+                    });
+                  }
                   const ar: any = [];
                   this.diseaseArray.forEach((value: any) => {
                     if (value.selected) ar.push(value.disease);

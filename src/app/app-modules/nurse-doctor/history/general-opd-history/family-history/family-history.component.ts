@@ -140,7 +140,9 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   handleFamilyHistoryData() {
-    this.familyHistoryForm.patchValue(this.familyHistoryData);
+    this.familyHistoryForm.patchValue({
+      familyDiseaseList: this.familyHistoryData.familyDiseaseList,
+    });
     const formArray = this.familyHistoryForm.controls[
       'familyDiseaseList'
     ] as FormArray;
