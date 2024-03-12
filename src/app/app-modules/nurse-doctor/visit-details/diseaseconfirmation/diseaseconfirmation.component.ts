@@ -20,13 +20,8 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, DoCheck, Input, OnDestroy, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormArray,
-  FormBuilder,
-  FormGroup,
-} from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import {
   DoctorService,
@@ -81,13 +76,27 @@ export class DiseaseconfirmationComponent implements OnInit {
         this.getIDRSDetailsFrmNurse(visitID, benRegID);
       }
     } else this.getPatientRevisitSuspectedDieseaData();
-    // else {
-    //   this.getDiseasesMasterData();
-    // }
-    //}
     this.attendantType = this.route.snapshot.params['attendant'];
     if (this.attendantType == 'doctor') {
       this.isDoctor = true;
+      // let diseasesArray: any = (this.diseaseFormsGroup.get('diseaseFormsArray') as FormArray).controls;
+      this.diseaseArray.forEach((value: any, index: any) => {
+        // if (value?.selected) {
+        //   diseasesArray.at(index).disable();
+        // }
+        if (value.selected == true) {
+          const diseaseformArraygroupData = (<FormGroup>(
+            this.diseaseFormsGroup.controls['diseaseFormsArray']
+          )).controls[index];
+          (<FormGroup>diseaseformArraygroupData).controls['selected'].disable();
+        }
+        const ar: any = [];
+        this.diseaseArray.forEach((value: any) => {
+          if (value.selected) ar.push(value.disease);
+        });
+        console.log('diseasearrayDoctorScreen', ar);
+        this.idrsScoreService.setDiseasesSelected(ar);
+      });
     }
   }
 
