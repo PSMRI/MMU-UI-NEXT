@@ -33,12 +33,12 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { HttpServiceService } from '../../services/http-service.service';
 import { ConfirmationService } from '../../services';
 import { SetLanguageComponent } from '../set-language.component';
-import { saveAs } from 'file-saver';
 import { Subject } from 'rxjs/internal/Subject';
 import { ChartData, ChartType } from 'chart.js';
 import html2canvas from 'html2canvas';
 import { WebcamImage, WebcamInitError } from 'ngx-webcam';
 import { Observable } from 'rxjs';
+import { saveAs } from 'file-saver';
 
 interface Mark {
   xCord: any;

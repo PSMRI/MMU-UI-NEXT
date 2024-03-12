@@ -26,8 +26,8 @@ import { ConfirmationService } from '../../core/services/confirmation.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpServiceService } from '../../core/services/http-service.service';
 import { SetLanguageComponent } from '../../core/components/set-language.component';
-// import * as ExcelJS from 'exceljs';
-// import { saveAs } from 'file-saver';
+import * as ExcelJS from 'exceljs';
+import { saveAs } from 'file-saver';
 
 declare global {
   interface Navigator {
@@ -210,91 +210,87 @@ export class ReportsComponent implements OnInit, DoCheck {
     criteria.push({ Filter_Name: 'End_Date', value: this.toDate });
     criteria.push({ Filter_Name: 'Vehicle', value: this.van.vehicalNo });
     criteria.push({ Filter_Name: 'Report', value: this.report.reportName });
-    // this.exportExcel(criteria);
+    this.exportExcel(criteria);
   }
-  // exportExcel(criteria: any) {
-  //   if (criteria.length > 0) {
-  //     const criteriaArray = criteria.filter(function (obj: any) {
-  //       for (const key in obj) {
-  //         if (obj[key] == null) {
-  //           obj[key] = '';
-  //         }
-  //       }
-  //       return obj;
-  //     });
-  //     if (criteriaArray.length != 0) {
-  //       this.criteriaHead = Object.keys(criteriaArray[0]);
-  //       console.log('this.criteriaHead', this.criteriaHead);
-  //     }
-  //   }
-  //   if (this.reportData.length > 0) {
-  //     const array = this.reportData.filter(function (obj: any) {
-  //       for (const key in obj) {
-  //         if (obj[key] == null) {
-  //           obj[key] = '';
-  //         }
-  //       }
-  //       return obj;
-  //     });
-  //   if (array.length != 0) {
-  //     const head = Object.keys(array[0]);
-  //     console.log('head', head);
-  //       const wb_name = this.report.reportName;
-  //       const workbook = new ExcelJS.Workbook();
-  //       const criteria_worksheet = workbook.addWorksheet("Criteria");
-  //       const report_worksheet =  workbook.addWorksheet("Report");
+  exportExcel(criteria: any) {
+    if (criteria.length > 0) {
+      const criteriaArray = criteria.filter(function (obj: any) {
+        for (const key in obj) {
+          if (obj[key] == null) {
+            obj[key] = '';
+          }
+        }
+        return obj;
+      });
+      if (criteriaArray.length != 0) {
+        this.criteriaHead = Object.keys(criteriaArray[0]);
+        console.log('this.criteriaHead', this.criteriaHead);
+      }
+    }
+    if (this.reportData.length > 0) {
+      const array = this.reportData.filter(function (obj: any) {
+        for (const key in obj) {
+          if (obj[key] == null) {
+            obj[key] = '';
+          }
+        }
+        return obj;
+      });
+      if (array.length != 0) {
+        const head = Object.keys(array[0]);
+        console.log('head', head);
+        const wb_name = this.report.reportName;
+        const workbook = new ExcelJS.Workbook();
+        const criteria_worksheet = workbook.addWorksheet('Criteria');
+        const report_worksheet = workbook.addWorksheet('Report');
 
-  //       report_worksheet.addRow(head);
-  //       criteria_worksheet.addRow(this.criteriaHead);
+        report_worksheet.addRow(head);
+        criteria_worksheet.addRow(this.criteriaHead);
 
-  //       // Add data
-  //         criteria.forEach((row: { [x: string]: any; }) => {
-  //           const rowData: any[] = [];
-  //           this.criteriaHead.forEach((header: string | number) => {
-  //             // console.log("header1", header);
-  //             rowData.push(row[header]);
-  //           });
-  //           criteria_worksheet.addRow(rowData);
-  //         });
-  //         this.reportData.forEach((row: { [x: string]: any; }) => {
-  //           const rowData: any[] = [];
-  //           head.forEach(header => {
-  //             // console.log("header2", header);
-  //             rowData.push(row[header]);
-  //           });
-  //           report_worksheet.addRow(rowData);
-  //         });
+        // Add data
+        criteria.forEach((row: { [x: string]: any }) => {
+          const rowData: any[] = [];
+          this.criteriaHead.forEach((header: string | number) => {
+            // console.log("header1", header);
+            rowData.push(row[header]);
+          });
+          criteria_worksheet.addRow(rowData);
+        });
+        this.reportData.forEach((row: { [x: string]: any }) => {
+          const rowData: any[] = [];
+          head.forEach(header => {
+            // console.log("header2", header);
+            rowData.push(row[header]);
+          });
+          report_worksheet.addRow(rowData);
+        });
 
-  //         // Write to file
-  //         workbook.xlsx.writeBuffer().then(buffer => {
-  //           const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-  //           saveAs(blob, wb_name + '.xlsx');
-  //           if (navigator.msSaveBlob) {
-  //             navigator.msSaveBlob(blob, wb_name);
-  //           }
-  //           else {
-  //             var link = document.createElement("a");
-  //             link.href = URL.createObjectURL(blob);
-  //             link.setAttribute('visibility', 'hidden');
-  //             link.download = wb_name.replace(/ /g, "_") + ".xlsx";
-  //             document.body.appendChild(link);
-  //             link.click();
-  //             document.body.removeChild(link);
-  //           }
-  //         });
-  //     // }
-  //     this.confirmationService.alert(
-  //       "Report Downloaded",
-  //       'success',
-  //     );
-  //   } else {
-  //     this.confirmationService.alert(
-  //       "No Record Found",
-  //     );
-  //   }
-  //   }
-  //   this.reportForm.reset();
-  // }
+        // Write to file
+        workbook.xlsx.writeBuffer().then(buffer => {
+          const blob = new Blob([buffer], {
+            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+          });
+          saveAs(blob, wb_name + '.xlsx');
+          if (navigator.msSaveBlob) {
+            navigator.msSaveBlob(blob, wb_name);
+          } else {
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.setAttribute('visibility', 'hidden');
+            link.download = wb_name.replace(/ /g, '_') + '.xlsx';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }
+        });
+        // }
+        this.confirmationService.alert('Report Downloaded', 'success');
+      } else {
+        this.confirmationService.alert('No Record Found');
+      }
+    }
+    this.reportForm.reset();
+  }
 
   manipulateNullReportData(reportData: any) {
     const tempReport = reportData.filter((report: any) => {
