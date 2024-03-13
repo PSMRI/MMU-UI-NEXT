@@ -101,7 +101,7 @@ export class IotBluetoothComponent implements OnInit, DoCheck {
         this.spinner = false;
       },
       err => {
-        if (typeof err['_body'] != 'object') {
+        if (typeof err['_body'] !== 'object') {
           this.errMsg = undefined;
           this.deviceConnected = false;
           this.apiAvailable = true;

@@ -472,7 +472,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
               .indexOf(complaint.toLowerCase().trim()) >= 0
         );
       }
-    } else if (typeof complaint == 'object' && complaint) {
+    } else if (typeof complaint === 'object' && complaint) {
       if (
         this.chiefComplaintTemporarayList != undefined &&
         this.chiefComplaintTemporarayList != null

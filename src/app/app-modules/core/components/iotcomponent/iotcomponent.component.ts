@@ -117,7 +117,7 @@ export class IotcomponentComponent implements OnInit, DoCheck {
           }
         },
         err => {
-          if (typeof err['_body'] != 'object') {
+          if (typeof err['_body'] !== 'object') {
             this.errorMsg = err['_body']['message'];
           } else {
             this.errorMsg = 'Bluetooth Device is not running';
@@ -169,7 +169,7 @@ export class IotcomponentComponent implements OnInit, DoCheck {
       err => {
         this.stripShowMsg = false;
         this.statusCalibration = true;
-        if (typeof err['_body'] != 'object') {
+        if (typeof err['_body'] !== 'object') {
           this.errorMsg = err['_body']['message'];
         } else {
           this.errorMsg = 'Bluetooth Device is not running';
@@ -196,7 +196,7 @@ export class IotcomponentComponent implements OnInit, DoCheck {
           }
         },
         err => {
-          if (typeof err['_body'] != 'object') {
+          if (typeof err['_body'] !== 'object') {
             this.errorMsg = err['_body']['message'];
           } else {
             this.errorMsg = 'Bluetooth Device is not running';
@@ -231,7 +231,7 @@ export class IotcomponentComponent implements OnInit, DoCheck {
         }
       },
       err => {
-        if (typeof err['_body'] != 'object') {
+        if (typeof err['_body'] !== 'object') {
           this.errorMsg = err['_body']['message'];
         } else {
           this.errorMsg = 'Bluetooth Device is not running';
@@ -276,7 +276,7 @@ export class IotcomponentComponent implements OnInit, DoCheck {
             }
           },
           err => {
-            if (typeof err['_body'] != 'object') {
+            if (typeof err['_body'] !== 'object') {
               this.errorMsg = err['_body']['message'];
             } else {
               this.errorMsg = 'Bluetooth Device is not running';
@@ -299,7 +299,7 @@ export class IotcomponentComponent implements OnInit, DoCheck {
             }
           },
           err => {
-            if (typeof err['_body'] != 'object') {
+            if (typeof err['_body'] !== 'object') {
               this.errorMsg = err['_body']['message'];
             } else {
               this.errorMsg = 'Bluetooth Device is not running';

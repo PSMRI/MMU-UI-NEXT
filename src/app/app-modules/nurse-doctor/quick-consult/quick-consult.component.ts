@@ -1113,7 +1113,7 @@ export class QuickConsultComponent
                   .indexOf(complaint.toLowerCase().trim()) >= 0
             );
         }
-      } else if (typeof complaint == 'object' && complaint) {
+      } else if (typeof complaint === 'object' && complaint) {
         if (
           this.chiefComplaintTemporarayList != undefined &&
           this.chiefComplaintTemporarayList != null

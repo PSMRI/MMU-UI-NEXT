@@ -216,7 +216,7 @@ export class RegisterDemographicDetailsComponent
         this.disableDistrict = false;
         this.disableSubDistrict = false;
       }
-    } else if (typeof village == 'object' && village) {
+    } else if (typeof village === 'object' && village) {
       if (
         this.subFilteredVillageMaster != undefined &&
         this.subFilteredVillageMaster != null &&
