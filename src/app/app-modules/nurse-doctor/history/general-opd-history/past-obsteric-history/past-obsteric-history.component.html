@@ -15,7 +15,7 @@
 </div>
 <div class="row" [formGroup]="pastObstericHistoryForm">
   <div class="col-xs-12 col-sm-4 box">
-    <mat-form-field class="input-full-width">
+    <mat-form-field class="input-full-width mat_form_field_width_thee">
       <mat-label class="mat-label-text">{{
         currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
           ?.totalNumberofPregnancies
@@ -61,6 +61,7 @@
   <div class="col-xs-12" formArrayName="pastObstericHistoryList">
     <mat-card
       class="row"
+      style="border-bottom: 15px"
       *ngFor="
         let pastObstericHistory of getPastObstericHistoryList();
         let i = index
@@ -68,7 +69,7 @@
       <ng-container [formGroupName]="i">
         <mat-card-content>
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-            <mat-form-field class="input-full-width">
+            <mat-form-field class="input-full-width mat_form_field_width">
               <mat-label class="mat-label-text">{{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                   ?.number
@@ -315,7 +316,7 @@
                 'Abortion'
               ">
               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-                <mat-form-field>
+                <mat-form-field class="mat_form_field_width_one">
                   <mat-label class="mat-label-text">{{
                     currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                       ?.placeofDelivery
@@ -365,7 +366,7 @@
                 pastObstericHistory.value.pregOutcome?.pregOutcome !==
                 'Abortion'
               ">
-              <mat-form-field>
+              <mat-form-field class="mat_form_field_width_one">
                 <mat-label class="mat-label-text">{{
                   currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                     ?.deliveryType
@@ -396,7 +397,9 @@
                 'Abortion'
               ">
               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-                <mat-form-field style="width: 250px">
+                <mat-form-field
+                  style="width: 250px"
+                  class="mat_form_field_width_one">
                   <mat-label class="mat-label-text">{{
                     currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                       ?.deliveryComplication
@@ -457,7 +460,9 @@
             </ng-container>
 
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-              <mat-form-field style="width: 250px">
+              <mat-form-field
+                style="width: 250px"
+                class="mat_form_field_width_two">
                 <mat-label class="mat-label-text">{{
                   currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                     ?.postpartumComplication

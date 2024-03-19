@@ -284,9 +284,9 @@
             </div>
             <div class="col-6">
               <mat-paginator
+                [hidden]="dataSource.data.length === 0"
                 style="display: unset !important"
                 [pageSizeOptions]="[5, 10, 20]"
-                [hidden]="dataSource.data.length === 0"
                 [pageSize]="5"
                 showFirstLastButtons
                 aria-label="Select patient in doctorWorklist">

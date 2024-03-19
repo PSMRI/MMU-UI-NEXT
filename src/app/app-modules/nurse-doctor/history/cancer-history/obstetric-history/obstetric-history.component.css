@@ -21,10 +21,10 @@ h5{
 .mat-form-field {
     line-height: unset;
 }
+.mat_form_field_width >>>.mat-mdc-text-field-wrapper {
+    width: 80% !important;
+}
+.mat_form_field_width_one >>>.mat-mdc-text-field-wrapper {
+    width: 148%;
+}
 
-mat-form-field >>> .mat-mdc-text-field-wrapper {
-    width: 135% !important;
-}
-mat-form-field >>> .mdc-text-field__input {
-    width: 54% !important;
-}
