@@ -135,7 +135,7 @@ export class SearchDialogComponent implements OnInit, DoCheck {
     this.masterDataSubscription =
       this.registrarService.registrationMasterDetails$.subscribe(res => {
         console.log('Registrar master data', res);
-        if (res != null) {
+        if (res !== null) {
           this.masterData = Object.assign({}, res);
           console.log(this.masterData, 'masterDataall');
           this.getStatesData();

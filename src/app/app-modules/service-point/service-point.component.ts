@@ -115,13 +115,13 @@ export class ServicePointComponent implements OnInit, DoCheck {
     this.route.data.subscribe({
       next: (res: any) => {
         if (
-          res.servicePoints.statusCode == 200 &&
-          res.servicePoints.data != null
+          res.servicePoints.statusCode === 200 &&
+          res.servicePoints.data !== null
         ) {
           const data = res.servicePoints.data;
           if (data.UserVanSpDetails)
             this.vanServicepointDetails = data.UserVanSpDetails;
-        } else if (res.servicePoints.statusCode == 5002) {
+        } else if (res.servicePoints.statusCode === 5002) {
           this.confirmationService.alert(
             res.servicePoints.errorMessage,
             'error'
@@ -157,11 +157,11 @@ export class ServicePointComponent implements OnInit, DoCheck {
 
     if (this.vanServicepointDetails)
       this.vansList = this.vanServicepointDetails.filter((item: any) => {
-        if (item.vanSession == '3') {
+        if (item.vanSession === 3) {
           return item.vanSession;
         } else {
           return (
-            item.vanSession == this.servicePointForm.controls.sessionID.value
+            item.vanSession === this.servicePointForm.controls.sessionID.value
           );
         }
       });
@@ -230,7 +230,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
       }
     });
     const index = vanDetail.indexOf('- ');
-    if (index != -1) {
+    if (index !== -1) {
       localStorage.setItem('vanType', vanDetail.substring(index + 2));
     }
 
