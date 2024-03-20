@@ -91,7 +91,7 @@ export class PreviousSignificiantFindingsComponent
       .getPreviousSignificiantFindings({ beneficiaryRegID: benRegID })
       .subscribe((data: any) => {
         console.log('previousSignificantFindingsSubs', data);
-        if (data.statusCode == 200) {
+        if (data.statusCode === 200) {
           if (data?.data?.findings) {
             this.previousSignificiantFindingsList = data.data.findings;
             this.filteredPreviousSignificiantFindingsList =

@@ -73,8 +73,8 @@ export class BreastExaminationComponent implements OnInit, DoCheck, OnDestroy {
     this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(
       beneficiaryDetails => {
         if (
-          beneficiaryDetails?.genderName?.toLowerCase() == 'female' ||
-          beneficiaryDetails?.genderName?.toLowerCase() == 'transgender'
+          beneficiaryDetails?.genderName?.toLowerCase() === 'female' ||
+          beneficiaryDetails?.genderName?.toLowerCase() === 'transgender'
         )
           this.female = true;
       }

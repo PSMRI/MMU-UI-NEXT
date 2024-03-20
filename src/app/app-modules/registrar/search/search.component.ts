@@ -176,7 +176,7 @@ export class SearchComponent implements OnInit, DoCheck {
         }`,
         phoneNo: this.getCorrectPhoneNo(element.benPhoneMaps, benObject),
         age:
-          moment(element.dOB).fromNow(true) == 'a few seconds'
+          moment(element.dOB).fromNow(true) === 'a few seconds'
             ? 'Not Available'
             : moment(element.dOB).fromNow(true),
         registeredOn: moment(element.createdDate).format('DD-MM-YYYY'),

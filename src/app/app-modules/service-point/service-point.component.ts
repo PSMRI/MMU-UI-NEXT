@@ -169,8 +169,8 @@ export class ServicePointComponent implements OnInit, DoCheck {
     this.vansList = this.vansList.filter((item: any, index: any, self: any) => {
       return (
         self.findIndex((t: any) => {
-          return t.vanID == item.vanID;
-        }) == index
+          return t.vanID === item.vanID;
+        }) === index
       );
     });
     this.servicePointsList = [];
@@ -178,7 +178,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
   filterServicePointsList() {
     this.saveVanType();
     const serviceLineDetails: any = this.vansList.filter((van: any) => {
-      return this.servicePointForm.controls.vanID.value == van.vanID;
+      return this.servicePointForm.controls.vanID.value === van.vanID;
     })[0];
 
     localStorage.setItem(
@@ -195,12 +195,12 @@ export class ServicePointComponent implements OnInit, DoCheck {
     if (this.vanServicepointDetails)
       this.servicePointsList = this.vanServicepointDetails.filter(
         (item: any) => {
-          if (item.vanSession == '3') {
-            return item.vanID == this.servicePointForm.controls.vanID.value;
+          if (item.vanSession === '3') {
+            return item.vanID === this.servicePointForm.controls.vanID.value;
           } else {
             return (
-              item.vanID == this.servicePointForm.controls.vanID.value &&
-              item.vanSession == this.servicePointForm.controls.sessionID.value
+              item.vanID === this.servicePointForm.controls.vanID.value &&
+              item.vanSession === this.servicePointForm.controls.sessionID.value
             );
           }
         }
@@ -209,8 +209,8 @@ export class ServicePointComponent implements OnInit, DoCheck {
       (item: any, index: any, self: any) => {
         return (
           self.findIndex((t: any) => {
-            return t.servicePointID == item.servicePointID;
-          }) == index
+            return t.servicePointID === item.servicePointID;
+          }) === index
         );
       }
     );
@@ -225,7 +225,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
   saveVanType() {
     let vanDetail: any;
     this.vansList.forEach((van: any) => {
-      if (van.vanID == this.servicePointForm.controls.vanID.value) {
+      if (van.vanID === this.servicePointForm.controls.vanID.value) {
         vanDetail = van.vanNoAndType;
       }
     });
@@ -298,7 +298,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
         );
 
       this.servicePointService.getMMUDemographics().subscribe((res: any) => {
-        if (res && res.statusCode == 200) {
+        if (res && res.statusCode === 200) {
           this.saveDemographicsToStorage(res.data);
         } else {
           this.locationGathetingIssues();
@@ -342,7 +342,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
     console.log('stateID', stateID);
     if (stateID) {
       this.statesList.forEach((item: any) => {
-        if (item.stateID == stateID)
+        if (item.stateID === stateID)
           return this.servicePointForm.controls.stateName.setValue(
             item.stateName
           );
@@ -365,7 +365,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
   fetchSubDistrictsOnDistrictSelection(districtID: any) {
     if (districtID) {
       this.districtList.forEach((item: any) => {
-        if (item.districtID == districtID)
+        if (item.districtID === districtID)
           return this.servicePointForm.controls.districtName.setValue(
             item.districtName
           );
@@ -389,7 +389,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
   onSubDistrictChange(blockID: any) {
     if (blockID) {
       this.subDistrictList.forEach((item: any) => {
-        if (item.blockID == blockID)
+        if (item.blockID === blockID)
           return this.servicePointForm.controls.blockName.setValue(
             item.blockName
           );
@@ -411,7 +411,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
   onDistrictBranchSelection(districtBranchID: any) {
     if (districtBranchID) {
       this.villageList.forEach((item: any) => {
-        if (item.districtBranchID == districtBranchID)
+        if (item.districtBranchID === districtBranchID)
           return this.servicePointForm.controls.villageName.setValue(
             item.villageName
           );

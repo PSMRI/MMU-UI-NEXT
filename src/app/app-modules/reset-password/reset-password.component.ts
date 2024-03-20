@@ -71,7 +71,7 @@ export class ResetPasswordComponent {
     if (
       data !== undefined &&
       data !== null &&
-      data.forgetPassword != 'user Not Found'
+      data.forgetPassword !== 'user Not Found'
     ) {
       if (data.SecurityQuesAns.length > 0) {
         this.securityQuestions = data.SecurityQuesAns;
@@ -149,7 +149,7 @@ export class ResetPasswordComponent {
       .subscribe(
         response => {
           if (response !== undefined && response !== null) {
-            if (response.statusCode == 200) {
+            if (response.statusCode === 200) {
               this.counter = 0;
               this.router.navigate(['/set-password']);
               this.authService.transactionId = response.data.transactionId;

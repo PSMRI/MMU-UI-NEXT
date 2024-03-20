@@ -173,7 +173,7 @@ export class RegistrationComponent
   loadMasterDataObservable() {
     this.masterDataSubscription =
       this.registrarService.registrationMasterDetails$.subscribe(res => {
-        if (res != null) {
+        if (res !== null) {
           this.masterData = Object.assign({}, res);
           this.govIDMaster = Object.assign({}, res);
           this.otherGovIDMaster = Object.assign({}, res);
@@ -190,7 +190,7 @@ export class RegistrationComponent
   callBeneficiaryDataObservable(benID: any) {
     this.revisitDataSubscription =
       this.registrarService.beneficiaryEditDetails$.subscribe(res => {
-        if (res != null && benID == res.beneficiaryID) {
+        if (res !== null && benID === res.beneficiaryID) {
           this.revisitData = Object.assign({}, res);
         } else {
           this.redirectToSearch();
@@ -235,7 +235,7 @@ export class RegistrationComponent
 
   confirmFormReset(reset: any) {
     if (this.beneficiaryRegistrationForm.dirty) {
-      if (reset == true) {
+      if (reset === true) {
         this.confirmationService
           .confirm('warn', 'Do you want to reset the entered details?')
           .subscribe(res => {
@@ -244,7 +244,7 @@ export class RegistrationComponent
             }
           });
       } else {
-        if (reset == false) {
+        if (reset === false) {
           this.confirmationService
             .confirm(
               `info`,
@@ -260,7 +260,7 @@ export class RegistrationComponent
         }
       }
     } else {
-      if (reset == false) {
+      if (reset === false) {
         this.router.navigate(['/registrar/search/']);
       }
     }
@@ -351,48 +351,48 @@ export class RegistrationComponent
 
     Object.keys(personalForm.controls).forEach(control => {
       if (!personalForm.controls[control].valid) {
-        if (control == 'maritalStatus') {
+        if (control === 'maritalStatus') {
           if (
             personalForm.value.age >= 12 &&
-            personalForm.value.ageUnit == 'Years'
+            personalForm.value.ageUnit === 'Years'
           ) {
             required.push(
               this.currentLanguageSet.ro.personalInfo.maritalStatus
             );
           }
-        } else if (control == 'firstName') {
+        } else if (control === 'firstName') {
           required.push(this.currentLanguageSet.ro.personalInfo.firstName);
-        } else if (control == 'gender') {
+        } else if (control === 'gender') {
           required.push(this.currentLanguageSet.ro.personalInfo.gender);
-        } else if (control == 'phoneNo') {
+        } else if (control === 'phoneNo') {
           required.push(this.currentLanguageSet.bendetails.phoneNo);
-        } else if (control == 'age') {
+        } else if (control === 'age') {
           required.push(this.currentLanguageSet.bendetails.age);
-        } else if (control == 'ageAtMarriage') {
+        } else if (control === 'ageAtMarriage') {
           if (
             personalForm.value.age >= 12 &&
-            personalForm.value.ageUnit == 'Years' &&
-            personalForm.value.maritalStatus != 1 &&
-            personalForm.value.maritalStatus != 7
+            personalForm.value.ageUnit === 'Years' &&
+            personalForm.value.maritalStatus !== 1 &&
+            personalForm.value.maritalStatus !== 7
           )
             required.push(
               this.currentLanguageSet.ro.personalInfo.ageAtMarriage
             );
-        } else if (control == 'spouseName') {
+        } else if (control === 'spouseName') {
           if (
             personalForm.value.age >= 12 &&
-            personalForm.value.ageUnit == 'Years' &&
-            personalForm.value.maritalStatus == 2
+            personalForm.value.ageUnit === 'Years' &&
+            personalForm.value.maritalStatus === 2
           )
             required.push(this.currentLanguageSet.ro.personalInfo.spouseName);
-        } else if (control == 'occupationOther') {
+        } else if (control === 'occupationOther') {
           required.push(
             this.currentLanguageSet.ro.personalInfo.otherOccupation
           );
-        } else if (control == 'educationQualification') {
+        } else if (control === 'educationQualification') {
           if (
             personalForm.value.literacyStatus &&
-            personalForm.value.literacyStatus == 'Literate'
+            personalForm.value.literacyStatus === 'Literate'
           )
             required.push(
               this.currentLanguageSet.ro.personalInfo.educationalQualification
@@ -404,19 +404,19 @@ export class RegistrationComponent
     });
     Object.keys(demographicsForm.controls).forEach(control => {
       if (!demographicsForm.controls[control].valid) {
-        if (control == 'stateID') {
+        if (control === 'stateID') {
           required.push(this.currentLanguageSet.ro.locInfo.state);
-        } else if (control == 'districtID') {
+        } else if (control === 'districtID') {
           required.push(this.currentLanguageSet.ro.locInfo.districtTownCity);
-        } else if (control == 'blockID') {
+        } else if (control === 'blockID') {
           required.push(this.currentLanguageSet.ro.locInfo.taluk);
-        } else if (control == 'villageID') {
+        } else if (control === 'villageID') {
           required.push(this.currentLanguageSet.ro.locInfo.street);
-        } else if (control == 'parkingPlace') {
+        } else if (control === 'parkingPlace') {
           /* required.push('Parking Place'); */
-        } else if (control == 'zoneID') {
+        } else if (control === 'zoneID') {
           /*  required.push('Zone'); */
-        } else if (control == 'servicePoint') {
+        } else if (control === 'servicePoint') {
           /* required.push('Service Point'); */
         } else {
           required.push(control);
@@ -427,19 +427,19 @@ export class RegistrationComponent
     Object.keys(otherDetailsForm.controls).forEach(control => {
       console.log(otherDetailsForm.controls[control].valid);
       if (!otherDetailsForm.controls[control].valid) {
-        if (control == 'emailID') {
+        if (control === 'emailID') {
           required.push(this.currentLanguageSet.emailAddress);
-        } else if (control == 'blockID') {
+        } else if (control === 'blockID') {
           required.push(this.currentLanguageSet.block);
-        } else if (control == 'religionOther') {
+        } else if (control === 'religionOther') {
           required.push(this.currentLanguageSet.otherReligionName);
-        } else if (control == 'govID') {
+        } else if (control === 'govID') {
           govCount++;
-        } else if (control == 'otherGovID') {
+        } else if (control === 'otherGovID') {
           required.push(this.currentLanguageSet.otherGovtID);
-        } else if (control == 'fatherName') {
+        } else if (control === 'fatherName') {
           required.push(this.currentLanguageSet.ro.otherInfo.fName);
-        } else if (control == 'community') {
+        } else if (control === 'community') {
           required.push(this.currentLanguageSet.ro.otherInfo.community);
         } else {
           required.push(control);
@@ -515,7 +515,7 @@ export class RegistrationComponent
     phoneMaps[0]['createdBy'] = localStorage.getItem('userName');
 
     this.registrarService.submitBeneficiary(iEMRForm).subscribe((res: any) => {
-      if (res.statusCode == 200) {
+      if (res.statusCode === 200) {
         this.confirmationService.alert(res.data.response, 'success');
         this.resetBeneficiaryForm();
       } else {
@@ -537,7 +537,7 @@ export class RegistrationComponent
     iEMRForm['passToNurse'] = passToNurse;
 
     this.registrarService.updateBeneficiary(iEMRForm).subscribe((res: any) => {
-      if (res && res.statusCode == 200) {
+      if (res && res.statusCode === 200) {
         this.confirmationService.alert(res.data.response, 'success');
         this.router.navigate(['/registrar/search/']);
       } else {
@@ -560,7 +560,7 @@ export class RegistrationComponent
       this.registrarService
         .updateBeneficiary(iEMRForm)
         .subscribe((res: any) => {
-          if (res && res.statusCode == 200) {
+          if (res && res.statusCode === 200) {
             this.confirmationService.alert(res.data.response, 'success');
             this.router.navigate(['/registrar/search/']);
           } else {
@@ -752,16 +752,16 @@ export class RegistrationComponent
   }
 
   getBenPhMapID(benPhMapID: any) {
-    if (benPhMapID == 'null') {
+    if (benPhMapID === 'null') {
       return null;
     } else {
       return benPhMapID;
     }
   }
   getRelationTypeForUpdate(parentRelation: any, benRelationshipType: any) {
-    if (parentRelation == 1) {
+    if (parentRelation === 1) {
       return 'Self';
-    } else if (parentRelation == 11) {
+    } else if (parentRelation === 11) {
       return 'Other';
     } else {
       return null;
@@ -779,7 +779,7 @@ export class RegistrationComponent
     const otherGovArr: any = [];
     this.govIDMaster.filter(function (item: any) {
       const i = govArr.findIndex(
-        (x: any) => x.govtIdentityTypeID == item.govtIdentityTypeID
+        (x: any) => x.govtIdentityTypeID === item.govtIdentityTypeID
       );
       if (i <= -1) {
         govArr.push(item);
@@ -789,7 +789,7 @@ export class RegistrationComponent
 
     this.otherGovIDMaster.filter(function (item: any) {
       const j = otherGovArr.findIndex(
-        (x: any) => x.govtIdentityTypeID == item.govtIdentityTypeID
+        (x: any) => x.govtIdentityTypeID === item.govtIdentityTypeID
       );
       if (j <= -1) {
         otherGovArr.push(item);
@@ -803,7 +803,7 @@ export class RegistrationComponent
           gov.type &&
           gov.idValue &&
           gov.type === id.govtIdentityTypeID &&
-          gov.deleted == false &&
+          gov.deleted === false &&
           gov.benIdentityId
         ) {
           iEMRids.push({
@@ -827,7 +827,7 @@ export class RegistrationComponent
         if (
           othergov.type &&
           othergov.idValue &&
-          othergov.deleted == false &&
+          othergov.deleted === false &&
           othergov.benIdentityId
         ) {
           if (othergov.type === id.govtIdentityTypeID) {

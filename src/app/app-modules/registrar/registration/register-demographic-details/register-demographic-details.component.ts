@@ -146,12 +146,12 @@ export class RegisterDemographicDetailsComponent
     );
 
     const arr = this.villageList.filter((branch: any) => {
-      return branch.villageName == villageValue.villageName;
+      return branch.villageName === villageValue.villageName;
     });
 
     if (this.selectedvillageList && this.selectedvillageList[i]) {
       this.villageList.map((branch: any, t: any) => {
-        if (t != i) {
+        if (t !== i) {
           const bb = Object.keys(branch).map(key => ({
             type: key,
             value: branch[key],
@@ -171,14 +171,14 @@ export class RegisterDemographicDetailsComponent
           value: branch[key],
         }));
         const index = bb.indexOf(arr[0]);
-        if (index != -1 && t != i) bb = bb.splice(index, 1);
+        if (index !== -1 && t !== i) bb = bb.splice(index, 1);
       });
       this.selectedvillageList[i] = arr[0];
     }
   }
   sortVillageList(branchList: any) {
     branchList.sort((a: any, b: any) => {
-      if (a.villageName == b.villageName) return 0;
+      if (a.villageName === b.villageName) return 0;
       if (a.villageName < b.villageName) return -1;
       else return 1;
     });
@@ -192,8 +192,8 @@ export class RegisterDemographicDetailsComponent
 
     if (typeof village === 'string') {
       if (
-        this.subFilteredVillageMaster != undefined &&
-        this.subFilteredVillageMaster != null &&
+        this.subFilteredVillageMaster !== undefined &&
+        this.subFilteredVillageMaster !== null &&
         this.subFilteredVillageMaster.length > 0
       ) {
         this.suggestedvillageList[i] = this.subFilteredVillageMaster[i].filter(
@@ -218,8 +218,8 @@ export class RegisterDemographicDetailsComponent
       }
     } else if (typeof village === 'object' && village) {
       if (
-        this.subFilteredVillageMaster != undefined &&
-        this.subFilteredVillageMaster != null &&
+        this.subFilteredVillageMaster !== undefined &&
+        this.subFilteredVillageMaster !== null &&
         this.subFilteredVillageMaster.length > 0
       ) {
         this.suggestedvillageList[i] = this.subFilteredVillageMaster[i].filter(
@@ -241,7 +241,7 @@ export class RegisterDemographicDetailsComponent
       }
     }
 
-    if (this.suggestedvillageList[i].length == 0) villageForm.reset();
+    if (this.suggestedvillageList[i].length === 0) villageForm.reset();
   }
   /**
    * Load Basic Master Data Observable
@@ -249,7 +249,7 @@ export class RegisterDemographicDetailsComponent
   loadMasterDataObservable() {
     this.masterDataSubscription =
       this.registrarService.registrationMasterDetails$.subscribe(res => {
-        if (res != null) {
+        if (res !== null) {
           this.masterData = res;
         }
       });

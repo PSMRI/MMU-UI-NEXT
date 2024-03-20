@@ -94,10 +94,10 @@ export class InvestigationsComponent implements OnInit, DoCheck, OnDestroy {
       this.masterdataService.nurseMasterData$.subscribe(masterData => {
         if (masterData && masterData.procedures) {
           this.selectLabTest = masterData.procedures.filter((item: any) => {
-            return item.procedureType == 'Laboratory';
+            return item.procedureType === 'Laboratory';
           });
 
-          if (this.mode == 'view') {
+          if (this.mode === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getInvestigation(benRegID, visitID);
@@ -121,7 +121,7 @@ export class InvestigationsComponent implements OnInit, DoCheck, OnDestroy {
     this.getInvestigationDetails = this.doctorService
       .getVisitComplaintDetails(benRegID, visitID)
       .subscribe((value: any) => {
-        if (value != null && value.statusCode == 200 && value.data != null) {
+        if (value !== null && value.statusCode === 200 && value.data !== null) {
           const visitComplaintDetail = value.data;
           this.patientInvestigationDetails = value.data.Investigation;
           this.checkLabTest();
@@ -139,7 +139,7 @@ export class InvestigationsComponent implements OnInit, DoCheck, OnDestroy {
       if (temp) {
         for (let i = 0; i < temp.length; i++) {
           const testType = this.selectLabTest.filter((item: any) => {
-            return item.procedureID == temp[i].procedureID;
+            return item.procedureID === temp[i].procedureID;
           });
           if (testType.length > 0) {
             result.push(testType[0]);
@@ -149,7 +149,7 @@ export class InvestigationsComponent implements OnInit, DoCheck, OnDestroy {
         k.patchValue(result);
 
         temp.forEach((element: any) => {
-          if (element.procedureName == environment.RBSTest) {
+          if (element.procedureName === environment.RBSTest) {
             this.nurseService.setRbsSelectedInInvestigation(true);
           }
         });
@@ -178,10 +178,10 @@ export class InvestigationsComponent implements OnInit, DoCheck, OnDestroy {
 
   canDisable(test: any) {
     if (
-      ((this.rbsTestResultCurrent != null &&
-        this.rbsTestResultCurrent != undefined) ||
-        this.nurseService.rbsTestResultFromDoctorFetch != null) &&
-      test.procedureName == environment.RBSTest
+      ((this.rbsTestResultCurrent !== null &&
+        this.rbsTestResultCurrent !== undefined) ||
+        this.nurseService.rbsTestResultFromDoctorFetch !== null) &&
+      test.procedureName === environment.RBSTest
     ) {
       return true;
     }
@@ -195,7 +195,7 @@ export class InvestigationsComponent implements OnInit, DoCheck, OnDestroy {
     let oneSelected = 0;
     this.nurseService.setRbsSelectedInInvestigation(false);
     item.forEach((element: any) => {
-      if (element.procedureName == environment.RBSTest) {
+      if (element.procedureName === environment.RBSTest) {
         this.RBStestDone = true;
         this.nurseService.setRbsSelectedInInvestigation(true);
         oneSelected++;

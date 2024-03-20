@@ -147,7 +147,7 @@ export class IotBluetoothComponent implements OnInit, DoCheck {
     this.spinner = true;
     this.service.disconnectBluetoothDevice().subscribe(
       (res: any) => {
-        if (res.status == 202 || res.status == 200) {
+        if (res.status === 202 || res.status === 200) {
           this.service.setBluetoothConnected(false);
           this.deviceConnected = false;
           this.spinner = false;

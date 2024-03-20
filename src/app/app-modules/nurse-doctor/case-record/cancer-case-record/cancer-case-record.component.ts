@@ -203,16 +203,16 @@ export class CancerCaseRecordComponent
     this.beneficiaryDetailsSubscription =
       this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(
         beneficiary => {
-          if (beneficiary?.genderName?.toLowerCase() == 'female') {
+          if (beneficiary?.genderName?.toLowerCase() === 'female') {
             this.female = true;
           }
           if (beneficiary?.genderName) {
             this.getGraphData(beneficiary);
-            if (this.caseRecordMode == 'view') {
+            if (this.caseRecordMode === 'view') {
               const beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
               const visitID = localStorage.getItem('visitID');
               const visitCategory = localStorage.getItem('visitCategory');
-              if (localStorage.getItem('doctorFlag') == '9') {
+              if (localStorage.getItem('doctorFlag') === '9') {
                 this.getDiagnosisDetails(
                   beneficiaryRegID,
                   visitID,
@@ -230,7 +230,7 @@ export class CancerCaseRecordComponent
     this.doctorService
       .getCancerVitalsDetails(ben.beneficiaryRegID, ben.benVisitID)
       .subscribe((res: any) => {
-        if (res.statusCode == 200 && res.data) {
+        if (res.statusCode === 200 && res.data) {
           console.log('graphPloy', res);
           this.movegraphData(res.data.GraphData);
         }
@@ -393,7 +393,7 @@ export class CancerCaseRecordComponent
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res?.statusCode == 200 && res?.data?.diagnosis) {
+        if (res?.statusCode === 200 && res?.data?.diagnosis) {
           console.log('res.data for cancer', res.data);
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
@@ -445,7 +445,7 @@ export class CancerCaseRecordComponent
     this.doctorService.getMMUHistory().subscribe((data: any) => {
       console.log('data', data);
 
-      if (data.statusCode == 200) {
+      if (data.statusCode === 200) {
         this.hideMMUFetch = true;
         console.log('dataget', data);
         this.historyOfMMU = data.data;

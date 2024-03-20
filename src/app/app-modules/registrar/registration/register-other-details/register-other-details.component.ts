@@ -170,7 +170,7 @@ export class RegisterOtherDetailsComponent
   checkIDPattern(index: any) {
     const values = this.otherDetailsForm.value.govID[index];
     const id = (<FormArray>this.otherDetailsForm.controls['govID']).at(index);
-    if (values.idValue.length == values.maxLength) {
+    if (values.idValue.length === values.maxLength) {
       console.log('ok');
     }
   }
@@ -182,7 +182,7 @@ export class RegisterOtherDetailsComponent
     this.masterDataSubscription =
       this.registrarService.registrationMasterDetails$.subscribe(res => {
         // console.log('res other', res)
-        if (res != null) {
+        if (res !== null) {
           // console.log(res,'res other')
           this.masterData = Object.assign({}, res);
           this.govIDMaster[0] = Object.assign({}, res);
@@ -248,7 +248,7 @@ export class RegisterOtherDetailsComponent
       );
       const identityData: any = [];
       unFilteredIdentityData.forEach((element: any) => {
-        if (!element.deleted || element.deleted == false) {
+        if (!element.deleted || element.deleted === false) {
           identityData.push(element);
         }
       });
@@ -258,12 +258,12 @@ export class RegisterOtherDetailsComponent
       const govIDs: any = [];
       const otherGovIDs: any = [];
       identityData.forEach((item: any) => {
-        if (item.govtIdentityType.isGovtID == true) {
+        if (item.govtIdentityType.isGovtID === true) {
           govIDs.push(item);
         }
       });
       identityData.forEach((item: any) => {
-        if (item.govtIdentityType.isGovtID == false) {
+        if (item.govtIdentityType.isGovtID === false) {
           otherGovIDs.push(item);
         }
       });
@@ -279,7 +279,11 @@ export class RegisterOtherDetailsComponent
     const idValue = id.value;
     const idToRemove: any = [];
     idValue.forEach((element: any, i: any) => {
-      if (!element.type || element.type == null || element.type == undefined) {
+      if (
+        !element.type ||
+        element.type === null ||
+        element.type === undefined
+      ) {
         idToRemove.push(i);
       }
     });
@@ -288,7 +292,11 @@ export class RegisterOtherDetailsComponent
     const idOtherToRemove: any = [];
 
     otherIdValue.forEach((element: any, i: any) => {
-      if (!element.type || element.type == null || element.type == undefined) {
+      if (
+        !element.type ||
+        element.type === null ||
+        element.type === undefined
+      ) {
         idOtherToRemove.push(i);
       }
     });
@@ -338,7 +346,7 @@ export class RegisterOtherDetailsComponent
   getAllowedGovChars(govtTypeID: any) {
     let allowedText = null;
     this.patterns.forEach((element: any) => {
-      if (element.govtIdentityTypeID == govtTypeID) {
+      if (element.govtIdentityTypeID === govtTypeID) {
         allowedText = element.allow;
       }
     });
@@ -380,7 +388,7 @@ export class RegisterOtherDetailsComponent
   filtergovIDs(selectedID: any, index: number) {
     const nextIndex = index + 1;
 
-    if (this.previousGovID[index] == undefined) {
+    if (this.previousGovID[index] === undefined) {
       this.previousGovID[index] = selectedID;
 
       const govIDs = this.otherDetailsForm.value.govID;
@@ -391,24 +399,24 @@ export class RegisterOtherDetailsComponent
         this.govIDMaster[nextIndex].govIdEntityMaster = this.govIDMaster[
           nextIndex
         ].govIdEntityMaster.filter((item: any) => {
-          return item.govtIdentityTypeID != value;
+          return item.govtIdentityTypeID !== value;
         });
       });
 
       for (let i = 0; i < this.govIDMaster.length; i++) {
         let indexToRemove;
         let newDataforOtherLists;
-        if (i != index) {
+        if (i !== index) {
           const temp = JSON.parse(
             JSON.stringify(this.govIDMaster[i].govIdEntityMaster)
           );
           temp.forEach((removing: any, j: any) => {
-            if (removing.govtIdentityTypeID == selectedID) {
+            if (removing.govtIdentityTypeID === selectedID) {
               indexToRemove = j;
             }
           });
 
-          if (indexToRemove != undefined) {
+          if (indexToRemove !== undefined) {
             temp.splice(indexToRemove, 1);
             this.govIDMaster[i].govIdEntityMaster = temp;
           }
@@ -426,7 +434,7 @@ export class RegisterOtherDetailsComponent
 
       const toBePushed = this.masterData.govIdEntityMaster.filter(
         (item: any) => {
-          return item.govtIdentityTypeID == this.previousGovID[index];
+          return item.govtIdentityTypeID === this.previousGovID[index];
         }
       );
       // })
@@ -436,19 +444,19 @@ export class RegisterOtherDetailsComponent
       for (let i = 0; i < this.govIDMaster.length; i++) {
         let indexToRemove;
         let newDataforOtherLists;
-        if (i != index) {
-          if (toBePushed[0] != undefined) {
+        if (i !== index) {
+          if (toBePushed[0] !== undefined) {
             this.govIDMaster[i].govIdEntityMaster.push(toBePushed[0]);
           }
           const temp = JSON.parse(
             JSON.stringify(this.govIDMaster[i].govIdEntityMaster)
           );
           temp.forEach((removing: any, j: any) => {
-            if (removing.govtIdentityTypeID == selectedID) {
+            if (removing.govtIdentityTypeID === selectedID) {
               indexToRemove = j;
             }
           });
-          if (indexToRemove != undefined) {
+          if (indexToRemove !== undefined) {
             temp.splice(indexToRemove, 1);
             this.govIDMaster[i].govIdEntityMaster = temp;
           }
@@ -464,7 +472,7 @@ export class RegisterOtherDetailsComponent
     const id = <FormArray>this.otherDetailsForm.controls['govID'];
 
     this.patterns.forEach((element: any, i: any) => {
-      if (type == element.govtIdentityTypeID) {
+      if (type === element.govtIdentityTypeID) {
         id.at(index).patchValue({
           pattern: element.pattern,
           error: element.error,
@@ -493,7 +501,7 @@ export class RegisterOtherDetailsComponent
     // console.log(nextIndex, 'nextIndex')
     // console.log(this.previousOtherGovID[index], 'before at previous ids');
 
-    if (this.previousOtherGovID[index] == undefined) {
+    if (this.previousOtherGovID[index] === undefined) {
       this.previousOtherGovID[index] = selectedID;
 
       const govIDs = this.otherDetailsForm.value.otherGovID;
@@ -510,7 +518,7 @@ export class RegisterOtherDetailsComponent
         this.otherGovIDMaster[nextIndex].otherGovIdEntityMaster =
           this.otherGovIDMaster[nextIndex].otherGovIdEntityMaster.filter(
             (item: any) => {
-              return item.govtIdentityTypeID != value;
+              return item.govtIdentityTypeID !== value;
             }
           );
       });
@@ -519,20 +527,20 @@ export class RegisterOtherDetailsComponent
       for (let i = 0; i < this.otherGovIDMaster.length; i++) {
         let indexToRemove;
         let newDataforOtherLists;
-        if (i != index) {
+        if (i !== index) {
           // console.log(this.masterData.otherGovIdEntityMaster, 'master untouched');
 
           const temp = JSON.parse(
             JSON.stringify(this.otherGovIDMaster[i].otherGovIdEntityMaster)
           );
           temp.forEach((removing: any, j: any) => {
-            if (removing.govtIdentityTypeID == selectedID) {
+            if (removing.govtIdentityTypeID === selectedID) {
               indexToRemove = j;
               // console.log(indexToRemove, j, 'index to remove');
             }
           });
 
-          if (indexToRemove != undefined) {
+          if (indexToRemove !== undefined) {
             temp.splice(indexToRemove, 1);
             this.otherGovIDMaster[i].otherGovIdEntityMaster = temp;
           }
@@ -551,11 +559,11 @@ export class RegisterOtherDetailsComponent
       const toBePushed = this.masterData.otherGovIdEntityMaster.filter(
         (item: any) => {
           // console.log(item, 'item to check');
-          return item.govtIdentityTypeID == this.previousOtherGovID[index];
+          return item.govtIdentityTypeID === this.previousOtherGovID[index];
         }
       );
       // let toBeRemoved = this.masterData.otherGovIdEntityMaster.filter((item)=>{
-      //   return item.govtIdentityTypeID == selectedID;
+      //   return item.govtIdentityTypeID === selectedID;
       // })
       // console.log(this.previousOtherGovID[index], 'tobePushed index');
       // console.log(toBePushed, 'tobePushed');
@@ -565,8 +573,8 @@ export class RegisterOtherDetailsComponent
       for (let i = 0; i < this.otherGovIDMaster.length; i++) {
         let indexToRemove;
         let newDataforOtherLists;
-        if (i != index) {
-          if (toBePushed[0] != undefined) {
+        if (i !== index) {
+          if (toBePushed[0] !== undefined) {
             this.otherGovIDMaster[i].otherGovIdEntityMaster.push(toBePushed[0]);
           }
           const temp = JSON.parse(
@@ -574,13 +582,13 @@ export class RegisterOtherDetailsComponent
           );
           // console.log(temp, 'here');
           temp.forEach((removing: any, j: any) => {
-            if (removing.govtIdentityTypeID == selectedID) {
+            if (removing.govtIdentityTypeID === selectedID) {
               indexToRemove = j;
               // console.log(indexToRemove, j, 'index to remove');
             }
           });
 
-          if (indexToRemove != undefined) {
+          if (indexToRemove !== undefined) {
             temp.splice(indexToRemove, 1);
             this.otherGovIDMaster[i].otherGovIdEntityMaster = temp;
           }
@@ -592,7 +600,7 @@ export class RegisterOtherDetailsComponent
       // console.log(this.masterData.otherGovIdEntityMaster, 'master untouched');
     }
     //  this.otherGovIDMaster[nextIndex].otherGovIdEntityMaster = this.masterData.otherGovIdEntityMaster.filter((item)=>{
-    //    return item.govtIdentityTypeID != selectedID;
+    //    return item.govtIdentityTypeID !== selectedID;
     // })
     // console.log(this.otherGovIDMaster, 'masterchange')
     // console.log(this.masterData.otherGovIdEntityMaster, 'master untouched');
@@ -617,8 +625,8 @@ export class RegisterOtherDetailsComponent
     // console.log(length, 'length')
     //id type '1' means govID
     //id type '0' means otherGovID
-    if (idtype == 1) {
-      if (this.otherDetailsForm.value.govID[index].type != null) {
+    if (idtype === 1) {
+      if (this.otherDetailsForm.value.govID[index].type !== null) {
         if (
           this.patientRevisit &&
           this.otherDetailsForm.value.govID[index].createdBy
@@ -657,8 +665,8 @@ export class RegisterOtherDetailsComponent
       } else {
         id.removeAt(index);
       }
-    } else if (idtype == 0) {
-      if (this.otherDetailsForm.value.otherGovID[index].type != null) {
+    } else if (idtype === 0) {
+      if (this.otherDetailsForm.value.otherGovID[index].type !== null) {
         if (
           this.patientRevisit &&
           this.otherDetailsForm.value.otherGovID[index].createdBy
@@ -711,7 +719,7 @@ export class RegisterOtherDetailsComponent
     //id type '0' means otherGovID
 
     // console.log(index, 'index');
-    if (idtype == 1) {
+    if (idtype === 1) {
       if (
         this.otherDetailsForm.value.govID[index] &&
         this.otherDetailsForm.value.govID[index].type &&
@@ -727,7 +735,7 @@ export class RegisterOtherDetailsComponent
 
         // console.log('please enter value for This ID')
       }
-    } else if (idtype == 0) {
+    } else if (idtype === 0) {
       if (
         this.otherDetailsForm.value.otherGovID[index] &&
         this.otherDetailsForm.value.otherGovID[index].type &&
@@ -753,7 +761,7 @@ export class RegisterOtherDetailsComponent
   getReligionName() {
     this.masterData.religionMaster.forEach((religion: any) => {
       if (
-        this.otherDetailsForm.value.religion != 7 &&
+        this.otherDetailsForm.value.religion !== 7 &&
         this.otherDetailsForm.value.religion === religion.religionID
       ) {
         this.otherDetailsForm.patchValue({

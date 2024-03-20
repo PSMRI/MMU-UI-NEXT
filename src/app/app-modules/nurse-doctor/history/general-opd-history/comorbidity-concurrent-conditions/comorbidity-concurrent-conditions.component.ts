@@ -134,7 +134,7 @@ export class ComorbidityConcurrentConditionsComponent
 
           this.addComorbidityConcurrentConditions();
 
-          if (this.mode == 'view') {
+          if (this.mode === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);
@@ -150,7 +150,7 @@ export class ComorbidityConcurrentConditionsComponent
       .subscribe((history: any) => {
         if (
           history != null &&
-          history.statusCode == 200 &&
+          history.statusCode === 200 &&
           history.data != null &&
           history.data.ComorbidityConditions
         ) {
@@ -170,7 +170,7 @@ export class ComorbidityConcurrentConditionsComponent
     for (let i = 0; i < temp.length; i++) {
       const comorbidityTypeArr = this.comorbidityMasterData.filter(
         (item: any) => {
-          return item.comorbidCondition == temp[i].comorbidCondition;
+          return item.comorbidCondition === temp[i].comorbidCondition;
         }
       );
 
@@ -212,8 +212,8 @@ export class ComorbidityConcurrentConditionsComponent
             );
           else return false;
         });
-        if (item.comorbidCondition == 'None' && temp.length > 0) return false;
-        else if (arr.length == 0) return true;
+        if (item.comorbidCondition === 'None' && temp.length > 0) return false;
+        else if (arr.length === 0) return true;
         else return false;
       });
 
@@ -238,7 +238,7 @@ export class ComorbidityConcurrentConditionsComponent
             ]
           );
           if (
-            comorbidityConcurrentConditionsList.length == 1 &&
+            comorbidityConcurrentConditionsList.length === 1 &&
             !!comorbidityConcurrentConditionsForm
           ) {
             comorbidityConcurrentConditionsForm.patchValue({
@@ -278,7 +278,7 @@ export class ComorbidityConcurrentConditionsComponent
     comorbidityConcurrentConditionsForm?: AbstractControl<any, any>
   ) {
     const previousValue = this.previousSelectedComorbidity[i];
-    if (comorbidityConcurrentConditions.comorbidCondition == 'None') {
+    if (comorbidityConcurrentConditions.comorbidCondition === 'None') {
       this.removeComorbidityExecptNone();
     }
     if (
@@ -338,7 +338,7 @@ export class ComorbidityConcurrentConditionsComponent
       .getPreviousComorbidityHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data != null) {
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data);
             } else {
@@ -411,7 +411,7 @@ export class ComorbidityConcurrentConditionsComponent
 
   sortComorbidityList(comorbidityList: any) {
     comorbidityList.sort((a: any, b: any) => {
-      if (a.comorbidCondition == b.comorbidCondition) return 0;
+      if (a.comorbidCondition === b.comorbidCondition) return 0;
       if (a.comorbidCondition < b.comorbidCondition) return -1;
       else return 1;
     });
@@ -427,7 +427,7 @@ export class ComorbidityConcurrentConditionsComponent
   }
   onComorbidFilterClick() {
     const visitCat = localStorage.getItem('visiCategoryANC');
-    if (visitCat == 'COVID-19 Screening') {
+    if (visitCat === 'COVID-19 Screening') {
       this.ComorbidStatus = 'true';
     } else {
       this.ComorbidStatus = 'false';

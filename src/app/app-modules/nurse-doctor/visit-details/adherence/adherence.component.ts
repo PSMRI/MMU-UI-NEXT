@@ -63,7 +63,7 @@ export class AdherenceComponent implements OnInit, DoCheck, OnChanges {
   }
   // Ends
   ngOnChanges() {
-    if (this.mode == 'view') {
+    if (this.mode === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getAdherenceDetails(benRegID, visitID);
@@ -75,9 +75,9 @@ export class AdherenceComponent implements OnInit, DoCheck, OnChanges {
       .getVisitComplaintDetails(beneficiaryRegID, visitID)
       .subscribe((value: any) => {
         if (
-          value != null &&
-          value.statusCode == 200 &&
-          value?.data?.BenAdherence != null
+          value !== null &&
+          value.statusCode === 200 &&
+          value?.data?.BenAdherence !== null
         )
           this.patientAdherenceForm.patchValue(value.data.BenAdherence);
       });

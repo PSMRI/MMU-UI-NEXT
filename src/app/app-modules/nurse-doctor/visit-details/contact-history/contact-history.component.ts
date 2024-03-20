@@ -96,7 +96,7 @@ export class ContactHistoryComponent
   }
   // Ends
   ngOnChanges() {
-    if (this.mode == 'view') {
+    if (this.mode === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getContactDetails(benRegID, visitID);
@@ -114,9 +114,9 @@ export class ContactHistoryComponent
       .getVisitComplaintDetails(beneficiaryRegID, visitID)
       .subscribe((value: any) => {
         if (
-          value != null &&
-          value.statusCode == 200 &&
-          value?.data?.covidDetails != null
+          value !== null &&
+          value.statusCode === 200 &&
+          value?.data?.covidDetails !== null
         ) {
           console.log('contactStatus', value.data.covidDetails.contactStatus);
           this.patientCovidForm.patchValue({
@@ -132,7 +132,7 @@ export class ContactHistoryComponent
   getContactHistoryMasterData() {
     this.contactHistoryMasterData =
       this.masterdataService.nurseMasterData$.subscribe(response => {
-        if (response != null) {
+        if (response !== null) {
           console.log('contactmaster', response.covidContactHistoryMaster);
           this.contactArray = response.covidContactHistoryMaster;
           const selectedContact = this.contactArray.map(
@@ -146,17 +146,17 @@ export class ContactHistoryComponent
 
   contactSelected() {
     console.log('ConsoleStaus' + this.contactStatus.length);
-    if (this.contactStatus.length != 0) {
+    if (this.contactStatus.length !== 0) {
       if (this.contactStatus.indexOf('None of the above') > -1) {
         localStorage.setItem('contact', 'false');
 
         this.contactData = this.contactList.filter((item: any) => {
-          return item == 'None of the above';
+          return item === 'None of the above';
         });
       } else {
         localStorage.setItem('contact', 'true');
         this.contactData = this.contactList.filter((item: any) => {
-          return item != 'None of the above';
+          return item !== 'None of the above';
         });
       }
       this.cont = localStorage.getItem('contact');
@@ -172,7 +172,7 @@ export class ContactHistoryComponent
   onSymptomFilterClick(symp: any) {
     console.log('Symptom Travel' + symp);
     this.allSymp = localStorage.getItem('allSymptom');
-    if (this.allSymp == 'true') {
+    if (this.allSymp === 'true') {
       this.contactReqiured = 'false';
     } else {
       this.contactReqiured = 'true';

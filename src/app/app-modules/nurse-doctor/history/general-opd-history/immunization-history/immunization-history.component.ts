@@ -129,7 +129,7 @@ export class ImmunizationHistoryComponent
     immunizationAge.forEach((item: any) => {
       const vaccines: any = [];
       list.forEach((element: any) => {
-        if (element.vaccinationTime == item) {
+        if (element.vaccinationTime === item) {
           if (element.sctCode != null) {
             vaccines.push({
               vaccine: element.vaccineName,
@@ -163,7 +163,7 @@ export class ImmunizationHistoryComponent
       this.immunizationHistoryForm.controls['immunizationList']
     )).patchValue(this.temp);
 
-    if (this.mode == 'view') {
+    if (this.mode === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.loadVaccineData(benRegID, visitID);
@@ -179,7 +179,7 @@ export class ImmunizationHistoryComponent
       .subscribe((history: any) => {
         if (
           history != null &&
-          history.statusCode == 200 &&
+          history.statusCode === 200 &&
           history.data != null &&
           history.data.ImmunizationHistory &&
           history.data.ImmunizationHistory.immunizationList
@@ -195,13 +195,13 @@ export class ImmunizationHistoryComponent
             for (let i = 0; i < immunizationData.vaccines.length; i++) {
               if (
                 immunizationData.vaccines[i].status &&
-                immunizationData.vaccines[i].status == true
+                immunizationData.vaccines[i].status === true
               ) {
                 vaccineStatusCount = vaccineStatusCount + 1;
               }
             }
 
-            if (vaccineStatusCount == immunizationData.vaccines.length) {
+            if (vaccineStatusCount === immunizationData.vaccines.length) {
               this.checkSelectALL.push(true);
             } else {
               this.checkSelectALL.push(false);
@@ -254,9 +254,9 @@ export class ImmunizationHistoryComponent
     const arr = age.trim().split(' ');
     if (arr[1]) {
       const ageUnit = arr[1];
-      if (ageUnit.toLowerCase() == 'years') return parseInt(arr[0]) * 12 * 30;
-      else if (ageUnit.toLowerCase() == 'months') return parseInt(arr[0]) * 30;
-      else if (ageUnit.toLowerCase() == 'weeks') return parseInt(arr[0]) * 7;
+      if (ageUnit.toLowerCase() === 'years') return parseInt(arr[0]) * 12 * 30;
+      else if (ageUnit.toLowerCase() === 'months') return parseInt(arr[0]) * 30;
+      else if (ageUnit.toLowerCase() === 'weeks') return parseInt(arr[0]) * 7;
     }
     return 0;
   }

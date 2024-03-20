@@ -64,14 +64,14 @@ export class CaseSheetComponent implements OnInit, DoCheck {
     const dataStore = this.route.snapshot.params['printablePage'] || 'previous';
     let type;
     if (this.previous) {
-      if (dataStore == 'previous') {
+      if (dataStore === 'previous') {
         type = localStorage.getItem('previousCaseSheetVisitCategory');
       }
     } else {
-      if (dataStore == 'current') {
+      if (dataStore === 'current') {
         type = localStorage.getItem('caseSheetVisitCategory');
       }
-      if (dataStore == 'previous') {
+      if (dataStore === 'previous') {
         type = localStorage.getItem('previousCaseSheetVisitCategory');
       }
     }

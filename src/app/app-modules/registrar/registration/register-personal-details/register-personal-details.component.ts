@@ -141,7 +141,7 @@ export class RegisterPersonalDetailsComponent
     this.masterDataSubscription =
       this.registrarService.registrationMasterDetails$.subscribe(res => {
         // console.log('res personal', res)
-        if (res != null) {
+        if (res !== null) {
           this.masterData = res;
           if (this.patientRevisit) {
             this.loadPersonalDataForEditing();
@@ -158,13 +158,13 @@ export class RegisterPersonalDetailsComponent
         (maritalStatus: any) => {
           if (
             revisitData.m_gender.genderID == '1' &&
-            maritalStatus.maritalStatusID != '5'
+            maritalStatus.maritalStatusID !== '5'
           ) {
             return maritalStatus;
           }
           if (
             revisitData.m_gender.genderID == '2' &&
-            maritalStatus.maritalStatusID != '6'
+            maritalStatus.maritalStatusID !== '6'
           ) {
             return maritalStatus;
           }
@@ -446,13 +446,13 @@ export class RegisterPersonalDetailsComponent
         (maritalStatus: any) => {
           if (
             this.personalDetailsForm.value.gender == '1' &&
-            maritalStatus.maritalStatusID != '5'
+            maritalStatus.maritalStatusID !== '5'
           ) {
             return maritalStatus;
           }
           if (
             this.personalDetailsForm.value.gender == '2' &&
-            maritalStatus.maritalStatusID != '6'
+            maritalStatus.maritalStatusID !== '6'
           ) {
             return maritalStatus;
           }
@@ -464,7 +464,7 @@ export class RegisterPersonalDetailsComponent
   changeLiteracyStatus() {
     const literacyStatus = this.personalDetailsForm.value.literacyStatus;
 
-    if (literacyStatus != 'Literate') {
+    if (literacyStatus !== 'Literate') {
       console.log(this.personalDetailsForm.controls, 'controls');
       // this.personalDetailsForm.controls['educationQualification'].clearValidators();
       console.log(
@@ -579,7 +579,7 @@ export class RegisterPersonalDetailsComponent
   }
 
   onAgeUnitEntered() {
-    if (this.personalDetailsForm.value.age != null) {
+    if (this.personalDetailsForm.value.age !== null) {
       this.onAgeEntered();
     }
   }
@@ -652,7 +652,7 @@ export class RegisterPersonalDetailsComponent
    * Clear Marital Status if previously entered
    */
   clearMaritalStatus() {
-    if (this.personalDetailsForm.value.maritalStatus != null) {
+    if (this.personalDetailsForm.value.maritalStatus !== null) {
       this.personalDetailsForm.patchValue({
         maritalStatus: null,
         maritalStatusName: null,
@@ -720,10 +720,10 @@ export class RegisterPersonalDetailsComponent
    *
    */
   clearMarriageDetails() {
-    if (this.personalDetailsForm.value.spouseName != null) {
+    if (this.personalDetailsForm.value.spouseName !== null) {
       this.personalDetailsForm.patchValue({ spouseName: null });
     }
-    if (this.personalDetailsForm.value.ageAtMarriage != null) {
+    if (this.personalDetailsForm.value.ageAtMarriage !== null) {
       this.personalDetailsForm.patchValue({ ageAtMarriage: null });
     }
   }
@@ -733,14 +733,14 @@ export class RegisterPersonalDetailsComponent
    * check for validity of Age At Marriage with other Details
    */
   checkAgeAtMarriage() {
-    if (this.personalDetailsForm.value.ageAtMarriage != null) {
+    if (this.personalDetailsForm.value.ageAtMarriage !== null) {
       if (this.personalDetailsForm.value.age == null) {
         this.confirmationService.alert(
           this.currentLanguageSet.alerts.info.pleaseenterBeneficiaryagefirst,
           'info'
         );
         this.personalDetailsForm.patchValue({ ageAtMarriage: null });
-      } else if (this.personalDetailsForm.value.ageUnit != 'Years') {
+      } else if (this.personalDetailsForm.value.ageUnit !== 'Years') {
         this.confirmationService.alert(
           this.currentLanguageSet.alerts.info.marriageAge +
             ' ' +

@@ -87,7 +87,7 @@ export class CalibrationComponent implements OnInit, DoCheck {
       .fetchCalibrationStrips(providerServiceMapID, pageNo)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200) {
+          if (res.statusCode === 200) {
             if (
               res.data &&
               res.data.calibrationData !== undefined &&

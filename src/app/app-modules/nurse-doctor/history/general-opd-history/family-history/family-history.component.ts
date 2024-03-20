@@ -113,7 +113,7 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
           this.familyMemeberMasterData = masterData.familyMemberTypes;
           this.addFamilyDisease();
 
-          if (this.mode == 'view') {
+          if (this.mode === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);
@@ -129,7 +129,7 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .subscribe((history: any) => {
         if (
           history != null &&
-          history.statusCode == 200 &&
+          history.statusCode === 200 &&
           history.data != null &&
           history.data.FamilyHistory
         ) {
@@ -150,7 +150,7 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
     for (let i = 0; i < temp.length; i++) {
       const diseaseType = this.diseaseMasterData.filter((item: any) => {
-        return item.diseaseType == temp[i].diseaseType;
+        return item.diseaseType === temp[i].diseaseType;
       });
 
       if (diseaseType.length > 0) temp[i].diseaseType = diseaseType[0];
@@ -179,11 +179,11 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
             value.diseaseType != null &&
             value.diseaseType.diseaseType != 'Other'
           )
-            return value.diseaseType.diseaseType == item.diseaseType;
+            return value.diseaseType.diseaseType === item.diseaseType;
           else return false;
         });
-        if (item.diseaseType == 'None' && temp.length > 0) return false;
-        else if (arr.length == 0) return true;
+        if (item.diseaseType === 'None' && temp.length > 0) return false;
+        else if (arr.length === 0) return true;
         else return false;
       });
       this.diseaseSelectList.push(result.slice());
@@ -198,7 +198,7 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
   ) {
     const disease: any = event.value;
     const previousValue: any = this.previousSelectedDiseaseList[i];
-    if (disease.diseaseType == 'None') {
+    if (disease.diseaseType === 'None') {
       this.removeFamilyDiseaseExecptNone();
     }
 
@@ -253,7 +253,7 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
             this.familyHistoryForm.controls['familyDiseaseList']
           );
           this.familyHistoryForm.markAsDirty();
-          if (!!familyHistoryForm && familyDiseaseList.length == 1) {
+          if (!!familyHistoryForm && familyDiseaseList.length === 1) {
             familyHistoryForm.reset();
           } else {
             const removedValue = this.previousSelectedDiseaseList[i];
@@ -281,7 +281,7 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getPreviousFamilyHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data != null) {
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data);
             } else {
@@ -338,7 +338,7 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
   sortDiseaseList(diseaseList: any) {
     diseaseList.sort((a: any, b: any) => {
-      if (a.diseaseType == b.diseaseType) return 0;
+      if (a.diseaseType === b.diseaseType) return 0;
       if (a.diseaseType < b.diseaseType) return -1;
       else return 1;
     });

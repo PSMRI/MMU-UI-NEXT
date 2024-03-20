@@ -144,9 +144,9 @@ export class GeneralOpdHistoryComponent
 
   ngOnChanges(changes: any) {
     this.loadFormData();
-    if (changes.mode && this.mode == 'update') {
+    if (changes.mode && this.mode === 'update') {
       const visitCategory = localStorage.getItem('visitCategory');
-      if (visitCategory == 'NCD screening') {
+      if (visitCategory === 'NCD screening') {
         this.updatePatientNCDScreeningHistory(this.nurseGeneralHistoryForm);
       } else {
         this.updatePatientGeneralHistory(this.nurseGeneralHistoryForm);
@@ -189,8 +189,8 @@ export class GeneralOpdHistoryComponent
       .updateGeneralHistory(generalOPDHistory, temp, this.beneficiary.ageVal)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
-            if (this.visitCategory == 'ANC') {
+          if (res.statusCode === 200 && res.data != null) {
+            if (this.visitCategory === 'ANC') {
               this.getHRPDetails();
             }
             this.confirmationService.alert(res.data.response, 'success');
@@ -220,7 +220,7 @@ export class GeneralOpdHistoryComponent
 
   canShowObstetricHistory() {
     if (this.primiGravida) this.showObstetricHistory = false;
-    else if (this.beneficiary && this.beneficiary.genderName == 'Male')
+    else if (this.beneficiary && this.beneficiary.genderName === 'Male')
       this.showObstetricHistory = false;
     else if (
       this.beneficiary &&
@@ -234,7 +234,7 @@ export class GeneralOpdHistoryComponent
       this.beneficiary.ageVal >= 12
     )
       this.showObstetricHistory = true;
-    else if (this.visitCategory == 'PNC') this.showObstetricHistory = true;
+    else if (this.visitCategory === 'PNC') this.showObstetricHistory = true;
     else if (!this.primiGravida) this.showObstetricHistory = true;
   }
 
@@ -264,7 +264,7 @@ export class GeneralOpdHistoryComponent
       )
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data != null) {
             this.confirmationService.alert(res.data.response, 'success');
             this.nurseGeneralHistoryForm.markAsPristine();
           } else {
@@ -283,8 +283,8 @@ export class GeneralOpdHistoryComponent
     this.doctorService
       .getHRPDetails(beneficiaryRegID, visitCode)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
-          if (res.data.isHRP == true) {
+        if (res && res.statusCode === 200 && res.data) {
+          if (res.data.isHRP === true) {
             this.beneficiaryDetailsService.setHRPPositive();
           } else {
             this.beneficiaryDetailsService.resetHRPPositive();

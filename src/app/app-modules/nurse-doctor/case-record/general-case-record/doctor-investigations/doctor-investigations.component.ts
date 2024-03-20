@@ -185,7 +185,7 @@ export class DoctorInvestigationsComponent
     this.investigationSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res?.statusCode == 200 && res?.data?.investigation) {
+        if (res?.statusCode === 200 && res?.data?.investigation) {
           console.log(res, 'investigations');
           this.patchInvestigationDetails(
             res.data.investigation,
@@ -206,20 +206,20 @@ export class DoctorInvestigationsComponent
 
       investigation.laboratoryList.map((item: any) => {
         const temp = this.nonRadiologyMaster.filter((element: any) => {
-          return element.procedureID == item.procedureID;
+          return element.procedureID === item.procedureID;
         });
         if (temp.length > 0) labTest.push(temp[0]);
       });
 
       investigation.laboratoryList.map((item: any) => {
         const temp = this.radiologyMaster.filter((element: any) => {
-          return element.procedureID == item.procedureID;
+          return element.procedureID === item.procedureID;
         });
         if (temp.length > 0) radiologyTest.push(temp[0]);
 
         //checking RBS test is prescribed or not
         if (
-          item.procedureName.toLowerCase() == environment.RBSTest.toLowerCase()
+          item.procedureName.toLowerCase() === environment.RBSTest.toLowerCase()
         ) {
           this.rbsSelectedInInvestigation = true;
           this.nurseService.setRbsSelectedInInvestigation(true);
@@ -257,11 +257,11 @@ export class DoctorInvestigationsComponent
         if (masterData?.procedures) {
           this.nonRadiologyMaster = masterData.procedures.filter(
             (item: any) => {
-              return item.procedureType == 'Laboratory';
+              return item.procedureType === 'Laboratory';
             }
           );
           this.radiologyMaster = masterData.procedures.filter((item: any) => {
-            return item.procedureType == 'Radiology';
+            return item.procedureType === 'Radiology';
           });
           // checking RBS and Visual acuity is present or not.
           this.nonRadiologyMaster.forEach((element: any) => {
@@ -287,7 +287,7 @@ export class DoctorInvestigationsComponent
             }
           });
 
-          if (this.caseRecordMode == 'view') {
+          if (this.caseRecordMode === 'view') {
             this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
             this.visitID = localStorage.getItem('visitID');
             this.visitCategory = localStorage.getItem('visitCategory');
@@ -316,13 +316,13 @@ export class DoctorInvestigationsComponent
       ((this.rbsTestResultCurrent != null &&
         this.rbsTestResultCurrent != undefined) ||
         this.nurseService.rbsTestResultFromDoctorFetch != null) &&
-      test.procedureName.toLowerCase() == environment.RBSTest.toLowerCase()
+      test.procedureName.toLowerCase() === environment.RBSTest.toLowerCase()
     ) {
       return true;
     }
     if (this.previousLabTestList) {
       const temp = this.previousLabTestList.filter((item: any) => {
-        return item.procedureID == test.procedureID;
+        return item.procedureID === test.procedureID;
       });
 
       if (temp.length > 0) test.disabled = true;
@@ -335,7 +335,8 @@ export class DoctorInvestigationsComponent
   checkTestScore(labreports: any) {
     labreports.forEach((element: any) => {
       if (
-        element.procedureName.toLowerCase() == environment.RBSTest.toLowerCase()
+        element.procedureName.toLowerCase() ===
+        environment.RBSTest.toLowerCase()
       ) {
         this.RBSTestScore = element.componentList[0].testResultValue;
       }
@@ -368,7 +369,8 @@ export class DoctorInvestigationsComponent
     this.nurseService.setRbsSelectedInInvestigation(false);
     item.forEach((element: any) => {
       if (
-        element.procedureName.toLowerCase() == environment.RBSTest.toLowerCase()
+        element.procedureName.toLowerCase() ===
+        environment.RBSTest.toLowerCase()
       ) {
         this.rbsSelectedInInvestigation = true;
         this.nurseService.setRbsSelectedInInvestigation(true);

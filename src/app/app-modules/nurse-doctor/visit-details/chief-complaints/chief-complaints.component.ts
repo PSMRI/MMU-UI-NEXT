@@ -131,7 +131,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
           this.chiefComplaintTemporarayList[0] =
             this.chiefComplaintMaster.slice();
 
-          if (this.mode == 'view') {
+          if (this.mode === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getChiefComplaints(benRegID, visitID);
@@ -145,7 +145,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
     this.getChiefComplaintDetails = this.doctorService
       .getVisitComplaintDetails(benRegID, visitID)
       .subscribe((value: any) => {
-        if (value != null && value.statusCode == 200 && value.data != null) {
+        if (value !== null && value.statusCode === 200 && value.data !== null) {
           const visitComplaintDetail = value.data;
           if (visitComplaintDetail)
             this.benChiefComplaints = visitComplaintDetail.BenChiefComplaints;
@@ -156,7 +156,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
           this.enableLungAssessment = false;
           this.enableProvisionalDiag = false;
           if (
-            this.benChiefComplaints != undefined &&
+            this.benChiefComplaints !== undefined &&
             this.benChiefComplaints.length > 0
           ) {
             for (let i = 0; i < this.benChiefComplaints.length; i++) {
@@ -224,7 +224,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
   getSCTid(event: any, index: any) {
     this.masterdataService.getSnomedCTRecord(event.chiefComplaint).subscribe(
       (res: any) => {
-        if (res && res.statusCode == 200) {
+        if (res && res.statusCode === 200) {
           this.loadConceptID(res.data, index);
         }
       },
@@ -269,12 +269,12 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
       i
     );
     const arr = this.chiefComplaintMaster.filter((item: any) => {
-      return item.chiefComplaint == chiefComplaintValue.chiefComplaint;
+      return item.chiefComplaint === chiefComplaintValue.chiefComplaint;
     });
 
     if (this.selectedChiefComplaintList?.[i]) {
       this.chiefComplaintTemporarayList.map((item: any, t: any) => {
-        if (t != i) {
+        if (t !== i) {
           item.push(this.selectedChiefComplaintList[i]);
           this.sortChiefComplaintList(item);
         }
@@ -284,7 +284,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
     if (arr.length > 0) {
       this.chiefComplaintTemporarayList.map((item: any, t: any) => {
         const index = item.indexOf(arr[0]);
-        if (index != -1 && t != i) item.splice(index, 1);
+        if (index !== -1 && t !== i) item.splice(index, 1);
       });
       this.selectedChiefComplaintList[i] = arr[0];
     }
@@ -292,8 +292,8 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
     this.enableProvisionalDiag = false;
     let flag = false;
     if (
-      this.selectedChiefComplaintList != null &&
-      this.selectedChiefComplaintList != undefined &&
+      this.selectedChiefComplaintList !== null &&
+      this.selectedChiefComplaintList !== undefined &&
       this.selectedChiefComplaintList.length > 0
     ) {
       this.selectedChiefComplaintList.forEach((val: any) => {
@@ -334,9 +334,9 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
     const complaintFormArrayValue = complaintFormArray.value;
     const temp = this.chiefComplaintMaster.filter((item: any) => {
       const arr = complaintFormArrayValue.filter((value: any) => {
-        return value.chiefComplaint.chiefComplaint == item.chiefComplaint;
+        return value.chiefComplaint.chiefComplaint === item.chiefComplaint;
       });
-      const flag = arr.length == 0 ? true : false;
+      const flag = arr.length === 0 ? true : false;
       return flag;
     });
     if (temp.length > 0) {
@@ -369,7 +369,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
           if (arr.length > 0) {
             this.chiefComplaintTemporarayList.forEach(
               (element: any, t: any) => {
-                if (t != i) element.push(arr[0]);
+                if (t !== i) element.push(arr[0]);
 
                 this.sortChiefComplaintList(element);
               }
@@ -378,15 +378,15 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
           if (this.selectedChiefComplaintList[i])
             this.selectedChiefComplaintList[i] = null;
 
-          if (complaintFormArray.length == 1 && complaintForm)
+          if (complaintFormArray.length === 1 && complaintForm)
             complaintForm.reset();
           else complaintFormArray.removeAt(i);
           let flag = false;
           this.enableLungAssessment = false;
           this.enableProvisionalDiag = false;
           if (
-            this.selectedChiefComplaintList != null &&
-            this.selectedChiefComplaintList != undefined &&
+            this.selectedChiefComplaintList !== null &&
+            this.selectedChiefComplaintList !== undefined &&
             this.selectedChiefComplaintList.length > 0
           ) {
             this.selectedChiefComplaintList.forEach((val: any) => {
@@ -433,7 +433,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
     if (formGroup.value.unitOfDuration)
       durationUnit = formGroup.value.unitOfDuration;
 
-    if (duration != null && durationUnit != null)
+    if (duration !== null && durationUnit !== null)
       flag = new ValidationUtils().validateDuration(
         duration,
         durationUnit,
@@ -460,8 +460,8 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
 
     if (typeof complaint === 'string') {
       if (
-        this.chiefComplaintTemporarayList != undefined &&
-        this.chiefComplaintTemporarayList != null
+        this.chiefComplaintTemporarayList !== undefined &&
+        this.chiefComplaintTemporarayList !== null
       ) {
         this.suggestedChiefComplaintList[i] = this.chiefComplaintTemporarayList[
           i
@@ -474,8 +474,8 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
       }
     } else if (typeof complaint === 'object' && complaint) {
       if (
-        this.chiefComplaintTemporarayList != undefined &&
-        this.chiefComplaintTemporarayList != null
+        this.chiefComplaintTemporarayList !== undefined &&
+        this.chiefComplaintTemporarayList !== null
       ) {
         this.suggestedChiefComplaintList[i] = this.chiefComplaintTemporarayList[
           i
@@ -488,12 +488,12 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
       }
     }
 
-    if (this.suggestedChiefComplaintList[i].length == 0) complaintForm.reset();
+    if (this.suggestedChiefComplaintList[i].length === 0) complaintForm.reset();
   }
 
   sortChiefComplaintList(complaintList: any) {
     complaintList.sort((a: any, b: any) => {
-      if (a.chiefComplaint == b.chiefComplaint) return 0;
+      if (a.chiefComplaint === b.chiefComplaint) return 0;
       if (a.chiefComplaint < b.chiefComplaint) return -1;
       else return 1;
     });

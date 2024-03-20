@@ -54,7 +54,7 @@ export class GeneralOpdDiagnosisComponent implements OnChanges, DoCheck {
   ) {}
 
   ngOnChanges() {
-    if (this.caseRecordMode == 'view') {
+    if (this.caseRecordMode === 'view') {
       const beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
       const visitID = localStorage.getItem('visitID');
       const visitCategory = localStorage.getItem('visitCategory');
@@ -74,7 +74,7 @@ export class GeneralOpdDiagnosisComponent implements OnChanges, DoCheck {
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res?.statusCode == 200 && res?.data?.diagnosis) {
+        if (res?.statusCode === 200 && res?.data?.diagnosis) {
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
       });

@@ -93,9 +93,9 @@ export class CancerExaminationComponent
   }
 
   ngOnChanges() {
-    if (this.mode == 'update') this.upadteCancerExaminationDetails();
+    if (this.mode === 'update') this.upadteCancerExaminationDetails();
 
-    if (this.mode == 'view') this.fetchCancerExaminationDetails();
+    if (this.mode === 'view') this.fetchCancerExaminationDetails();
   }
 
   getImageCoordinates(examinationForm: any) {
@@ -149,7 +149,7 @@ export class CancerExaminationComponent
       )
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data != null) {
             setTimeout(
               () =>
                 this.confirmationService.alert(res.data.response, 'success'),
@@ -178,7 +178,7 @@ export class CancerExaminationComponent
       .getCancerExaminationDetails(beneficiaryRegID, benVisitID)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data != null) {
             this.patchExaminationDetails(res.data);
           } else {
             setTimeout(
@@ -196,9 +196,9 @@ export class CancerExaminationComponent
   filterAnnotatedImageList(imageCoordinates: any, imageID: any) {
     let image;
     const temp = imageCoordinates.filter(
-      (item: any) => item.imageID == imageID
+      (item: any) => item.imageID === imageID
     );
-    if (temp.length == 1) image = temp[0];
+    if (temp.length === 1) image = temp[0];
     return image;
   }
 
@@ -222,7 +222,7 @@ export class CancerExaminationComponent
       lymphNodes.forEach((element: any) => {
         const temp = lymphNodesFormArray.filter((lymphForm: any) => {
           return (
-            lymphForm.controls['lymphNodeName'].value == element.lymphNodeName
+            lymphForm.controls['lymphNodeName'].value === element.lymphNodeName
           );
         });
 
@@ -249,7 +249,7 @@ export class CancerExaminationComponent
       temp.pop();
 
       const other = temp.filter((item: any) => {
-        return arr.indexOf(item) == -1;
+        return arr.indexOf(item) === -1;
       });
 
       console.log('there', other, temp);
@@ -326,8 +326,8 @@ export class CancerExaminationComponent
       this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(
         beneficiaryDetails => {
           if (
-            beneficiaryDetails?.genderName?.toLowerCase() == 'female' ||
-            beneficiaryDetails?.genderName?.toLowerCase() == 'transgender'
+            beneficiaryDetails?.genderName?.toLowerCase() === 'female' ||
+            beneficiaryDetails?.genderName?.toLowerCase() === 'transgender'
           )
             this.female = true;
         }

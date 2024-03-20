@@ -150,7 +150,7 @@ export class SearchDialogComponent implements OnInit, DoCheck {
   selectGender() {
     const genderMaster = this.masterData.genderMaster;
     genderMaster.forEach((element: any) => {
-      if (element.genderID == this.newSearchForm.controls['gender']) {
+      if (element.genderID === this.newSearchForm.controls['gender']) {
         this.newSearchForm.controls['genderName'] = element.genderName;
       }
     });

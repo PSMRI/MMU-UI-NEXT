@@ -129,7 +129,7 @@ export class DoctorDiagnosisCaseSheetComponent
     this.doctorService
       .getMMUCasesheetData(caseSheetRequest)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
+        if (res && res.statusCode === 200 && res.data) {
           this.mmuCaseSheetData = res.data;
           this.MMUcaseRecords = this.mmuCaseSheetData.doctorData;
           const mmuVitalsData =
@@ -390,7 +390,7 @@ export class DoctorDiagnosisCaseSheetComponent
     this.doctorService
       .getHRPDetails(beneficiaryRegID, visitCode)
       .subscribe((res: any) => {
-        if (res?.statusCode == 200 && res?.data) {
+        if (res?.statusCode === 200 && res?.data) {
           if (res.data.isHRP) {
             this.showHRP = 'true';
           } else {
@@ -417,7 +417,7 @@ export class DoctorDiagnosisCaseSheetComponent
       if (this.beneficiaryDetails.ageVal >= 12) {
         this.masterdataService.getVaccinationTypeAndDoseMaster().subscribe(
           (res: any) => {
-            if (res.statusCode == 200) {
+            if (res.statusCode === 200) {
               if (res.data) {
                 const doseTypeList = res.data.doseType;
                 const vaccineTypeList = res.data.vaccineType;
@@ -442,7 +442,7 @@ export class DoctorDiagnosisCaseSheetComponent
       .getPreviousCovidVaccinationDetails(beneficiaryRegID)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200) {
+          if (res.statusCode === 200) {
             if (res.data.covidVSID) {
               this.covidVaccineDetails = res.data;
 

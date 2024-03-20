@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     if (sessionStorage.getItem('isAuthenticated')) {
       this.authService.validateSessionKey().subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data)
+        if (res && res.statusCode === 200 && res.data)
           this.router.navigate(['/service']);
       });
     } else {
@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit {
         )
         .subscribe(
           (res: any) => {
-            if (res.statusCode == 200) {
+            if (res.statusCode === 200) {
               if (res?.data?.previlegeObj[0]) {
                 localStorage.setItem(
                   'loginDataResponse',
@@ -239,7 +239,7 @@ export class LoginComponent implements OnInit {
     loginDataResponse.previlegeObj.map((item: any) => {
       if (
         item.roles[0].serviceRoleScreenMappings[0].providerServiceMapping
-          .serviceID == '2'
+          .serviceID === '2'
       ) {
         const service = {
           providerServiceID: item.serviceID,
@@ -254,7 +254,7 @@ export class LoginComponent implements OnInit {
     });
     if (services.length > 0) {
       localStorage.setItem('services', JSON.stringify(services));
-      if (loginDataResponse.Status.toLowerCase() == 'new') {
+      if (loginDataResponse.Status.toLowerCase() === 'new') {
         this.router.navigate(['/set-security-questions']);
       } else {
         this.router.navigate(['/service']);

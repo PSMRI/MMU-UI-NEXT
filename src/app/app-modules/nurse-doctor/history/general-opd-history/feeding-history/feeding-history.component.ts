@@ -97,7 +97,7 @@ export class FeedingHistoryComponent implements OnInit, DoCheck, OnDestroy {
       this.masterdataService.nurseMasterData$.subscribe(masterData => {
         if (masterData) {
           this.masterData = masterData;
-          if (this.mode == 'view') {
+          if (this.mode === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);
@@ -114,7 +114,7 @@ export class FeedingHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .subscribe((history: any) => {
         if (
           history != null &&
-          history.statusCode == 200 &&
+          history.statusCode === 200 &&
           history.data != null &&
           history.data.FeedingHistory
         ) {

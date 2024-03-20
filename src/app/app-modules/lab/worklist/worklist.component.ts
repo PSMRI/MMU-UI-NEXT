@@ -117,7 +117,7 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
   loadWorklist() {
     this.labService.getLabWorklist().subscribe(
       (data: any) => {
-        if (data && data.statusCode == 200 && data.data) {
+        if (data && data.statusCode === 200 && data.data) {
           console.log('lab worklist', data.data);
 
           const benlist = this.loadDataToBenList(data.data);
@@ -188,17 +188,17 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
       this.beneficiaryList.forEach((item: any) => {
         for (const key in item) {
           if (
-            key == 'beneficiaryID' ||
-            key == 'benName' ||
-            key == 'genderName' ||
-            key == 'age' ||
-            key == 'VisitCategory' ||
-            key == 'benVisitNo' ||
-            key == 'districtName' ||
-            key == 'preferredPhoneNum' ||
-            key == 'villageName' ||
-            key == 'beneficiaryRegID' ||
-            key == 'visitDate'
+            key === 'beneficiaryID' ||
+            key === 'benName' ||
+            key === 'genderName' ||
+            key === 'age' ||
+            key === 'VisitCategory' ||
+            key === 'benVisitNo' ||
+            key === 'districtName' ||
+            key === 'preferredPhoneNum' ||
+            key === 'villageName' ||
+            key === 'beneficiaryRegID' ||
+            key === 'visitDate'
           ) {
             const value: string = '' + item[key];
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {

@@ -93,7 +93,7 @@ export class SymptomsComponent
   }
   // Ends
   ngOnChanges() {
-    if (this.mode == 'view') {
+    if (this.mode === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getHistoryDetails(benRegID, visitID);
@@ -112,10 +112,10 @@ export class SymptomsComponent
       .getVisitComplaintDetails(beneficiaryRegID, visitID)
       .subscribe((value: any) => {
         if (
-          value != null &&
-          value.statusCode == 200 &&
-          value.data != null &&
-          value.data.covidDetails != null
+          value !== null &&
+          value.statusCode === 200 &&
+          value.data !== null &&
+          value.data.covidDetails !== null
         ) {
           console.log('coviddata', value.data.covidDetails.symptom);
           this.sympFlag = true;
@@ -128,21 +128,21 @@ export class SymptomsComponent
   }
   symptomSelected() {
     console.log('SymptomLength' + this.symptom.length);
-    if (this.symptom.length != 0) {
+    if (this.symptom.length !== 0) {
       if (this.symptom.indexOf('No Symptoms') > -1) {
         localStorage.setItem('symptom', 'false');
 
         this.symptomsList = this.symptomsList.filter((item: any) => {
-          return item == 'No Symptoms';
+          return item === 'No Symptoms';
         });
         //this.answer1=true;
       } else {
         localStorage.setItem('symptom', 'true'); //change
 
         this.symptomsList = this.symptomsList.filter((item: any) => {
-          return item != 'No Symptoms';
+          return item !== 'No Symptoms';
         });
-        if (this.symptom.length == 3) {
+        if (this.symptom.length === 3) {
           localStorage.setItem('allSymptom', 'true');
         } else {
           localStorage.setItem('allSymptom', 'false');

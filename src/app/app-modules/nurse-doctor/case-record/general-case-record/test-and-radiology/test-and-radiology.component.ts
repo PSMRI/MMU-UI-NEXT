@@ -177,17 +177,17 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
         console.log('response archive', res);
-        if (res && res.statusCode == 200 && res.data) {
+        if (res && res.statusCode === 200 && res.data) {
           console.log('labresult', res.data.LabReport);
           this.labResults = res.data.LabReport.filter((lab: any) => {
-            return lab.procedureType == 'Laboratory';
+            return lab.procedureType === 'Laboratory';
           });
           this.filteredLabResults = this.labResults;
 
           //coded added to check whether strips are available for RBS Test
-          if (visitCategory == 'NCD screening') {
+          if (visitCategory === 'NCD screening') {
             this.filteredLabResults.forEach((element: any) => {
-              if (element.procedureName == environment.RBSTest) {
+              if (element.procedureName === environment.RBSTest) {
                 return element.componentList.forEach((element1: any) => {
                   if (element1.stripsNotAvailable === true) {
                     this.idrsScoreService.setReferralSuggested();
@@ -205,7 +205,7 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
 
           this.radiologyResults = res.data.LabReport.filter(
             (radiology: any) => {
-              return radiology.procedureType == 'Radiology';
+              return radiology.procedureType === 'Radiology';
             }
           );
           this.archivedResults = res.data.ArchivedVisitcodeForLabResult;
@@ -291,9 +291,9 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
     this.doctorService
       .getArchivedReports(archivedReport)
       .subscribe((response: any) => {
-        if (response.statusCode == 200) {
+        if (response.statusCode === 200) {
           this.archivedLabResults = response.data.filter((lab: any) => {
-            return lab.procedureType == 'Laboratory';
+            return lab.procedureType === 'Laboratory';
           });
           this.filteredArchivedLabResults = this.archivedLabResults;
           this.previousLabPageChanged({
@@ -302,7 +302,7 @@ export class TestAndRadiologyComponent implements OnInit, OnDestroy, DoCheck {
           });
           this.archivedRadiologyResults = response.data.filter(
             (radiology: any) => {
-              return radiology.procedureType == 'Radiology';
+              return radiology.procedureType === 'Radiology';
             }
           );
           this.enableArchiveView = true;

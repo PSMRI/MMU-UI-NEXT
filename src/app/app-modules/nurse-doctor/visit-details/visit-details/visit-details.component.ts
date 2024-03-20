@@ -73,7 +73,7 @@ export class PatientVisitDetailsComponent
   }
 
   ngOnChanges() {
-    if (this.mode == 'view') {
+    if (this.mode === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getVisitDetails(visitID, benRegID);
@@ -106,13 +106,13 @@ export class PatientVisitDetailsComponent
             this.templateNurseMasterData.visitCategories;
           this.templateFilterVisitCategories = this.templateVisitCategories;
 
-          if (this.beneficiary.ageVal >= 30 && !(this.mode == 'view')) {
-            if (this.beneficiary.genderName == 'Male') {
+          if (this.beneficiary.ageVal >= 30 && !(this.mode === 'view')) {
+            if (this.beneficiary.genderName === 'Male') {
               this.templateFilterVisitCategories =
                 this.templateVisitCategories.filter(
                   (item: any) =>
-                    item.visitCategory.toLowerCase() != 'anc' &&
-                    item.visitCategory.toLowerCase() != 'pnc'
+                    item.visitCategory.toLowerCase() !== 'anc' &&
+                    item.visitCategory.toLowerCase() !== 'pnc'
                 );
             } else {
               this.templateFilterVisitCategories =
@@ -135,43 +135,43 @@ export class PatientVisitDetailsComponent
     this.visitDetailsSubscription = this.doctorService
       .getVisitComplaintDetails(benRegID, visitID)
       .subscribe((value: any) => {
-        if (value != null && value.statusCode == 200 && value.data != null) {
+        if (value !== null && value.statusCode === 200 && value.data !== null) {
           if (
-            visitCategory == 'Cancer Screening' ||
-            visitCategory == 'General OPD (QC)'
+            visitCategory === 'Cancer Screening' ||
+            visitCategory === 'General OPD (QC)'
           ) {
             const visitDetails = value.data.benVisitDetails;
             this.doctorService.fileIDs = value.data.benVisitDetails.files;
             this.patientVisitDetailsForm.patchValue(visitDetails);
           }
-          if (visitCategory == 'ANC') {
+          if (visitCategory === 'ANC') {
             const visitDetails = value.data.ANCNurseVisitDetail;
             this.doctorService.fileIDs = value.data.ANCNurseVisitDetail.files;
             this.patientVisitDetailsForm.patchValue(visitDetails);
           }
-          if (visitCategory == 'General OPD') {
+          if (visitCategory === 'General OPD') {
             const visitDetails = value.data.GOPDNurseVisitDetail;
             this.doctorService.fileIDs = value.data.GOPDNurseVisitDetail.files;
             this.patientVisitDetailsForm.patchValue(visitDetails);
           }
-          if (visitCategory == 'NCD screening') {
+          if (visitCategory === 'NCD screening') {
             const visitDetails = value.data.NCDScreeningNurseVisitDetail;
             this.doctorService.fileIDs =
               value.data.NCDScreeningNurseVisitDetail.files;
             this.patientVisitDetailsForm.patchValue(visitDetails);
           }
-          if (visitCategory == 'NCD care') {
+          if (visitCategory === 'NCD care') {
             const visitDetails = value.data.NCDCareNurseVisitDetail;
             this.doctorService.fileIDs =
               value.data.NCDCareNurseVisitDetail.files;
             this.patientVisitDetailsForm.patchValue(visitDetails);
           }
-          if (visitCategory == 'PNC') {
+          if (visitCategory === 'PNC') {
             const visitDetails = value.data.PNCNurseVisitDetail;
             this.doctorService.fileIDs = value.data.PNCNurseVisitDetail.files;
             this.patientVisitDetailsForm.patchValue(visitDetails);
           }
-          if (visitCategory == 'COVID-19 Screening') {
+          if (visitCategory === 'COVID-19 Screening') {
             console.log('visitData', value.data);
             const visitDetails = value.data.covid19NurseVisitDetail;
             this.patientVisitDetailsForm.patchValue(visitDetails);
@@ -193,13 +193,13 @@ export class PatientVisitDetailsComponent
 
             if (
               beneficiaryDetails &&
-              beneficiaryDetails.genderName != null &&
-              beneficiaryDetails.genderName == 'Male'
+              beneficiaryDetails.genderName !== null &&
+              beneficiaryDetails.genderName === 'Male'
             )
               this.showPregnancyStatus = false;
             else if (
               beneficiaryDetails &&
-              beneficiaryDetails.ageVal != null &&
+              beneficiaryDetails.ageVal !== null &&
               beneficiaryDetails.ageVal < 19
             )
               this.showPregnancyStatus = false;
@@ -212,12 +212,12 @@ export class PatientVisitDetailsComponent
   }
 
   reasonSelected(visitReason: any) {
-    if (visitReason == 'Screening') {
+    if (visitReason === 'Screening') {
       this.templateFilterVisitCategories = this.templateVisitCategories.filter(
         (item: any) =>
           item.visitCategory.toLowerCase().indexOf('screening') >= 0
       );
-    } else if (visitReason == 'Pandemic') {
+    } else if (visitReason === 'Pandemic') {
       this.templateFilterVisitCategories = this.templateVisitCategories.filter(
         (item: any) => item.visitCategory.indexOf('COVID-19') >= 0
       );
@@ -226,12 +226,15 @@ export class PatientVisitDetailsComponent
        * Filtering ANC for male and child (hardcoded)
        * TODO : need to filter based on api
        */
-      if (this.beneficiary.genderName == 'Male' || this.beneficiary.ageVal < 12)
+      if (
+        this.beneficiary.genderName === 'Male' ||
+        this.beneficiary.ageVal < 12
+      )
         this.templateFilterVisitCategories =
           this.templateVisitCategories.filter(
             (item: any) =>
-              item.visitCategory.toLowerCase() != 'anc' &&
-              item.visitCategory.toLowerCase() != 'pnc'
+              item.visitCategory.toLowerCase() !== 'anc' &&
+              item.visitCategory.toLowerCase() !== 'pnc'
           );
       else
         this.templateFilterVisitCategories =
@@ -241,7 +244,7 @@ export class PatientVisitDetailsComponent
 
   checkCategoryDependent(visitCategory: any) {
     localStorage.setItem('visiCategoryANC', visitCategory);
-    if (visitCategory == 'ANC') {
+    if (visitCategory === 'ANC') {
       this.templatePregnancyStatus = ['Yes'];
       this.patientVisitDetailsForm.patchValue({ pregnancyStatus: 'Yes' });
     } else {

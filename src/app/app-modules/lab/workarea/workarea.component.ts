@@ -457,7 +457,7 @@ export class WorkareaComponent
 
       this.filteredArchiveList = this.archiveList;
       this.archiveList.forEach((fileSplit: any) => {
-        if (fileSplit.procedureType == 'Radiology') {
+        if (fileSplit.procedureType === 'Radiology') {
           this.radiologyFile.data.push(fileSplit);
           this.radiologyFile.paginator = this.paginator;
           this.filteredRadiologyData = this.radiologyFile.data;
@@ -482,7 +482,7 @@ export class WorkareaComponent
       this.laboratoryData.paginator = this.paginator;
       this.filteredLaboratoryData.forEach((item: any) => {
         for (const key in item) {
-          if (key == 'procedureName') {
+          if (key === 'procedureName') {
             const value: string = '' + item[key];
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
               this.laboratoryData.data.push(item);
@@ -504,7 +504,7 @@ export class WorkareaComponent
       this.radiologyFile.paginator = this.paginator;
       this.filteredRadiologyData.forEach((item: any) => {
         for (const key in item) {
-          if (key == 'procedureName') {
+          if (key === 'procedureName') {
             const value: string = '' + item[key];
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
               this.radiologyFile.data.push(item);
@@ -604,7 +604,7 @@ export class WorkareaComponent
     console.log('FILE DETAILS', file);
     if (file) {
       const array_after_split = file.name.split('.');
-      if (array_after_split.length == 2) {
+      if (array_after_split.length === 2) {
         const file_extension = array_after_split[array_after_split.length - 1];
         for (let i = 0; i < this.valid_file_extensions.length; i++) {
           if (
@@ -643,7 +643,7 @@ export class WorkareaComponent
 
     if (this.fileObj != undefined) {
       if (this.fileObj[fileIndex] != undefined) {
-        if (this.fileObj[fileIndex].fileName == kmFileManager.fileName) {
+        if (this.fileObj[fileIndex].fileName === kmFileManager.fileName) {
           return true;
         } else {
           this.fileObj[fileIndex].push(kmFileManager);
@@ -672,7 +672,7 @@ export class WorkareaComponent
     dialogRef.afterClosed().subscribe(result => {
       this.fileObj = result;
 
-      if (this.fileObj[procedureID] && this.fileObj[procedureID].length == 0) {
+      if (this.fileObj[procedureID] && this.fileObj[procedureID].length === 0) {
         delete this.fileObj[procedureID];
       }
     });
@@ -689,14 +689,14 @@ export class WorkareaComponent
             (savedDataName: any) => {
               const arrresult = this.savedFileData[procedureID].filter(
                 (uniqueFileName: any) => {
-                  if (savedDataName.isUploaded == uniqueFileName.isUploaded) {
+                  if (savedDataName.isUploaded === uniqueFileName.isUploaded) {
                     return true;
                   } else {
                     return false;
                   }
                 }
               );
-              if (arrresult.length == 0) {
+              if (arrresult.length === 0) {
                 return true;
               } else {
                 return false;
@@ -739,7 +739,7 @@ export class WorkareaComponent
   saveFileData(procedureID: any, fileReq: any) {
     this.labService.saveFile(fileReq).subscribe(
       (res: any) => {
-        if (res.statusCode == 200) {
+        if (res.statusCode === 200) {
           console.log('file response', res.data);
           res.data.forEach((savedFileData: any) => {
             if (this.savedFileData != undefined) {
@@ -758,14 +758,14 @@ export class WorkareaComponent
           });
 
           for (const key in this.fileObj) {
-            if (key == procedureID) {
+            if (key === procedureID) {
               this.fileObj[procedureID].map((file: any) => {
                 file.isUploaded = true;
               });
             }
           }
           for (const key in this.savedFileData) {
-            if (key == procedureID) {
+            if (key === procedureID) {
               this.savedFileData[procedureID].map((file: any) => {
                 file.isUploaded = true;
               });
@@ -790,7 +790,7 @@ export class WorkareaComponent
         let objLength = 0;
         const fileObjLength = Object.keys(this.fileObj);
         const saveObjlength = Object.keys(this.savedFileData);
-        if (fileObjLength.length == saveObjlength.length) {
+        if (fileObjLength.length === saveObjlength.length) {
           for (const fileObjKey in this.fileObj) {
             if (this.savedFileData[fileObjKey]) {
               if (
@@ -798,7 +798,7 @@ export class WorkareaComponent
                 this.fileObj[fileObjKey].length
               ) {
                 objLength++;
-                if (objLength == fileObjLength.length) {
+                if (objLength === fileObjLength.length) {
                   this.submitDetails(labCompleted);
                 }
               } else {
@@ -868,8 +868,9 @@ export class WorkareaComponent
               localStorage.getItem('providerServiceID');
 
             if (
-              localStorage.getItem('specialist_flag') == 'null' ||
-              localStorage.getItem('specialist_flag') == ''
+              localStorage.getItem('specialist_flag') === null ||
+              localStorage.getItem('specialist_flag') === 'null' ||
+              localStorage.getItem('specialist_flag') === ''
             ) {
               techForm['specialist_flag'] = null;
             } else {
@@ -889,7 +890,7 @@ export class WorkareaComponent
               for (const key in this.savedFileData) {
                 this.technicianForm.value.radiologyForm.forEach(
                   (procedureDetails: any) => {
-                    if (key == procedureDetails.procedureID) {
+                    if (key === procedureDetails.procedureID) {
                       this.savedFileData[key].forEach((fileId: any) => {
                         this.fileIDs.push(fileId.filePath);
                       });
@@ -917,7 +918,7 @@ export class WorkareaComponent
             console.log(JSON.stringify(techForm, null, 4), 'techForm');
             this.labService.saveLabWork(techForm).subscribe((response: any) => {
               console.log(response, 'responseddd');
-              if (response && response.statusCode == 200) {
+              if (response && response.statusCode === 200) {
                 this.confirmationService.alert(
                   response.data.response,
                   'success'
@@ -1018,13 +1019,13 @@ export class WorkareaComponent
         const comarr = api.controls['compListDetails'] as FormArray;
         for (let i = 0; i < result.length; i++) {
           if (result[i] != undefined) {
-            if (comarr.at(i).value.inputType == 'TextBox') {
+            if (comarr.at(i).value.inputType === 'TextBox') {
               comarr.at(i).patchValue({
                 inputValue: result[i],
               });
             } else if (
-              comarr.at(i).value.inputType == 'RadioButton' ||
-              comarr.at(i).value.inputType == 'DropDown'
+              comarr.at(i).value.inputType === 'RadioButton' ||
+              comarr.at(i).value.inputType === 'DropDown'
             ) {
               comarr.at(i).patchValue({
                 compOptSelected: result[i],
@@ -1057,7 +1058,7 @@ export class WorkareaComponent
   getEcgAbnormalities() {
     this.labService.getEcgAbnormalities().subscribe(
       (res: any) => {
-        if (res.statusCode == 200 && res.data !== null) {
+        if (res.statusCode === 200 && res.data !== null) {
           this.ecgAbnormalities = res.data;
         } else {
           console.log(res.errorMessage, 'error');
