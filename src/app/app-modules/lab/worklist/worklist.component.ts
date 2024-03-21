@@ -221,9 +221,9 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
   patientImageView(benregID: any) {
     if (
       benregID &&
-      benregID != null &&
-      benregID != '' &&
-      benregID != undefined
+      benregID !== null &&
+      benregID !== '' &&
+      benregID !== undefined
     ) {
       this.beneficiaryDetailsService
         .getBeneficiaryImage(benregID)

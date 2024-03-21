@@ -129,7 +129,7 @@ export class OtherVaccinesComponent implements OnInit, DoCheck, OnDestroy {
 
           this.addOtherVaccine();
 
-          if (this.mode == 'view') {
+          if (this.mode === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);
@@ -144,9 +144,9 @@ export class OtherVaccinesComponent implements OnInit, DoCheck, OnDestroy {
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
-          history.statusCode == 200 &&
-          history.data != null &&
+          history !== null &&
+          history.statusCode === 200 &&
+          history.data !== null &&
           history.data.childOptionalVaccineHistory
         ) {
           this.otherVaccineData = history.data.childOptionalVaccineHistory;
@@ -163,7 +163,7 @@ export class OtherVaccinesComponent implements OnInit, DoCheck, OnDestroy {
 
     for (let i = 0; i < temp.length; i++) {
       const vaccines = this.vaccineMasterData.filter((item: any) => {
-        return item.vaccineName == temp[i].vaccineName;
+        return item.vaccineName === temp[i].vaccineName;
       });
 
       if (vaccines.length > 0) temp[i].vaccineName = vaccines[0];
@@ -190,13 +190,13 @@ export class OtherVaccinesComponent implements OnInit, DoCheck, OnDestroy {
       result = this.vaccineMasterData.filter((item: any) => {
         const arr = temp.filter((value: any) => {
           if (
-            value.vaccineName != null &&
-            value.vaccineName.vaccineName != 'Other'
+            value.vaccineName !== null &&
+            value.vaccineName.vaccineName !== 'Other'
           )
-            return value.vaccineName.vaccineName == item.vaccineName;
+            return value.vaccineName.vaccineName === item.vaccineName;
           else return false;
         });
-        const flag = arr.length == 0 ? true : false;
+        const flag = arr.length === 0 ? true : false;
         return flag;
       });
     }
@@ -213,9 +213,9 @@ export class OtherVaccinesComponent implements OnInit, DoCheck, OnDestroy {
     const previousValue = this.previousSelectedVaccineList[i];
     const snomedCTCode = vaccine.sctCode;
     const snomedCTTerm = vaccine.sctTerm;
-    if (vaccineForm && vaccine.vaccineName != 'Other') {
+    if (vaccineForm && vaccine.vaccineName !== 'Other') {
       vaccineForm.patchValue({ otherVaccineName: null });
-      if (vaccine.sctCode != null) {
+      if (vaccine.sctCode !== null) {
         vaccineForm.patchValue({
           sctCode: snomedCTCode,
           sctTerm: snomedCTTerm,
@@ -226,7 +226,7 @@ export class OtherVaccinesComponent implements OnInit, DoCheck, OnDestroy {
     }
     if (previousValue) {
       this.vaccineSelectList.map((item: any, t: any) => {
-        if (t != i && previousValue.vaccineName != 'Other') {
+        if (t !== i && previousValue.vaccineName !== 'Other') {
           item.push(previousValue);
           this.sortOtherVaccineList(item);
         }
@@ -235,7 +235,7 @@ export class OtherVaccinesComponent implements OnInit, DoCheck, OnDestroy {
 
     this.vaccineSelectList.map((item: any, t: any) => {
       const index = item.indexOf(vaccine);
-      if (index != -1 && t != i && vaccine.vaccineName != 'Other')
+      if (index !== -1 && t !== i && vaccine.vaccineName !== 'Other')
         item = item.splice(index, 1);
     });
 
@@ -251,16 +251,16 @@ export class OtherVaccinesComponent implements OnInit, DoCheck, OnDestroy {
             this.otherVaccinesForm.controls['otherVaccines']
           );
           this.otherVaccinesForm.markAsDirty();
-          if (!!vaccineForm && otherVaccineList.length == 1) {
+          if (!!vaccineForm && otherVaccineList.length === 1) {
             vaccineForm.reset();
           } else {
             const removedValue = this.previousSelectedVaccineList[i];
 
             this.vaccineSelectList.map((item: any, t: any) => {
               if (
-                t != i &&
+                t !== i &&
                 !!removedValue &&
-                removedValue.vaccineName != 'Other'
+                removedValue.vaccineName !== 'Other'
               ) {
                 item.push(removedValue);
                 this.sortOtherVaccineList(item);
@@ -292,7 +292,7 @@ export class OtherVaccinesComponent implements OnInit, DoCheck, OnDestroy {
       .getPreviousOtherVaccines(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data);
             } else {
@@ -338,7 +338,7 @@ export class OtherVaccinesComponent implements OnInit, DoCheck, OnDestroy {
 
   sortOtherVaccineList(otherVaccineList: any) {
     otherVaccineList.sort((a: any, b: any) => {
-      if (a.vaccineName == b.vaccineName) return 0;
+      if (a.vaccineName === b.vaccineName) return 0;
       if (a.vaccineName < b.vaccineName) return -1;
       else return 1;
     });

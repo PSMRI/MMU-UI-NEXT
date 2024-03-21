@@ -149,7 +149,7 @@ export class CancerExaminationComponent
       )
       .subscribe(
         (res: any) => {
-          if (res.statusCode === 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             setTimeout(
               () =>
                 this.confirmationService.alert(res.data.response, 'success'),
@@ -178,7 +178,7 @@ export class CancerExaminationComponent
       .getCancerExaminationDetails(beneficiaryRegID, benVisitID)
       .subscribe(
         (res: any) => {
-          if (res.statusCode === 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             this.patchExaminationDetails(res.data);
           } else {
             setTimeout(

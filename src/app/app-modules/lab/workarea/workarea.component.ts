@@ -631,18 +631,18 @@ export class WorkareaComponent
   fileObj: any;
   assignFileObject(fileIndex: any, fileContent: any) {
     const kmFileManager = {
-      fileName: this.file != undefined ? this.file.name : '',
+      fileName: this.file !== undefined ? this.file.name : '',
       fileExtension:
-        this.file != undefined ? '.' + this.file.name.split('.')[1] : '',
+        this.file !== undefined ? '.' + this.file.name.split('.')[1] : '',
       userID: localStorage.getItem('userID'),
-      fileContent: fileContent != undefined ? fileContent.split(',')[1] : '',
+      fileContent: fileContent !== undefined ? fileContent.split(',')[1] : '',
       vanID: JSON.parse(localStorage.getItem('serviceLineDetails') ?? '{}')
         ?.vanID,
       isUploaded: false,
     };
 
-    if (this.fileObj != undefined) {
-      if (this.fileObj[fileIndex] != undefined) {
+    if (this.fileObj !== undefined) {
+      if (this.fileObj[fileIndex] !== undefined) {
         if (this.fileObj[fileIndex].fileName === kmFileManager.fileName) {
           return true;
         } else {
@@ -679,7 +679,7 @@ export class WorkareaComponent
   }
   savedFileData: any;
   saveUploadDetails(procedureID: any) {
-    if (this.fileObj != undefined) {
+    if (this.fileObj !== undefined) {
       if (this.savedFileData?.procedureID) {
         if (
           this.fileObj[procedureID].length >
@@ -742,8 +742,8 @@ export class WorkareaComponent
         if (res.statusCode === 200) {
           console.log('file response', res.data);
           res.data.forEach((savedFileData: any) => {
-            if (this.savedFileData != undefined) {
-              if (this.savedFileData[procedureID] != undefined) {
+            if (this.savedFileData !== undefined) {
+              if (this.savedFileData[procedureID] !== undefined) {
                 this.savedFileData[procedureID].push(savedFileData);
               } else {
                 this.savedFileData[procedureID] = [];
@@ -794,7 +794,7 @@ export class WorkareaComponent
           for (const fileObjKey in this.fileObj) {
             if (this.savedFileData[fileObjKey]) {
               if (
-                this.savedFileData[fileObjKey].length ==
+                this.savedFileData[fileObjKey].length ===
                 this.fileObj[fileObjKey].length
               ) {
                 objLength++;
@@ -1014,11 +1014,11 @@ export class WorkareaComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('he;;p', result, result['result']);
-      if (result != null) {
+      if (result !== null) {
         //result['result']
         const comarr = api.controls['compListDetails'] as FormArray;
         for (let i = 0; i < result.length; i++) {
-          if (result[i] != undefined) {
+          if (result[i] !== undefined) {
             if (comarr.at(i).value.inputType === 'TextBox') {
               comarr.at(i).patchValue({
                 inputValue: result[i],

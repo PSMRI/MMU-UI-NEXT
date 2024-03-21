@@ -189,7 +189,7 @@ export class GeneralOpdHistoryComponent
       .updateGeneralHistory(generalOPDHistory, temp, this.beneficiary.ageVal)
       .subscribe(
         (res: any) => {
-          if (res.statusCode === 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             if (this.visitCategory === 'ANC') {
               this.getHRPDetails();
             }
@@ -224,13 +224,13 @@ export class GeneralOpdHistoryComponent
       this.showObstetricHistory = false;
     else if (
       this.beneficiary &&
-      this.beneficiary.genderName != 'Male' &&
+      this.beneficiary.genderName !== 'Male' &&
       this.beneficiary.ageVal < 12
     )
       this.showObstetricHistory = false;
     else if (
       this.beneficiary &&
-      this.beneficiary.genderName != 'Male' &&
+      this.beneficiary.genderName !== 'Male' &&
       this.beneficiary.ageVal >= 12
     )
       this.showObstetricHistory = true;
@@ -264,7 +264,7 @@ export class GeneralOpdHistoryComponent
       )
       .subscribe(
         (res: any) => {
-          if (res.statusCode === 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             this.confirmationService.alert(res.data.response, 'success');
             this.nurseGeneralHistoryForm.markAsPristine();
           } else {

@@ -136,7 +136,7 @@ export class GeneralReferComponent implements OnInit, DoCheck, OnDestroy {
       this.masterdataService.doctorMasterData$.subscribe(masterData => {
         if (masterData) {
           this.higherHealthcareCenter = masterData.higherHealthCare;
-          if (this.higherHealthcareCenter.length == 0) {
+          if (this.higherHealthcareCenter.length === 0) {
             this.instituteFlag = false;
             sessionStorage.setItem('instFlag', 'false');
           } else {
@@ -148,7 +148,7 @@ export class GeneralReferComponent implements OnInit, DoCheck, OnDestroy {
           console.log('hi');
           this.revisitDate = masterData.revisitDate;
 
-          if (this.referMode == 'view') {
+          if (this.referMode === 'view') {
             this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
             this.visitID = localStorage.getItem('visitID');
             this.visitCategory = localStorage.getItem('visitCategory');
@@ -167,7 +167,7 @@ export class GeneralReferComponent implements OnInit, DoCheck, OnDestroy {
     this.referSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.Refer) {
+        if (res && res.statusCode === 200 && res.data && res.data.Refer) {
           this.patchReferDetails(res.data.Refer);
         }
       });
@@ -182,7 +182,7 @@ export class GeneralReferComponent implements OnInit, DoCheck, OnDestroy {
       this.previousServiceList = referDetails.refrredToAdditionalServiceList;
       referDetails.refrredToAdditionalServiceList.map((item: any) => {
         const arr = this.additionalServices.filter((element: any) => {
-          return element.serviceName == item.serviceName;
+          return element.serviceName === item.serviceName;
         });
         if (arr.length > 0) temp.push(arr[0]);
       });
@@ -191,7 +191,7 @@ export class GeneralReferComponent implements OnInit, DoCheck, OnDestroy {
 
     const referedToInstitute = this.higherHealthcareCenter.filter(
       (item: any) => {
-        return item.institutionID == referDetails.referredToInstituteID;
+        return item.institutionID === referDetails.referredToInstituteID;
       }
     );
     if (referedToInstitute.length > 0) {
@@ -203,7 +203,7 @@ export class GeneralReferComponent implements OnInit, DoCheck, OnDestroy {
     referDetails.referralReason = this.referralReason;
     this.referForm.patchValue({ referralReason: referDetails.referralReason });
     this.referForm.patchValue(referDetails);
-    if (referDetails.referredToInstituteName != null) {
+    if (referDetails.referredToInstituteName !== null) {
       this.healthCareReferred = true;
     }
   }
@@ -228,7 +228,7 @@ export class GeneralReferComponent implements OnInit, DoCheck, OnDestroy {
   canDisable(service: any) {
     if (this.previousServiceList) {
       const temp = this.previousServiceList.filter((item: any) => {
-        return item == service.serviceName;
+        return item === service.serviceName;
       });
 
       if (temp.length > 0) {
@@ -245,14 +245,14 @@ export class GeneralReferComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   public additionalservices(selected: any): void {
-    if (selected != null && selected.length > 0) {
+    if (selected !== null && selected.length > 0) {
       this.selectValueService = selected.length;
       console.log(this.selectValueService);
     }
   }
 
   public higherhealthcarecenter(selected: any): void {
-    if (selected != null && selected.institutionName) {
+    if (selected !== null && selected.institutionName) {
       this.selectValue = 1;
       this.healthCareReferred = true;
     } // should display the selected option.
@@ -266,7 +266,7 @@ export class GeneralReferComponent implements OnInit, DoCheck, OnDestroy {
       .getPreviousReferredHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data);
             } else {

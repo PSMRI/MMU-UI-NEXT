@@ -111,8 +111,8 @@ export class MasterDownloadComponent implements OnInit {
         if (this.progressValue >= 100) {
           this.failedMasterList = res.data.failedMasters.split('|');
           if (
-            this.failedMasterList != undefined &&
-            this.failedMasterList != null &&
+            this.failedMasterList !== undefined &&
+            this.failedMasterList !== null &&
             this.failedMasterList.length > 0 &&
             this.failedMasterList[this.failedMasterList.length - 1].trim() ===
               ''

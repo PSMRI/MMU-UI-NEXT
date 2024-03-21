@@ -150,7 +150,7 @@ export class AppHeaderComponent implements OnInit {
       );
   }
   getLanguage() {
-    if (sessionStorage.getItem('setLanguage') != null) {
+    if (sessionStorage.getItem('setLanguage') !== null) {
       this.changeLanguage(sessionStorage.getItem('setLanguage'));
     } else {
       this.changeLanguage(this.app_language);
@@ -163,7 +163,7 @@ export class AppHeaderComponent implements OnInit {
       alert(this.currentLanguageSet.alerts.info.langNotDefinesd);
     }
 
-    if (response[language] != undefined) {
+    if (response[language] !== undefined) {
       this.currentLanguageSet = response[language];
       sessionStorage.setItem('setLanguage', language);
       if (this.currentLanguageSet) {

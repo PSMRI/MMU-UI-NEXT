@@ -361,7 +361,7 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
           if (complaintForm.value.chiefComplaint) {
             arr = this.chiefComplaintMaster.filter((item: any) => {
               return (
-                item.chiefComplaint ==
+                item.chiefComplaint ===
                 complaintForm.value.chiefComplaint.chiefComplaint
               );
             });

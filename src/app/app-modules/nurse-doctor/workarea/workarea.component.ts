@@ -1221,7 +1221,7 @@ export class WorkareaComponent
             labTestArray.forEach((element: any) => {
               if (
                 element.procedureName !== null &&
-                element.procedureName.toLowerCase() ==
+                element.procedureName.toLowerCase() ===
                   environment.RBSTest.toLowerCase()
               ) {
                 investigationCount++;
@@ -1251,7 +1251,7 @@ export class WorkareaComponent
             labTestArray.forEach((element: any) => {
               if (
                 element.procedureName !== null &&
-                element.procedureName.toLowerCase() ==
+                element.procedureName.toLowerCase() ===
                   environment.haemoglobinTest.toLowerCase()
               ) {
                 investigationCount++;
@@ -1285,7 +1285,7 @@ export class WorkareaComponent
             ) {
               if (
                 pregForm3.controls['abortionType'].value &&
-                pregForm3.controls['abortionType'].value.complicationValue ==
+                pregForm3.controls['abortionType'].value.complicationValue ===
                   'Induced' &&
                 pregForm3.controls['typeofFacility'].errors
               ) {
@@ -1904,7 +1904,7 @@ export class WorkareaComponent
           labTestArray.forEach((element: any) => {
             if (
               element.procedureName !== null &&
-              element.procedureName.toLowerCase() ==
+              element.procedureName.toLowerCase() ===
                 environment.RBSTest.toLowerCase()
             ) {
               investigationCount++;
@@ -1942,7 +1942,7 @@ export class WorkareaComponent
           labTestArray.forEach((element: any) => {
             if (
               element.procedureName !== null &&
-              element.procedureName.toLowerCase() ==
+              element.procedureName.toLowerCase() ===
                 environment.visualAcuityTest.toLowerCase()
             ) {
               investigationVisualCount++;
@@ -2817,7 +2817,7 @@ export class WorkareaComponent
         ) {
           if (
             pregForm3.controls['abortionType'].value &&
-            pregForm3.controls['abortionType'].value.complicationValue ==
+            pregForm3.controls['abortionType'].value.complicationValue ===
               'Induced' &&
             pregForm3.controls['typeofFacility'].errors
           ) {

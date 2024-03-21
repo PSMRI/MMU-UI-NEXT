@@ -283,7 +283,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
   getDemographics() {
     const temp: any = this.servicePointsList.filter(
       (item: any) =>
-        item.servicePointName ==
+        item.servicePointName ===
         this.servicePointForm.controls.servicePointName.value
     );
     if (temp.length > 0) {

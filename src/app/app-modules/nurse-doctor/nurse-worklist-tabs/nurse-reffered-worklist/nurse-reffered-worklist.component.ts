@@ -97,13 +97,13 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
         console.log('item', JSON.stringify(item, null, 4));
         for (const key in item) {
           if (
-            key == 'beneficiaryID' ||
-            key == 'benName' ||
-            key == 'genderName' ||
-            key == 'fatherName' ||
-            key == 'districtName' ||
-            key == 'preferredPhoneNum' ||
-            key == 'villageName'
+            key === 'beneficiaryID' ||
+            key === 'benName' ||
+            key === 'genderName' ||
+            key === 'fatherName' ||
+            key === 'districtName' ||
+            key === 'preferredPhoneNum' ||
+            key === 'villageName'
           ) {
             const value: string = '' + item[key];
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
@@ -118,9 +118,9 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
               break;
             }
           } else {
-            if (key == 'benVisitNo') {
+            if (key === 'benVisitNo') {
               const value: string = '' + item[key];
-              if (value == '1') {
+              if (value === '1') {
                 const val = 'First visit';
                 if (val.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
                   this.filteredBeneficiaryList.push(item);
@@ -163,7 +163,7 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
     this.filterTerm = null;
     this.nurseService.getNurseWorklistTMreferred().subscribe(
       (res: any) => {
-        if (res.statusCode == 200 && res.data != null) {
+        if (res.statusCode === 200 && res.data !== null) {
           const benlist = this.loadDataToBenList(res.data);
           this.beneficiaryList = benlist;
           this.filteredBeneficiaryList = benlist;
@@ -272,7 +272,7 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
     console.log('beneficiary', JSON.stringify(beneficiary, null, 4));
     localStorage.setItem('visitCode', beneficiary.visitCode);
     localStorage.setItem('visitID', beneficiary.benVisitID);
-    if (beneficiary.specialist_flag == 100) {
+    if (beneficiary.specialist_flag === 100) {
       this.confirmationService
         .confirm(
           `info`,
@@ -301,7 +301,7 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
             ]);
           }
         });
-    } else if (beneficiary.specialist_flag == 200) {
+    } else if (beneficiary.specialist_flag === 200) {
       sessionStorage.setItem('tmCaseSheet', 'true');
       this.viewAndPrintCaseSheet(beneficiary);
     }
@@ -329,8 +329,8 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
     const specialistFlag: any = localStorage.getItem('specialistFlag');
     let caseSheetRequest;
     if (
-      localStorage.getItem('caseSheetTMFlag') == 'true' ||
-      parseInt(specialistFlag) == 200
+      localStorage.getItem('caseSheetTMFlag') === 'true' ||
+      parseInt(specialistFlag) === 200
     ) {
       this.visitCategory = localStorage.getItem('caseSheetVisitCategory');
       caseSheetRequest = {
@@ -339,7 +339,7 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
         benVisitID: localStorage.getItem('caseSheetVisitID'),
         beneficiaryRegID: localStorage.getItem('caseSheetBeneficiaryRegID'),
         visitCode: localStorage.getItem('caseSheetVisitCode'),
-        // "isCaseSheetdownloaded": localStorage.getItem('isCaseSheetdownloaded') == "true" ? true : false
+        // "isCaseSheetdownloaded": localStorage.getItem('isCaseSheetdownloaded') === "true" ? true : false
       };
       this.getTMReferredCasesheetData(caseSheetRequest);
     }
@@ -351,7 +351,7 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
       .getTMReferredCasesheetData(caseSheetRequest)
       .subscribe(
         (res: any) => {
-          if (res && res.statusCode == 200 && res.data) {
+          if (res && res.statusCode === 200 && res.data) {
             this.confirmationService
               .confirm('info', this.currentLanguageSet.alerts.info.consulation)
               .subscribe(res => {

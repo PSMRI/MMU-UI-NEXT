@@ -97,7 +97,7 @@ export class GeneralOpdDiagnosisComponent implements OnChanges, DoCheck {
 
     const previousArray = diagnosis.provisionalDiagnosisList;
     let j = 0;
-    if (previousArray != undefined && previousArray.length > 0) {
+    if (previousArray !== undefined && previousArray.length > 0) {
       previousArray.forEach((i: any) => {
         generalArray.at(j).patchValue({
           conceptID: i.conceptID,

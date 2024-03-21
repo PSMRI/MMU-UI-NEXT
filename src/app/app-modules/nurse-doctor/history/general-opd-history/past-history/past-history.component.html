@@ -219,7 +219,8 @@
           *ngIf="
             (pastSurgery?.value?.surgeryType !== null &&
               pastSurgery?.value?.surgeryType !== '') ||
-            pastSurgery.value.surgeryType?.surgeryType === 'None'
+            pastSurgery.value.surgeryType?.surgeryType === 'None' ||
+            pastSurgery.value.surgeryType?.surgeryType === 'Nil'
           ">
           <mat-form-field class="input-full-width">
             <mat-label class="mat-label-text">{{

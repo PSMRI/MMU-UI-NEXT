@@ -95,11 +95,11 @@ export class CancerReferComponent implements OnInit, DoCheck, OnDestroy {
           console.log('hi');
           this.revisitDate = masterData.revisitDate;
 
-          if (this.referMode == 'view') {
+          if (this.referMode === 'view') {
             const beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
             const visitID = localStorage.getItem('visitID');
             const visitCategory = localStorage.getItem('visitCategory');
-            if (localStorage.getItem('doctorFlag') == '9') {
+            if (localStorage.getItem('doctorFlag') === '9') {
               this.getReferDetails(beneficiaryRegID, visitID, visitCategory);
             }
           }
@@ -112,7 +112,7 @@ export class CancerReferComponent implements OnInit, DoCheck, OnDestroy {
     this.referSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.diagnosis) {
+        if (res && res.statusCode === 200 && res.data && res.data.diagnosis) {
           console.log('referdetails', res.data.diagnosis);
 
           this.patchReferDetails(res.data.diagnosis);
@@ -128,7 +128,7 @@ export class CancerReferComponent implements OnInit, DoCheck, OnDestroy {
       this.previousServiceList = referDetails.refrredToAdditionalServiceList;
       referDetails.refrredToAdditionalServiceList.map((item: any) => {
         const arr = this.additionalServices.filter((element: any) => {
-          if (element.serviceName == item) {
+          if (element.serviceName === item) {
             temp.push(element.serviceName);
             return true;
           } else {
@@ -142,7 +142,7 @@ export class CancerReferComponent implements OnInit, DoCheck, OnDestroy {
     console.log('referDetails', referDetails);
     const referedToInstitute = this.higherHealthcareCenter.filter(
       (item: any) => {
-        return item.institutionID == referDetails.referredToInstituteID;
+        return item.institutionID === referDetails.referredToInstituteID;
       }
     )[0];
     if (referedToInstitute)
@@ -173,7 +173,7 @@ export class CancerReferComponent implements OnInit, DoCheck, OnDestroy {
   canDisable(service: any) {
     if (this.previousServiceList) {
       const temp = this.previousServiceList.filter((item: any) => {
-        return item == service.serviceName;
+        return item === service.serviceName;
       });
 
       if (temp.length > 0) {
@@ -190,7 +190,7 @@ export class CancerReferComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   public additionalservices(selected: any): void {
-    if (selected != undefined && selected != null)
+    if (selected !== undefined && selected !== null)
       this.selectValue = selected.length;
     // should display the selected option.
   }

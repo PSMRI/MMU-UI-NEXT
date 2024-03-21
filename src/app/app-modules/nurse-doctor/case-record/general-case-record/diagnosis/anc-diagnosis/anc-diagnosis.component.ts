@@ -132,7 +132,7 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
         const tempComplication = this.masterData.pregComplicationTypes.filter(
           (masterComplication: any) => {
             return (
-              complaintType.pregComplicationType ==
+              complaintType.pregComplicationType ===
               masterComplication.pregComplicationType
             );
           }
@@ -181,7 +181,10 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
       this.showAllPregComplication = false;
     } else if (complication.length === 1) {
       const disableNone =
-        complication[0].pregComplicationType === 'None' ? false : true;
+        complication[0].pregComplicationType === 'None' ||
+        complication[0].pregComplicationType === 'Nil'
+          ? false
+          : true;
       this.disableNonePregnancyComplication = disableNone;
       this.showAllPregComplication = false;
     } else {

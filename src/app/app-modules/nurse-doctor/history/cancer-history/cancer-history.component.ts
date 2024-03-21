@@ -116,7 +116,7 @@ export class CancerHistoryComponent
       .updateCancerHistoryDetails(cancerHistoryForm, updateDetails)
       .subscribe(
         (res: any) => {
-          if (res.statusCode === 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             this.confirmationService.alert(res.data.response, 'success');
             this.nurseCancerHistoryForm.markAsPristine();
           } else {
@@ -135,9 +135,9 @@ export class CancerHistoryComponent
       .getCancerHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
+          history !== null &&
           history.statusCode === 200 &&
-          history.data != null
+          history.data !== null
         ) {
           const cancerHistoryData = history.data;
 

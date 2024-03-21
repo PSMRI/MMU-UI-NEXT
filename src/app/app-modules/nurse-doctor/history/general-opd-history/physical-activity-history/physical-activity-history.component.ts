@@ -93,14 +93,14 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
           this.physicalActivityQuestions = this.masterData.physicalActivity;
           console.log('masterData', this.masterData);
 
-          if (this.mode == 'view') {
+          if (this.mode === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             const visitCategory = localStorage.getItem('visitCategory');
             if (
-              visitID != null &&
-              benRegID != null &&
-              visitCategory == 'NCD screening'
+              visitID !== null &&
+              benRegID !== null &&
+              visitCategory === 'NCD screening'
             ) {
               this.getGeneralHistory(benRegID, visitID);
             }
@@ -114,14 +114,14 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
-          history.statusCode == 200 &&
-          history.data != null &&
+          history !== null &&
+          history.statusCode === 200 &&
+          history.data !== null &&
           history.data.FamilyHistory
         ) {
           this.physicalActivityHistoryData =
             history.data.PhysicalActivityHistory;
-          if (this.physicalActivityHistoryData != undefined)
+          if (this.physicalActivityHistoryData !== undefined)
             this.handlePysicalActivityHistoryData();
         }
       });
@@ -133,7 +133,7 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
     const selectedQuestion = this.physicalActivityQuestions.filter(
       (item: any) => {
         return (
-          item.activityType == this.physicalActivityHistoryData.activityType
+          item.activityType === this.physicalActivityHistoryData.activityType
         );
       }
     );
@@ -149,7 +149,7 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
 
     const selectedQuestion = this.physicalActivityQuestions.filter(
       (item: any) => {
-        return item.activityType == event.value;
+        return item.activityType === event.value;
       }
     );
 
@@ -173,7 +173,7 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
       .getPreviousPhysicalActivityHistory(benRegID, this.visitType)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data);
             } else {

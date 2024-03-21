@@ -130,7 +130,7 @@ export class PersonalHistoryComponent implements OnInit, OnDestroy, DoCheck {
       );
   }
   checkTobaccoUseStatus(tobaccoUse: any) {
-    if (tobaccoUse != null && tobaccoUse != undefined) {
+    if (tobaccoUse !== null && tobaccoUse !== undefined) {
       this.cancerPatientPerosnalHistoryForm.patchValue({ startAge_year: null });
       this.cancerPatientPerosnalHistoryForm.patchValue({ endAge_year: null });
       this.cancerPatientPerosnalHistoryForm.patchValue({
@@ -231,7 +231,7 @@ export class PersonalHistoryComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   oilSelected() {
-    if (this.typeOfOilConsumedList.length != 0) {
+    if (this.typeOfOilConsumedList.length !== 0) {
       if (this.typeOfOilConsumedList.indexOf('Don’t know.') > -1)
         this.templateOilConsumed = this.templateOilConsumed.filter(
           (item: any) => {
@@ -241,7 +241,7 @@ export class PersonalHistoryComponent implements OnInit, OnDestroy, DoCheck {
       else
         this.templateOilConsumed = this.templateOilConsumed.filter(
           (item: any) => {
-            return item.habitValue != 'Don’t know.';
+            return item.habitValue !== 'Don’t know.';
           }
         );
     } else this.templateOilConsumed = this.filteredOilConsumed;
@@ -346,7 +346,7 @@ export class PersonalHistoryComponent implements OnInit, OnDestroy, DoCheck {
     const benRegID: any = localStorage.getItem('beneficiaryRegID');
     this.nurseService.getPreviousCancerPersonalHabitHistory(benRegID).subscribe(
       (data: any) => {
-        if (data != null && data.data != null) {
+        if (data !== null && data.data !== null) {
           if (data.data.data.length > 0) {
             this.viewPreviousData(data.data);
           } else {
@@ -369,7 +369,7 @@ export class PersonalHistoryComponent implements OnInit, OnDestroy, DoCheck {
     const benRegID: any = localStorage.getItem('beneficiaryRegID');
     this.nurseService.getPreviousCancerPersonalDietHistory(benRegID).subscribe(
       (data: any) => {
-        if (data != null && data.data != null) {
+        if (data !== null && data.data !== null) {
           if (data.data.data.length > 0) {
             this.viewPreviousData(data.data);
           } else {

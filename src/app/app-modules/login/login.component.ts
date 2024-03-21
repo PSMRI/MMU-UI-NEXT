@@ -239,7 +239,7 @@ export class LoginComponent implements OnInit {
     loginDataResponse.previlegeObj.map((item: any) => {
       if (
         item.roles[0].serviceRoleScreenMappings[0].providerServiceMapping
-          .serviceID === '2'
+          .serviceID === 2
       ) {
         const service = {
           providerServiceID: item.serviceID,

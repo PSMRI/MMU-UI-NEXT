@@ -168,7 +168,7 @@ export class GeneralOpdExaminationComponent
         )
         .subscribe(
           (res: any) => {
-            if (res.statusCode === 200 && res.data != null) {
+            if (res.statusCode === 200 && res.data !== null) {
               this.confirmationService.alert(
                 'Examination updated successfully',
                 'success'

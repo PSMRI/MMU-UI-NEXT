@@ -405,7 +405,7 @@ export class CancerCaseRecordComponent
   }
 
   calculateBMI() {
-    if (this.currentVitals != null)
+    if (this.currentVitals !== null)
       return +(
         (this.currentVitals.weight_Kg /
           (this.currentVitals.height_cm * this.currentVitals.height_cm)) *
@@ -416,7 +416,7 @@ export class CancerCaseRecordComponent
 
   normalWaist = true;
   checkNormalWaist(patientWaist: any) {
-    if (this.female && this.pregnancyStatus?.toLowerCase() != 'yes')
+    if (this.female && this.pregnancyStatus?.toLowerCase() !== 'yes')
       this.normalWaist = patientWaist < 80 ? true : false;
     else this.normalWaist = patientWaist < 90 ? true : false;
   }

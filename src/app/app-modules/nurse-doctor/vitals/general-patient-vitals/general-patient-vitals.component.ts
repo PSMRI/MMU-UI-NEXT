@@ -420,7 +420,7 @@ export class GeneralPatientVitalsComponent
           }
           if (
             this.patientVitalsForm.controls['hipCircumference_cm'].value &&
-            this.patientVitalsForm.controls['hipCircumference_cm'].value !=
+            this.patientVitalsForm.controls['hipCircumference_cm'].value !==
               null &&
             this.visitCategory === 'General OPD'
           ) {

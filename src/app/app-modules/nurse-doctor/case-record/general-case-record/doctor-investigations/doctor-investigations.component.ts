@@ -225,13 +225,13 @@ export class DoctorInvestigationsComponent
           this.nurseService.setRbsSelectedInInvestigation(true);
         }
         if (
-          item.procedureName.toLowerCase() ==
+          item.procedureName.toLowerCase() ===
           environment.haemoglobinTest.toLowerCase()
         ) {
           this.hemoglobbinSelected = true;
         }
         if (
-          item.procedureName.toLowerCase() ==
+          item.procedureName.toLowerCase() ===
           environment.visualAcuityTest.toLowerCase()
         ) {
           this.VisualAcuityTestDone = true;
@@ -266,21 +266,21 @@ export class DoctorInvestigationsComponent
           // checking RBS and Visual acuity is present or not.
           this.nonRadiologyMaster.forEach((element: any) => {
             if (
-              element.procedureName.toLowerCase() ==
+              element.procedureName.toLowerCase() ===
               environment.RBSTest.toLowerCase()
             ) {
               this.rbsPresent = true;
               this.idrsScoreService.rBSPresentInMaster();
             }
             if (
-              element.procedureName.toLowerCase() ==
+              element.procedureName.toLowerCase() ===
               environment.visualAcuityTest.toLowerCase()
             ) {
               this.visualAcuityPresent = true;
               this.idrsScoreService.visualAcuityPresentInMaster();
             }
             if (
-              element.procedureName.toLowerCase() ==
+              element.procedureName.toLowerCase() ===
               environment.haemoglobinTest.toLowerCase()
             ) {
               this.idrsScoreService.haemoglobinPresentInMaster();
@@ -313,9 +313,9 @@ export class DoctorInvestigationsComponent
 
   canDisable(test: any) {
     if (
-      ((this.rbsTestResultCurrent != null &&
-        this.rbsTestResultCurrent != undefined) ||
-        this.nurseService.rbsTestResultFromDoctorFetch != null) &&
+      ((this.rbsTestResultCurrent !== null &&
+        this.rbsTestResultCurrent !== undefined) ||
+        this.nurseService.rbsTestResultFromDoctorFetch !== null) &&
       test.procedureName.toLowerCase() === environment.RBSTest.toLowerCase()
     ) {
       return true;
@@ -377,13 +377,13 @@ export class DoctorInvestigationsComponent
         oneSelected++;
       }
       if (
-        element.procedureName.toLowerCase() ==
+        element.procedureName.toLowerCase() ===
         environment.visualAcuityTest.toLowerCase()
       ) {
         this.VisualAcuityTestDone = true;
       }
       if (
-        element.procedureName.toLowerCase() ==
+        element.procedureName.toLowerCase() ===
         environment.haemoglobinTest.toLowerCase()
       ) {
         oneSelected++;

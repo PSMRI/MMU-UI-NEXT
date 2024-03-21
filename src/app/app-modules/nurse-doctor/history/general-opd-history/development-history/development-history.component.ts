@@ -105,9 +105,9 @@ export class DevelopmentHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
+          history !== null &&
           history.statusCode === 200 &&
-          history.data != null &&
+          history.data !== null &&
           history.data.DevelopmentHistory
         ) {
           this.developmentHistoryData = history.data.DevelopmentHistory;
@@ -128,7 +128,7 @@ export class DevelopmentHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getPreviousDevelopmentalHistory(benRegID, this.visitCategory)
       .subscribe(
         (data: any) => {
-          if (data != null && data.data != null) {
+          if (data !== null && data.data !== null) {
             if (data.data.data.length > 0) {
               this.viewPreviousData(data.data);
             } else {

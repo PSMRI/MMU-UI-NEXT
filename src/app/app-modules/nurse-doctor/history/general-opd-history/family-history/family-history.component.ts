@@ -128,9 +128,9 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
+          history !== null &&
           history.statusCode === 200 &&
-          history.data != null &&
+          history.data !== null &&
           history.data.FamilyHistory
         ) {
           this.familyHistoryData = history.data.FamilyHistory;
@@ -176,13 +176,17 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
       const result = this.diseaseMasterData.filter((item: any) => {
         const arr = temp.filter((value: any) => {
           if (
-            value.diseaseType != null &&
-            value.diseaseType.diseaseType != 'Other'
+            value.diseaseType !== null &&
+            value.diseaseType.diseaseType !== 'Other'
           )
             return value.diseaseType.diseaseType === item.diseaseType;
           else return false;
         });
-        if (item.diseaseType === 'None' && temp.length > 0) return false;
+        if (
+          (item.diseaseType === 'None' || item.diseaseType === 'Nil') &&
+          temp.length > 0
+        )
+          return false;
         else if (arr.length === 0) return true;
         else return false;
       });
@@ -198,11 +202,11 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
   ) {
     const disease: any = event.value;
     const previousValue: any = this.previousSelectedDiseaseList[i];
-    if (disease.diseaseType === 'None') {
+    if (disease.diseaseType === 'None' || disease.diseaseType === 'Nil') {
       this.removeFamilyDiseaseExecptNone();
     }
 
-    if (familyDiseaseForm && disease.diseaseType != 'Other')
+    if (familyDiseaseForm && disease.diseaseType !== 'Other')
       familyDiseaseForm.patchValue({
         otherDiseaseType: null,
         snomedCode: disease.snomedCode,
@@ -211,7 +215,7 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
     if (previousValue) {
       this.diseaseSelectList.map((item: any, t: any) => {
-        if (t != i && previousValue.diseaseType != 'Other') {
+        if (t !== i && previousValue.diseaseType !== 'Other') {
           item.push(previousValue);
           this.sortDiseaseList(item);
         }
@@ -220,7 +224,7 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
     this.diseaseSelectList.map((item: any, t: any) => {
       const index = item.indexOf(disease);
-      if (index != -1 && t != i && disease.diseaseType != 'Other')
+      if (index !== -1 && t !== i && disease.diseaseType !== 'Other')
         item = item.splice(index, 1);
     });
 
@@ -259,9 +263,9 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
             const removedValue = this.previousSelectedDiseaseList[i];
             this.diseaseSelectList.map((item: any, t: any) => {
               if (
-                t != i &&
+                t !== i &&
                 removedValue &&
-                removedValue.diseaseType != 'Other'
+                removedValue.diseaseType !== 'Other'
               ) {
                 item.push(removedValue);
                 this.sortDiseaseList(item);
@@ -281,7 +285,7 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getPreviousFamilyHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode === 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data);
             } else {

@@ -237,7 +237,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
 
     if (this.selectedChiefComplaintList?.[i]) {
       this.chiefComplaintTemporarayList.map((item: any, t: any) => {
-        if (t != i) {
+        if (t !== i) {
           item.push(this.selectedChiefComplaintList[i]);
           this.sortChiefComplaintList(item);
         }
@@ -247,7 +247,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     if (arr.length > 0) {
       this.chiefComplaintTemporarayList.map((item: any, t: any) => {
         const index = item.indexOf(arr[0]);
-        if (index != -1 && t != i) item.splice(index, 1);
+        if (index !== -1 && t !== i) item.splice(index, 1);
       });
       this.selectedChiefComplaintList[i] = arr[0];
     }
@@ -286,7 +286,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
           if (complaintForm.value.chiefComplaint) {
             arr = this.chiefComplaintMaster.filter((item: any) => {
               return (
-                item.chiefComplaint ==
+                item.chiefComplaint ===
                 complaintForm.value.chiefComplaint.chiefComplaint
               );
             });
@@ -294,7 +294,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
           if (arr.length > 0) {
             this.chiefComplaintTemporarayList.forEach(
               (element: any, t: any) => {
-                if (t != i) element.push(arr[0]);
+                if (t !== i) element.push(arr[0]);
                 this.sortChiefComplaintList(element);
               }
             );
@@ -320,7 +320,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     let flag = false;
     this.enableProvisionalDiag = false;
     if (
-      chiefComplaintForm != undefined &&
+      chiefComplaintForm !== undefined &&
       chiefComplaintForm.value.length > 0
     ) {
       for (let i = 0; i < chiefComplaintForm.value.length; i++) {
@@ -392,7 +392,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     if (formGroup.value.unitOfDuration)
       durationUnit = formGroup.value.unitOfDuration;
 
-    if (duration != null && durationUnit != null)
+    if (duration !== null && durationUnit !== null)
       flag = new ValidationUtils().validateDuration(
         duration,
         durationUnit,
@@ -415,8 +415,8 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     const complaint = complaintForm.value.chiefComplaint;
     if (typeof complaint === 'string') {
       if (
-        this.chiefComplaintTemporarayList != undefined &&
-        this.chiefComplaintTemporarayList != null
+        this.chiefComplaintTemporarayList !== undefined &&
+        this.chiefComplaintTemporarayList !== null
       ) {
         this.suggestedChiefComplaintList[i] = this.chiefComplaintTemporarayList[
           i
@@ -429,8 +429,8 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
       }
     } else if (typeof complaint === 'object' && complaint) {
       if (
-        this.chiefComplaintTemporarayList != undefined &&
-        this.chiefComplaintTemporarayList != null
+        this.chiefComplaintTemporarayList !== undefined &&
+        this.chiefComplaintTemporarayList !== null
       ) {
         this.suggestedChiefComplaintList[i] = this.chiefComplaintTemporarayList[
           i

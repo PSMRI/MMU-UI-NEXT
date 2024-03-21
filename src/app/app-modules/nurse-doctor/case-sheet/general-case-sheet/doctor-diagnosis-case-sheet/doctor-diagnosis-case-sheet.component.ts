@@ -210,7 +210,7 @@ export class DoctorDiagnosisCaseSheetComponent
         temp.benPhysicalVitalDetail
       );
 
-      if (this.visitCategory != 'General OPD (QC)') {
+      if (this.visitCategory !== 'General OPD (QC)') {
         this.caseRecords = this.caseSheetData.doctorData;
         if (this.caseRecords?.diagnosis?.ncdScreeningCondition) {
           this.ncdScreeningCondition =
@@ -280,17 +280,17 @@ export class DoctorDiagnosisCaseSheetComponent
         }
       }
 
-      if (temp2 != undefined) {
-        if (temp2['symptom'] != undefined) {
+      if (temp2 !== undefined) {
+        if (temp2['symptom'] !== undefined) {
           this.symptomsList = temp2['symptom'];
           this.symptomFlag = true;
         }
-        if (temp2['contactStatus'] != undefined) {
+        if (temp2['contactStatus'] !== undefined) {
           this.contactList = temp2['contactStatus'];
           if (this.contactList.length > 0) this.contactFlag = true;
           else this.contactFlag = false;
         }
-        if (temp2.travelStatus != undefined) {
+        if (temp2.travelStatus !== undefined) {
           this.travelStatus = temp2.travelStatus;
           if (this.travelStatus === false) {
             this.travelFlag = true;
@@ -300,11 +300,11 @@ export class DoctorDiagnosisCaseSheetComponent
             this.travelStatus = 'Yes';
           } else this.travelFlag = false;
         }
-        if (temp2.suspectedStatusUI != undefined) {
+        if (temp2.suspectedStatusUI !== undefined) {
           this.suspectedFlag = true;
           this.suspected = temp2.suspectedStatusUI;
         }
-        if (temp2['recommendation'] != undefined) {
+        if (temp2['recommendation'] !== undefined) {
           this.recFlag = true;
           this.recommendation = temp2['recommendation'];
           const ar = this.recommendation[0];

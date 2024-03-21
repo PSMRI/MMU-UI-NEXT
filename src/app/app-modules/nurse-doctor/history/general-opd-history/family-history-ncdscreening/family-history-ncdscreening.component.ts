@@ -149,9 +149,9 @@ export class FamilyHistoryNcdscreeningComponent
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
+          history !== null &&
           history.statusCode === 200 &&
-          history.data != null &&
+          history.data !== null &&
           history.data.FamilyHistory
         ) {
           this.familyHistoryData = history.data.FamilyHistory;
@@ -189,8 +189,8 @@ export class FamilyHistoryNcdscreeningComponent
     let familyMemberList;
     temp.forEach((element: any) => {
       if (
-        element.diseaseType != undefined &&
-        element.diseaseType.diseaseType != undefined &&
+        element.diseaseType !== undefined &&
+        element.diseaseType.diseaseType !== undefined &&
         element.diseaseType.diseaseType === 'Diabetes Mellitus'
       ) {
         familyMemberList = element.familyMembers;
@@ -209,13 +209,17 @@ export class FamilyHistoryNcdscreeningComponent
       const result = this.diseaseMasterData.filter((item: any) => {
         const arr = temp.filter((value: any) => {
           if (
-            value.diseaseType != null &&
-            value.diseaseType.diseaseType != 'Other'
+            value.diseaseType !== null &&
+            value.diseaseType.diseaseType !== 'Other'
           ) {
             return value.diseaseType.diseaseType === item.diseaseType;
           } else return false;
         });
-        if (item.diseaseType === 'None' && temp.length > 0) return false;
+        if (
+          (item.diseaseType === 'None' || item.diseaseType === 'Nil') &&
+          temp.length > 0
+        )
+          return false;
         else if (arr.length === 0) return true;
         else return false;
       });
@@ -233,15 +237,20 @@ export class FamilyHistoryNcdscreeningComponent
       const result: any = this.diseaseMasterData.filter((item: any) => {
         const arr = temp.filter((value: any) => {
           if (
-            value.diseaseType != null &&
-            value.diseaseType.diseaseType != 'Other'
+            value.diseaseType !== null &&
+            value.diseaseType.diseaseType !== 'Other'
           ) {
             return value.diseaseType.diseaseType === item.diseaseType;
           } else return false;
         });
         console.log('test', arr);
 
-        if (item.diseaseType === 'None' && temp.length > 0) return false;
+        if (
+          item.diseaseType === 'None' &&
+          item.diseaseType === 'Nil' &&
+          temp.length > 0
+        )
+          return false;
         else if (arr.length === 0) return true;
         else return false;
       });
@@ -254,7 +263,7 @@ export class FamilyHistoryNcdscreeningComponent
           temp.forEach((fValue: any) => {
             if (fValue.deleted === false) {
               if (
-                element.diseaseType.diseaseType ==
+                element.diseaseType.diseaseType ===
                 fValue.diseaseType.diseaseType
               ) {
                 check++;
@@ -286,7 +295,7 @@ export class FamilyHistoryNcdscreeningComponent
     const tempArray = familyDiseaseList.value;
     this.idrsscore.setdymmyvalue(disease.diseaseType);
     const previousValue: any = this.previousSelectedDiseaseList[i];
-    if (disease.diseaseType === 'None') {
+    if (disease.diseaseType === 'None' || disease.diseaseType === 'Nil') {
       this.removeFamilyDiseaseExecptNone();
     }
 
@@ -302,8 +311,8 @@ export class FamilyHistoryNcdscreeningComponent
     }
 
     if (familyDiseaseForm) {
-      if (disease.diseaseType != 'Other') {
-        if (disease.snomedCode != null) {
+      if (disease.diseaseType !== 'Other') {
+        if (disease.snomedCode !== null) {
           familyDiseaseForm.patchValue({
             otherDiseaseType: null,
             snomedCode: disease.snomedCode,
@@ -321,7 +330,7 @@ export class FamilyHistoryNcdscreeningComponent
 
     if (previousValue) {
       this.diseaseSelectList.map((item: any, t: any) => {
-        if (t != i && previousValue.diseaseType != 'Other') {
+        if (t !== i && previousValue.diseaseType !== 'Other') {
           item.push(previousValue);
           this.sortDiseaseList(item);
         }
@@ -330,7 +339,7 @@ export class FamilyHistoryNcdscreeningComponent
 
     this.diseaseSelectList.map((item: any, t: any) => {
       const index = item.indexOf(disease);
-      if (index != -1 && t != i && disease.diseaseType != 'Other')
+      if (index !== -1 && t !== i && disease.diseaseType !== 'Other')
         item = item.splice(index, 1);
     });
 
@@ -365,11 +374,11 @@ export class FamilyHistoryNcdscreeningComponent
           const temp = familyDiseaseList.value;
           this.familyHistoryForm.markAsDirty();
           if (!!familyHistoryForm && familyDiseaseList.length === 1) {
-            if (familyDiseaseList.value[i].ID != null) {
+            if (familyDiseaseList.value[i].ID !== null) {
               familyDiseaseList.value[i].deleted = true;
               const removedValue = this.previousSelectedDiseaseList[i];
               if (
-                removedValue != null &&
+                removedValue !== null &&
                 removedValue.diseaseType === 'Diabetes Mellitus'
               ) {
                 this.idrsscore.setIDRSFamilyScore(0);
@@ -381,7 +390,7 @@ export class FamilyHistoryNcdscreeningComponent
               familyHistoryForm.patchValue({ deleted: false });
               const removedValue = this.previousSelectedDiseaseList[i];
               if (
-                removedValue != null &&
+                removedValue !== null &&
                 removedValue.diseaseType === 'Diabetes Mellitus'
               ) {
                 this.idrsscore.setIDRSFamilyScore(0);
@@ -391,21 +400,21 @@ export class FamilyHistoryNcdscreeningComponent
             const removedValue = this.previousSelectedDiseaseList[i];
             this.diseaseSelectList.map((item: any, t: any) => {
               if (
-                t != i &&
+                t !== i &&
                 removedValue &&
-                removedValue.diseaseType != 'Other'
+                removedValue.diseaseType !== 'Other'
               ) {
                 item.push(removedValue);
                 this.sortDiseaseList(item);
               }
             });
             if (
-              removedValue != null &&
+              removedValue !== null &&
               removedValue.diseaseType === 'Diabetes Mellitus'
             ) {
               this.idrsscore.setIDRSFamilyScore(0);
             }
-            if (familyDiseaseList.value[i].ID != null) {
+            if (familyDiseaseList.value[i].ID !== null) {
               familyDiseaseList.value[i].deleted = true;
               this.diseaseSelectList[i] = [];
             } else {
@@ -439,7 +448,7 @@ export class FamilyHistoryNcdscreeningComponent
       .getPreviousFamilyHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode === 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data);
             } else {

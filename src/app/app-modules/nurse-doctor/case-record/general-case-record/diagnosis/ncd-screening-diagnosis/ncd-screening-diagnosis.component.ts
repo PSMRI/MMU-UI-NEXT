@@ -129,8 +129,8 @@ export class NcdScreeningDiagnosisComponent
     const previousArray = diagnosis.provisionalDiagnosisList;
     let j = 0;
     if (
-      previousArray != undefined &&
-      previousArray != null &&
+      previousArray !== undefined &&
+      previousArray !== null &&
       previousArray.length > 0
     ) {
       previousArray.forEach((i: any) => {

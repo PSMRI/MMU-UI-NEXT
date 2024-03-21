@@ -87,9 +87,9 @@ export class ImmunizationHistoryComponent
       this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(
         beneficiary => {
           if (
-            beneficiary != null &&
-            beneficiary.age != undefined &&
-            beneficiary.age != null
+            beneficiary !== null &&
+            beneficiary.age !== undefined &&
+            beneficiary.age !== null
           ) {
             this.beneficiaryAge = beneficiary.age.split('-')[0].trim();
           }
@@ -130,7 +130,7 @@ export class ImmunizationHistoryComponent
       const vaccines: any = [];
       list.forEach((element: any) => {
         if (element.vaccinationTime === item) {
-          if (element.sctCode != null) {
+          if (element.sctCode !== null) {
             vaccines.push({
               vaccine: element.vaccineName,
               sctCode: element.sctCode,
@@ -178,9 +178,9 @@ export class ImmunizationHistoryComponent
       .getGeneralHistoryDetails(regId, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
+          history !== null &&
           history.statusCode === 200 &&
-          history.data != null &&
+          history.data !== null &&
           history.data.ImmunizationHistory &&
           history.data.ImmunizationHistory.immunizationList
         ) {

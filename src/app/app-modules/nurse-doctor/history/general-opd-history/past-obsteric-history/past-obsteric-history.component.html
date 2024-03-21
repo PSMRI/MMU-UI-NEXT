@@ -108,10 +108,12 @@
                       [disabled]="
                         !complicationOptionConstraints[i]
                           .showAllPregComplication &&
-                        ((complication?.pregComplicationType === 'None' &&
+                        (((complication?.pregComplicationType === 'None' ||
+                          complication?.pregComplicationType === 'Nil') &&
                           complicationOptionConstraints[i]
                             ?.disableNonePregnancyComplication) ||
-                          (complication?.pregComplicationType !== 'None' &&
+                          ((complication?.pregComplicationType !== 'None' ||
+                            complication?.pregComplicationType !== 'Nil') &&
                             !complicationOptionConstraints[i]
                               .disableNonePregnancyComplication))
                       ">
@@ -271,10 +273,14 @@
                       [disabled]="
                         !complicationOptionConstraints[i]
                           .showAllPostComplication &&
-                        ((complicationAbortion?.complicationValue === 'None' &&
+                        (((complicationAbortion?.complicationValue === 'None' ||
+                          complicationAbortion?.complicationValue === 'Nil') &&
                           complicationOptionConstraints[i]
                             ?.disableNonePostComplication) ||
-                          (complicationAbortion?.complicationValue !== 'None' &&
+                          ((complicationAbortion?.complicationValue !==
+                            'None' ||
+                            complicationAbortion?.complicationValue !==
+                              'Nil') &&
                             !complicationOptionConstraints[i]
                               .disableNonePostComplication))
                       "
@@ -421,11 +427,15 @@
                         [disabled]="
                           !complicationOptionConstraints[i]
                             .showAllDeliveryComplication &&
-                          ((complication?.deliveryComplicationType === 'None' &&
+                          (((complication?.deliveryComplicationType ===
+                            'None' ||
+                            complication?.deliveryComplicationType === 'Nil') &&
                             complicationOptionConstraints[i]
                               ?.disableNoneDeliveryComplication) ||
-                            (complication?.deliveryComplicationType !==
-                              'None' &&
+                            ((complication?.deliveryComplicationType !==
+                              'None' ||
+                              complication?.deliveryComplicationType !==
+                                'Nil') &&
                               !complicationOptionConstraints[i]
                                 .disableNoneDeliveryComplication))
                         ">
@@ -484,11 +494,15 @@
                       [disabled]="
                         !complicationOptionConstraints[i]
                           .showAllPostpartumComplication &&
-                        ((complication?.postpartumComplicationType === 'None' &&
+                        (((complication?.postpartumComplicationType ===
+                          'None' ||
+                          complication?.postpartumComplicationType === 'Nil') &&
                           complicationOptionConstraints[i]
                             ?.disableNonePostpartumComplication) ||
-                          (complication?.postpartumComplicationType !==
-                            'None' &&
+                          ((complication?.postpartumComplicationType !==
+                            'None' ||
+                            complication?.postpartumComplicationType !==
+                              'Nil') &&
                             !complicationOptionConstraints[i]
                               .disableNonePostpartumComplication))
                       ">

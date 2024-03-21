@@ -161,7 +161,7 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
         .subscribe(
           (res: any) => {
             if (res.statusCode === 200) {
-              if (res.data && res.data != null && res.data != undefined) {
+              if (res.data && res.data !== null && res.data !== undefined) {
                 const mmuService = res.data.previlegeObj.filter((item: any) => {
                   return item.serviceName === 'MMU';
                 });
@@ -205,8 +205,8 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
                                 if (userLoggedIn.statusCode === 200) {
                                   if (
                                     userLoggedIn.data &&
-                                    userLoggedIn.data != null &&
-                                    userLoggedIn.data != undefined
+                                    userLoggedIn.data !== null &&
+                                    userLoggedIn.data !== undefined
                                   ) {
                                     userLoggedIn.data.previlegeObj.forEach(
                                       (item: any) => {
@@ -214,7 +214,7 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
                                           item?.roles[0]
                                             ?.serviceRoleScreenMappings[0]
                                             ?.providerServiceMapping
-                                            ?.serviceID != '2'
+                                            ?.serviceID !== 2
                                         ) {
                                           localStorage.removeItem('serverKey');
                                           this.confirmationService.alert(

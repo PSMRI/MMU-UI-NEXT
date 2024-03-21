@@ -128,9 +128,9 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
+          history !== null &&
           history.statusCode === 200 &&
-          history.data != null &&
+          history.data !== null &&
           history.data.MenstrualHistory
         ) {
           const temp = history.data.MenstrualHistory;
@@ -161,7 +161,7 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
                 temp.menstrualProblemList.forEach(
                   (menstrualProblemValue: any) => {
                     if (
-                      menstrualProblem.problemName ==
+                      menstrualProblem.problemName ===
                       menstrualProblemValue.problemName
                     ) {
                       tempMenstrualProblem.push(menstrualProblem);
@@ -186,7 +186,7 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getPreviousMenstrualHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode === 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data);
             } else {

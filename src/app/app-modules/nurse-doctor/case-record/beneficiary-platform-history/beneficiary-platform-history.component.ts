@@ -129,7 +129,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   getStateServiceActivity(serviceOnState: any) {
     const services: any = [];
     serviceOnState.forEach((service: any) => {
-      if (service.serviceID != 1 && service.serviceID != 5) {
+      if (service.serviceID !== 1 && service.serviceID !== 5) {
         service = {
           serviceID: service.serviceID,
           serviceName: service.serviceName,

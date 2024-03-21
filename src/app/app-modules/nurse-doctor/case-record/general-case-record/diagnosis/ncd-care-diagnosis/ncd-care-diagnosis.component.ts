@@ -125,7 +125,7 @@ export class NcdCareDiagnosisComponent implements OnInit, DoCheck {
 
     const previousArray = diagnosis.provisionalDiagnosisList;
     let j = 0;
-    if (previousArray != undefined && previousArray.length > 0) {
+    if (previousArray !== undefined && previousArray.length > 0) {
       previousArray.forEach((i: any) => {
         generalArray.at(j).patchValue({
           conceptID: i.conceptID,
@@ -198,7 +198,7 @@ export class NcdCareDiagnosisComponent implements OnInit, DoCheck {
   changeNcdScreeningCondition(eventValue: any, event: any) {
     const value: any = event.value;
     let flag = false;
-    if (value != undefined && value != null && value.length > 0) {
+    if (value !== undefined && value !== null && value.length > 0) {
       value.forEach((element: any) => {
         if (element === 'Other') flag = true;
       });

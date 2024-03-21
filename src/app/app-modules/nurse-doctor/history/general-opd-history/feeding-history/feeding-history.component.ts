@@ -113,9 +113,9 @@ export class FeedingHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
+          history !== null &&
           history.statusCode === 200 &&
-          history.data != null &&
+          history.data !== null &&
           history.data.FeedingHistory
         ) {
           this.feedingHistoryData = history.data.FeedingHistory;
@@ -133,8 +133,8 @@ export class FeedingHistoryComponent implements OnInit, DoCheck, OnDestroy {
           if (beneficairy) {
             const temp = beneficairy.age.split('-');
             if (
-              temp != undefined &&
-              temp != null &&
+              temp !== undefined &&
+              temp !== null &&
               temp.length > 0 &&
               temp[0].indexOf('years') >= 0
             ) {
@@ -146,8 +146,8 @@ export class FeedingHistoryComponent implements OnInit, DoCheck, OnDestroy {
                 .trim();
               this.age = years * 12 + months;
             } else if (
-              temp != undefined &&
-              temp != null &&
+              temp !== undefined &&
+              temp !== null &&
               temp.length > 0 &&
               temp[0].indexOf('months') >= 0
             ) {
@@ -167,7 +167,7 @@ export class FeedingHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getPreviousFeedingHistory(benRegID, this.visitCategory)
       .subscribe(
         (data: any) => {
-          if (data != null && data.data != null) {
+          if (data !== null && data.data !== null) {
             if (data.data.data.length > 0) {
               this.viewPreviousData(data.data);
             } else {

@@ -61,7 +61,7 @@ export class HistoryComponent implements OnInit, OnChanges {
     this.attendant = this.route.snapshot.params['attendant'];
     this.doctorService.setCapturedHistoryByNurse(null);
 
-    if (this.attendant != 'nurse') this.generalHistory();
+    if (this.attendant !== 'nurse') this.generalHistory();
   }
 
   ngOnChanges() {

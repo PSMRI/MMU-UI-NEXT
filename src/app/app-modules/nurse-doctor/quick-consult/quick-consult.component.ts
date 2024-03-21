@@ -196,13 +196,13 @@ export class QuickConsultComponent
     this.loadMasterData();
     this.rbsSelectedInInvestigationSubscription =
       this.nurseService.rbsSelectedInInvestigation$.subscribe(response =>
-        response == undefined
+        response === undefined
           ? (this.rbsSelectedInInvestigation = false)
           : (this.rbsSelectedInInvestigation = response)
       );
     this.rbsTestResultCurrentSubscription =
       this.nurseService.rbsTestResultCurrent$.subscribe(response =>
-        response == undefined
+        response === undefined
           ? (this.rbsTestResultCurrent = null)
           : (this.rbsTestResultCurrent = response)
       );
@@ -232,14 +232,14 @@ export class QuickConsultComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       this.rbsPopup = false;
-      if (result != null) {
+      if (result !== null) {
         this.patientQuickConsultForm.patchValue({
           rbsTestResult: result['result'],
         });
         this.patientQuickConsultForm.controls['rbsTestResult'].markAsDirty();
         if (
           this.patientQuickConsultForm.controls['rbsTestResult'].value &&
-          this.patientQuickConsultForm.controls['rbsTestResult'].value != null
+          this.patientQuickConsultForm.controls['rbsTestResult'].value !== null
         ) {
           this.nurseService.setRbsInCurrentVitals(
             this.patientQuickConsultForm.controls['rbsTestResult'].value
@@ -472,7 +472,7 @@ export class QuickConsultComponent
         const typeOfDrug = option.isEDL
           ? ''
           : this.currentLanguageSet.nonEDLMedicine;
-        if (option.quantityInHand == 0) {
+        if (option.quantityInHand === 0) {
           this.confirmationService
             .confirm(
               'info ' + typeOfDrug,
@@ -559,7 +559,7 @@ export class QuickConsultComponent
   loadMasterData() {
     this.masterDataSubscription =
       this.masterdataService.doctorMasterData$.subscribe(res => {
-        if (res != null) {
+        if (res !== null) {
           this.masterData = res;
           this.chiefComplaintMaster = this.masterData.chiefComplaintMaster;
           this.chiefComplaintTemporarayList[0] =
@@ -567,12 +567,12 @@ export class QuickConsultComponent
 
           this.nonRadiologyMaster = this.masterData.procedures.filter(
             (item: any) => {
-              return item.procedureType == 'Laboratory';
+              return item.procedureType === 'Laboratory';
             }
           );
           this.radiologyMaster = this.masterData.procedures.filter(
             (item: any) => {
-              return item.procedureType == 'Radiology';
+              return item.procedureType === 'Radiology';
             }
           );
 
@@ -585,7 +585,7 @@ export class QuickConsultComponent
           this.edlMaster = this.masterData.NonEdlMaster;
 
           this.loadVitalsFromNurse();
-          if (this.quickConsultMode == 'view') {
+          if (this.quickConsultMode === 'view') {
             const beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
             const visitID = localStorage.getItem('visitID');
             const visitCategory = localStorage.getItem('visitCategory');
@@ -600,7 +600,7 @@ export class QuickConsultComponent
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
+        if (res && res.statusCode === 200 && res.data) {
           this.patchDiagnosisDetails(res.data);
         }
       });
@@ -608,7 +608,7 @@ export class QuickConsultComponent
 
   filterInitialComplaints(element: any) {
     const arr = this.chiefComplaintMaster.filter((item: any) => {
-      return item.chiefComplaint == element.chiefComplaint;
+      return item.chiefComplaint === element.chiefComplaint;
     });
 
     if (arr.length > 0) {
@@ -638,11 +638,11 @@ export class QuickConsultComponent
         const labTest: any = [];
         investigation.laboratoryList.forEach((item: any) => {
           const temp = this.masterData.procedures.filter((procedure: any) => {
-            return procedure.procedureID == item.procedureID;
+            return procedure.procedureID === item.procedureID;
           });
           if (temp.length > 0) labTest.push(temp[0]);
           if (
-            item.procedureName.toLowerCase() ==
+            item.procedureName.toLowerCase() ===
             environment.RBSTest.toLowerCase()
           ) {
             this.rbsSelectedInInvestigation = true;
@@ -651,10 +651,10 @@ export class QuickConsultComponent
         });
 
         const test = labTest.filter((item: any) => {
-          return item.procedureType == 'Laboratory';
+          return item.procedureType === 'Laboratory';
         });
         const radiology = labTest.filter((item: any) => {
-          return item.procedureType == 'Radiology';
+          return item.procedureType === 'Radiology';
         });
         this.patientQuickConsultForm.patchValue({ test, radiology });
       }
@@ -721,8 +721,8 @@ export class QuickConsultComponent
       })
       .subscribe(res => {
         if (
-          res.data.benAnthropometryDetail != null &&
-          res.data.benPhysicalVitalDetail != null
+          res.data.benAnthropometryDetail !== null &&
+          res.data.benPhysicalVitalDetail !== null
         ) {
           this.patientQuickConsultForm.patchValue({
             height_cm: res.data.benAnthropometryDetail.height_cm,
@@ -747,8 +747,8 @@ export class QuickConsultComponent
           });
           this.nurseService.rbsTestResultFromDoctorFetch = null;
           if (
-            res.data.benPhysicalVitalDetail.rbsTestResult != undefined &&
-            res.data.benPhysicalVitalDetail.rbsTestResult != null
+            res.data.benPhysicalVitalDetail.rbsTestResult !== undefined &&
+            res.data.benPhysicalVitalDetail.rbsTestResult !== null
           ) {
             this.nurseService.rbsTestResultFromDoctorFetch =
               res.data.benPhysicalVitalDetail.rbsTestResult;
@@ -766,8 +766,8 @@ export class QuickConsultComponent
   checkDiasableRBS() {
     if (
       this.rbsSelectedInInvestigation === true ||
-      (this.nurseService.rbsTestResultFromDoctorFetch != undefined &&
-        this.nurseService.rbsTestResultFromDoctorFetch != null)
+      (this.nurseService.rbsTestResultFromDoctorFetch !== undefined &&
+        this.nurseService.rbsTestResultFromDoctorFetch !== null)
     )
       return true;
 
@@ -776,7 +776,7 @@ export class QuickConsultComponent
   rbsResultChange(): boolean {
     if (
       this.patientQuickConsultForm.controls['rbsTestResult'].value &&
-      this.patientQuickConsultForm.controls['rbsTestResult'].value != null
+      this.patientQuickConsultForm.controls['rbsTestResult'].value !== null
     ) {
       this.nurseService.setRbsInCurrentVitals(
         this.patientQuickConsultForm.controls['rbsTestResult'].value
@@ -787,8 +787,8 @@ export class QuickConsultComponent
     }
     if (
       this.rbsSelectedInInvestigation === true ||
-      (this.nurseService.rbsTestResultFromDoctorFetch != undefined &&
-        this.nurseService.rbsTestResultFromDoctorFetch != null)
+      (this.nurseService.rbsTestResultFromDoctorFetch !== undefined &&
+        this.nurseService.rbsTestResultFromDoctorFetch !== null)
     ) {
       this.patientQuickConsultForm.controls['rbsTestResult'].disable();
       this.patientQuickConsultForm.controls['rbsTestRemarks'].disable();
@@ -895,7 +895,7 @@ export class QuickConsultComponent
   }
   deleteMedicineBackend(index: any, id: any) {
     this.doctorService.deleteMedicine(id).subscribe((res: any) => {
-      if (res.statusCode == 200) {
+      if (res.statusCode === 200) {
         this.deleteMedicineUI(index);
       }
     });
@@ -933,12 +933,12 @@ export class QuickConsultComponent
     );
 
     const arr = this.chiefComplaintMaster.filter((item: any) => {
-      return item.chiefComplaint == chiefComplaintValue.chiefComplaint;
+      return item.chiefComplaint === chiefComplaintValue.chiefComplaint;
     });
 
     if (this.selectedChiefComplaintList && this.selectedChiefComplaintList[i]) {
       this.chiefComplaintTemporarayList.map((item: any, t: any) => {
-        if (t != i) {
+        if (t !== i) {
           item.push(this.selectedChiefComplaintList[i]);
           this.sortChiefComplaintList(item);
         }
@@ -948,7 +948,7 @@ export class QuickConsultComponent
     if (arr.length > 0) {
       this.chiefComplaintTemporarayList.map((item: any, t: any) => {
         const index = item.indexOf(arr[0]);
-        if (index != -1 && t != i) item = item.splice(index, 1);
+        if (index !== -1 && t !== i) item = item.splice(index, 1);
       });
       this.selectedChiefComplaintList[i] = arr[0];
     }
@@ -961,9 +961,9 @@ export class QuickConsultComponent
     const complaintFormArrayValue = complaintFormArray.value;
     const temp = this.chiefComplaintMaster.filter((item: any) => {
       const arr = complaintFormArrayValue.filter((value: any) => {
-        return value.chiefComplaint.chiefComplaint == item.chiefComplaint;
+        return value.chiefComplaint.chiefComplaint === item.chiefComplaint;
       });
-      const flag = arr.length == 0 ? true : false;
+      const flag = arr.length === 0 ? true : false;
       return flag;
     });
     if (temp.length > 0) {
@@ -986,7 +986,7 @@ export class QuickConsultComponent
           if (complaintForm.value.chiefComplaint) {
             arr = this.chiefComplaintMaster.filter((item: any) => {
               return (
-                item.chiefComplaint ==
+                item.chiefComplaint ===
                 complaintForm.value.chiefComplaint.chiefComplaint
               );
             });
@@ -994,7 +994,7 @@ export class QuickConsultComponent
           if (arr.length > 0) {
             this.chiefComplaintTemporarayList.forEach(
               (element: any, t: any) => {
-                if (t != i) element.push(arr[0]);
+                if (t !== i) element.push(arr[0]);
                 this.sortChiefComplaintList(element);
               }
             );
@@ -1006,7 +1006,7 @@ export class QuickConsultComponent
           if (this.suggestedChiefComplaintList[i])
             this.suggestedChiefComplaintList[i] = null;
 
-          if (complaintFormArray.length == 1 && complaintForm)
+          if (complaintFormArray.length === 1 && complaintForm)
             complaintForm.reset();
           else complaintFormArray.removeAt(i);
         }
@@ -1019,22 +1019,22 @@ export class QuickConsultComponent
 
   canDisableTest(test: any) {
     if (
-      ((this.rbsTestResultCurrent != null &&
-        this.rbsTestResultCurrent != undefined) ||
-        this.nurseService.rbsTestResultFromDoctorFetch != null) &&
-      test.procedureName == environment.RBSTest
+      ((this.rbsTestResultCurrent !== null &&
+        this.rbsTestResultCurrent !== undefined) ||
+        this.nurseService.rbsTestResultFromDoctorFetch !== null) &&
+      test.procedureName === environment.RBSTest
     ) {
       // test.checked=true;
       return true;
     }
-    // else if(((this.rbsTestResultCurrent == null || this.rbsTestResultCurrent == undefined) &&
-    // this.nurseService.rbsTestResultFromDoctorFetch ==null) && test.procedureName == environment.RBSTest)
+    // else if(((this.rbsTestResultCurrent === null || this.rbsTestResultCurrent === undefined) &&
+    // this.nurseService.rbsTestResultFromDoctorFetch ==null) && test.procedureName === environment.RBSTest)
     // {
     //   test.checked=false;
     // }
     if (this.previousLabTestList) {
       const temp = this.previousLabTestList.filter((item: any) => {
-        return item.procedureID == test.procedureID;
+        return item.procedureID === test.procedureID;
       });
 
       if (temp.length > 0) test.disabled = true;
@@ -1048,7 +1048,7 @@ export class QuickConsultComponent
   canDisableComplaints(complaints: any) {
     if (this.previousChiefComplaints) {
       const temp = this.previousChiefComplaints.filter((item: any) => {
-        return complaints.chiefComplaintID == item.chiefComplaintID;
+        return complaints.chiefComplaintID === item.chiefComplaintID;
       });
 
       if (temp.length > 0) complaints.disabled = true;
@@ -1102,8 +1102,8 @@ export class QuickConsultComponent
       const complaint = complaintForm.value.chiefComplaint;
       if (typeof complaint === 'string') {
         if (
-          this.chiefComplaintTemporarayList != undefined &&
-          this.chiefComplaintTemporarayList != null
+          this.chiefComplaintTemporarayList !== undefined &&
+          this.chiefComplaintTemporarayList !== null
         ) {
           this.suggestedChiefComplaintList[i] =
             this.chiefComplaintTemporarayList[i].filter(
@@ -1115,8 +1115,8 @@ export class QuickConsultComponent
         }
       } else if (typeof complaint === 'object' && complaint) {
         if (
-          this.chiefComplaintTemporarayList != undefined &&
-          this.chiefComplaintTemporarayList != null
+          this.chiefComplaintTemporarayList !== undefined &&
+          this.chiefComplaintTemporarayList !== null
         ) {
           this.suggestedChiefComplaintList[i] =
             this.chiefComplaintTemporarayList[i].filter(
@@ -1128,7 +1128,7 @@ export class QuickConsultComponent
         }
       }
 
-      if (this.suggestedChiefComplaintList[i].length == 0)
+      if (this.suggestedChiefComplaintList[i].length === 0)
         complaintForm.reset();
     } else {
       // if(complaintFormArray.controls.length>1 && i==0)
@@ -1154,14 +1154,14 @@ export class QuickConsultComponent
     if (complaintForm.value.chiefComplaint) {
       arr = this.chiefComplaintMaster.filter((item: any) => {
         return (
-          item.chiefComplaint ==
+          item.chiefComplaint ===
           complaintForm.value.chiefComplaint.chiefComplaint
         );
       });
     }
     if (arr.length > 0) {
       this.chiefComplaintTemporarayList.forEach((element: any, t: any) => {
-        if (t != i) element.push(arr[0]);
+        if (t !== i) element.push(arr[0]);
         this.sortChiefComplaintList(element);
       });
     }
@@ -1172,13 +1172,13 @@ export class QuickConsultComponent
     if (this.suggestedChiefComplaintList[i])
       this.suggestedChiefComplaintList[i] = null;
 
-    if (complaintFormArray.length == 1 && complaintForm) complaintForm.reset();
+    if (complaintFormArray.length === 1 && complaintForm) complaintForm.reset();
     else complaintFormArray.removeAt(i);
   }
 
   sortChiefComplaintList(complaintList: any) {
     complaintList.sort((a: any, b: any) => {
-      if (a.chiefComplaint == b.chiefComplaint) return 0;
+      if (a.chiefComplaint === b.chiefComplaint) return 0;
       if (a.chiefComplaint < b.chiefComplaint) return -1;
       else return 1;
     });
@@ -1220,7 +1220,8 @@ export class QuickConsultComponent
     this.nurseService.setRbsSelectedInInvestigation(false);
     item.forEach((element: any) => {
       if (
-        element.procedureName.toLowerCase() == environment.RBSTest.toLowerCase()
+        element.procedureName.toLowerCase() ===
+        environment.RBSTest.toLowerCase()
       ) {
         this.rbsSelectedInInvestigation = true;
         this.nurseService.setRbsSelectedInInvestigation(true);

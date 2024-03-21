@@ -75,7 +75,7 @@ export class IotcomponentComponent implements OnInit, DoCheck {
     this.procedure = this.input['procedure'];
     const providerServiceMapID = localStorage.getItem('providerServiceID');
     //SH20094090,calibration integration,09-06-2021
-    if (this.procedure?.value?.calibrationStartAPI != null) {
+    if (this.procedure?.value?.calibrationStartAPI !== null) {
       const dialogRef = this.dialog.open(CalibrationComponent, {
         width: '600px',
         disableClose: true,
@@ -84,7 +84,7 @@ export class IotcomponentComponent implements OnInit, DoCheck {
 
       dialogRef.afterClosed().subscribe(result => {
         console.log('calibration', result);
-        if (result != null) {
+        if (result !== null) {
           this.stripCode = result;
           this.msgCalibration = true;
           this.calibStart();
@@ -243,7 +243,7 @@ export class IotcomponentComponent implements OnInit, DoCheck {
   stop() {
     if (this.msgCalibration) this.calibStop();
     else {
-      if (this.statuscall != undefined) {
+      if (this.statuscall !== undefined) {
         clearTimeout(this.statuscall);
         this.service.endAPI(this.startAPI).subscribe((res: any) => {
           console.log('dfasdas', res);
@@ -259,7 +259,7 @@ export class IotcomponentComponent implements OnInit, DoCheck {
   }
   //SH20094090,calibration integration,09-06-2021
   calibStop() {
-    if (this.statuscall != undefined) {
+    if (this.statuscall !== undefined) {
       clearTimeout(this.statuscall);
       this.service
         .endCalibrationAPI(this.procedure.value.calibrationEndAPI)
