@@ -85,13 +85,13 @@ export class CancerHistoryComponent
   }
 
   ngOnChanges(changes: any) {
-    if (this.mode === 'view') {
+    if (String(this.mode) === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getCancerHistory(benRegID, visitID);
     }
 
-    if (this.mode === 'update')
+    if (String(this.mode) === 'update')
       this.updatePateintHistory(this.nurseCancerHistoryForm);
   }
 

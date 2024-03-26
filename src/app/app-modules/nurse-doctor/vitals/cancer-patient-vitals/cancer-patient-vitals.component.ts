@@ -101,13 +101,13 @@ export class CancerPatientVitalsComponent
 
   ngOnChanges(changes: any) {
     this.nurseService.rbsTestResultFromDoctorFetch = null;
-    if (this.mode === 'view') {
+    if (String(this.mode) === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getCancerVitals(benRegID, visitID);
     }
 
-    if (this.mode === 'update') {
+    if (String(this.mode) === 'update') {
       this.updateCancerVitals();
     }
   }

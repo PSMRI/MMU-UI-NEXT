@@ -73,7 +73,7 @@ export class PatientVisitDetailsComponent
   }
 
   ngOnChanges() {
-    if (this.mode === 'view') {
+    if (String(this.mode) === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getVisitDetails(visitID, benRegID);
@@ -106,7 +106,10 @@ export class PatientVisitDetailsComponent
             this.templateNurseMasterData.visitCategories;
           this.templateFilterVisitCategories = this.templateVisitCategories;
 
-          if (this.beneficiary.ageVal >= 30 && !(this.mode === 'view')) {
+          if (
+            this.beneficiary.ageVal >= 30 &&
+            !(String(this.mode) === 'view')
+          ) {
             if (this.beneficiary.genderName === 'Male') {
               this.templateFilterVisitCategories =
                 this.templateVisitCategories.filter(

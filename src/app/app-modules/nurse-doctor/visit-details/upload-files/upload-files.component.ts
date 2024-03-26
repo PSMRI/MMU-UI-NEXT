@@ -93,9 +93,9 @@ export class UploadFilesComponent implements OnInit, DoCheck, OnChanges {
   }
 
   ngOnChanges() {
-    if (this.mode === 'view' && !this.enableFileSelection) {
+    if (String(this.mode) === 'view' && !this.enableFileSelection) {
       this.disableFileSelection = true;
-    } else if (this.mode === 'view' && this.enableFileSelection) {
+    } else if (String(this.mode) === 'view' && this.enableFileSelection) {
       this.enableForNCDScreening = true;
       this.disableFileSelection = false;
     } else {

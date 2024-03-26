@@ -174,7 +174,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
           this.changeDetectorRef.detectChanges();
 
-          if (this.mode === 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);

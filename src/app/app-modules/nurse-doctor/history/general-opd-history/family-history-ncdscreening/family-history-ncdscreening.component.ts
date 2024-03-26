@@ -134,7 +134,7 @@ export class FamilyHistoryNcdscreeningComponent
           this.familyMemeberMasterData = masterData.familyMemberTypes;
           this.addFamilyDisease();
 
-          if (this.mode === 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);

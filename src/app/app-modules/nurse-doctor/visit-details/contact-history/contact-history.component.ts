@@ -96,7 +96,7 @@ export class ContactHistoryComponent
   }
   // Ends
   ngOnChanges() {
-    if (this.mode === 'view') {
+    if (String(this.mode) === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getContactDetails(benRegID, visitID);

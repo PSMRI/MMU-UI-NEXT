@@ -144,7 +144,7 @@ export class GeneralOpdHistoryComponent
 
   ngOnChanges(changes: any) {
     this.loadFormData();
-    if (changes.mode && this.mode === 'update') {
+    if (changes.mode && String(this.mode) === 'update') {
       const visitCategory = localStorage.getItem('visitCategory');
       if (visitCategory === 'NCD screening') {
         this.updatePatientNCDScreeningHistory(this.nurseGeneralHistoryForm);

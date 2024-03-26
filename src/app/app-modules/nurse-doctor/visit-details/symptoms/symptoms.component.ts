@@ -93,7 +93,7 @@ export class SymptomsComponent
   }
   // Ends
   ngOnChanges() {
-    if (this.mode === 'view') {
+    if (String(this.mode) === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getHistoryDetails(benRegID, visitID);

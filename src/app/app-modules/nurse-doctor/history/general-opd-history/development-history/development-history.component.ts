@@ -89,7 +89,7 @@ export class DevelopmentHistoryComponent implements OnInit, DoCheck, OnDestroy {
         if (masterData) {
           this.masterData = masterData;
           console.log('this.masterData ', this.masterData);
-          if (this.mode === 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);

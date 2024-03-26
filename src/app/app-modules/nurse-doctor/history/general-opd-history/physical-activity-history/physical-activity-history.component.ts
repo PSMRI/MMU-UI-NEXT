@@ -93,7 +93,7 @@ export class PhysicalActivityHistoryComponent implements OnInit, DoCheck {
           this.physicalActivityQuestions = this.masterData.physicalActivity;
           console.log('masterData', this.masterData);
 
-          if (this.mode === 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             const visitCategory = localStorage.getItem('visitCategory');

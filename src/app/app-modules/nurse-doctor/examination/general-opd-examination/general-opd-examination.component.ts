@@ -86,12 +86,12 @@ export class GeneralOpdExaminationComponent
 
   ngOnChanges() {
     this.loadFormData();
-    if (this.mode === 'view') {
+    if (String(this.mode) === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getAncExaminationData(benRegID, visitID);
     }
-    if (this.mode === 'update') {
+    if (String(this.mode) === 'update') {
       this.updatePatientExamination(this.patientExaminationForm);
     }
   }

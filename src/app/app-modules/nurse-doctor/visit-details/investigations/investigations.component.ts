@@ -97,7 +97,7 @@ export class InvestigationsComponent implements OnInit, DoCheck, OnDestroy {
             return item.procedureType === 'Laboratory';
           });
 
-          if (this.mode === 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getInvestigation(benRegID, visitID);

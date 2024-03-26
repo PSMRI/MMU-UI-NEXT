@@ -167,7 +167,7 @@ export class FamilyDiseaseHistoryComponent
             diseaseType: this.templateCancerDiseaseType.slice(),
           };
 
-          if (this.mode === 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getCancerHistory(benRegID, visitID);
