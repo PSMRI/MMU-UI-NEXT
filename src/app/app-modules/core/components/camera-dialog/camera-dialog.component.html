@@ -102,14 +102,18 @@
   <mat-dialog-content>
     <div class="row">
       <div class="col-md-5 col-sm-5 text-center">
-        <div [hidden]="true">
-          <img #myImg [src]="annotate" alt="annotate" />
+        <div style="display: none">
+          <img
+            [src]="annotate"
+            alt="annotate"
+            #myImg
+            (load)="loadingCanvas()" />
         </div>
         <canvas
+          #myCanvas
           width="250"
           height="250"
           (click)="pointMark($event)"
-          #myCanvas
           style="border: 1px solid #d3d3d3"></canvas>
       </div>
 

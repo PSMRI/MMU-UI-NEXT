@@ -142,6 +142,9 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
   handleFamilyHistoryData() {
     this.familyHistoryForm.patchValue({
       familyDiseaseList: this.familyHistoryData.familyDiseaseList,
+      geneticDisorder: this.familyHistoryData.geneticDisorder,
+      isConsanguineousMarrige: this.familyHistoryData.isConsanguineousMarrige,
+      isGeneticDisorder: this.familyHistoryData.isGeneticDisorder,
     });
     const formArray = this.familyHistoryForm.controls[
       'familyDiseaseList'
@@ -200,7 +203,7 @@ export class FamilyHistoryComponent implements OnInit, DoCheck, OnDestroy {
     i: any,
     familyDiseaseForm?: AbstractControl<any, any>
   ) {
-    const disease: any = event.value;
+    const disease: any = event;
     const previousValue: any = this.previousSelectedDiseaseList[i];
     if (disease.diseaseType === 'None' || disease.diseaseType === 'Nil') {
       this.removeFamilyDiseaseExecptNone();

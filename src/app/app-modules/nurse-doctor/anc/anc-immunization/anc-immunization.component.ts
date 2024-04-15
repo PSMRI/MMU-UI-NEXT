@@ -72,7 +72,10 @@ export class AncImmunizationComponent
   ngOnChanges(changes: any) {
     this.checkStatus();
 
-    if (this.mode !== 'view' && this.mode !== 'update') {
+    if (
+      this.mode?.toLowerCase() !== 'view' &&
+      this.mode?.toLowerCase() !== 'update'
+    ) {
       this.nullifyTTStatus();
     }
   }
