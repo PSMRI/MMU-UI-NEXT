@@ -113,15 +113,15 @@ export class MasterdataService {
     let facilityID = 0;
     const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     if (
-      JSON.parse(serviceLineDetails).facilityID != undefined &&
-      JSON.parse(serviceLineDetails).facilityID != null
+      JSON.parse(serviceLineDetails).facilityID !== undefined &&
+      JSON.parse(serviceLineDetails).facilityID !== null
     ) {
       facilityID = JSON.parse(serviceLineDetails).facilityID;
     }
     let vanID = 0;
     if (
-      JSON.parse(serviceLineDetails).vanID != undefined &&
-      JSON.parse(serviceLineDetails).vanID != null
+      JSON.parse(serviceLineDetails).vanID !== undefined &&
+      JSON.parse(serviceLineDetails).vanID !== null
     ) {
       vanID = JSON.parse(serviceLineDetails).vanID;
     }
@@ -152,15 +152,15 @@ export class MasterdataService {
     let facilityID = 0;
     const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     if (
-      JSON.parse(serviceLineDetails).facilityID != undefined &&
-      JSON.parse(serviceLineDetails).facilityID != null
+      JSON.parse(serviceLineDetails).facilityID !== undefined &&
+      JSON.parse(serviceLineDetails).facilityID !== null
     ) {
       facilityID = JSON.parse(serviceLineDetails).facilityID;
     }
     let vanID = 0;
     if (
-      JSON.parse(serviceLineDetails).vanID != undefined &&
-      JSON.parse(serviceLineDetails).vanID != null
+      JSON.parse(serviceLineDetails).vanID !== undefined &&
+      JSON.parse(serviceLineDetails).vanID !== null
     ) {
       vanID = JSON.parse(serviceLineDetails).vanID;
     }

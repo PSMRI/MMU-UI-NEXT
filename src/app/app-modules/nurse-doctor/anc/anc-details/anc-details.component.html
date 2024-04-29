@@ -1,5 +1,7 @@
 <div [formGroup]="patientANCDetailsForm" class="row m-t-20">
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
+  <div
+    class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
+    style="padding-left: 27px">
     <label class="control-label" for="pregnancyStatus"
       >{{ current_language_set?.ancData?.ancDataDetails?.primiGravida }}*</label
     >
@@ -18,7 +20,7 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="fieldAlignment fontStyle">
+    <mat-form-field class="fieldAlignment fontStyle mat_form_field_width">
       <mat-label class="mat-label-text" class="fontStyle">{{
         current_language_set?.ancData?.ancDataDetails?.lastMenstrualPeriod
       }}</mat-label>
@@ -42,7 +44,7 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="input-full-width">
+    <mat-form-field class="input-full-width mat_form_field_width_one">
       <mat-label class="mat-label-text">{{
         current_language_set?.ancData?.ancDataDetails?.currentGestationalAge
       }}</mat-label>
@@ -57,7 +59,9 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="fieldAlignment fontStyle" style="width: 270px">
+    <mat-form-field
+      class="fieldAlignment fontStyle mat_form_field_width_two"
+      style="width: 270px">
       <mat-label class="mat-label-text" class="fontStyle">{{
         current_language_set?.ancData?.ancDataDetails?.eDD
       }}</mat-label>
@@ -78,7 +82,7 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="input-full-width">
+    <mat-form-field class="input-full-width mat_form_field_width_one">
       <mat-label class="mat-label-text">{{
         current_language_set?.ancData?.ancDataDetails?.periodofPregnancy
       }}</mat-label>
@@ -97,7 +101,7 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="input-full-width">
+    <mat-form-field class="input-full-width mat_form_field_width_one">
       <mat-label class="mat-label-text">{{
         current_language_set?.ancData?.ancDataDetails?.trimesterNumber
       }}</mat-label>

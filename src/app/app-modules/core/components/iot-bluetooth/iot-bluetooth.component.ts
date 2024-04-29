@@ -101,7 +101,7 @@ export class IotBluetoothComponent implements OnInit, DoCheck {
         this.spinner = false;
       },
       err => {
-        if (typeof err['_body'] != 'object') {
+        if (typeof err['_body'] !== 'object') {
           this.errMsg = undefined;
           this.deviceConnected = false;
           this.apiAvailable = true;
@@ -147,7 +147,7 @@ export class IotBluetoothComponent implements OnInit, DoCheck {
     this.spinner = true;
     this.service.disconnectBluetoothDevice().subscribe(
       (res: any) => {
-        if (res.status == 202 || res.status == 200) {
+        if (res.status === 202 || res.status === 200) {
           this.service.setBluetoothConnected(false);
           this.deviceConnected = false;
           this.spinner = false;

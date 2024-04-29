@@ -65,15 +65,15 @@ export class SystemicExaminationComponent
     this.displayGeneral = false;
     this.fetchLanguageResponse();
 
-    if (this.visitCategory == 'ANC') {
+    if (this.visitCategory === 'ANC') {
       this.systemicExaminationDataForm.addControl(
         'obstetricExaminationForANCForm',
         this.generalUtils.createObstetricExaminationForANCForm()
       );
       this.displayANC = true;
     } else if (
-      this.visitCategory == 'General OPD' ||
-      this.visitCategory == 'PNC'
+      this.visitCategory === 'General OPD' ||
+      this.visitCategory === 'PNC'
     ) {
       this.displayGeneral = true;
     }
@@ -104,7 +104,7 @@ export class SystemicExaminationComponent
     ) as FormGroup;
   }
   ngOnChanges() {
-    this.displayANC = this.visitCategory == 'ANC' ? true : false;
+    this.displayANC = this.visitCategory === 'ANC' ? true : false;
     if (this.displayANC) {
       this.systemicExaminationDataForm.addControl(
         'obstetricExaminationForANCForm',
@@ -114,7 +114,10 @@ export class SystemicExaminationComponent
       this.systemicExaminationDataForm.removeControl(
         'obstetricExaminationForANCForm'
       );
-      if (this.visitCategory == 'General OPD' || this.visitCategory == 'PNC') {
+      if (
+        this.visitCategory === 'General OPD' ||
+        this.visitCategory === 'PNC'
+      ) {
         this.displayGeneral = true;
       }
     }

@@ -4,22 +4,24 @@
       <div
         class="col-xs-12 col-sm-6 col-md-3 col-lg- box"
         style="width: 20%; margin: 5px">
-        <mat-label class="mat-label-text">{{
-          currentLanguageSet?.report
-        }}</mat-label>
-        <mat-select
-          class="input-full-width"
-          name="report"
-          formControlName="report"
-          (selectionChange)="checkReport()"
-          required>
-          <mat-option *ngFor="let report of reportMaster" [value]="report">
-            {{ report.reportName }}
-          </mat-option>
-        </mat-select>
+        <mat-form-field class="mat_form_field_color mat_form_field_width">
+          <mat-label class="mat-label-text">{{
+            currentLanguageSet?.report
+          }}</mat-label>
+          <mat-select
+            class="input-full-width"
+            name="report"
+            formControlName="report"
+            (selectionChange)="checkReport()"
+            required>
+            <mat-option *ngFor="let report of reportMaster" [value]="report">
+              {{ report.reportName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 box" style="margin: 5px">
-        <mat-form-field [style.width]="'100%'">
+        <mat-form-field [style.width]="'100%'" class="mat_form_field_color">
           <mat-label class="mat-label-text">Enter Date Range</mat-label>
           <mat-date-range-input
             [rangePicker]="picker"
@@ -45,19 +47,21 @@
       <div
         class="col-xs-12 col-sm-6 col-md-3 col-lg- box"
         style="width: 20%; margin: 5px">
-        <mat-label class="mat-label-text">{{
-          currentLanguageSet?.van
-        }}</mat-label>
-        <mat-select
-          class="input-full-width"
-          name="van"
-          formControlName="van"
-          [disabled]="!toDate"
-          required>
-          <mat-option *ngFor="let van of vanMaster" [value]="van">
-            {{ van.vehicalNo }}
-          </mat-option>
-        </mat-select>
+        <mat-form-field class="mat_form_field_color mat_form_field_width">
+          <mat-label class="mat-label-text">{{
+            currentLanguageSet?.van
+          }}</mat-label>
+          <mat-select
+            class="input-full-width"
+            name="van"
+            formControlName="van"
+            [disabled]="!toDate"
+            required>
+            <mat-option *ngFor="let van of vanMaster" [value]="van">
+              {{ van.vehicalNo }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </form>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-t-40 m-b-40">
@@ -65,7 +69,7 @@
         mat-raised-button
         color="primary"
         type="button"
-        class="pull-right"
+        class="pull-right mat_blue"
         [disabled]="!reportForm.valid"
         (click)="getReportData()">
         {{ currentLanguageSet?.downloadReport }}

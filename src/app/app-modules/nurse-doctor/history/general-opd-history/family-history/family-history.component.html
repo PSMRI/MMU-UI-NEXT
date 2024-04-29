@@ -36,7 +36,9 @@
             class="select-full-width"
             name="diseaseType"
             formControlName="diseaseType"
-            (change)="filterFamilyDiseaseList($event, i, familyDisease)">
+            (selectionChange)="
+              filterFamilyDiseaseList($event.value, i, familyDisease)
+            ">
             <mat-option
               *ngFor="let disease of diseaseSelectList[i]"
               [value]="disease">
@@ -83,7 +85,8 @@
           *ngIf="
             (familyDisease?.value?.diseaseType !== null &&
               familyDisease?.value?.diseaseType !== '') ||
-            familyDisease?.value?.diseaseType?.diseaseType === 'None'
+            familyDisease?.value?.diseaseType?.diseaseType === 'None' ||
+            familyDisease?.value?.diseaseType?.diseaseType === 'Nil'
           ">
           <mat-form-field class="input-full-width">
             <mat-label class="mat-label-text">{{

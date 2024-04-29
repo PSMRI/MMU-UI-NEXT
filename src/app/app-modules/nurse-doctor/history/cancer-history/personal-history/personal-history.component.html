@@ -22,7 +22,7 @@
   <div class="m-t-10">
     <div class="col-12 row">
       <div class="col-4 box">
-        <mat-form-field>
+        <mat-form-field class="mat_form_field_width_two">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.tobaccoUse
@@ -42,7 +42,7 @@
       </div>
 
       <div class="col-4 box" *ngIf="tobaccoUse && tobaccoUse !== 'Never Used'">
-        <mat-form-field class="input-full-width">
+        <mat-form-field class="input-full-width mat_form_field_width">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.startAge
@@ -66,7 +66,7 @@
           tobaccoUse !== 'Never Used' &&
           tobaccoUse !== 'Currently Using'
         ">
-        <mat-form-field class="input-full-width">
+        <mat-form-field class="input-full-width mat_form_field_width">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.stopAge
@@ -85,7 +85,7 @@
     </div>
     <div class="col-12 row">
       <div class="col-4 box" *ngIf="tobaccoUse && tobaccoUse !== 'Never Used'">
-        <mat-form-field>
+        <mat-form-field class="mat_form_field_width_two">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.typeofTobaccoProductsused
@@ -106,7 +106,7 @@
       </div>
 
       <div class="col-4 box" *ngIf="doSmokeCigarettes || doSmokeBeedi">
-        <mat-form-field class="input-full-width">
+        <mat-form-field class="input-full-width mat_form_field_width">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.cigarettes
@@ -122,7 +122,10 @@
         </mat-form-field>
       </div>
 
-      <div class="col-4 box" *ngIf="doSmokeCigarettes">
+      <div
+        class="col-4 box"
+        style="padding-left: 27px"
+        *ngIf="doSmokeCigarettes">
         <label class="control-label" for="drug">{{
           currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
             ?.cigarette
@@ -147,7 +150,7 @@
       </div>
     </div>
     <div class="col-12 row">
-      <div class="col-4 box">
+      <div class="col-4 box" style="padding-left: 27px">
         <label class="control-label" for="drug">{{
           currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
             ?.exposuretoSecondHandsmoke
@@ -171,7 +174,7 @@
         </mat-radio-group>
       </div>
 
-      <div class="col-4 box">
+      <div class="col-4 box" style="padding-left: 27px">
         <label class="control-label" for="drug">
           {{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
@@ -199,7 +202,7 @@
       </div>
 
       <div class="col-4 box" *ngIf="isBetelNutChewing">
-        <mat-form-field class="input-full-width">
+        <mat-form-field class="input-full-width mat_form_field_width">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.durationofbetelquidinmouth
@@ -221,7 +224,7 @@
     </div>
     <div class="col-12 row">
       <div class="col-4 box">
-        <mat-form-field>
+        <mat-form-field class="mat_form_field_width_two">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.alcoholuse
@@ -240,7 +243,10 @@
         </mat-form-field>
       </div>
 
-      <div class="col-4 box" *ngIf="alcoholUse && alcoholUse !== 'Never Used'">
+      <div
+        class="col-4 box"
+        style="padding-left: 27px"
+        *ngIf="alcoholUse && alcoholUse !== 'Never Used'">
         <label class="control-label" for="drug">{{
           currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
             ?.alcoholconsumed
@@ -268,7 +274,7 @@
       <div
         class="col-4 box"
         *ngIf="alcoholUse && alcoholUse !== 'Never Used' && ssAlcoholUsed">
-        <mat-form-field>
+        <mat-form-field class="mat_form_field_width_two">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.frequency
@@ -308,7 +314,7 @@
     </div>
     <div class="col-12 row">
       <div class="col-4 box">
-        <mat-form-field>
+        <mat-form-field class="mat_form_field_width_two">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.dietType
@@ -326,7 +332,7 @@
         </mat-form-field>
       </div>
       <div class="col-xs-4 box">
-        <mat-form-field class="input-full-width">
+        <mat-form-field class="input-full-width mat_form_field_width_one">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.weeklyintakeofOutsidemeal
@@ -343,7 +349,7 @@
       </div>
 
       <div class="col-4 box">
-        <mat-form-field class="input-full-width">
+        <mat-form-field class="input-full-width mat_form_field_width_thee">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.fruitconsumption
@@ -383,7 +389,7 @@
       </div>
 
       <div class="col-4 box">
-        <mat-form-field class="input-full-width">
+        <mat-form-field class="input-full-width mat_form_field_width">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.vegetableconsumption
@@ -422,7 +428,7 @@
       </div>
 
       <div class="col-4 box mat_label">
-        <mat-form-field>
+        <mat-form-field class="mat_form_field_width_two">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.typeofoilconsumed
@@ -444,7 +450,7 @@
     </div>
     <div class="col-12 row">
       <div class="col-4 box">
-        <mat-form-field>
+        <mat-form-field class="mat_form_field_width_two">
           <mat-label class="mat-label-text">{{
             currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
               ?.physicalActivityType
@@ -462,7 +468,7 @@
         </mat-form-field>
       </div>
 
-      <div class="col-4 box">
+      <div class="col-4 box" style="padding-left: 27px">
         <label class="control-label" for="drug">{{
           currentLanguageSet?.historyData?.cancerScreeningHistory?.personal
             ?.historyofexposuretoradiation

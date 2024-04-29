@@ -104,27 +104,27 @@ export class VisitDetailsComponent implements OnInit, DoCheck {
   conditionCheck() {
     if (!this.mode) this.hideAllTab();
     localStorage.setItem('visiCategoryANC', this.visitCategory);
-    if (this.visitCategory == 'NCD screening') {
+    if (this.visitCategory === 'NCD screening') {
       this.enableFileSelection = true;
       this.showNcdScreeningVisit = true;
     }
 
     if (
-      this.visitCategory == 'Cancer Screening' ||
-      this.visitCategory == 'NCD screening' ||
-      this.visitCategory == 'General OPD (QC)'
+      this.visitCategory === 'Cancer Screening' ||
+      this.visitCategory === 'NCD screening' ||
+      this.visitCategory === 'General OPD (QC)'
     ) {
       this.hideAll = false;
-    } else if (this.visitCategory == 'ANC') {
+    } else if (this.visitCategory === 'ANC') {
       this.showANCVisit = true;
-    } else if (this.visitCategory == 'NCD care') {
+    } else if (this.visitCategory === 'NCD care') {
       this.showNCDCare = true;
     } else if (
-      this.visitCategory == 'PNC' ||
-      this.visitCategory == 'General OPD'
+      this.visitCategory === 'PNC' ||
+      this.visitCategory === 'General OPD'
     ) {
       this.showPNC = true;
-    } else if (this.visitCategory == 'COVID-19 Screening') {
+    } else if (this.visitCategory === 'COVID-19 Screening') {
       this.showCOVID = true;
     } else {
       this.hideAll = false;

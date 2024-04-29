@@ -150,7 +150,7 @@ export class AppHeaderComponent implements OnInit {
       );
   }
   getLanguage() {
-    if (sessionStorage.getItem('setLanguage') != null) {
+    if (sessionStorage.getItem('setLanguage') !== null) {
       this.changeLanguage(sessionStorage.getItem('setLanguage'));
     } else {
       this.changeLanguage(this.app_language);
@@ -159,16 +159,16 @@ export class AppHeaderComponent implements OnInit {
 
   languageSuccessHandler(response: any, language: any) {
     console.log('language is ', response);
-    if (response == undefined) {
+    if (response === undefined) {
       alert(this.currentLanguageSet.alerts.info.langNotDefinesd);
     }
 
-    if (response[language] != undefined) {
+    if (response[language] !== undefined) {
       this.currentLanguageSet = response[language];
       sessionStorage.setItem('setLanguage', language);
       if (this.currentLanguageSet) {
         this.languageArray.forEach((item: any) => {
-          if (item.languageName == language) {
+          if (item.languageName === language) {
             this.app_language = language;
           }
         });
@@ -278,7 +278,7 @@ export class AppHeaderComponent implements OnInit {
   showVersionAndCommitDetails() {
     this.auth.getAPIVersionAndCommitDetails().subscribe(
       (res: any) => {
-        if (res.statusCode == 200) {
+        if (res.statusCode === 200) {
           this.constructAPIAndUIDetails(res.data);
         }
       },

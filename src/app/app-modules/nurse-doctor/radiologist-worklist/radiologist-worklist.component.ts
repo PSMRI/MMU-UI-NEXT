@@ -121,7 +121,7 @@ export class RadiologistWorklistComponent
   loadWorklist() {
     this.doctorService.getRadiologistWorklist().subscribe(
       (data: any) => {
-        if (data.statusCode == 200 && data.data != null) {
+        if (data.statusCode === 200 && data.data !== null) {
           console.log('radiologist worklist', data.data);
 
           const benlist = this.loadDataToBenList(data.data);
@@ -180,17 +180,17 @@ export class RadiologistWorklistComponent
       this.beneficiaryList.forEach((item: any) => {
         for (const key in item) {
           if (
-            key == 'beneficiaryID' ||
-            key == 'benName' ||
-            key == 'genderName' ||
-            key == 'age' ||
-            key == 'VisitCategory' ||
-            key == 'benVisitNo' ||
-            key == 'districtName' ||
-            key == 'preferredPhoneNum' ||
-            key == 'villageName' ||
-            key == 'beneficiaryRegID' ||
-            key == 'visitDate'
+            key === 'beneficiaryID' ||
+            key === 'benName' ||
+            key === 'genderName' ||
+            key === 'age' ||
+            key === 'VisitCategory' ||
+            key === 'benVisitNo' ||
+            key === 'districtName' ||
+            key === 'preferredPhoneNum' ||
+            key === 'villageName' ||
+            key === 'beneficiaryRegID' ||
+            key === 'visitDate'
           ) {
             const value: string = '' + item[key];
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
@@ -237,7 +237,7 @@ export class RadiologistWorklistComponent
   loadDoctorExaminationPage(beneficiary: any) {
     localStorage.setItem('benFlowID', beneficiary.benFlowID);
     localStorage.setItem('visitCode', beneficiary.visitCode);
-    if (beneficiary.visitFlowStatusFlag == 'N') {
+    if (beneficiary.visitFlowStatusFlag === 'N') {
       this.confirmationService
         .confirm(
           `info`,

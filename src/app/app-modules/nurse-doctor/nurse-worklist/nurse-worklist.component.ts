@@ -119,7 +119,7 @@ export class NurseWorklistComponent implements OnInit, DoCheck, OnDestroy {
   getNurseWorklist() {
     this.nurseService.getNurseWorklist().subscribe(
       (res: any) => {
-        if (res.statusCode == 200 && res.data != null) {
+        if (res.statusCode === 200 && res.data !== null) {
           const benlist = this.loadDataToBenList(res.data);
           this.beneficiaryList = benlist;
           this.filteredBeneficiaryList = benlist;
@@ -182,7 +182,7 @@ export class NurseWorklistComponent implements OnInit, DoCheck, OnDestroy {
     localStorage.removeItem('visitCategory');
 
     //for WDF requirment
-    // if (beneficiary.nurseFlag == 100) {
+    // if (beneficiary.nurseFlag === 100) {
     //   this.confirmationService.confirm(`info`, `Please confirm to proceed further`)
     //     .subscribe(result => {
     //       if (result) {
@@ -233,13 +233,13 @@ export class NurseWorklistComponent implements OnInit, DoCheck, OnDestroy {
         console.log('item', JSON.stringify(item, null, 4));
         for (const key in item) {
           if (
-            key == 'beneficiaryID' ||
-            key == 'benName' ||
-            key == 'genderName' ||
-            key == 'fatherName' ||
-            key == 'districtName' ||
-            key == 'preferredPhoneNum' ||
-            key == 'villageName'
+            key === 'beneficiaryID' ||
+            key === 'benName' ||
+            key === 'genderName' ||
+            key === 'fatherName' ||
+            key === 'districtName' ||
+            key === 'preferredPhoneNum' ||
+            key === 'villageName'
           ) {
             const value: string = '' + item[key];
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
@@ -254,9 +254,9 @@ export class NurseWorklistComponent implements OnInit, DoCheck, OnDestroy {
               break;
             }
           } else {
-            if (key == 'benVisitNo') {
+            if (key === 'benVisitNo') {
               const value: string = '' + item[key];
-              if (value == '1') {
+              if (value === '1') {
                 const val = 'First visit';
                 if (val.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
                   this.filteredBeneficiaryList.push(item);

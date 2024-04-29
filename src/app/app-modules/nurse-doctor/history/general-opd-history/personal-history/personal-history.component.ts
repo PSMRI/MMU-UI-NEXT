@@ -108,7 +108,7 @@ export class GeneralPersonalHistoryComponent
 
   ngOnInit() {
     this.assignSelectedLanguage();
-    if (this.mode != 'view' && this.mode != 'update') {
+    if (this.mode !== 'view' && this.mode !== 'update') {
       this.getMasterData();
     }
     this.getBeneficiaryDetails();
@@ -116,9 +116,9 @@ export class GeneralPersonalHistoryComponent
     this.generalHistorySubscription =
       this.doctorService.populateHistoryResponse$.subscribe(history => {
         if (
-          history != null &&
-          history.statusCode == 200 &&
-          history.data != null &&
+          history !== null &&
+          history.statusCode === 200 &&
+          history.data !== null &&
           history.data.PersonalHistory
         ) {
           this.personalHistoryData = history.data.PersonalHistory;
@@ -161,14 +161,14 @@ export class GeneralPersonalHistoryComponent
       this.masterdataService.nurseMasterData$.subscribe(masterData => {
         if (
           masterData &&
-          (this.masterData == null || this.masterData == undefined)
+          (this.masterData === null || this.masterData === undefined)
         ) {
           this.masterData = masterData;
           this.tobaccoMasterData = masterData.typeOfTobaccoProducts;
           this.alcoholMasterData = masterData.typeOfAlcoholProducts;
           this.addMasters();
 
-          if (this.mode == 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);
@@ -183,9 +183,9 @@ export class GeneralPersonalHistoryComponent
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
-          history.statusCode == 200 &&
-          history.data != null &&
+          history !== null &&
+          history.statusCode === 200 &&
+          history.data !== null &&
           history.data.PersonalHistory
         ) {
           this.personalHistoryData = history.data.PersonalHistory;
@@ -214,8 +214,8 @@ export class GeneralPersonalHistoryComponent
 
   addMasters() {
     if (
-      this.personalHistoryData != null &&
-      this.personalHistoryData != undefined
+      this.personalHistoryData !== null &&
+      this.personalHistoryData !== undefined
     ) {
       this.generalPersonalHistoryForm.patchValue(this.personalHistoryData);
     }
@@ -229,13 +229,13 @@ export class GeneralPersonalHistoryComponent
       if (this.allergyMasterData) {
         const resultAllergy = this.allergyMasterData.filter(itemAllergy => {
           const arrAllergy = tempAllergy.filter((valueAllergy: any) => {
-            if (valueAllergy.allergyType != null)
+            if (valueAllergy.allergyType !== null)
               return (
-                valueAllergy.allergyType.allergyType == itemAllergy.allergyType
+                valueAllergy.allergyType.allergyType === itemAllergy.allergyType
               );
             else return false;
           });
-          const flagAllergy = arrAllergy.length == 0 ? true : false;
+          const flagAllergy = arrAllergy.length === 0 ? true : false;
           return flagAllergy;
         });
 
@@ -245,8 +245,8 @@ export class GeneralPersonalHistoryComponent
       allergicList.push(this.initAllergyList());
 
       if (
-        this.personalHistoryData != null &&
-        this.personalHistoryData != undefined
+        this.personalHistoryData !== null &&
+        this.personalHistoryData !== undefined
       ) {
         this.handlePersonalAllergyHistoryData();
       }
@@ -261,11 +261,11 @@ export class GeneralPersonalHistoryComponent
     if (this.tobaccoMasterData) {
       const result = this.tobaccoMasterData.filter((item: any) => {
         const arr = temp.filter((value: any) => {
-          if (value.tobaccoUseType != null)
-            return value.tobaccoUseType.habitValue == item.habitValue;
+          if (value.tobaccoUseType !== null)
+            return value.tobaccoUseType.habitValue === item.habitValue;
           else return false;
         });
-        const flag = arr.length == 0 ? true : false;
+        const flag = arr.length === 0 ? true : false;
         return flag;
       });
       this.tobaccoSelectList.push(result.slice());
@@ -273,8 +273,8 @@ export class GeneralPersonalHistoryComponent
     tobaccoList.push(this.initTobaccoList());
 
     if (
-      this.personalHistoryData != null &&
-      this.personalHistoryData != undefined
+      this.personalHistoryData !== null &&
+      this.personalHistoryData !== undefined
     ) {
       this.handlePersonalTobaccoHistoryData();
     }
@@ -288,13 +288,13 @@ export class GeneralPersonalHistoryComponent
       const resultAlcohol = this.alcoholMasterData.filter(
         (itemAlcohol: any) => {
           const arrAlcohol = tempAlcohol.filter((valueAlcohol: any) => {
-            if (valueAlcohol.typeOfAlcohol != null)
+            if (valueAlcohol.typeOfAlcohol !== null)
               return (
-                valueAlcohol.typeOfAlcohol.habitValue == itemAlcohol.habitValue
+                valueAlcohol.typeOfAlcohol.habitValue === itemAlcohol.habitValue
               );
             else return false;
           });
-          const flagAlcohol = arrAlcohol.length == 0 ? true : false;
+          const flagAlcohol = arrAlcohol.length === 0 ? true : false;
           return flagAlcohol;
         }
       );
@@ -303,8 +303,8 @@ export class GeneralPersonalHistoryComponent
     alcoholList.push(this.initAlcoholList());
 
     if (
-      this.personalHistoryData != null &&
-      this.personalHistoryData != undefined
+      this.personalHistoryData !== null &&
+      this.personalHistoryData !== undefined
     ) {
       this.handlePersonalAlcoholHistoryData();
     }
@@ -319,7 +319,7 @@ export class GeneralPersonalHistoryComponent
 
       for (let i = 0; i < temp.length; i++) {
         const tobaccoType = this.tobaccoMasterData.filter((item: any) => {
-          return item.habitValue == temp[i].tobaccoUseType;
+          return item.habitValue === temp[i].tobaccoUseType;
         });
 
         if (tobaccoType.length > 0) {
@@ -360,14 +360,14 @@ export class GeneralPersonalHistoryComponent
 
       for (let i = 0; i < temp.length; i++) {
         const alcoholType = this.alcoholMasterData.filter((item: any) => {
-          return item.habitValue == temp[i].alcoholType;
+          return item.habitValue === temp[i].alcoholType;
         });
 
         if (alcoholType.length > 0) temp[i].typeOfAlcohol = alcoholType[0];
 
         temp[i].avgAlcoholConsumption =
           this.masterData.quantityOfAlcoholIntake.filter((item: any) => {
-            return item.habitValue == temp[i].avgAlcoholConsumption;
+            return item.habitValue === temp[i].avgAlcoholConsumption;
           })[0];
 
         if (temp[i].alcoholType) {
@@ -391,7 +391,7 @@ export class GeneralPersonalHistoryComponent
 
       for (let i = 0; i < temp.length; i++) {
         const allergyType = this.allergyMasterData.filter(item => {
-          return item.allergyType == temp[i].allergyType;
+          return item.allergyType === temp[i].allergyType;
         });
 
         if (allergyType.length > 0) temp[i].allergyType = allergyType[0];
@@ -400,7 +400,7 @@ export class GeneralPersonalHistoryComponent
           this.masterData.AllergicReactionTypes.filter((item: any) => {
             let flag = false;
             temp[i].typeOfAllergicReactions.forEach((element: any) => {
-              if (element.name == item.name) flag = true;
+              if (element.name === item.name) flag = true;
             });
             return flag;
           });
@@ -428,11 +428,11 @@ export class GeneralPersonalHistoryComponent
     if (this.tobaccoMasterData) {
       const result = this.tobaccoMasterData.filter((item: any) => {
         const arr = temp.filter((value: any) => {
-          if (value.tobaccoUseType != null)
-            return value.tobaccoUseType.habitValue == item.habitValue;
+          if (value.tobaccoUseType !== null)
+            return value.tobaccoUseType.habitValue === item.habitValue;
           else return false;
         });
-        const flag = arr.length == 0 ? true : false;
+        const flag = arr.length === 0 ? true : false;
         return flag;
       });
       this.tobaccoSelectList.push(result.slice());
@@ -443,12 +443,12 @@ export class GeneralPersonalHistoryComponent
   filterTobaccoList(tobacco: any, i: any, tobaccoForm?: FormGroup) {
     const previousValue: any = this.previousSelectedTobaccoList[i];
 
-    if (tobaccoForm && tobacco.tobaccoUseType != 'Other')
+    if (tobaccoForm && tobacco.tobaccoUseType !== 'Other')
       tobacco.patchValue({ otherTobaccoUseType: null });
 
     if (previousValue) {
       this.tobaccoSelectList.map((item: any, t: any) => {
-        if (t != i && previousValue.tobaccoUseType != 'Other') {
+        if (t !== i && previousValue.tobaccoUseType !== 'Other') {
           item.push(previousValue);
           this.sortTobaccoList(item);
         }
@@ -457,7 +457,7 @@ export class GeneralPersonalHistoryComponent
 
     this.tobaccoSelectList.map((item: any, t: any) => {
       const index = item.indexOf(tobacco);
-      if (index != -1 && t != i && tobacco.tobaccoUseType != 'Other')
+      if (index !== -1 && t !== i && tobacco.tobaccoUseType !== 'Other')
         item = item.splice(index, 1);
     });
 
@@ -473,13 +473,13 @@ export class GeneralPersonalHistoryComponent
             this.generalPersonalHistoryForm.controls['tobaccoList']
           );
           this.generalPersonalHistoryForm.markAsDirty();
-          if (tobaccoList.length == 1 && !!tobaccoForm) {
+          if (tobaccoList.length === 1 && !!tobaccoForm) {
             tobaccoForm.reset();
           } else {
             const removedValue = this.previousSelectedTobaccoList[i];
 
             this.tobaccoSelectList.map((item: any, t: any) => {
-              if (t != i && !!removedValue) {
+              if (t !== i && !!removedValue) {
                 item.push(removedValue);
                 this.sortTobaccoList(item);
               }
@@ -502,11 +502,11 @@ export class GeneralPersonalHistoryComponent
     if (this.alcoholMasterData) {
       const result = this.alcoholMasterData.filter((item: any) => {
         const arr = temp.filter((value: any) => {
-          if (value.typeOfAlcohol != null)
-            return value.typeOfAlcohol.habitValue == item.habitValue;
+          if (value.typeOfAlcohol !== null)
+            return value.typeOfAlcohol.habitValue === item.habitValue;
           else return false;
         });
-        const flag = arr.length == 0 ? true : false;
+        const flag = arr.length === 0 ? true : false;
         return flag;
       });
       this.alcoholSelectList.push(result.slice());
@@ -518,12 +518,12 @@ export class GeneralPersonalHistoryComponent
     const alcohol: any = event.value;
     const previousValue: any = this.previousSelectedAlcoholList[i];
 
-    if (alcoholForm && alcohol.typeOfAlcohol != 'Other')
+    if (alcoholForm && alcohol.typeOfAlcohol !== 'Other')
       alcoholForm.patchValue({ otherAlcoholType: null });
 
     if (previousValue) {
       this.alcoholSelectList.map((item: any, t: any) => {
-        if (t != i && previousValue.typeOfAlcohol != 'Other') {
+        if (t !== i && previousValue.typeOfAlcohol !== 'Other') {
           item.push(previousValue);
           this.sortAlcoholList(item);
         }
@@ -532,7 +532,7 @@ export class GeneralPersonalHistoryComponent
 
     this.alcoholSelectList.map((item: any, t: any) => {
       const index = item.indexOf(alcohol);
-      if (index != -1 && t != i) item = item.splice(index, 1);
+      if (index !== -1 && t !== i) item = item.splice(index, 1);
     });
 
     this.previousSelectedAlcoholList[i] = alcohol;
@@ -547,13 +547,13 @@ export class GeneralPersonalHistoryComponent
             this.generalPersonalHistoryForm.controls['alcoholList']
           );
           this.generalPersonalHistoryForm.markAsDirty();
-          if (alcoholList.length == 1 && !!alcoholForm) {
+          if (alcoholList.length === 1 && !!alcoholForm) {
             alcoholForm.reset();
           } else {
             const removedValue = this.previousSelectedAlcoholList[i];
 
             this.alcoholSelectList.map((item: any, t: any) => {
-              if (t != i && !!removedValue) {
+              if (t !== i && !!removedValue) {
                 item.push(removedValue);
                 this.sortAlcoholList(item);
               }
@@ -577,11 +577,11 @@ export class GeneralPersonalHistoryComponent
       if (this.allergyMasterData) {
         const result = this.allergyMasterData.filter(item => {
           const arr = temp.filter((value: any) => {
-            if (value.allergyType != null)
-              return value.allergyType.allergyType == item.allergyType;
+            if (value.allergyType !== null)
+              return value.allergyType.allergyType === item.allergyType;
             else return false;
           });
-          const flag = arr.length == 0 ? true : false;
+          const flag = arr.length === 0 ? true : false;
           return flag;
         });
         this.allerySelectList.push(result.slice());
@@ -595,7 +595,7 @@ export class GeneralPersonalHistoryComponent
     const previousValue = this.previousSelectedAlleryList[i];
     if (previousValue) {
       this.allerySelectList.map((item: any, t: any) => {
-        if (t != i) {
+        if (t !== i) {
           item.push(previousValue);
           this.sortAllergyList(item);
         }
@@ -603,7 +603,7 @@ export class GeneralPersonalHistoryComponent
     }
     this.allerySelectList.map((item: any, t: any) => {
       const index = item.indexOf(allergy);
-      if (index != -1 && t != i) item = item.splice(index, 1);
+      if (index !== -1 && t !== i) item = item.splice(index, 1);
     });
     this.previousSelectedAlleryList[i] = allergy;
   }
@@ -617,13 +617,13 @@ export class GeneralPersonalHistoryComponent
             this.generalPersonalHistoryForm.controls['allergicList']
           );
           this.generalPersonalHistoryForm.markAsDirty();
-          if (allergicList.length == 1 && !!allergyForm) {
+          if (allergicList.length === 1 && !!allergyForm) {
             allergyForm.reset();
             this.selectedSnomedTerm = null;
           } else {
             const removedValue = this.previousSelectedAlleryList[i];
             this.allerySelectList.map((item: any, t: any) => {
-              if (t != i && !!removedValue) {
+              if (t !== i && !!removedValue) {
                 item.push(removedValue);
                 this.sortAllergyList(item);
               }
@@ -681,7 +681,7 @@ export class GeneralPersonalHistoryComponent
       .getPreviousTobaccoHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             const title = this.currentLanguageSet.previousTobaccohistoryDet;
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data, title);
@@ -713,7 +713,7 @@ export class GeneralPersonalHistoryComponent
       .getPreviousAlcoholHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             const title =
               this.currentLanguageSet.historyData.Alcoholhistory
                 .previousalcoholhistorydetails;
@@ -747,7 +747,7 @@ export class GeneralPersonalHistoryComponent
       .getPreviousAllergyHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             const title = this.currentLanguageSet.previousAllergyhistoryDet;
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data, title);
@@ -783,7 +783,7 @@ export class GeneralPersonalHistoryComponent
     const allergicList = allergy.value.typeOfAllergicReactions;
     let flag = false;
     allergicList.forEach((item: any) => {
-      if (item.allergicReactionTypeID == 11) flag = true;
+      if (item.allergicReactionTypeID === 11) flag = true;
     });
     if (!flag) allergy.patchValue({ otherTypeOfAllergicReaction: null });
 
@@ -850,7 +850,7 @@ export class GeneralPersonalHistoryComponent
       this.beneficiary.ageVal
     );
 
-    if (duration != null && durationUnit != null)
+    if (duration !== null && durationUnit !== null)
       flag = new ValidationUtils().validateDuration(
         duration,
         durationUnit,
@@ -891,7 +891,7 @@ export class GeneralPersonalHistoryComponent
 
   sortTobaccoList(tobaccoList: any) {
     tobaccoList.sort((a: any, b: any) => {
-      if (a.habitValue == b.habitValue) return 0;
+      if (a.habitValue === b.habitValue) return 0;
       if (a.habitValue < b.habitValue) return -1;
       else return 1;
     });
@@ -899,7 +899,7 @@ export class GeneralPersonalHistoryComponent
 
   sortAlcoholList(alcoholList: any) {
     alcoholList.sort((a: any, b: any) => {
-      if (a.habitValue == b.habitValue) return 0;
+      if (a.habitValue === b.habitValue) return 0;
       if (a.habitValue < b.habitValue) return -1;
       else return 1;
     });
@@ -907,7 +907,7 @@ export class GeneralPersonalHistoryComponent
 
   sortAllergyList(allergyList: any) {
     allergyList.sort((a: any, b: any) => {
-      if (a.allergyType == b.allergyType) return 0;
+      if (a.allergyType === b.allergyType) return 0;
       if (a.allergyType < b.allergyType) return -1;
       else return 1;
     });
@@ -964,8 +964,8 @@ export class GeneralPersonalHistoryComponent
     const searchTerm = formValues?.allergicList[i]?.snomedTerm;
     console.log('searchTerm', this.generalPersonalHistoryForm);
     if (
-      searchTerm != null &&
-      searchTerm != undefined &&
+      searchTerm !== null &&
+      searchTerm !== undefined &&
       searchTerm.length > 2
     ) {
       const dialogRef = this.dialog.open(AllergenSearchComponent, {
@@ -976,7 +976,7 @@ export class GeneralPersonalHistoryComponent
         console.log('result', result);
         if (result) {
           if (
-            this.generalPersonalHistoryForm.value.allergicList != undefined &&
+            this.generalPersonalHistoryForm.value.allergicList !== undefined &&
             this.generalPersonalHistoryForm.value.allergicList.length > 0
           ) {
             this.selectedSnomedTerm = result.component;
@@ -1008,7 +1008,7 @@ export class GeneralPersonalHistoryComponent
       index + 'searchTime',
       this.countForSearch
     );
-    if (this.selectedSnomedTerm == undefined) {
+    if (this.selectedSnomedTerm === undefined) {
       this.countForSearch = index;
       this.selectedSnomedTerm = allergyForm.value.allergyName;
     }
@@ -1017,11 +1017,11 @@ export class GeneralPersonalHistoryComponent
       this.selectedSnomedTerm = null;
     }
 
-    if (this.selectedSnomedTerm && this.selectedSnomedTerm != null) {
+    if (this.selectedSnomedTerm && this.selectedSnomedTerm !== null) {
       if (
-        allergyForm.value.snomedTerm != undefined &&
-        allergyForm.value.snomedTerm != null &&
-        allergyForm.value.snomedTerm.trim() != this.selectedSnomedTerm.trim()
+        allergyForm.value.snomedTerm !== undefined &&
+        allergyForm.value.snomedTerm !== null &&
+        allergyForm.value.snomedTerm.trim() !== this.selectedSnomedTerm.trim()
       ) {
         this.confirmationService.alert(
           this.currentLanguageSet.historyData.ancHistory
@@ -1032,7 +1032,7 @@ export class GeneralPersonalHistoryComponent
         allergyForm.patchValue({ allergyName: null });
         this.selectedSnomedTerm = null;
         this.countForSearch = index;
-      } else if (allergyForm.value.snomedTerm == null) {
+      } else if (allergyForm.value.snomedTerm === null) {
         this.confirmationService.alert(
           this.currentLanguageSet.historyData.ancHistory
             .personalHistoryANC_OPD_NCD_PNC.snomedTermRemoved

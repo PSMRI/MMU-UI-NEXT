@@ -72,7 +72,10 @@ export class AncImmunizationComponent
   ngOnChanges(changes: any) {
     this.checkStatus();
 
-    if (this.mode != 'view' && this.mode != 'update') {
+    if (
+      this.mode?.toLowerCase() !== 'view' &&
+      this.mode?.toLowerCase() !== 'update'
+    ) {
       this.nullifyTTStatus();
     }
   }
@@ -95,7 +98,7 @@ export class AncImmunizationComponent
   checkStatus() {
     this.enableTTStatus_1_2_b = false;
     this.enableTTStatus_1_2 = false;
-    if (this.gravidaStatus != null && this.gravidaStatus != undefined) {
+    if (this.gravidaStatus !== null && this.gravidaStatus !== undefined) {
       if (!this.gravidaStatus) {
         this.enableTTStatus_1_2_b = true;
       }
@@ -202,11 +205,11 @@ export class AncImmunizationComponent
     this.patientANCImmunizationForm.patchValue({ dateReceivedForTT_3: null });
     this.patientANCImmunizationForm.patchValue({ facilityNameOfTT_3: null });
     if (tT_3Status === 'Received') {
-      if (this.tT_2Status === 'Received' && this.dateReceivedForTT_2 != null) {
+      if (this.tT_2Status === 'Received' && this.dateReceivedForTT_2 !== null) {
         this.tT_3Date = this.dateReceivedForTT_2;
       } else if (
         this.tT_1Status === 'Received' &&
-        this.dateReceivedForTT_1 != null
+        this.dateReceivedForTT_1 !== null
       ) {
         this.tT_3Date = this.dateReceivedForTT_1;
       } else {

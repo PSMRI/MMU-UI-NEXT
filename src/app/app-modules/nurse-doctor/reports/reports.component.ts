@@ -85,7 +85,7 @@ export class ReportsComponent implements OnInit, DoCheck {
     this.masterdataService.getReportsMaster().subscribe(
       (res: any) => {
         console.log('res', res);
-        if (res && res.statusCode == 200) {
+        if (res && res.statusCode === 200) {
           if (res.data && res.data.length > 0) {
             this.reportMaster = res.data;
           } else {
@@ -153,7 +153,7 @@ export class ReportsComponent implements OnInit, DoCheck {
   getVanMaster() {
     this.masterdataService.getVanMaster().subscribe(
       (res: any) => {
-        if (res && res.statusCode == 200) {
+        if (res && res.statusCode === 200) {
           if (res.data && res.data.length > 0) {
             this.vanMaster = res.data;
           } else {
@@ -185,7 +185,7 @@ export class ReportsComponent implements OnInit, DoCheck {
     console.log('reportRequst', reportRequst);
     this.masterdataService.getReportData(reportRequst).subscribe(
       (res: any) => {
-        if (res && res.statusCode == 200) {
+        if (res && res.statusCode === 200) {
           if (res.data && res.data.length > 0) {
             this.reportData = res.data;
             this.createCriteria();
@@ -216,13 +216,13 @@ export class ReportsComponent implements OnInit, DoCheck {
     if (criteria.length > 0) {
       const criteriaArray = criteria.filter(function (obj: any) {
         for (const key in obj) {
-          if (obj[key] == null) {
+          if (obj[key] === null) {
             obj[key] = '';
           }
         }
         return obj;
       });
-      if (criteriaArray.length != 0) {
+      if (criteriaArray.length !== 0) {
         this.criteriaHead = Object.keys(criteriaArray[0]);
         console.log('this.criteriaHead', this.criteriaHead);
       }
@@ -230,13 +230,13 @@ export class ReportsComponent implements OnInit, DoCheck {
     if (this.reportData.length > 0) {
       const array = this.reportData.filter(function (obj: any) {
         for (const key in obj) {
-          if (obj[key] == null) {
+          if (obj[key] === null) {
             obj[key] = '';
           }
         }
         return obj;
       });
-      if (array.length != 0) {
+      if (array.length !== 0) {
         const head = Object.keys(array[0]);
         console.log('head', head);
         const wb_name = this.report.reportName;
@@ -295,7 +295,7 @@ export class ReportsComponent implements OnInit, DoCheck {
   manipulateNullReportData(reportData: any) {
     const tempReport = reportData.filter((report: any) => {
       for (const key in report) {
-        if (report[key] == null) {
+        if (report[key] === null) {
           report[key] = '';
         }
       }
@@ -316,7 +316,7 @@ export class ReportsComponent implements OnInit, DoCheck {
       }
       const cellPosition = String.fromCharCode(j);
       let finalCellName: any;
-      if (count == 0) {
+      if (count === 0) {
         finalCellName = cellPosition + '1';
         console.log(finalCellName);
       } else {
@@ -328,7 +328,7 @@ export class ReportsComponent implements OnInit, DoCheck {
       delete report_worksheet[finalCellName].w;
       report_worksheet[finalCellName].v = newName;
       i++;
-      if (i == 91 + count * 26) {
+      if (i === 91 + count * 26) {
         // i = 65;
         count++;
       }

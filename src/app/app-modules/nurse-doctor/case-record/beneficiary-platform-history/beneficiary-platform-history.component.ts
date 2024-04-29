@@ -121,7 +121,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   getServiceOnState() {
     this.doctorService.getServiceOnState().subscribe((res: any) => {
       console.log('resinstate', res);
-      if (res.statusCode == 200) {
+      if (res.statusCode === 200) {
         this.serviceOnState = this.getStateServiceActivity(res.data);
       }
     });
@@ -129,7 +129,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   getStateServiceActivity(serviceOnState: any) {
     const services: any = [];
     serviceOnState.forEach((service: any) => {
-      if (service.serviceID != 1 && service.serviceID != 5) {
+      if (service.serviceID !== 1 && service.serviceID !== 5) {
         service = {
           serviceID: service.serviceID,
           serviceName: service.serviceName,
@@ -143,16 +143,16 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   }
 
   getServiceHistory(service: any) {
-    if (service == 2) {
+    if (service === 2) {
       this.getMMUHistory();
     }
-    if (service == 3) {
+    if (service === 3) {
       this.get104History();
     }
-    if (service == 4) {
+    if (service === 4) {
       this.getTMHistory();
     }
-    if (service == 6) {
+    if (service === 6) {
       this.getMCTSHistory();
     }
   }
@@ -166,7 +166,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   getMMUHistory() {
     this.doctorService.getMMUHistory().subscribe((data: any) => {
       console.log('data', data);
-      if (data.statusCode == 200) {
+      if (data.statusCode === 200) {
         this.hideMMUFetch = true;
         const services = this.serviceOnState;
         this.serviceOnState = [];
@@ -188,7 +188,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
           visitCode: item.visitCode,
         };
         this.doctorService.getMMUCasesheetData(reqObj).subscribe((res: any) => {
-          if (res.statusCode == 200 && res.data !== null) {
+          if (res.statusCode === 200 && res.data !== null) {
             this.dataSource.data[i]['benPreviousData'] = res.data;
             this.dataSource.paginator = this.paginator;
             this.filteredMMUHistory = res.data;
@@ -204,7 +204,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
   }
   checkServiceLoader(services: any, serviceID: any) {
     services.forEach((service: any) => {
-      if (serviceID == service.serviceID) {
+      if (serviceID === service.serviceID) {
         service.serviceLoaded = true;
       }
     });
@@ -295,7 +295,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
     this.doctorService.getMCTSHistory().subscribe((data: any) => {
       console.log('data', data);
 
-      if (data.statusCode == 200) {
+      if (data.statusCode === 200) {
         this.hideMCTSFetch = true;
         console.log('dataget', data);
         const services = this.serviceOnState;
@@ -354,7 +354,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
     this.doctorService.get104History().subscribe((data: any) => {
       console.log('data', data);
 
-      if (data.statusCode == 200) {
+      if (data.statusCode === 200) {
         this.hide104Fetch = true;
         const services = this.serviceOnState;
         this.serviceOnState = [];
@@ -412,7 +412,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
       .getPatientMCTSCallHistory(callDetailID)
       .subscribe((data: any) => {
         console.log('data', data);
-        if (data.statusCode == 200) {
+        if (data.statusCode === 200) {
           this.showCallDetails(data.data);
         }
       });
@@ -441,7 +441,7 @@ export class BeneficiaryPlatformHistoryComponent implements OnInit, DoCheck {
     this.doctorService.getTMHistory().subscribe((data: any) => {
       console.log('data', data);
 
-      if (data.statusCode == 200) {
+      if (data.statusCode === 200) {
         this.hideTMFetch = true;
         const services = this.serviceOnState;
         this.serviceOnState = [];

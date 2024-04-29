@@ -89,7 +89,7 @@ export class DevelopmentHistoryComponent implements OnInit, DoCheck, OnDestroy {
         if (masterData) {
           this.masterData = masterData;
           console.log('this.masterData ', this.masterData);
-          if (this.mode == 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);
@@ -105,9 +105,9 @@ export class DevelopmentHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
-          history.statusCode == 200 &&
-          history.data != null &&
+          history !== null &&
+          history.statusCode === 200 &&
+          history.data !== null &&
           history.data.DevelopmentHistory
         ) {
           this.developmentHistoryData = history.data.DevelopmentHistory;
@@ -128,7 +128,7 @@ export class DevelopmentHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getPreviousDevelopmentalHistory(benRegID, this.visitCategory)
       .subscribe(
         (data: any) => {
-          if (data != null && data.data != null) {
+          if (data !== null && data.data !== null) {
             if (data.data.data.length > 0) {
               this.viewPreviousData(data.data);
             } else {

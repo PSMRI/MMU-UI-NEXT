@@ -90,18 +90,18 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
 
   ngOnChanges() {
     if (
-      this.mode != undefined &&
-      this.mode != null &&
-      this.mode.toLowerCase() == 'view'
+      this.mode !== undefined &&
+      this.mode !== null &&
+      this.mode.toLowerCase() === 'view'
     ) {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
     }
 
     if (
-      this.mode != undefined &&
-      this.mode != null &&
-      this.mode.toLowerCase() == 'update'
+      this.mode !== undefined &&
+      this.mode !== null &&
+      this.mode.toLowerCase() === 'update'
     ) {
       this.updatePatientPNC(this.patientPNCDataForm);
     }
@@ -116,7 +116,7 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
         if (this.masterData.deliveryTypes) {
           tempPNCData.deliveryType = this.masterData.deliveryTypes.filter(
             (data: any) => {
-              return data.deliveryType == tempPNCData.deliveryType;
+              return data.deliveryType === tempPNCData.deliveryType;
             }
           )[0];
         }
@@ -124,7 +124,7 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
         if (this.masterData.deliveryPlaces) {
           tempPNCData.deliveryPlace = this.masterData.deliveryPlaces.filter(
             (data: any) => {
-              return data.deliveryPlace == tempPNCData.deliveryPlace;
+              return data.deliveryPlace === tempPNCData.deliveryPlace;
             }
           )[0];
         }
@@ -133,7 +133,7 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
           tempPNCData.deliveryComplication =
             this.masterData.deliveryComplicationTypes.filter((data: any) => {
               return (
-                data.deliveryComplicationType ==
+                data.deliveryComplicationType ===
                 tempPNCData.deliveryComplication
               );
             })[0];
@@ -142,7 +142,7 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
         if (this.masterData.pregOutcomes) {
           tempPNCData.pregOutcome = this.masterData.pregOutcomes.filter(
             (data: any) => {
-              return data.pregOutcome == tempPNCData.pregOutcome;
+              return data.pregOutcome === tempPNCData.pregOutcome;
             }
           )[0];
         }
@@ -151,7 +151,7 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
           tempPNCData.postNatalComplication =
             this.masterData.postNatalComplications.filter((data: any) => {
               return (
-                data.complicationValue == tempPNCData.postNatalComplication
+                data.complicationValue === tempPNCData.postNatalComplication
               );
             })[0];
         }
@@ -159,7 +159,7 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
         if (this.masterData.gestation) {
           tempPNCData.gestationName = this.masterData.gestation.filter(
             (data: any) => {
-              return data.name == tempPNCData.gestationName;
+              return data.name === tempPNCData.gestationName;
             }
           )[0];
         }
@@ -168,7 +168,7 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
           tempPNCData.newBornHealthStatus =
             this.masterData.newbornHealthStatuses.filter((data: any) => {
               return (
-                data.newBornHealthStatus == tempPNCData.newBornHealthStatus
+                data.newBornHealthStatus === tempPNCData.newBornHealthStatus
               );
             })[0];
         }
@@ -191,7 +191,7 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
 
     this.doctorService.updatePNCDetails(patientPNCDataForm, temp).subscribe(
       (res: any) => {
-        if (res.statusCode == 200 && res.data != null) {
+        if (res.statusCode === 200 && res.data !== null) {
           this.confirmationService.alert(res.data.response, 'success');
           this.patientPNCDataForm.markAsPristine();
         } else {
@@ -250,16 +250,16 @@ export class PncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
   resetOtherPlaceOfDelivery() {
     this.selectDeliveryTypes = [];
     if (
-      this.deliveryPlace.deliveryPlace == 'Home-Supervised' ||
-      this.deliveryPlace.deliveryPlace == 'Home-Unsupervised'
+      this.deliveryPlace.deliveryPlace === 'Home-Supervised' ||
+      this.deliveryPlace.deliveryPlace === 'Home-Unsupervised'
     ) {
       const tempDeliveryTypes = this.masterData.deliveryTypes.filter(
         (item: any) => {
           console.log('item', item);
 
           return (
-            item.deliveryType != 'Assisted Delivery' &&
-            item.deliveryType != 'Cesarean Section (LSCS)'
+            item.deliveryType !== 'Assisted Delivery' &&
+            item.deliveryType !== 'Cesarean Section (LSCS)'
           );
         }
       );

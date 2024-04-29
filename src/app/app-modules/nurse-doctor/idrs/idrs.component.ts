@@ -173,7 +173,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
   idrsFamilyHistoryScore() {
     this.IdrsFamilyScoreSubscription =
       this.idrsScoreService.IDRSFamilyScore$.subscribe(response => {
-        response == undefined
+        response === undefined
           ? (this.idrsScoreFamily = 0)
           : (this.idrsScoreFamily = response);
         this.patchIdrsScoreValue();
@@ -183,7 +183,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
   idrsPhysicalScoreActivity() {
     this.idrsPhysicalScoreSubscription =
       this.idrsScoreService.IDRSPhysicalActivityScore$.subscribe(response => {
-        response == undefined
+        response === undefined
           ? (this.IRDSscorePhysicalActivity = 0)
           : (this.IRDSscorePhysicalActivity = response);
         this.patchIdrsScoreValue();
@@ -343,12 +343,12 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
     this.IdrsScoreFlagSubscription =
       this.idrsScoreService.IDRSScoreFlagCheck$.subscribe(response => {
         this.scoreFlag = response;
-        if (response == 1) {
+        if (response === 1) {
           this.patchIdrsScoreValue();
           this.IDRSChanged.emit(false);
           let check = false;
           if (this.revisit) {
-            if (this.isDiabetic == false) check = true;
+            if (this.isDiabetic === false) check = true;
           } else if (this.isDiabetic) {
             check = false;
           } else check = true;
@@ -358,7 +358,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
               this.idrsScoreFamily +
               this.IRDSscorePhysicalActivity >=
               60 &&
-            check == true
+            check === true
           ) {
             this.required = [];
             for (const disease of this.diseases) {
@@ -396,11 +396,11 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
               if (disease.disease.indexOf('Diabetes') > -1)
                 disease.flag = false;
               if (
-                disease != undefined &&
-                disease.flag != undefined &&
-                disease.flag != null &&
-                disease.confirmed == false &&
-                disease.flag == true
+                disease !== undefined &&
+                disease.flag !== undefined &&
+                disease.flag !== null &&
+                disease.confirmed === false &&
+                disease.flag === true
               )
                 this.required.push(disease.disease);
             }
@@ -573,13 +573,13 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
     };
     this.nurseService.getPreviousVisitData(obj).subscribe(
       (res: any) => {
-        if (res.statusCode == 200 && res.data != null) {
+        if (res.statusCode === 200 && res.data !== null) {
           console.log('visit', res);
           this.isDiabetic = res.data.isDiabetic;
           this.isVision = res.data.isDefectiveVision;
           this.isEpilepsy = res.data.isEpilepsy;
           if (
-            res.data.questionariesData != null &&
+            res.data.questionariesData !== null &&
             res.data.questionariesData.length > 0
           ) {
             if (this.age >= 30) {
@@ -614,11 +614,11 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
                 }
                 console.log('check req', this.diseases);
                 if (
-                  disease != undefined &&
-                  disease.flag != undefined &&
-                  disease.flag != null &&
-                  disease.confirmed == false &&
-                  disease.flag == true
+                  disease !== undefined &&
+                  disease.flag !== undefined &&
+                  disease.flag !== null &&
+                  disease.confirmed === false &&
+                  disease.flag === true
                 )
                   this.required.push(disease.disease);
               }
@@ -636,8 +636,8 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
               if (
                 this.confirmDiseaseArray !== undefined &&
                 this.confirmDiseaseArray.length === 0 &&
-                res.data.confirmedDisease != undefined &&
-                res.data.confirmedDisease != null
+                res.data.confirmedDisease !== undefined &&
+                res.data.confirmedDisease !== null
               ) {
                 this.confirmDiseaseArray = res.data.confirmedDisease.split(',');
 
@@ -682,7 +682,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
       confirmedDisease = res.data.confirmedDisease.split(',');
     this.diseases.forEach((value: any) => {
       if (value.disease.indexOf('Tuberculosis Screening') > -1) {
-        if (confirmedDisease != undefined && confirmedDisease != null) {
+        if (confirmedDisease !== undefined && confirmedDisease !== null) {
           confirmedDisease.forEach((element: any) => {
             if (element === 'Tuberculosis Screening') {
               value.disabled = true;
@@ -691,7 +691,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
           });
         }
       } else if (value.disease.indexOf('Malaria Screening') > -1) {
-        if (confirmedDisease != undefined && confirmedDisease != null) {
+        if (confirmedDisease !== undefined && confirmedDisease !== null) {
           confirmedDisease.forEach((element: any) => {
             if (element === 'Malaria Screening') {
               value.disabled = true;
@@ -700,7 +700,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
           });
         }
       } else if (value.disease.indexOf('Asthma') > -1) {
-        if (confirmedDisease != undefined && confirmedDisease != null) {
+        if (confirmedDisease !== undefined && confirmedDisease !== null) {
           confirmedDisease.forEach((element: any) => {
             if (element === 'Asthma') {
               value.disabled = true;
@@ -720,7 +720,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
     ) {
       this.arr = [];
       for (const question of this.questions1) {
-        if (question.answer != null) this.arr.push(question);
+        if (question.answer !== null) this.arr.push(question);
       }
       this.idrsScreeningForm.patchValue({ questionArray: this.arr });
       this.idrsScreeningForm.patchValue({ suspectArray: this.suspect });
@@ -732,12 +732,12 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
     }
   }
   ngOnChanges() {
-    if (this.ncdScreeningMode == 'view') {
+    if (this.ncdScreeningMode === 'view') {
       this.doctorScreen = true;
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getBeneficiaryDetails();
-      if (visitID != null && benRegID != null) {
+      if (visitID !== null && benRegID !== null) {
         this.getIDRSDetailsFrmNurse(visitID, benRegID);
       }
     }
@@ -749,11 +749,11 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getBeneficiaryDetails();
-      if (visitID != null && benRegID != null) {
+      if (visitID !== null && benRegID !== null) {
         this.getIDRSDetailsFrmNurse(visitID, benRegID);
       }
     }
-    if (this.ncdScreeningMode == 'update') {
+    if (this.ncdScreeningMode === 'update') {
       const visitCategory = localStorage.getItem('visitCategory');
       this.doctorScreen = true;
       this.updateIDRSDetails(this.idrsScreeningForm, visitCategory);
@@ -766,7 +766,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
       .updateIDRSDetails(idrsScreeningForm, visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             this.confirmationService.alert(res.data.response, 'success');
             this.IDRSChanged.emit(true);
 
@@ -816,7 +816,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
           }
 
           if (
-            this.questionArray != undefined &&
+            this.questionArray !== undefined &&
             this.questionArray.length > 0
           ) {
             let cflag = true;
@@ -834,7 +834,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
             this.revisit = cflag;
             if (
               this.age < 30 ||
-              (this.questions1 != undefined && this.questions1.length == 0)
+              (this.questions1 !== undefined && this.questions1.length === 0)
             )
               this.revisit = false;
             console.log('revisit', this.revisit);
@@ -842,8 +842,8 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
               for (const selectedQuestion of this.questionArray) {
                 if (
                   question.idrsQuestionID === selectedQuestion.idrsQuestionId &&
-                  (selectedQuestion.answer != null ||
-                    selectedQuestion.answer != '')
+                  (selectedQuestion.answer !== null ||
+                    selectedQuestion.answer !== '')
                 ) {
                   question.answer = selectedQuestion.answer.toLowerCase();
                   for (const disease of this.diseases) {
@@ -869,7 +869,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
           }
           this.arr = [];
           for (const question of this.questions1) {
-            if (question.answer != null) this.arr.push(question);
+            if (question.answer !== null) this.arr.push(question);
           }
           this.idrsScreeningForm.patchValue({ questionArray: this.arr });
           this.idrsScreeningForm.patchValue({ suspectArray: this.suspect });
@@ -892,7 +892,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
           console.log('questions1Array', this.idrsScreeningForm);
           this.rev = [];
           for (const question of this.questions1) {
-            if (question.answer != null) this.rev.push(question);
+            if (question.answer !== null) this.rev.push(question);
           }
           this.getPreviousVisit();
 
@@ -926,7 +926,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
         if (data) {
           this.nurseMasterDataSubscription.unsubscribe();
           this.questions = data.IDRSQuestions;
-          if (this.questions != undefined && this.questions.length > 0) {
+          if (this.questions !== undefined && this.questions.length > 0) {
             for (const question of this.questions) {
               this.questions1.push({
                 id: null,
@@ -937,7 +937,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
               });
             }
             for (let i = 0; i < this.questions.length; i++) {
-              if (i != 0) {
+              if (i !== 0) {
                 console.log(
                   this.questions.DiseaseQuestionType !==
                     this.questions[i - 1].DiseaseQuestionType
@@ -1008,10 +1008,10 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
             )
               this.getPreviousVisit();
           }
-          if (this.ncdScreeningMode == 'view') {
+          if (this.ncdScreeningMode === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
-            if (visitID != null && benRegID != null) {
+            if (visitID !== null && benRegID !== null) {
               this.getIDRSDetailsFrmNurse(visitID, benRegID);
             }
           }
@@ -1020,7 +1020,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
           if (parseInt(specialistFlagItem, 10) === 100) {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
-            if (visitID != null && benRegID != null) {
+            if (visitID !== null && benRegID !== null) {
               this.getIDRSDetailsFrmNurse(visitID, benRegID);
             }
           }
@@ -1034,7 +1034,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
       if (question.idrsQuestionID === q.idrsQuestionID) question.answer = value;
     }
 
-    if (value == 'yes') this.addToSuspected(q.diseaseQuestionType);
+    if (value === 'yes') this.addToSuspected(q.diseaseQuestionType);
     else {
       if (this.suspect.length > 0) this.removeSuspected(q.diseaseQuestionType);
     }
@@ -1057,7 +1057,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
         this.rev.splice(a, 1);
     }
     if (
-      this.chronicDisabled == true &&
+      this.chronicDisabled === true &&
       ((this.route.snapshot.params['attendant'] !== 'doctor' &&
         this.route.snapshot.params['attendant'] !== 'tcspecialist') ||
         this.revisit)
@@ -1071,7 +1071,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
       }
     } else {
       for (const questionValue of this.questions1) {
-        if (questionValue.answer != null) this.arr.push(questionValue);
+        if (questionValue.answer !== null) this.arr.push(questionValue);
       }
     }
     this.required = [];
@@ -1089,18 +1089,18 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
       }
       console.log('dis', disease);
       if (
-        disease != undefined &&
-        disease.flag != undefined &&
-        disease.flag != null &&
-        disease.confirmed == false &&
-        disease.flag == true
+        disease !== undefined &&
+        disease.flag !== undefined &&
+        disease.flag !== null &&
+        disease.confirmed === false &&
+        disease.flag === true
       ) {
         this.required.push(disease.disease);
       }
     }
 
     if (
-      this.chronicDisabled == true &&
+      this.chronicDisabled === true &&
       ((this.route.snapshot.params['attendant'] !== 'doctor' &&
         this.route.snapshot.params['attendant'] !== 'tcspecialist') ||
         this.revisit)
@@ -1142,13 +1142,13 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
       this.suspect.push(val);
       if (val === 'Hypertension') {
         if (
-          !(this.suspect.length == 1 && this.suspect.includes('Hypertension'))
+          !(this.suspect.length === 1 && this.suspect.includes('Hypertension'))
         ) {
           this.IDRSChanged.emit(false);
           this.systolicChange = true;
         } else if (this.systolicChange) this.IDRSChanged.emit(false);
       }
-      // if (val == "Diabetes")
+      // if (val === "Diabetes")
       //   this.idrsScoreService.setDiabetesSelected();
 
       // this.settingSuspectedObservable();
@@ -1201,7 +1201,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
           if (val === 'Hypertension') {
             if (
               !(
-                this.suspect.length == 1 &&
+                this.suspect.length === 1 &&
                 this.suspect.includes('Hypertension')
               )
             ) {
@@ -1218,7 +1218,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
         if (this.suspect.includes('Diabetes'))
           this.idrsScoreService.setDiabetesSelected();
       }
-      if (this.suspect.length == 0) {
+      if (this.suspect.length === 0) {
         this.idrsScoreService.clearSuspectedArrayFlag();
         this.idrsScoreService.clearDiabetesSelected();
       } else {
@@ -1258,7 +1258,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
       //   if (this.suspect.includes("Diabetes") && this.updateRBSValue)
       //     this.idrsScoreService.setDiabetesSelected();
       // }
-      if (this.suspect.length == 0) {
+      if (this.suspect.length === 0) {
         this.idrsScoreService.clearSuspectedArrayFlag();
         this.idrsScoreService.clearDiabetesSelected();
       } else {
@@ -1291,7 +1291,7 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
       if (!this.suspect.includes('Diabetes')) {
         this.idrsScoreService.clearDiabetesSelected();
       }
-      if (this.suspect.length == 0) {
+      if (this.suspect.length === 0) {
         this.idrsScoreService.clearSuspectedArrayFlag();
         this.idrsScoreService.clearDiabetesSelected();
       } else {

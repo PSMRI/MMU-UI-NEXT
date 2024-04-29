@@ -35,7 +35,7 @@ export class DisableFormControlDirective {
     }
     const action = parent.disabled || condition ? 'disable' : 'enable';
     if (this.ngControl.control) {
-      if (action == 'disable' && !parent.disabled) {
+      if (action === 'disable' && !parent.disabled) {
         this.ngControl?.control.setValue(null);
       }
       this.ngControl?.control.markAsTouched();

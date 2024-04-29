@@ -57,7 +57,7 @@ export class StringValidatorDirective {
 
   validate(input: any) {
     const patternCode = this.allowText.trim();
-    if (input == null || input == '') return false;
+    if (input === null || input === '') return false;
 
     switch (patternCode) {
       case 'alphabet':
@@ -130,13 +130,13 @@ export class StringValidatorDirective {
     const lastVal = this.lastValue;
     const maxlength = event.target.maxLength;
 
-    if (this.allowText.trim() == 'decimal') {
-      if (val == '') {
+    if (this.allowText.trim() === 'decimal') {
+      if (val === '') {
         event.target.value = '';
       } else if (!this.validate(val)) {
         event.target.value = lastVal;
       }
-    } else if (this.allowText.trim() == 'number') {
+    } else if (this.allowText.trim() === 'number') {
       if (event.target.length > 0) {
         this.validateEntry(val, lastVal, maxlength, event);
       } else {
@@ -167,7 +167,7 @@ export class StringValidatorDirective {
     }
   }
   checkForZeroEntry(val: any, lastVal: any, maxlength: any, event: any) {
-    if (val == '0') {
+    if (val === '0') {
       event.target.value = '';
     } else {
       this.validateEntry(val, lastVal, maxlength, event);

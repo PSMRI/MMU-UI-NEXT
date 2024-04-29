@@ -139,7 +139,7 @@ export class GeneralPatientVitalsComponent
       .subscribe(() => (this.isRecording = false));
     this.audioRecordingService.getRecordedTime().subscribe(time => {
       this.recordedTime = time;
-      if (this.recordedTime == '00:16') {
+      if (this.recordedTime === '00:16') {
         this.stopRecording();
       }
     });
@@ -161,7 +161,7 @@ export class GeneralPatientVitalsComponent
     this.nurseService.clearMessage();
     this.nurseService.clearEnableLAssessment();
     this.nurseService.ncdTemp$.subscribe(response =>
-      response == undefined
+      response === undefined
         ? (this.ncdTemperature = false)
         : (this.ncdTemperature = response)
     );
@@ -176,7 +176,7 @@ export class GeneralPatientVitalsComponent
     this.idrsscore.clearMessage();
     this.rbsSelectedInInvestigationSubscription =
       this.nurseService.rbsSelectedInInvestigation$.subscribe(response =>
-        response == undefined
+        response === undefined
           ? (this.rbsSelectedInInvestigation = false)
           : (this.rbsSelectedInInvestigation = response)
       );
@@ -190,7 +190,7 @@ export class GeneralPatientVitalsComponent
       this.hideLungAssessment = false;
     }
     this.nurseService.enableLAssessment$.subscribe(response => {
-      if (response == true) {
+      if (response === true) {
         this.enableLungAssessment = true;
       } else {
         this.enableLungAssessment = false;
@@ -204,27 +204,27 @@ export class GeneralPatientVitalsComponent
     const visitCategory1 = localStorage.getItem('visitCategory');
     console.log('page54' + visitCategory1);
     if (
-      this.visitCategory == 'ANC' ||
-      this.visitCategory == 'General OPD (QC)'
+      this.visitCategory === 'ANC' ||
+      this.visitCategory === 'General OPD (QC)'
     ) {
       this.hideForANCAndQC = false;
     } else {
       this.hideForANCAndQC = true;
     }
-    if (this.visitCategory == 'General OPD (QC)') {
+    if (this.visitCategory === 'General OPD (QC)') {
       this.showGlucoseQC = true;
     } else {
       this.showGlucoseQC = false;
     }
 
-    if (this.mode == 'view') {
+    if (String(this.mode) === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getAssessmentID();
       this.doctorScreen = true;
       this.getGeneralVitalsData();
     }
-    if (this.mode == 'update') {
+    if (String(this.mode) === 'update') {
       this.doctorScreen = true;
       this.updateGeneralVitals(this.patientVitalsForm);
     }
@@ -242,7 +242,7 @@ export class GeneralPatientVitalsComponent
       required.push('Please perform Lung Assessment');
     }
 
-    if (this.visitCategory == 'NCD screening') {
+    if (this.visitCategory === 'NCD screening') {
       if (vitalsForm.controls['height_cm'].errors) {
         required.push(
           this.currentLanguageSet.vitalsDetails.AnthropometryDataANC_OPD_NCD_PNC
@@ -289,7 +289,7 @@ export class GeneralPatientVitalsComponent
         required.push(this.currentLanguageSet.rbsTestResult);
       }
     } else {
-      if (this.visitCategory == 'ANC') {
+      if (this.visitCategory === 'ANC') {
         if (vitalsForm.controls['systolicBP_1stReading'].errors) {
           required.push(
             this.currentLanguageSet.vitalsDetails.vitalsDataANC_OPD_NCD_PNC
@@ -346,8 +346,8 @@ export class GeneralPatientVitalsComponent
         .updateGeneralVitals(patientVitalsForm, this.visitCategory)
         .subscribe(
           (res: any) => {
-            if (res.statusCode == 200 && res.data != null) {
-              if (this.visitCategory == 'ANC') {
+            if (res.statusCode === 200 && res.data !== null) {
+              if (this.visitCategory === 'ANC') {
                 this.getHRPDetails();
               }
               this.confirmationService.alert(res.data.response, 'success');
@@ -404,25 +404,25 @@ export class GeneralPatientVitalsComponent
             vitalsData.data.benPhysicalVitalDetail
           );
           this.patientVitalsForm.patchValue(temp);
-          if (temp.systolicBP_1stReading != null) {
+          if (temp.systolicBP_1stReading !== null) {
             this.idrsscore.setSystolicBp(temp.systolicBP_1stReading);
           }
-          if (temp.diastolicBP_1stReading != null) {
+          if (temp.diastolicBP_1stReading !== null) {
             this.idrsscore.setDiastolicBp(temp.diastolicBP_1stReading);
           }
-          if (temp.waistCircumference_cm != null) {
+          if (temp.waistCircumference_cm !== null) {
             this.patchIDRSForWaist(temp.waistCircumference_cm);
           }
           this.nurseService.rbsTestResultFromDoctorFetch = null;
-          if (temp.rbsTestResult != null) {
+          if (temp.rbsTestResult !== null) {
             this.nurseService.rbsTestResultFromDoctorFetch = temp.rbsTestResult;
             this.rbsResultChange();
           }
           if (
             this.patientVitalsForm.controls['hipCircumference_cm'].value &&
-            this.patientVitalsForm.controls['hipCircumference_cm'].value !=
+            this.patientVitalsForm.controls['hipCircumference_cm'].value !==
               null &&
-            this.visitCategory == 'General OPD'
+            this.visitCategory === 'General OPD'
           ) {
             this.checkHip(
               this.patientVitalsForm.controls['hipCircumference_cm'].value
@@ -430,8 +430,8 @@ export class GeneralPatientVitalsComponent
           }
           if (
             this.patientVitalsForm.controls['waistHipRatio'].value &&
-            this.patientVitalsForm.controls['waistHipRatio'].value != null &&
-            this.visitCategory == 'General OPD'
+            this.patientVitalsForm.controls['waistHipRatio'].value !== null &&
+            this.visitCategory === 'General OPD'
           ) {
             this.hipWaistRatio();
           }
@@ -461,8 +461,8 @@ export class GeneralPatientVitalsComponent
   checkDiasableRBS() {
     if (
       this.rbsSelectedInInvestigation === true ||
-      (this.nurseService.rbsTestResultFromDoctorFetch != undefined &&
-        this.nurseService.rbsTestResultFromDoctorFetch != null)
+      (this.nurseService.rbsTestResultFromDoctorFetch !== undefined &&
+        this.nurseService.rbsTestResultFromDoctorFetch !== null)
     )
       return true;
 
@@ -477,8 +477,8 @@ export class GeneralPatientVitalsComponent
           if (beneficiary) {
             if (
               beneficiary &&
-              beneficiary.ageVal != null &&
-              beneficiary.ageVal != undefined
+              beneficiary.ageVal !== null &&
+              beneficiary.ageVal !== undefined
             ) {
               this.benGenderAndAge = beneficiary;
               this.benAge = beneficiary.ageVal;
@@ -492,20 +492,20 @@ export class GeneralPatientVitalsComponent
               this.totalMonths = Number(ar[0] * 12) + Number(ar[3]);
             }
             if (
-              beneficiary != undefined &&
-              beneficiary.genderName != undefined &&
-              beneficiary.genderName != null &&
+              beneficiary !== undefined &&
+              beneficiary.genderName !== undefined &&
+              beneficiary.genderName !== null &&
               beneficiary.genderName &&
-              beneficiary.genderName.toLowerCase() == 'female'
+              beneficiary.genderName.toLowerCase() === 'female'
             ) {
               this.female = true;
             }
             if (
-              beneficiary != undefined &&
-              beneficiary.genderName != undefined &&
-              beneficiary.genderName != null &&
+              beneficiary !== undefined &&
+              beneficiary.genderName !== undefined &&
+              beneficiary.genderName !== null &&
               beneficiary.genderName &&
-              beneficiary.genderName.toLowerCase() == 'male'
+              beneficiary.genderName.toLowerCase() === 'male'
             ) {
               this.male = true;
             }
@@ -518,9 +518,9 @@ export class GeneralPatientVitalsComponent
   calculateBMI() {
     if (
       this.height_cm &&
-      this.height_cm != null &&
+      this.height_cm !== null &&
       this.weight_Kg &&
-      this.weight_Kg != null
+      this.weight_Kg !== null
     ) {
       this.BMI = (this.weight_Kg / (this.height_cm * this.height_cm)) * 10000;
       this.BMI = +this.BMI.toFixed(1);
@@ -529,8 +529,8 @@ export class GeneralPatientVitalsComponent
       this.patientVitalsForm.patchValue({ bMI: null });
     }
     if (
-      this.benGenderAndAge != undefined &&
-      this.benGenderAndAge.age != undefined
+      this.benGenderAndAge !== undefined &&
+      this.benGenderAndAge.age !== undefined
     ) {
       const ageMonth = this.benGenderAndAge.age;
       const ar = ageMonth.split(' ');
@@ -539,8 +539,8 @@ export class GeneralPatientVitalsComponent
     if (
       this.totalMonths > 60 &&
       this.totalMonths <= 228 &&
-      (this.benGenderAndAge.genderName.toLowerCase() == 'male' ||
-        this.benGenderAndAge.genderName.toLowerCase() == 'female')
+      (this.benGenderAndAge.genderName.toLowerCase() === 'male' ||
+        this.benGenderAndAge.genderName.toLowerCase() === 'female')
     ) {
       this.nurseService
         .calculateBmiStatus({
@@ -550,9 +550,12 @@ export class GeneralPatientVitalsComponent
         })
         .subscribe(
           (res: any) => {
-            if (res.statusCode == 200 && res.data != null) {
+            if (res.statusCode === 200 && res.data !== null) {
               const bmiData = res.data;
-              if (bmiData.bmiStatus != undefined && bmiData.bmiStatus != null) {
+              if (
+                bmiData.bmiStatus !== undefined &&
+                bmiData.bmiStatus !== null
+              ) {
                 this.bmiStatusMinor = bmiData.bmiStatus.toLowerCase();
                 if (this.bmiStatusMinor === 'normal') this.normalBMI = true;
                 else this.normalBMI = false;
@@ -593,8 +596,8 @@ export class GeneralPatientVitalsComponent
     if (
       this.hipCircumference_cm &&
       this.waistCircumference_cm &&
-      this.hipCircumference_cm != null &&
-      this.waistCircumference_cm != null
+      this.hipCircumference_cm !== null &&
+      this.waistCircumference_cm !== null
     ) {
       waistHipRatio = (
         this.waistCircumference_cm / this.hipCircumference_cm
@@ -681,7 +684,7 @@ export class GeneralPatientVitalsComponent
         this.currentLanguageSet.alerts.info.recheckValue
       );
     }
-    if (systolicBP != null) this.idrsscore.setSystolicBp(systolicBP);
+    if (systolicBP !== null) this.idrsscore.setSystolicBp(systolicBP);
     else this.idrsscore.setSystolicBp(0);
   }
 
@@ -709,7 +712,7 @@ export class GeneralPatientVitalsComponent
         this.currentLanguageSet.alerts.info.recheckValue
       );
     }
-    if (diastolicBP != null) this.idrsscore.setDiastolicBp(diastolicBP);
+    if (diastolicBP !== null) this.idrsscore.setDiastolicBp(diastolicBP);
     else this.idrsscore.setDiastolicBp(0);
   }
 
@@ -822,7 +825,7 @@ export class GeneralPatientVitalsComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('he;;p', result, result['result']);
-      if (result != null) {
+      if (result !== null) {
         this.patientVitalsForm.patchValue({
           weight_Kg: result['result'],
         });
@@ -842,7 +845,7 @@ export class GeneralPatientVitalsComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       this.rbsPopup = false;
-      if (result != null) {
+      if (result !== null) {
         this.patientVitalsForm.patchValue({
           rbsTestResult: result['result'],
         });
@@ -850,7 +853,7 @@ export class GeneralPatientVitalsComponent
         this.doctorService.setValueToEnableVitalsUpdateButton(true);
         if (
           this.patientVitalsForm.controls['rbsTestResult'].value &&
-          this.patientVitalsForm.controls['rbsTestResult'].value != null
+          this.patientVitalsForm.controls['rbsTestResult'].value !== null
         ) {
           this.nurseService.setRbsInCurrentVitals(
             this.patientVitalsForm.controls['rbsTestResult'].value
@@ -863,7 +866,7 @@ export class GeneralPatientVitalsComponent
   rbsResultChange(): boolean {
     if (
       this.patientVitalsForm.controls['rbsTestResult'].value &&
-      this.patientVitalsForm.controls['rbsTestResult'].value != null
+      this.patientVitalsForm.controls['rbsTestResult'].value !== null
     ) {
       this.nurseService.setRbsInCurrentVitals(
         this.patientVitalsForm.controls['rbsTestResult'].value
@@ -873,8 +876,8 @@ export class GeneralPatientVitalsComponent
     }
     if (
       this.rbsSelectedInInvestigation === true ||
-      (this.nurseService.rbsTestResultFromDoctorFetch != undefined &&
-        this.nurseService.rbsTestResultFromDoctorFetch != null)
+      (this.nurseService.rbsTestResultFromDoctorFetch !== undefined &&
+        this.nurseService.rbsTestResultFromDoctorFetch !== null)
     ) {
       this.patientVitalsForm.controls['rbsTestResult'].disable();
       this.patientVitalsForm.controls['rbsTestRemarks'].disable();
@@ -896,7 +899,7 @@ export class GeneralPatientVitalsComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('temperature', result, result['temperature']);
-      if (result != null) {
+      if (result !== null) {
         this.patientVitalsForm.patchValue({
           temperature: result['temperature'],
         });
@@ -913,7 +916,7 @@ export class GeneralPatientVitalsComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('pulse_oxymetery', result, result['pulseRate']);
-      if (result != null) {
+      if (result !== null) {
         this.patientVitalsForm.patchValue({
           pulseRate: result['pulseRate'],
         });
@@ -929,7 +932,7 @@ export class GeneralPatientVitalsComponent
       data: { startAPI: this.startPulseTest },
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result != null) {
+      if (result !== null) {
         this.patientVitalsForm.patchValue({
           sPO2: result['spo2'],
         });
@@ -947,7 +950,7 @@ export class GeneralPatientVitalsComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('blood_pressure', result['sys'], result['dia']);
-      if (result != null) {
+      if (result !== null) {
         this.patientVitalsForm.patchValue({
           systolicBP_1stReading: result['sys'],
           diastolicBP_1stReading: result['dia'],
@@ -965,7 +968,7 @@ export class GeneralPatientVitalsComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('blood_pressure', result['sys'], result['dia']);
-      if (result != null) {
+      if (result !== null) {
         this.patientVitalsForm.patchValue({
           bloodGlucose_Fasting: result['result'],
         });
@@ -982,7 +985,7 @@ export class GeneralPatientVitalsComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('blood_pressure', result['sys'], result['dia']);
-      if (result != null) {
+      if (result !== null) {
         this.patientVitalsForm.patchValue({
           bloodGlucose_Random: result['result'],
         });
@@ -999,7 +1002,7 @@ export class GeneralPatientVitalsComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('blood_pressure', result['sys'], result['dia']);
-      if (result != null) {
+      if (result !== null) {
         this.patientVitalsForm.patchValue({
           bloodGlucose_2hr_PP: result['result'],
         });
@@ -1065,8 +1068,8 @@ export class GeneralPatientVitalsComponent
     this.doctorService
       .getHRPDetails(beneficiaryRegID, visitCode)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
-          if (res.data.isHRP == true) {
+        if (res && res.statusCode === 200 && res.data) {
+          if (res.data.isHRP === true) {
             this.beneficiaryDetailsService.setHRPPositive();
           } else {
             this.beneficiaryDetailsService.resetHRPPositive();
@@ -1171,7 +1174,7 @@ export class GeneralPatientVitalsComponent
     console.log('reqObjFile', formData.get('file'));
     this.audioRecordingService.getResultStatus(formData).subscribe(
       (res: any) => {
-        if (res.statusCode == 200 && res.data !== null) {
+        if (res.statusCode === 200 && res.data !== null) {
           this.severity = res.data.severity;
           this.cough_pattern = res.data.cough_pattern;
           this.cough_severity_score = res.data.cough_severity_score;
@@ -1194,7 +1197,7 @@ export class GeneralPatientVitalsComponent
   getAssessmentID() {
     const benRegID = localStorage.getItem('beneficiaryRegID');
     this.doctorService.getAssessment(benRegID).subscribe((res: any) => {
-      if (res.statusCode == 200 && res.data !== null && res.data.length > 0) {
+      if (res.statusCode === 200 && res.data !== null && res.data.length > 0) {
         const lastElementIndex = res.data.length - 1;
         const lastElementData = res.data[lastElementIndex];
         const assessmentId = lastElementData.assessmentId;

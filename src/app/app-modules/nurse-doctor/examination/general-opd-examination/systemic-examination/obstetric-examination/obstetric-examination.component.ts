@@ -173,7 +173,7 @@ export class ObstetricExaminationComponent implements OnInit, DoCheck {
   }
 
   resetFetalHeartRate(event: any) {
-    if (event.value == 'Not Audible')
+    if (event.value === 'Not Audible')
       this.obstetricExaminationForANCDataForm.patchValue({
         fetalHeartRate_BeatsPerMinute: null,
       });
