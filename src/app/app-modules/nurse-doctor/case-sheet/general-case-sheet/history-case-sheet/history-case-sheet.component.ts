@@ -102,7 +102,7 @@ export class HistoryCaseSheetComponent implements OnInit, OnChanges, DoCheck {
     this.doctorService
       .getMMUCasesheetData(caseSheetRequest)
       .subscribe((res: any) => {
-        if (res?.statusCode == 200 && res?.data) {
+        if (res?.statusCode === 200 && res?.data) {
           this.mmuCaseSheetData = res.data;
 
           if (this.mmuCaseSheetData?.doctorData) {

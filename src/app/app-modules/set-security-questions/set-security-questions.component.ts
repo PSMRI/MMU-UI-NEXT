@@ -117,7 +117,7 @@ export class SetSecurityQuestionsComponent implements OnInit {
       this.selectedQuestions
     );
 
-    if (this.selectedQuestions.indexOf(selectedques) == -1) {
+    if (this.selectedQuestions.indexOf(selectedques) === -1) {
       this.selectedQuestions[position] = selectedques;
       if (position === 0) {
         this.answer1 = '';
@@ -130,7 +130,7 @@ export class SetSecurityQuestionsComponent implements OnInit {
       }
       console.log('if block, selected questions', this.selectedQuestions);
     } else {
-      if (this.selectedQuestions.indexOf(selectedques) != position) {
+      if (this.selectedQuestions.indexOf(selectedques) !== position) {
         this.confirmationService.alert(
           'This question is already selected. Choose unique question'
         );
@@ -170,7 +170,7 @@ export class SetSecurityQuestionsComponent implements OnInit {
   dataArray: any = [];
 
   setSecurityQuestions() {
-    if (this.selectedQuestions.length == 3) {
+    if (this.selectedQuestions.length === 3) {
       this.dataArray = [
         {
           userID: this.uid,
@@ -272,7 +272,7 @@ export class SetSecurityQuestionsComponent implements OnInit {
   handleQuestionSaveSuccess(response: any, encryptedConfirmPwd: any) {
     if (
       response &&
-      response.statusCode == 200 &&
+      response.statusCode === 200 &&
       response.data.transactionId !== undefined &&
       response.data.transactionId !== null
     ) {

@@ -131,7 +131,7 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
       .updateANCDetails(patientANCDataForm, temp)
       .subscribe(
         (res: any) => {
-          if (res.statusCode === 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             this.getHRPDetails();
             this.confirmationService.alert(res.data.response, 'success');
             this.patientANCDataForm.markAsPristine();
@@ -152,10 +152,10 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
       .subscribe(
         (ancCareData: any) => {
           if (
-            ancCareData != null &&
-            ancCareData != undefined &&
+            ancCareData !== null &&
+            ancCareData !== undefined &&
             ancCareData.statusCode === 200 &&
-            ancCareData.data != null
+            ancCareData.data !== null
           ) {
             const temp = ancCareData.data.ANCCareDetail;
             if (temp) {
@@ -172,7 +172,7 @@ export class AncComponent implements OnInit, DoCheck, OnChanges, OnDestroy {
                 this.patientANCDataForm.controls['obstetricFormulaForm']
               )).patchValue(ancDetails);
 
-              if (temp.bloodGroup && temp.bloodGroup != "Don't Know")
+              if (temp.bloodGroup && temp.bloodGroup !== "Don't Know")
                 (<FormGroup>(
                   this.patientANCDataForm.controls['obstetricFormulaForm']
                 )).controls['bloodGroup'].disable();

@@ -74,14 +74,14 @@ export class ServiceComponent implements OnInit, DoCheck {
 
     if (
       loginDataResponse &&
-      loginDataResponse.previlegeObj != null &&
-      loginDataResponse.previlegeObj != undefined
+      loginDataResponse.previlegeObj !== null &&
+      loginDataResponse.previlegeObj !== undefined
     ) {
       serviceData = loginDataResponse.previlegeObj.filter((item: any) => {
-        return item.serviceName == service.serviceName;
+        return item.serviceName === service.serviceName;
       })[0];
 
-      if (serviceData != null) {
+      if (serviceData !== null) {
         this.checkMappedRoleForService(serviceData);
       }
     }
@@ -130,7 +130,7 @@ export class ServiceComponent implements OnInit, DoCheck {
       loginDataResponse.designation.designationName
     ) {
       this.designation = loginDataResponse.designation.designationName;
-      if (this.designation != null) {
+      if (this.designation !== null) {
         this.checkDesignationWithRole();
       } else {
         this.confirmationService.alert(

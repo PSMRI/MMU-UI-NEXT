@@ -104,7 +104,7 @@ export class ObstetricFormulaComponent implements OnInit, DoCheck, OnChanges {
         beneficiaryDetails => {
           if (!this.mode) {
             if (beneficiaryDetails?.bloodGroup) {
-              if (beneficiaryDetails.bloodGroup != "Don't Know")
+              if (beneficiaryDetails.bloodGroup !== "Don't Know")
                 this.disableBloodGroup = true;
 
               this.obstetricFormulaForm.patchValue({

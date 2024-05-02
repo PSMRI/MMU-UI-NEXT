@@ -96,21 +96,21 @@ export class SignsAndSymptomsComponent implements OnInit, DoCheck, OnDestroy {
       this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(
         beneficiaryDetails => {
           if (
-            beneficiaryDetails?.genderName?.toLowerCase() == 'female' ||
-            beneficiaryDetails?.genderName?.toLowerCase() == 'transgender'
+            beneficiaryDetails?.genderName?.toLowerCase() === 'female' ||
+            beneficiaryDetails?.genderName?.toLowerCase() === 'transgender'
           )
             this.female = true;
           else this.female = false;
 
           if (
-            beneficiaryDetails?.genderName?.toLowerCase() == 'female' &&
+            beneficiaryDetails?.genderName?.toLowerCase() === 'female' &&
             beneficiaryDetails?.ageVal >= 18
           )
             this.female18 = true;
           else this.female18 = false;
 
           if (
-            beneficiaryDetails?.genderName?.toLowerCase() == 'female' &&
+            beneficiaryDetails?.genderName?.toLowerCase() === 'female' &&
             beneficiaryDetails.ageVal >= 30
           )
             this.female30 = true;

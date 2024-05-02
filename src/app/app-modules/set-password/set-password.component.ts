@@ -126,7 +126,7 @@ export class SetPasswordComponent implements OnInit {
             if (
               response !== undefined &&
               response !== null &&
-              response.statusCode == 200
+              response.statusCode === 200
             )
               this.successCallback(response);
             else {

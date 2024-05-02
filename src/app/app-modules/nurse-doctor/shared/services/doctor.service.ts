@@ -266,14 +266,14 @@ export class DoctorService {
     if (cancerExaminationForm.controls.oralExaminationForm.dirty) {
       const oralExaminationDetails =
         cancerExaminationForm.controls.oralExaminationForm.value;
-      if (oralExaminationDetails.preMalignantLesionTypeList != null) {
+      if (oralExaminationDetails.preMalignantLesionTypeList !== null) {
         const index =
           oralExaminationDetails.preMalignantLesionTypeList.indexOf(
             'Any other lesion'
           );
         if (
           index > -1 &&
-          index == oralExaminationDetails.preMalignantLesionTypeList.length - 1
+          index === oralExaminationDetails.preMalignantLesionTypeList.length - 1
         ) {
           oralExaminationDetails.preMalignantLesionTypeList.pop();
           oralExaminationDetails.preMalignantLesionTypeList.push(
@@ -420,7 +420,7 @@ export class DoctorService {
   cancerFamilyHistoryForm(familyHistoryForm: any, otherDetails: any) {
     let familyHistoryDetails;
 
-    if (familyHistoryForm.dirty && familyHistoryForm.value.diseases != null) {
+    if (familyHistoryForm.dirty && familyHistoryForm.value.diseases !== null) {
       const diseases = JSON.parse(
         JSON.stringify(familyHistoryForm.value.diseases)
       );
@@ -428,7 +428,7 @@ export class DoctorService {
         diseases[i].cancerDiseaseType =
           diseases[i].cancerDiseaseType.cancerDiseaseType;
 
-        if (diseases[i].cancerDiseaseType == 'Any other Cancer')
+        if (diseases[i].cancerDiseaseType === 'Any other Cancer')
           diseases[i].cancerDiseaseType = diseases[i].otherDiseaseType;
 
         diseases[i] = Object.assign({}, diseases[i], otherDetails);
@@ -607,10 +607,10 @@ export class DoctorService {
       let bG = false;
 
       postNCDScreeningFormValue.labTestOrders.filter((item: any) => {
-        if (item.procedureName == 'BP Measurement') {
+        if (item.procedureName === 'BP Measurement') {
           bP = true;
         }
-        if (item.procedureName == 'Blood Glucose Measurement') {
+        if (item.procedureName === 'Blood Glucose Measurement') {
           bG = true;
         }
       });
@@ -1057,46 +1057,46 @@ export class DoctorService {
     });
 
     if (!this.getVisitComplaint) {
-      if (visitCategory == 'Cancer Screening') {
+      if (visitCategory === 'Cancer Screening') {
         this.getVisitComplaint = this.http.post(
           environment.getCancerScreeningVisitDetails,
           otherDetails
         );
       }
-      if (visitCategory == 'General OPD (QC)') {
+      if (visitCategory === 'General OPD (QC)') {
         this.getVisitComplaint = this.http.post(
           environment.getGeneralOPDQuickConsultVisitDetails,
           otherDetails
         );
       }
-      if (visitCategory == 'ANC') {
+      if (visitCategory === 'ANC') {
         this.getVisitComplaint = this.http.post(
           environment.getANCVisitDetailsUrl,
           otherDetails
         );
       }
-      if (visitCategory == 'General OPD') {
+      if (visitCategory === 'General OPD') {
         this.getVisitComplaint = this.http.post(
           environment.getGeneralOPDVisitDetailsUrl,
           otherDetails
         );
       }
-      if (visitCategory == 'NCD screening') {
+      if (visitCategory === 'NCD screening') {
         this.getVisitComplaint = this.http.post(
           environment.getNCDScreeningVisitDetails,
           otherDetails
         );
       }
-      if (visitCategory == 'NCD care') {
+      if (visitCategory === 'NCD care') {
         this.getVisitComplaint = this.http.post(
           environment.getNCDCareVisitDetailsUrl,
           otherDetails
         );
       }
-      if (visitCategory == 'PNC') {
+      if (visitCategory === 'PNC') {
         return this.http.post(environment.getPNCVisitDetailsUrl, otherDetails);
       }
-      if (visitCategory == 'COVID-19 Screening') {
+      if (visitCategory === 'COVID-19 Screening') {
         return this.http.post(
           environment.getCovidCareVisitDetailsUrl,
           otherDetails
@@ -1121,7 +1121,7 @@ export class DoctorService {
 
     // if (!this.getPregVisitComplaint) {
 
-    // if (visitCategory == 'NCD screening') {
+    // if (visitCategory === 'NCD screening') {
     this.getPregVisitComplaint = this.http.post(
       environment.getNCDScreeningVisitDetails,
       otherDetails
@@ -1142,37 +1142,37 @@ export class DoctorService {
       visitCode: localStorage.getItem('visitCode'),
     });
     if (!this.generalHistory) {
-      if (visitCategory == 'ANC') {
+      if (visitCategory === 'ANC') {
         this.generalHistory = this.http.post(
           environment.getANCHistoryDetailsUrl,
           otherDetails
         );
       }
-      if (visitCategory == 'General OPD') {
+      if (visitCategory === 'General OPD') {
         this.generalHistory = this.http.post(
           environment.getGeneralOPDHistoryDetailsUrl,
           otherDetails
         );
       }
-      if (visitCategory == 'NCD care') {
+      if (visitCategory === 'NCD care') {
         this.generalHistory = this.http.post(
           environment.getNCDCareHistoryDetailsUrl,
           otherDetails
         );
       }
-      if (visitCategory == 'PNC') {
+      if (visitCategory === 'PNC') {
         this.generalHistory = this.http.post(
           environment.getPNCHistoryDetailsUrl,
           otherDetails
         );
       }
-      if (visitCategory == 'COVID-19 Screening') {
+      if (visitCategory === 'COVID-19 Screening') {
         this.generalHistory = this.http.post(
           environment.getCovidCareHistoryDetailsUrl,
           otherDetails
         );
       }
-      if (visitCategory == 'NCD screening') {
+      if (visitCategory === 'NCD screening') {
         this.generalHistory = this.http.post(
           environment.getNCDScreeningHistoryDetails,
           otherDetails
@@ -1187,38 +1187,38 @@ export class DoctorService {
       visitCode: localStorage.getItem('visitCode'),
     });
     const visitCategory = localStorage.getItem('visitCategory');
-    if (visitCategory == 'General OPD (QC)') {
+    if (visitCategory === 'General OPD (QC)') {
       return this.http.post(
         environment.getGeneralOPDQuickConsultVitalDetails,
         otherDetails
       );
     }
-    if (visitCategory == 'ANC') {
+    if (visitCategory === 'ANC') {
       return this.http.post(environment.getANCVitalsDetailsUrl, otherDetails);
     }
-    if (visitCategory == 'General OPD') {
+    if (visitCategory === 'General OPD') {
       return this.http.post(
         environment.getGeneralOPDVitalDetailsUrl,
         otherDetails
       );
     }
 
-    if (visitCategory == 'NCD care') {
+    if (visitCategory === 'NCD care') {
       return this.http.post(
         environment.getNCDCareVitalDetailsUrl,
         otherDetails
       );
     }
-    if (visitCategory == 'PNC') {
+    if (visitCategory === 'PNC') {
       return this.http.post(environment.getPNCVitalsDetailsUrl, otherDetails);
     }
-    if (visitCategory == 'COVID-19 Screening') {
+    if (visitCategory === 'COVID-19 Screening') {
       return this.http.post(
         environment.getCovidCareVitalDetailsUrl,
         otherDetails
       );
     }
-    if (visitCategory == 'NCD screening') {
+    if (visitCategory === 'NCD screening') {
       return this.http.post(
         environment.getNCDSceeriningVitalDetails,
         otherDetails
@@ -1241,16 +1241,16 @@ export class DoctorService {
       visitCode: localStorage.getItem('visitCode'),
     });
 
-    if (visitCategory == 'ANC') {
+    if (visitCategory === 'ANC') {
       return this.http.post(environment.getANCExaminationDataUrl, otherDetails);
     }
-    if (visitCategory == 'General OPD') {
+    if (visitCategory === 'General OPD') {
       return this.http.post(
         environment.getGeneralOPDExaminationDetailsUrl,
         otherDetails
       );
     }
-    if (visitCategory == 'PNC') {
+    if (visitCategory === 'PNC') {
       return this.http.post(environment.getPNCExaminationDataUrl, otherDetails);
     }
     return new Observable(observer => {
@@ -1330,7 +1330,7 @@ export class DoctorService {
       JSON.stringify(updatedHistoryDetails, null, 4)
     );
 
-    if (visitCategory == 'ANC') {
+    if (visitCategory === 'ANC') {
       delete updatedHistoryDetails.feedingHistory;
       delete updatedHistoryDetails.developmentHistory;
       delete updatedHistoryDetails.perinatalHistroy;
@@ -1341,21 +1341,21 @@ export class DoctorService {
       );
     }
 
-    if (visitCategory == 'General OPD') {
+    if (visitCategory === 'General OPD') {
       return this.http.post(
         environment.updateGeneralOPDHistoryDetailsUrl,
         updatedHistoryDetails
       );
     }
 
-    if (visitCategory == 'NCD care') {
+    if (visitCategory === 'NCD care') {
       return this.http.post(
         environment.updateNCDCareHistoryDetailsUrl,
         updatedHistoryDetails
       );
     }
 
-    if (visitCategory == 'PNC') {
+    if (visitCategory === 'PNC') {
       delete updatedHistoryDetails.feedingHistory;
       delete updatedHistoryDetails.developmentHistory;
       delete updatedHistoryDetails.perinatalHistroy;
@@ -1366,7 +1366,7 @@ export class DoctorService {
       );
     }
 
-    if (visitCategory == 'COVID-19 Screening') {
+    if (visitCategory === 'COVID-19 Screening') {
       return this.http.post(
         environment.updateCovidCareHistoryDetailsUrl,
         updatedHistoryDetails
@@ -1542,7 +1542,7 @@ export class DoctorService {
       temp,
       {
         riskySexualPracticesStatus:
-          personalHistoryFormValue.riskySexualPracticesStatus != undefined
+          personalHistoryFormValue.riskySexualPracticesStatus !== undefined
             ? +personalHistoryFormValue.riskySexualPracticesStatus
             : null,
         tobaccoList: tobaccoList,
@@ -1589,9 +1589,9 @@ export class DoctorService {
     }
 
     if (
-      temp.lMPDate == null ||
-      temp.lMPDate == undefined ||
-      temp.lMPDate == 'Invalid Date'
+      temp.lMPDate === null ||
+      temp.lMPDate === undefined ||
+      temp.lMPDate === 'Invalid Date'
     ) {
       delete temp['lMPDate'];
     }
@@ -1697,38 +1697,38 @@ export class DoctorService {
         benVisitID: localStorage.getItem('visitID'),
       }
     );
-    if (visitCategory == 'ANC') {
+    if (visitCategory === 'ANC') {
       return this.http.post(
         environment.updateANCVitalsDetailsUrl,
         patientVitalData
       );
     }
-    if (visitCategory == 'General OPD') {
+    if (visitCategory === 'General OPD') {
       return this.http.post(
         environment.updateGeneralOPDVitalsDetailsUrl,
         patientVitalData
       );
     }
-    if (visitCategory == 'NCD care') {
+    if (visitCategory === 'NCD care') {
       return this.http.post(
         environment.updateNCDCareVitalsDetailsUrl,
         patientVitalData
       );
     }
 
-    if (visitCategory == 'PNC') {
+    if (visitCategory === 'PNC') {
       return this.http.post(
         environment.updatePNCVitalsDetailsUrl,
         patientVitalData
       );
     }
-    if (visitCategory == 'COVID-19 Screening') {
+    if (visitCategory === 'COVID-19 Screening') {
       return this.http.post(
         environment.updateCovidCareVitalsDetailsUrl,
         patientVitalData
       );
     }
-    if (visitCategory == 'NCD screening') {
+    if (visitCategory === 'NCD screening') {
       return this.http.post(
         environment.updateNCDVitalsDetailsUrl,
         patientVitalData
@@ -1761,7 +1761,7 @@ export class DoctorService {
     });
 
     const idrsDetails = { idrsDetails: patientIDRSData };
-    if (visitCategory == 'NCD screening') {
+    if (visitCategory === 'NCD screening') {
       return this.http.post(
         environment.updateNCDScreeningIDRSDetailsUrl,
         idrsDetails
@@ -1780,7 +1780,7 @@ export class DoctorService {
     const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     const vanID = JSON.parse(serviceLineDetails).vanID;
     const parkingPlaceID = JSON.parse(serviceLineDetails).parkingPlaceID;
-    if (visitCategory == 'ANC') {
+    if (visitCategory === 'ANC') {
       updatedExaminationDetails = {
         generalExamination: this.updateGeneralExaminationForm(
           patientExaminationForm.generalExaminationForm,
@@ -1839,7 +1839,7 @@ export class DoctorService {
       );
     }
 
-    if (visitCategory == 'PNC') {
+    if (visitCategory === 'PNC') {
       updatedExaminationDetails = {
         generalExamination: this.updateGeneralExaminationForm(
           patientExaminationForm.generalExaminationForm,
@@ -1898,7 +1898,7 @@ export class DoctorService {
       );
     }
 
-    if (visitCategory == 'General OPD') {
+    if (visitCategory === 'General OPD') {
       updatedExaminationDetails = {
         generalExamination: this.updateGeneralExaminationForm(
           patientExaminationForm.generalExaminationForm,
@@ -2095,7 +2095,7 @@ export class DoctorService {
       diagnosisForm.value,
       otherDetails
     );
-    if (diagnosisForm.value.dateOfDeath == null) {
+    if (diagnosisForm.value.dateOfDeath === null) {
       delete diagnosisFormData['dateOfDeath'];
     }
     return diagnosisFormData;
@@ -2151,9 +2151,13 @@ export class DoctorService {
       !!investigationFormValue.labTest &&
       !!investigationFormValue.radiologyTest
     )
-      labTest = investigationFormValue.labTest.concat(
-        investigationFormValue.radiologyTest
-      );
+      if (investigationFormValue.radiologyTest === null) {
+        labTest = investigationFormValue.labTest;
+      } else {
+        labTest = investigationFormValue.labTest.concat(
+          investigationFormValue.radiologyTest
+        );
+      }
 
     const temp = labTest.filter((test: any) => {
       return !test.disabled;
@@ -2376,49 +2380,49 @@ export class DoctorService {
     });
 
     if (!this.caseRecordAndReferDetails) {
-      if (visitCategory == 'Cancer Screening') {
+      if (visitCategory === 'Cancer Screening') {
         this.caseRecordAndReferDetails = this.http.post(
           environment.getCancerScreeningDoctorDetails,
           otherDetails
         );
       }
-      if (visitCategory == 'General OPD (QC)') {
+      if (visitCategory === 'General OPD (QC)') {
         this.caseRecordAndReferDetails = this.http.post(
           environment.getGeneralOPDQuickConsultDoctorDetails,
           otherDetails
         );
       }
-      if (visitCategory == 'ANC') {
+      if (visitCategory === 'ANC') {
         this.caseRecordAndReferDetails = this.http.post(
           environment.getANCDoctorDetails,
           otherDetails
         );
       }
-      if (visitCategory == 'General OPD') {
+      if (visitCategory === 'General OPD') {
         this.caseRecordAndReferDetails = this.http.post(
           environment.getGeneralOPDDoctorDetails,
           otherDetails
         );
       }
-      if (visitCategory == 'NCD screening') {
+      if (visitCategory === 'NCD screening') {
         this.caseRecordAndReferDetails = this.http.post(
           environment.getNCDScreeningDoctorDetails,
           otherDetails
         );
       }
-      if (visitCategory == 'NCD care') {
+      if (visitCategory === 'NCD care') {
         this.caseRecordAndReferDetails = this.http.post(
           environment.getNCDCareDoctorDetails,
           otherDetails
         );
       }
-      if (visitCategory == 'PNC') {
+      if (visitCategory === 'PNC') {
         this.caseRecordAndReferDetails = this.http.post(
           environment.getPNCDoctorDetails,
           otherDetails
         );
       }
-      if (visitCategory == 'COVID-19 Screening') {
+      if (visitCategory === 'COVID-19 Screening') {
         this.caseRecordAndReferDetails = this.http.post(
           environment.getCovidDoctorDetails,
           otherDetails
@@ -2490,37 +2494,37 @@ export class DoctorService {
       JSON.stringify(updatedDoctorDiagnosis, null, 4)
     );
 
-    if (visitCategory == 'ANC') {
+    if (visitCategory === 'ANC') {
       return this.http.post(
         environment.updateANCDoctorDetails,
         updatedDoctorDiagnosis
       );
     }
-    if (visitCategory == 'General OPD') {
+    if (visitCategory === 'General OPD') {
       return this.http.post(
         environment.updateGeneralOPDDoctorDetails,
         updatedDoctorDiagnosis
       );
     }
-    if (visitCategory == 'NCD care') {
+    if (visitCategory === 'NCD care') {
       return this.http.post(
         environment.updateNCDCareDoctorDetails,
         updatedDoctorDiagnosis
       );
     }
-    if (visitCategory == 'PNC') {
+    if (visitCategory === 'PNC') {
       return this.http.post(
         environment.updatePNCDoctorDetails,
         updatedDoctorDiagnosis
       );
     }
-    if (visitCategory == 'COVID-19 Screening') {
+    if (visitCategory === 'COVID-19 Screening') {
       return this.http.post(
         environment.updateCovidDoctorDetails,
         updatedDoctorDiagnosis
       );
     }
-    if (visitCategory == 'NCD screening') {
+    if (visitCategory === 'NCD screening') {
       return this.http.post(
         environment.updateNCDScreeningDoctorDetails,
         updatedDoctorDiagnosis
@@ -2540,37 +2544,37 @@ export class DoctorService {
   ) {
     let diagnosisDetails;
 
-    if (visitCategory == 'ANC') {
+    if (visitCategory === 'ANC') {
       diagnosisDetails = this.postANCCaseRecordDiagnosis(
         diagnosisForm,
         otherDetails
       );
     }
-    if (visitCategory == 'General OPD') {
+    if (visitCategory === 'General OPD') {
       diagnosisDetails = this.postGeneralOPDCaseRecordDiagnosis(
         diagnosisForm,
         otherDetails
       );
     }
-    if (visitCategory == 'NCD care') {
+    if (visitCategory === 'NCD care') {
       diagnosisDetails = this.postNCDCareCaseRecordDiagnosis(
         diagnosisForm,
         otherDetails
       );
     }
-    if (visitCategory == 'PNC') {
+    if (visitCategory === 'PNC') {
       diagnosisDetails = this.postANCCaseRecordDiagnosis(
         diagnosisForm,
         otherDetails
       );
     }
-    if (visitCategory == 'COVID-19 Screening') {
+    if (visitCategory === 'COVID-19 Screening') {
       diagnosisDetails = this.postCovidCareCaseRecordDiagnosis(
         diagnosisForm,
         otherDetails
       );
     }
-    if (visitCategory == 'NCD screening') {
+    if (visitCategory === 'NCD screening') {
       diagnosisDetails = this.postNCDscreeningCaseRecordDiagnosis(
         diagnosisForm,
         otherDetails
@@ -2693,7 +2697,7 @@ export class DoctorService {
       JSON.stringify(updatedHistoryDetails, null, 4)
     );
 
-    if (visitCategory == 'NCD screening') {
+    if (visitCategory === 'NCD screening') {
       return this.http.post(
         environment.updateNCDScreeningHistoryDetailsUrl,
         updatedHistoryDetails
@@ -2722,7 +2726,7 @@ export class DoctorService {
       benVisitID: visitID,
       visitCode: localStorage.getItem('visitCode'),
     });
-    if (visitCategory == 'NCD screening') {
+    if (visitCategory === 'NCD screening') {
       return this.http.post(
         environment.getNCDScreeningIDRSDetails,
         otherDetails
@@ -2760,7 +2764,7 @@ export class DoctorService {
       doctorFlag: String(beneficiaryData.doctorFlag),
       nurseFlag: String(beneficiaryData.nurseFlag),
       pharmacist_flag:
-        beneficiaryData.pharmacist_flag == 'Not Available' ? 0 : 1,
+        beneficiaryData.pharmacist_flag === 'Not Available' ? 0 : 1,
       isSpecialist: false,
       sessionID: localStorage.getItem('sessionID'),
       parkingPlaceID: parkingPlaceID,

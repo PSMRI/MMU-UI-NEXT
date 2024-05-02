@@ -54,7 +54,7 @@ export class GeneralOpdDiagnosisComponent implements OnChanges, DoCheck {
   ) {}
 
   ngOnChanges() {
-    if (this.caseRecordMode == 'view') {
+    if (this.caseRecordMode === 'view') {
       const beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
       const visitID = localStorage.getItem('visitID');
       const visitCategory = localStorage.getItem('visitCategory');
@@ -74,7 +74,7 @@ export class GeneralOpdDiagnosisComponent implements OnChanges, DoCheck {
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res?.statusCode == 200 && res?.data?.diagnosis) {
+        if (res?.statusCode === 200 && res?.data?.diagnosis) {
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
       });
@@ -97,7 +97,7 @@ export class GeneralOpdDiagnosisComponent implements OnChanges, DoCheck {
 
     const previousArray = diagnosis.provisionalDiagnosisList;
     let j = 0;
-    if (previousArray != undefined && previousArray.length > 0) {
+    if (previousArray !== undefined && previousArray.length > 0) {
       previousArray.forEach((i: any) => {
         generalArray.at(j).patchValue({
           conceptID: i.conceptID,

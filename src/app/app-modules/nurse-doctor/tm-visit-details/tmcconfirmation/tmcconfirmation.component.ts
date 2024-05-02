@@ -156,10 +156,12 @@ export class TmcconfirmationComponent implements OnInit, DoCheck, OnDestroy {
         this.visitCategory
       )
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data && res.data.Refer) {
+        if (res && res.statusCode === 200 && res.data && res.data.Refer) {
           const referedToInstitute = this.higherHealthcareCenter.filter(
             (item: any) => {
-              return item.institutionID == res.data.Refer.referredToInstituteID;
+              return (
+                item.institutionID === res.data.Refer.referredToInstituteID
+              );
             }
           );
           if (referedToInstitute.length > 0) {
@@ -179,7 +181,7 @@ export class TmcconfirmationComponent implements OnInit, DoCheck, OnDestroy {
       benRegID: localStorage.getItem('beneficiaryRegID'),
     };
     this.nurseService.getPreviousVisitData(obj).subscribe((res: any) => {
-      if (res.statusCode == 200 && res.data != null) {
+      if (res.statusCode === 200 && res.data !== null) {
         console.log('visit', res);
         //if(res.data.isDiabetic)
         this.tmcConfirmationFormsGroup.patchValue({
@@ -222,7 +224,7 @@ export class TmcconfirmationComponent implements OnInit, DoCheck, OnDestroy {
   getVisitCategoryID(visitCategory: string) {
     if (visitCategory && this.visitCategoryList) {
       const temp = this.visitCategoryList.filter((category: any) => {
-        return category.visitCategory == visitCategory;
+        return category.visitCategory === visitCategory;
       });
       if (temp.length > 0) {
         localStorage.setItem(
@@ -241,7 +243,7 @@ export class TmcconfirmationComponent implements OnInit, DoCheck, OnDestroy {
       this.masterdataService
         .getDoctorMasterDataForNurse(visitID, serviceProviderID)
         .subscribe((res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             this.higherHealthcareCenter = res.data.higherHealthCare;
             this.getReferDetails();
           }
@@ -251,7 +253,7 @@ export class TmcconfirmationComponent implements OnInit, DoCheck, OnDestroy {
 
   public higherhealthcarecenter(selected: any): void {
     console.log('form', this.tmcConfirmationFormsGroup);
-    if (selected != null && selected.institutionName) {
+    if (selected !== null && selected.institutionName) {
       this.selectValueService = true;
     }
   }
@@ -268,8 +270,8 @@ export class TmcconfirmationComponent implements OnInit, DoCheck, OnDestroy {
     let caseSheetRequest;
     const specialistFlagValue: any = localStorage.getItem('specialistFlag');
     if (
-      localStorage.getItem('caseSheetTMFlag') == 'true' ||
-      parseInt(specialistFlagValue) == 200
+      localStorage.getItem('caseSheetTMFlag') === 'true' ||
+      parseInt(specialistFlagValue) === 200
     ) {
       this.visitCategory = localStorage.getItem('caseSheetVisitCategory');
       caseSheetRequest = {
@@ -288,7 +290,7 @@ export class TmcconfirmationComponent implements OnInit, DoCheck, OnDestroy {
       .getTMReferredCasesheetData(caseSheetRequest)
       .subscribe(
         (res: any) => {
-          if (res && res.statusCode == 200 && res.data) {
+          if (res && res.statusCode === 200 && res.data) {
             this.idrsScoreService.setTMCSubmit(false);
             localStorage.setItem('disableNoOnSuccessOfYes', 'true');
             sessionStorage.setItem('tmCaseSheet', 'true');

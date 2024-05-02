@@ -21,3 +21,7 @@ h5{
 .box {
     height: 60px;
 }
+
+.mat_form_field_width >>>.mat-mdc-text-field-wrapper {
+    width: 95%;
+}

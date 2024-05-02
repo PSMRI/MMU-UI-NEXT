@@ -29,12 +29,17 @@ input[type=number]::-webkit-outer-spin-button {
     appearance: none;
     margin: 0;
 }
-mat-form-field >>> .mat-mdc-text-field-wrapper {
-    width: 100% !important;
+
+
+.mat_form_field_width_thee >>>.mat-mdc-text-field-wrapper {
+    width: 83% !important;
 }
-mat-form-field >>> .mdc-text-field__input {
-    width: 52.6% !important;
+.mat_form_field_width >>>.mat-mdc-text-field-wrapper {
+    width: 83% !important;
 }
-mat-select >>> .mat-mdc-select-trigger {
-    width: 105% !important;
+.mat_form_field_width_one >>> .mat-mdc-text-field-wrapper {
+    width: 28% !important;
+}
+.mat_form_field_width_two >>>.mat-mdc-text-field-wrapper {
+    width: 159% !important;
 }

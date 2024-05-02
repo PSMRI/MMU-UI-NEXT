@@ -111,7 +111,7 @@ export class MedicationHistoryComponent implements OnInit, OnDestroy, DoCheck {
         if (masterData) {
           this.masterData = masterData;
 
-          if (this.mode == 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);
@@ -137,9 +137,9 @@ export class MedicationHistoryComponent implements OnInit, OnDestroy, DoCheck {
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
-          history.statusCode == 200 &&
-          history.data != null &&
+          history !== null &&
+          history.statusCode === 200 &&
+          history.data !== null &&
           history.data.MedicationHistory
         ) {
           this.medicationHistoryData = history.data.MedicationHistory;
@@ -182,7 +182,7 @@ export class MedicationHistoryComponent implements OnInit, OnDestroy, DoCheck {
           if (this.medicationHistoryForm.parent)
             this.medicationHistoryForm.parent.markAsDirty();
           if (
-            medicationHistoryListValue.length == 1 &&
+            medicationHistoryListValue.length === 1 &&
             !!medicationHistoryForm
           ) {
             medicationHistoryListValue.controls[i].patchValue({
@@ -209,7 +209,7 @@ export class MedicationHistoryComponent implements OnInit, OnDestroy, DoCheck {
       .getPreviousMedicationHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data);
             } else {
@@ -262,7 +262,7 @@ export class MedicationHistoryComponent implements OnInit, OnDestroy, DoCheck {
     if (formGroup.value.timePeriodUnit)
       durationUnit = formGroup.value.timePeriodUnit;
 
-    if (duration != null && durationUnit != null)
+    if (duration !== null && durationUnit !== null)
       flag = new ValidationUtils().validateDuration(
         duration,
         durationUnit,

@@ -97,7 +97,7 @@ describe('InvestigationsComponent', () => {
       expect(component.getNurseMasterData).toHaveBeenCalled();
       expect(component.selectLabTest).toEqual(
         data.generalOPDNurseMasterdata.data.labTests.filter(item => {
-          return item.isRadiologyImaging != true;
+          return item.isRadiologyImaging !== true;
         })
       );
     }

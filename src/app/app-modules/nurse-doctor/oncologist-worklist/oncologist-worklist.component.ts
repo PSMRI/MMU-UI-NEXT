@@ -117,7 +117,7 @@ export class OncologistWorklistComponent implements OnInit, DoCheck {
   loadWorklist() {
     this.doctorService.getOncologistWorklist().subscribe(
       (data: any) => {
-        if (data.statusCode == 200 && data.data != null) {
+        if (data.statusCode === 200 && data.data !== null) {
           console.log('worklist', data.data);
           const benlist = this.loadDataToBenList(data.data);
           this.beneficiaryList = benlist;
@@ -170,17 +170,17 @@ export class OncologistWorklistComponent implements OnInit, DoCheck {
       this.beneficiaryList.forEach((item: any) => {
         for (const key in item) {
           if (
-            key == 'beneficiaryID' ||
-            key == 'benName' ||
-            key == 'genderName' ||
-            key == 'age' ||
-            key == 'VisitCategory' ||
-            key == 'benVisitNo' ||
-            key == 'districtName' ||
-            key == 'preferredPhoneNum' ||
-            key == 'villageName' ||
-            key == 'beneficiaryRegID' ||
-            key == 'visitDate'
+            key === 'beneficiaryID' ||
+            key === 'benName' ||
+            key === 'genderName' ||
+            key === 'age' ||
+            key === 'VisitCategory' ||
+            key === 'benVisitNo' ||
+            key === 'districtName' ||
+            key === 'preferredPhoneNum' ||
+            key === 'villageName' ||
+            key === 'beneficiaryRegID' ||
+            key === 'visitDate'
           ) {
             const value: string = '' + item[key];
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
@@ -214,7 +214,7 @@ export class OncologistWorklistComponent implements OnInit, DoCheck {
 
   loadDoctorExaminationPage(beneficiary: any) {
     localStorage.setItem('visitCode', beneficiary.visitCode);
-    if (beneficiary.visitFlowStatusFlag == 'N') {
+    if (beneficiary.visitFlowStatusFlag === 'N') {
       this.confirmationService
         .confirm(
           `info`,

@@ -59,7 +59,7 @@ export class OralExaminationComponent implements OnInit, DoCheck {
     this.oralExaminationForm
       .get('preMalignantLesionTypeList')!
       .valueChanges.subscribe((value: [string]) => {
-        if (value != null) {
+        if (value !== null) {
           if (value.indexOf('Any other lesion') >= 0) {
             this.showOther = true;
             this.fetchLanguageResponse();

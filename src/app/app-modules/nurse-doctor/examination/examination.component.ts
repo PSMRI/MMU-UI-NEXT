@@ -54,12 +54,13 @@ export class ExaminationComponent implements OnInit, DoCheck, OnChanges {
   ngOnChanges() {
     if (this.visitCategory) {
       this.showGeneralOPD =
-        this.visitCategory == 'General OPD' ||
-        this.visitCategory == 'ANC' ||
-        this.visitCategory == 'PNC'
+        this.visitCategory === 'General OPD' ||
+        this.visitCategory === 'ANC' ||
+        this.visitCategory === 'PNC'
           ? true
           : false;
-      this.showCancer = this.visitCategory == 'Cancer Screening' ? true : false;
+      this.showCancer =
+        this.visitCategory === 'Cancer Screening' ? true : false;
     }
   }
 

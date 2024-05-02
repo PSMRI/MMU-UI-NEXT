@@ -55,7 +55,7 @@ export class CovidDiagnosisComponent implements OnInit, DoCheck, OnChanges {
 
   ngOnInit() {
     this.designation = localStorage.getItem('designation');
-    if (this.designation == 'TC Specialist') {
+    if (this.designation === 'TC Specialist') {
       this.generalDiagnosisForm.controls['doctorDiagnosis'].disable();
       this.specialist = true;
     } else {
@@ -79,7 +79,7 @@ export class CovidDiagnosisComponent implements OnInit, DoCheck, OnChanges {
     this.current_language_set = getLanguageJson.currentLanguageObject;
   }
   ngOnChanges() {
-    if (this.caseRecordMode == 'view') {
+    if (this.caseRecordMode === 'view') {
       const beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
       const visitID = localStorage.getItem('visitID');
       const visitCategory = localStorage.getItem('visitCategory');
@@ -92,7 +92,7 @@ export class CovidDiagnosisComponent implements OnInit, DoCheck, OnChanges {
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res?.statusCode == 200 && res?.data?.diagnosis) {
+        if (res?.statusCode === 200 && res?.data?.diagnosis) {
           console.log('caserecord', res.data.diagnosis);
 
           this.patchDiagnosisDetails(res.data.diagnosis);

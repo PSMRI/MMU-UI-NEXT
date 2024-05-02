@@ -58,10 +58,10 @@ export class ValidationUtils {
 
     const arr = age.trim().split(' ');
     const ageUnit = arr[1];
-    if (ageUnit.toLowerCase() == 'years') return parseInt(arr[0]) * 365;
-    else if (ageUnit.toLowerCase() == 'months') return parseInt(arr[0]) * 30;
-    else if (ageUnit.toLowerCase() == 'weeks') return parseInt(arr[0]) * 7;
-    else if (ageUnit.toLowerCase() == 'days') return parseInt(arr[0]);
+    if (ageUnit.toLowerCase() === 'years') return parseInt(arr[0]) * 365;
+    else if (ageUnit.toLowerCase() === 'months') return parseInt(arr[0]) * 30;
+    else if (ageUnit.toLowerCase() === 'weeks') return parseInt(arr[0]) * 7;
+    else if (ageUnit.toLowerCase() === 'days') return parseInt(arr[0]);
     else return 0;
   }
 }

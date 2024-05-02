@@ -162,7 +162,7 @@ export class CovidVaccinationStatusComponent implements OnInit, DoCheck {
   getVaccinationTypeAndDoseMaster() {
     this.masterdataService.getVaccinationTypeAndDoseMaster().subscribe(
       (res: any) => {
-        if (res.statusCode == 200) {
+        if (res.statusCode === 200) {
           if (res.data) {
             this.doseTypeList = res.data.doseType;
             this.vaccineTypeList = res.data.vaccineType;
@@ -183,7 +183,7 @@ export class CovidVaccinationStatusComponent implements OnInit, DoCheck {
       .getPreviousCovidVaccinationDetails(beneficiaryRegID)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200) {
+          if (res.statusCode === 200) {
             if (res.data.covidVSID) {
               this.covidVaccineStatusForm.controls['covidVSID'].setValue(
                 res.data.covidVSID
@@ -216,7 +216,7 @@ export class CovidVaccinationStatusComponent implements OnInit, DoCheck {
       .saveBenCovidVaccinationDetails(this.covidVaccineStatusForm)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             this.doctorService.enableCovidVaccinationButton = false;
             this.confirmationService.alert(
               this.currentLanguageSet.covidVaccinationDetailsSaved,

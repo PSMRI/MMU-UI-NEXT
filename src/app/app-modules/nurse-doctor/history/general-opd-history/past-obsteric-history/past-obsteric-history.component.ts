@@ -195,7 +195,7 @@ export class PastObstericHistoryComponent
           this.masterData = masterData;
           this.selectDeliveryTypes = this.masterData.deliveryTypes;
 
-          if (this.mode == 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);
@@ -210,9 +210,9 @@ export class PastObstericHistoryComponent
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
-          history.statusCode == 200 &&
-          history.data != null &&
+          history !== null &&
+          history.statusCode === 200 &&
+          history.data !== null &&
           history.data.FemaleObstetricHistory
         ) {
           this.pastObstericHistoryData = history.data.FemaleObstetricHistory;
@@ -245,7 +245,7 @@ export class PastObstericHistoryComponent
         const temp1: any = [];
         this.masterData.pregComplicationTypes.forEach((item: any) => {
           temp[i].pregComplicationList.forEach((p: any) => {
-            if (p.pregComplicationType == item.pregComplicationType) {
+            if (p.pregComplicationType === item.pregComplicationType) {
               temp1.push(item);
             }
           });
@@ -255,25 +255,25 @@ export class PastObstericHistoryComponent
 
         temp[i].durationType = this.masterData.pregDuration.filter(
           (item: any) => {
-            return temp[i].durationType == item.durationType;
+            return temp[i].durationType === item.durationType;
           }
         )[0];
 
         temp[i].deliveryType = this.masterData.deliveryTypes.filter(
           (item: any) => {
-            return temp[i].deliveryType == item.deliveryType;
+            return temp[i].deliveryType === item.deliveryType;
           }
         )[0];
 
         temp[i].deliveryPlace = this.masterData.deliveryPlaces.filter(
           (item: any) => {
-            return temp[i].deliveryPlace == item.deliveryPlace;
+            return temp[i].deliveryPlace === item.deliveryPlace;
           }
         )[0];
         const temp2: any = [];
         this.masterData.deliveryComplicationTypes.forEach((item: any) => {
           temp[i].deliveryComplicationList.forEach((p: any) => {
-            if (p.deliveryComplicationType == item.deliveryComplicationType) {
+            if (p.deliveryComplicationType === item.deliveryComplicationType) {
               temp2.push(item);
             }
           });
@@ -284,7 +284,7 @@ export class PastObstericHistoryComponent
         this.masterData.postpartumComplicationTypes.forEach((item: any) => {
           temp[i].postpartumComplicationList.forEach((p: any) => {
             if (
-              p.postpartumComplicationType == item.postpartumComplicationType
+              p.postpartumComplicationType === item.postpartumComplicationType
             ) {
               temp3.push(item);
             }
@@ -295,33 +295,33 @@ export class PastObstericHistoryComponent
 
         temp[i].pregOutcome = this.masterData.pregOutcomes.filter(
           (item: any) => {
-            return temp[i].pregOutcome == item.pregOutcome;
+            return temp[i].pregOutcome === item.pregOutcome;
           }
         )[0];
         temp[i].newBornComplication =
           this.masterData.newBornComplications.filter((item: any) => {
-            return temp[i].newBornComplication == item.complicationValue;
+            return temp[i].newBornComplication === item.complicationValue;
           })[0];
         if (
           temp[i].pregOutcome &&
-          temp[i].pregOutcome.pregOutcome == 'Abortion'
+          temp[i].pregOutcome.pregOutcome === 'Abortion'
         ) {
           temp[i].abortionType = this.masterData.typeOfAbortion.filter(
             (item: any) => {
-              return temp[i].typeOfAbortionValue == item.complicationValue;
+              return temp[i].typeOfAbortionValue === item.complicationValue;
             }
           )[0];
 
           temp[i].typeofFacility = this.masterData.serviceFacilities.filter(
             (item: any) => {
-              return temp[i].serviceFacilityValue == item.facilityName;
+              return temp[i].serviceFacilityValue === item.facilityName;
             }
           )[0];
           if (temp[i].postAbortionComplication) {
             const temp4: any = [];
             this.masterData.postAbortionComplications.forEach((item: any) => {
               temp[i].postAbortionComplication.forEach((p: any) => {
-                if (p.complicationValue == item.complicationValue) {
+                if (p.complicationValue === item.complicationValue) {
                   temp4.push(item);
                 }
               });
@@ -339,7 +339,7 @@ export class PastObstericHistoryComponent
         this.resetOtherPostpartumComplicationType(k, i);
         if (
           temp[i].pregOutcome &&
-          temp[i].pregOutcome.pregOutcome == 'Abortion'
+          temp[i].pregOutcome.pregOutcome === 'Abortion'
         )
           this.resetPostComplicationType(k, i);
 
@@ -397,7 +397,7 @@ export class PastObstericHistoryComponent
     );
     let temp = -1;
     pastObstericHistoryList.value.map((item: any, index: any) => {
-      if (item.pregOrder == i) {
+      if (item.pregOrder === i) {
         temp = index;
       }
     });
@@ -430,7 +430,7 @@ export class PastObstericHistoryComponent
       .getPreviousObstetricHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data);
             } else {
@@ -488,7 +488,7 @@ export class PastObstericHistoryComponent
     ].valueChanges.subscribe(value => {
       console.log('%c status', 'color:green', value);
       if (value) {
-        if (this.visitCategory == 'ANC') {
+        if (this.visitCategory === 'ANC') {
           this.createPregnancyWithComplList(value - 1);
         } else {
           this.createPregnancyWithComplList(value);
@@ -503,8 +503,8 @@ export class PastObstericHistoryComponent
 
   checkTotalPregnancy(totalNoOfPreg: any) {
     if (
-      totalNoOfPreg == 0 &&
-      (this.visitCategory == 'ANC' || this.visitCategory == 'PNC')
+      totalNoOfPreg === 0 &&
+      (this.visitCategory === 'ANC' || this.visitCategory === 'PNC')
     ) {
       this.confirmationService.alert(
         this.currentLanguageSet.totalNumberOfPastPregnancyFor + ' ',
@@ -523,7 +523,7 @@ export class PastObstericHistoryComponent
     let flag = false;
 
     pregComplicationList.forEach((item: any) => {
-      if (item.pregComplicationType == 'Other') {
+      if (item.pregComplicationType === 'Other') {
         flag = true;
       }
     });
@@ -536,9 +536,12 @@ export class PastObstericHistoryComponent
         index
       ].disableNonePregnancyComplication = true;
       this.complicationOptionConstraints[index].showAllPregComplication = false;
-    } else if (pregComplicationList.length == 1) {
+    } else if (pregComplicationList.length === 1) {
       const t =
-        pregComplicationList[0].pregComplicationType == 'None' ? false : true;
+        pregComplicationList[0].pregComplicationType === 'None' ||
+        pregComplicationList[0].pregComplicationType === 'Nil'
+          ? false
+          : true;
       this.complicationOptionConstraints[
         index
       ].disableNonePregnancyComplication = t;
@@ -556,16 +559,16 @@ export class PastObstericHistoryComponent
 
   resetOtherDeliveryPlace(pastObstericHistoryForm: any) {
     if (
-      pastObstericHistoryForm.value.deliveryPlace.deliveryPlace ==
+      pastObstericHistoryForm.value.deliveryPlace.deliveryPlace ===
         'Home-Supervised' ||
-      pastObstericHistoryForm.value.deliveryPlace.deliveryPlace ==
+      pastObstericHistoryForm.value.deliveryPlace.deliveryPlace ===
         'Home-Unsupervised'
     ) {
       const tempDeliveryTypes = this.masterData.deliveryTypes.filter(
         (item: any) => {
           return (
-            item.deliveryType != 'Assisted Delivery' &&
-            item.deliveryType != 'Cesarean Section (LSCS)'
+            item.deliveryType !== 'Assisted Delivery' &&
+            item.deliveryType !== 'Cesarean Section (LSCS)'
           );
         }
       );
@@ -573,7 +576,7 @@ export class PastObstericHistoryComponent
     } else {
       this.selectDeliveryTypes = this.masterData.deliveryTypes;
     }
-    if (pastObstericHistoryForm.value.deliveryPlace.deliveryPlace == 'Other')
+    if (pastObstericHistoryForm.value.deliveryPlace.deliveryPlace === 'Other')
       pastObstericHistoryForm.patchValue({ otherDeliveryPlace: null });
   }
 
@@ -584,7 +587,7 @@ export class PastObstericHistoryComponent
     let flag = false;
 
     deliveryComplicationList.forEach((item: any) => {
-      if (item.deliveryComplicationType == 'Other') {
+      if (item.deliveryComplicationType === 'Other') {
         flag = true;
       }
     });
@@ -598,9 +601,10 @@ export class PastObstericHistoryComponent
       ].disableNoneDeliveryComplication = true;
       this.complicationOptionConstraints[index].showAllDeliveryComplication =
         false;
-    } else if (deliveryComplicationList.length == 1) {
+    } else if (deliveryComplicationList.length === 1) {
       const t =
-        deliveryComplicationList[0].deliveryComplicationType == 'None'
+        deliveryComplicationList[0].deliveryComplicationType === 'None' ||
+        deliveryComplicationList[0].deliveryComplicationType === 'Nil'
           ? false
           : true;
       this.complicationOptionConstraints[
@@ -631,7 +635,7 @@ export class PastObstericHistoryComponent
     let flag = false;
 
     postpartumComplicationList.forEach((item: any) => {
-      if (item.postpartumComplicationType == 'Other') {
+      if (item.postpartumComplicationType === 'Other') {
         flag = true;
       }
     });
@@ -645,9 +649,10 @@ export class PastObstericHistoryComponent
       ].disableNonePostpartumComplication = true;
       this.complicationOptionConstraints[index].showAllPostpartumComplication =
         false;
-    } else if (postpartumComplicationList.length == 1) {
+    } else if (postpartumComplicationList.length === 1) {
       const t =
-        postpartumComplicationList[0].postpartumComplicationType == 'None'
+        postpartumComplicationList[0].postpartumComplicationType === 'None' ||
+        postpartumComplicationList[0].postpartumComplicationType === 'Nil'
           ? false
           : true;
       this.complicationOptionConstraints[
@@ -668,7 +673,7 @@ export class PastObstericHistoryComponent
   }
   resetOtherNewBornComplications(pastObstericHistoryForm: any) {
     if (
-      pastObstericHistoryForm.value.newBornComplication.complicationValue ==
+      pastObstericHistoryForm.value.newBornComplication.complicationValue ===
       'Other'
     )
       pastObstericHistoryForm.patchValue({ otherNewBornComplication: null });
@@ -682,9 +687,10 @@ export class PastObstericHistoryComponent
       this.complicationOptionConstraints[index].disableNonePostComplication =
         true;
       this.complicationOptionConstraints[index].showAllPostComplication = false;
-    } else if (postpartumComplicationList.length == 1) {
+    } else if (postpartumComplicationList.length === 1) {
       const t =
-        postpartumComplicationList[0].complicationValue == 'None'
+        postpartumComplicationList[0].complicationValue === 'None' ||
+        postpartumComplicationList[0].complicationValue === 'Nil'
           ? false
           : true;
       this.complicationOptionConstraints[index].disableNonePostComplication = t;
@@ -701,7 +707,7 @@ export class PastObstericHistoryComponent
   }
 
   checkPregnancyOutcome(pastObstericHistoryForm: any) {
-    if (pastObstericHistoryForm.value.pregOutcome.pregOutcome == 'Abortion') {
+    if (pastObstericHistoryForm.value.pregOutcome.pregOutcome === 'Abortion') {
       pastObstericHistoryForm.patchValue({
         durationType: null,
         deliveryPlace: null,
@@ -719,7 +725,9 @@ export class PastObstericHistoryComponent
       });
     }
 
-    if (pastObstericHistoryForm.value.pregOutcome.pregOutcome == 'Stillbirth') {
+    if (
+      pastObstericHistoryForm.value.pregOutcome.pregOutcome === 'Stillbirth'
+    ) {
       pastObstericHistoryForm.patchValue({
         newBornComplication: null,
         otherNewBornComplication: null,
@@ -731,7 +739,7 @@ export class PastObstericHistoryComponent
     pastObstericHistoryForm: AbstractControl<any, any>,
     name: any
   ) {
-    if (name != 'Induced') {
+    if (name !== 'Induced') {
       pastObstericHistoryForm.patchValue({ typeofFacility: null });
     }
   }

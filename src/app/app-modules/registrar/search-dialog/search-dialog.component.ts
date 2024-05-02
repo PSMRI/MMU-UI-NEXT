@@ -135,7 +135,7 @@ export class SearchDialogComponent implements OnInit, DoCheck {
     this.masterDataSubscription =
       this.registrarService.registrationMasterDetails$.subscribe(res => {
         console.log('Registrar master data', res);
-        if (res != null) {
+        if (res !== null) {
           this.masterData = Object.assign({}, res);
           console.log(this.masterData, 'masterDataall');
           this.getStatesData();
@@ -150,7 +150,7 @@ export class SearchDialogComponent implements OnInit, DoCheck {
   selectGender() {
     const genderMaster = this.masterData.genderMaster;
     genderMaster.forEach((element: any) => {
-      if (element.genderID == this.newSearchForm.controls['gender']) {
+      if (element.genderID === this.newSearchForm.controls['gender']) {
         this.newSearchForm.controls['genderName'] = element.genderName;
       }
     });

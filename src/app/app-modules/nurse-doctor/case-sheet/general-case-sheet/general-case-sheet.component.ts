@@ -73,14 +73,14 @@ export class GeneralCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
     this.fetchLanguageResponse();
     this.dataStore = this.route.snapshot.params['printablePage'] || 'previous';
     let caseSheetRequest;
-    const caseSheetTMFlag = localStorage.getItem('caseSheetTMFlag');
+    const caseSheetTMFlag: any = localStorage.getItem('caseSheetTMFlag');
     const specialistFlag = localStorage.getItem('specialistFlag');
 
     if (
-      (caseSheetTMFlag !== null && caseSheetTMFlag === 'true') ||
+      (caseSheetTMFlag !== null && caseSheetTMFlag === true) ||
       (specialistFlag !== null && parseInt(specialistFlag) === 200)
     ) {
-      if (localStorage.getItem('caseSheetTMFlag') == 'true') {
+      if (caseSheetTMFlag === true) {
         this.enablePrescriptionButton = true;
       }
       this.visitCategory = localStorage.getItem('caseSheetVisitCategory');
@@ -94,7 +94,7 @@ export class GeneralCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
       };
       this.getTMReferredCasesheetData(caseSheetRequest);
     } else {
-      if (this.dataStore == 'current') {
+      if (this.dataStore === 'current') {
         this.visitCategory = localStorage.getItem('caseSheetVisitCategory');
         caseSheetRequest = {
           VisitCategory: localStorage.getItem('caseSheetVisitCategory'),
@@ -105,7 +105,7 @@ export class GeneralCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
         };
         this.getCasesheetData(caseSheetRequest);
       }
-      if (this.dataStore == 'previous') {
+      if (this.dataStore === 'previous') {
         this.hideBack = true;
 
         this.visitCategory = localStorage.getItem(
@@ -137,7 +137,7 @@ export class GeneralCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
       .getTMReferredCasesheetData(caseSheetRequest)
       .subscribe(
         (res: any) => {
-          if (res && res.statusCode == 200 && res.data) {
+          if (res && res.statusCode === 200 && res.data) {
             this.caseSheetData = res.data;
           } else {
             this.confirmationService
@@ -158,13 +158,13 @@ export class GeneralCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   getCasesheetData(caseSheetRequest: any) {
-    if (this.visitCategory == 'General OPD (QC)' || this.previous) {
+    if (this.visitCategory === 'General OPD (QC)' || this.previous) {
       this.hideSelectQC = true;
     }
-    if (this.serviceType == 'TM') {
+    if (this.serviceType === 'TM') {
       this.getTMCasesheetData(caseSheetRequest);
     }
-    if (this.serviceType == 'MMU') {
+    if (this.serviceType === 'MMU') {
       this.getMMUCasesheetData(caseSheetRequest);
     }
   }
@@ -172,7 +172,7 @@ export class GeneralCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
     this.casesheetSubs = this.doctorService
       .getMMUCasesheetData(caseSheetRequest)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
+        if (res && res.statusCode === 200 && res.data) {
           this.caseSheetData = res.data;
           console.log(
             'caseSheetData',
@@ -185,7 +185,7 @@ export class GeneralCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
     this.casesheetSubs = this.doctorService
       .getTMCasesheetData(caseSheetRequest)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
+        if (res && res.statusCode === 200 && res.data) {
           this.caseSheetData = res.data;
           console.log(
             'caseSheetData',
