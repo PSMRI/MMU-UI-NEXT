@@ -8,18 +8,20 @@
     </div>
 
     <div class="col-xs-6 custom-cell">
-      <mat-label class="mat-label-text">{{
-        currentLanguageSet?.common?.select
-      }}</mat-label>
-      <mat-select
-        floatPlaceholder="never"
-        name="limitedMouthOpening"
-        formControlName="limitedMouthOpening">
-        <mat-option value="none"> None </mat-option>
-        <mat-option value="+"> + </mat-option>
-        <mat-option value="++"> ++ </mat-option>
-        <mat-option value="+++"> +++ </mat-option>
-      </mat-select>
+      <mat-form-field>
+        <mat-label class="mat-label-text">{{
+          currentLanguageSet?.common?.select
+        }}</mat-label>
+        <mat-select
+          floatPlaceholder="never"
+          name="limitedMouthOpening"
+          formControlName="limitedMouthOpening">
+          <mat-option value="none"> None </mat-option>
+          <mat-option value="+"> + </mat-option>
+          <mat-option value="++"> ++ </mat-option>
+          <mat-option value="+++"> +++ </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="col-12 row">
       <div class="col-6 custom-cell cell_postion">

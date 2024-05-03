@@ -277,22 +277,25 @@
               let isLast = last
             ">
             <ng-container [formGroupName]="i">
-              <mat-select
-                [style.width]="'40%'"
-                formControlName="type"
-                (selectionChange)="filterOtherGovIDs(id.value.type, i)"
-                style="line-height: unset"
-                placeholder="{{
+              <mat-form-field>
+                <mat-label class="mat-label-text">{{
                   currentLanguageSet?.ro?.otherInfo?.govtHealthProgramType
-                }}">
-                <mat-option
-                  *ngFor="
-                    let govIDType of otherGovIDMaster[i]?.otherGovIdEntityMaster
-                  "
-                  [value]="govIDType.govtIdentityTypeID">
-                  {{ govIDType.identityType }}
-                </mat-option>
-              </mat-select>
+                }}</mat-label>
+                <mat-select
+                  [style.width]="'40%'"
+                  formControlName="type"
+                  (selectionChange)="filterOtherGovIDs(id.value.type, i)"
+                  style="line-height: unset">
+                  <mat-option
+                    *ngFor="
+                      let govIDType of otherGovIDMaster[i]
+                        ?.otherGovIdEntityMaster
+                    "
+                    [value]="govIDType.govtIdentityTypeID">
+                    {{ govIDType.identityType }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
               <mat-form-field
                 [style.width]="'40%'"
                 style="line-height: unset"

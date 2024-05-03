@@ -28,23 +28,25 @@
       [ngClass]="{ odd: !isOdd }">
       <ng-container [formGroupName]="i">
         <div class="col-3 box">
-          <mat-label class="mat-label-text">{{
-            currentLanguageSet?.historyData?.ancHistory
-              ?.familyHistoryDataANC_OPD_NCD_PNC?.diseaseType
-          }}</mat-label>
-          <mat-select
-            class="select-full-width"
-            name="diseaseType"
-            formControlName="diseaseType"
-            (selectionChange)="
-              filterFamilyDiseaseList($event.value, i, familyDisease)
-            ">
-            <mat-option
-              *ngFor="let disease of diseaseSelectList[i]"
-              [value]="disease">
-              {{ disease.diseaseType }}
-            </mat-option>
-          </mat-select>
+          <mat-form-field>
+            <mat-label class="mat-label-text">{{
+              currentLanguageSet?.historyData?.ancHistory
+                ?.familyHistoryDataANC_OPD_NCD_PNC?.diseaseType
+            }}</mat-label>
+            <mat-select
+              class="select-full-width"
+              name="diseaseType"
+              formControlName="diseaseType"
+              (selectionChange)="
+                filterFamilyDiseaseList($event.value, i, familyDisease)
+              ">
+              <mat-option
+                *ngFor="let disease of diseaseSelectList[i]"
+                [value]="disease">
+                {{ disease.diseaseType }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
 
         <div

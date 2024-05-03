@@ -1,19 +1,21 @@
 <div class="row m-t-20" [formGroup]="centralNervousSystemDataForm">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-label class="mat-label-text">{{
-      currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
-        ?.centralANC_OPD_PNC?.handedness
-    }}</mat-label>
-    <mat-select
-      class="select-full-width"
-      name="handedness"
-      formControlName="handedness">
-      <mat-option
-        *ngFor="let handedness of selectHandedness"
-        [value]="handedness.name">
-        {{ handedness.name }}
-      </mat-option>
-    </mat-select>
+    <mat-form-field>
+      <mat-label class="mat-label-text">{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.centralANC_OPD_PNC?.handedness
+      }}</mat-label>
+      <mat-select
+        class="select-full-width"
+        name="handedness"
+        formControlName="handedness">
+        <mat-option
+          *ngFor="let handedness of selectHandedness"
+          [value]="handedness.name">
+          {{ handedness.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
