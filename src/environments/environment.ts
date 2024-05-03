@@ -25,14 +25,14 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
-const commonIP = 'https://amritwprdev.piramalswasthya.org/';
+const commonIP = 'http://183.82.107.186:8080/';
 //const commonIP = 'http://localhost:1040/';
-const tmIP = 'https://amritwprdev.piramalswasthya.org/';
+const tmIP = 'http://183.82.107.186:8080/';
 // const mmuIP = 'http://10.208.122.38:8080/';
-const mmuIP = 'https://amritwprdev.piramalswasthya.org/';
+const mmuIP = 'http://183.82.107.186:8080/';
 //const mmuIP = 'http://localhost:8080/';
-const schedulerIP = 'https://amritwprdev.piramalswasthya.org/';
-const identityIP = 'https://amritwprdev.piramalswasthya.org/';
+const schedulerIP = 'http://183.82.107.186:8080/';
+const identityIP = 'http://183.82.107.186:8080/';
 
 const SERVER_IP = '183.82.107.186';
 // const SERVER_IP = 'amritwprdev.piramalswasthya.org';
@@ -45,12 +45,12 @@ const ADMIN_API = `${adminIP}/adminapi-v1.0`;
 // const MMU_API = `http://${IP}:8080/apiman-gateway/IEMR/MMU/1.0/`;
 
 // Without API MAN Configuration
-const COMMON_API_OPEN = `${commonIP}commonapi-v0.1/`;
+const COMMON_API_OPEN = `${commonIP}commonapi-v1.0/`;
 
 //const COMMON_API_OPEN = `${commonIP}/`;
-const COMMON_API = `${commonIP}commonapi-v0.1/`;
+const COMMON_API = `${commonIP}commonapi-v1.0/`;
 //const COMMON_API = `${commonIP}/`;
-const MMU_API = `${mmuIP}mmuapi-v0.1/`;
+const MMU_API = `${mmuIP}mmuapi-v1.0/`;
 // const MMU_API = `http://localhost:8080/`;
 //const MMU_API = `${mmuIP}/`;
 //const MMU_API = `http://localhost:8080/`
@@ -59,7 +59,7 @@ const TM_API = `${tmIP}tmapi-v0.1/`;
 const COMMON_API_OPEN_SYNC = `http://${SERVER_IP}:8080/commonapi-v1.0/`;
 const SCHEDULER_API = `${schedulerIP}schedulerapi-v1.0/`;
 
-const mmuUICasesheet = 'https://amritwprdev.piramalswasthya.org/';
+const mmuUICasesheet = 'http://183.82.107.186:8080/';
 const IOT_API = 'http://localhost:8085/ezdx-hub-connect-srv';
 
 export const environment = {
@@ -72,8 +72,7 @@ export const environment = {
   haemoglobinTest: `Haemoglobin Test`,
   parentAPI: `${MMU_API}`,
 
-  INVENTORY_URL:
-    'https://amritwprdev.piramalswasthya.org/inventory-ui-next/#/redirin?',
+  INVENTORY_URL: 'http://183.82.107.186:8080/inventory-ui-next/#/redirin?',
   fallbackUrl: `/pharmacist/redirfallback`,
   redirInUrl: `/pharmacist/redirin`,
 
