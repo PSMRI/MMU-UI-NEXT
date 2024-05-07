@@ -67,7 +67,7 @@ export class CancerCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
     this.fetchLanguageResponse();
     const dataStore = this.route.snapshot.params['printablePage'] || 'previous';
     let caseSheetRequest;
-    if (dataStore == 'current') {
+    if (dataStore === 'current') {
       caseSheetRequest = {
         VisitCategory: localStorage.getItem('caseSheetVisitCategory'),
         benFlowID: localStorage.getItem('caseSheetBenFlowID'),
@@ -86,7 +86,7 @@ export class CancerCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
       this.getCurrentRole();
       this.getCaseSheetData(caseSheetRequest);
     }
-    if (dataStore == 'previous') {
+    if (dataStore === 'previous') {
       this.hideBack = true;
       caseSheetRequest = {
         VisitCategory: localStorage.getItem('previousCaseSheetVisitCategory'),
@@ -131,10 +131,10 @@ export class CancerCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
   caseSheetSubs: any;
 
   getCaseSheetData(caseSheetRequest: any) {
-    if (this.serviceType == 'TM') {
+    if (this.serviceType === 'TM') {
       this.getTMCasesheetData(caseSheetRequest);
     }
-    if (this.serviceType == 'MMU') {
+    if (this.serviceType === 'MMU') {
       this.getMMUCasesheetData(caseSheetRequest);
     }
   }
@@ -142,7 +142,7 @@ export class CancerCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
     this.caseSheetSubs = this.doctorService
       .getMMUCasesheetData(caseSheetRequest)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
+        if (res && res.statusCode === 200 && res.data) {
           this.caseSheetData = res.data;
           console.log(
             'caseSheetData',
@@ -155,7 +155,7 @@ export class CancerCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
     this.caseSheetSubs = this.doctorService
       .getTMCasesheetData(caseSheetRequest)
       .subscribe((res: any) => {
-        if (res && res.statusCode == 200 && res.data) {
+        if (res && res.statusCode === 200 && res.data) {
           this.caseSheetData = res.data;
           console.log(
             'caseSheetData',
@@ -196,9 +196,9 @@ export class CancerCaseSheetComponent implements OnInit, OnDestroy, DoCheck {
         this.getCaseSheetDataVisit.benRegID
       )
       .subscribe((res: any) => {
-        if (res.statusCode == 500 || res.statusCode == 5000) {
+        if (res.statusCode === 500 || res.statusCode === 5000) {
           this.confirmationService.alert(res.errorMessage, 'error');
-        } else if (res.statusCode == 200) {
+        } else if (res.statusCode === 200) {
           if (this.caseSheetData?.doctorData) {
             this.caseSheetData = {
               ...this.caseSheetData,

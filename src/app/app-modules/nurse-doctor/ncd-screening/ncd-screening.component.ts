@@ -127,7 +127,7 @@ export class NcdScreeningComponent
   }
   // Ends
   ngOnChanges() {
-    if (this.ncdScreeningMode == 'update') {
+    if (this.ncdScreeningMode === 'update') {
       this.updateNCDScreeningDetails();
     }
   }
@@ -152,7 +152,7 @@ export class NcdScreeningComponent
           );
           // this.ncdTests = data.ncdTests;
 
-          if (this.ncdScreeningMode == 'view') {
+          if (this.ncdScreeningMode === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getNCDScreeingDetails(benRegID, visitID);
@@ -165,7 +165,7 @@ export class NcdScreeningComponent
     console.log(reasons);
     const filteredReasons: any = [];
     reasons.forEach((element: any) => {
-      if (this.age < 30 && element.ncdScreeningReasonID == 1) {
+      if (this.age < 30 && element.ncdScreeningReasonID === 1) {
         // according to age
       } else {
         filteredReasons.push(element);
@@ -190,7 +190,7 @@ export class NcdScreeningComponent
               }
               if (
                 beneficiary.genderName &&
-                beneficiary.genderName.toLowerCase() == 'female'
+                beneficiary.genderName.toLowerCase() === 'female'
               ) {
                 this.female = true;
               }
@@ -203,9 +203,9 @@ export class NcdScreeningComponent
           })
         )
         .subscribe((res: any) => {
-          if (res && res.statusCode == 200 && res.data) {
+          if (res && res.statusCode === 200 && res.data) {
             this.ncdScreeningVisitCount = res.data.ncdScreeningVisitCount;
-            if (this.ncdScreeningMode != 'view')
+            if (this.ncdScreeningMode !== 'view')
               this.NCDScreeningForm.patchValue({
                 ncdScreeningVisitNo: this.ncdScreeningVisitCount,
               });
@@ -217,7 +217,7 @@ export class NcdScreeningComponent
     this.doctorService
       .getNcdScreeningDetails(beneficiaryRegID, benVisitID)
       .subscribe((res: any) => {
-        if (res.statusCode == 200 && res.data != null) {
+        if (res.statusCode === 200 && res.data !== null) {
           this.ncdScreeningDetails = Object.assign(
             {},
             res.data.anthropometryDetails,
@@ -228,36 +228,36 @@ export class NcdScreeningComponent
           this.ncdScreeningDetails.nextScreeningDate = new Date(
             this.ncdScreeningDetails.nextScreeningDate
           );
-          // this.ncdScreeningDetails.screeningCondition = this.ncdScreeningConditions.filter(item => item.ncdScreeningConditionID == this.ncdScreeningDetails.ncdScreeningConditionID)[0];
+          // this.ncdScreeningDetails.screeningCondition = this.ncdScreeningConditions.filter(item => item.ncdScreeningConditionID === this.ncdScreeningDetails.ncdScreeningConditionID)[0];
           this.ncdScreeningDetails.reasonForScreening =
             this.ncdScreeningReasons.filter(
               (item: any) =>
-                item.ncdScreeningReasonID ==
+                item.ncdScreeningReasonID ===
                 this.ncdScreeningDetails.ncdScreeningReasonID
             )[0];
           this.ncdScreeningDetails.bloodPressureStatus =
             this.bloodPressureStatus.filter(
               (item: any) =>
-                item.bpAndDiabeticStatusID ==
+                item.bpAndDiabeticStatusID ===
                 this.ncdScreeningDetails.bloodPressureStatusID
             )[0];
           this.ncdScreeningDetails.diabeticStatus = this.diabeticStatus.filter(
             (item: any) =>
-              item.bpAndDiabeticStatusID ==
+              item.bpAndDiabeticStatusID ===
               this.ncdScreeningDetails.diabeticStatusID
           )[0];
 
           const temp = [];
           if (this.ncdScreeningDetails.isBPPrescribed) {
             const bp = this.laboratoryList.filter(item => {
-              return item.procedureName == 'BP Measurement';
+              return item.procedureName === 'BP Measurement';
             });
             if (bp.length > 0) temp.push(bp[0]);
           }
 
           if (this.ncdScreeningDetails.isBloodGlucosePrescribed) {
             const bg = this.laboratoryList.filter(item => {
-              return item.procedureName == 'Blood Glucose Measurement';
+              return item.procedureName === 'Blood Glucose Measurement';
             });
             if (bg.length > 0) temp.push(bg[0]);
           }
@@ -272,7 +272,7 @@ export class NcdScreeningComponent
                 this.ncdScreeningDetails.ncdScreeningConditionList.forEach(
                   (ncdScreening: any) => {
                     if (
-                      screeningCondition.ncdScreeningConditionID ==
+                      screeningCondition.ncdScreeningConditionID ===
                       ncdScreening.ncdScreeningConditionID
                     ) {
                       tempNCDScreeningConditionList.push(screeningCondition);
@@ -338,7 +338,7 @@ export class NcdScreeningComponent
         )
         .subscribe(
           (res: any) => {
-            if (res.statusCode == 200 && res.data != null) {
+            if (res.statusCode === 200 && res.data !== null) {
               this.NCDScreeningForm.markAsPristine();
               this.confirmationService.alert(res.data.response, 'success');
               this.router.navigate(['/common/nurse-worklist']);
@@ -523,9 +523,9 @@ export class NcdScreeningComponent
 
   calculateAverageSystolicBP() {
     if (
-      this.systolicBP_1stReading != null &&
-      this.systolicBP_2ndReading != null &&
-      this.systolicBP_3rdReading != null
+      this.systolicBP_1stReading !== null &&
+      this.systolicBP_2ndReading !== null &&
+      this.systolicBP_3rdReading !== null
     ) {
       // let averageSystolicBP: any;
       const averageSystolicBP: any = (
@@ -542,9 +542,9 @@ export class NcdScreeningComponent
 
   calculateAverageDiastolicBP() {
     if (
-      this.diastolicBP_1stReading != null &&
-      this.diastolicBP_2ndReading != null &&
-      this.diastolicBP_3rdReading != null
+      this.diastolicBP_1stReading !== null &&
+      this.diastolicBP_2ndReading !== null &&
+      this.diastolicBP_3rdReading !== null
     ) {
       // let averageDiastolicBP: any;
       const averageDiastolicBP: any = (
@@ -765,7 +765,7 @@ export class NcdScreeningComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('he;;p', result, result['result']);
-      if (result != null) {
+      if (result !== null) {
         //result['result']
         this.NCDScreeningForm.patchValue({
           weight_Kg: result['result'],
@@ -783,7 +783,7 @@ export class NcdScreeningComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('blood_glucose', result['sys'], result['dia']);
-      if (result != null) {
+      if (result !== null) {
         this.NCDScreeningForm.patchValue({
           bloodGlucose_Fasting: result['result'],
         });
@@ -799,7 +799,7 @@ export class NcdScreeningComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('blood_glucose', result['sys'], result['dia']);
-      if (result != null) {
+      if (result !== null) {
         this.NCDScreeningForm.patchValue({
           bloodGlucose_Random: result['result'],
         });
@@ -815,7 +815,7 @@ export class NcdScreeningComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('blood_glucose', result['sys'], result['dia']);
-      if (result != null) {
+      if (result !== null) {
         this.NCDScreeningForm.patchValue({
           bloodGlucose_2hr_PP: result['result'],
         });
@@ -831,7 +831,7 @@ export class NcdScreeningComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('blood_glucose', result['sys'], result['dia']);
-      if (result != null) {
+      if (result !== null) {
         this.NCDScreeningForm.patchValue({
           bloodGlucose_NotSpecified: result['result'],
         });
@@ -847,7 +847,7 @@ export class NcdScreeningComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('blood_pressure', result['sys'], result['dia']);
-      if (result != null) {
+      if (result !== null) {
         this.NCDScreeningForm.patchValue({
           systolicBP_1stReading: result['sys'],
           diastolicBP_1stReading: result['dia'],
@@ -864,7 +864,7 @@ export class NcdScreeningComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('blood_pressure', result['sys'], result['dia']);
-      if (result != null) {
+      if (result !== null) {
         this.NCDScreeningForm.patchValue({
           systolicBP_2ndReading: result['sys'],
           diastolicBP_2ndReading: result['dia'],
@@ -881,7 +881,7 @@ export class NcdScreeningComponent
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('blood_pressure', result['sys'], result['dia']);
-      if (result != null) {
+      if (result !== null) {
         this.NCDScreeningForm.patchValue({
           systolicBP_3rdReading: result['sys'],
           diastolicBP_3rdReading: result['dia'],

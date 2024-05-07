@@ -61,7 +61,7 @@ export class HistoryComponent implements OnInit, OnChanges {
     this.attendant = this.route.snapshot.params['attendant'];
     this.doctorService.setCapturedHistoryByNurse(null);
 
-    if (this.attendant != 'nurse') this.generalHistory();
+    if (this.attendant !== 'nurse') this.generalHistory();
   }
 
   ngOnChanges() {
@@ -70,12 +70,12 @@ export class HistoryComponent implements OnInit, OnChanges {
   showHistoryTabs() {
     if (
       this.visitCategory &&
-      (this.visitCategory == 'General OPD' ||
-        this.visitCategory == 'ANC' ||
-        this.visitCategory == 'NCD care' ||
-        this.visitCategory == 'PNC' ||
-        this.visitCategory == 'COVID-19 Screening' ||
-        this.visitCategory == 'NCD screening')
+      (this.visitCategory === 'General OPD' ||
+        this.visitCategory === 'ANC' ||
+        this.visitCategory === 'NCD care' ||
+        this.visitCategory === 'PNC' ||
+        this.visitCategory === 'COVID-19 Screening' ||
+        this.visitCategory === 'NCD screening')
     ) {
       this.showGeneralOPD = true;
       this.showCancer = false;
@@ -91,7 +91,7 @@ export class HistoryComponent implements OnInit, OnChanges {
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((historyresponse: any) => {
         if (
-          historyresponse.statusCode == 200 &&
+          historyresponse.statusCode === 200 &&
           historyresponse !== undefined
         ) {
           this.doctorService.setCapturedHistoryByNurse(historyresponse);

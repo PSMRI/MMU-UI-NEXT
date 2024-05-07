@@ -58,9 +58,10 @@ export class VitalsComponent implements OnInit, OnChanges, DoCheck {
 
   ngOnChanges() {
     if (this.visitCategory) {
-      this.showCancer = this.visitCategory == 'Cancer Screening' ? true : false;
+      this.showCancer =
+        this.visitCategory === 'Cancer Screening' ? true : false;
       this.showGeneralOPD =
-        this.visitCategory != 'Cancer Screening' ? true : false;
+        this.visitCategory !== 'Cancer Screening' ? true : false;
     }
   }
 

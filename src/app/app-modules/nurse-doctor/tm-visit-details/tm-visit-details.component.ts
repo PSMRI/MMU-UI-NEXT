@@ -59,8 +59,9 @@ export class TmVisitDetailsComponent implements OnInit, DoCheck, OnDestroy {
     this.visitCategory = localStorage.getItem('visitCategory');
     this.getVisitDetails();
     this.getPregnancyStatus();
+    const selectTMC: any = localStorage.getItem('selectTMC');
 
-    if (localStorage.getItem('selectTMC') == 'true') {
+    if (selectTMC === true) {
       this.patientVisitForm.controls['tmcConfirmationForm'].patchValue({
         tmcConfirmed: true,
       });
@@ -87,7 +88,7 @@ export class TmVisitDetailsComponent implements OnInit, DoCheck, OnDestroy {
   // Ends
   ngOnDestroy() {
     const currentURL = this.router.url;
-    if (currentURL == '/nurse-doctor/print/MMU/current') {
+    if (currentURL === '/nurse-doctor/print/MMU/current') {
       localStorage.setItem('selectTMC', 'true');
     } else {
       localStorage.removeItem('specialist_flag');
@@ -121,7 +122,7 @@ export class TmVisitDetailsComponent implements OnInit, DoCheck, OnDestroy {
         this.beneficiaryData.VisitCategory
       )
       .subscribe((value: any) => {
-        if (value != null && value.statusCode == 200 && value.data != null) {
+        if (value !== null && value.statusCode === 200 && value.data !== null) {
           const visitDetails = value.data.NCDScreeningNurseVisitDetail;
           // visitDetails.visitCode = visitDetails.visitCode;
           // this.doctorService.fileIDs = value.data.NCDScreeningNurseVisitDetail.files;
@@ -135,7 +136,7 @@ export class TmVisitDetailsComponent implements OnInit, DoCheck, OnDestroy {
   conditionCheck() {
     if (!this.mode) this.hideAllTab();
     localStorage.setItem('visiCategoryANC', this.visitCategory);
-    if (this.visitCategory == 'NCD screening') {
+    if (this.visitCategory === 'NCD screening') {
       // condtion check
     } else {
       this.hideAll = false;

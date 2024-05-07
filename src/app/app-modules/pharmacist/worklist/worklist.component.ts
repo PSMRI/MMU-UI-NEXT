@@ -110,7 +110,7 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
   loadPharmaWorklist() {
     this.pharmacistService.getPharmacistWorklist().subscribe(
       (data: any) => {
-        if (data && data.statusCode == 200 && data.data) {
+        if (data && data.statusCode === 200 && data.data) {
           console.log('pharmacist worklist', data.data);
 
           const benlist = this.loadDataToBenList(data.data);
@@ -174,17 +174,17 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
       this.beneficiaryList.forEach((item: any) => {
         for (const key in item) {
           if (
-            key == 'beneficiaryID' ||
-            key == 'benName' ||
-            key == 'genderName' ||
-            key == 'age' ||
-            key == 'VisitCategory' ||
-            key == 'benVisitNo' ||
-            key == 'districtName' ||
-            key == 'preferredPhoneNum' ||
-            key == 'villageName' ||
-            key == 'beneficiaryRegID' ||
-            key == 'visitDate'
+            key === 'beneficiaryID' ||
+            key === 'benName' ||
+            key === 'genderName' ||
+            key === 'age' ||
+            key === 'VisitCategory' ||
+            key === 'benVisitNo' ||
+            key === 'districtName' ||
+            key === 'preferredPhoneNum' ||
+            key === 'villageName' ||
+            key === 'beneficiaryRegID' ||
+            key === 'visitDate'
           ) {
             const value: string = '' + item[key];
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
@@ -205,12 +205,7 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   patientImageView(benregID: any) {
-    if (
-      benregID &&
-      benregID != null &&
-      benregID != '' &&
-      benregID != undefined
-    ) {
+    if (benregID) {
       this.beneficiaryDetailsService
         .getBeneficiaryImage(benregID)
         .subscribe((data: any) => {

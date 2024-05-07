@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
     );
     return this.auth.validateSessionKey().pipe(
       tap((res: any) => {
-        if (!(res && res.statusCode == 200 && res.data)) {
+        if (!(res && res.statusCode === 200 && res.data)) {
           this.router.navigate(['/login']);
         }
       })

@@ -56,15 +56,16 @@ export class CaseRecordComponent implements OnInit {
     if (this.visitCategory) {
       console.log('case record', this.visitCategory);
       this.showGeneralOPD =
-        this.visitCategory == 'General OPD' ||
-        this.visitCategory == 'ANC' ||
-        this.visitCategory == 'NCD care' ||
-        this.visitCategory == 'PNC' ||
-        this.visitCategory == 'COVID-19 Screening' ||
-        this.visitCategory == 'NCD screening'
+        this.visitCategory === 'General OPD' ||
+        this.visitCategory === 'ANC' ||
+        this.visitCategory === 'NCD care' ||
+        this.visitCategory === 'PNC' ||
+        this.visitCategory === 'COVID-19 Screening' ||
+        this.visitCategory === 'NCD screening'
           ? true
           : false;
-      this.showCancer = this.visitCategory == 'Cancer Screening' ? true : false;
+      this.showCancer =
+        this.visitCategory === 'Cancer Screening' ? true : false;
     }
   }
 }

@@ -114,12 +114,12 @@ export class FamilyDiseaseHistoryComponent
 
     for (let i = 0; i < temp.length; i++) {
       const cancerType = this.templateCancerDiseaseType.filter((item: any) => {
-        return item.cancerDiseaseType == temp[i].cancerDiseaseType;
+        return item.cancerDiseaseType === temp[i].cancerDiseaseType;
       });
 
       const otherCancerObj = this.templateCancerDiseaseType.filter(
         (item: any) => {
-          return item.cancerDiseaseType == 'Any other Cancer';
+          return item.cancerDiseaseType === 'Any other Cancer';
         }
       );
 
@@ -167,7 +167,7 @@ export class FamilyDiseaseHistoryComponent
             diseaseType: this.templateCancerDiseaseType.slice(),
           };
 
-          if (this.mode == 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getCancerHistory(benRegID, visitID);
@@ -182,9 +182,9 @@ export class FamilyDiseaseHistoryComponent
       .getCancerHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
-          history.statusCode == 200 &&
-          history.data != null
+          history !== null &&
+          history.statusCode === 200 &&
+          history.data !== null
         ) {
           const cancerHistoryData = history.data;
           this.familyHistoryData = cancerHistoryData.benFamilyHistory;
@@ -210,13 +210,13 @@ export class FamilyDiseaseHistoryComponent
     familyDiseaseForm?: AbstractControl<any, any>
   ) {
     const arr = this.templateCancerDiseaseType.filter((item: any) => {
-      return item.cancerDiseaseType == type.cancerDiseaseType;
+      return item.cancerDiseaseType === type.cancerDiseaseType;
     });
 
     if (this.previousValue[i]) {
       for (let t = 0; t < this.temp.length; t++) {
         if (
-          t != i &&
+          t !== i &&
           this.temp[t].diseaseType.indexOf(this.previousValue[i]) < 0
         ) {
           this.temp[t].diseaseType = [
@@ -229,14 +229,14 @@ export class FamilyDiseaseHistoryComponent
     }
 
     if (familyDiseaseForm instanceof FormGroup) {
-      if (type.cancerDiseaseType != 'Any other Cancer') {
+      if (type.cancerDiseaseType !== 'Any other Cancer') {
         familyDiseaseForm.patchValue({
           snomedCode: type.snomedCode,
           snomedTerm: type.snomedTerm,
         });
         for (let t = 0; t < this.temp.length; t++) {
           const index = this.temp[t].diseaseType.indexOf(arr[0]);
-          if (index >= 0 && t != i) {
+          if (index >= 0 && t !== i) {
             this.temp[t].diseaseType = [
               ...this.temp[t].diseaseType.slice(0, index),
               ...this.temp[t].diseaseType.slice(index + 1),
@@ -250,7 +250,7 @@ export class FamilyDiseaseHistoryComponent
 
     this.filterFamilyMemebers = this.templateFamilyMemberType.filter(
       (item: any) => {
-        return type.gender == 'unisex' || item.gender == type.gender;
+        return type.gender === 'unisex' || item.gender === type.gender;
       }
     );
     this.temp[i].familyMembers = this.filterFamilyMemebers;
@@ -259,12 +259,12 @@ export class FamilyDiseaseHistoryComponent
 
   // filterFamilyMember(type: any, i: any, familyDiseaseForm?: FormGroup) {
   //   const arr = this.templateCancerDiseaseType.filter((item: any) => {
-  //     return item.cancerDiseaseType == type.cancerDiseaseType;
+  //     return item.cancerDiseaseType === type.cancerDiseaseType;
   //   });
 
   //   if (this.previousValue[i]) {
   //     this.temp.map((item: any, t: any) => {
-  //       if (t != i && item.diseaseType.indexOf(this.previousValue[i]) < 0) {
+  //       if (t !== i && item.diseaseType.indexOf(this.previousValue[i]) < 0) {
   //         item.diseaseType = item.diseaseType.concat([this.previousValue[i]]);
   //         this.sortDiseaseList(item.diseaseType);
   //       }
@@ -272,14 +272,14 @@ export class FamilyDiseaseHistoryComponent
   //   }
 
   //   if (familyDiseaseForm) {
-  //     if (type.cancerDiseaseType != 'Any other Cancer') {
+  //     if (type.cancerDiseaseType !== 'Any other Cancer') {
   //       familyDiseaseForm.patchValue({
   //         snomedCode: type.snomedCode,
   //         snomedTerm: type.snomedTerm,
   //       });
   //       this.temp.map((item: any, t: any) => {
   //         const index = item.diseaseType.indexOf(arr[0]);
-  //         if (index >= 0 && t != i) item.diseaseType.splice(index, 1);
+  //         if (index >= 0 && t !== i) item.diseaseType.splice(index, 1);
   //       });
   //     } else {
   //       familyDiseaseForm.patchValue({ snomedCode: null, snomedTerm: null });
@@ -288,7 +288,7 @@ export class FamilyDiseaseHistoryComponent
 
   //   this.filterFamilyMemebers = this.templateFamilyMemberType.filter(
   //     (item: any) => {
-  //       return type.gender == 'unisex' || item.gender == type.gender;
+  //       return type.gender === 'unisex' || item.gender === type.gender;
   //     }
   //   );
   //   this.temp[i].familyMemebers = this.filterFamilyMemebers;
@@ -307,9 +307,10 @@ export class FamilyDiseaseHistoryComponent
       let flag = false;
       for (j = 0; j < array1.length; j++) {
         if (
-          array1[j].cancerDiseaseType != null &&
-          array1[j].cancerDiseaseType.cancerDiseaseType != 'Any other Cancer' &&
-          this.filterCancerDiseaseType[i].cancerDiseaseType ==
+          array1[j].cancerDiseaseType !== null &&
+          array1[j].cancerDiseaseType.cancerDiseaseType !==
+            'Any other Cancer' &&
+          this.filterCancerDiseaseType[i].cancerDiseaseType ===
             array1[j].cancerDiseaseType.cancerDiseaseType
         ) {
           flag = true;
@@ -335,13 +336,13 @@ export class FamilyDiseaseHistoryComponent
           );
 
           this.cancerPatientFamilyMedicalHistoryForm.markAsDirty();
-          if (newDisease.length == 1) {
+          if (newDisease.length === 1) {
             diseaseForm.reset();
           } else {
             const arr = this.templateCancerDiseaseType.filter((item: any) => {
               if (newDisease.value[i].cancerDiseaseType)
                 return (
-                  item.cancerDiseaseType ==
+                  item.cancerDiseaseType ===
                   newDisease.value[i].cancerDiseaseType.cancerDiseaseType
                 );
               else return false;
@@ -349,7 +350,7 @@ export class FamilyDiseaseHistoryComponent
 
             if (
               arr.length >= 1 &&
-              arr[0].cancerDiseaseType != 'Any other Cancer'
+              arr[0].cancerDiseaseType !== 'Any other Cancer'
             ) {
               this.temp.map((item: any) => {
                 if (item.diseaseType.indexOf(arr[0]) < 0) {
@@ -371,7 +372,7 @@ export class FamilyDiseaseHistoryComponent
     const benRegID: any = localStorage.getItem('beneficiaryRegID');
     this.nurseService.getPreviousCancerFamilyHistory(benRegID).subscribe(
       (data: any) => {
-        if (data != null && data.data != null) {
+        if (data !== null && data.data !== null) {
           if (data.data.data.length > 0) {
             this.viewPreviousData(data.data);
           } else {
@@ -400,7 +401,7 @@ export class FamilyDiseaseHistoryComponent
 
   sortDiseaseList(diseaseList: any) {
     diseaseList.sort((a: any, b: any) => {
-      if (a.cancerDiseaseType == b.cancerDiseaseType) return 0;
+      if (a.cancerDiseaseType === b.cancerDiseaseType) return 0;
       if (a.cancerDiseaseType < b.cancerDiseaseType) return -1;
       else return 1;
     });

@@ -93,9 +93,9 @@ export class UploadFilesComponent implements OnInit, DoCheck, OnChanges {
   }
 
   ngOnChanges() {
-    if (this.mode == 'view' && !this.enableFileSelection) {
+    if (String(this.mode) === 'view' && !this.enableFileSelection) {
       this.disableFileSelection = true;
-    } else if (this.mode == 'view' && this.enableFileSelection) {
+    } else if (String(this.mode) === 'view' && this.enableFileSelection) {
       this.enableForNCDScreening = true;
       this.disableFileSelection = false;
     } else {
@@ -155,7 +155,7 @@ export class UploadFilesComponent implements OnInit, DoCheck, OnChanges {
     console.log('FILE DETAILS', file);
     if (file) {
       const array_after_split = file.name.split('.');
-      if (array_after_split.length == 2) {
+      if (array_after_split.length === 2) {
         const file_extension = array_after_split[array_after_split.length - 1];
         for (let i = 0; i < this.valid_file_extensions.length; i++) {
           if (
@@ -182,11 +182,11 @@ export class UploadFilesComponent implements OnInit, DoCheck, OnChanges {
   assignFileObject(fileContent: any) {
     const serviceLineDetails: any = localStorage.getItem('serviceLineDetails');
     const kmFileManager = {
-      fileName: this.file != undefined ? this.file.name : '',
+      fileName: this.file !== undefined ? this.file.name : '',
       fileExtension:
-        this.file != undefined ? '.' + this.file.name.split('.')[1] : '',
+        this.file !== undefined ? '.' + this.file.name.split('.')[1] : '',
       userID: localStorage.getItem('userID'),
-      fileContent: fileContent != undefined ? fileContent.split(',')[1] : '',
+      fileContent: fileContent !== undefined ? fileContent.split(',')[1] : '',
       vanID: JSON.parse(serviceLineDetails).vanID,
       isUploaded: false,
     };
@@ -201,7 +201,7 @@ export class UploadFilesComponent implements OnInit, DoCheck, OnChanges {
   saveUploadDetails(fileObj: any) {
     this.labService.saveFile(fileObj).subscribe(
       (res: any) => {
-        if (res.statusCode == 200) {
+        if (res.statusCode === 200) {
           res.data.forEach((file: any) => {
             this.savedFileData.push(file);
             this.fileIDs.push(file.filePath);
@@ -223,7 +223,7 @@ export class UploadFilesComponent implements OnInit, DoCheck, OnChanges {
       }
     );
     console.log('fileIDs', this.fileIDs);
-    if (this.fileIDs != null) {
+    if (this.fileIDs !== null) {
       this.patientFileUploadDetailsForm.patchValue({
         fileIDs: this.fileIDs,
       });
@@ -236,18 +236,18 @@ export class UploadFilesComponent implements OnInit, DoCheck, OnChanges {
     this.nurseService.fileData = null;
   }
   checkForDuplicateUpload() {
-    if (this.fileObj != undefined) {
-      if (this.savedFileData != undefined) {
+    if (this.fileObj !== undefined) {
+      if (this.savedFileData !== undefined) {
         if (this.fileObj.length > this.savedFileData.length) {
           const result = this.fileObj.filter((uniqueFileName: any) => {
             const arrNames = this.savedFileData.filter((savedFileName: any) => {
-              if (uniqueFileName.isUploaded == savedFileName.isUploaded) {
+              if (uniqueFileName.isUploaded === savedFileName.isUploaded) {
                 return true;
               } else {
                 return false;
               }
             });
-            if (arrNames.length == 0) {
+            if (arrNames.length === 0) {
               return true;
             } else {
               return false;
@@ -326,7 +326,7 @@ export class UploadFilesComponent implements OnInit, DoCheck, OnChanges {
   triggerLog(event: any) {
     console.log(event.clientX);
     //this.key=event.clientX;
-    if (event.clientX != 0) {
+    if (event.clientX !== 0) {
       const x = document.getElementById('fileUpload');
       x?.click();
     }

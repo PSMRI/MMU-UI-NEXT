@@ -110,7 +110,7 @@ export class CancerExaminationCaseSheetComponent
   }
   getImageAnnotation(imageID: any) {
     const arr = this.imageAnnotatedData.filter(
-      (item: any) => item.imageID == imageID
+      (item: any) => item.imageID === imageID
     );
     return arr.length > 0 ? arr[0] : null;
   }

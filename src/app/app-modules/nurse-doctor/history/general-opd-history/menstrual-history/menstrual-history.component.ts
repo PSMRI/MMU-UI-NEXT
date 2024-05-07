@@ -103,7 +103,7 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
         ) {
           this.masterData = masterData;
           this.checkvisitCategory();
-          if (this.mode == 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);
@@ -113,10 +113,10 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   checkvisitCategory() {
-    if (this.visitCategory == 'ANC') {
+    if (this.visitCategory === 'ANC') {
       let temp = 'Amenorrhea';
       temp = this.masterData.menstrualCycleStatus.filter((item: any) => {
-        return item.name == temp;
+        return item.name === temp;
       })[0];
       this.menstrualHistoryForm.patchValue({ menstrualCycleStatus: temp });
     }
@@ -128,9 +128,9 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
-          history.statusCode == 200 &&
-          history.data != null &&
+          history !== null &&
+          history.statusCode === 200 &&
+          history.data !== null &&
           history.data.MenstrualHistory
         ) {
           const temp = history.data.MenstrualHistory;
@@ -138,17 +138,17 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
           temp.menstrualCycleStatus =
             this.masterData.menstrualCycleStatus.filter((item: any) => {
-              return item.name == temp.menstrualCycleStatus;
+              return item.name === temp.menstrualCycleStatus;
             })[0];
           temp.cycleLength = this.masterData.menstrualCycleLengths.filter(
             (item: any) => {
-              return item.menstrualCycleRange == temp.cycleLength;
+              return item.menstrualCycleRange === temp.cycleLength;
             }
           )[0];
           temp.bloodFlowDuration =
             this.masterData.menstrualCycleBloodFlowDuration.filter(
               (item: any) => {
-                return item.menstrualCycleRange == temp.bloodFlowDuration;
+                return item.menstrualCycleRange === temp.bloodFlowDuration;
               }
             )[0];
           const tempMenstrualProblem: any = [];
@@ -161,7 +161,7 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
                 temp.menstrualProblemList.forEach(
                   (menstrualProblemValue: any) => {
                     if (
-                      menstrualProblem.problemName ==
+                      menstrualProblem.problemName ===
                       menstrualProblemValue.problemName
                     ) {
                       tempMenstrualProblem.push(menstrualProblem);
@@ -186,7 +186,7 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getPreviousMenstrualHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data);
             } else {
@@ -231,7 +231,7 @@ export class MenstrualHistoryComponent implements OnInit, DoCheck, OnDestroy {
   checkMenstrualCycleStatus() {
     console.log('here in to check');
 
-    if (this.visitCategory == 'ANC') {
+    if (this.visitCategory === 'ANC') {
       this.menstrualHistoryForm.patchValue({
         menstrualCycleStatusID: null,
         regularity: null,

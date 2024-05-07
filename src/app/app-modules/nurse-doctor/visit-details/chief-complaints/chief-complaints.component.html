@@ -1,5 +1,6 @@
 <div
   class="row m-t-20"
+  style="margin-bottom: 15px"
   *ngIf="!benChiefComplaints"
   [formGroup]="patientChiefComplaintsForm">
   <div class="col-xs-12" formArrayName="complaints">
@@ -12,7 +13,7 @@
         let isOdd = odd
       "
       [ngClass]="{ odd: !isOdd }">
-      <div class="row" [formGroupName]="i">
+      <div class="" [formGroupName]="i">
         <div class="col-12 row">
           <div class="col-4 input-full-width">
             <mat-form-field class="input-full-width">
@@ -61,7 +62,7 @@
             </mat-form-field>
           </div>
           <div
-            class="col-4 input-full-width"
+            class="col-3 input-full-width"
             *ngIf="
               complaint?.value?.chiefComplaint !== null &&
               complaint?.value?.chiefComplaint !== ''
@@ -82,7 +83,7 @@
           </div>
 
           <div
-            class="col-4 box input-full-width"
+            class="col-3 box input-full-width"
             *ngIf="
               complaint?.value?.duration !== null &&
               complaint?.value?.duration !== ''
@@ -104,62 +105,59 @@
             </mat-select>
           </div>
         </div>
-        <div class="col-12 row">
-          <div
-            class="input-full-width"
-            *ngIf="
-              complaint?.value?.chiefComplaint !== null &&
-              complaint?.value?.chiefComplaint !== ''
-            ">
-            <mat-form-field class="textarea-full-width">
-              <mat-label class="mat-label-text">{{
-                currentLanguageSet?.nurseData?.chiefComplaintsDetails
-                  ?.description
-              }}</mat-label>
-              <textarea
-                matInput
-                appDefaultNull
-                allowText="textAreaValidator"
-                mdTextareaAutosize
-                maxRows="3"
-                minRows="6"
-                name="description"
-                formControlName="description"
-                maxlength="300"></textarea>
-            </mat-form-field>
-          </div>
+        <div
+          class="input-full-width col-3"
+          *ngIf="
+            complaint?.value?.chiefComplaint !== null &&
+            complaint?.value?.chiefComplaint !== ''
+          ">
+          <mat-form-field class="textarea-full-width">
+            <mat-label class="mat-label-text">{{
+              currentLanguageSet?.nurseData?.chiefComplaintsDetails?.description
+            }}</mat-label>
+            <textarea
+              matInput
+              appDefaultNull
+              allowText="textAreaValidator"
+              mdTextareaAutosize
+              maxRows="3"
+              minRows="6"
+              name="description"
+              formControlName="description"
+              maxlength="300"></textarea>
+          </mat-form-field>
+        </div>
 
-          <div class="">
-            <button
-              type="button"
-              mat-mini-fab
-              class=".mat_warn_circle"
-              [id]="'removeBtn' + i"
-              *ngIf="i !== 0 || (i === 0 && complaint.touched)"
-              (click)="removeCheifComplaint(i, complaint)"
-              color="warn"
-              class="mat_warn_circle">
-              <span class="material-icons">close</span>
-            </button>
-            <button
-              color="primary"
-              class="mat_blue_circle"
-              type="button"
-              mat-mini-fab
-              [id]="'addBtn' + i"
-              *ngIf="isLast"
-              [disabled]="checkComplaintFormValidity(complaint)"
-              (click)="addCheifComplaint()">
-              <span class="material-icons">add</span>
-            </button>
-          </div>
+        <div class="col-3">
+          <button
+            type="button"
+            mat-mini-fab
+            class=".mat_warn_circle"
+            [id]="'removeBtn' + i"
+            *ngIf="i !== 0 || (i === 0 && complaint.touched)"
+            (click)="removeCheifComplaint(i, complaint)"
+            color="warn"
+            class="mat_warn_circle">
+            <span class="material-icons">close</span>
+          </button>
+          <button
+            color="primary"
+            class="mat_blue_circle"
+            type="button"
+            mat-mini-fab
+            [id]="'addBtn' + i"
+            *ngIf="isLast"
+            [disabled]="checkComplaintFormValidity(complaint)"
+            (click)="addCheifComplaint()">
+            <span class="material-icons">add</span>
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row m-t-10" *ngIf="benChiefComplaints">
+<div class="row m-t-10" style="margin-bottom: 15px" *ngIf="benChiefComplaints">
   <div class="col-xs-12">
     <table
       class="table table-bordered"

@@ -86,12 +86,12 @@ export class GeneralOpdExaminationComponent
 
   ngOnChanges() {
     this.loadFormData();
-    if (this.mode == 'view') {
+    if (String(this.mode) === 'view') {
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
       this.getAncExaminationData(benRegID, visitID);
     }
-    if (this.mode == 'update') {
+    if (String(this.mode) === 'update') {
       this.updatePatientExamination(this.patientExaminationForm);
     }
   }
@@ -168,7 +168,7 @@ export class GeneralOpdExaminationComponent
         )
         .subscribe(
           (res: any) => {
-            if (res.statusCode == 200 && res.data != null) {
+            if (res.statusCode === 200 && res.data !== null) {
               this.confirmationService.alert(
                 'Examination updated successfully',
                 'success'
@@ -196,14 +196,14 @@ export class GeneralOpdExaminationComponent
     this.ancExaminationDataSubscription = this.doctorService
       .getGeneralExamintionData(benRegID, visitID)
       .subscribe(examinationData => {
-        if (examinationData.statusCode == 200 && examinationData.data) {
+        if (examinationData.statusCode === 200 && examinationData.data) {
           console.log(
             'examinationData.data',
             JSON.stringify(examinationData.data, null, 4)
           );
           const temp = examinationData.data;
 
-          if (this.visitCategory == 'ANC') {
+          if (this.visitCategory === 'ANC') {
             const ancFormData = {
               generalExaminationForm: temp.generalExamination,
               headToToeExaminationForm: temp.headToToeExamination,
@@ -219,7 +219,7 @@ export class GeneralOpdExaminationComponent
             this.patientExaminationForm.patchValue(ancFormData);
           }
 
-          if (this.visitCategory == 'PNC') {
+          if (this.visitCategory === 'PNC') {
             const ancFormData = {
               generalExaminationForm: temp.generalExamination,
               headToToeExaminationForm: temp.headToToeExamination,
@@ -235,7 +235,7 @@ export class GeneralOpdExaminationComponent
             this.patientExaminationForm.patchValue(ancFormData);
           }
 
-          if (this.visitCategory == 'General OPD') {
+          if (this.visitCategory === 'General OPD') {
             const ancFormData = {
               generalExaminationForm: temp.generalExamination,
               headToToeExaminationForm: temp.headToToeExamination,

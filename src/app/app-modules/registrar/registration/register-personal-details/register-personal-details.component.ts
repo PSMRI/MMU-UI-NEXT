@@ -75,6 +75,9 @@ export class RegisterPersonalDetailsComponent
   currentLanguageSet: any;
 
   @HostListener('window:scroll')
+  onScrollEvent() {
+    this.datepicker.hide();
+  }
   regexDob =
     /^(?:(?:31\/(?:0?[13578]|1[02])|(?:29|30)\/(?:0?[1,3-9]|1[0-2]))\/(?:(?:1[6-9]|[2-9]\d)?\d{2})|(?:29\/0?2\/(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))|(?:0?[1-9]|1\d|2[0-8])\/(?:0?[1-9]|1[0-2])\/(?:(?:1[6-9]|[2-9]\d)?\d{2}))$/;
   constructor(
@@ -141,7 +144,7 @@ export class RegisterPersonalDetailsComponent
     this.masterDataSubscription =
       this.registrarService.registrationMasterDetails$.subscribe(res => {
         // console.log('res personal', res)
-        if (res != null) {
+        if (res !== null) {
           this.masterData = res;
           if (this.patientRevisit) {
             this.loadPersonalDataForEditing();
@@ -151,20 +154,20 @@ export class RegisterPersonalDetailsComponent
   }
 
   validateMaritalStatusMaster(revisitData: any) {
-    if (revisitData.m_gender.genderID == 3) {
+    if (revisitData.m_gender.genderID === 3) {
       this.maritalStatusMaster = this.masterData.maritalStatusMaster;
     } else {
       this.maritalStatusMaster = this.masterData.maritalStatusMaster.filter(
         (maritalStatus: any) => {
           if (
-            revisitData.m_gender.genderID == '1' &&
-            maritalStatus.maritalStatusID != '5'
+            revisitData.m_gender.genderID === 1 &&
+            maritalStatus.maritalStatusID !== 5
           ) {
             return maritalStatus;
           }
           if (
-            revisitData.m_gender.genderID == '2' &&
-            maritalStatus.maritalStatusID != '6'
+            revisitData.m_gender.genderID === 2 &&
+            maritalStatus.maritalStatusID !== 6
           ) {
             return maritalStatus;
           }
@@ -264,7 +267,7 @@ export class RegisterPersonalDetailsComponent
     this.masterData.incomeMaster.forEach((stat: any) => {
       if (
         element.i_bendemographics.incomeStatus &&
-        stat.incomeStatus == element.i_bendemographics.incomeStatus
+        stat.incomeStatus === element.i_bendemographics.incomeStatus
       ) {
         this.personalDetailsForm.patchValue({
           income: stat.incomeStatusID,
@@ -274,8 +277,8 @@ export class RegisterPersonalDetailsComponent
     this.dobChangeByCalender(undefined);
 
     if (
-      element.maritalStatus.maritalStatusID == 1 ||
-      element.maritalStatus.maritalStatusID == 7
+      element.maritalStatus.maritalStatusID === 1 ||
+      element.maritalStatus.maritalStatusID === 7
     ) {
       this.enableMarriageDetails = false;
       this.clearMarriageDetails();
@@ -366,7 +369,7 @@ export class RegisterPersonalDetailsComponent
    */
   isMobileNoRequired = true;
   checkMobileNoIsRequired(val: any) {
-    if (val.checked == true) {
+    if (val.checked === true) {
       this.isMobileNoRequired = true;
     } else {
       this.isMobileNoRequired = false;
@@ -379,7 +382,7 @@ export class RegisterPersonalDetailsComponent
    */
   isOccuptionRequired = true;
   checkOccuptionsRequired(val: any) {
-    if (val.checked == true) {
+    if (val.checked === true) {
       this.isOccuptionRequired = true;
     } else {
       this.isOccuptionRequired = false;
@@ -397,7 +400,7 @@ export class RegisterPersonalDetailsComponent
    */
   isFingerPrintRequired = true;
   checkFingerPrintIsRequired(val: any) {
-    if (val.checked == true) {
+    if (val.checked === true) {
       this.isFingerPrintRequired = true;
     } else {
       this.isFingerPrintRequired = false;
@@ -425,7 +428,7 @@ export class RegisterPersonalDetailsComponent
       this.masterData.maritalStatusMaster
     );
 
-    if (this.personalDetailsForm.value.gender == '3') {
+    if (this.personalDetailsForm.value.gender === 3) {
       this.confirmationService
         .confirm('info', 'You have selected Transgender, please confirm')
         .subscribe(
@@ -445,14 +448,14 @@ export class RegisterPersonalDetailsComponent
       this.maritalStatusMaster = this.masterData.maritalStatusMaster.filter(
         (maritalStatus: any) => {
           if (
-            this.personalDetailsForm.value.gender == '1' &&
-            maritalStatus.maritalStatusID != '5'
+            this.personalDetailsForm.value.gender === 1 &&
+            maritalStatus.maritalStatusID !== 5
           ) {
             return maritalStatus;
           }
           if (
-            this.personalDetailsForm.value.gender == '2' &&
-            maritalStatus.maritalStatusID != '6'
+            this.personalDetailsForm.value.gender === 2 &&
+            maritalStatus.maritalStatusID !== 6
           ) {
             return maritalStatus;
           }
@@ -464,7 +467,7 @@ export class RegisterPersonalDetailsComponent
   changeLiteracyStatus() {
     const literacyStatus = this.personalDetailsForm.value.literacyStatus;
 
-    if (literacyStatus != 'Literate') {
+    if (literacyStatus !== 'Literate') {
       console.log(this.personalDetailsForm.controls, 'controls');
       // this.personalDetailsForm.controls['educationQualification'].clearValidators();
       console.log(
@@ -554,7 +557,7 @@ export class RegisterPersonalDetailsComponent
     if (valueEntered) {
       if (
         valueEntered > this.ageLimit &&
-        this.personalDetailsForm.value.ageUnit == 'Years'
+        this.personalDetailsForm.value.ageUnit === 'Years'
       ) {
         this.confirmationService.alert(
           this.currentLanguageSet.alerts.info.ageRestriction,
@@ -579,7 +582,7 @@ export class RegisterPersonalDetailsComponent
   }
 
   onAgeUnitEntered() {
-    if (this.personalDetailsForm.value.age != null) {
+    if (this.personalDetailsForm.value.age !== null) {
       this.onAgeEntered();
     }
   }
@@ -590,12 +593,12 @@ export class RegisterPersonalDetailsComponent
    */
   dobChangeByCalender(dobval: any) {
     const date = new Date(this.dateForCalendar);
-    console.log(this.personalDetailsForm.value.dob);
+    console.log(' personalDetailsForm', this.personalDetailsForm.value);
     // console.log(this.dateForCalendar,'fromcalendar');
     // console.log(date,'new')
     if (
       this.dateForCalendar &&
-      (!dobval || dobval.length == 10) &&
+      (!dobval || dobval.length === 10) &&
       this.personalDetailsForm.controls['dob'].valid
     ) {
       const dateDiff = Date.now() - date.getTime();
@@ -613,14 +616,14 @@ export class RegisterPersonalDetailsComponent
         this.personalDetailsForm.patchValue({ age: dob });
         this.personalDetailsForm.patchValue({ ageUnit: 'Days' });
       }
-      if (date.setHours(0, 0, 0, 0) == this.today.setHours(0, 0, 0, 0)) {
+      if (date.setHours(0, 0, 0, 0) === this.today.setHours(0, 0, 0, 0)) {
         this.personalDetailsForm.patchValue({ age: 1 });
         this.personalDetailsForm.patchValue({ ageUnit: 'Days' });
       }
 
       this.checkAgeAtMarriage();
       this.confirmMarriageEligible();
-    } else if (dobval == 'Invalid date') {
+    } else if (dobval === 'Invalid date') {
       this.personalDetailsForm.patchValue({ dob: null });
       this.dateForCalendar = null;
       this.confirmationService.alert(
@@ -638,7 +641,7 @@ export class RegisterPersonalDetailsComponent
   confirmMarriageEligible() {
     if (
       this.personalDetailsForm.value.age >= this.ageforMarriage &&
-      this.personalDetailsForm.value.ageUnit == 'Years'
+      this.personalDetailsForm.value.ageUnit === 'Years'
     ) {
       this.enableMaritalStatus = true;
     } else {
@@ -652,7 +655,7 @@ export class RegisterPersonalDetailsComponent
    * Clear Marital Status if previously entered
    */
   clearMaritalStatus() {
-    if (this.personalDetailsForm.value.maritalStatus != null) {
+    if (this.personalDetailsForm.value.maritalStatus !== null) {
       this.personalDetailsForm.patchValue({
         maritalStatus: null,
         maritalStatusName: null,
@@ -687,15 +690,15 @@ export class RegisterPersonalDetailsComponent
   enableSpouseMandatory = false;
   onMaritalStatusChanged() {
     if (
-      this.personalDetailsForm.value.maritalStatus == 1 ||
-      this.personalDetailsForm.value.maritalStatus == 7
+      this.personalDetailsForm.value.maritalStatus === 1 ||
+      this.personalDetailsForm.value.maritalStatus === 7
     ) {
       this.enableMarriageDetails = false;
       this.clearMarriageDetails();
     } else {
       this.enableMarriageDetails = true;
     }
-    if (this.personalDetailsForm.value.maritalStatus == 2) {
+    if (this.personalDetailsForm.value.maritalStatus === 2) {
       this.enableSpouseMandatory = true;
       this.clearMarriageDetails();
     } else {
@@ -720,10 +723,10 @@ export class RegisterPersonalDetailsComponent
    *
    */
   clearMarriageDetails() {
-    if (this.personalDetailsForm.value.spouseName != null) {
+    if (this.personalDetailsForm.value.spouseName !== null) {
       this.personalDetailsForm.patchValue({ spouseName: null });
     }
-    if (this.personalDetailsForm.value.ageAtMarriage != null) {
+    if (this.personalDetailsForm.value.ageAtMarriage !== null) {
       this.personalDetailsForm.patchValue({ ageAtMarriage: null });
     }
   }
@@ -733,14 +736,14 @@ export class RegisterPersonalDetailsComponent
    * check for validity of Age At Marriage with other Details
    */
   checkAgeAtMarriage() {
-    if (this.personalDetailsForm.value.ageAtMarriage != null) {
-      if (this.personalDetailsForm.value.age == null) {
+    if (this.personalDetailsForm.value.ageAtMarriage !== null) {
+      if (this.personalDetailsForm.value.age === null) {
         this.confirmationService.alert(
           this.currentLanguageSet.alerts.info.pleaseenterBeneficiaryagefirst,
           'info'
         );
         this.personalDetailsForm.patchValue({ ageAtMarriage: null });
-      } else if (this.personalDetailsForm.value.ageUnit != 'Years') {
+      } else if (this.personalDetailsForm.value.ageUnit !== 'Years') {
         this.confirmationService.alert(
           this.currentLanguageSet.alerts.info.marriageAge +
             ' ' +
@@ -804,7 +807,7 @@ export class RegisterPersonalDetailsComponent
 
     if (
       !this.personalDetailsForm.value.occupationOther ||
-      this.personalDetailsForm.value.occupation == 7
+      this.personalDetailsForm.value.occupation === 7
     ) {
       this.personalDetailsForm.patchValue({
         occupationOther: null,

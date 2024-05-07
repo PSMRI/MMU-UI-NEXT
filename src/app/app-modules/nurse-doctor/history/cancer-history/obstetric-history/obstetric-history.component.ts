@@ -249,7 +249,7 @@ export class ObstetricHistoryComponent
     const benRegID: any = localStorage.getItem('beneficiaryRegID');
     this.nurseService.getPreviousCancerPastObstetricHistory(benRegID).subscribe(
       (data: any) => {
-        if (data != null && data.data != null) {
+        if (data !== null && data.data !== null) {
           if (data.data.data.length > 0) {
             this.viewPreviousData(data.data);
           } else {

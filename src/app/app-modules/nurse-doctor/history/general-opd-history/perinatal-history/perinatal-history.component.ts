@@ -89,7 +89,7 @@ export class PerinatalHistoryComponent implements OnInit, DoCheck, OnDestroy {
         if (masterData) {
           this.masterData = masterData;
           this.selectDeliveryTypes = this.masterData.deliveryTypes;
-          if (this.mode == 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);
@@ -105,10 +105,10 @@ export class PerinatalHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
-          history.statusCode == 200 &&
-          history.data != null &&
-          history.data.PerinatalHistory != null
+          history !== null &&
+          history.statusCode === 200 &&
+          history.data !== null &&
+          history.data.PerinatalHistory !== null
         ) {
           this.perinatalHistoryData = history.data.PerinatalHistory;
 
@@ -116,7 +116,7 @@ export class PerinatalHistoryComponent implements OnInit, DoCheck, OnDestroy {
             this.perinatalHistoryData.placeOfDelivery =
               this.masterData.deliveryPlaces.filter((item: any) => {
                 return (
-                  item.deliveryPlaceID ==
+                  item.deliveryPlaceID ===
                   this.perinatalHistoryData.deliveryPlaceID
                 );
               })[0];
@@ -125,7 +125,7 @@ export class PerinatalHistoryComponent implements OnInit, DoCheck, OnDestroy {
             this.perinatalHistoryData.typeOfDelivery =
               this.masterData.deliveryTypes.filter((item: any) => {
                 return (
-                  item.deliveryTypeID ==
+                  item.deliveryTypeID ===
                   this.perinatalHistoryData.deliveryTypeID
                 );
               })[0];
@@ -134,7 +134,7 @@ export class PerinatalHistoryComponent implements OnInit, DoCheck, OnDestroy {
             this.perinatalHistoryData.complicationAtBirth =
               this.masterData.deliveryComplicationTypes.filter((item: any) => {
                 return (
-                  item.complicationID ==
+                  item.complicationID ===
                   this.perinatalHistoryData.complicationID
                 );
               })[0];
@@ -165,16 +165,16 @@ export class PerinatalHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
   resetOtherPlaceOfDelivery() {
     if (
-      this.placeOfDelivery.deliveryPlace == 'Home-Supervised' ||
-      this.placeOfDelivery.deliveryPlace == 'Home-Unsupervised'
+      this.placeOfDelivery.deliveryPlace === 'Home-Supervised' ||
+      this.placeOfDelivery.deliveryPlace === 'Home-Unsupervised'
     ) {
       const tempDeliveryTypes = this.masterData.deliveryTypes.filter(
         (item: any) => {
           console.log('item', item);
 
           return (
-            item.deliveryType != 'Assisted Delivery' &&
-            item.deliveryType != 'Cesarean Section (LSCS)'
+            item.deliveryType !== 'Assisted Delivery' &&
+            item.deliveryType !== 'Cesarean Section (LSCS)'
           );
         }
       );
@@ -197,7 +197,7 @@ export class PerinatalHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getPreviousPerinatalHistory(benRegID, this.visitCategory)
       .subscribe(
         (data: any) => {
-          if (data != null && data.data != null) {
+          if (data !== null && data.data !== null) {
             if (data.data.data.length > 0) {
               this.viewPreviousData(data.data);
             } else {

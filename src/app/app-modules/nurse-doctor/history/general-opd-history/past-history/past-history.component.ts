@@ -159,7 +159,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
           if (
             this.beneficiary &&
-            (this.beneficiary?.genderName?.toLowerCase() != 'female' ||
+            (this.beneficiary?.genderName?.toLowerCase() !== 'female' ||
               this.beneficiary.ageVal <= 18)
           ) {
             const temp = this.surgeryMasterData.filter((item: any) => {
@@ -174,7 +174,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
           this.changeDetectorRef.detectChanges();
 
-          if (this.mode == 'view') {
+          if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getGeneralHistory(benRegID, visitID);
@@ -189,9 +189,9 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getGeneralHistoryDetails(benRegID, visitID)
       .subscribe((history: any) => {
         if (
-          history != null &&
-          history.statusCode == 200 &&
-          history.data != null &&
+          history !== null &&
+          history.statusCode === 200 &&
+          history.data !== null &&
           history.data.PastHistory
         ) {
           this.pastHistoryData = history.data.PastHistory;
@@ -209,7 +209,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
     for (let i = 0; i < temp.length; i++) {
       const illnessType = this.illnessMasterData.filter((item: any) => {
-        return item.illnessType == temp[i].illnessType;
+        return item.illnessType === temp[i].illnessType;
       });
 
       if (illnessType.length > 0) temp[i].illnessType = illnessType[0];
@@ -234,7 +234,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
     for (let i = 0; i < temp.length; i++) {
       const surgeryType = this.surgeryMasterData.filter((item: any) => {
-        return item.surgeryType == temp[i].surgeryType;
+        return item.surgeryType === temp[i].surgeryType;
       });
 
       if (surgeryType.length > 0) temp[i].surgeryType = surgeryType[0];
@@ -260,15 +260,19 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
       const result = this.filteredIllnessMasterData.filter((item: any) => {
         const arr = temp.filter((value: any) => {
           if (
-            value.illnessType != null &&
-            value.illnessType.illnessType != 'Other'
+            value.illnessType !== null &&
+            value.illnessType.illnessType !== 'Other'
           )
-            return value.illnessType.illnessType == item.illnessType;
+            return value.illnessType.illnessType === item.illnessType;
           else return false;
         });
 
-        if (item.illnessType == 'None' && temp.length > 0) return false;
-        else if (arr.length == 0) return true;
+        if (
+          (item.illnessType === 'None' || item.illnessType === 'Nil') &&
+          temp.length > 0
+        )
+          return false;
+        else if (arr.length === 0) return true;
         else return false;
       });
       this.pastIllnessSelectList.push(result.slice());
@@ -285,23 +289,23 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
             this.pastHistoryForm.controls['pastIllness']
           );
 
-          if (pastIllnessList.length == 1 && !!pastIllnessForm) {
+          if (pastIllnessList.length === 1 && !!pastIllnessForm) {
             pastIllnessForm.reset();
             this.pastHistoryForm.markAsDirty();
           } else {
             const removedValue = this.previousSelectedIllnessTypeList[i];
             if (removedValue) {
               this.pastIllnessSelectList.map((item: any, t: any) => {
-                if (t != i && removedValue.illnessType != 'Other') {
+                if (t !== i && removedValue.illnessType !== 'Other') {
                   item.push(removedValue);
                   this.sortIllnessList(item);
                 }
               });
             }
 
-            if (i == 0) {
+            if (i === 0) {
               const temp = this.pastIllnessSelectList[i].filter(
-                (t: any) => t.illnessType == 'None'
+                (t: any) => t.illnessType === 'None' || t.illnessType === 'Nil'
               );
               if (temp && temp[0]) {
                 this.pastIllnessSelectList[i + 1].push(temp[0]);
@@ -344,15 +348,15 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
   ) {
     const previousValue = this.previousSelectedIllnessTypeList[i];
 
-    if (pastIllnessForm && illness.illnessType != 'Other')
+    if (pastIllnessForm && illness.illnessType !== 'Other')
       pastIllnessForm.patchValue({ otherIllnessType: null });
 
-    if (illness.illnessType == 'None') {
+    if (illness.illnessType === 'None' || illness.illnessType === 'Nil') {
       this.removeAllIllnessExceptNone();
     } else {
       if (previousValue) {
         this.pastIllnessSelectList.map((item: any, t: any) => {
-          if (t != i && previousValue.illnessType != 'Other') {
+          if (t !== i && previousValue.illnessType !== 'Other') {
             item.push(previousValue);
             this.sortIllnessList(item);
           }
@@ -361,7 +365,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
       this.pastIllnessSelectList.map((item: any, t: any) => {
         const index = item.indexOf(illness);
-        if (index != -1 && t != i && illness.illnessType != 'Other') {
+        if (index !== -1 && t !== i && illness.illnessType !== 'Other') {
           item = item.splice(index, 1);
         }
       });
@@ -380,16 +384,20 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
       const result = this.filteredSurgeryMasterData.filter((item: any) => {
         const arr = temp.filter((value: any) => {
           if (
-            value.surgeryType != null &&
-            value.surgeryType.surgeryType != 'Other'
+            value.surgeryType !== null &&
+            value.surgeryType.surgeryType !== 'Other'
           ) {
-            return value.surgeryType.surgeryType == item.surgeryType;
+            return value.surgeryType.surgeryType === item.surgeryType;
           }
           return false;
         });
 
-        if (item.surgeryType == 'None' && temp.length > 0) return false;
-        else if (arr.length == 0) return true;
+        if (
+          (item.surgeryType === 'None' || item.surgeryType === 'Nil') &&
+          temp.length > 0
+        )
+          return false;
+        else if (arr.length === 0) return true;
         else return false;
       });
       this.pastSurgerySelectList.push(result.slice());
@@ -406,22 +414,22 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
             this.pastHistoryForm.controls['pastSurgery']
           );
           this.pastHistoryForm.markAsDirty();
-          if (pastSurgeryList.length == 1 && !!pastSurgeryForm) {
+          if (pastSurgeryList.length === 1 && !!pastSurgeryForm) {
             pastSurgeryForm.reset();
           } else {
             const removedValue = this.previousSelectedSurgeryTypeList[i];
             if (removedValue) {
               this.pastSurgerySelectList.map((item: any, t: any) => {
-                if (t != i && removedValue.surgeryType != 'Other') {
+                if (t !== i && removedValue.surgeryType !== 'Other') {
                   item.push(removedValue);
                   this.sortSurgeryList(item);
                 }
               });
             }
 
-            if (i == 0) {
+            if (i === 0) {
               const temp = this.pastSurgerySelectList[i].filter(
-                (t: any) => t.surgeryType == 'None'
+                (t: any) => t.surgeryType === 'None' || t.surgeryType === 'Nil'
               );
               if (temp && temp[0]) {
                 this.pastSurgerySelectList[i + 1].push(temp[0]);
@@ -464,15 +472,18 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
     const surgery: any = event.value;
     const previousValue = this.previousSelectedSurgeryTypeList[i];
 
-    if (pastSurgeryForm && surgery.surgeryType != 'Other')
+    if (pastSurgeryForm && surgery.surgeryType !== 'Other')
       pastSurgeryForm.patchValue({ otherSurgeryType: null });
 
-    if (surgery && surgery.surgeryType == 'None') {
+    if (
+      surgery &&
+      (surgery.surgeryType === 'None' || surgery.surgeryType === 'Nil')
+    ) {
       this.removeAllSurgeryExceptNone();
     } else {
       if (previousValue) {
         this.pastSurgerySelectList.map((item: any, t: any) => {
-          if (t != i && previousValue.surgeryType != 'Other') {
+          if (t !== i && previousValue.surgeryType !== 'Other') {
             item.push(previousValue);
             this.sortSurgeryList(item);
           }
@@ -481,7 +492,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
       this.pastSurgerySelectList.map((item: any, t: any) => {
         const index = item.indexOf(surgery);
-        if (index != -1 && t != i && surgery.surgeryType != 'Other')
+        if (index !== -1 && t !== i && surgery.surgeryType !== 'Other')
           item = item.splice(index, 1);
       });
 
@@ -515,7 +526,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
       .getPreviousPastHistory(benRegID, this.visitCategory)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200 && res.data != null) {
+          if (res.statusCode === 200 && res.data !== null) {
             if (res.data.data.length > 0) {
               this.viewPreviousData(res.data);
             } else {
@@ -560,7 +571,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
     if (formGroup.value.timePeriodUnit)
       durationUnit = formGroup.value.timePeriodUnit;
 
-    if (duration != null && durationUnit != null)
+    if (duration !== null && durationUnit !== null)
       flag = new ValidationUtils().validateDuration(
         duration,
         durationUnit,
@@ -577,7 +588,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
   sortIllnessList(illnessList: any) {
     illnessList.sort((a: any, b: any) => {
-      if (a.illnessType == b.illnessType) return 0;
+      if (a.illnessType === b.illnessType) return 0;
       if (a.illnessType < b.illnessType) return -1;
       else return 1;
     });
@@ -587,7 +598,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
     const temp = illnessForm.value;
     if (
       temp.illnessType &&
-      temp.illnessType != 'None' &&
+      (temp.illnessType !== 'None' || temp.illnessType === 'Nil') &&
       temp.timePeriodAgo &&
       temp.timePeriodUnit
     ) {
@@ -599,7 +610,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
 
   sortSurgeryList(surgeryList: any) {
     surgeryList.sort((a: any, b: any) => {
-      if (a.surgeryType == b.surgeryType) return 0;
+      if (a.surgeryType === b.surgeryType) return 0;
       if (a.surgeryType < b.surgeryType) return -1;
       else return 1;
     });
@@ -609,7 +620,7 @@ export class PastHistoryComponent implements OnInit, DoCheck, OnDestroy {
     const temp = surgeryForm.value;
     if (
       temp.surgeryType &&
-      temp.surgeryType != 'None' &&
+      (temp.surgeryType !== 'None' || temp.surgeryType !== 'Nil') &&
       temp.timePeriodAgo &&
       temp.timePeriodUnit
     ) {

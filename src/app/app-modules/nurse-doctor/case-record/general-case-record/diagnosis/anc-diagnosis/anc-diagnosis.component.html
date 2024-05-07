@@ -69,9 +69,11 @@
               [disabled]="
                 !showAllPregComplication &&
                 ((disableNonePregnancyComplication &&
-                  complication.pregComplicationType === 'None') ||
+                  (complication.pregComplicationType === 'None' ||
+                    complication.pregComplicationType === 'Nil')) ||
                   (!disableNonePregnancyComplication &&
-                    complication.pregComplicationType !== 'None'))
+                    (complication.pregComplicationType !== 'None' ||
+                      complication.pregComplicationType !== 'Nil')))
               ">
               {{ complication.pregComplicationType }}
             </mat-option>

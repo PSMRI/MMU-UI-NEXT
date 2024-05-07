@@ -113,7 +113,7 @@ export class TravelHistoryComponent
     this.getCountryNames();
   }
   ngOnChanges() {
-    if (this.mode.toLowerCase() == 'view') {
+    if (this.mode.toLowerCase() === 'view') {
       this.readTravel = true;
       const visitID = localStorage.getItem('visitID');
       const benRegID = localStorage.getItem('beneficiaryRegID');
@@ -133,10 +133,10 @@ export class TravelHistoryComponent
       .getVisitComplaintDetails(beneficiaryRegID, visitID)
       .subscribe((value: any) => {
         if (
-          value != null &&
-          value.statusCode == 200 &&
-          value.data != null &&
-          value.data.covidDetails != null
+          value !== null &&
+          value.statusCode === 200 &&
+          value.data !== null &&
+          value.data.covidDetails !== null
         ) {
           this.covidHistoryDetails = value.data.covidDetails;
           if (value.data.covidDetails.suspectedStatus) {
@@ -151,7 +151,7 @@ export class TravelHistoryComponent
           this.recommendationText = testtravelarr;
           console.log('Recom' + this.recommendationText);
           console.log('TravelStatus' + this.covidHistoryDetails.travelStatus);
-          if (this.covidHistoryDetails.travelStatus == true) {
+          if (this.covidHistoryDetails.travelStatus === true) {
             this.patientCovidForm.patchValue({ travelStatus: 'true' });
           } else {
             this.patientCovidForm.patchValue({ travelStatus: 'false' });
@@ -163,8 +163,8 @@ export class TravelHistoryComponent
 
           this.travelListStatus();
           if (
-            value.data.covidDetails.travelList[0] == 'Domestic' ||
-            value.data.covidDetails.travelList[1] == 'Domestic'
+            value.data.covidDetails.travelList[0] === 'Domestic' ||
+            value.data.covidDetails.travelList[1] === 'Domestic'
           ) {
             this.domtravel = true;
             this.patientCovidForm.patchValue({
@@ -196,8 +196,8 @@ export class TravelHistoryComponent
             });
           }
           if (
-            value.data.covidDetails.travelList[0] == 'International' ||
-            value.data.covidDetails.travelList[1] == 'International'
+            value.data.covidDetails.travelList[0] === 'International' ||
+            value.data.covidDetails.travelList[1] === 'International'
           ) {
             this.intertravel = true;
             this.patientCovidForm.patchValue({
@@ -236,7 +236,7 @@ export class TravelHistoryComponent
     this.countryAPI = this.nurseService
       .getCountryName()
       .subscribe((response: any) => {
-        if (response.statusCode == 200 && response.data != null) {
+        if (response.statusCode === 200 && response.data !== null) {
           console.log(response.data[123]);
 
           this.countries = response.data;
@@ -247,7 +247,7 @@ export class TravelHistoryComponent
     this.statesAPI = this.nurseService
       .getStateName(1)
       .subscribe((response: any) => {
-        if (response.statusCode == 200 && response.data != null) {
+        if (response.statusCode === 200 && response.data !== null) {
           console.log('stateResponse', response.data);
           this.states = response.data;
         }
@@ -283,7 +283,7 @@ export class TravelHistoryComponent
     this.patientCovidForm.patchValue({ travelStatus: boolean_flag });
     this.disableTravelButton = false;
     this.travelSelected = true;
-    if (boolean_flag == 'true') {
+    if (boolean_flag === 'true') {
       this.question1 = 'yes';
       this.istravelStatus = true;
       this.getrecommendedtext();
@@ -309,7 +309,7 @@ export class TravelHistoryComponent
       this.patientCovidForm.controls['recommendation']
     );
     this.allSymp = localStorage.getItem('allSymptom');
-    if (this.allSymp == 'true') {
+    if (this.allSymp === 'true') {
       this.travelReqiured = 'false';
     } else {
       this.travelReqiured = 'true';
@@ -318,13 +318,13 @@ export class TravelHistoryComponent
     this.answer2 = localStorage.getItem('contact');
 
     if (
-      (this.question1 == 'yes' &&
+      (this.question1 === 'yes' &&
         this.answer1 === 'true' &&
         this.answer2 === 'true') ||
-      (this.question1 == 'yes' &&
+      (this.question1 === 'yes' &&
         this.answer1 === 'true' &&
         this.answer2 === 'false') ||
-      (this.question1 == 'no' &&
+      (this.question1 === 'no' &&
         this.answer1 === 'true' &&
         this.answer2 === 'true')
     ) {
@@ -332,19 +332,19 @@ export class TravelHistoryComponent
 
       this.arr = this.recommendationMaster.filter((item: any) => {
         if (
-          item.CovidrecommendationID == 1 ||
-          item.CovidrecommendationID == 2 ||
-          item.CovidrecommendationID == 3 ||
-          item.CovidrecommendationID == 4 ||
-          item.CovidrecommendationID == 5
+          item.CovidrecommendationID === 1 ||
+          item.CovidrecommendationID === 2 ||
+          item.CovidrecommendationID === 3 ||
+          item.CovidrecommendationID === 4 ||
+          item.CovidrecommendationID === 5
         )
           return item.recommendation;
       });
     } else if (
-      (this.question1 == 'no' &&
+      (this.question1 === 'no' &&
         this.answer1 === 'false' &&
         this.answer2 === 'true') ||
-      (this.question1 == 'yes' &&
+      (this.question1 === 'yes' &&
         this.answer1 === 'false' &&
         this.answer2 === 'true')
     ) {
@@ -352,16 +352,16 @@ export class TravelHistoryComponent
 
       this.arr = this.recommendationMaster.filter((item: any) => {
         return (
-          item.CovidrecommendationID == 6 ||
-          item.CovidrecommendationID == 7 ||
-          item.CovidrecommendationID == 8 ||
-          item.CovidrecommendationID == 9 ||
-          item.CovidrecommendationID == 10 ||
-          item.CovidrecommendationID == 11
+          item.CovidrecommendationID === 6 ||
+          item.CovidrecommendationID === 7 ||
+          item.CovidrecommendationID === 8 ||
+          item.CovidrecommendationID === 9 ||
+          item.CovidrecommendationID === 10 ||
+          item.CovidrecommendationID === 11
         );
       });
     } else if (
-      this.question1 == 'yes' &&
+      this.question1 === 'yes' &&
       this.answer1 === 'false' &&
       this.answer2 === 'false'
     ) {
@@ -369,13 +369,13 @@ export class TravelHistoryComponent
 
       this.arr = this.recommendationMaster.filter((item: any) => {
         return (
-          item.CovidrecommendationID == 11 ||
-          item.CovidrecommendationID == 12 ||
-          item.CovidrecommendationID == 13
+          item.CovidrecommendationID === 11 ||
+          item.CovidrecommendationID === 12 ||
+          item.CovidrecommendationID === 13
         );
       });
     } else if (
-      this.question1 == 'no' &&
+      this.question1 === 'no' &&
       this.answer1 === 'true' &&
       this.answer2 === 'false'
     ) {
@@ -383,29 +383,29 @@ export class TravelHistoryComponent
 
       this.arr = this.recommendationMaster.filter((item: any) => {
         return (
-          item.CovidrecommendationID == 14 || item.CovidrecommendationID == 5
+          item.CovidrecommendationID === 14 || item.CovidrecommendationID === 5
         );
       });
     } else if (
-      this.question1 == 'no' &&
+      this.question1 === 'no' &&
       this.answer1 === 'false' &&
       this.answer2 === 'false'
     ) {
       this.patientCovidForm.patchValue({ suspectedStatusUI: 'NO' });
       this.arr = this.recommendationMaster.filter((item: any) => {
         return (
-          item.CovidrecommendationID == 15 || item.CovidrecommendationID == 11
+          item.CovidrecommendationID === 15 || item.CovidrecommendationID === 11
         );
       });
-    } else if (this.allSymp == 'true') {
+    } else if (this.allSymp === 'true') {
       this.patientCovidForm.patchValue({ suspectedStatusUI: 'YES' });
       this.arr = this.recommendationMaster.filter((item: any) => {
         return (
-          item.CovidrecommendationID == 1 ||
-          item.CovidrecommendationID == 2 ||
-          item.CovidrecommendationID == 3 ||
-          item.CovidrecommendationID == 4 ||
-          item.CovidrecommendationID == 5
+          item.CovidrecommendationID === 1 ||
+          item.CovidrecommendationID === 2 ||
+          item.CovidrecommendationID === 3 ||
+          item.CovidrecommendationID === 4 ||
+          item.CovidrecommendationID === 5
         );
       });
     } else {
@@ -442,7 +442,7 @@ export class TravelHistoryComponent
     this.citiesAPI = this.nurseService
       .getCityName(countryID)
       .subscribe((response: any) => {
-        if (response.statusCode == 200 && response.data != null) {
+        if (response.statusCode === 200 && response.data !== null) {
           console.log('fromcities', response.data);
 
           this.citiesFromInter = response.data;
@@ -458,7 +458,7 @@ export class TravelHistoryComponent
     this.citiesAPITo = this.nurseService
       .getCityName(countryID)
       .subscribe((response: any) => {
-        if (response.statusCode == 200 && response.data != null) {
+        if (response.statusCode === 200 && response.data !== null) {
           console.log(response.data);
 
           this.citiesToInter = response.data;
@@ -480,7 +480,7 @@ export class TravelHistoryComponent
     this.districtAPIFrom = this.nurseService
       .getDistrictName(stateID)
       .subscribe((response: any) => {
-        if (response.statusCode == 200 && response.data != null) {
+        if (response.statusCode === 200 && response.data !== null) {
           console.log('districtdata', response.data);
 
           this.districtsFromDom = response.data;
@@ -493,7 +493,7 @@ export class TravelHistoryComponent
     this.districtAPITo = this.nurseService
       .getDistrictName(stateID)
       .subscribe((response: any) => {
-        if (response.statusCode == 200 && response.data != null) {
+        if (response.statusCode === 200 && response.data !== null) {
           console.log('districtdata', response.data);
 
           this.districtsToDom = response.data;
@@ -512,7 +512,7 @@ export class TravelHistoryComponent
     this.subDistrictAPIFrom = this.nurseService
       .getSubDistrictName(distID)
       .subscribe((response: any) => {
-        if (response.statusCode == 200 && response.data != null) {
+        if (response.statusCode === 200 && response.data !== null) {
           this.subDistrictsFromDom = response.data;
         }
       });
@@ -523,7 +523,7 @@ export class TravelHistoryComponent
     this.subDistrictAPITo = this.nurseService
       .getSubDistrictName(districtID)
       .subscribe((response: any) => {
-        if (response.statusCode == 200 && response.data != null) {
+        if (response.statusCode === 200 && response.data !== null) {
           this.subDistrictsToDom = response.data;
         }
       });
@@ -561,15 +561,15 @@ export class TravelHistoryComponent
     const isCheckedEvent = isChecked?.target?.checked;
     if (isCheckedEvent) {
       travelFormArray.push(new FormControl(travel));
-      if (travel == 'Domestic') {
+      if (travel === 'Domestic') {
         this.istravelModeDomestic = true;
       } else {
         this.istravelModeInternatinal = true;
       }
     } else {
-      const index = travelFormArray.controls.findIndex(x => x.value == travel);
+      const index = travelFormArray.controls.findIndex(x => x.value === travel);
       travelFormArray.removeAt(index);
-      if (travel == 'Domestic') {
+      if (travel === 'Domestic') {
         this.istravelModeDomestic = false;
         this.domesticReset();
       } else {

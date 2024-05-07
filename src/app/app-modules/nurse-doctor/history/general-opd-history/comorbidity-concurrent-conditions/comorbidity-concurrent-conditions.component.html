@@ -84,7 +84,9 @@
               comorbidityConcurrentConditions?.value?.comorbidConditions !==
                 '') ||
             comorbidityConcurrentConditions.value.comorbidConditions
-              ?.comorbidCondition === 'None'
+              ?.comorbidCondition === 'None' ||
+            comorbidityConcurrentConditions.value.comorbidConditions
+              ?.comorbidCondition === 'Nil'
           ">
           <mat-form-field class="input-full-width">
             <mat-label class="mat-label-text">{{
@@ -108,7 +110,9 @@
             (comorbidityConcurrentConditions?.value?.timePeriodAgo !== null &&
               comorbidityConcurrentConditions?.value?.timePeriodAgo !== '') ||
             comorbidityConcurrentConditions.value.comorbidConditions
-              ?.comorbidCondition === 'None'
+              ?.comorbidCondition === 'None' ||
+            comorbidityConcurrentConditions.value.comorbidConditions
+              ?.comorbidCondition === 'Nil'
           ">
           <mat-form-field>
             <mat-label class="mat-label-text">{{

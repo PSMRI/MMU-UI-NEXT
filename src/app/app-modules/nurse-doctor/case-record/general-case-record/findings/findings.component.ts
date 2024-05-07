@@ -133,7 +133,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     this.findingSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res?.statusCode == 200 && res?.data?.findings) {
+        if (res?.statusCode === 200 && res?.data?.findings) {
           const findings = res.data.findings;
           this.complaintList = findings.complaints.slice();
           this.dataSource.data = [];
@@ -158,7 +158,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
 
   filterInitialComplaints(element: any) {
     const arr = this.chiefComplaintMaster.filter((item: any) => {
-      return item.chiefComplaint == element.chiefComplaint;
+      return item.chiefComplaint === element.chiefComplaint;
     });
 
     if (arr.length > 0) {
@@ -190,7 +190,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
           this.chiefComplaintTemporarayList[0] =
             this.chiefComplaintMaster.slice();
 
-          if (this.caseRecordMode == 'view') {
+          if (this.caseRecordMode === 'view') {
             this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
             this.visitID = localStorage.getItem('visitID');
             this.visitCategory = localStorage.getItem('visitCategory');
@@ -208,7 +208,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     console.log('called', index, event);
     this.masterdataService.getSnomedCTRecord(event.chiefComplaint).subscribe(
       (res: any) => {
-        if (res && res.statusCode == 200) {
+        if (res && res.statusCode === 200) {
           this.loadConceptID(res.data, index);
         }
       },
@@ -232,12 +232,12 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     );
     this.setTempvalidation();
     const arr = this.chiefComplaintMaster.filter((item: any) => {
-      return item.chiefComplaint == chiefComplaintValue.chiefComplaint;
+      return item.chiefComplaint === chiefComplaintValue.chiefComplaint;
     });
 
     if (this.selectedChiefComplaintList?.[i]) {
       this.chiefComplaintTemporarayList.map((item: any, t: any) => {
-        if (t != i) {
+        if (t !== i) {
           item.push(this.selectedChiefComplaintList[i]);
           this.sortChiefComplaintList(item);
         }
@@ -247,7 +247,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     if (arr.length > 0) {
       this.chiefComplaintTemporarayList.map((item: any, t: any) => {
         const index = item.indexOf(arr[0]);
-        if (index != -1 && t != i) item.splice(index, 1);
+        if (index !== -1 && t !== i) item.splice(index, 1);
       });
       this.selectedChiefComplaintList[i] = arr[0];
     }
@@ -261,9 +261,9 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     const complaintFormArrayValue = complaintFormArray.value;
     const temp = this.chiefComplaintMaster.filter((item: any) => {
       const arr = complaintFormArrayValue.filter((value: any) => {
-        return value.chiefComplaint.chiefComplaint == item.chiefComplaint;
+        return value.chiefComplaint.chiefComplaint === item.chiefComplaint;
       });
-      const flag = arr.length == 0 ? true : false;
+      const flag = arr.length === 0 ? true : false;
       return flag;
     });
     if (temp.length > 0) {
@@ -286,7 +286,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
           if (complaintForm.value.chiefComplaint) {
             arr = this.chiefComplaintMaster.filter((item: any) => {
               return (
-                item.chiefComplaint ==
+                item.chiefComplaint ===
                 complaintForm.value.chiefComplaint.chiefComplaint
               );
             });
@@ -294,7 +294,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
           if (arr.length > 0) {
             this.chiefComplaintTemporarayList.forEach(
               (element: any, t: any) => {
-                if (t != i) element.push(arr[0]);
+                if (t !== i) element.push(arr[0]);
                 this.sortChiefComplaintList(element);
               }
             );
@@ -305,7 +305,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
           if (this.suggestedChiefComplaintList[i])
             this.suggestedChiefComplaintList[i] = null;
 
-          if (complaintFormArray.length == 1 && complaintForm)
+          if (complaintFormArray.length === 1 && complaintForm)
             complaintForm.reset();
           else complaintFormArray.removeAt(i);
 
@@ -320,7 +320,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     let flag = false;
     this.enableProvisionalDiag = false;
     if (
-      chiefComplaintForm != undefined &&
+      chiefComplaintForm !== undefined &&
       chiefComplaintForm.value.length > 0
     ) {
       for (let i = 0; i < chiefComplaintForm.value.length; i++) {
@@ -392,7 +392,7 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     if (formGroup.value.unitOfDuration)
       durationUnit = formGroup.value.unitOfDuration;
 
-    if (duration != null && durationUnit != null)
+    if (duration !== null && durationUnit !== null)
       flag = new ValidationUtils().validateDuration(
         duration,
         durationUnit,
@@ -415,8 +415,8 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
     const complaint = complaintForm.value.chiefComplaint;
     if (typeof complaint === 'string') {
       if (
-        this.chiefComplaintTemporarayList != undefined &&
-        this.chiefComplaintTemporarayList != null
+        this.chiefComplaintTemporarayList !== undefined &&
+        this.chiefComplaintTemporarayList !== null
       ) {
         this.suggestedChiefComplaintList[i] = this.chiefComplaintTemporarayList[
           i
@@ -427,10 +427,10 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
               .indexOf(complaint.toLowerCase().trim()) >= 0
         );
       }
-    } else if (typeof complaint == 'object' && complaint) {
+    } else if (typeof complaint === 'object' && complaint) {
       if (
-        this.chiefComplaintTemporarayList != undefined &&
-        this.chiefComplaintTemporarayList != null
+        this.chiefComplaintTemporarayList !== undefined &&
+        this.chiefComplaintTemporarayList !== null
       ) {
         this.suggestedChiefComplaintList[i] = this.chiefComplaintTemporarayList[
           i
@@ -443,12 +443,12 @@ export class FindingsComponent implements OnInit, DoCheck, OnDestroy {
       }
     }
 
-    if (this.suggestedChiefComplaintList[i].length == 0) complaintForm.reset();
+    if (this.suggestedChiefComplaintList[i].length === 0) complaintForm.reset();
   }
 
   sortChiefComplaintList(complaintList: any) {
     complaintList.sort((a: any, b: any) => {
-      if (a.chiefComplaint == b.chiefComplaint) return 0;
+      if (a.chiefComplaint === b.chiefComplaint) return 0;
       if (a.chiefComplaint < b.chiefComplaint) return -1;
       else return 1;
     });

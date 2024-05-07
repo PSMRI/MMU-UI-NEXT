@@ -148,7 +148,7 @@ export class CancerDoctorDiagnosisCaseSheetComponent
     if (this.beneficiaryDetails.ageVal >= 12) {
       this.masterdataService.getVaccinationTypeAndDoseMaster().subscribe(
         (res: any) => {
-          if (res.statusCode == 200) {
+          if (res.statusCode === 200) {
             if (res.data) {
               const doseTypeList = res.data.doseType;
               const vaccineTypeList = res.data.vaccineType;
@@ -172,7 +172,7 @@ export class CancerDoctorDiagnosisCaseSheetComponent
       .getPreviousCovidVaccinationDetails(beneficiaryRegID)
       .subscribe(
         (res: any) => {
-          if (res.statusCode == 200) {
+          if (res.statusCode === 200) {
             if (res.data.covidVSID) {
               this.covidVaccineDetails = res.data;
 

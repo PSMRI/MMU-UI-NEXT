@@ -152,7 +152,7 @@ export class PrescribeTmMedicineComponent implements OnInit, DoCheck {
     this.masterdataService
       .getDoctorMasterDataForNurse(visitID, serviceProviderID)
       .subscribe((masterData: any) => {
-        if (masterData.statusCode == 200) {
+        if (masterData.statusCode === 200) {
           this.drugFormMaster = masterData.data.drugFormMaster;
           this.drugMaster = masterData.data.itemMaster;
           this.drugDoseMaster = masterData.data.drugDoseMaster;
@@ -266,7 +266,7 @@ export class PrescribeTmMedicineComponent implements OnInit, DoCheck {
         this.currentPrescription['drugUnit'] = option.unitOfMeasurement;
         this.currentPrescription['isEDL'] = option.isEDL;
         const typeOfDrug = option.isEDL ? '' : '- (Non-EDL) Medicine';
-        if (option.quantityInHand == 0) {
+        if (option.quantityInHand === 0) {
           this.confirmationService
             .confirm(
               'info ' + typeOfDrug,
@@ -383,7 +383,7 @@ export class PrescribeTmMedicineComponent implements OnInit, DoCheck {
   }
   deleteMedicineBackend(index: any, id: any) {
     this.doctorService.deleteMedicine(id).subscribe((res: any) => {
-      if (res.statusCode == 200) {
+      if (res.statusCode === 200) {
         this.deleteMedicineUI(index);
       }
     });

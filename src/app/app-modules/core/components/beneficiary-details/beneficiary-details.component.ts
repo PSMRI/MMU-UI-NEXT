@@ -55,7 +55,7 @@ export class BeneficiaryDetailsComponent implements OnInit, DoCheck, OnDestroy {
       );
       this.beneficiaryDetailsSubscription =
         this.beneficiaryDetailsService.beneficiaryDetails$.subscribe(res => {
-          if (res != null) {
+          if (res !== null) {
             this.beneficiary = res;
             if (res.serviceDate) {
               this.today = res.serviceDate;

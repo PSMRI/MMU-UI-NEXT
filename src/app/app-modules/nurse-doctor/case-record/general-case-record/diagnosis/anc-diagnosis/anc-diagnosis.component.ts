@@ -95,7 +95,7 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
       this.masterdataService.nurseMasterData$.subscribe(masterData => {
         if (masterData) this.masterData = masterData;
 
-        if (this.caseRecordMode == 'view') {
+        if (this.caseRecordMode === 'view') {
           this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
           this.visitID = localStorage.getItem('visitID');
           this.visitCategory = localStorage.getItem('visitCategory');
@@ -113,7 +113,7 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
     this.diagnosisSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res?.statusCode == 200 && res?.data?.diagnosis) {
+        if (res?.statusCode === 200 && res?.data?.diagnosis) {
           this.patchDiagnosisDetails(res.data.diagnosis);
         }
       });
@@ -132,7 +132,7 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
         const tempComplication = this.masterData.pregComplicationTypes.filter(
           (masterComplication: any) => {
             return (
-              complaintType.pregComplicationType ==
+              complaintType.pregComplicationType ===
               masterComplication.pregComplicationType
             );
           }
@@ -171,7 +171,7 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
   resetOtherPregnancyComplication(complication: any, checkNull: any) {
     let flag = false;
     complication.forEach((element: any) => {
-      if (element.pregComplicationType == 'Other') {
+      if (element.pregComplicationType === 'Other') {
         flag = true;
       }
     });
@@ -179,16 +179,19 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
     if (complication.length > 1) {
       this.disableNonePregnancyComplication = true;
       this.showAllPregComplication = false;
-    } else if (complication.length == 1) {
+    } else if (complication.length === 1) {
       const disableNone =
-        complication[0].pregComplicationType == 'None' ? false : true;
+        complication[0].pregComplicationType === 'None' ||
+        complication[0].pregComplicationType === 'Nil'
+          ? false
+          : true;
       this.disableNonePregnancyComplication = disableNone;
       this.showAllPregComplication = false;
     } else {
       this.disableNonePregnancyComplication = false;
       this.showAllPregComplication = true;
     }
-    if (checkNull == 0) {
+    if (checkNull === 0) {
       if (!flag) {
         this.generalDiagnosisForm.patchValue({
           otherCurrPregComplication: null,
@@ -203,7 +206,7 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
   displayPositive(complicationList: any) {
     if (
       complicationList.some(
-        (item: any) => item.pregComplicationType == 'Hypothyroidism'
+        (item: any) => item.pregComplicationType === 'Hypothyroidism'
       )
     ) {
       this.complicationPregHRP = 'true';
@@ -219,7 +222,7 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
     this.HRPSubscription = this.doctorService
       .getHRPDetails(beneficiaryRegID, visitCode)
       .subscribe((res: any) => {
-        if (res?.statusCode == 200 && res?.data) {
+        if (res?.statusCode === 200 && res?.data) {
           if (res?.data?.isHRP) {
             this.showHRP = 'true';
           } else {

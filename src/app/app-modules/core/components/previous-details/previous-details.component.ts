@@ -49,16 +49,16 @@ export class PreviousDetailsComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.assignSelectedLanguage();
     if (
-      this.input.dataList.data != null &&
-      this.input.dataList.data != undefined &&
+      this.input.dataList.data !== null &&
+      this.input.dataList.data !== undefined &&
       this.input.dataList.data instanceof Array
     ) {
       this.dataList = this.input.dataList.data;
       this.filteredDataList.data = this.dataList.slice();
     }
     if (
-      this.input.dataList.columns != null &&
-      this.input.dataList.columns != undefined &&
+      this.input.dataList.columns !== null &&
+      this.input.dataList.columns !== undefined &&
       this.input.dataList.columns instanceof Array
     )
       this.columnList = this.input.dataList.columns;

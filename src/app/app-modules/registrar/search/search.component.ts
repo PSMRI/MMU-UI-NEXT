@@ -102,8 +102,8 @@ export class SearchComponent implements OnInit, DoCheck {
     };
 
     if (
-      searchTerm == undefined ||
-      searchTerm.trim() == '' ||
+      searchTerm === undefined ||
+      searchTerm.trim() === '' ||
       searchTerm.trim().length <= 0
     ) {
       this.confirmationService.alert(
@@ -176,7 +176,7 @@ export class SearchComponent implements OnInit, DoCheck {
         }`,
         phoneNo: this.getCorrectPhoneNo(element.benPhoneMaps, benObject),
         age:
-          moment(element.dOB).fromNow(true) == 'a few seconds'
+          moment(element.dOB).fromNow(true) === 'a few seconds'
             ? 'Not Available'
             : moment(element.dOB).fromNow(true),
         registeredOn: moment(element.createdDate).format('DD-MM-YYYY'),
@@ -220,7 +220,7 @@ export class SearchComponent implements OnInit, DoCheck {
       this.dataSource.paginator = this.paginator;
       this.beneficiaryList.forEach((item: any) => {
         for (const key in item) {
-          if (key != 'benObject') {
+          if (key !== 'benObject') {
             const value: string = '' + item[key];
             if (value.toLowerCase().indexOf(searchTerm.toLowerCase()) >= 0) {
               (this.filteredBeneficiaryList as any[]).push(item);
@@ -314,9 +314,9 @@ export class SearchComponent implements OnInit, DoCheck {
   patientImageView(benregID: any) {
     if (
       benregID &&
-      benregID != null &&
-      benregID != '' &&
-      benregID != undefined
+      benregID !== null &&
+      benregID !== '' &&
+      benregID !== undefined
     ) {
       this.beneficiaryDetailsService
         .getBeneficiaryImage(benregID)
@@ -385,12 +385,12 @@ export class SearchComponent implements OnInit, DoCheck {
     const link = '/registrar/registration';
     const currentRoute = this.router.routerState.snapshot.url;
     console.log('currentRoute', currentRoute);
-    if (currentRoute != link) {
+    if (currentRoute !== link) {
       console.log('log in');
-      if (this.beneficiaryList == undefined) {
+      if (this.beneficiaryList === undefined) {
         this.router.navigate([link]);
-      } else if (this.beneficiaryList != undefined) {
-        if (this.beneficiaryList.length == 0) {
+      } else if (this.beneficiaryList !== undefined) {
+        if (this.beneficiaryList.length === 0) {
           this.router.navigate([link]);
         } else {
           this.confirmationService
