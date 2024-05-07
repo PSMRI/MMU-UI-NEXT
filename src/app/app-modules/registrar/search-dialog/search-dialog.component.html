@@ -1,8 +1,11 @@
-<section id="searchDialog" class="container-fluid">
+<section
+  id="searchDialog"
+  class="container-fluid"
+  style="overflow-y: unset !important">
   <div class="title info">
     <h4>{{ currentLanguageSet?.common?.advanceBeneficiarySearch }}</h4>
     <button
-      class="pull-right close-btn"
+      class="pull-right close-btn mat_blue_circle"
       (click)="matDialogRef.close(false)"
       mat-icon-button>
       <mat-icon>close</mat-icon>
@@ -116,7 +119,7 @@
           </mat-form-field>
         </div>
       </section>
-      <section class="row grayborder">
+      <section class="row">
         <div class="col-xs-12 col-sm-6 box">
           <div class="select-container">
             <mat-form-field [style.width]="'100%'">

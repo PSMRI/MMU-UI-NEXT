@@ -277,12 +277,11 @@
               let isLast = last
             ">
             <ng-container [formGroupName]="i">
-              <mat-form-field>
+              <mat-form-field style="width: 42% !important">
                 <mat-label class="mat-label-text">{{
                   currentLanguageSet?.ro?.otherInfo?.govtHealthProgramType
                 }}</mat-label>
                 <mat-select
-                  [style.width]="'40%'"
                   formControlName="type"
                   (selectionChange)="filterOtherGovIDs(id.value.type, i)"
                   style="line-height: unset">
@@ -297,8 +296,7 @@
                 </mat-select>
               </mat-form-field>
               <mat-form-field
-                [style.width]="'40%'"
-                style="line-height: unset"
+                style="line-height: unset; width: 45% !important"
                 class="mleft15">
                 <mat-label class="mat-label-text">
                   {{

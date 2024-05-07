@@ -138,6 +138,7 @@
             md-mini-fab
             color="warn"
             class="mat_warn_circle"
+            style="margin-right: 5px"
             id="removeComorbidityConcurrentConditions"
             *ngIf="
               i !== 0 || (i === 0 && comorbidityConcurrentConditions.touched)
@@ -154,7 +155,7 @@
             md-mini-fab
             color="primary"
             class="mat_blue_circle"
-            style="margin-right: 5px"
+            x
             *ngIf="isLast"
             [disabled]="checkValidity(comorbidityConcurrentConditions)"
             id="addComorbidityConcurrentConditions"
