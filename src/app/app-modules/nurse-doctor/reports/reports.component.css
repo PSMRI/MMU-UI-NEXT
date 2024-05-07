@@ -33,6 +33,6 @@
 .mat_form_field_color >>>.mdc-text-field--filled, .mdc-text-field--focused {
   background-color: #f2f2f0 !important;
 }
-.mat_form_field_width >>>.mat-mdc-text-field-wrapper {
+/* .mat_form_field_width >>>.mat-mdc-text-field-wrapper {
   width: 135% !important;
-}
+} */

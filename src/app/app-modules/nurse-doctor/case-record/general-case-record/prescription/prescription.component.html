@@ -80,7 +80,7 @@
       </mat-form-field>
     </div>
 
-    <div class="col-md-2 box">
+    <div class="col-md-3 box">
       <mat-form-field>
         <mat-label>{{ current_language_set?.Prescription?.dosage }}</mat-label>
         <mat-select
@@ -98,7 +98,7 @@
       </mat-form-field>
     </div>
 
-    <div class="col-md-4 box">
+    <div class="col-md-3 box">
       <mat-form-field>
         <mat-label>{{
           current_language_set?.Prescription?.frequency
@@ -157,7 +157,7 @@
     </div>
 
     <div
-      class="col-md-2 box"
+      class="col-md-3 box"
       *ngIf="
         currentPrescription.formID &&
         currentPrescription.formID !== '1' &&

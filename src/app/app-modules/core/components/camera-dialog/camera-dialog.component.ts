@@ -28,6 +28,7 @@ import {
   ElementRef,
   ViewChild,
   DoCheck,
+  AfterViewInit,
 } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HttpServiceService } from '../../services/http-service.service';
@@ -52,13 +53,13 @@ interface Mark {
   templateUrl: './camera-dialog.component.html',
   styleUrls: ['./camera-dialog.component.css'],
 })
-export class CameraDialogComponent implements OnInit, DoCheck {
+export class CameraDialogComponent implements OnInit, DoCheck, AfterViewInit {
   @Output() cancelEvent = new EventEmitter();
 
   @ViewChild('myCanvas')
   myCanvas!: ElementRef;
   @ViewChild('myImg')
-  myImg!: ElementRef;
+  myImg!: HTMLImageElement;
 
   status: any;
   public imageCode: any;
@@ -120,6 +121,8 @@ export class CameraDialogComponent implements OnInit, DoCheck {
     this.assignSelectedLanguage();
     this.loaded = false;
     this.status = this.current_language_set.capture;
+    console.log('annoate', this.annotate);
+    console.log('availablePoints', this.availablePoints);
     if (this.availablePoints?.markers)
       this.pointsToWrite = this.availablePoints.markers;
   }
@@ -153,7 +156,7 @@ export class CameraDialogComponent implements OnInit, DoCheck {
     this.cancelEvent.emit(null);
   }
 
-  AfterViewInit() {
+  ngAfterViewInit() {
     if (this.annotate) this.loadingCanvas();
 
     if (!this.loaded) {
@@ -181,20 +184,14 @@ export class CameraDialogComponent implements OnInit, DoCheck {
   loadingCanvas() {
     this.canvas = this.myCanvas.nativeElement;
     this.ctx = this.canvas.getContext('2d');
-    const img = this.myImg.nativeElement;
-    this.ctx.drawImage(
-      img,
-      0,
-      0,
-      img.width,
-      img.height,
-      0,
-      0,
-      this.canvas.width,
-      this.canvas.height
-    );
-    this.ctx.font = 'bold 20px serif';
-    this.score = 1;
+    // const img = this.myImg.nativeElement;
+    const img = new Image();
+    img.onload = () => {
+      this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
+      this.ctx.font = 'bold 20px serif';
+      this.score = 1;
+    };
+    img.src = this.annotate;
   }
 
   handleKeyDownRecaptureImg(event: KeyboardEvent): void {
@@ -218,7 +215,7 @@ export class CameraDialogComponent implements OnInit, DoCheck {
     // this.webcamInitError = error;
   }
 
-  score: any;
+  score: any = 0;
   pointMark(event: any) {
     if (event.xCord) event.offsetX = event.xCord;
     if (event.yCord) event.offsetY = event.yCord;
