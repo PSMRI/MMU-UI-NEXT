@@ -11,9 +11,7 @@
     <br />
     <span *ngIf="!contactFlag">
       <mat-form-field>
-        <mat-label class="mat-label-text">{{
-          currentLanguageSet?.covid?.historyOfContact
-        }}</mat-label>
+        <mat-label>{{ currentLanguageSet?.covid?.historyOfContact }}</mat-label>
         <mat-select
           class="input-full-width vox"
           [multiple]="true"

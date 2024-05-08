@@ -10,9 +10,9 @@ h5{
     line-height: unset;
 }
 
-.input-full-width {
+/* .input-full-width {
     width: 70%;
-}
+} */
 
 .mat-horizontal-content-container{
     padding: 0px;
@@ -23,10 +23,10 @@ h5{
 }
 
 
-.vox{
+/* .vox{
     width: 50%;
     padding: 15px;
-}
+} */
 .hbx{
     padding-left: 15px;
 }

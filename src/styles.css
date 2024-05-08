@@ -439,7 +439,7 @@ h5 {
 }
 
 .mat-expansion-panel-body {
-  padding: 0 24px 0px !important;
+  padding: 0 24px 13px !important;
 }
 .mat-mdc-form-field-type-mat-select:not(.mat-form-field-disabled) .mat-mdc-text-field-wrapper {
   height: 48px !important;
