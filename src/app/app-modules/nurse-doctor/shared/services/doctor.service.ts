@@ -2160,18 +2160,6 @@ export class DoctorService {
       }
     }
 
-    // if (
-    //   !!investigationFormValue.labTest &&
-    //   !!investigationFormValue.radiologyTest
-    // )
-    //   if (investigationFormValue.radiologyTest === null) {
-    //     labTest = investigationFormValue.labTest;
-    //   } else {
-    //     labTest = investigationFormValue.labTest.concat(
-    //       investigationFormValue.radiologyTest
-    //     );
-    //   }
-
     const temp = labTest.filter((test: any) => {
       return !test.disabled;
     });
