@@ -28,9 +28,9 @@
   </mat-label>
 </div>
 
-<div class="row m-t-20" [formGroup]="generalDoctorInvestigationForm">
+<div class="row" [formGroup]="generalDoctorInvestigationForm">
   <div class="col-xs-12 col-sm-6">
-    <mat-form-field>
+    <mat-form-field style="width: 100%">
       <mat-label class="mat-label-text">{{
         current_language_set?.labTechnicianData?.testName
       }}</mat-label>
@@ -39,7 +39,7 @@
         multiple
         name="labTest"
         formControlName="labTest"
-        (change)="checkTestName($event)">
+        (selectionChange)="checkTestName($event)">
         <mat-option
           *ngFor="let nonRadiology of nonRadiologyMaster"
           [value]="nonRadiology"
@@ -50,7 +50,7 @@
     </mat-form-field>
   </div>
   <div class="col-xs-12 col-sm-6">
-    <mat-form-field>
+    <mat-form-field style="width: 100%">
       <mat-label class="mat-label-text">{{
         current_language_set?.labTechnicianData?.radiologyimaging
       }}</mat-label>

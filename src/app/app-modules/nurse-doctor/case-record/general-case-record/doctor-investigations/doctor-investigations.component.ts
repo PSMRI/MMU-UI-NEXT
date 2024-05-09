@@ -185,7 +185,12 @@ export class DoctorInvestigationsComponent
     this.investigationSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res?.statusCode === 200 && res?.data?.investigation) {
+        if (
+          res &&
+          res.statusCode === 200 &&
+          res.data &&
+          res.data.investigation
+        ) {
           console.log(res, 'investigations');
           this.patchInvestigationDetails(
             res.data.investigation,
@@ -239,7 +244,7 @@ export class DoctorInvestigationsComponent
       });
     }
 
-    if (diagnosis?.externalInvestigation) {
+    if (diagnosis && diagnosis.externalInvestigation) {
       externalInvestigation = diagnosis.externalInvestigation;
     }
 
@@ -287,7 +292,7 @@ export class DoctorInvestigationsComponent
             }
           });
 
-          if (this.caseRecordMode === 'view') {
+          if (String(this.caseRecordMode) === 'view') {
             this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
             this.visitID = localStorage.getItem('visitID');
             this.visitCategory = localStorage.getItem('visitCategory');
