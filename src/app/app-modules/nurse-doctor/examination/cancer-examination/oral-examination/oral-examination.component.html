@@ -65,26 +65,28 @@
       <div
         class="col-6 custom-cell"
         *ngIf="premalignantLesions && premalignantLesions.value">
-        <mat-label class="mat-label-text">{{
-          currentLanguageSet?.common?.select
-        }}</mat-label>
-        <mat-select
-          multiple
-          floatPlaceholder="never"
-          name="preMalignantLesionTypeList"
-          id="preMalignantLesionTypeList"
-          formControlName="preMalignantLesionTypeList">
-          <mat-option value="Leukoplakia"> Leukoplakia </mat-option>
-          <mat-option value="Sub muscus fibrosis">
-            Sub muscus fibrosis
-          </mat-option>
-          <mat-option value="Melanoplakia"> Melanoplakia </mat-option>
-          <mat-option value="Erythroplakia"> Erythroplakia </mat-option>
-          <mat-option value="Non healing mouth ulcer(>2 weeks)">
-            Non healing mouth ulcer(>2 weeks)</mat-option
-          >
-          <mat-option value="Any other lesion"> Any other lesion</mat-option>
-        </mat-select>
+        <mat-form-field>
+          <mat-label class="mat-label-text">{{
+            currentLanguageSet?.common?.select
+          }}</mat-label>
+          <mat-select
+            multiple
+            floatPlaceholder="never"
+            name="preMalignantLesionTypeList"
+            id="preMalignantLesionTypeList"
+            formControlName="preMalignantLesionTypeList">
+            <mat-option value="Leukoplakia"> Leukoplakia </mat-option>
+            <mat-option value="Sub muscus fibrosis">
+              Sub muscus fibrosis
+            </mat-option>
+            <mat-option value="Melanoplakia"> Melanoplakia </mat-option>
+            <mat-option value="Erythroplakia"> Erythroplakia </mat-option>
+            <mat-option value="Non healing mouth ulcer(>2 weeks)">
+              Non healing mouth ulcer(>2 weeks)</mat-option
+            >
+            <mat-option value="Any other lesion"> Any other lesion</mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
     </div>
 

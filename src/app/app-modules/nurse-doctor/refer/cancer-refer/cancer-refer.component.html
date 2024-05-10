@@ -57,47 +57,60 @@
         </mat-form-field>
       </div>
     </div>
-    <div *ngIf="selectValue > 0; else elseBlock" class="col-6 tcell">
-      <mat-label class="align-middle">
-        {{ currentLanguageSet?.Referdetails?.referralReason }}*</mat-label
-      >
-    </div>
-    <ng-template #elseBlock>
-      <div class="col-xs-6 tcell">
-        <mat-label class="align-middle">{{
-          currentLanguageSet?.Referdetails?.referralReason
-        }}</mat-label>
+    <div class="col-12">
+      <div class="">
+        <div *ngIf="selectValue > 0; else elseBlock" class="col-6 tcell">
+          <mat-label class="align-middle">
+            {{ currentLanguageSet?.Referdetails?.referralReason }}*</mat-label
+          >
+        </div>
+        <div *ngIf="selectValue > 0; else elseBlockText" class="col-6">
+          <mat-form-field class="referreason">
+            <textarea
+              matInput
+              allowText="textAreaValidator"
+              matTextareaAutosize
+              required="true"
+              formControlName="referralReason"
+              name="Remarks"
+              maxLength="300"></textarea>
+          </mat-form-field>
+        </div>
       </div>
-    </ng-template>
-    <div *ngIf="selectValue > 0; else elseBlockText" class="col-xs-6">
-      <mat-form-field class="referreason">
-        <textarea
-          matInput
-          allowText="textAreaValidator"
-          matTextareaAutosize
-          required="true"
-          formControlName="referralReason"
-          name="Remarks"
-          maxLength="300"></textarea>
-      </mat-form-field>
+    </div>
+    <div class="col-12">
+      <div class="">
+        <div class="col-6">
+          <ng-template #elseBlock>
+            <div class="tcell">
+              <mat-label class="align-middle">{{
+                currentLanguageSet?.Referdetails?.referralReason
+              }}</mat-label>
+            </div>
+          </ng-template>
+        </div>
+
+        <div class="col-6">
+          <ng-template #elseBlockText>
+            <div>
+              <mat-form-field class="referreason">
+                <textarea
+                  matInput
+                  allowText="textAreaValidator"
+                  matTextareaAutosize
+                  formControlName="referralReason"
+                  name="Remarks"
+                  maxLength="300"></textarea>
+              </mat-form-field>
+            </div>
+          </ng-template>
+        </div>
+      </div>
     </div>
 
-    <ng-template #elseBlockText>
-      <div class="col-xs-6">
-        <mat-form-field class="referreason" [style.width]="'60%'">
-          <textarea
-            matInput
-            allowText="textAreaValidator"
-            matTextareaAutosize
-            formControlName="referralReason"
-            name="Remarks"
-            maxLength="300"></textarea>
-        </mat-form-field>
-      </div>
-    </ng-template>
     <!--Revisit Date Added-->
     <div class="col-12 row">
-      <div class="col-6 alignment">
+      <div class="col-6">
         <mat-label>{{
           currentLanguageSet?.Referdetails?.revisitDate
         }}</mat-label>
