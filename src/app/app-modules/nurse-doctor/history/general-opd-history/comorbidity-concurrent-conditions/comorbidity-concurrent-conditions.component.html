@@ -29,7 +29,7 @@
       <ng-container [formGroupName]="i">
         <div class="col-3 box">
           <mat-form-field>
-            <mat-label class="mat-label-text">{{
+            <mat-label>{{
               currentLanguageSet?.historyData?.ancHistory
                 ?.combordityANC_OPD_NCD_PNC?.comorbidConditions
             }}</mat-label>
@@ -60,8 +60,8 @@
             comorbidityConcurrentConditions.value.comorbidConditions
               ?.comorbidCondition === 'Other'
           ">
-          <mat-form-field class="input-full-width">
-            <mat-label class="mat-label-text">{{
+          <mat-form-field>
+            <mat-label>{{
               currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                 ?.others
             }}</mat-label>
@@ -88,8 +88,8 @@
             comorbidityConcurrentConditions.value.comorbidConditions
               ?.comorbidCondition === 'Nil'
           ">
-          <mat-form-field class="input-full-width">
-            <mat-label class="mat-label-text">{{
+          <mat-form-field>
+            <mat-label>{{
               currentLanguageSet?.DurationData?.duration
             }}</mat-label>
             <input
@@ -115,7 +115,7 @@
               ?.comorbidCondition === 'Nil'
           ">
           <mat-form-field>
-            <mat-label class="mat-label-text">{{
+            <mat-label>{{
               currentLanguageSet?.DurationData?.durationUnit
             }}</mat-label>
             <mat-select

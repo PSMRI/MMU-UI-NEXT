@@ -665,3 +665,6 @@ input {
 .mat-icon {
   height: 20px !important;
 }
+.mat-mdc-text-field-wrapper {
+  width: 118% !important;
+}

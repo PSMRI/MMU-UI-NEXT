@@ -17,8 +17,8 @@
       <div class="col-12" [formGroupName]="i">
         <div class="row">
           <div class="col-3">
-            <mat-form-field class="input-full-width">
-              <mat-label class="mat-label-text">{{
+            <mat-form-field>
+              <mat-label>{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails
                   ?.chiefComplaints
               }}</mat-label>
@@ -49,8 +49,8 @@
             </mat-autocomplete>
           </div>
           <div class="col-3" [hidden]="true">
-            <mat-form-field class="input-full-width">
-              <mat-label class="mat-label-text">{{
+            <mat-form-field>
+              <mat-label>{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.SCTID
               }}</mat-label>
               <input
@@ -68,8 +68,8 @@
               complaint?.value?.chiefComplaint !== null &&
               complaint?.value?.chiefComplaint !== ''
             ">
-            <mat-form-field class="input-full-width">
-              <mat-label class="mat-label-text">{{
+            <mat-form-field>
+              <mat-label>{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
               }}</mat-label>
               <input
@@ -90,7 +90,7 @@
               complaint?.value?.duration !== ''
             ">
             <mat-form-field>
-              <mat-label class="mat-label-text">{{
+              <mat-label>{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails
                   ?.unitOfDuration
               }}</mat-label>
@@ -115,7 +115,7 @@
             complaint?.value?.chiefComplaint !== ''
           ">
           <mat-form-field class="">
-            <mat-label class="mat-label-text">{{
+            <mat-label>{{
               currentLanguageSet?.nurseData?.chiefComplaintsDetails?.description
             }}</mat-label>
             <textarea

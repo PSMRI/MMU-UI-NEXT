@@ -12,8 +12,8 @@
 
       <div class="row m-t-10">
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-          <mat-form-field class="input-full-width">
-            <mat-label class="mat-label-text">{{
+          <mat-form-field>
+            <mat-label>{{
               currentLanguageSet?.vitalsDetails
                 ?.AnthropometryDataANC_OPD_NCD_PNC?.height
             }}</mat-label>
@@ -34,8 +34,8 @@
           </mat-form-field>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-          <mat-form-field class="input-full-width">
-            <mat-label class="mat-label-text">{{
+          <mat-form-field>
+            <mat-label>{{
               currentLanguageSet?.vitalsDetails
                 ?.AnthropometryDataANC_OPD_NCD_PNC?.weight
             }}</mat-label>
@@ -64,8 +64,8 @@
         <div
           class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
           *ngIf="totalMonths > 60">
-          <mat-form-field class="input-full-width">
-            <mat-label class="mat-label-text">{{
+          <mat-form-field>
+            <mat-label>{{
               currentLanguageSet?.vitalsDetails
                 ?.AnthropometryDataANC_OPD_NCD_PNC?.BMI
             }}</mat-label>
@@ -208,9 +208,11 @@
         <div class="clearfix"></div>
 
         <div *ngIf="hideForANCAndQC" style="display: contents">
-          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-            <mat-form-field class="input-full-width">
-              <mat-label class="mat-label-text">{{
+          <div
+            class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
+            style="margin-left: 13px">
+            <mat-form-field>
+              <mat-label>{{
                 currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
                   ?.waistCircumference
               }}</mat-label>
@@ -238,8 +240,8 @@
           <div
             class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
             *ngIf="visitCategory !== 'NCD screening'">
-            <mat-form-field class="input-full-width">
-              <mat-label class="mat-label-text">{{
+            <mat-form-field>
+              <mat-label>{{
                 currentLanguageSet?.vitalsDetails
                   ?.AnthropometryDataANC_OPD_NCD_PNC?.hipCircumference
               }}</mat-label>
@@ -261,8 +263,8 @@
           <div
             class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
             *ngIf="visitCategory !== 'NCD screening'">
-            <mat-form-field class="input-full-width">
-              <mat-label class="mat-label-text">{{
+            <mat-form-field>
+              <mat-label>{{
                 currentLanguageSet?.vitalsDetails
                   ?.AnthropometryDataANC_OPD_NCD_PNC?.waisttoHipRatio
               }}</mat-label>
@@ -359,8 +361,8 @@
             class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
             style="margin-left: 10px"
             *ngIf="benAge <= 2 && visitCategory !== 'NCD screening'">
-            <mat-form-field class="input-full-width">
-              <mat-label class="mat-label-text">{{
+            <mat-form-field>
+              <mat-label>{{
                 currentLanguageSet?.vitalsDetails
                   ?.AnthropometryDataANC_OPD_NCD_PNC?.headCircumference
               }}</mat-label>
@@ -385,8 +387,8 @@
           <div
             class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
             *ngIf="benAge <= 6 && visitCategory !== 'NCD screening'">
-            <mat-form-field class="input-full-width">
-              <mat-label class="mat-label-text">{{
+            <mat-form-field>
+              <mat-label>{{
                 currentLanguageSet?.vitalsDetails
                   ?.AnthropometryDataANC_OPD_NCD_PNC?.midUpperArmCircumference
               }}</mat-label>
@@ -463,8 +465,8 @@
 
       <div class="row m-t-20">
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-          <mat-form-field class="input-full-width">
-            <mat-label class="mat-label-text">{{
+          <mat-form-field>
+            <mat-label>{{
               currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
                 ?.temperature
             }}</mat-label>
@@ -491,8 +493,8 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-          <mat-form-field class="input-full-width">
-            <mat-label class="mat-label-text">{{
+          <mat-form-field>
+            <mat-label>{{
               currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
                 ?.pulseRate
             }}</mat-label>
@@ -521,10 +523,8 @@
           </mat-form-field>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-          <mat-form-field class="input-full-width">
-            <mat-label class="mat-label-text">{{
-              currentLanguageSet?.sPOTwoWithUnit
-            }}</mat-label>
+          <mat-form-field>
+            <mat-label>{{ currentLanguageSet?.sPOTwoWithUnit }}</mat-label>
             <input
               autocomplete="off"
               matInput
@@ -546,8 +546,8 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-          <mat-form-field class="input-full-width">
-            <mat-label class="mat-label-text">{{
+          <mat-form-field>
+            <mat-label>{{
               currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
                 ?.systolicBP
             }}</mat-label>
@@ -583,8 +583,8 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-          <mat-form-field class="input-full-width">
-            <mat-label class="mat-label-text">{{
+          <mat-form-field>
+            <mat-label>{{
               currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
                 ?.diastolicBP
             }}</mat-label>
@@ -622,8 +622,8 @@
         <div
           class="col-xs-12 col-sm-6 col-md-3 col-lg-3"
           *ngIf="visitCategory !== 'NCD screening'">
-          <mat-form-field class="input-full-width">
-            <mat-label class="mat-label-text">{{
+          <mat-form-field>
+            <mat-label>{{
               currentLanguageSet?.vitalsDetails?.vitalsDataANC_OPD_NCD_PNC
                 ?.respiratoryRate
             }}</mat-label>
@@ -653,8 +653,8 @@
           }}</strong>
           <div class="row col-xs-12 col-sm-12 m-t-10">
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
-              <mat-form-field class="input-full-width">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.fasting
                 }}</mat-label>
@@ -683,8 +683,8 @@
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
-              <mat-form-field class="input-full-width">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.random
                 }}</mat-label>
@@ -710,8 +710,8 @@
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 m-t-10">
-              <mat-form-field class="input-full-width">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.vitalsDetails?.vitalsCancerscreening_QC
                     ?.postPrandial
                 }}</mat-label>
@@ -754,10 +754,8 @@
             </mat-checkbox>
           </div>
           <div class="col-xs-10 col-sm-10">
-            <mat-form-field class="input-full-width">
-              <mat-label class="mat-label-text">{{
-                currentLanguageSet?.rbsTestResult
-              }}</mat-label>
+            <mat-form-field>
+              <mat-label>{{ currentLanguageSet?.rbsTestResult }}</mat-label>
               <input
                 autocomplete="off"
                 matInput
@@ -785,10 +783,8 @@
           </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-          <mat-form-field class="input-full-width">
-            <mat-label class="mat-label-text">{{
-              currentLanguageSet?.rbsTestRemarks
-            }}</mat-label>
+          <mat-form-field>
+            <mat-label>{{ currentLanguageSet?.rbsTestRemarks }}</mat-label>
             <input
               autocomplete="off"
               allowText="textAreaValidator"

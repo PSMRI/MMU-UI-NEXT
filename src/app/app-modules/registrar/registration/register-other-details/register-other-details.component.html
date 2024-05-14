@@ -2,8 +2,8 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-        <mat-form-field [style.width]="'100%'">
-          <mat-label class="mat-label-text">{{
+        <mat-form-field>
+          <mat-label>{{
             currentLanguageSet?.ro?.otherInfo?.fatherName
           }}</mat-label>
           <input
@@ -16,8 +16,8 @@
         </mat-form-field>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-        <mat-form-field [style.width]="'100%'">
-          <mat-label class="mat-label-text">{{
+        <mat-form-field>
+          <mat-label>{{
             currentLanguageSet?.ro?.otherInfo?.motherName
           }}</mat-label>
           <input
@@ -29,8 +29,8 @@
         </mat-form-field>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-        <mat-form-field [style.width]="'100%'">
-          <mat-label class="mat-label-text">{{
+        <mat-form-field>
+          <mat-label>{{
             currentLanguageSet?.ro?.otherInfo?.emailID
           }}</mat-label>
           <input
@@ -46,11 +46,10 @@
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
           <mat-form-field>
-            <mat-label class="mat-label-text">{{
+            <mat-label>{{
               currentLanguageSet?.ro?.otherInfo?.community
             }}</mat-label>
             <mat-select
-              [style.width]="'100%'"
               formControlName="community"
               required
               (selectionChange)="onCommunityChanged()">
@@ -65,8 +64,8 @@
       </div>
       <div class="clearfix"></div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-        <mat-form-field [style.width]="'100%'">
-          <mat-label class="mat-label-text">{{
+        <mat-form-field>
+          <mat-label>{{
             currentLanguageSet?.ro?.otherInfo?.bankName
           }}</mat-label>
           <input
@@ -78,8 +77,8 @@
         </mat-form-field>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-        <mat-form-field [style.width]="'100%'">
-          <mat-label class="mat-label-text">{{
+        <mat-form-field>
+          <mat-label>{{
             currentLanguageSet?.ro?.otherInfo?.branchName
           }}</mat-label>
           <input
@@ -91,8 +90,8 @@
         </mat-form-field>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-        <mat-form-field [style.width]="'100%'">
-          <mat-label class="mat-label-text">{{
+        <mat-form-field>
+          <mat-label>{{
             currentLanguageSet?.ro?.otherInfo?.accountNo
           }}</mat-label>
           <input
@@ -104,8 +103,8 @@
         </mat-form-field>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-        <mat-form-field [style.width]="'100%'">
-          <mat-label class="mat-label-text">{{
+        <mat-form-field>
+          <mat-label>{{
             currentLanguageSet?.ro?.otherInfo?.ifscCode
           }}</mat-label>
           <input
@@ -120,11 +119,10 @@
       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
           <mat-form-field>
-            <mat-label class="mat-label-text">{{
+            <mat-label>{{
               currentLanguageSet?.ro?.otherInfo?.religion
             }}</mat-label>
             <mat-select
-              [style.width]="'100%'"
               formControlName="religion"
               (selectionChange)="getReligionName()">
               <mat-option
@@ -140,8 +138,8 @@
         *ngIf="otherDetailsForm.value.religion === '7'"
         class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
         <div class="select-container">
-          <mat-form-field [style.width]="'100%'">
-            <mat-label class="mat-label-text">{{
+          <mat-form-field>
+            <mat-label>{{
               currentLanguageSet?.ro?.otherInfo?.otherReligion
             }}</mat-label>
             <input
@@ -167,8 +165,11 @@
               let isLast = last
             ">
             <ng-container [formGroupName]="i">
-              <mat-form-field [style.width]="'40%'" style="line-height: unset">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field
+                [style.width]="'40%'"
+                style="line-height: unset"
+                class="mat_form_field_width">
+                <mat-label>{{
                   currentLanguageSet?.ro?.otherInfo?.govtIDType
                 }}</mat-label>
                 <mat-select
@@ -186,8 +187,8 @@
               <mat-form-field
                 [style.width]="'40%'"
                 style="line-height: unset"
-                class="mleft15">
-                <mat-label class="mat-label-text">{{
+                class="mleft15 mat_form_field_width">
+                <mat-label>{{
                   currentLanguageSet?.ro?.otherInfo?.govtIDNumber
                 }}</mat-label>
                 <input
@@ -277,8 +278,8 @@
               let isLast = last
             ">
             <ng-container [formGroupName]="i">
-              <mat-form-field>
-                <mat-label class="mat-label-text">{{
+              <mat-form-field class="mat_form_field_width">
+                <mat-label>{{
                   currentLanguageSet?.ro?.otherInfo?.govtHealthProgramType
                 }}</mat-label>
                 <mat-select
@@ -297,8 +298,8 @@
               </mat-form-field>
               <mat-form-field
                 style="line-height: unset; width: 45% !important"
-                class="mleft15">
-                <mat-label class="mat-label-text">
+                class="mleft15 mat_form_field_width">
+                <mat-label>
                   {{
                     currentLanguageSet?.ro?.otherInfo?.govtHealthProgramIDNumber
                   }}</mat-label

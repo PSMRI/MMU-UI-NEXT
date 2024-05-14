@@ -15,8 +15,8 @@
 </div>
 <div class="row" [formGroup]="pastObstericHistoryForm">
   <div class="col-xs-12 col-sm-4 box">
-    <mat-form-field class="input-full-width mat_form_field_length">
-      <mat-label class="mat-label-text">{{
+    <mat-form-field>
+      <mat-label>{{
         currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
           ?.totalNumberofPregnancies
       }}</mat-label>
@@ -69,8 +69,8 @@
       <ng-container [formGroupName]="i">
         <mat-card-content>
           <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-            <mat-form-field class="input-full-width mat_form_field_width">
-              <mat-label class="mat-label-text">{{
+            <mat-form-field>
+              <mat-label>{{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                   ?.number
               }}</mat-label>
@@ -86,13 +86,12 @@
 
           <div class="row" style="display: flex">
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-              <mat-form-field style="width: 300px">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                     ?.complicationduringPregnancy
                 }}</mat-label>
                 <mat-select
-                  class="select-full-width"
                   name="complicationDuringPregnancy"
                   formControlName="pregComplicationList"
                   (selectionChange)="
@@ -129,8 +128,8 @@
               *ngIf="
                 complicationOptionConstraints[i]?.showOtherPregnancyComplication
               ">
-              <mat-form-field class="input-full-width">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                     ?.others
                 }}</mat-label>
@@ -146,13 +145,12 @@
             </div>
 
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-              <mat-form-field style="width: 300px">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                     ?.outcomeofpregnancy
                 }}</mat-label>
                 <mat-select
-                  class="select-full-width"
                   name="outcomeOfPregnancy"
                   formControlName="pregOutcome"
                   (selectionChange)="
@@ -174,12 +172,11 @@
               ">
               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
                 <mat-form-field>
-                  <mat-label class="mat-label-text">{{
+                  <mat-label>{{
                     currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                       ?.typeOfAbortion
                   }}</mat-label>
                   <mat-select
-                    class="select-full-width"
                     name="typeOfAbortion"
                     formControlName="abortionType"
                     [required]="
@@ -207,12 +204,11 @@
                   'Induced'
                 ">
                 <mat-form-field>
-                  <mat-label class="mat-label-text">{{
+                  <mat-label>{{
                     currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                       ?.typeofFacility
                   }}</mat-label>
                   <mat-select
-                    class="select-full-width"
                     name="typeofFacility"
                     formControlName="typeofFacility"
                     [required]="
@@ -230,8 +226,8 @@
                 </mat-form-field>
               </div>
               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-                <mat-form-field class="input-full-width mat_form_field_length">
-                  <mat-label class="mat-label-text">{{
+                <mat-form-field>
+                  <mat-label>{{
                     currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                       ?.noOfcompletedWeeks
                   }}</mat-label>
@@ -249,13 +245,12 @@
                 </mat-form-field>
               </div>
               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-                <mat-form-field style="width: 300px">
-                  <mat-label class="mat-label-text">{{
+                <mat-form-field>
+                  <mat-label>{{
                     currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                       ?.complicationPostAbortion
                   }}</mat-label>
                   <mat-select
-                    class="select-full-width"
                     name="complicationPostAbortion"
                     formControlName="postAbortionComplication"
                     (selectionChange)="
@@ -298,13 +293,12 @@
                 pastObstericHistory.value.pregOutcome?.pregOutcome !==
                 'Abortion'
               ">
-              <mat-form-field style="width: 300px">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                     ?.durationofPregnancy
                 }}</mat-label>
                 <mat-select
-                  class="select-full-width"
                   name="durationOfPregnancy"
                   formControlName="durationType">
                   <mat-option
@@ -322,13 +316,12 @@
                 'Abortion'
               ">
               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-                <mat-form-field class="mat_form_field_width_one">
-                  <mat-label class="mat-label-text">{{
+                <mat-form-field>
+                  <mat-label>{{
                     currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                       ?.placeofDelivery
                   }}</mat-label>
                   <mat-select
-                    class="select-full-width"
                     name="placeOfDelivery"
                     formControlName="deliveryPlace"
                     (selectionChange)="
@@ -349,8 +342,8 @@
                   pastObstericHistory.value.deliveryPlace?.deliveryPlace ===
                   'Other'
                 ">
-                <mat-form-field class="input-full-width">
-                  <mat-label class="mat-label-text">{{
+                <mat-form-field>
+                  <mat-label>{{
                     currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                       ?.others
                   }}</mat-label>
@@ -372,13 +365,12 @@
                 pastObstericHistory.value.pregOutcome?.pregOutcome !==
                 'Abortion'
               ">
-              <mat-form-field class="mat_form_field_width_one">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                     ?.deliveryType
                 }}</mat-label>
                 <mat-select
-                  class="select-full-width"
                   name="typeOfDelivery"
                   formControlName="deliveryType"
                   [disabled]="!pastObstericHistory.value.deliveryPlace">
@@ -403,15 +395,12 @@
                 'Abortion'
               ">
               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-                <mat-form-field
-                  style="width: 250px"
-                  class="mat_form_field_width_one">
-                  <mat-label class="mat-label-text">{{
+                <mat-form-field>
+                  <mat-label>{{
                     currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                       ?.deliveryComplication
                   }}</mat-label>
                   <mat-select
-                    class="select-full-width"
                     name="deliveryComplication"
                     formControlName="deliveryComplicationList"
                     (selectionChange)="
@@ -452,8 +441,8 @@
                   complicationOptionConstraints[i]
                     ?.showOtherDeliveryComplication
                 ">
-                <mat-form-field class="input-full-width">
-                  <mat-label class="mat-label-text">{{
+                <mat-form-field>
+                  <mat-label>{{
                     currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                       ?.others
                   }}</mat-label>
@@ -470,15 +459,12 @@
             </ng-container>
 
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-              <mat-form-field
-                style="width: 250px"
-                class="mat_form_field_width_two">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                     ?.postpartumComplication
                 }}</mat-label>
                 <mat-select
-                  class="select-full-width"
                   name="postpartumComplication"
                   formControlName="postpartumComplicationList"
                   (selectionChange)="
@@ -519,8 +505,8 @@
                 complicationOptionConstraints[i]
                   ?.showOtherPostpartumComplication
               ">
-              <mat-form-field class="input-full-width">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                     ?.others
                 }}</mat-label>
@@ -541,13 +527,12 @@
                 pastObstericHistory.value.pregOutcome?.pregOutcome ===
                 'Live Birth'
               ">
-              <mat-form-field style="width: 300px">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                     ?.newBornComplication
                 }}</mat-label>
                 <mat-select
-                  class="select-full-width"
                   name="newBornComplications"
                   formControlName="newBornComplication"
                   (selectionChange)="
@@ -570,8 +555,8 @@
                 pastObstericHistory.value.newBornComplication
                   ?.complicationValue === 'Other'
               ">
-              <mat-form-field class="input-full-width">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                     ?.others
                 }}</mat-label>
@@ -592,8 +577,8 @@
                 pastObstericHistory.value.pregOutcome?.pregOutcome ===
                 'Live Birth'
               ">
-              <mat-form-field class="input-full-width">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field>
+                <mat-label>{{
                   currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                     ?.congenitalAnomalies
                 }}</mat-label>

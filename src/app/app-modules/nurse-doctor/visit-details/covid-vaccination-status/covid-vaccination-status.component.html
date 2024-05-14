@@ -1,9 +1,7 @@
 <div class="row m-t-20" [formGroup]="covidVaccineStatusForm">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
     <mat-form-field>
-      <mat-label class="mat-label-text">{{
-        currentLanguageSet?.ageGroup
-      }}</mat-label>
+      <mat-label>{{ currentLanguageSet?.ageGroup }}</mat-label>
       <mat-select
         matInput
         class="input-full-width"
@@ -18,9 +16,7 @@
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
     <mat-form-field>
-      <mat-label class="mat-label-text">{{
-        currentLanguageSet?.isApplicableForVaccine
-      }}</mat-label>
+      <mat-label>{{ currentLanguageSet?.isApplicableForVaccine }}</mat-label>
       <mat-select
         matInput
         class="input-full-width"
@@ -41,9 +37,7 @@
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="enableVaccinationStatusFields">
     <mat-form-field>
-      <mat-label class="mat-label-text">{{
-        currentLanguageSet?.vaccineStatus
-      }}</mat-label>
+      <mat-label>{{ currentLanguageSet?.vaccineStatus }}</mat-label>
       <mat-select
         matInput
         class="input-full-width"
@@ -60,9 +54,7 @@
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="enableVaccineTypeAndDoseTakenFlag">
     <mat-form-field>
-      <mat-label class="mat-label-text">{{
-        currentLanguageSet?.vaccineTypes
-      }}</mat-label>
+      <mat-label>{{ currentLanguageSet?.vaccineTypes }}</mat-label>
       <mat-select
         matInput
         class="input-full-width"
@@ -82,9 +74,7 @@
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="enableVaccineTypeAndDoseTakenFlag">
     <mat-form-field>
-      <mat-label class="mat-label-text">{{
-        currentLanguageSet?.doseTaken
-      }}</mat-label>
+      <mat-label>{{ currentLanguageSet?.doseTaken }}</mat-label>
       <mat-select
         matInput
         class="input-full-width"

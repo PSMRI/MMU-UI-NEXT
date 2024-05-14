@@ -20,13 +20,12 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="fieldAlignment fontStyle mat_form_field_width">
+    <mat-form-field>
       <mat-label class="mat-label-text" class="fontStyle">{{
         current_language_set?.ancData?.ancDataDetails?.lastMenstrualPeriod
       }}</mat-label>
       <input
         matInput
-        style="width: 100%"
         name="lmpDate"
         formControlName="lmpDate"
         [min]="dob"
@@ -44,8 +43,8 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="input-full-width mat_form_field_width_one">
-      <mat-label class="mat-label-text">{{
+    <mat-form-field>
+      <mat-label>{{
         current_language_set?.ancData?.ancDataDetails?.currentGestationalAge
       }}</mat-label>
       <input
@@ -67,7 +66,6 @@
       }}</mat-label>
       <input
         matInput
-        style="width: 100%"
         name="expDelDt"
         formControlName="expDelDt"
         [matDatepicker]="eddPicker"
@@ -82,8 +80,8 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="input-full-width mat_form_field_width_one">
-      <mat-label class="mat-label-text">{{
+    <mat-form-field>
+      <mat-label>{{
         current_language_set?.ancData?.ancDataDetails?.periodofPregnancy
       }}</mat-label>
       <input
@@ -101,8 +99,8 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="input-full-width mat_form_field_width_one">
-      <mat-label class="mat-label-text">{{
+    <mat-form-field>
+      <mat-label>{{
         current_language_set?.ancData?.ancDataDetails?.trimesterNumber
       }}</mat-label>
       <input
