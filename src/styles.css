@@ -599,12 +599,12 @@ input:-webkit-autofill:active {
   vertical-align: bottom;
 }
 .md2-datepicker-value, .mat-select-placeholder, .mat-select-value-text, .mat-input-element, .mat-input-placeholder-wrapper, .md2-autocomplete-placeholder {
-  font-family: SF-UI-Display-Regular !important;
+  font-family: SF-UI-Display-Regular, sans-serif !important;
   font-size: 15px !important;
   font-weight: 700 !important;
 }
 input {
-  font-family: SF-UI-Display-Regular !important;
+  font-family: SF-UI-Display-Regular, sans-serif !important;
 }
 .mat-form-field-infix {
   display: block;
