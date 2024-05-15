@@ -185,12 +185,7 @@ export class DoctorInvestigationsComponent
     this.investigationSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (
-          res &&
-          res.statusCode === 200 &&
-          res.data &&
-          res.data.investigation
-        ) {
+        if (res && res.statusCode === 200 && res?.data?.investigation) {
           console.log(res, 'investigations');
           this.patchInvestigationDetails(
             res.data.investigation,
@@ -244,7 +239,7 @@ export class DoctorInvestigationsComponent
       });
     }
 
-    if (diagnosis && diagnosis.externalInvestigation) {
+    if (diagnosis?.externalInvestigation) {
       externalInvestigation = diagnosis.externalInvestigation;
     }
 
