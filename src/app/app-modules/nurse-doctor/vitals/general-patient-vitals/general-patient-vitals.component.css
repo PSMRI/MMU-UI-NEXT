@@ -81,3 +81,9 @@ md-expansion-panel strong {
 .valueCheck {
     padding: 5px;
 }
+
+.fontawesomesvg {
+    width: 1em;
+    height: 1em;
+    vertical-align: -.125em;
+  }

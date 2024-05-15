@@ -101,6 +101,7 @@ export class DoctorInvestigationsComponent
     this.idrsScoreService.clearHypertensionSelected();
     this.idrsScoreService.clearConfirmedDiabeticSelected();
     this.nurseService.clearRbsInVitals();
+    this.nurseService.clearRbsSelectedInInvestigation();
     this.diabestesSuspectedSubscription =
       this.idrsScoreService.diabetesSelectedFlag$.subscribe(
         response => (this.diabetesSelected = response)
@@ -315,7 +316,8 @@ export class DoctorInvestigationsComponent
     if (
       ((this.rbsTestResultCurrent !== null &&
         this.rbsTestResultCurrent !== undefined) ||
-        this.nurseService.rbsTestResultFromDoctorFetch !== null) &&
+        (this.nurseService.rbsTestResultFromDoctorFetch !== null &&
+          this.nurseService.rbsTestResultFromDoctorFetch !== undefined)) &&
       test.procedureName.toLowerCase() === environment.RBSTest.toLowerCase()
     ) {
       return true;
@@ -364,9 +366,9 @@ export class DoctorInvestigationsComponent
     this.VisualAcuityTestDone = false;
     const item = event.value;
     let oneSelected = 0;
+    this.nurseService.setRbsSelectedInInvestigation(false);
     this.rbsSelectedInInvestigation = false;
     this.hemoglobbinSelected = false;
-    this.nurseService.setRbsSelectedInInvestigation(false);
     item.forEach((element: any) => {
       if (
         element.procedureName.toLowerCase() ===
