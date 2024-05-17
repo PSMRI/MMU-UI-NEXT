@@ -2148,10 +2148,7 @@ export class DoctorService {
     );
     let labTest: any[] = [];
     if (investigationFormValue.labTest) {
-      if (
-        investigationFormValue.radiologyTest &&
-        investigationFormValue.radiologyTest.length
-      ) {
+      if (investigationFormValue?.radiologyTest?.length) {
         labTest = investigationFormValue.labTest.concat(
           investigationFormValue.radiologyTest
         );
