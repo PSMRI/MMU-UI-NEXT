@@ -35,6 +35,8 @@ import { RegistrarModule } from './app-modules/registrar/registrar.module';
 import { AudioRecordingService } from './app-modules/nurse-doctor/shared/services/audio-recording.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DataSYNCModule } from './app-modules/data-sync/dataSync.module';
+import { SharedModule } from './app-modules/core/shared/shared/shared.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -49,10 +51,10 @@ import { DataSYNCModule } from './app-modules/data-sync/dataSync.module';
     DataSyncLoginComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     NurseDoctorModule,
     DataSYNCModule,
-    RegistrarModule,
     FormsModule,
     MatIconModule,
     ReactiveFormsModule,
@@ -66,6 +68,7 @@ import { DataSYNCModule } from './app-modules/data-sync/dataSync.module';
     MatGridListModule,
     WebcamModule,
     NgxPaginationModule,
+    SharedModule,
     CoreModule.forRoot(),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

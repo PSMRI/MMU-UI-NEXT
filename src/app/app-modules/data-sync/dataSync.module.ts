@@ -31,6 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { DataSyncService } from './shared/service/data-sync.service';
 import { MasterDownloadComponent } from './master-download/master-download.component';
+import { SharedModule } from '../core/shared/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { MasterDownloadComponent } from './master-download/master-download.compo
     CoreModule,
     ReactiveFormsModule,
     FormsModule,
+    SharedModule,
   ],
   declarations: [
     WorkareaComponent,

@@ -23,9 +23,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CanDeactivateGuardService } from '../../app-modules/core/services/can-deactivate-guard.service';
-import { RegistrationComponent } from './registration/registration.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SearchComponent } from './search/search.component';
+import { DashboardComponent } from '../../../../srcs/registrar/dashboard/dashboard.component';
+import { SearchComponent } from '../../../../srcs/registrar/search/search.component';
+import { RegistrationComponent } from 'srcs/registrar/registration/registration.component';
 
 const routes: Routes = [
   {
