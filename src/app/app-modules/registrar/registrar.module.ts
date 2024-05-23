@@ -28,7 +28,7 @@ import { RegisterPersonalDetailsComponent } from './registration/register-person
 import { RegisterDemographicDetailsComponent } from './registration/register-demographic-details/register-demographic-details.component';
 import { RegisterOtherDetailsComponent } from './registration/register-other-details/register-other-details.component';
 
-import { RegistrarService } from './shared/services/registrar.service';
+import { RegistrarService } from '../../../../Common-UI/srcs/registrar/services/registrar.service';
 import { RegisterEditLocationComponent } from './registration/register-edit-location/register-edit-location.component';
 import { MaterialModule } from '../core/material.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
