@@ -2,10 +2,10 @@
   height: 60px;
 }
 
-.input-full-width {
-  width: 100%;
-}
-
 .mat-form-field {
   line-height: unset;
+}
+
+.mat_form_field_width >>>.mat-mdc-text-field-wrapper {
+  width: 65% !important;
 }

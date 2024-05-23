@@ -444,7 +444,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
           this.drugRouteMaster = masterData.routeOfAdmin;
           this.edlMaster = masterData.NonEdlMaster;
 
-          if (this.caseRecordMode === 'view') {
+          if (String(this.caseRecordMode) === 'view') {
             this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
             this.visitID = localStorage.getItem('visitID');
             this.visitCategory = localStorage.getItem('visitCategory');

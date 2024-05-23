@@ -21,11 +21,8 @@ mat-datepicker-toggle >>>.mat-mdc-form-field-icon-suffix, [dir=rtl] .mat-mdc-for
     padding: 0px 0 0 34px;
 }
 .mat_form_field_width >>>.mat-mdc-text-field-wrapper {
-  width: 145% !important;
+  width: 185% !important;
 }
 .mat_form_field_width_one>>>.mat-mdc-text-field-wrapper {
-  width: 94% !important;
-}
-.mat_form_field_width_two>>>.mat-mdc-text-field-wrapper {
-  width: 120% !important;
+  width: 158% !important;
 }

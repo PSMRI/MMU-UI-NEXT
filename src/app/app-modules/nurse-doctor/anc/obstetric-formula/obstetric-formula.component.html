@@ -7,10 +7,8 @@
         gravidaStatus) ||
       (gravidaStatus !== null && gravidaStatus !== undefined && !gravidaStatus)
     ">
-    <mat-form-field class="input-full-width">
-      <mat-label class="mat-label-text">{{
-        current_language_set?.casesheet?.gravida
-      }}</mat-label>
+    <mat-form-field>
+      <mat-label>{{ current_language_set?.casesheet?.gravida }}</mat-label>
       <input
         autocomplete="off"
         matInput
@@ -27,8 +25,8 @@
     *ngIf="
       gravidaStatus !== null && gravidaStatus !== undefined && !gravidaStatus
     ">
-    <mat-form-field class="input-full-width">
-      <mat-label class="mat-label-text">{{
+    <mat-form-field>
+      <mat-label>{{
         current_language_set?.ancData?.obstetricDeatils?.termDeliveries
       }}</mat-label>
       <input
@@ -47,8 +45,8 @@
     *ngIf="
       gravidaStatus !== null && gravidaStatus !== undefined && !gravidaStatus
     ">
-    <mat-form-field class="input-full-width">
-      <mat-label class="mat-label-text">{{
+    <mat-form-field>
+      <mat-label>{{
         current_language_set?.ancData?.obstetricDeatils?.pretermDeliveries
       }}</mat-label>
       <input
@@ -67,8 +65,8 @@
     *ngIf="
       gravidaStatus !== null && gravidaStatus !== undefined && !gravidaStatus
     ">
-    <mat-form-field class="input-full-width">
-      <mat-label class="mat-label-text">{{
+    <mat-form-field>
+      <mat-label>{{
         current_language_set?.ancData?.obstetricDeatils?.abortions
       }}</mat-label>
       <input
@@ -87,10 +85,8 @@
     *ngIf="
       gravidaStatus !== null && gravidaStatus !== undefined && !gravidaStatus
     ">
-    <mat-form-field class="input-full-width">
-      <mat-label class="mat-label-text">{{
-        current_language_set?.stillBirth
-      }}</mat-label>
+    <mat-form-field>
+      <mat-label>{{ current_language_set?.stillBirth }}</mat-label>
       <input
         autocomplete="off"
         matInput
@@ -107,8 +103,8 @@
     *ngIf="
       gravidaStatus !== null && gravidaStatus !== undefined && !gravidaStatus
     ">
-    <mat-form-field class="input-full-width">
-      <mat-label class="mat-label-text">{{
+    <mat-form-field>
+      <mat-label>{{
         current_language_set?.ancData?.obstetricDeatils?.livingChildren
       }}</mat-label>
       <input
@@ -123,9 +119,9 @@
         (input)="checkLivingChildren(livebirths_L)" />
     </mat-form-field>
   </div>
-  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box" style="margin: 15px">
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
     <mat-form-field>
-      <mat-label class="mat-label-text">{{
+      <mat-label>{{
         current_language_set?.ancData?.obstetricDeatils?.bloodGroupType
       }}</mat-label>
       <mat-select
