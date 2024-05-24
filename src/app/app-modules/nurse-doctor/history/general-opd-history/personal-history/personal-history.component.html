@@ -269,9 +269,7 @@
             *ngIf="
               tobacco?.value?.number !== null && tobacco?.value?.number !== ''
             ">
-            <mat-radio-group
-              formControlName="perDay"
-              (selectionChange)="perDayChange()">
+            <mat-radio-group formControlName="perDay" (change)="perDayChange()">
               <mat-radio-button
                 color="primary"
                 class="radio-button"

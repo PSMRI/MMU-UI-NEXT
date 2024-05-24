@@ -185,6 +185,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
     this.getFormDetails();
   }
   getFormDetails() {
+    console.log('form ID values', this.currentPrescription.formID);
     this.drugFormMaster.filter((item: any) => {
       if (item.itemFormName === this.currentPrescription.formName)
         this.currentPrescription.formID = item.itemFormID;

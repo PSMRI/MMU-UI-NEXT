@@ -188,7 +188,7 @@ export class RegisterOtherDetailsComponent
    */
   loadMasterDataObservable() {
     this.masterDataSubscription =
-      this.registrarService.registrationMasterDetails$.subscribe(res => {
+      this.registrarService.registrationMasterDetails$.subscribe((res: any) => {
         // console.log('res other', res)
         if (res !== null) {
           // console.log(res,'res other')
@@ -210,7 +210,7 @@ export class RegisterOtherDetailsComponent
    */
   configMasterForOthers() {
     this.revisitDataSubscription =
-      this.registrarService.beneficiaryEditDetails$.subscribe(res => {
+      this.registrarService.beneficiaryEditDetails$.subscribe((res: any) => {
         if (res && res.beneficiaryID) {
           this.revisitData = Object.assign({}, res);
           if (this.patientRevisit) {

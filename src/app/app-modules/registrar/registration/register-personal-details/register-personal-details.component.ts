@@ -142,7 +142,7 @@ export class RegisterPersonalDetailsComponent
    */
   loadMasterDataObservable() {
     this.masterDataSubscription =
-      this.registrarService.registrationMasterDetails$.subscribe(res => {
+      this.registrarService.registrationMasterDetails$.subscribe((res: any) => {
         // console.log('res personal', res)
         if (res !== null) {
           this.masterData = res;
@@ -183,7 +183,7 @@ export class RegisterPersonalDetailsComponent
    */
   loadPersonalDataForEditing() {
     this.revisitDataSubscription =
-      this.registrarService.beneficiaryEditDetails$.subscribe(res => {
+      this.registrarService.beneficiaryEditDetails$.subscribe((res: any) => {
         if (res && res.beneficiaryID) {
           this.revisitData = Object.assign({}, res);
           this.validateMaritalStatusMaster(this.revisitData);
