@@ -159,8 +159,9 @@
     <div
       class="col-md-3 box"
       *ngIf="
-        currentPrescription.formName !== 'Tablet' &&
-        currentPrescription.formName !== 'Capsule'
+        currentPrescription.formID &&
+        currentPrescription.formID !== 1 &&
+        currentPrescription.formID !== 2
       ">
       <mat-form-field>
         <mat-label>{{

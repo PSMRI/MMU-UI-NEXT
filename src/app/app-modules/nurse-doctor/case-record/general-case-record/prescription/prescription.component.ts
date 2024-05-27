@@ -50,7 +50,7 @@ interface prescribe {
   drugUnit: string;
   quantity: string;
   route: string;
-  formID: string;
+  formID: any;
   formName: string;
   qtyPrescribed: string;
   dose: string;
