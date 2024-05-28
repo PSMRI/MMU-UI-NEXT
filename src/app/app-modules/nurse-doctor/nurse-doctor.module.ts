@@ -148,7 +148,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReportsComponent } from './reports/reports.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DoctorInvestigationsComponent } from './case-record/general-case-record/doctor-investigations/doctor-investigations.component';
-import { SharedModule } from '../core/shared/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -166,7 +165,6 @@ import { SharedModule } from '../core/shared/shared/shared.module';
     MatChipsModule,
     MatDatepickerModule,
     NgxPaginationModule,
-    SharedModule,
   ],
   declarations: [
     NurseWorklistComponent,

@@ -39,12 +39,10 @@ export class AppHeaderComponent implements OnInit {
   navigation = [
     {
       role: 'Registrar',
-      link: '/registrar/search',
-      label: 'Registrar',
-      // work: [
-      //   { link: '/registrar/registration', label: 'Registration' },
-      //   { link: '/registrar/search', label: 'Search' },
-      // ],
+      work: [
+        { link: '/registrar/registration', label: 'Registration' },
+        { link: '/registrar/search', label: 'Search' },
+      ],
     },
     { role: 'Nurse', link: '/nurse-worklist', label: 'Nurse' },
     { role: 'Doctor', link: '/doctor-worklist', label: 'Doctor' },
@@ -203,19 +201,18 @@ export class AppHeaderComponent implements OnInit {
     this.navigation = [
       {
         role: 'Registrar',
-        link: '/registrar/search',
         label: this.currentLanguageSet.role_selection.Registrar,
 
-        // work: [
-        //   {
-        //     link: '/registrar/registration',
-        //     label: this.currentLanguageSet.ro.registration,
-        //   },
-        //   {
-        //     link: '/registrar/search',
-        //     label: this.currentLanguageSet.common.search,
-        //   },
-        // ],
+        work: [
+          {
+            link: '/registrar/registration',
+            label: this.currentLanguageSet.ro.registration,
+          },
+          {
+            link: '/registrar/search',
+            label: this.currentLanguageSet.common.search,
+          },
+        ],
       },
       {
         role: 'Nurse',
