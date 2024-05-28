@@ -22,7 +22,7 @@
 
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RegistrarService } from 'Common-UI/srcs/registrar/services/registrar.service';
+import { RegistrarService } from 'src/app/app-modules/registrar/shared/services/registrar.service';
 import { SetLanguageComponent } from '../core/components/set-language.component';
 import { ConfirmationService } from '../core/services';
 import { HttpServiceService } from '../core/services/http-service.service';
@@ -422,7 +422,6 @@ export class ServicePointComponent implements OnInit, DoCheck {
   saveLocationDataToStorage() {
     const locationData = {
       stateID: this.servicePointForm.controls.stateID.value,
-      stateName: this.servicePointForm.controls.stateName.value,
       // stateName : this.stateName,
       districtID: this.servicePointForm.controls.districtID.value,
       districtName: this.servicePointForm.controls.districtName.value,
