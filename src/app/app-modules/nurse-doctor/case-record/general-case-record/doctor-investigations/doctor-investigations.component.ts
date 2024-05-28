@@ -239,7 +239,7 @@ export class DoctorInvestigationsComponent
       });
     }
 
-    if (diagnosis?.externalInvestigation) {
+    if (diagnosis && diagnosis.externalInvestigation) {
       externalInvestigation = diagnosis.externalInvestigation;
     }
 
