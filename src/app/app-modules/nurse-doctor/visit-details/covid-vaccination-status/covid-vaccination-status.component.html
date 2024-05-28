@@ -1,89 +1,94 @@
 <div class="row m-t-20" [formGroup]="covidVaccineStatusForm">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{ currentLanguageSet?.ageGroup }}</mat-label>
-      <mat-select
-        matInput
-        formControlName="ageGroup"
-        name="ageGroup"
-        (selectionChange)="setIsApplicable()">
-        <mat-option *ngFor="let ageGroups of ageGroupsList" [value]="ageGroups">
-          {{ ageGroups }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <mat-label class="mat-label-text">{{
+      currentLanguageSet?.ageGroup
+    }}</mat-label>
+    <mat-select
+      matInput
+      class="input-full-width"
+      formControlName="ageGroup"
+      name="ageGroup"
+      (selectionChange)="setIsApplicable()">
+      <mat-option *ngFor="let ageGroups of ageGroupsList" [value]="ageGroups">
+        {{ ageGroups }}
+      </mat-option>
+    </mat-select>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{ currentLanguageSet?.isApplicableForVaccine }}</mat-label>
-      <mat-select
-        matInput
-        formControlName="isApplicableForVaccine"
-        name="isApplicableForVaccine">
-        <mat-option
-          *ngFor="
-            let applicableForVaccineStatus of applicableForVaccineStatusList
-          "
-          [value]="applicableForVaccineStatus">
-          {{ applicableForVaccineStatus }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <mat-label class="mat-label-text">{{
+      currentLanguageSet?.isApplicableForVaccine
+    }}</mat-label>
+    <mat-select
+      matInput
+      class="input-full-width"
+      formControlName="isApplicableForVaccine"
+      name="isApplicableForVaccine">
+      <mat-option
+        *ngFor="
+          let applicableForVaccineStatus of applicableForVaccineStatusList
+        "
+        [value]="applicableForVaccineStatus">
+        {{ applicableForVaccineStatus }}
+      </mat-option>
+    </mat-select>
   </div>
 
   <div
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="enableVaccinationStatusFields">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{ currentLanguageSet?.vaccineStatus }}</mat-label>
-      <mat-select
-        matInput
-        formControlName="vaccineStatus"
-        name="vaccineStatus"
-        (selectionChange)="enableVaccineTypeAndDoseTaken()"
-        [required]="enableVaccinationStatusFields === true">
-        <mat-option value="YES">YES</mat-option>
-        <mat-option value="NO">NO</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <mat-label class="mat-label-text">{{
+      currentLanguageSet?.vaccineStatus
+    }}</mat-label>
+    <mat-select
+      matInput
+      class="input-full-width"
+      formControlName="vaccineStatus"
+      name="vaccineStatus"
+      (selectionChange)="enableVaccineTypeAndDoseTaken()"
+      [required]="enableVaccinationStatusFields === true">
+      <mat-option value="YES">YES</mat-option>
+      <mat-option value="NO">NO</mat-option>
+    </mat-select>
   </div>
   <div
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="enableVaccineTypeAndDoseTakenFlag">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{ currentLanguageSet?.vaccineTypes }}</mat-label>
-      <mat-select
-        matInput
-        formControlName="vaccineTypes"
-        name="vaccineTypes"
-        [required]="enableVaccineTypeAndDoseTakenFlag === true"
-        (selectionChange)="enableSaveButtonInForm()">
-        <mat-option
-          *ngFor="let vaccineType of vaccineTypeList"
-          [value]="vaccineType.covidVaccineTypeID">
-          {{ vaccineType.vaccineType }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <mat-label class="mat-label-text">{{
+      currentLanguageSet?.vaccineTypes
+    }}</mat-label>
+    <mat-select
+      matInput
+      class="input-full-width"
+      formControlName="vaccineTypes"
+      name="vaccineTypes"
+      [required]="enableVaccineTypeAndDoseTakenFlag === true"
+      (selectionChange)="enableSaveButtonInForm()">
+      <mat-option
+        *ngFor="let vaccineType of vaccineTypeList"
+        [value]="vaccineType.covidVaccineTypeID">
+        {{ vaccineType.vaccineType }}
+      </mat-option>
+    </mat-select>
   </div>
   <div
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="enableVaccineTypeAndDoseTakenFlag">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{ currentLanguageSet?.doseTaken }}</mat-label>
-      <mat-select
-        matInput
-        formControlName="doseTaken"
-        name="doseTaken"
-        [required]="enableVaccineTypeAndDoseTakenFlag === true"
-        (selectionChange)="enableSaveButtonInForm()">
-        <mat-option
-          *ngFor="let doseType of doseTypeList"
-          [value]="doseType.covidDoseTypeID">
-          {{ doseType.doseType }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <mat-label class="mat-label-text">{{
+      currentLanguageSet?.doseTaken
+    }}</mat-label>
+    <mat-select
+      matInput
+      class="input-full-width"
+      formControlName="doseTaken"
+      name="doseTaken"
+      [required]="enableVaccineTypeAndDoseTakenFlag === true"
+      (selectionChange)="enableSaveButtonInForm()">
+      <mat-option
+        *ngFor="let doseType of doseTypeList"
+        [value]="doseType.covidDoseTypeID">
+        {{ doseType.doseType }}
+      </mat-option>
+    </mat-select>
   </div>
 
   <div class="col-xs-12">

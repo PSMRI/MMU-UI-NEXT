@@ -814,22 +814,14 @@ export class GeneralPersonalHistoryComponent
     ] as FormArray;
     console.log('validateTobaccoConsumption', validateTobaccoConsumption);
     validateTobaccoConsumption.value.forEach((patchNumber: any, i: any) => {
-      if (
-        patchNumber.perDay !== null &&
-        patchNumber.perDay !== undefined &&
-        patchNumber.perDay === true
-      ) {
+      if (patchNumber.perDay !== null && patchNumber.perDay === true) {
         (<FormGroup>validateTobaccoConsumption.at(i)).controls[
           'numberperWeek'
         ].setValue(null);
         (<FormGroup>validateTobaccoConsumption.at(i)).controls[
           'numberperDay'
         ].setValue(patchNumber.number);
-      } else if (
-        patchNumber.perDay !== null &&
-        patchNumber.perDay !== undefined &&
-        patchNumber.perDay === false
-      ) {
+      } else if (patchNumber.perDay !== null && patchNumber.perDay === false) {
         (<FormGroup>validateTobaccoConsumption.at(i)).controls[
           'numberperDay'
         ].setValue(null);

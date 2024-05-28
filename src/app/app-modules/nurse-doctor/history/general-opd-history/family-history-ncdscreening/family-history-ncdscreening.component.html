@@ -42,7 +42,7 @@
           style="margin: 15px 0px 15px 0px; background-color: #f0f5f5">
           <div class="col-3 box">
             <mat-form-field>
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.historyData?.ancHistory
                   ?.familyHistoryDataANC_OPD_NCD_PNC?.diseaseType
               }}</mat-label>
@@ -66,8 +66,8 @@
           <div
             class="col-3 box"
             *ngIf="familyDisease.value.diseaseType?.diseaseType === 'Other'">
-            <mat-form-field>
-              <mat-label>{{
+            <mat-form-field class="input-full-width">
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                   ?.others
               }}</mat-label>
@@ -83,14 +83,15 @@
           </div>
 
           <div class="col-3 box" [hidden]="true">
-            <mat-form-field>
-              <mat-label>{{
+            <mat-form-field class="input-full-width">
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.otherVaccine
                   ?.sctCode
               }}</mat-label>
               <input
                 maxlength="100"
                 matInput
+                [style.width]="'100%'"
                 formControlName="snomedCode"
                 readonly />
             </mat-form-field>
@@ -105,7 +106,7 @@
               familyDisease.value.diseaseType?.diseaseType === 'Nil'
             ">
             <mat-form-field>
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.historyData?.ancHistory
                   ?.familyHistoryDataANC_OPD_NCD_PNC?.familyMember
               }}</mat-label>
@@ -174,8 +175,8 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3 box" *ngIf="isGeneticDisorder">
-          <mat-form-field>
-            <mat-label>{{
+          <mat-form-field class="input-full-width">
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.historyData?.ancHistory
                 ?.familyHistoryDataANC_OPD_NCD_PNC?.geneticDisorders
             }}</mat-label>

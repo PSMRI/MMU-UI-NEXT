@@ -2,14 +2,15 @@
   <div class="row">
     <div class="col-xs-12 col-xs-6 box">
       <mat-form-field>
-        <mat-label class="mat-label-text">{{
-          current_language_set?.casesheet?.ncdCondition
-        }}</mat-label>
+        <mat-label class="mat-label-text"
+          >{{ current_language_set?.casesheet?.ncdCondition }} *</mat-label
+        >
         <mat-select
           class="input-full-width"
           name="ncdScreeningConditionArray"
           *ngIf="enableNCDCondition"
           multiple
+          placeholder="{{ current_language_set?.casesheet?.ncdCondition }} *"
           (selectionChange)="changeNcdScreeningCondition($event, $event)"
           [(ngModel)]="temp"
           [ngModelOptions]="{ standalone: true }">
@@ -22,11 +23,14 @@
       </mat-form-field>
     </div>
     <div class="col-xs-12" *ngIf="isNcdScreeningConditionOther">
-      <mat-form-field>
-        <mat-label>{{ current_language_set?.nCDConditionOther }}</mat-label>
+      <mat-form-field class="input-full-width">
+        <mat-label class="mat-label-text">{{
+          current_language_set?.nCDConditionOther
+        }}</mat-label>
         <textarea
           matInput
           allowText="textAreaValidator"
+          placeholder="{{ current_language_set?.nCDConditionOther }}"
           matTextareaAutosize
           defaultNull
           name="ncdScreeningConditionOther"
@@ -37,10 +41,13 @@
     </div>
     <div class="col-xs-12 col-xs-6 box">
       <mat-form-field>
-        <mat-label>{{ current_language_set?.casesheet?.typeOfNcd }}</mat-label>
+        <mat-label class="mat-label-text">{{
+          current_language_set?.casesheet?.typeOfNcd
+        }}</mat-label>
         <mat-select
           class="input-full-width"
           name="ncdCareType"
+          placeholder="{{ current_language_set?.casesheet?.typeOfNcd }}"
           formControlName="ncdCareType">
           <mat-option
             *ngFor="let ncdCareType of ncdCareTypes"
@@ -51,13 +58,14 @@
       </mat-form-field>
     </div>
     <div class="col-xs-12" style="display: none">
-      <mat-form-field>
-        <mat-label>{{
+      <mat-form-field class="input-full-width">
+        <mat-label class="mat-label-text">{{
           current_language_set?.casesheet?.ncdComplication
         }}</mat-label>
         <textarea
           matInput
           allowText="textAreaValidator"
+          placeholder="{{ current_language_set?.casesheet?.ncdComplication }}"
           matTextareaAutosize
           defaultNull
           name="ncdComplication"
@@ -83,7 +91,7 @@
               ">
               <ng-container [formGroupName]="i">
                 <div class="col-xs-12 col-sm-9 col-md-9 m-t-10">
-                  <mat-form-field>
+                  <mat-form-field class="input-full-width">
                     <input
                       matInput
                       appOpenModal

@@ -125,6 +125,3 @@ input::-ms-reveal,
 input::-ms-clear {
     display: none;
 }
-.mat_form_field_width >>> .mat-mdc-text-field-wrapper {
-    width: 138% !important;
-}

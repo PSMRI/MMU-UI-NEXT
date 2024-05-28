@@ -95,7 +95,7 @@ export class AncDiagnosisComponent implements OnInit, DoCheck, OnDestroy {
       this.masterdataService.nurseMasterData$.subscribe(masterData => {
         if (masterData) this.masterData = masterData;
 
-        if (String(this.caseRecordMode) === 'view') {
+        if (this.caseRecordMode === 'view') {
           this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
           this.visitID = localStorage.getItem('visitID');
           this.visitCategory = localStorage.getItem('visitCategory');

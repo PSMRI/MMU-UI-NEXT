@@ -2,15 +2,17 @@
   <div
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="mode?.toLowerCase() === 'view'">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{ currentLanguageSet?.Reports?.visitcode }}</mat-label>
+    <mat-form-field class="input-full-width mat_form_field_width">
+      <mat-label class="mat-label-text">{{
+        currentLanguageSet?.Reports?.visitcode
+      }}</mat-label>
       <input matInput name="visitCode" formControlName="visitCode" />
     </mat-form-field>
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{
+    <mat-form-field class="input-full-width mat_form_field_width">
+      <mat-label class="mat-label-text">{{
         currentLanguageSet?.nurseData?.visitDetailsForm?.reasonForVisit
       }}</mat-label>
       <mat-select
@@ -34,8 +36,8 @@
   <div
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="patientVisitDetailsForm!.controls['visitReason']?.value">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{
+    <mat-form-field class="input-full-width mat_form_field_width">
+      <mat-label class="mat-label-text">{{
         currentLanguageSet?.nurseData?.visitDetailsForm?.visitCategory
       }}</mat-label>
       <mat-select
@@ -67,7 +69,7 @@
       patientVisitDetailsForm!.controls['visitCategory']?.value !== 'PNC'
     ">
     <mat-form-field class="mat_form_field_width">
-      <mat-label>{{
+      <mat-label class="mat-label-text">{{
         currentLanguageSet?.nurseData?.visitDetailsForm?.pregnancyStatus
       }}</mat-label>
       <mat-select
@@ -95,8 +97,8 @@
       patientVisitDetailsForm!.controls['pregnancyStatus']?.value === 'Yes' &&
       patientVisitDetailsForm!.controls['visitCategory']?.value !== 'PNC'
     ">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{
+    <mat-form-field class="input-full-width mat_form_field_width">
+      <mat-label class="mat-label-text">{{
         currentLanguageSet?.nurseData?.visitDetailsForm?.MCTSOrRCHID
       }}</mat-label>
       <input

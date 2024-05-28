@@ -2146,16 +2146,14 @@ export class DoctorService {
     const investigationFormValue = JSON.parse(
       JSON.stringify(investigationForm.value)
     );
-    let labTest: any[] = [];
-    if (investigationFormValue.labTest) {
-      if (investigationFormValue?.radiologyTest?.length) {
-        labTest = investigationFormValue.labTest.concat(
-          investigationFormValue.radiologyTest
-        );
-      } else {
-        labTest = investigationFormValue.labTest;
-      }
-    }
+    let labTest = [];
+    if (
+      !!investigationFormValue.labTest &&
+      !!investigationFormValue.radiologyTest
+    )
+      labTest = investigationFormValue.labTest.concat(
+        investigationFormValue.radiologyTest
+      );
 
     const temp = labTest.filter((test: any) => {
       return !test.disabled;

@@ -38,7 +38,7 @@
         <ng-container [formGroupName]="i">
           <div class="col-md-3 box">
             <mat-form-field>
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.historyData?.ancHistory
                   ?.pastIllnessDataANC_OPD_NCD_PNC?.illness
               }}</mat-label>
@@ -61,8 +61,8 @@
           <div
             class="col-3 box"
             *ngIf="pastIllness.value.illnessType?.illnessType === 'Other'">
-            <mat-form-field>
-              <mat-label>{{
+            <mat-form-field class="input-full-width">
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                   ?.others
               }}</mat-label>
@@ -78,15 +78,15 @@
           </div>
 
           <div
-            class="col-2"
+            class="col-3 box"
             *ngIf="
               (pastIllness?.value?.illnessType !== null &&
                 pastIllness?.value?.illnessType !== '') ||
               pastIllness.value.illnessType?.illnessType === 'Nil' ||
               pastIllness.value.illnessType?.illnessType === 'None'
             ">
-            <mat-form-field style="width: 70%">
-              <mat-label>{{
+            <mat-form-field class="input-full-width">
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
               }}</mat-label>
               <input
@@ -103,13 +103,13 @@
           </div>
 
           <div
-            class="col-2"
+            class="col-3 box"
             *ngIf="
               pastIllness?.value?.timePeriodAgo !== null &&
               pastIllness?.value?.timePeriodAgo !== ''
             ">
-            <mat-form-field style="width: 100%">
-              <mat-label>{{
+            <mat-form-field>
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.DurationData?.timeperiodAgo
               }}</mat-label>
               <mat-select
@@ -125,7 +125,7 @@
             </mat-form-field>
           </div>
 
-          <div class="col-2 action-btn-container" style="text-align: end">
+          <div class="col-3 box action-btn-container" style="text-align: end">
             <button
               style="margin-right: 5px"
               md-mini-fab
@@ -177,7 +177,7 @@
       <ng-container [formGroupName]="i">
         <div class="col-3 box">
           <mat-form-field>
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.historyData?.ancHistory
                 ?.pastHOSurgeryANC_OPD_NCD_PNC?.hoSurgery
             }}</mat-label>
@@ -198,8 +198,8 @@
         <div
           class="col-3 box"
           *ngIf="pastSurgery.value.surgeryType?.surgeryType === 'Other'">
-          <mat-form-field>
-            <mat-label>{{
+          <mat-form-field class="input-full-width">
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.historyData?.opdNCDPNCHistory?.obstetric
                 ?.others
             }}</mat-label>
@@ -215,15 +215,15 @@
         </div>
 
         <div
-          class="col-2"
+          class="col-3 box"
           *ngIf="
             (pastSurgery?.value?.surgeryType !== null &&
               pastSurgery?.value?.surgeryType !== '') ||
             pastSurgery.value.surgeryType?.surgeryType === 'None' ||
             pastSurgery.value.surgeryType?.surgeryType === 'Nil'
           ">
-          <mat-form-field style="width: 70%">
-            <mat-label>{{
+          <mat-form-field class="input-full-width">
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
             }}</mat-label>
             <input
@@ -239,13 +239,13 @@
         </div>
 
         <div
-          class="col-2"
+          class="col-3 box"
           *ngIf="
             pastSurgery?.value?.timePeriodAgo !== null &&
             pastSurgery?.value?.timePeriodAgo !== ''
           ">
-          <mat-form-field style="width: 100%">
-            <mat-label>{{
+          <mat-form-field>
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.DurationData?.timeperiodAgo
             }}</mat-label>
             <mat-select
@@ -261,7 +261,7 @@
           </mat-form-field>
         </div>
 
-        <div class="col-2 action-btn-container" style="text-align: end">
+        <div class="col-3 box action-btn-container" style="text-align: end">
           <button
             md-mini-fab
             color="warn"

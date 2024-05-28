@@ -101,7 +101,6 @@ export class DoctorInvestigationsComponent
     this.idrsScoreService.clearHypertensionSelected();
     this.idrsScoreService.clearConfirmedDiabeticSelected();
     this.nurseService.clearRbsInVitals();
-    this.nurseService.clearRbsSelectedInInvestigation();
     this.diabestesSuspectedSubscription =
       this.idrsScoreService.diabetesSelectedFlag$.subscribe(
         response => (this.diabetesSelected = response)
@@ -186,7 +185,7 @@ export class DoctorInvestigationsComponent
     this.investigationSubscription = this.doctorService
       .getCaseRecordAndReferDetails(beneficiaryRegID, visitID, visitCategory)
       .subscribe((res: any) => {
-        if (res && res.statusCode === 200 && res?.data?.investigation) {
+        if (res?.statusCode === 200 && res?.data?.investigation) {
           console.log(res, 'investigations');
           this.patchInvestigationDetails(
             res.data.investigation,
@@ -288,7 +287,7 @@ export class DoctorInvestigationsComponent
             }
           });
 
-          if (String(this.caseRecordMode) === 'view') {
+          if (this.caseRecordMode === 'view') {
             this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
             this.visitID = localStorage.getItem('visitID');
             this.visitCategory = localStorage.getItem('visitCategory');
@@ -316,8 +315,7 @@ export class DoctorInvestigationsComponent
     if (
       ((this.rbsTestResultCurrent !== null &&
         this.rbsTestResultCurrent !== undefined) ||
-        (this.nurseService.rbsTestResultFromDoctorFetch !== null &&
-          this.nurseService.rbsTestResultFromDoctorFetch !== undefined)) &&
+        this.nurseService.rbsTestResultFromDoctorFetch !== null) &&
       test.procedureName.toLowerCase() === environment.RBSTest.toLowerCase()
     ) {
       return true;
@@ -366,9 +364,9 @@ export class DoctorInvestigationsComponent
     this.VisualAcuityTestDone = false;
     const item = event.value;
     let oneSelected = 0;
-    this.nurseService.setRbsSelectedInInvestigation(false);
     this.rbsSelectedInInvestigation = false;
     this.hemoglobbinSelected = false;
+    this.nurseService.setRbsSelectedInInvestigation(false);
     item.forEach((element: any) => {
       if (
         element.procedureName.toLowerCase() ===

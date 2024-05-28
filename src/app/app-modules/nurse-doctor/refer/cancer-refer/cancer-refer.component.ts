@@ -95,7 +95,7 @@ export class CancerReferComponent implements OnInit, DoCheck, OnDestroy {
           console.log('hi');
           this.revisitDate = masterData.revisitDate;
 
-          if (String(this.referMode) === 'view') {
+          if (this.referMode === 'view') {
             const beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
             const visitID = localStorage.getItem('visitID');
             const visitCategory = localStorage.getItem('visitCategory');

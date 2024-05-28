@@ -127,7 +127,7 @@ export const environment = {
   getprescribedTestDataUrl: `${MMU_API}labTechnician/get/prescribedProceduresList`,
   labSaveWork: `${MMU_API}labTechnician/save/LabTestResult`,
   getNCDScreeningIDRSDetails: `${MMU_API}NCD/getBenIdrsDetailsFrmNurse`,
-  getNCDScreeningDoctorDetails: `${MMU_API}NCD/getBenCaseRecordFromDoctorNCDScreening`,
+  getNCDScreeningDoctorDetails: `${MMU_API}/NCD/getBenCaseRecordFromDoctorNCDScreening`,
   /**
    * Worklist Urls
    */
@@ -186,7 +186,7 @@ export const environment = {
    */
   saveNurseGeneralQuickConsult: `${MMU_API}genOPD-QC-quickConsult/save/nurseData`,
   saveDoctorGeneralQuickConsult: `${MMU_API}genOPD-QC-quickConsult/save/doctorData`,
-  saveDoctorNCDScreeningDetails: `${MMU_API}NCD/save/doctorData`,
+  saveDoctorNCDScreeningDetails: `${MMU_API}/NCD/save/doctorData`,
   getGeneralOPDQuickConsultVisitDetails: `${MMU_API}genOPD-QC-quickConsult/getBenDataFrmNurseToDocVisitDetailsScreen`,
   getGeneralOPDQuickConsultVitalDetails: `${MMU_API}genOPD-QC-quickConsult/getBenVitalDetailsFrmNurse`,
 
@@ -236,8 +236,8 @@ export const environment = {
   saveNurseGeneralOPDDetails: `${MMU_API}generalOPD/save/nurseData`,
 
   updateGeneralOPDHistoryDetailsUrl: `${MMU_API}generalOPD/update/historyScreen`,
-  updateGeneralOPDVitalsDetailsUrl: `${MMU_API}generalOPD/update/vitalScreen`,
-  updateGeneralOPDExaminationDetailsUrl: `${MMU_API}generalOPD/update/examinationScreen`,
+  updateGeneralOPDVitalsDetailsUrl: `${MMU_API}/generalOPD/update/vitalScreen`,
+  updateGeneralOPDExaminationDetailsUrl: `${MMU_API}/generalOPD/update/examinationScreen`,
 
   saveDoctorGeneralOPDDetails: `${MMU_API}generalOPD/save/doctorData`,
 
@@ -314,7 +314,7 @@ export const environment = {
   getPNCDoctorDetails: `${MMU_API}PNC/getBenCaseRecordFromDoctorPNC`,
 
   updateCancerScreeningDoctorDetails: `${MMU_API}CS-cancerScreening/update/doctorData`,
-  updateNCDScreeningDoctorDetails: `${MMU_API}NCD/update/doctorData`,
+  updateNCDScreeningDoctorDetails: `${MMU_API}/NCD/update/doctorData`,
   updateGeneralOPDQuickConsultDoctorDetails: `${MMU_API}genOPD-QC-quickConsult/update/doctorData`,
   updateANCDoctorDetails: `${MMU_API}ANC/update/doctorData`,
   updateGeneralOPDDoctorDetails: `${MMU_API}generalOPD/update/doctorData`,
