@@ -652,3 +652,15 @@ control.mat-mdc-form-field-input-control {
   border:unset !important;
 
 }
+
+.mdc-floating-label {
+  will-change: unset !important;
+}
+.mat-mdc-tab-body-content {
+  overflow: hidden !important;
+}
+/* .mat-mdc-select-value-text {
+  
+  color: var(--mdc-filled-text-field-input-text-color) !important;
+  font-weight: 550 !important;
+} */
