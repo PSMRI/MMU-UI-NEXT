@@ -56,6 +56,3 @@
     padding: 0px;
     box-sizing: unset;
 }
-.mat_form_field_width >>> .mat-mdc-text-field-wrapper {
-    width: 55% !important;
-}

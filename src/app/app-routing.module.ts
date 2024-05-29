@@ -75,8 +75,8 @@ const routes: Routes = [
     path: 'registrar',
     canActivate: [AuthGuard],
     loadChildren: () =>
-      import('Common-UI/srcs/registrar/registration.module').then(
-        module => module.RegistrationModule
+      import('./app-modules/registrar/registrar.module').then(
+        module => module.RegistrarModule
       ),
   },
   {

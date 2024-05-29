@@ -111,9 +111,6 @@
                                             'mat-form-field-valid':
                                               !component.value.abnormal
                                           }">
-                                          <mat-label>{{
-                                            current_language_set?.common?.result
-                                          }}</mat-label>
                                           <input
                                             autocomplete="off"
                                             matInput
@@ -122,6 +119,10 @@
                                               component.value.allowText
                                             "
                                             maxLength="50"
+                                            placeholder="{{
+                                              current_language_set?.common
+                                                ?.result
+                                            }}"
                                             (input)="checkNormalRange(i, j)"
                                             (blur)="checkRange(i, j)"
                                             [required]="
@@ -235,29 +236,27 @@
                                           </mat-radio-button>
                                         </mat-radio-group>
                                         <div>
-                                          <mat-form-field>
-                                            <mat-label
-                                              >ECG Abnormalities</mat-label
-                                            >
-                                            <mat-select
-                                              *ngIf="
-                                                procedure.value.procedureName.includes(
-                                                  'ECG'
-                                                ) && enableEcgAbnormal
+                                          <mat-select
+                                            *ngIf="
+                                              procedure.value.procedureName.includes(
+                                                'ECG'
+                                              ) && enableEcgAbnormal
+                                            "
+                                            multiple
+                                            class="p-t-12"
+                                            [style.width]="'100%'"
+                                            formControlName="ecgAbnormalities"
+                                            style="line-height: unset"
+                                            placeholder="ECG Abnormalities"
+                                            required>
+                                            <mat-option
+                                              *ngFor="
+                                                let option of ecgAbnormalities
                                               "
-                                              multiple
-                                              formControlName="ecgAbnormalities"
-                                              style="line-height: unset"
-                                              required>
-                                              <mat-option
-                                                *ngFor="
-                                                  let option of ecgAbnormalities
-                                                "
-                                                [value]="option.ecgAbnormality"
-                                                >{{ option.ecgAbnormality }}
-                                              </mat-option>
-                                            </mat-select>
-                                          </mat-form-field>
+                                              [value]="option.ecgAbnormality"
+                                              >{{ option.ecgAbnormality }}
+                                            </mat-option>
+                                          </mat-select>
                                         </div>
                                       </div>
                                     </section>
@@ -266,52 +265,51 @@
                                       *ngIf="
                                         component.value.inputType === 'DropDown'
                                       ">
-                                      <div class="mat_form_field_width">
-                                        <mat-form-field>
-                                          <mat-label>{{
+                                      <div>
+                                        <mat-select
+                                          class="p-t-12"
+                                          [style.width]="'100%'"
+                                          formControlName="compOptSelected"
+                                          style="line-height: unset"
+                                          placeholder="{{
                                             current_language_set?.common?.result
-                                          }}</mat-label>
-                                          <mat-select
-                                            formControlName="compOptSelected"
-                                            style="line-height: unset"
-                                            [required]="
-                                              procedure.value.isMandatory ===
-                                                true &&
-                                              procedure.value.procedureName ===
-                                                testName &&
-                                              stripSelected === true
+                                          }}"
+                                          [required]="
+                                            procedure.value.isMandatory ===
+                                              true &&
+                                            procedure.value.procedureName ===
+                                              testName &&
+                                            stripSelected === true
+                                              ? true
+                                              : false ||
+                                                  (procedure.value
+                                                    .procedureName !==
+                                                    testName &&
+                                                    procedure.value
+                                                      .isMandatory === true)
                                                 ? true
-                                                : false ||
-                                                    (procedure.value
-                                                      .procedureName !==
-                                                      testName &&
-                                                      procedure.value
-                                                        .isMandatory === true)
-                                                  ? true
-                                                  : false
-                                            ">
-                                            <mat-option
-                                              *ngFor="
-                                                let options of component
-                                                  ?.controls.compOpt?.controls
-                                              "
-                                              [value]="options.value.name"
-                                              >{{ options.value.name }}
-                                            </mat-option>
-                                          </mat-select>
-                                        </mat-form-field>
+                                                : false
+                                          ">
+                                          <mat-option
+                                            *ngFor="
+                                              let options of component?.controls
+                                                .compOpt?.controls
+                                            "
+                                            [value]="options.value.name"
+                                            >{{ options.value.name }}
+                                          </mat-option>
+                                        </mat-select>
                                       </div>
                                     </section>
-                                    <mat-form-field
-                                      class="mat_form_field_width">
-                                      <mat-label>{{
-                                        current_language_set?.common?.remarks
-                                      }}</mat-label>
+                                    <mat-form-field class="mat_form_field">
                                       <input
                                         autocomplete="off"
                                         matInput
                                         formControlName="remarks"
-                                        allowText="alphanumericspace" />
+                                        allowText="alphanumericspace"
+                                        placeholder="{{
+                                          current_language_set?.common?.remarks
+                                        }}" />
                                     </mat-form-field>
                                   </mat-card-content>
                                 </mat-card>
@@ -432,9 +430,6 @@
                             </div>
                             <div>
                               <mat-form-field [style.width]="'95%'">
-                                <mat-label>{{
-                                  current_language_set?.common?.remarks
-                                }}</mat-label>
                                 <input
                                   autocomplete="off"
                                   matInput
@@ -442,7 +437,10 @@
                                     procedure.value.compDetails.remarks
                                   "
                                   allowText="alphanumericspace"
-                                  maxLength="300" />
+                                  maxLength="300"
+                                  placeholder="{{
+                                    current_language_set?.common?.remarks
+                                  }}" />
                               </mat-form-field>
                             </div>
                           </div>
@@ -483,7 +481,10 @@
             <section style="min-height: 400px">
               <mat-card style="min-height: 400px">
                 <div *ngIf="filteredLaboratoryData.length > 0">
-                  <mat-form-field id="filterbox" class="m-t-20">
+                  <mat-form-field
+                    id="filterbox"
+                    class="m-t-20"
+                    style="width: 100%">
                     <input
                       autocomplete="off"
                       matInput
@@ -601,7 +602,10 @@
             <section style="min-height: 400px">
               <mat-card style="min-height: 400px">
                 <div *ngIf="filteredRadiologyData.length > 0">
-                  <mat-form-field id="filterbox" class="m-t-20">
+                  <mat-form-field
+                    id="filterbox"
+                    class="m-t-20"
+                    style="width: 100%">
                     <input
                       autocomplete="off"
                       matInput

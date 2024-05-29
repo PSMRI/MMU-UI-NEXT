@@ -28,7 +28,7 @@ h5 {
     border-bottom: 1px solid lightgray;
 }
 
-.input-full-width>>>.mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+/* .input-full-width>>>.mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
     padding-top: 16px;
     padding-bottom: 16px;
     background-color: #f0f5f5 !important;
@@ -52,7 +52,7 @@ h5 {
 
 .input-full-width>>>.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
     border-bottom-style: dotted !important;
-}
+} */
 
 .btn-warn {
     background-color: red;

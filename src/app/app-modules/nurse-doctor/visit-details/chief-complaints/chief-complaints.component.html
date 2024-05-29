@@ -6,7 +6,6 @@
   <div class="col-xs-12" formArrayName="complaints">
     <div
       class="row multi-row-select input_style"
-      style="background-color: #f0f5f5 !important; margin-top: 10px"
       *ngFor="
         let complaint of getCheifComplaints();
         let i = index;
@@ -14,11 +13,12 @@
         let isOdd = odd
       "
       [ngClass]="{ odd: !isOdd }">
-      <div class="col-12" [formGroupName]="i">
+      <div class="" [formGroupName]="i">
         <div class="row">
-          <div class="col-3">
-            <mat-form-field>
-              <mat-label>{{
+          <div
+            class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box input-full-width">
+            <mat-form-field class="input-full-width">
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails
                   ?.chiefComplaints
               }}</mat-label>
@@ -48,9 +48,11 @@
               </mat-option>
             </mat-autocomplete>
           </div>
-          <div class="col-3" [hidden]="true">
-            <mat-form-field>
-              <mat-label>{{
+          <div
+            class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box input-full-width"
+            [hidden]="true">
+            <mat-form-field class="input-full-width">
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.SCTID
               }}</mat-label>
               <input
@@ -63,13 +65,13 @@
             </mat-form-field>
           </div>
           <div
-            class="col-3"
+            class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box input-full-width"
             *ngIf="
               complaint?.value?.chiefComplaint !== null &&
               complaint?.value?.chiefComplaint !== ''
             ">
-            <mat-form-field>
-              <mat-label>{{
+            <mat-form-field class="input-full-width">
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
               }}</mat-label>
               <input
@@ -84,13 +86,13 @@
           </div>
 
           <div
-            class="col-3"
+            class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box input-full-width"
             *ngIf="
               complaint?.value?.duration !== null &&
               complaint?.value?.duration !== ''
             ">
             <mat-form-field>
-              <mat-label>{{
+              <mat-label class="mat-label-text">{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails
                   ?.unitOfDuration
               }}</mat-label>
@@ -109,13 +111,13 @@
           </div>
         </div>
         <div
-          class="col-3"
+          class="input-full-width col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
           *ngIf="
             complaint?.value?.chiefComplaint !== null &&
             complaint?.value?.chiefComplaint !== ''
           ">
-          <mat-form-field class="">
-            <mat-label>{{
+          <mat-form-field class="textarea-full-width">
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.nurseData?.chiefComplaintsDetails?.description
             }}</mat-label>
             <textarea
@@ -131,15 +133,15 @@
           </mat-form-field>
         </div>
 
-        <div class="col-3">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
           <button
             type="button"
             mat-mini-fab
+            class=".mat_warn_circle"
             [id]="'removeBtn' + i"
             *ngIf="i !== 0 || (i === 0 && complaint.touched)"
             (click)="removeCheifComplaint(i, complaint)"
             color="warn"
-            style="margin-right: 5px"
             class="mat_warn_circle">
             <span class="material-icons">close</span>
           </button>

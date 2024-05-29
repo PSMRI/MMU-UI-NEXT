@@ -641,9 +641,7 @@ input {
 .mat-icon {
   height: 22px !important;
 }
-.mat-mdc-text-field-wrapper {
-  width: 118% !important;
-}
+
 control.mat-mdc-form-field-input-control {
   border:unset !important;
 }
@@ -651,4 +649,11 @@ control.mat-mdc-form-field-input-control {
 .mat-mdc-form-field-input-control.mat-mdc-form-field-input-control {
   border:unset !important;
 
+}
+
+.mdc-floating-label {
+  will-change: unset !important;
+}
+.mat-mdc-tab-body-content {
+  overflow: hidden !important;
 }

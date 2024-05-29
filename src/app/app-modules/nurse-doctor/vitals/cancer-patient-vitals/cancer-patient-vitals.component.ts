@@ -203,8 +203,9 @@ export class CancerPatientVitalsComponent
           }
           if (
             beneficiary !== undefined &&
-            beneficiary !== null &&
+            beneficiary.genderName !== undefined &&
             beneficiary.genderName !== null &&
+            beneficiary.genderName &&
             beneficiary.genderName.toLowerCase() === 'male'
           ) {
             this.male = true;
@@ -490,7 +491,7 @@ export class CancerPatientVitalsComponent
     if (
       this.female &&
       this.pregnancyStatus !== null &&
-      this.pregnancyStatus?.toLowerCase() !== 'yes'
+      this.pregnancyStatus.toLowerCase() !== 'yes'
     )
       this.normalWaist = patientWaist < 80 ? true : false;
     else if (!this.female) this.normalWaist = patientWaist < 90 ? true : false;

@@ -68,7 +68,6 @@ import { MyEmailDirective } from './directives/email/myEmail.directive';
 import { MyMobileNumberDirective } from './directives/MobileNumber/myMobileNumber.directive';
 import { MyNameDirective } from './directives/name/myName.directive';
 import { MyPasswordDirective } from './directives/password/myPassword.directive';
-import { SharedModule } from './shared/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -88,6 +87,8 @@ import { SharedModule } from './shared/shared/shared.module';
     ProvisionalSearchComponent,
     SpinnerComponent,
     BeneficiaryDetailsComponent,
+    AppFooterComponent,
+    AppHeaderComponent,
     ViewRadiologyUploadedFilesComponent,
     PreviousDetailsComponent,
     ShowCommitAndVersionDetailsComponent,
@@ -110,6 +111,8 @@ import { SharedModule } from './shared/shared/shared.module';
   exports: [
     MaterialModule,
     CommonDialogComponent,
+    AppFooterComponent,
+    AppHeaderComponent,
     IotBluetoothComponent,
     ShowCommitAndVersionDetailsComponent,
     CameraDialogComponent,

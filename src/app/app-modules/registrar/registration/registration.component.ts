@@ -35,7 +35,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RegisterOtherDetailsComponent } from './register-other-details/register-other-details.component';
 import { RegisterPersonalDetailsComponent } from './register-personal-details/register-personal-details.component';
 import { ConfirmationService } from '../../core/services/confirmation.service';
-import { RegistrarService } from '../../../../../Common-UI/srcs/registrar/services/registrar.service';
+import { RegistrarService } from '../shared/services/registrar.service';
 import { RegistrationUtils } from '../shared/utility/registration-utility';
 import { CanComponentDeactivate } from '../../core/services/can-deactivate-guard.service';
 import { HttpServiceService } from '../../core/services/http-service.service';

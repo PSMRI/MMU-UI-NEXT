@@ -261,7 +261,3 @@ md-expansion-panel {
     min-width: 108%;
 
 }
-
-.mat_form_field_width >>>.mat-mdc-text-field-wrapper {
-    width: 163% !important;
-}
