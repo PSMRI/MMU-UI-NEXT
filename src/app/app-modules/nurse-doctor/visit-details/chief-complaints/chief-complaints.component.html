@@ -14,8 +14,9 @@
       "
       [ngClass]="{ odd: !isOdd }">
       <div class="" [formGroupName]="i">
-        <div class="col-12 row">
-          <div class="col-4 input-full-width">
+        <div class="row">
+          <div
+            class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box input-full-width">
             <mat-form-field class="input-full-width">
               <mat-label class="mat-label-text">{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails
@@ -47,7 +48,9 @@
               </mat-option>
             </mat-autocomplete>
           </div>
-          <div class="input-full-width" [hidden]="true">
+          <div
+            class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box input-full-width"
+            [hidden]="true">
             <mat-form-field class="input-full-width">
               <mat-label class="mat-label-text">{{
                 currentLanguageSet?.nurseData?.chiefComplaintsDetails?.SCTID
@@ -62,7 +65,7 @@
             </mat-form-field>
           </div>
           <div
-            class="col-3 input-full-width"
+            class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box input-full-width"
             *ngIf="
               complaint?.value?.chiefComplaint !== null &&
               complaint?.value?.chiefComplaint !== ''
@@ -83,30 +86,32 @@
           </div>
 
           <div
-            class="col-3 box input-full-width"
+            class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box input-full-width"
             *ngIf="
               complaint?.value?.duration !== null &&
               complaint?.value?.duration !== ''
             ">
-            <mat-label class="mat-label-text">{{
-              currentLanguageSet?.nurseData?.chiefComplaintsDetails
-                ?.unitOfDuration
-            }}</mat-label>
-            <mat-select
-              class="input-full-width"
-              name="unitOfDuration"
-              formControlName="unitOfDuration"
-              (selectionChange)="validateDuration(complaint)">
-              <mat-option value="Hours">Hour(s)</mat-option>
-              <mat-option value="Days">Day(s)</mat-option>
-              <mat-option value="Weeks">Week(s)</mat-option>
-              <mat-option value="Months">Month(s)</mat-option>
-              <mat-option value="Years">Year(s)</mat-option>
-            </mat-select>
+            <mat-form-field>
+              <mat-label class="mat-label-text">{{
+                currentLanguageSet?.nurseData?.chiefComplaintsDetails
+                  ?.unitOfDuration
+              }}</mat-label>
+              <mat-select
+                class="input-full-width"
+                name="unitOfDuration"
+                formControlName="unitOfDuration"
+                (selectionChange)="validateDuration(complaint)">
+                <mat-option value="Hours">Hour(s)</mat-option>
+                <mat-option value="Days">Day(s)</mat-option>
+                <mat-option value="Weeks">Week(s)</mat-option>
+                <mat-option value="Months">Month(s)</mat-option>
+                <mat-option value="Years">Year(s)</mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
         </div>
         <div
-          class="input-full-width col-3"
+          class="input-full-width col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
           *ngIf="
             complaint?.value?.chiefComplaint !== null &&
             complaint?.value?.chiefComplaint !== ''
@@ -128,7 +133,7 @@
           </mat-form-field>
         </div>
 
-        <div class="col-3">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
           <button
             type="button"
             mat-mini-fab

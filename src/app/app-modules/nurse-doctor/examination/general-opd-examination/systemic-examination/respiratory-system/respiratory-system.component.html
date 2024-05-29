@@ -1,17 +1,21 @@
 <div class="row m-t-20" [formGroup]="respiratorySystemDataForm">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-label class="mat-label-text">{{
-      currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
-        ?.respiratoryANC_OPD_PNC?.trachea
-    }}</mat-label>
-    <mat-select
-      class="select-full-width"
-      name="trachea"
-      formControlName="trachea">
-      <mat-option *ngFor="let trachea of selectTrachea" [value]="trachea.name">
-        {{ trachea.name }}
-      </mat-option>
-    </mat-select>
+    <mat-form-field [style.width]="'100%'">
+      <mat-label class="mat-label-text">{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.respiratoryANC_OPD_PNC?.trachea
+      }}</mat-label>
+      <mat-select
+        class="select-full-width"
+        name="trachea"
+        formControlName="trachea">
+        <mat-option
+          *ngFor="let trachea of selectTrachea"
+          [value]="trachea.name">
+          {{ trachea.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -174,19 +178,21 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-label class="mat-label-text">{{
-      currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
-        ?.respiratoryANC_OPD_PNC?.percussion
-    }}</mat-label>
-    <mat-select
-      class="select-full-width"
-      name="percussion"
-      formControlName="percussion">
-      <mat-option
-        *ngFor="let percussion of selectPercussion"
-        [value]="percussion.name">
-        {{ percussion.name }}
-      </mat-option>
-    </mat-select>
+    <mat-form-field [style.width]="'100%'">
+      <mat-label class="mat-label-text">{{
+        currentLanguageSet?.ExaminationData?.ANC_OPD_PNCExamination?.systemic
+          ?.respiratoryANC_OPD_PNC?.percussion
+      }}</mat-label>
+      <mat-select
+        class="select-full-width"
+        name="percussion"
+        formControlName="percussion">
+        <mat-option
+          *ngFor="let percussion of selectPercussion"
+          [value]="percussion.name">
+          {{ percussion.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </div>

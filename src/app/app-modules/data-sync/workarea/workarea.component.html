@@ -4,7 +4,7 @@
       <mat-tab-group color="warn" backgroundColor="primary">
         <mat-tab label="Data Upload" [disabled]="showProgressBar">
           <mat-card class="col-sm-12">
-            <section class="table-responsive">
+            <section class="table-responsive" style="padding-bottom: 20px">
               <table aria-describedby="synctable" class="table table-striped">
                 <thead>
                   <tr>
@@ -93,7 +93,7 @@
                 type="button"
                 mat-raised-button
                 color="primary"
-                class="btn-green m-b-20"
+                class="btn-green m-b-20 mat_green"
                 (click)="syncDownloadData()"
                 [disabled]="showProgressBar">
                 {{ current_language_set?.coreComponents?.download }}
@@ -143,7 +143,10 @@
           </mat-drawer-container>
         </mat-tab>
         <mat-tab label="Generate BeneficiaryID">
-          <section [formGroup]="generateBenIDForm" style="margin-top: 10px">
+          <section
+            [formGroup]="generateBenIDForm"
+            style="margin-top: 10px"
+            class="row">
             <div class="col-md-6">
               <mat-card style="min-height: 240px">
                 <h4 style="text-align: center">Check BenID Availability</h4>
@@ -151,6 +154,7 @@
                   <button
                     mat-raised-button
                     color="primary"
+                    class="mat_blue"
                     (click)="checkBenIDAvailability()">
                     Check BenID
                   </button>
@@ -163,33 +167,41 @@
             <div class="col-md-6">
               <mat-card style="min-height: 240px">
                 <h4 style="text-align: center">Generate BenID</h4>
-                <mat-label class="mat-label-text">BenID Range</mat-label>
-                <mat-select
-                  class="input-full-width"
-                  [disabled]="!benID_Count"
-                  name="benID_Range"
-                  formControlName="benID_Range"
-                  style="margin: 20px 0px 10px 30px"
-                  required>
-                  <mat-option value="1000">1000</mat-option>
-                  <mat-option value="2000">2000</mat-option>
-                  <mat-option value="3000">3000</mat-option>
-                  <mat-option value="4000">4000</mat-option>
-                  <mat-option value="5000">5000</mat-option>
-                </mat-select>
-                <button
-                  mat-raised-button
-                  color="primary"
-                  [disabled]="!generateBenIDForm.valid"
-                  class="pull-right"
-                  style="margin: 30px 80px 10px 10px"
-                  (click)="
-                    generateBenID(
-                      generateBenIDForm.controls['benID_Range'].value
-                    )
-                  ">
-                  Generate BenID
-                </button>
+                <div class="col-12 row">
+                  <div class="col-8">
+                    <mat-form-field
+                      [style.width]="'100%'"
+                      style="margin-left: 10px">
+                      <mat-label class="mat-label-text">BenID Range</mat-label>
+                      <mat-select
+                        [disabled]="!benID_Count"
+                        name="benID_Range"
+                        formControlName="benID_Range"
+                        required>
+                        <mat-option value="1000">1000</mat-option>
+                        <mat-option value="2000">2000</mat-option>
+                        <mat-option value="3000">3000</mat-option>
+                        <mat-option value="4000">4000</mat-option>
+                        <mat-option value="5000">5000</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-4">
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      style="margin-top: 15px"
+                      [disabled]="!generateBenIDForm.valid"
+                      class="pull-right mat_blue"
+                      (click)="
+                        generateBenID(
+                          generateBenIDForm.controls['benID_Range'].value
+                        )
+                      ">
+                      Generate BenID
+                    </button>
+                  </div>
+                </div>
               </mat-card>
             </div>
           </section>
@@ -201,7 +213,7 @@
                 type="button"
                 mat-raised-button
                 color="primary"
-                class="btn-green m-b-20"
+                class="btn-green m-b-20 mat_green"
                 (click)="inventorySyncDataDownload()"
                 [disabled]="showProgressBar">
                 Download
