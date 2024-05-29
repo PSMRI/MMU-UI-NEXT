@@ -54,8 +54,8 @@
     </div>
 
     <div class="col-md-3 box">
-      <mat-form-field class="input-full-width">
-        <mat-label class="mat-label-text">{{
+      <mat-form-field>
+        <mat-label>{{
           current_language_set?.Prescription?.medicine
         }}</mat-label>
         <input
@@ -80,7 +80,7 @@
       </mat-form-field>
     </div>
 
-    <div class="col-md-2 box">
+    <div class="col-md-3 box">
       <mat-form-field>
         <mat-label>{{ current_language_set?.Prescription?.dosage }}</mat-label>
         <mat-select
@@ -98,7 +98,7 @@
       </mat-form-field>
     </div>
 
-    <div class="col-md-4 box">
+    <div class="col-md-3 box">
       <mat-form-field>
         <mat-label>{{
           current_language_set?.Prescription?.frequency
@@ -157,7 +157,7 @@
     </div>
 
     <div
-      class="col-md-2 box"
+      class="col-md-3 box"
       *ngIf="
         currentPrescription.formID &&
         currentPrescription.formID !== 1 &&
@@ -204,7 +204,7 @@
     class="row no-row"
     style="margin-top: 10px !important; padding-bottom: 30px">
     <div class="col-md-10 box">
-      <mat-form-field class="input-full-width">
+      <mat-form-field>
         <mat-label>{{
           current_language_set?.Prescription?.instructions
         }}</mat-label>
@@ -255,8 +255,8 @@
             </legend>
             <div class="row">
               <div class="col-md-2">
-                <mat-form-field class="input-full-width input-full-width-one">
-                  <mat-label class="mat-label-text">{{
+                <mat-form-field>
+                  <mat-label>{{
                     current_language_set?.Prescription?.form
                   }}</mat-label>
                   <input
@@ -268,8 +268,8 @@
                 </mat-form-field>
               </div>
               <div class="col-md-2">
-                <mat-form-field class="input-full-width input-full-width-one">
-                  <mat-label class="mat-label-text">{{
+                <mat-form-field>
+                  <mat-label>{{
                     current_language_set?.casesheet?.dose
                   }}</mat-label>
                   <input
@@ -281,8 +281,8 @@
                 </mat-form-field>
               </div>
               <div class="col-md-2">
-                <mat-form-field class="input-full-width input-full-width-one">
-                  <mat-label class="mat-label-text">{{
+                <mat-form-field>
+                  <mat-label>{{
                     current_language_set?.Prescription?.frequency
                   }}</mat-label>
                   <input
@@ -294,8 +294,8 @@
                 </mat-form-field>
               </div>
               <div class="col-md-2">
-                <mat-form-field class="input-full-width input-full-width-one">
-                  <mat-label class="mat-label-text">{{
+                <mat-form-field>
+                  <mat-label>{{
                     current_language_set?.nurseData?.chiefComplaintsDetails
                       ?.duration
                   }}</mat-label>
@@ -308,8 +308,8 @@
                 </mat-form-field>
               </div>
               <div class="col-md-1">
-                <mat-form-field class="input-full-width input-full-width-one">
-                  <mat-label class="mat-label-text">{{
+                <mat-form-field>
+                  <mat-label>{{
                     current_language_set?.Prescription?.quantity
                   }}</mat-label>
                   <input
@@ -321,8 +321,8 @@
                 </mat-form-field>
               </div>
               <div class="col-md-3">
-                <mat-form-field class="input-full-width input-full-width-one">
-                  <mat-label class="mat-label-text">{{
+                <mat-form-field>
+                  <mat-label>{{
                     current_language_set?.Prescription?.instructions
                   }}</mat-label>
                   <input

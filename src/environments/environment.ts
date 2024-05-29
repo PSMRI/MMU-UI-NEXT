@@ -55,7 +55,7 @@ const MMU_API = `${mmuIP}mmuapi-v1.0/`;
 //const MMU_API = `${mmuIP}/`;
 //const MMU_API = `http://localhost:8080/`
 
-const TM_API = `${tmIP}tmapi-v0.1/`;
+const TM_API = `${tmIP}tmapi-v1.0/`;
 const COMMON_API_OPEN_SYNC = `http://${SERVER_IP}:8080/commonapi-v1.0/`;
 const SCHEDULER_API = `${schedulerIP}schedulerapi-v1.0/`;
 
@@ -138,7 +138,7 @@ export const environment = {
 
   getprescribedTestDataUrl: `${MMU_API}labTechnician/get/prescribedProceduresList`,
   labSaveWork: `${MMU_API}labTechnician/save/LabTestResult`,
-  getEcgAbnormalitiesMasterUrl: `${MMU_API}/master/ecgAbnormalities`,
+  getEcgAbnormalitiesMasterUrl: `${MMU_API}master/ecgAbnormalities`,
 
   /**
    * Worklist Urls
@@ -191,7 +191,7 @@ export const environment = {
   previousReferredHistoryUrl: `${MMU_API}common/getBenPreviousReferralHistoryDetails`,
   updateNCDScreeningDetails: `${MMU_API}NCD/update/nurseData`,
   updateNCDScreeningHistoryDetailsUrl: `${MMU_API}NCD/update/historyScreen`,
-  updateNCDScreeningDoctorDetails: `${MMU_API}/NCD/update/doctorData`,
+  updateNCDScreeningDoctorDetails: `${MMU_API}NCD/update/doctorData`,
   previousVisitDataUrl: `${MMU_API}common/getBenSymptomaticQuestionnaireDetails`,
   nurseWorklistTMreferred: `${MMU_API}common/getNurseWorklistTMreferred/`,
   /**
@@ -443,4 +443,7 @@ export const environment = {
   getResultStatusURL: `${COMMON_API}lungAssessment/startAssesment`,
   getAssessmentUrl: `${COMMON_API}lungAssessment/getAssesment`,
   getAssessmentIdUrl: `${COMMON_API}lungAssessment/getAssesmentDetails`,
+
+  /* Customization APIs*/
+  getAllRegistrationData: `${COMMON_API}customization/fetchAllData`,
 };

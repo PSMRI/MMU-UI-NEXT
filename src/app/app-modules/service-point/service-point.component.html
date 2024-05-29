@@ -12,7 +12,7 @@
             style="margin: auto auto" />
         </mat-card-header>
         <mat-card-content>
-          <form [formGroup]="servicePointForm" style="padding-left: 15px">
+          <form [formGroup]="servicePointForm">
             <div class="form-group m-t-25">
               <mat-radio-group
                 formControlName="sessionID"
@@ -26,16 +26,12 @@
                   {{ session.sessionName }}
                 </mat-radio-button>
               </mat-radio-group>
-
-              <mat-form-field
-                [style.width]="'100%'"
-                style="margin: 0px -8px -8px -8px">
-                <mat-label class="mat-label-text">{{
-                  currentLanguageSet?.van
-                }}</mat-label>
+            </div>
+            <div class="col-6 mat_form_field_width" style="margin-left: 20px">
+              <mat-form-field style="margin: 0px -8px -8px -8px">
+                <mat-label>{{ currentLanguageSet?.van }}</mat-label>
                 <mat-select
                   required
-                  [style.width]="'100%'"
                   name="vanID"
                   formControlName="vanID"
                   (selectionChange)="filterServicePointsList()">
@@ -48,8 +44,8 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field [style.width]="'100%'" style="margin: -8px">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field style="margin: -8px">
+                <mat-label>{{
                   currentLanguageSet?.casesheet?.servicePoint
                 }}</mat-label>
                 <input
@@ -78,12 +74,11 @@
                 </mat-autocomplete>
               </mat-form-field>
 
-              <mat-form-field [style.width]="'100%'" style="margin: -8px">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field style="margin: -8px">
+                <mat-label>{{
                   currentLanguageSet?.ro?.locInfo?.state
                 }}</mat-label>
                 <mat-select
-                  [style.width]="'100%'"
                   class="align-Field"
                   formControlName="stateID"
                   name="stateID"
@@ -102,12 +97,11 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field [style.width]="'100%'" style="margin: -8px">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field style="margin: -8px">
+                <mat-label>{{
                   currentLanguageSet?.ro?.locInfo?.districtTownCity
                 }}</mat-label>
                 <mat-select
-                  [style.width]="'100%'"
                   formControlName="districtID"
                   name="districtID"
                   [required]="true"
@@ -125,12 +119,11 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field [style.width]="'100%'" style="margin: -8px">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field style="margin: -8px">
+                <mat-label>{{
                   currentLanguageSet?.ro?.locInfo?.taluk
                 }}</mat-label>
                 <mat-select
-                  [style.width]="'100%'"
                   formControlName="blockID"
                   name="blockID"
                   [required]="true"
@@ -146,12 +139,11 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field [style.width]="'100%'" style="margin: -8px">
-                <mat-label class="mat-label-text">{{
+              <mat-form-field style="margin: -8px">
+                <mat-label>{{
                   currentLanguageSet?.ro?.locInfo?.street
                 }}</mat-label>
                 <mat-select
-                  [style.width]="'100%'"
                   formControlName="districtBranchID"
                   name="districtBranchID"
                   (selectionChange)="

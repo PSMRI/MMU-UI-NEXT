@@ -296,7 +296,7 @@ export class NurseRefferedWorklistComponent implements OnInit, DoCheck {
               JSON.stringify(beneficiary)
             );
             this.router.navigate([
-              '/common/attendant/nurse/patient/',
+              '/nurse-doctor/attendant/nurse/patient/',
               beneficiary.beneficiaryRegID,
             ]);
           }

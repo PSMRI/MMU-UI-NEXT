@@ -136,8 +136,10 @@ ul.description li div {
 text-align: center; 
 margin-top: 30px;
 }
-
 .mat-mdc-tab-group.mat-background-primary, .mat-mdc-tab-nav-bar.mat-background-primary {
   --mat-tab-header-with-background-background-color: #0277bd !important;
   --mat-tab-header-with-background-foreground-color: white;
+}
+.mat_form_field_width >>> .mat-mdc-text-field-wrapper {
+  width: 130% !important;
 }

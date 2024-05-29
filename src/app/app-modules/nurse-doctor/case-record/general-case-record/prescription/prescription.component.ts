@@ -43,24 +43,24 @@ import { PageEvent } from '@angular/material/paginator';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
 interface prescribe {
-  id: any;
-  drugID: any;
-  drugName: any;
-  drugStrength: any;
-  drugUnit: any;
-  quantity: any;
-  route: any;
+  id: string;
+  drugID: string;
+  drugName: string;
+  drugStrength: string;
+  drugUnit: string;
+  quantity: string;
+  route: string;
   formID: any;
-  formName: any;
-  qtyPrescribed: any;
-  dose: any;
-  frequency: any;
-  duration: any;
-  unit: any;
-  instructions: any;
+  formName: string;
+  qtyPrescribed: string;
+  dose: string;
+  frequency: string;
+  duration: string;
+  unit: string;
+  instructions: string;
   isEDL: boolean;
-  sctCode: any;
-  sctTerm: any;
+  sctCode: string;
+  sctTerm: string;
 }
 @Component({
   selector: 'app-prescription',
@@ -85,24 +85,24 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
   pageEvent!: PageEvent;
   pageLimits: any = [];
   currentPrescription: prescribe = {
-    id: null,
-    drugID: null,
-    drugName: null,
-    drugStrength: null,
-    drugUnit: null,
-    qtyPrescribed: null,
-    quantity: null,
-    formID: null,
-    formName: null,
-    route: null,
-    dose: null,
-    frequency: null,
-    duration: null,
-    unit: null,
-    instructions: null,
+    id: '',
+    drugID: '',
+    drugName: '',
+    drugStrength: '',
+    drugUnit: '',
+    qtyPrescribed: '',
+    quantity: '',
+    formID: '',
+    formName: '',
+    route: '',
+    dose: '',
+    frequency: '',
+    duration: '',
+    unit: '',
+    instructions: '',
     isEDL: false,
-    sctCode: null,
-    sctTerm: null,
+    sctCode: '',
+    sctTerm: '',
   };
 
   tempDrugName: any;
@@ -325,29 +325,29 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
   }
 
   clearCurrentDetails() {
-    this.tempDrugName = null;
-    this.currentPrescription.dose = null;
-    this.currentPrescription.frequency = null;
-    this.currentPrescription.duration = null;
-    this.currentPrescription.unit = null;
-    this.currentPrescription.qtyPrescribed = null;
-    this.currentPrescription.route = null;
-    this.currentPrescription.instructions = null;
+    this.tempDrugName = '';
+    this.currentPrescription.dose = '';
+    this.currentPrescription.frequency = '';
+    this.currentPrescription.duration = '';
+    this.currentPrescription.unit = '';
+    this.currentPrescription.qtyPrescribed = '';
+    this.currentPrescription.route = '';
+    this.currentPrescription.instructions = '';
     this.prescriptionForm.form.markAsUntouched();
     this.isStockAvalable = '';
   }
   clearCurrentaddDetails() {
-    this.tempDrugName = null;
-    this.currentPrescription.dose = null;
-    this.currentPrescription.frequency = null;
-    this.currentPrescription.duration = null;
-    this.currentPrescription.unit = null;
-    this.currentPrescription.qtyPrescribed = null;
-    this.currentPrescription.route = null;
-    this.currentPrescription.instructions = null;
-    this.currentPrescription.formName = null;
-    this.currentPrescription.drugID = null;
-    this.currentPrescription.formID = null;
+    this.tempDrugName = '';
+    this.currentPrescription.dose = '';
+    this.currentPrescription.frequency = '';
+    this.currentPrescription.duration = '';
+    this.currentPrescription.unit = '';
+    this.currentPrescription.qtyPrescribed = '';
+    this.currentPrescription.route = '';
+    this.currentPrescription.instructions = '';
+    this.currentPrescription.formName = '';
+    this.currentPrescription.drugID = '';
+    this.currentPrescription.formID = '';
 
     this.prescriptionForm.form.markAsUntouched();
     this.isStockAvalable = '';
@@ -445,7 +445,7 @@ export class PrescriptionComponent implements OnInit, OnDestroy, DoCheck {
           this.drugRouteMaster = masterData.routeOfAdmin;
           this.edlMaster = masterData.NonEdlMaster;
 
-          if (this.caseRecordMode === 'view') {
+          if (String(this.caseRecordMode) === 'view') {
             this.beneficiaryRegID = localStorage.getItem('beneficiaryRegID');
             this.visitID = localStorage.getItem('visitID');
             this.visitCategory = localStorage.getItem('visitCategory');

@@ -22,7 +22,7 @@
 
 import { ConfirmationService } from './../../../core/services/confirmation.service';
 import { Component, OnInit, Input, OnDestroy, DoCheck } from '@angular/core';
-import { RegistrarService } from '../../shared/services/registrar.service';
+import { RegistrarService } from '../../../../../../Common-UI/srcs/registrar/services/registrar.service';
 import {
   FormGroup,
   FormArray,
