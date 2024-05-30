@@ -21,7 +21,6 @@
  */
 
 import { Component, OnInit, Input, OnDestroy, DoCheck } from '@angular/core';
-import { RegistrarService } from '../../../../../../Common-UI/srcs/registrar/services/registrar.service';
 import { RegistrationUtils } from '../../shared/utility/registration-utility';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
 import {
@@ -34,6 +33,7 @@ import {
 } from '@angular/forms';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
+import { RegistrarService } from '../../shared/services/registrar.service';
 
 @Component({
   selector: 'app-register-other-details',

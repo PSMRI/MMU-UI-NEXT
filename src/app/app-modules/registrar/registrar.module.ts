@@ -28,7 +28,6 @@ import { RegisterPersonalDetailsComponent } from './registration/register-person
 import { RegisterDemographicDetailsComponent } from './registration/register-demographic-details/register-demographic-details.component';
 import { RegisterOtherDetailsComponent } from './registration/register-other-details/register-other-details.component';
 
-import { RegistrarService } from '../../../../Common-UI/srcs/registrar/services/registrar.service';
 import { RegisterEditLocationComponent } from './registration/register-edit-location/register-edit-location.component';
 import { MaterialModule } from '../core/material.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -44,6 +43,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
+import { RegistrarService } from './shared/services/registrar.service';
+import { SearchComponent } from './search/search.component';
+import { SearchDialogComponent } from './search-dialog/search-dialog.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SharedModule } from '../core/shared/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -62,6 +66,7 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     RegistrarRoutingModule,
     ReactiveFormsModule,
+    SharedModule,
     BsDatepickerModule.forRoot(),
   ],
   providers: [RegistrarService],
@@ -71,6 +76,9 @@ import { MatTableModule } from '@angular/material/table';
     RegisterDemographicDetailsComponent,
     RegisterOtherDetailsComponent,
     RegisterEditLocationComponent,
+    SearchComponent,
+    SearchDialogComponent,
+    DashboardComponent,
   ],
 })
 export class RegistrarModule {}

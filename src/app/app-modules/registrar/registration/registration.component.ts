@@ -35,13 +35,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RegisterOtherDetailsComponent } from './register-other-details/register-other-details.component';
 import { RegisterPersonalDetailsComponent } from './register-personal-details/register-personal-details.component';
 import { ConfirmationService } from '../../core/services/confirmation.service';
-import { RegistrarService } from '../../../../../Common-UI/srcs/registrar/services/registrar.service';
 import { RegistrationUtils } from '../shared/utility/registration-utility';
 import { CanComponentDeactivate } from '../../core/services/can-deactivate-guard.service';
 import { HttpServiceService } from '../../core/services/http-service.service';
 import { SetLanguageComponent } from '../../core/components/set-language.component';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs';
+import { RegistrarService } from '../shared/services/registrar.service';
 
 @Component({
   selector: 'app-registration',

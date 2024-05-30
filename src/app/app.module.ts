@@ -27,7 +27,6 @@ import { ServicePointService } from './app-modules/service-point/service-point.s
 import { ResetPasswordComponent } from './app-modules/reset-password/reset-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WebcamModule } from 'ngx-webcam';
-import { RegistrarService } from '../../Common-UI/srcs/registrar/services/registrar.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { NurseDoctorModule } from './app-modules/nurse-doctor/nurse-doctor.module';
@@ -37,6 +36,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { DataSYNCModule } from './app-modules/data-sync/dataSync.module';
 import { SharedModule } from './app-modules/core/shared/shared/shared.module';
 import { CommonModule } from '@angular/common';
+import { RegistrarService } from './app-modules/registrar/shared/services/registrar.service';
 
 @NgModule({
   declarations: [
@@ -55,6 +55,7 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     NurseDoctorModule,
     DataSYNCModule,
+    RegistrarModule,
     FormsModule,
     MatIconModule,
     ReactiveFormsModule,

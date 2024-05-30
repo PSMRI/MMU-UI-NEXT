@@ -30,7 +30,7 @@ ul li div i {
 }
 
 .abnormal {
-    color: red
+    color: red !important
 }
 
 .marker {

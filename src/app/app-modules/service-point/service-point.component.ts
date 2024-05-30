@@ -22,12 +22,12 @@
 
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RegistrarService } from 'Common-UI/srcs/registrar/services/registrar.service';
 import { SetLanguageComponent } from '../core/components/set-language.component';
 import { ConfirmationService } from '../core/services';
 import { HttpServiceService } from '../core/services/http-service.service';
 import { ServicePointService } from './service-point.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { RegistrarService } from '../registrar/shared/services/registrar.service';
 
 @Component({
   selector: 'app-service-point',

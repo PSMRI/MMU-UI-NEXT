@@ -641,9 +641,7 @@ input {
 .mat-icon {
   height: 22px !important;
 }
-.mat-mdc-text-field-wrapper {
-  width: 118% !important;
-}
+
 control.mat-mdc-form-field-input-control {
   border:unset !important;
 }
@@ -659,8 +657,13 @@ control.mat-mdc-form-field-input-control {
 .mat-mdc-tab-body-content {
   overflow: hidden !important;
 }
-/* .mat-mdc-select-value-text {
+.mat-mdc-select-value-text {
   
   color: var(--mdc-filled-text-field-input-text-color) !important;
   font-weight: 550 !important;
-} */
+  letter-spacing: initial !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+  color: unset !important;
+}
