@@ -209,7 +209,9 @@
               id="dob-input"
               type="text"
               (change)="dobChangeByCalender(dobval.value)"
-              (onHidden)="dobChangeByCalender(dobval.value)" />
+              (onHidden)="dobChangeByCalender(dobval.value)"
+              (dateInput)="dobChangeByCalender(dobval.value)"
+              (dateChange)="dobChangeByCalender(dobval.value)" />
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle
               matSuffix
