@@ -3,9 +3,23 @@
     <div class="col-xs-12">
       <mat-tab-group color="warn" backgroundColor="primary">
         <mat-tab label="Data Upload" [disabled]="showProgressBar">
-          <mat-card class="col-sm-12">
+          <mat-card class="col-md-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-t-40 m-b-40">
+              <button
+                mat-raised-button
+                color="primary"
+                style="text-align: center"
+                class="mat_blue m-b-20"
+                (click)="syncGroups()"
+                color="primary">
+                {{ current_language_set?.startDataSync }}
+              </button>
+            </div>
             <section class="table-responsive">
-              <table aria-describedby="synctable" class="table table-striped">
+              <table
+                aria-describedby="synctable"
+                class="table table-striped"
+                *ngIf="showTable">
                 <thead>
                   <tr>
                     <th id="empty">&nbsp;</th>
@@ -20,40 +34,52 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <ng-template
-                    [ngIf]="
-                      syncTableGroupList && syncTableGroupList.length === 0
+                  <ng-container
+                    *ngIf="
+                      syncTableGroupList && syncTableGroupList.length === 0;
+                      else groupList
                     ">
                     <tr *ngFor="let row of blankTable">
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
                       <td>&nbsp;</td>
                     </tr>
+                  </ng-container>
+                  <ng-template #groupList>
+                    <tr
+                      *ngFor="let syncTableGroup of syncTableGroupList"
+                      class="table-hover">
+                      <td>
+                        <div
+                          [ngClass]="{
+                            visitStatus: true,
+                            'p-f-c': syncTableGroup.status === 'pending',
+                            'c-d': syncTableGroup.status === 'success',
+                            't-d': syncTableGroup.status === 'failed'
+                          }"></div>
+                      </td>
+                      <td>
+                        {{ syncTableGroup?.syncTableGroupName }}
+                      </td>
+                      <td>
+                        <span
+                          class="material-icons"
+                          *ngIf="syncTableGroup.status === 'pending'"
+                          >hourglass_empty</span
+                        >
+                        <span
+                          class="material-icons"
+                          *ngIf="syncTableGroup.status === 'success'"
+                          >check_circle</span
+                        >
+                        <span
+                          class="material-icons"
+                          *ngIf="syncTableGroup.status === 'failed'"
+                          >error</span
+                        >
+                      </td>
+                    </tr>
                   </ng-template>
-                  <tr
-                    *ngFor="let syncTableGroup of syncTableGroupList"
-                    class="table-hover">
-                    <td
-                      (click)="checkSelectedGroup(syncTableGroup)"
-                      [ngClass]="{
-                        visitStatus: true,
-                        'p-f-c': syncTableGroup.processed === 'N',
-                        't-d': syncTableGroup.processed === 'P',
-                        'c-d': syncTableGroup.processed === 'D'
-                      }"></td>
-                    <td (click)="checkSelectedGroup(syncTableGroup)">
-                      {{ syncTableGroup?.syncTableGroupName }}
-                    </td>
-                    <td>
-                      <!-- eslint-disable-next-line  @angular-eslint/template/click-events-have-key-events -->
-                      <span
-                        class="material-icons"
-                        tabindex="{0}"
-                        (click)="checkSelectedGroup(syncTableGroup)">
-                        {{ current_language_set?.coreComponents?.cached }}
-                      </span>
-                    </td>
-                  </tr>
                 </tbody>
                 <tfoot>
                   <tr>
