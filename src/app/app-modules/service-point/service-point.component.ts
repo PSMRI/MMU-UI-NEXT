@@ -22,12 +22,12 @@
 
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RegistrarService } from 'src/app/app-modules/registrar/shared/services/registrar.service';
 import { SetLanguageComponent } from '../core/components/set-language.component';
 import { ConfirmationService } from '../core/services';
 import { HttpServiceService } from '../core/services/http-service.service';
 import { ServicePointService } from './service-point.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { RegistrarService } from '../registrar/shared/services/registrar.service';
 
 @Component({
   selector: 'app-service-point',
@@ -256,7 +256,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
 
     switch (designation) {
       case 'Registrar':
-        this.router.navigate(['/registrar/registration']);
+        this.router.navigate(['/registrar/search']);
         break;
       case 'Nurse':
         this.router.navigate(['/nurse-doctor/nurse-worklist']);
@@ -422,6 +422,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
   saveLocationDataToStorage() {
     const locationData = {
       stateID: this.servicePointForm.controls.stateID.value,
+      stateName: this.servicePointForm.controls.stateName.value,
       // stateName : this.stateName,
       districtID: this.servicePointForm.controls.districtID.value,
       districtName: this.servicePointForm.controls.districtName.value,
