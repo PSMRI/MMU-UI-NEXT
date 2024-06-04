@@ -37,11 +37,3 @@ md-expansion-panel {
 .control-label {
   font-weight: normal;
 }
-
-.mat_form_field_width >>>.mat-mdc-text-field-wrapper {
-  width: 185% !important;
-}
-.mat_form_field_width_one>>>.mat-mdc-text-field-wrapper {
-  width: 158% !important;
-}
-

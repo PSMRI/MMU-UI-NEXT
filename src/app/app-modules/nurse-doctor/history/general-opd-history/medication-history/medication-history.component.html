@@ -1,4 +1,4 @@
-<div class="" [formGroup]="medicationHistoryForm">
+<div [formGroup]="medicationHistoryForm">
   <div class="col-xs-12" formArrayName="medicationHistoryList">
     <div class="col-12" style="text-align: end">
       <span class="font-history-label">{{
@@ -29,8 +29,8 @@
       [ngClass]="{ odd: !isOdd }">
       <ng-container [formGroupName]="i">
         <div class="col-3">
-          <mat-form-field>
-            <mat-label>{{
+          <mat-form-field class="input-full-width">
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.historyData?.ancHistory
                 ?.medicationANC_OPD_NCD_PNC?.currentMedication
             }}</mat-label>
@@ -41,18 +41,14 @@
               allowText="inputFieldValidator"
               maxlength="50"
               formControlName="currentMedication"
-              name="currentMedication" />
+              name="currentMedication"
+              (input)="enableDuration(medicationHistory)" />
           </mat-form-field>
         </div>
 
-        <div
-          class="col-3"
-          *ngIf="
-            medicationHistory?.value?.currentMedication !== null &&
-            medicationHistory?.value?.currentMedication !== ''
-          ">
-          <mat-form-field>
-            <mat-label>{{
+        <div class="col-3">
+          <mat-form-field class="input-full-width">
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.nurseData?.chiefComplaintsDetails?.duration
             }}</mat-label>
             <input
@@ -67,14 +63,9 @@
           </mat-form-field>
         </div>
 
-        <div
-          class="col-3"
-          *ngIf="
-            medicationHistory.value.timePeriodAgo !== null &&
-            medicationHistory.value.timePeriodAgo !== ''
-          ">
+        <div class="col-3">
           <mat-form-field>
-            <mat-label>{{
+            <mat-label class="mat-label-text">{{
               currentLanguageSet?.DurationData?.durationUnit
             }}</mat-label>
             <mat-select
@@ -92,11 +83,15 @@
 
         <div class="col-sm-3 box action-btn-container" style="text-align: end">
           <button
-            md-mini-fab
+            mat-mini-fab
             color="warn"
             class="mat_warn_circle"
             style="margin-right: 5px"
-            *ngIf="i !== 0 || (i === 0 && medicationHistory.touched)"
+            *ngIf="
+              i !== 0 ||
+              (i === 0 &&
+                (medicationHistory.touched || medicationHistory.dirty))
+            "
             (click)="removeMedicationHistory(i, medicationHistory)">
             <mat-icon class="md-18">close</mat-icon>
           </button>

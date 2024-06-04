@@ -1,9 +1,12 @@
 <div class="row m-t-20" [formGroup]="covidVaccineStatusForm">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{ currentLanguageSet?.ageGroup }}</mat-label>
+    <mat-form-field [style.width]="'100%'">
+      <mat-label class="mat-label-text">{{
+        currentLanguageSet?.ageGroup
+      }}</mat-label>
       <mat-select
         matInput
+        class="input-full-width"
         formControlName="ageGroup"
         name="ageGroup"
         (selectionChange)="setIsApplicable()">
@@ -14,10 +17,13 @@
     </mat-form-field>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{ currentLanguageSet?.isApplicableForVaccine }}</mat-label>
+    <mat-form-field [style.width]="'100%'">
+      <mat-label class="mat-label-text">{{
+        currentLanguageSet?.isApplicableForVaccine
+      }}</mat-label>
       <mat-select
         matInput
+        class="input-full-width"
         formControlName="isApplicableForVaccine"
         name="isApplicableForVaccine">
         <mat-option
@@ -34,10 +40,13 @@
   <div
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="enableVaccinationStatusFields">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{ currentLanguageSet?.vaccineStatus }}</mat-label>
+    <mat-form-field [style.width]="'100%'">
+      <mat-label class="mat-label-text">{{
+        currentLanguageSet?.vaccineStatus
+      }}</mat-label>
       <mat-select
         matInput
+        class="input-full-width"
         formControlName="vaccineStatus"
         name="vaccineStatus"
         (selectionChange)="enableVaccineTypeAndDoseTaken()"
@@ -50,10 +59,13 @@
   <div
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="enableVaccineTypeAndDoseTakenFlag">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{ currentLanguageSet?.vaccineTypes }}</mat-label>
+    <mat-form-field [style.width]="'100%'">
+      <mat-label class="mat-label-text">{{
+        currentLanguageSet?.vaccineTypes
+      }}</mat-label>
       <mat-select
         matInput
+        class="input-full-width"
         formControlName="vaccineTypes"
         name="vaccineTypes"
         [required]="enableVaccineTypeAndDoseTakenFlag === true"
@@ -69,10 +81,13 @@
   <div
     class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box"
     *ngIf="enableVaccineTypeAndDoseTakenFlag">
-    <mat-form-field class="mat_form_field_width">
-      <mat-label>{{ currentLanguageSet?.doseTaken }}</mat-label>
+    <mat-form-field [style.width]="'100%'">
+      <mat-label class="mat-label-text">{{
+        currentLanguageSet?.doseTaken
+      }}</mat-label>
       <mat-select
         matInput
+        class="input-full-width"
         formControlName="doseTaken"
         name="doseTaken"
         [required]="enableVaccineTypeAndDoseTakenFlag === true"
