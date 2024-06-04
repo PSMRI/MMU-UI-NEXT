@@ -26,7 +26,7 @@
               name="height_cm"
               formControlName="height_cm"
               (change)="checkHeight(height_cm)"
-              [ngClass]="{ height_cm: sPO2 < 10 || sPO2 > 200 }"
+              [ngClass]="{ height_cm: height_cm < 10 || height_cm > 200 }"
               appDefaultNull
               maxlength="6"
               allowMax="350"
@@ -50,7 +50,7 @@
               name="weight_Kg"
               id="weight_Kg"
               formControlName="weight_Kg"
-              [ngClass]="{ weight_Kg: sPO2 < 25 || sPO2 > 150 }"
+              [ngClass]="{ weight_Kg: weight_Kg < 25 || weight_Kg > 150 }"
               maxlength="6"
               allowMax="500"
               required />

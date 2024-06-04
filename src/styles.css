@@ -219,6 +219,20 @@
   z-index: 3;
 }
 
+.mat_icon_iot{
+  min-width: 0;
+  border-radius: 50%;
+  border-color: unset !important;
+  color:white ;
+  border: unset;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  left: 20px;
+  bottom: 50px;
+  z-index: 3;
+}
+
 .mat-form-field {
   line-height: unset;
 }
@@ -662,8 +676,4 @@ control.mat-mdc-form-field-input-control {
   color: var(--mdc-filled-text-field-input-text-color) !important;
   font-weight: 550 !important;
   letter-spacing: initial !important;
-}
-
-.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
-  color: unset !important;
 }
