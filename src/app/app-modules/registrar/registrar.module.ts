@@ -28,12 +28,11 @@ import { RegisterPersonalDetailsComponent } from './registration/register-person
 import { RegisterDemographicDetailsComponent } from './registration/register-demographic-details/register-demographic-details.component';
 import { RegisterOtherDetailsComponent } from './registration/register-other-details/register-other-details.component';
 
-import { RegistrarService } from './shared/services/registrar.service';
+import { RegistrarService } from '../../../../Common-UI/srcs/registrar/services/registrar.service';
 import { RegisterEditLocationComponent } from './registration/register-edit-location/register-edit-location.component';
 import { MaterialModule } from '../core/material.module';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CoreModule } from '../core/core.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegistrarRoutingModule } from './registrar-routing.module';
 import { RegistrationComponent } from './registration/registration.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -45,8 +44,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
-import { SearchComponent } from './search/search.component';
-import { SearchDialogComponent } from './search-dialog/search-dialog.component';
 
 @NgModule({
   imports: [
@@ -69,10 +66,7 @@ import { SearchDialogComponent } from './search-dialog/search-dialog.component';
   ],
   providers: [RegistrarService],
   declarations: [
-    DashboardComponent,
     RegistrationComponent,
-    SearchComponent,
-    SearchDialogComponent,
     RegisterPersonalDetailsComponent,
     RegisterDemographicDetailsComponent,
     RegisterOtherDetailsComponent,

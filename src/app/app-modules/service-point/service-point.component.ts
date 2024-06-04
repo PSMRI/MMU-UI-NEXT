@@ -22,7 +22,7 @@
 
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RegistrarService } from 'src/app/app-modules/registrar/shared/services/registrar.service';
+import { RegistrarService } from 'Common-UI/srcs/registrar/services/registrar.service';
 import { SetLanguageComponent } from '../core/components/set-language.component';
 import { ConfirmationService } from '../core/services';
 import { HttpServiceService } from '../core/services/http-service.service';
@@ -67,6 +67,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
   subDistrictList: any = [];
   demographicsMaster: any;
   villageList: any = [];
+  userLocationDetails: any;
 
   constructor(
     private router: Router,
@@ -256,7 +257,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
 
     switch (designation) {
       case 'Registrar':
-        this.router.navigate(['/registrar/registration']);
+        this.router.navigate(['/registrar/search']);
         break;
       case 'Nurse':
         this.router.navigate(['/nurse-doctor/nurse-worklist']);
@@ -296,6 +297,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
           'servicePointName',
           this.servicePointForm.controls.servicePointName.value
         );
+      console.log('data before call', this.servicePointForm);
 
       this.servicePointService.getMMUDemographics().subscribe((res: any) => {
         if (res && res.statusCode === 200) {
@@ -324,18 +326,54 @@ export class ServicePointComponent implements OnInit, DoCheck {
         this.servicePointForm.controls.stateID.patchValue(
           data.otherLoc.stateID
         );
-        this.fetchDistrictsOnStateSelection(
-          this.servicePointForm.controls.stateID.value
-        );
-        this.servicePointForm.controls.districtID.reset();
-        this.servicePointForm.controls.blockID.reset();
-        this.servicePointForm.controls.districtBranchID.reset();
+        this.fetchDistricts(this.servicePointForm.controls.stateID.value);
+        if (data.otherLoc.districtList) {
+          this.servicePointForm.patchValue({
+            districtID: data.otherLoc.districtList[0].districtID,
+            districtName: data.otherLoc.districtList[0].districtName,
+          });
+          this.fetchSubDistrictsOnDistrictSelection(
+            data.otherLoc.districtList[0].districtID
+          );
+          console.log('subDistrictList', this.subDistrictList);
+          console.log('data before patch', this.servicePointForm);
+          if (data.otherLoc.districtList[0].blockID) {
+            this.servicePointForm.patchValue({
+              blockID: data.otherLoc.districtList[0].blockID,
+              blockName: data.otherLoc.districtList[0].blockName,
+            });
+            console.log('data after patch', this.servicePointForm);
+            this.onSubDistrictChange(data.otherLoc.districtList[0].blockID);
+          } else {
+            this.confirmationService.alert(
+              'Please add block in worklocation mapping to proceed further',
+              'info'
+            );
+          }
+        }
+
+        // }
+        // this.servicePointForm.controls.districtID.reset();
+        // this.servicePointForm.controls.blockID.reset();
+        // this.servicePointForm.controls.districtBranchID.reset();
       } else {
         this.locationGathetingIssues();
       }
     } else {
       this.locationGathetingIssues();
     }
+  }
+  fetchDistricts(stateID: any) {
+    this.registrarService.getDistrictList(stateID).subscribe((res: any) => {
+      if (res && res.statusCode === 200) {
+        this.districtList = res.data;
+      } else {
+        this.confirmationService.alert(
+          this.currentLanguageSet.alerts.info.IssuesInFetchingDemographics,
+          'error'
+        );
+      }
+    });
   }
 
   fetchDistrictsOnStateSelection(stateID: any) {
@@ -422,6 +460,7 @@ export class ServicePointComponent implements OnInit, DoCheck {
   saveLocationDataToStorage() {
     const locationData = {
       stateID: this.servicePointForm.controls.stateID.value,
+      stateName: this.servicePointForm.controls.stateName.value,
       // stateName : this.stateName,
       districtID: this.servicePointForm.controls.districtID.value,
       districtName: this.servicePointForm.controls.districtName.value,

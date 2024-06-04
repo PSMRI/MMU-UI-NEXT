@@ -27,7 +27,7 @@ import { ServicePointService } from './app-modules/service-point/service-point.s
 import { ResetPasswordComponent } from './app-modules/reset-password/reset-password.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WebcamModule } from 'ngx-webcam';
-import { RegistrarService } from './app-modules/registrar/shared/services/registrar.service';
+import { RegistrarService } from '../../Common-UI/srcs/registrar/services/registrar.service';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { NurseDoctorModule } from './app-modules/nurse-doctor/nurse-doctor.module';
@@ -35,6 +35,8 @@ import { RegistrarModule } from './app-modules/registrar/registrar.module';
 import { AudioRecordingService } from './app-modules/nurse-doctor/shared/services/audio-recording.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DataSYNCModule } from './app-modules/data-sync/dataSync.module';
+import { SharedModule } from './app-modules/core/shared/shared.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -49,10 +51,10 @@ import { DataSYNCModule } from './app-modules/data-sync/dataSync.module';
     DataSyncLoginComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     NurseDoctorModule,
     DataSYNCModule,
-    RegistrarModule,
     FormsModule,
     MatIconModule,
     ReactiveFormsModule,
@@ -66,6 +68,7 @@ import { DataSYNCModule } from './app-modules/data-sync/dataSync.module';
     MatGridListModule,
     WebcamModule,
     NgxPaginationModule,
+    SharedModule,
     CoreModule.forRoot(),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -78,7 +78,7 @@
                 </mat-autocomplete>
               </mat-form-field>
 
-              <mat-form-field [style.width]="'100%'" style="margin: -8px">
+              <!-- <mat-form-field [style.width]="'100%'" style="margin: -8px">
                 <mat-label class="mat-label-text">{{
                   currentLanguageSet?.ro?.locInfo?.state
                 }}</mat-label>
@@ -102,7 +102,7 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field [style.width]="'100%'" style="margin: -8px">
+              <mat-form-field [style.width]="'100%'" style="margin: -8px" [hidden]>
                 <mat-label class="mat-label-text">{{
                   currentLanguageSet?.ro?.locInfo?.districtTownCity
                 }}</mat-label>
@@ -123,8 +123,7 @@
                     {{ district.districtName }}
                   </mat-option>
                 </mat-select>
-              </mat-form-field>
-
+              </mat-form-field> -->
               <mat-form-field [style.width]="'100%'" style="margin: -8px">
                 <mat-label class="mat-label-text">{{
                   currentLanguageSet?.ro?.locInfo?.taluk

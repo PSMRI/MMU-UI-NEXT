@@ -36,7 +36,7 @@ import { CameraService } from '../../../core/services/camera.service';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { BeneficiaryDetailsService } from 'src/app/app-modules/core/services';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
-import { RegistrarService } from '../../shared/services/registrar.service';
+import { RegistrarService } from '../../../../../../Common-UI/srcs/registrar/services/registrar.service';
 import {
   BsDatepickerConfig,
   BsDatepickerDirective,
