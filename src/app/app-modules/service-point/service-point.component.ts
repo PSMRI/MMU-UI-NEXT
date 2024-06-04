@@ -326,6 +326,9 @@ export class ServicePointComponent implements OnInit, DoCheck {
         this.servicePointForm.controls.stateID.patchValue(
           data.otherLoc.stateID
         );
+        this.servicePointForm.controls.stateName.patchValue(
+          data.otherLoc.stateName
+        );
         this.fetchDistricts(this.servicePointForm.controls.stateID.value);
         if (data.otherLoc.districtList) {
           this.servicePointForm.patchValue({
