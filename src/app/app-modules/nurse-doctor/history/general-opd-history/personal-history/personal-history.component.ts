@@ -20,7 +20,14 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input, DoCheck, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  DoCheck,
+  OnDestroy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import {
   FormBuilder,
   FormArray,
@@ -103,7 +110,8 @@ export class GeneralPersonalHistoryComponent
     private beneficiaryDetailsService: BeneficiaryDetailsService,
     private confirmationService: ConfirmationService,
     private masterdataService: MasterdataService,
-    public httpServiceService: HttpServiceService
+    public httpServiceService: HttpServiceService,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -167,6 +175,7 @@ export class GeneralPersonalHistoryComponent
           this.tobaccoMasterData = masterData.typeOfTobaccoProducts;
           this.alcoholMasterData = masterData.typeOfAlcoholProducts;
           this.addMasters();
+          this.changeDetectorRef.detectChanges();
 
           if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');

@@ -20,7 +20,14 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit, Input, OnDestroy, DoCheck } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnDestroy,
+  DoCheck,
+  ChangeDetectorRef,
+} from '@angular/core';
 import {
   FormGroup,
   FormBuilder,
@@ -67,7 +74,8 @@ export class MedicationHistoryComponent implements OnInit, OnDestroy, DoCheck {
     private confirmationService: ConfirmationService,
     private masterdataService: MasterdataService,
     private beneficiaryDetailsService: BeneficiaryDetailsService,
-    public httpServiceService: HttpServiceService
+    public httpServiceService: HttpServiceService,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
@@ -110,6 +118,7 @@ export class MedicationHistoryComponent implements OnInit, OnDestroy, DoCheck {
       this.masterdataService.nurseMasterData$.subscribe(masterData => {
         if (masterData) {
           this.masterData = masterData;
+          this.changeDetectorRef.detectChanges();
 
           if (String(this.mode) === 'view') {
             const visitID = localStorage.getItem('visitID');

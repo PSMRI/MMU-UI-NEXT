@@ -27,6 +27,8 @@ import {
   ChangeDetectorRef,
   DoCheck,
   OnDestroy,
+  AfterViewChecked,
+  AfterViewInit,
 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
@@ -59,7 +61,13 @@ import { OpenPreviousVisitDetailsComponent } from '../../core/components/open-pr
   styleUrls: ['./workarea.component.css'],
 })
 export class WorkareaComponent
-  implements OnInit, CanComponentDeactivate, DoCheck, OnDestroy
+  implements
+    OnInit,
+    CanComponentDeactivate,
+    DoCheck,
+    OnDestroy,
+    AfterViewChecked,
+    AfterViewInit
 {
   @ViewChild('sidenav')
   sidenav: any;
@@ -790,7 +798,6 @@ export class WorkareaComponent
     this.showPNC = false;
     this.showCaseRecord = false;
     this.showRefer = false;
-    this.changeDetectorRef.detectChanges();
   }
 
   submitPatientMedicalDetailsForm(medicalForm: any) {
@@ -3125,7 +3132,11 @@ export class WorkareaComponent
     });
   }
 
-  AfterViewChecked() {
+  ngAfterViewChecked() {
+    this.changeDetectorRef.detectChanges();
+  }
+
+  ngAfterViewInit() {
     this.changeDetectorRef.detectChanges();
   }
 
