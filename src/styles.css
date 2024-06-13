@@ -684,3 +684,6 @@ control.mat-mdc-form-field-input-control {
 .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
   top: 33px !important;
 }
+.mat-mdc-paginator .mat-mdc-select-value {
+  padding-left: 15px !important;
+}
