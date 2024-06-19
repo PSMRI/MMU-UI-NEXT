@@ -1709,7 +1709,10 @@
     "covidVaccinationDetailsSaved":"Covid vaccination details saved successfully",
     "benPreviousVisitDetails": "Beneficiary previous visit details",
     "travelledLastDays": "Travelled last 14 days",
-    "noRecordsFound": "No Records Found"
+    "noRecordsFound": "No Records Found",
+    "consentFormText": "To provide you with better service, we would,request your personal information. The information that you will providewill be kept confidential and will only be used for research and analysis.",
+      "beneficaryConsent":"Beneficiary Consent"
   }
+
   
 }
