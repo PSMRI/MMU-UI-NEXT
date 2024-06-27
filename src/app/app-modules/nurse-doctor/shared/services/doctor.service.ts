@@ -1182,6 +1182,10 @@ export class DoctorService {
     return this.generalHistory;
   }
 
+  getPreviousVisitAnthropometry(benRegId: any) {
+    return this.http.post(environment.getPreviousAnthropometryUrl, benRegId);
+  }
+
   getGenericVitals(beneficiary: any): Observable<any> {
     const otherDetails = Object.assign({}, beneficiary, {
       visitCode: localStorage.getItem('visitCode'),
