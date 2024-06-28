@@ -399,9 +399,9 @@ mat-mdc-form-field-label-always-float {
 .mat-mdc-row {
   height: unset !important;
 }
-.mat-mdc-row:nth-child(2n) {
+/* .mat-mdc-row:nth-child(2n) {
   background-color: #f9f9f9;
-}
+} */
 .table-hover:hover {
   cursor: pointer !important;
   color: #337ab7 !important;
@@ -631,9 +631,10 @@ input {
   flex: auto;
 }
 .mat-label-text {
-  color: rgba(0, 0, 0, 0.54) !important;
-  font-weight: 600 !important;
-  letter-spacing: initial !important;
+  color: #999 !important;
+    font-weight: 600 !important;
+    letter-spacing: initial !important;
+    font-family: 'SF-UI-Display-Regular';
 }
 .mdc-form-field>label {
   color: #000;
