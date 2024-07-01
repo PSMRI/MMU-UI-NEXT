@@ -402,7 +402,7 @@ mat-mdc-form-field-label-always-float {
 /* .mat-mdc-row:nth-child(2n) {
   background-color: #f9f9f9;
 } */
-.table-hover:hover {
+.table_hover:hover {
   cursor: pointer !important;
   color: #337ab7 !important;
 }
@@ -471,7 +471,7 @@ h5 {
   background-color: unset !important;
 }
 .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined) .mat-mdc-form-field-infix {
-  padding-top: 24px;
+  padding-top: 26px;
   padding-bottom: unset !important;
 }
 .mat-h4, .mat-body-1, .mat-typography .mat-h4, .mat-typography .mat-body-1, .mat-typography h4 {
@@ -686,6 +686,7 @@ control.mat-mdc-form-field-input-control {
 }
 .mat-mdc-text-field-wrapper {
   padding-left: unset !important;
+  padding-right: unset !important;
 }
 .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
   top: 33px !important;
@@ -696,3 +697,35 @@ control.mat-mdc-form-field-input-control {
 .mdc-text-field--filled .mdc-floating-label {
   font-family: SF-UI-Display-Regular !important;
 }
+/* .mat-mdc-cell:hover {
+  
+  color: red !important;
+} */
+/* .mat-mdc-header-row:hover {
+  color: red !important;
+} */
+/* /* tbody:hover{
+  color: red !important;
+
+} */
+ /* td:hover{
+  color: red !important;
+
+ }
+  tfoot:hover{
+    color: red !important;
+
+  }  */
+   /* tr:hover {
+  
+  color: red !important;
+} */
+tr.mat-row {
+  background-color: red !important;
+  height: 39px !important;
+  border-top: 9px solid hsl(0, 0%, 100%);
+  border-bottom: 9px solid #fff;
+  border-left: none;
+  border-right: none;
+}
+
