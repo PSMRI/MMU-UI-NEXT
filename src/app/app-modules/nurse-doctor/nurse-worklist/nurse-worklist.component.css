@@ -76,10 +76,12 @@ ul li div {
 
 .first-visit-marker {
   background: #0b69b2;
+  margin-right: 5px;
 }
 
 .revisit-marker {
   background: #ff9900;
+  margin-right: 5px;
 }
 
 .totalCount,

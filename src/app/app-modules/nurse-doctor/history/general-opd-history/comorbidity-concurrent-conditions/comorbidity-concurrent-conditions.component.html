@@ -29,7 +29,7 @@
       <ng-container [formGroupName]="i">
         <div class="col-3 box">
           <mat-form-field>
-            <mat-label class="mat-label-text">{{
+            <mat-label>{{
               currentLanguageSet?.historyData?.ancHistory
                 ?.combordityANC_OPD_NCD_PNC?.comorbidConditions
             }}</mat-label>
@@ -76,18 +76,7 @@
           </mat-form-field>
         </div>
 
-        <div
-          class="col-3 box"
-          *ngIf="
-            (comorbidityConcurrentConditions?.value?.comorbidConditions !==
-              null &&
-              comorbidityConcurrentConditions?.value?.comorbidConditions !==
-                '') ||
-            comorbidityConcurrentConditions.value.comorbidConditions
-              ?.comorbidCondition === 'None' ||
-            comorbidityConcurrentConditions.value.comorbidConditions
-              ?.comorbidCondition === 'Nil'
-          ">
+        <div class="col-3 box">
           <mat-form-field class="input-full-width">
             <mat-label class="mat-label-text">{{
               currentLanguageSet?.DurationData?.duration
@@ -104,16 +93,7 @@
           </mat-form-field>
         </div>
 
-        <div
-          class="col-3 box"
-          *ngIf="
-            (comorbidityConcurrentConditions?.value?.timePeriodAgo !== null &&
-              comorbidityConcurrentConditions?.value?.timePeriodAgo !== '') ||
-            comorbidityConcurrentConditions.value.comorbidConditions
-              ?.comorbidCondition === 'None' ||
-            comorbidityConcurrentConditions.value.comorbidConditions
-              ?.comorbidCondition === 'Nil'
-          ">
+        <div class="col-3 box">
           <mat-form-field>
             <mat-label class="mat-label-text">{{
               currentLanguageSet?.DurationData?.durationUnit
@@ -122,9 +102,7 @@
               class="select-full-width"
               name="timePeriodUnit"
               formControlName="timePeriodUnit"
-              (selectionChange)="
-                validateDuration(comorbidityConcurrentConditions)
-              ">
+              (change)="validateDuration(comorbidityConcurrentConditions)">
               <mat-option value="Days">Day(s)</mat-option>
               <mat-option value="Weeks">Week(s)</mat-option>
               <mat-option value="Months">Month(s)</mat-option>
@@ -135,9 +113,10 @@
 
         <div class="col-3 box action-btn-container" style="text-align: end">
           <button
-            md-mini-fab
+            mat-mini-fab
             color="warn"
             class="mat_warn_circle"
+            style="margin-right: 3px"
             id="removeComorbidityConcurrentConditions"
             *ngIf="
               i !== 0 || (i === 0 && comorbidityConcurrentConditions.touched)

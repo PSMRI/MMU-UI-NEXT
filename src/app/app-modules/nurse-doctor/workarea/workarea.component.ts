@@ -27,6 +27,8 @@ import {
   ChangeDetectorRef,
   DoCheck,
   OnDestroy,
+  AfterViewChecked,
+  AfterViewInit,
 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
@@ -59,7 +61,13 @@ import { OpenPreviousVisitDetailsComponent } from '../../core/components/open-pr
   styleUrls: ['./workarea.component.css'],
 })
 export class WorkareaComponent
-  implements OnInit, CanComponentDeactivate, DoCheck, OnDestroy
+  implements
+    OnInit,
+    CanComponentDeactivate,
+    DoCheck,
+    OnDestroy,
+    AfterViewChecked,
+    AfterViewInit
 {
   @ViewChild('sidenav')
   sidenav: any;
@@ -779,7 +787,7 @@ export class WorkareaComponent
     this.patientMedicalForm.removeControl('patientANCForm');
     this.patientMedicalForm.removeControl('patientCaseRecordForm');
     this.patientMedicalForm.removeControl('patientReferForm');
-    //this.patientMedicalForm.removeControl('NCDScreeningForm');
+    this.patientMedicalForm.removeControl('NCDScreeningForm');
     this.patientMedicalForm.removeControl('idrsScreeningForm');
     this.showQuickConsult = false;
     this.showNCDScreening = false;
@@ -3124,7 +3132,11 @@ export class WorkareaComponent
     });
   }
 
-  AfterViewChecked() {
+  ngAfterViewChecked() {
+    this.changeDetectorRef.detectChanges();
+  }
+
+  ngAfterViewInit() {
     this.changeDetectorRef.detectChanges();
   }
 
@@ -3310,7 +3322,9 @@ export class WorkareaComponent
   openBenPreviousisitDetails() {
     this.mdDialog.open(OpenPreviousVisitDetailsComponent, {
       disableClose: true,
-      width: '95%',
+      width: '100%',
+      height: 'auto',
+      maxWidth: '90vw',
       panelClass: 'preview-casesheet',
       data: {
         previous: true,

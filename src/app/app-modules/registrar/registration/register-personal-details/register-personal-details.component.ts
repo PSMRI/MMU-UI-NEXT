@@ -36,13 +36,13 @@ import { CameraService } from '../../../core/services/camera.service';
 import { SetLanguageComponent } from 'src/app/app-modules/core/components/set-language.component';
 import { BeneficiaryDetailsService } from 'src/app/app-modules/core/services';
 import { HttpServiceService } from 'src/app/app-modules/core/services/http-service.service';
-import { RegistrarService } from '../../shared/services/registrar.service';
 import {
   BsDatepickerConfig,
   BsDatepickerDirective,
 } from 'ngx-bootstrap/datepicker';
 import moment from 'moment';
 import { setTheme } from 'ngx-bootstrap/utils';
+import { RegistrarService } from '../../shared/services/registrar.service';
 
 @Component({
   selector: 'app-register-personal-details',
@@ -142,7 +142,7 @@ export class RegisterPersonalDetailsComponent
    */
   loadMasterDataObservable() {
     this.masterDataSubscription =
-      this.registrarService.registrationMasterDetails$.subscribe(res => {
+      this.registrarService.registrationMasterDetails$.subscribe((res: any) => {
         // console.log('res personal', res)
         if (res !== null) {
           this.masterData = res;
@@ -183,7 +183,7 @@ export class RegisterPersonalDetailsComponent
    */
   loadPersonalDataForEditing() {
     this.revisitDataSubscription =
-      this.registrarService.beneficiaryEditDetails$.subscribe(res => {
+      this.registrarService.beneficiaryEditDetails$.subscribe((res: any) => {
         if (res && res.beneficiaryID) {
           this.revisitData = Object.assign({}, res);
           this.validateMaritalStatusMaster(this.revisitData);
@@ -598,7 +598,7 @@ export class RegisterPersonalDetailsComponent
     // console.log(date,'new')
     if (
       this.dateForCalendar &&
-      (!dobval || dobval.length === 10) &&
+      (dobval || dobval.length === 10) &&
       this.personalDetailsForm.controls['dob'].valid
     ) {
       const dateDiff = Date.now() - date.getTime();

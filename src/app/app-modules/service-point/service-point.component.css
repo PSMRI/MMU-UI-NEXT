@@ -1,5 +1,6 @@
 .radio-btn {
   margin-left: 8px;
+  font-weight: 700;
 }
 
 .align-Field {
@@ -13,7 +14,7 @@
 }
 
 .matCardService {
-  width: 500px;
+  width: 550px;
   margin-left: 10px;
   margin-right: 10px;
   border-radius: 5px;
@@ -38,5 +39,8 @@
 mat-card-actions {
   display: block;
   float: right;
+}
+.mat_form_field_width >>>.mat-mdc-text-field-wrapper {
+  padding-right: unset !important;
 }
 

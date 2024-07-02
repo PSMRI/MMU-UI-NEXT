@@ -47,6 +47,7 @@ export class WorkareaComponent
   generateBenIDForm!: FormGroup;
   current_language_set: any;
   blankTable: any[] = [];
+  showTable: boolean = false;
 
   constructor(
     private router: Router,
@@ -102,90 +103,6 @@ export class WorkareaComponent
     return data;
   }
 
-  checkSelectedGroup(syncTableGroup: any) {
-    console.log(syncTableGroup, 'syncTableGroup');
-
-    if (syncTableGroup.processed === 'N') {
-      if (syncTableGroup.syncTableGroupID === 1) {
-        this.syncUploadData(syncTableGroup);
-      } else if (syncTableGroup.syncTableGroupID === 2) {
-        if (!syncTableGroup.benDetailSynced && !syncTableGroup.visitSynced) {
-          this.confirmationService.alert('SYNC Beneficiary Details first');
-        } else {
-          this.syncUploadData(syncTableGroup);
-        }
-      } else if (
-        !syncTableGroup.benDetailSynced &&
-        !syncTableGroup.visitSynced
-      ) {
-        this.confirmationService.alert(
-          'SYNC Beneficiary Details and Beneficiary Visit first'
-        );
-      } else if (
-        syncTableGroup.benDetailSynced &&
-        !syncTableGroup.visitSynced
-      ) {
-        this.confirmationService.alert('SYNC Beneficiary Visit first');
-      } else {
-        this.syncUploadData(syncTableGroup);
-      }
-    } else {
-      this.confirmationService.alert('Data already synced');
-    }
-  }
-
-  syncUploadData(syncTableGroup: any) {
-    this.confirmationService
-      .confirm('info', 'Confirm to upload data')
-      .subscribe(result => {
-        if (result) {
-          this.dataSyncService
-            .syncUploadData(syncTableGroup.syncTableGroupID)
-            .subscribe(
-              (res: any) => {
-                console.log(res);
-                if (res.statusCode === 200) {
-                  const syncTableGroups = this.syncTableGroupList;
-                  this.syncTableGroupList = [];
-                  this.syncTableGroupList = this.modifySYNCEDGroup(
-                    syncTableGroups,
-                    syncTableGroup
-                  );
-                  console.log(
-                    this.syncTableGroupList,
-                    'this.syncTableGroupList'
-                  );
-                  this.confirmationService.alert(res.data.response, 'success');
-                } else {
-                  this.confirmationService.alert(res.errorMessage, 'error');
-                }
-              },
-              err => {
-                this.confirmationService.alert(err, 'error');
-              }
-            );
-        }
-      });
-  }
-
-  modifySYNCEDGroup(syncTableGroups: any, syncTableGroup: any) {
-    console.log('syncTableGroup', syncTableGroup);
-    syncTableGroups.forEach((element: any) => {
-      if (element.syncTableGroupID === syncTableGroup.syncTableGroupID) {
-        element.processed = 'D';
-      }
-      if (syncTableGroup.syncTableGroupID === 1) {
-        element.benDetailSynced = true;
-        element.visitSynced = false;
-      }
-      if (syncTableGroup.syncTableGroupID === 2) {
-        element.benDetailSynced = true;
-        element.visitSynced = true;
-      }
-    });
-    return syncTableGroups;
-  }
-
   showProgressBar = false;
   progressValue = 0;
   failedMasterList: any;
@@ -221,6 +138,84 @@ export class WorkareaComponent
             });
         }
       });
+  }
+
+  // syncGroups() {
+  //   this.dataSyncService.syncAllGroups().subscribe(
+  //     (res: any) => {
+  //       console.log(res);
+  //       if (res.statusCode === 200) {
+  //         // Update status for each group based on the response
+  //         this.updateGroupStatus(res.data.groupsProgress);
+  //         this.confirmationService.alert(res.data.response, 'success');
+  //       } else {
+  //         this.confirmationService.alert(res.errorMessage, 'error');
+  //       }
+  //     },
+  //     err => {
+  //       this.confirmationService.alert(err, 'error');
+  //     }
+  //   );
+  // }
+
+  // updateGroupStatus(groupsProgress: any[]) {
+  //   // Update status for each group based on the response
+  //   this.syncTableGroupList.forEach((group: any) => {
+  //     const progress = groupsProgress.find((item: any) => item.groupId === group.syncTableGroupID);
+  //     if (progress) {
+  //       if (progress.status === 'completed') {
+  //         group.status = 'success';
+  //       } else if (progress.status === 'failed') {
+  //         group.status = 'failed';
+  //       }
+  //     } else {
+  //       group.status = 'pending';
+  //     }
+  //   });
+  // }
+  syncGroups() {
+    this.dataSyncService.syncAllGroups().subscribe(
+      (res: any) => {
+        console.log(res);
+        if (res.statusCode === 200) {
+          if (res.data.groupsProgress) {
+            this.updateGroupStatus(res.data.groupsProgress);
+          }
+          this.confirmationService.alert(res.data.response, 'success');
+        } else {
+          this.confirmationService.alert(res.data.response, 'error');
+          if (res.data.groupsProgress) {
+            this.updateGroupStatus(res.data.groupsProgress);
+          }
+        }
+        this.showTable = true;
+      },
+      err => {
+        this.confirmationService.alert(
+          err.message || 'An error occurred',
+          'error'
+        );
+      }
+    );
+  }
+
+  updateGroupStatus(groupsProgress: any[]) {
+    this.syncTableGroupList.forEach((group: any) => {
+      const progress = groupsProgress.find(
+        (item: any) => item.groupId === group.syncTableGroupID
+      );
+      if (progress) {
+        if (progress.status === 'completed') {
+          group.status = 'success';
+        } else if (progress.status === 'failed') {
+          group.status = 'failed';
+        } else {
+          group.status = 'pending';
+        }
+      } else {
+        group.status = 'pending';
+      }
+    });
   }
 
   syncDownloadProgressStatus() {

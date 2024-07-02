@@ -16,7 +16,7 @@
 </div>
 <div class="row m-t-10" [formGroup]="menstrualHistoryForm">
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="mat_form_field_width">
+    <mat-form-field>
       <mat-label class="mat-label-text">{{
         currentLanguageSet?.historyData?.ancHistory?.menstrualHistoryANC
           ?.menstrualCycleStatus
@@ -53,7 +53,7 @@
     </div>
 
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-      <mat-form-field class="mat_form_field_width">
+      <mat-form-field>
         <mat-label class="mat-label-text">{{
           currentLanguageSet?.historyData?.opdNCDPNCHistory?.menstrual
             ?.lengthofMenstrualCycle
@@ -119,8 +119,8 @@
     </div>
   </ng-template>
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 box">
-    <mat-form-field class="fieldAlignment fontStyle">
-      <mat-label class="mat-label-text" class="fontStyle"
+    <mat-form-field>
+      <mat-label class="mat-label-text"
         >{{
           currentLanguageSet?.historyData?.opdNCDPNCHistory?.menstrual
             ?.lastMenstrualPeriod
@@ -128,7 +128,6 @@
       </mat-label>
       <input
         matInput
-        style="width: 100%"
         name="lMPDate"
         formControlName="lMPDate"
         [min]="minimumLMPDate"

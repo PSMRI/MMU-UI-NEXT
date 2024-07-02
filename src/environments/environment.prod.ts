@@ -431,4 +431,10 @@ export const environment = {
   getResultStatusURL: `${COMMON_API}lungAssessment/startAssesment`,
   getAssessmentUrl: `${COMMON_API}lungAssessment/getAssesment`,
   getAssessmentIdUrl: `${COMMON_API}swaalungAssessmentsa/getAssesmentDetails`,
+
+  /* Customization APIs*/
+  getAllRegistrationData: `${COMMON_API}customization/fetchAllData`,
+
+  /** Previous Anthropometry  Urls */
+  getPreviousAnthropometryUrl: `${MMU_API}anthropometryVitals/getBenHeightDetailsFrmNurse`,
 };

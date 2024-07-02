@@ -38,9 +38,10 @@
   <div class="row m-t-10 m-b-40">
     <div class="col-sm-12">
       <mat-card>
-        <section class="table-responsive">
+        <section class="">
           <table
             mat-table
+            class="table table-striped"
             [dataSource]="dataSource"
             aria-describedby="beneficiaryData">
             <ng-container matColumnDef="sno">
@@ -214,7 +215,7 @@
             <strong>{{ current_language_set?.noRecordsFound }}</strong>
           </div>
           <mat-paginator
-            [hidden]="dataSource.data.length >= 0"
+            [hidden]="dataSource.data.length === 0"
             [pageSizeOptions]="[5, 10, 20]"
             [pageSize]="5"
             showFirstLastButtons

@@ -127,7 +127,7 @@ export class NcdScreeningComponent
   }
   // Ends
   ngOnChanges() {
-    if (this.ncdScreeningMode === 'update') {
+    if (String(this.ncdScreeningMode) === 'update') {
       this.updateNCDScreeningDetails();
     }
   }
@@ -152,7 +152,7 @@ export class NcdScreeningComponent
           );
           // this.ncdTests = data.ncdTests;
 
-          if (this.ncdScreeningMode === 'view') {
+          if (String(this.ncdScreeningMode) === 'view') {
             const visitID = localStorage.getItem('visitID');
             const benRegID = localStorage.getItem('beneficiaryRegID');
             this.getNCDScreeingDetails(benRegID, visitID);
@@ -205,7 +205,7 @@ export class NcdScreeningComponent
         .subscribe((res: any) => {
           if (res && res.statusCode === 200 && res.data) {
             this.ncdScreeningVisitCount = res.data.ncdScreeningVisitCount;
-            if (this.ncdScreeningMode !== 'view')
+            if (String(this.ncdScreeningMode) !== 'view')
               this.NCDScreeningForm.patchValue({
                 ncdScreeningVisitNo: this.ncdScreeningVisitCount,
               });
