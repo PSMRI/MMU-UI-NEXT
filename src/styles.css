@@ -731,4 +731,6 @@ control.mat-mdc-form-field-input-control {
 .table>thead {
   border-bottom: 2px solid #ddd !important;
 }
-
+.mdc-text-field--filled, .mdc-text-field--focused, .mat-mdc-form-field-focus-overlay, .mat-mdc-form-field:hover .mat-mdc-form-field-focus-overlay, .mat-mdc-form-field.mat-focused .mat-mdc-form-field-focus-overlay {
+  background-color: unset !important;
+}
