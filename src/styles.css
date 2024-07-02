@@ -720,12 +720,15 @@ control.mat-mdc-form-field-input-control {
   
   color: red !important;
 } */
-tr.mat-row {
+/* tr.mat-row {
   background-color: red !important;
   height: 39px !important;
   border-top: 9px solid hsl(0, 0%, 100%);
   border-bottom: 9px solid #fff;
   border-left: none;
   border-right: none;
+} */
+.table>thead {
+  border-bottom: 2px solid #ddd !important;
 }
 

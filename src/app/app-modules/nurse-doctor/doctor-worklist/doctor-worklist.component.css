@@ -190,3 +190,6 @@ ul li div {
 .description {
   padding-top: 15px;
 }
+.table>thead {
+  border-bottom: 2px solid #ddd !important;
+}
