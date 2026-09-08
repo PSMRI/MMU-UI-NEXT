@@ -292,6 +292,23 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
 
   //added get datasync data on login to a new method
   getDataSyncMMU(res: any) {
+    const sessionUserID = this.sessionstorage.getItem('userID');
+    const dataSyncUserID = res.data.userID;
+
+    if (
+      sessionUserID &&
+      dataSyncUserID &&
+      String(dataSyncUserID) !== String(sessionUserID)
+    ) {
+      this.showProgressBar = false;
+      sessionStorage.removeItem('serverKey');
+      this.confirmationService.alert(
+        'Sync user is not valid. Please login with the correct credentials.',
+        'error'
+      );
+      return;
+    }
+
     const mmuService = this.getDataSyncPrivileges(res.data.previlegeObj);
 
     if (mmuService && mmuService.length > 0) {
