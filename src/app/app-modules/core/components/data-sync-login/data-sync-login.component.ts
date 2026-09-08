@@ -24,7 +24,7 @@ import { Component, OnInit, Injector, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 
 import * as CryptoJS from 'crypto-js';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SetLanguageComponent } from '../set-language.component';
 import { ConfirmationService } from '../../services';
@@ -69,9 +69,26 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
   }
 
   loginForm = this.fb.group({
-    userName: [''],
-    password: [''],
+    userName: ['', Validators.required],
+    password: ['', Validators.required],
   });
+
+  private readonly dataSyncServices = ['MMU', 'Stop TB', 'StopTB'];
+
+  private isDataSyncService(serviceName: any): boolean {
+    if (typeof serviceName !== 'string') return false;
+    const name = serviceName.trim().toLowerCase();
+    return this.dataSyncServices.some(
+      (allowed: string) => allowed.toLowerCase() === name
+    );
+  }
+
+  private getDataSyncPrivileges(previlegeObj: any): any[] {
+    if (!Array.isArray(previlegeObj)) return [];
+    return previlegeObj.filter((item: any) =>
+      this.isDataSyncService(item?.serviceName)
+    );
+  }
 
   ngOnInit() {
     this.assignSelectedLanguage();
@@ -143,30 +160,22 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
    added a concurrent login changes
   */
   dataSyncLogin() {
-    this.showProgressBar = true;
-    const userName: any = this.loginForm.controls['userName'].value;
-    const encriptPassword = this.encrypt(
-      this.Key_IV,
-      this.loginForm.controls['password'].value
-    );
-
-    if (
-      this.loginForm.controls['userName'].value &&
-      this.loginForm.controls['password'].value
-    ) {
+    if (this.loginForm.valid) {
+      this.showProgressBar = true;
+      const userName: any = this.loginForm.controls['userName'].value;
+      const encriptPassword = this.encrypt(
+        this.Key_IV,
+        this.loginForm.controls['password'].value
+      );
       this.dataSyncService
-        .dataSyncLogin(
-          this.loginForm.controls['userName'].value,
-          encriptPassword,
-          false
-        )
+        .dataSyncLogin(userName, encriptPassword, false)
         .subscribe(
           (res: any) => {
             if (res.statusCode === 200) {
               if (res.data && res.data !== null && res.data !== undefined) {
-                const mmuService = res.data.previlegeObj.filter((item: any) => {
-                  return item.serviceName === 'MMU';
-                });
+                const mmuService = this.getDataSyncPrivileges(
+                  res.data.previlegeObj
+                );
                 if (
                   mmuService !== undefined &&
                   mmuService !== null &&
@@ -211,32 +220,23 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
                                     userLoggedIn.data !== null &&
                                     userLoggedIn.data !== undefined
                                   ) {
-                                    userLoggedIn.data.previlegeObj.forEach(
-                                      (item: any) => {
-                                        if (
-                                          item?.roles[0]
-                                            ?.serviceRoleScreenMappings[0]
-                                            ?.providerServiceMapping
-                                            ?.serviceID !== 2
-                                        ) {
-                                          sessionStorage.removeItem(
-                                            'serverKey'
-                                          );
-                                          this.confirmationService.alert(
-                                            "User doesn't have previlege to perform this activity. Please contact administrator."
-                                          );
-                                          this.showProgressBar = false;
-                                        } else {
-                                          this.showProgressBar = false;
-                                          this.sessionstorage.setItem(
-                                            'serverKey',
-                                            userLoggedIn.data.key
-                                          );
-                                          this.getDataSyncMMU(userLoggedIn);
-                                          this.showProgressBar = false;
-                                        }
-                                      }
-                                    );
+                                    const allowedServices =
+                                      this.getDataSyncPrivileges(
+                                        userLoggedIn.data.previlegeObj
+                                      );
+                                    this.showProgressBar = false;
+                                    if (allowedServices.length > 0) {
+                                      this.sessionstorage.setItem(
+                                        'serverKey',
+                                        userLoggedIn.data.key
+                                      );
+                                      this.getDataSyncMMU(userLoggedIn);
+                                    } else {
+                                      sessionStorage.removeItem('serverKey');
+                                      this.confirmationService.alert(
+                                        "User doesn't have previlege to perform this activity. Please contact administrator."
+                                      );
+                                    }
                                   } else {
                                     this.confirmationService.alert(
                                       'Seems you are logged in from somewhere else, Logout from there & try back in.',
@@ -309,9 +309,7 @@ export class DataSyncLoginComponent implements OnInit, DoCheck {
       return;
     }
 
-    const mmuService = res.data.previlegeObj.filter((item: any) => {
-      return item.serviceName === 'MMU';
-    });
+    const mmuService = this.getDataSyncPrivileges(res.data.previlegeObj);
 
     if (mmuService && mmuService.length > 0) {
       this.sessionstorage.setItem(
