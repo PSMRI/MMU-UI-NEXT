@@ -121,6 +121,7 @@ export const environment = {
   updateBeneficiaryIdentityUrl: `${MMU_API}registrar/update/BeneficiaryUpdate`,
 
   registrarMasterDataUrl: `${MMU_API}registrar/registrarMasterData`,
+  registrarWorkListDataUrl: `${MMU_API}registrar/registrarWorkListData`,
   quickSearchUrl: `${MMU_API}registrar/quickSearch`,
   identityQuickSearchUrl: `${MMU_API}registrar/quickSearchNew`,
   advanceSearchUrl: `${MMU_API}registrar/advanceSearch`,
