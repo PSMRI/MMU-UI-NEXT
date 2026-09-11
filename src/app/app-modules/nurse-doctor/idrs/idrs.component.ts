@@ -952,7 +952,9 @@ export class IdrsComponent implements OnInit, OnDestroy, DoCheck, OnChanges {
     this.nurseMasterDataSubscription =
       this.masterdataService.nurseMasterData$.subscribe(data => {
         if (data) {
-          this.nurseMasterDataSubscription.unsubscribe();
+          // guard: BehaviorSubject may emit synchronously before the sub is assigned
+          if (this.nurseMasterDataSubscription)
+            this.nurseMasterDataSubscription.unsubscribe();
           this.questions = data.IDRSQuestions;
           if (this.questions !== undefined && this.questions.length > 0) {
             for (const question of this.questions) {
