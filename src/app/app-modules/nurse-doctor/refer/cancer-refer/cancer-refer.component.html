@@ -1,13 +1,13 @@
-<z-card class="block">
+<z-card class="bg-muted/40">
   <z-card-header>
     <z-card-title>{{ currentLanguageSet?.Referdetails?.refer }}</z-card-title>
   </z-card-header>
 
-  <z-card-content>
+  <z-card-content class="flex flex-col gap-5">
     <form
       [formGroup]="referForm"
       autocomplete="off"
-      class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      class="grid grid-cols-1 gap-x-6 gap-y-5 sm:grid-cols-2">
       <!-- Referred to institute -->
       <z-form-field class="gap-1.5">
         <label z-form-label for="referredToInstituteID">
