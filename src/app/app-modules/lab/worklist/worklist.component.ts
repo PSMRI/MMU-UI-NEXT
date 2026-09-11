@@ -146,7 +146,8 @@ export class WorklistComponent implements OnInit, OnDestroy, DoCheck {
       this.beneficiaryDetailsService
         .getBeneficiaryImage(benregID)
         .subscribe((data: any) => {
-          if (data?.benImage) this.cameraService.viewImage(data.benImage);
+          const benImage = data?.data?.benImage ?? data?.benImage;
+          if (benImage) this.cameraService.viewImage(benImage);
           else
             this.confirmationService.alert(
               this.current_language_set.alerts.info.imageNotFound

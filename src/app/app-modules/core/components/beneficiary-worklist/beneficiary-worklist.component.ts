@@ -53,6 +53,7 @@ import { ZardInputDirective } from 'Common-UI/v2/ui/input';
 import { ZardSelectImports } from 'Common-UI/v2/ui/select';
 import { ZardSkeletonComponent } from 'Common-UI/v2/ui/skeleton';
 import { tooltipImports } from 'Common-UI/v2/ui/tooltip';
+import { BeneficiaryDetailsService } from '../../services';
 
 /** Object keys the standard beneficiary worklist filters against. */
 export const STANDARD_WORKLIST_SEARCH_KEYS = [
@@ -262,6 +263,8 @@ export class BeneficiaryWorklistComponent implements OnChanges, OnDestroy {
     return this.currentLanguageSet?.tc?.image ?? 'View image';
   }
 
+  constructor(private beneficiaryDetailsService: BeneficiaryDetailsService) {}
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes['loading']) {
       this.updateSkeleton(this.loading);
@@ -270,7 +273,28 @@ export class BeneficiaryWorklistComponent implements OnChanges, OnDestroy {
     // input churn (re-evaluated on change detection) doesn't reset the page.
     if (changes['data']) {
       this.applyFilter(this.filterTerm);
+      this.loadRowImages();
     }
+  }
+
+  // Fetch each row's photo so the image column shows a real thumbnail.
+  private loadRowImages(): void {
+    (this.data || []).forEach((row: any) => {
+      if (!row?.beneficiaryRegID || row.benImage || row.benImageResolved) {
+        return;
+      }
+      row.benImageResolved = true;
+      this.beneficiaryDetailsService
+        .getBeneficiaryImage(row.beneficiaryRegID)
+        .subscribe({
+          next: (res: any) => {
+            row.benImage = res?.data?.benImage ?? res?.benImage ?? null;
+          },
+          error: () => {
+            // keep placeholder
+          },
+        });
+    });
   }
 
   private updateSkeleton(loading: boolean) {
