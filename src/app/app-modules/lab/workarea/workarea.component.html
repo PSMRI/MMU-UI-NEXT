@@ -35,6 +35,14 @@
           beneficiary?.beneficiaryID
         }}</span>
       </span>
+      <ng-container
+        *ngIf="beneficiary?.districtName || beneficiary?.villageName">
+        <span aria-hidden="true">·</span>
+        <span
+          >{{ beneficiary?.districtName }} /
+          {{ beneficiary?.villageName }}</span
+        >
+      </ng-container>
     </div>
   </div>
 
