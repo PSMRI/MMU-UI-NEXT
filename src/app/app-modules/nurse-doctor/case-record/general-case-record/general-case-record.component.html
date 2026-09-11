@@ -58,7 +58,10 @@
       <span
         class="flex items-center gap-2 text-sm font-semibold text-foreground">
         <ng-icon name="healthClinical" class="text-primary"></ng-icon>
-        {{ current_language_set?.casesheet?.diagnosis }}
+        <span
+          >{{ current_language_set?.casesheet?.diagnosis
+          }}<span class="text-destructive">*</span></span
+        >
       </span>
     </z-accordion-trigger>
     <z-accordion-content class="px-4">
@@ -98,7 +101,10 @@
       <span
         class="flex items-center gap-2 text-sm font-semibold text-foreground">
         <ng-icon name="healthMedicines" class="text-primary"></ng-icon>
-        {{ current_language_set?.casesheet?.prescribe }}
+        <span
+          >{{ current_language_set?.casesheet?.prescribe
+          }}<span class="text-destructive">*</span></span
+        >
       </span>
     </z-accordion-trigger>
     <z-accordion-content class="px-4">
