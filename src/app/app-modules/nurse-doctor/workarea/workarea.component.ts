@@ -229,6 +229,8 @@ export class WorkareaComponent
     if (steps[target]?.key) this.renderedSteps.add(steps[target].key);
     // Preserve the mat-stepper (selectionChange) unsaved-changes warning for the step left.
     this.updatePending({ previouslySelectedStep: { label: leaving?.label } });
+    // Open each step at the top instead of the previous scroll position.
+    setTimeout(() => window.scrollTo({ top: 0, behavior: 'auto' }));
   }
 
   /** Jump straight to a step by clicking its label in the stepper. */

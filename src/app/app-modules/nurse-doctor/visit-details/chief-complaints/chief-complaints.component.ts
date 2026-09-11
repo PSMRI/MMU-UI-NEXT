@@ -524,6 +524,33 @@ export class ChiefComplaintsComponent implements OnInit, DoCheck, OnDestroy {
     const complaintFormArray = <FormArray>(
       this.patientChiefComplaintsForm.controls['complaints']
     );
+    const selectedName = (complaint?.chiefComplaint ?? complaint)
+      ?.toString()
+      .trim()
+      .toLowerCase();
+    const alreadyAdded = complaintFormArray.controls.some(
+      (ctrl: AbstractControl, idx: number) => {
+        if (idx === i) return false;
+        const existing = ctrl.value?.chiefComplaint;
+        const existingName = (existing?.chiefComplaint ?? existing)
+          ?.toString()
+          .trim()
+          .toLowerCase();
+        return !!existingName && existingName === selectedName;
+      }
+    );
+    if (alreadyAdded) {
+      this.confirmationService.alert(
+        this.currentLanguageSet?.alerts?.info?.chiefComplaintAlreadyAdded ||
+          'This chief complaint is already added.',
+        'info'
+      );
+      complaintFormArray
+        .at(i)
+        .patchValue({ chiefComplaint: null, chiefComplaintID: null });
+      this.suggestedChiefComplaintList[i] = [];
+      return;
+    }
     // `complaint` is the selected option object ({ chiefComplaint, chiefComplaintID, … }).
     // The control backs a text input, so store the name string (not the object,
     // which renders as "[object Object]") AND its id in the sibling
