@@ -27,6 +27,10 @@
   html {
     font-size: 106.25%;
   }
+  /* Tabular figures so numbers/dates align in even columns app-wide. */
+  body {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 @custom-variant dark (&:is(.dark *));
