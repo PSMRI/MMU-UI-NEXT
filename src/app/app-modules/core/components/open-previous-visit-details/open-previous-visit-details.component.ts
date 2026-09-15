@@ -20,7 +20,7 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpServiceService } from '../../services/http-service.service';
 import { ConfirmationService } from '../../services/confirmation.service';
 import { SetLanguageComponent } from '../set-language.component';
@@ -57,6 +57,7 @@ export class OpenPreviousVisitDetailsComponent implements OnInit {
     public httpServiceService: HttpServiceService,
     private doctorService: DoctorService,
     private readonly confirmationService: ConfirmationService,
+    private readonly cdr: ChangeDetectorRef,
     public dialogRef: ZardDialogRef<OpenPreviousVisitDetailsComponent>
   ) {
     // Preserve the original MatDialog disableClose:true behaviour.
@@ -108,6 +109,7 @@ export class OpenPreviousVisitDetailsComponent implements OnInit {
           if (res.statusCode === 200 && res.data !== null) {
             this.previousVisitData[i]['benPreviousData'] = res.data;
             this.filteredHistory = res.data;
+            this.cdr.detectChanges();
           }
         });
       }
@@ -116,6 +118,9 @@ export class OpenPreviousVisitDetailsComponent implements OnInit {
       page: this.previousHistoryActivePage,
       itemsPerPage: this.previousHistoryRowsPerPage,
     });
+    // The dialog's projected view doesn't re-check on the async HTTP response,
+    // so it kept showing "No visit found" even after the data loaded. Force it.
+    this.cdr.detectChanges();
   }
 
   previousHistoryPagedList: any = [];
